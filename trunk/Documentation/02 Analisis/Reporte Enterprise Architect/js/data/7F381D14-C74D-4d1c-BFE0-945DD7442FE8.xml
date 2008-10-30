@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("2.2:1", "", "CN001 - Administración de Clientes", "EARoot/EA2/EA2/EA37.htm", "7.png", "112", "0", "", "UseCase0","{BF27B8C2-F92A-4a6f-83CF-2C29409EA57C}");
+tocTab[tocTab.length] = new Array("2.2:2", "", "CN002 - Administración de Empleados", "EARoot/EA2/EA2/EA38.htm", "7.png", "115", "0", "", "UseCase0","{EFDF40B9-83A5-4fe9-9D87-56D4476FEA84}");
+tocTab[tocTab.length] = new Array("2.2:3", "", "CN003 - Administración de Insumos", "EARoot/EA2/EA2/EA39.htm", "7.png", "116", "0", "", "UseCase0","{EFD7E673-44B0-445c-BD93-DA31ED3DEEF9}");
+tocTab[tocTab.length] = new Array("2.2:4", "", "CN004 - Administración de Proveedores", "EARoot/EA2/EA2/EA40.htm", "7.png", "117", "0", "", "UseCase0","{4360E78D-6F2F-46a1-B277-9382170BBF8F}");
+tocTab[tocTab.length] = new Array("2.2:5", "", "CN005 - Administración de Seguridad", "EARoot/EA2/EA2/EA41.htm", "7.png", "121", "0", "", "UseCase0","{1EE57331-ABCF-441e-BE23-00A0EBAA8C5E}");
+tocTab[tocTab.length] = new Array("2.2:6", "", "CN006 - Administración de Tickets", "EARoot/EA2/EA2/EA42.htm", "7.png", "122", "0", "", "UseCase0","{54CEB2F7-7B49-4036-B764-806718AC5FEF}");
+tocTab[tocTab.length] = new Array("2.2:7", "", "CN007 - Alertas", "EARoot/EA2/EA2/EA43.htm", "7.png", "123", "0", "", "UseCase0","{CB9A9382-DE82-40ae-8A05-A950DDF7A8B8}");
