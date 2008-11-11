@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PrimaryKeyDomainObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameAndDescriptionDomainObject&lt;T, PK&gt;" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PrimaryKeyWithNameAndDescriptionDomainObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PrimaryKeyWithNameDomainObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.Customer">
+    <Position X="2.75" Y="1.25" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.375" Y="1.13" />
+        <Point X="4.375" Y="2.375" />
+        <Point X="4.25" Y="2.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAKAAAAgIAAAAAAAAAAAEAEADAAAAYAAAAAA=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.Employee">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.5" Y="0.562" />
+        <Point X="0.094" Y="0.562" />
+        <Point X="0.094" Y="6.75" />
+        <Point X="5.25" Y="6.75" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Category" Type="Bagge.Seti.BusinessEntities.EmployeeCategory" FixedFromPoint="true">
+      <Path>
+        <Point X="6.5" Y="5" />
+        <Point X="6.5" Y="4.38" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAYAAEAAACIAAAAIAQAAAAAAAAAAAAACAAAAIAAACAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Category" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.EmployeeCategory" Collapsed="true">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameAndDescriptionDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="1.13" />
+        <Point X="7.25" Y="1.624" />
+        <Point X="6.875" Y="1.624" />
+        <Point X="6.875" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EmployeeCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.Provider">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.625" Y="0.5" />
+        <Point X="0.625" Y="0.26" />
+        <Point X="8.91" Y="0.26" />
+        <Point X="8.91" Y="5.562" />
+        <Point X="8.5" Y="5.562" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Calification" Type="Bagge.Seti.BusinessEntities.ProviderCalification" FixedFromPoint="true">
+      <Path>
+        <Point X="8" Y="4.75" />
+        <Point X="8" Y="3.158" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAAAIAIAgAAAAQAAkAAADAAAIRAAAAAQ=</HashCode>
+      <FileName>Provider.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Calification" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.ProviderCalification">
+    <Position X="7" Y="2.25" Width="1.75" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameAndDescriptionDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.938" Y="1.13" />
+        <Point X="7.938" Y="2.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProviderCalification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.Product">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameAndDescriptionDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.938" Y="1.13" />
+        <Point X="6.938" Y="1.364" />
+        <Point X="6.125" Y="1.364" />
+        <Point X="6.125" Y="2" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.ProductProvider">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.188" Y="1.009" />
+        <Point X="2.188" Y="3.75" />
+        <Point X="2" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.TicketStatus" Collapsed="true">
+    <Position X="4" Y="4" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameAndDescriptionDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="0.938" />
+        <Point X="6.587" Y="0.938" />
+        <Point X="6.587" Y="1.281" />
+        <Point X="5" Y="1.281" />
+        <Point X="5" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TicketStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.Ticket">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.375" Y="1.009" />
+        <Point X="2.375" Y="2.505" />
+        <Point X="2.375" Y="2.505" />
+        <Point X="2.375" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Status" Type="Bagge.Seti.BusinessEntities.TicketStatus" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="5.175" />
+        <Point X="4.875" Y="5.175" />
+        <Point X="4.875" Y="4.63" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QAEAAAAEAAAgAAAAAAAAAAAACAAAAgQAAACAAAAAkAQ=</HashCode>
+      <FileName>Ticket.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.TicketEmployee">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.5" Y="0.75" />
+        <Point X="0.229" Y="0.75" />
+        <Point X="0.229" Y="5.062" />
+        <Point X="0.5" Y="5.062" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TicketEmployee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.ProductTicket">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.438" Y="1.009" />
+        <Point X="1.438" Y="1.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductTicket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
