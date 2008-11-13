@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F6D1CEE2-50AC-4415-B6C5-0C16F9C5155F}</ProjectGuid>
+    <ProjectGuid>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bagge.Seti.Common</RootNamespace>
-    <AssemblyName>Bagge.Seti.Common</AssemblyName>
+    <RootNamespace>Bagge.Seti.Security</RootNamespace>
+    <AssemblyName>Bagge.Seti.Security</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Archivos de programa\Spring.NET 1.2.0\bin\net\2.0\release\Spring.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -49,22 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constraints\Constraint.cs" />
+    <Compile Include="Constraints\ContainsConstraint.cs" />
+    <Compile Include="Constraints\RangeConstraint.cs" />
+    <Compile Include="Constraints\EqualityConstraint.cs" />
+    <Compile Include="ISecurizable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpringContext.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Bagge.Seti.BusinessEntities\Bagge.Seti.BusinessEntities.csproj">
-      <Project>{32F8F81B-0F4D-4ABA-9CBE-1613FDA7B328}</Project>
-      <Name>Bagge.Seti.BusinessEntities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bagge.Seti.BusinessLogic\Bagge.Seti.BusinessLogic.csproj">
-      <Project>{2A4DB60F-1B1C-49FC-B1AA-C18C595F1B1D}</Project>
-      <Name>Bagge.Seti.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
-      <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
-      <Name>Bagge.Seti.Security</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
