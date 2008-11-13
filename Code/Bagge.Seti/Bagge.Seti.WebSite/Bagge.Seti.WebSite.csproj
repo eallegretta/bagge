@@ -105,6 +105,10 @@
       <Project>{F6D1CEE2-50AC-4415-B6C5-0C16F9C5155F}</Project>
       <Name>Bagge.Seti.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
+      <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
+      <Name>Bagge.Seti.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CustomerList.aspx" />

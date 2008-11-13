@@ -64,6 +64,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
+      <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
+      <Name>Bagge.Seti.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

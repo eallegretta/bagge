@@ -3,7 +3,7 @@
   <Class Name="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAUCAAAQAAAAAAAAgAAIAAAAAABAABgAAQAAAAAAAAA=</HashCode>
       <FileName>PrimaryKeyDomainObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -163,8 +163,6 @@
     <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="2.375" Y="1.009" />
-        <Point X="2.375" Y="2.505" />
-        <Point X="2.375" Y="2.505" />
         <Point X="2.375" Y="4" />
       </Path>
     </InheritanceLine>

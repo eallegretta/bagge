@@ -8,7 +8,8 @@ namespace Bagge.Seti.BusinessEntities
 	{
 		public ProviderCalification Calification
 		{
-			get; set;
+			get;
+			set;
 		}
 
 		public string CUIT
