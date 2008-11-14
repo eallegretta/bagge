@@ -118,8 +118,8 @@
     <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameAndDescriptionDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6.938" Y="1.13" />
-        <Point X="6.938" Y="1.364" />
-        <Point X="6.125" Y="1.364" />
+        <Point X="6.938" Y="1.624" />
+        <Point X="6.125" Y="1.624" />
         <Point X="6.125" Y="2" />
       </Path>
     </InheritanceLine>
