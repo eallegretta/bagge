@@ -13,49 +13,19 @@ using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class CustomerList : System.Web.UI.Page, IListView
+	public partial class CustomerList : ListPage
 	{
 		ListPresenter<Customer, int> _presenter;
 
 		public CustomerList()
 		{
-			_presenter = new ListPresenter<Customer, int>(this, SpringContext.CustomerManager);
+			_presenter = new ListPresenter<Customer, int>(this, ViewState, SpringContext.CustomerManager);
 		}
-		protected void Page_Load(object sender, EventArgs e)
+
+
+		protected override GridView GridView
 		{
+			get { return _customers; }
 		}
-
-		#region IListView Members
-
-		public event GridViewPageEventHandler PageIndexChanging
-		{
-			add
-			{
-				_customers.PageIndexChanging += value;
-			}
-			remove
-			{
-				_customers.PageIndexChanging -= value;
-			}
-		}
-
-		#endregion
-
-		#region IView Members
-
-
-		public object DataSource
-		{
-			get
-			{
-				return _customers.DataSource;
-			}
-			set
-			{
-				_customers.DataSource = value;
-			}
-		}
-
-		#endregion
 	}
 }

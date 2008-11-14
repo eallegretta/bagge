@@ -9,5 +9,7 @@ namespace Bagge.Seti.WebSite.Views
 	public interface IListView: IView
 	{
 		event GridViewPageEventHandler PageIndexChanging;
+		event GridViewSortEventHandler Sorting;
+
 	}
 }
