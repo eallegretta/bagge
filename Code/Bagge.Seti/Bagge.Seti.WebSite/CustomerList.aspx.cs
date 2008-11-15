@@ -13,7 +13,7 @@ using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class CustomerList : ListPage
+	public partial class CustomerList : ListPage<Customer, int>
 	{
 		ListPresenter<Customer, int> _presenter;
 
@@ -22,10 +22,14 @@ namespace Bagge.Seti.WebSite
 			_presenter = new ListPresenter<Customer, int>(this, ViewState, SpringContext.CustomerManager);
 		}
 
-
 		protected override GridView GridView
 		{
 			get { return _customers; }
+		}
+
+		protected override ListPresenter<Customer, int> Presenter
+		{
+			get { return _presenter; }
 		}
 	}
 }

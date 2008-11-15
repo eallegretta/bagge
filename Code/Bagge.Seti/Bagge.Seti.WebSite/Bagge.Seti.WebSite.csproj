@@ -66,6 +66,30 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\EditorCommands.ascx.cs">
+      <DependentUpon>EditorCommands.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\EditorCommands.ascx.designer.cs">
+      <DependentUpon>EditorCommands.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListCommands.ascx.cs">
+      <DependentUpon>ListCommands.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ListCommands.ascx.designer.cs">
+      <DependentUpon>ListCommands.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="EditorPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerEditor.aspx.cs">
+      <DependentUpon>CustomerEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerEditor.aspx.designer.cs">
+      <DependentUpon>CustomerEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustomerList.aspx.cs">
       <DependentUpon>CustomerList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -80,12 +104,16 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditorAction.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="Helpers\ObjectBuilder.cs" />
     <Compile Include="ListPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Presenters\EditorPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -112,12 +140,19 @@
       <Project>{F6D1CEE2-50AC-4415-B6C5-0C16F9C5155F}</Project>
       <Name>Bagge.Seti.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.Extensions\Bagge.Seti.Extensions.csproj">
+      <Project>{108362FC-4C87-4D0D-8EBF-523F4235DAC0}</Project>
+      <Name>Bagge.Seti.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
       <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
       <Name>Bagge.Seti.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\EditorCommands.ascx" />
+    <Content Include="Controls\ListCommands.ascx" />
+    <Content Include="CustomerEditor.aspx" />
     <Content Include="CustomerList.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />

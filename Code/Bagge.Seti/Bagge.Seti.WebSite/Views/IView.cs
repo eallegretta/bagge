@@ -14,7 +14,7 @@ namespace Bagge.Seti.WebSite.Views
 		bool IsPostBack { get; }
 		bool IsValid { get; }
 
-		object DataSource { set; get; }
+		object DataSource { set; }
 		void DataBind();
 	}
 }

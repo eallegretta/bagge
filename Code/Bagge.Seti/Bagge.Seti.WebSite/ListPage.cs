@@ -10,8 +10,13 @@ using Bagge.Seti.BusinessLogic;
 
 namespace Bagge.Seti.WebSite
 {
-	public abstract class ListPage : System.Web.UI.Page, IListView 
+	public abstract class ListPage<T,PK> : System.Web.UI.Page, IListView where T: PrimaryKeyDomainObject<T, PK>
 	{
+		protected abstract ListPresenter<T, PK> Presenter
+		{
+			get;
+		}
+
 		protected abstract GridView GridView
 		{
 			get;
