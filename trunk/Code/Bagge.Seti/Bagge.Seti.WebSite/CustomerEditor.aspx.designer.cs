@@ -11,24 +11,15 @@
 namespace Bagge.Seti.WebSite {
     
     
-    public partial class CustomerList {
+    public partial class CustomerEditor {
         
         /// <summary>
-        /// _customers control.
+        /// _details control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView _customers;
-        
-        /// <summary>
-        /// _new control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _new;
+        protected global::System.Web.UI.WebControls.DetailsView _details;
     }
 }
