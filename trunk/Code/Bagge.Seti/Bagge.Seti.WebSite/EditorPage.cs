@@ -9,7 +9,8 @@ using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.BusinessLogic;
 using System.Collections;
 using System.ComponentModel;
-using Bagge.Seti.Common.Helpers;
+using Microsoft.Practices.Web.UI.WebControls;
+using Microsoft.Practices.Web.UI.WebControls.Utility;
 
 namespace Bagge.Seti.WebSite
 {
@@ -18,20 +19,32 @@ namespace Bagge.Seti.WebSite
 
 		protected override void OnInit(EventArgs e)
 		{
-
-			if (Details is DetailsView)
-			{
-				((DetailsView)Details).ItemInserting += new DetailsViewInsertEventHandler(OnDetailsViewItemInserting);
-				((DetailsView)Details).ItemUpdating += new DetailsViewUpdateEventHandler(OnDetailsViewItemUpdating);
-			}
-			else if (Details is FormView)
-			{
-				((FormView)Details).ItemInserting += new FormViewInsertEventHandler(OnFormsViewItemInserting);
-				((FormView)Details).ItemUpdating += new FormViewUpdateEventHandler(OnFormsViewItemUpdating);
-			}
-
+			ObjectDataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(ObjectDataSource_Selecting);
+			ObjectDataSource.Inserting += new EventHandler<ObjectContainerDataSourceInsertingEventArgs>(ObjectDataSource_Inserting);
+			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
+			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 			base.OnInit(e);
 			
+		}
+
+		void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
+		{
+			OnSelecting();
+		}
+
+		void ObjectDataSource_Updating(object sender, ObjectContainerDataSourceUpdatingEventArgs e)
+		{
+			T instance = Activator.CreateInstance<T>();
+			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
+			instance.Id = PrimaryKey;
+			OnUpdating(instance);
+		}
+
+		void ObjectDataSource_Inserting(object sender, ObjectContainerDataSourceInsertingEventArgs e)
+		{
+			T instance = Activator.CreateInstance<T>();
+			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
+			OnInserting(instance);
 		}
 		protected override void OnLoad(EventArgs e)
 		{
@@ -62,12 +75,7 @@ namespace Bagge.Seti.WebSite
 			
 		}
 
-		void OnFormsViewItemUpdating(object sender, FormViewUpdateEventArgs e)
-		{
-			T instance = Activator.CreateInstance<T>();
-			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
-			OnUpdating(instance);
-		}
+		
 
 		protected virtual void OnInserting(T instance)
 		{
@@ -77,27 +85,12 @@ namespace Bagge.Seti.WebSite
 		{
 			Presenter.Save(instance);
 		}
-
-		private void OnFormsViewItemInserting(object sender, FormViewInsertEventArgs e)
+		protected virtual void OnSelecting()
 		{
-			T instance = Activator.CreateInstance<T>();
-			TypeDescriptionHelper.BuildInstance(e.Values, instance);
-			OnInserting(instance);
+			Presenter.Select();
 		}
 
-		private void OnDetailsViewItemUpdating(object sender, DetailsViewUpdateEventArgs e)
-		{
-			T instance = Activator.CreateInstance<T>();
-			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
-			OnUpdating(instance);	
-		}
-
-		private void OnDetailsViewItemInserting(object sender, DetailsViewInsertEventArgs e)
-		{
-			T instance = Activator.CreateInstance<T>();
-			TypeDescriptionHelper.BuildInstance(e.Values, instance);
-			OnInserting(instance);
-		}
+		
 
 		
 
@@ -109,6 +102,12 @@ namespace Bagge.Seti.WebSite
 		{
 			get;
 		}
+		protected abstract ObjectContainerDataSource ObjectDataSource
+		{
+			get;
+		}
+
+
 
 		#region IListView Members
 
@@ -120,13 +119,9 @@ namespace Bagge.Seti.WebSite
 
 		public object DataSource
 		{
-			get
-			{
-				return Details.DataSource;
-			}
 			set
 			{
-				Details.DataSource = value;
+				ObjectDataSource.DataSource = value;
 			}
 		}
 

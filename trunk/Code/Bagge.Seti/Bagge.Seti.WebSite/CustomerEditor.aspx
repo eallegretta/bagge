@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CustomerEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.CustomerEditor" %>
+<%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
-	<asp:DetailsView ID="_details" runat="server" AutoGenerateRows="false">
+	<asp:DetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource" runat="server" AutoGenerateRows="false">
 		<Fields>
 			<asp:TemplateField HeaderText="Nombre">
 				<InsertItemTemplate>
@@ -125,4 +126,6 @@
 			</asp:TemplateField>
 		</Fields>
 	</asp:DetailsView>
+	<seti:EditorControls id="_commands" runat="server" AcceptPostBackUrl="~/CustomerList.aspx" CancelPostBackUrl="~/CustomerList.aspx" DetailsViewID="_details"></seti:EditorControls>
+	<asp:ObjectContainerDataSource id="_dataSource" runat="server"></asp:ObjectContainerDataSource>
 </asp:Content>

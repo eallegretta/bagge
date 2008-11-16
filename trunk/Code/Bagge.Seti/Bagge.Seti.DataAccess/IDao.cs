@@ -11,12 +11,12 @@ namespace Bagge.Seti.DataAccess
 		T[] FindAllByProperty(string property, object value);
 		T[] FindAllByPropertyOrdered(string property, object value, string orderBy);
 		T[] FindAllByPropertyOrdered(string property, object value, string orderBy, bool ascencing);
-		T[] SlicedFindAll(int pageIndex, int pageSize);
-		T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy);
-		T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy, bool ascending);
-		T[] SlicedFindAllByProperty(int pageIndex, int pageSize, string property, object value);
-		T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy);
-		T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy, bool ascending);
+		T[] SlicedFindAll(int startIndex, int pageSize);
+		T[] SlicedFindAllOrdered(int startIndex, int pageSize, string orderBy);
+		T[] SlicedFindAllOrdered(int startIndex, int pageSize, string orderBy, bool ascending);
+		T[] SlicedFindAllByProperty(int startIndex, int pageSize, string property, object value);
+		T[] SlicedFindAllByPropertyOrdered(int startIndex, int pageSize, string property, object value, string orderBy);
+		T[] SlicedFindAllByPropertyOrdered(int startIndex, int pageSize, string property, object value, string orderBy, bool ascending);
 		int Count();
 		int CountByProperty(string property, object value);
 		T Get(PK id);

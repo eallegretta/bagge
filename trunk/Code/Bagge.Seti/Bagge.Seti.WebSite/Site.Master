@@ -10,10 +10,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    <asp:ScriptManager ID="_scriptManager" runat="server"></asp:ScriptManager>
     <div>
-        <asp:ContentPlaceHolder ID="_content" runat="server">
-        
-        </asp:ContentPlaceHolder>
+		<asp:UpdatePanel ID="_contentUpdatePanel" runat="server" UpdateMode="Conditional">
+			<ContentTemplate>
+				<asp:ContentPlaceHolder ID="_content" runat="server">
+				</asp:ContentPlaceHolder>
+			</ContentTemplate>
+        </asp:UpdatePanel>
     </div>
     </form>
 </body>

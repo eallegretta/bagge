@@ -15,39 +15,26 @@ namespace Bagge.Seti.WebSite.Presenters
 		IEditorView<PK> _view;
 		IManager<T, PK> _manager;
 
-		private StateBag ViewState
+		public EditorPresenter(IEditorView<PK> view, IManager<T, PK> manager)
 		{
-			get;
-			set;
-		}
-		
-
-		public EditorPresenter(IEditorView<PK> view, StateBag viewState, IManager<T, PK> manager)
-		{
-			ViewState = viewState;
 			_view = view;
 			_view.Init += new EventHandler(OnInit);
 			_view.Load += new EventHandler(OnLoad);
-			
 			_manager = manager;
 		}
 
-
 		protected virtual void OnInit(object sender, EventArgs e)
 		{
+			
 		}
-
 		protected virtual void OnLoad(object sender, EventArgs e)
 		{
-			if (!_view.IsPostBack)
-				DataBind();
 		}
 
-		private void DataBind()
+
+		public void Select()
 		{
-			if (_view.Mode != EditorAction.Insert)
-				_view.DataSource = _manager.Get(_view.PrimaryKey).ToSingleItemArray<T>();
-			_view.DataBind();
+			_view.DataSource = _manager.Get(_view.PrimaryKey).ToSingleItemArray<T>();
 		}
 
 		public void Save(T entity)

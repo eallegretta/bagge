@@ -28,7 +28,7 @@ namespace Bagge.Seti.WebSite.Controls
 		public string CancelPostBackUrl
 		{
 			get { return _cancel.PostBackUrl; }
-			set { _cancel.PostBackUrl = value; }
+			set { _cancel.PostBackUrl = _back.PostBackUrl = value; }
 		}
 
 		protected override void OnInit(EventArgs e)
@@ -43,15 +43,20 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				_accept.Visible = _cancel.Visible = false;
 				_noRecord.Visible = true;
+				_back.Visible = true;
 			}
 			else if (DetailsView.CurrentMode == DetailsViewMode.ReadOnly)
 			{
 				_accept.Visible = _cancel.Visible = false;
+				_back.Visible = true;
 			}
+			else
+				_back.Visible = false;
 		}
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			
 		}
 
 		private DetailsView _detailsView;
