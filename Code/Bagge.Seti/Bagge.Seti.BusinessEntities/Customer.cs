@@ -21,14 +21,14 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
-		public string Floor
+		public char Floor
 		{
 			get;
 			set;
 		}
 
 		[Property("Departament")]
-		public string Apartment
+		public char Apartment
 		{
 			get;
 			set;

@@ -15,40 +15,10 @@ namespace Bagge.Seti.WebSite.Presenters
 		IListView _view;
 		IManager<T, PK> _manager;
 
-		private StateBag ViewState
-		{
-			get;
-			set;
-		}
-		private string LastSortExpression
-		{
-			get { return ViewState["LastSortExpression"] as string; }
-			set { ViewState["LastSortExpression"] = value; }
-		}
-		private SortDirection LastSortDirection
-		{
-			get
-			{
-				object lastSortDirection = ViewState["LastSortDirection"];
-				if (lastSortDirection == null)
-					return SortDirection.Ascending;
-				return (SortDirection)lastSortDirection;
-			}
-			set { ViewState["LastSortDirection"] = value; }
-		}
 
-		private void SetSorting(string expression, SortDirection direction)
-		{
-			if (LastSortExpression == expression)
-				LastSortDirection = (LastSortDirection == SortDirection.Ascending) ? SortDirection.Descending : SortDirection.Ascending;
-			else
-				LastSortDirection = SortDirection.Ascending;
-			LastSortExpression = expression;
-		}
 
-		public ListPresenter(IListView view, StateBag viewState, IManager<T, PK> manager)
+		public ListPresenter(IListView view, IManager<T, PK> manager)
 		{
-			ViewState = viewState;
 			_view = view;
 			_view.Init += new EventHandler(OnInit);
 			_view.Load += new EventHandler(OnLoad);
@@ -57,41 +27,36 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		protected virtual void OnInit(object sender, EventArgs e)
 		{
-			_view.PageIndexChanging += new GridViewPageEventHandler(OnPageIndexChanging);
-			_view.Sorting += new GridViewSortEventHandler(OnSorting);
-		}
-
-		protected virtual void OnSorting(object sender, GridViewSortEventArgs e)
-		{
-			SetSorting(e.SortExpression, e.SortDirection);
-			DataBind(LastSortExpression, LastSortDirection == SortDirection.Ascending);
 		}
 
 		protected virtual void OnLoad(object sender, EventArgs e)
 		{
-			if (!_view.IsPostBack)
-				DataBind();
+			
 		}
 
-		protected virtual void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+		public virtual void Select(int pageIndex, int pageSize, string orderBy)
 		{
-			((GridView)sender).PageIndex = e.NewPageIndex;
-			DataBind(LastSortExpression, LastSortDirection == SortDirection.Ascending);
-		}
-
-		private void DataBind(string orderBy, bool ascending)
-		{
+			_view.TotalRows = _manager.Count();
 			if (string.IsNullOrEmpty(orderBy))
-				_view.DataSource = _manager.FindAll();
+				_view.DataSource = _manager.SlicedFindAll(pageIndex, pageSize);
 			else
-				_view.DataSource = _manager.FindAllOrdered(orderBy, ascending);
-			_view.DataBind();
+			{
+				if (orderBy.Contains("DESC"))
+				{
+					orderBy = orderBy.Replace("DESC", string.Empty);
+					_view.DataSource = _manager.SlicedFindAllOrdered(pageIndex, pageSize, orderBy.Trim(), false);
+				}
+				else
+				{
+					orderBy = orderBy.Trim();
+					_view.DataSource = _manager.SlicedFindAllOrdered(pageIndex, pageSize, orderBy.Trim());
+				}
+			}
+			
 		}
-		private void DataBind()
+		public virtual void Delete(PK id)
 		{
-			DataBind(null, true);
+			_manager.Delete(id);
 		}
-
-
 	}
 }

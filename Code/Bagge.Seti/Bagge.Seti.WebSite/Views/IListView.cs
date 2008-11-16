@@ -8,8 +8,7 @@ namespace Bagge.Seti.WebSite.Views
 {
 	public interface IListView: IView
 	{
-		event GridViewPageEventHandler PageIndexChanging;
-		event GridViewSortEventHandler Sorting;
-
+		int TotalRows { set; }
+		string DefaultSortExpression { get; }
 	}
 }

@@ -32,6 +32,24 @@ namespace Bagge.Seti.WebSite {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// _scriptManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager _scriptManager;
+        
+        /// <summary>
+        /// _contentUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel _contentUpdatePanel;
+        
+        /// <summary>
         /// _content control.
         /// </summary>
         /// <remarks>

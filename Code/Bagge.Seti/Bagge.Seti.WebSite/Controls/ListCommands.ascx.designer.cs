@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bagge.Seti.WebSite.Controls
-{
+namespace Bagge.Seti.WebSite.Controls {
     
     
     public partial class ListCommands {

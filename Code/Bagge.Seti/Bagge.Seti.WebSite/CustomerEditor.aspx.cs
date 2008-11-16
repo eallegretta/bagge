@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
+using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Bagge.Seti.WebSite
 {
@@ -16,7 +17,7 @@ namespace Bagge.Seti.WebSite
 
 		public CustomerEditor()
 		{
-			_presenter = new EditorPresenter<Customer, int>(this, ViewState, SpringContext.CustomerManager);
+			_presenter = new EditorPresenter<Customer, int>(this, SpringContext.CustomerManager);
 		}
 
 		protected override EditorPresenter<Customer, int> Presenter
@@ -27,6 +28,11 @@ namespace Bagge.Seti.WebSite
 		protected override CompositeDataBoundControl Details
 		{
 			get { return _details; }
+		}
+
+		protected override ObjectContainerDataSource ObjectDataSource
+		{
+			get { return _dataSource; }
 		}
 
 	}

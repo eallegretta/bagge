@@ -10,6 +10,7 @@ using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.BusinessLogic;
 using Spring.Context.Support;
 using Bagge.Seti.Common;
+using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Bagge.Seti.WebSite
 {
@@ -19,12 +20,12 @@ namespace Bagge.Seti.WebSite
 
 		public CustomerList()
 		{
-			_presenter = new ListPresenter<Customer, int>(this, ViewState, SpringContext.CustomerManager);
+			_presenter = new ListPresenter<Customer, int>(this, SpringContext.CustomerManager);
 		}
 
-		protected override GridView GridView
+		protected override ObjectContainerDataSource ObjectDataSource
 		{
-			get { return _customers; }
+			get { return _dataSource; }
 		}
 
 		protected override ListPresenter<Customer, int> Presenter

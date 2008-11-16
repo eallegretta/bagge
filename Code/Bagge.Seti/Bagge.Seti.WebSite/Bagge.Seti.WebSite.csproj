@@ -30,14 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Web.UI.WebControls, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.Web.UI.WebControls.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Aop, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Archivos de programa\Spring.NET 1.2.0\bin\net\2.0\release\Spring.Aop.dll</HintPath>
+      <HintPath>..\Dlls\Spring.Aop.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Archivos de programa\Spring.NET 1.2.0\bin\net\2.0\release\Spring.Core.dll</HintPath>
+      <HintPath>..\Dlls\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -110,6 +117,7 @@
     </Compile>
     <Compile Include="Helpers\ControlHelper.cs" />
     <Compile Include="Helpers\ObjectBuilder.cs" />
+    <Compile Include="HttpModules\SessionScopeWebModule.cs" />
     <Compile Include="ListPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
