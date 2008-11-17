@@ -19,12 +19,13 @@ namespace Bagge.Seti.WebSite
 			ObjectDataSource.Deleting += new EventHandler<ObjectContainerDataSourceDeletingEventArgs>(ObjectDataSource_Deleting);
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 			ObjectDataSource.UsingServerPaging = true;
+
 			base.OnInit(e);
 		}
 
 		void ObjectDataSource_Deleting(object sender, ObjectContainerDataSourceDeletingEventArgs e)
 		{
-			OnDeleting((PK)e.Keys[0]);
+			OnDeleting((PK)e.Keys["Id"]);
 		}
 
 		private void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
