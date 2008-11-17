@@ -34,6 +34,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Castle.ActiveRecord.dll</HintPath>
     </Reference>
+    <Reference Include="Eaa.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fdf31fd6083ad399, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Eaa.Framework.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Web.UI.WebControls, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Microsoft.Practices.Web.UI.WebControls.dll</HintPath>
