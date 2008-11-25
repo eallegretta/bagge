@@ -2,6 +2,8 @@
 using Castle.ActiveRecord;
 using Bagge.Seti.Security;
 using System.Collections.Generic;
+using Bagge.Seti.Security.Constraints;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -32,15 +34,15 @@ namespace Bagge.Seti.BusinessEntities
 
 		#region ISecurizable Members
 
-		private Dictionary<string, bool> _accesibilities;
+		private Dictionary<string, AccesibilityType> _accesibilities;
 		private Dictionary<string, IList<Constraint>> _constraints;
 
-		private Dictionary<string, bool> Accesibilities
+		private Dictionary<string, AccesibilityType> Accesibilities
 		{
 			get
 			{
 				if (_accesibilities == null)
-					_accesibilities = new Dictionary<string, bool>();
+					_accesibilities = new Dictionary<string, AccesibilityType>();
 				return _accesibilities;
 			}
 		}
@@ -55,19 +57,19 @@ namespace Bagge.Seti.BusinessEntities
 			}
 		}
 
-		public bool IsAccesible(string propertyName)
+		public AccesibilityType GetAccesibility(string propertyName)
 		{
 			if (Accesibilities.ContainsKey(propertyName))
 				return Accesibilities[propertyName];
-			return true;
+			return AccesibilityType.Edit;
 		}
 
-		public void SetAccesibility(string propertyName, bool isAccesible)
+		public void SetAccesibility(string propertyName, AccesibilityType accesibility)
 		{
 			if (!Accesibilities.ContainsKey(propertyName))
-				Accesibilities.Add(propertyName, isAccesible);
+				Accesibilities.Add(propertyName, accesibility);
 			else
-				Accesibilities[propertyName] = isAccesible;
+				Accesibilities[propertyName] = accesibility;
 		}
 
 		public void SetConstraint(string propertyName, Constraint constraint)

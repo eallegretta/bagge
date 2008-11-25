@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace Bagge.Seti.Security
+namespace Bagge.Seti.Security.Constraints
 {
 	public abstract class Constraint
 	{
-		public Constraint(object source, string propertyName)
+		public Constraint(object source, string propertyName, object value)
 		{
 			if (source == null)
 				throw new ArgumentNullException("source");
@@ -18,11 +18,12 @@ namespace Bagge.Seti.Security
 
 			Source = source;
 			Property = source.GetType().GetProperty(propertyName);
+			Value = value;
 
 			if (!IsPropertyTypeValid())
 				throw new ArgumentException("Property Type Not Valid");
 		}
-		public Constraint(object source, PropertyInfo property)
+		public Constraint(object source, PropertyInfo property, object value)
 		{
 			if (source == null)
 				throw new ArgumentNullException("source");
@@ -32,6 +33,7 @@ namespace Bagge.Seti.Security
 
 			Source = source;
 			Property = property;
+			Value = value;
 
 			if (!IsPropertyTypeValid())
 				throw new ArgumentException("Property Type Not Valid");
@@ -39,7 +41,9 @@ namespace Bagge.Seti.Security
 
 		protected virtual bool IsPropertyTypeValid()
 		{
-			return true;
+			if (Property.PropertyType.Equals(Value.GetType()))
+				return true;
+			return false;
 		}
 
 		public object Source
@@ -54,6 +58,19 @@ namespace Bagge.Seti.Security
 			private set;
 		}
 
-		public abstract bool IsValid { get; }
+		protected object GetPropertyValue()
+		{
+			if (Source != null)
+				return Property.GetValue(Source, null);
+			return null;
+		}
+
+		public virtual object Value
+		{
+			get;
+			private set;
+		}
+
+		public abstract bool IsValid();
 	}
 }

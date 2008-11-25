@@ -45,11 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constraints\Constraint.cs" />
-    <Compile Include="Constraints\ContainsConstraint.cs" />
-    <Compile Include="Constraints\RangeConstraint.cs" />
-    <Compile Include="Constraints\EqualityConstraint.cs" />
-    <Compile Include="ISecurizable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
