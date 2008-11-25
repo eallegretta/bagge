@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Castle.ActiveRecord;
 
 namespace Bagge.Seti.BusinessEntities
 {
+	[ActiveRecord]
 	public class CountryState : PrimaryKeyWithNameDomainObject<object, object>
 	{
+		[Property]
 		public string ShortName
 		{
-			get; set;
+			get;
+			set;
 		}
 
+		[HasMany(Table = "District", Lazy = true, ColumnKey = "CountryStateId")]
 		public IList<District> Districts
 		{
-			get; set;
+			get;
+			set;
 		}
 	}
 }
