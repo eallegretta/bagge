@@ -13,6 +13,14 @@ namespace Bagge.Seti.BusinessEntities
 			set; 
 		}
 
+
+		[BelongsTo("DistrictId")]
+		public District District
+		{
+			get;
+			set;
+		}
+		
 		[Property]
 		public string Address
 		{
