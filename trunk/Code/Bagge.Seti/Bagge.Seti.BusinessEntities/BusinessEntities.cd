@@ -3,7 +3,7 @@
   <Class Name="Bagge.Seti.BusinessEntities.PrimaryKeyDomainObject&lt;T, PK&gt;" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAUCAAAQAAAAAAAAgAAIAAAAAABAABgAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAUCAAAQAAAAAAAAgAAIAAAAAABAABQAAQAAAAAAAAA=</HashCode>
       <FileName>PrimaryKeyDomainObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -43,6 +43,12 @@
         <Point X="0.5" Y="0.562" />
         <Point X="0.094" Y="0.562" />
         <Point X="0.094" Y="6.75" />
+        <Point X="3.854" Y="6.75" Type="JumpStart" />
+        <Point X="4.021" Y="6.75" Type="JumpEnd" />
+        <Point X="4.604" Y="6.75" Type="JumpStart" />
+        <Point X="4.771" Y="6.75" Type="JumpEnd" />
+        <Point X="4.917" Y="6.75" Type="JumpStart" />
+        <Point X="5.083" Y="6.75" Type="JumpEnd" />
         <Point X="5.25" Y="6.75" />
       </Path>
     </InheritanceLine>
@@ -149,8 +155,10 @@
         <Point X="6.75" Y="0.938" />
         <Point X="6.587" Y="0.938" />
         <Point X="6.587" Y="1.281" />
-        <Point X="5" Y="1.281" />
-        <Point X="5" Y="4" />
+        <Point X="5.771" Y="1.281" Type="JumpStart" />
+        <Point X="5.604" Y="1.281" Type="JumpEnd" />
+        <Point X="5.188" Y="1.281" />
+        <Point X="5.188" Y="4" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -169,8 +177,10 @@
     <AssociationLine Name="Status" Type="Bagge.Seti.BusinessEntities.TicketStatus" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="3.75" Y="5.175" />
-        <Point X="4.875" Y="5.175" />
-        <Point X="4.875" Y="4.63" />
+        <Point X="3.854" Y="5.175" Type="JumpStart" />
+        <Point X="4.021" Y="5.175" Type="JumpEnd" />
+        <Point X="4.688" Y="5.175" />
+        <Point X="4.688" Y="4.63" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -209,5 +219,86 @@
       <FileName>ProductTicket.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.CountryState">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.562" Y="1.13" />
+        <Point X="4.562" Y="3.938" />
+        <Point X="3.938" Y="3.938" />
+        <Point X="3.938" Y="6.906" />
+        <Point X="1.312" Y="6.906" />
+        <Point X="1.312" Y="7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>CountryState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.BusinessEntities.District">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.688" Y="1.13" />
+        <Point X="4.688" Y="7.25" />
+        <Point X="4.625" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>District.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CountryState" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Bagge.Seti.Security.BusinessEntities.Role">
+    <Position X="5.25" Y="8" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="1.13" />
+        <Point X="5" Y="3.75" />
+        <Point X="5" Y="3.75" />
+        <Point X="5" Y="8.625" />
+        <Point X="5.25" Y="8.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bagge.Seti.Security.BusinessEntities.Function">
+    <Position X="7" Y="8" Width="1.5" />
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="5.688" Y="1.13" />
+        <Point X="5.688" Y="1.505" />
+        <Point X="6.855" Y="1.505" Type="JumpStart" />
+        <Point X="7.021" Y="1.505" Type="JumpEnd" />
+        <Point X="7.167" Y="1.505" Type="JumpStart" />
+        <Point X="7.333" Y="1.505" Type="JumpEnd" />
+        <Point X="7.855" Y="1.505" Type="JumpStart" />
+        <Point X="8.021" Y="1.505" Type="JumpEnd" />
+        <Point X="8.827" Y="1.505" Type="JumpStart" />
+        <Point X="8.993" Y="1.505" Type="JumpEnd" />
+        <Point X="9.25" Y="1.505" />
+        <Point X="9.25" Y="8.551" />
+        <Point X="8.5" Y="8.551" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\Function.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Bagge.Seti.Security.BusinessEntities.ISecurizable">
+    <Position X="1.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAIAAAAAABAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\ISecurizable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Tahoma" Size="8.25" />
 </ClassDiagram>
