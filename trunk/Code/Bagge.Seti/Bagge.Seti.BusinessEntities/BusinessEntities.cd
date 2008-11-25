@@ -43,9 +43,7 @@
         <Point X="0.5" Y="0.562" />
         <Point X="0.094" Y="0.562" />
         <Point X="0.094" Y="6.75" />
-        <Point X="3.854" Y="6.75" Type="JumpStart" />
-        <Point X="4.021" Y="6.75" Type="JumpEnd" />
-        <Point X="4.604" Y="6.75" Type="JumpStart" />
+        <Point X="4.479" Y="6.75" Type="JumpStart" />
         <Point X="4.771" Y="6.75" Type="JumpEnd" />
         <Point X="4.917" Y="6.75" Type="JumpStart" />
         <Point X="5.083" Y="6.75" Type="JumpEnd" />
@@ -57,6 +55,9 @@
         <Point X="6.5" Y="5" />
         <Point X="6.5" Y="4.38" />
       </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.1" Y="0.279" />
+      </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAYAAEAAACIAAAAIAQAAAAAAAAAAAAACAAAAIAAACAA=</HashCode>
@@ -71,8 +72,8 @@
     <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameAndDescriptionDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="7.25" Y="1.13" />
-        <Point X="7.25" Y="1.624" />
-        <Point X="6.875" Y="1.624" />
+        <Point X="7.25" Y="1.936" />
+        <Point X="6.875" Y="1.936" />
         <Point X="6.875" Y="3.75" />
       </Path>
     </InheritanceLine>
@@ -97,6 +98,9 @@
         <Point X="8" Y="4.75" />
         <Point X="8" Y="3.158" />
       </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.227" />
+      </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAgAAAACAAAAAIAIAgAAAAQAAkAAADAAAIRAAAAAQ=</HashCode>
@@ -177,11 +181,12 @@
     <AssociationLine Name="Status" Type="Bagge.Seti.BusinessEntities.TicketStatus" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="3.75" Y="5.175" />
-        <Point X="3.854" Y="5.175" Type="JumpStart" />
-        <Point X="4.021" Y="5.175" Type="JumpEnd" />
-        <Point X="4.688" Y="5.175" />
-        <Point X="4.688" Y="4.63" />
+        <Point X="4.438" Y="5.175" />
+        <Point X="4.438" Y="4.63" />
       </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.077" Y="0.623" Height="0.16" Width="0.725" />
+      </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>QAEAAAAEAAAgAAAAAAAAAAAACAAAAgQAAACAAAAAkAQ=</HashCode>
@@ -221,12 +226,10 @@
   </Class>
   <Class Name="Bagge.Seti.BusinessEntities.CountryState">
     <Position X="0.5" Y="7" Width="1.5" />
-    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" FixedFromPoint="true" FixedToPoint="true">
+    <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="4.562" Y="1.13" />
-        <Point X="4.562" Y="3.938" />
-        <Point X="3.938" Y="3.938" />
-        <Point X="3.938" Y="6.906" />
+        <Point X="4.562" Y="6.906" />
         <Point X="1.312" Y="6.906" />
         <Point X="1.312" Y="7" />
       </Path>
@@ -237,12 +240,12 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Bagge.Seti.BusinessEntities.District">
-    <Position X="3.25" Y="7.25" Width="1.5" />
+    <Position X="3.25" Y="7" Width="1.5" />
     <InheritanceLine Type="Bagge.Seti.BusinessEntities.PrimaryKeyWithNameDomainObject&lt;T, PK&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="4.688" Y="1.13" />
-        <Point X="4.688" Y="7.25" />
-        <Point X="4.625" Y="7.25" />
+        <Point X="4.688" Y="7" />
+        <Point X="4.625" Y="7" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -294,7 +297,7 @@
     </TypeIdentifier>
   </Class>
   <Interface Name="Bagge.Seti.Security.BusinessEntities.ISecurizable">
-    <Position X="1.5" Y="8.5" Width="1.5" />
+    <Position X="2.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAAAAAAAAIAAAAAABAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>Security\ISecurizable.cs</FileName>
