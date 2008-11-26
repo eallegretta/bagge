@@ -1,11 +1,12 @@
 ﻿using Bagge.Seti.BusinessEntities.Properties;
 using System.Collections.Generic;
 using Castle.ActiveRecord;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class Employee : PrimaryKeyDomainObject<Employee, int>
+	public class Employee : AuditablePrimaryKeyDomainObject<Employee, int>
 	{
 		[Property]
 		public string Username

@@ -63,6 +63,9 @@
     <Compile Include="Provider.cs" />
     <Compile Include="ProviderCalification.cs" />
     <Compile Include="Security\AccesibilityType.cs" />
+    <Compile Include="Security\AuditablePrimaryKeyDomainObject.cs" />
+    <Compile Include="Security\AuditablePrimaryKeyWithNameAndDescriptionDomainObject.cs" />
+    <Compile Include="Security\AuditablePrimaryKeyWithNameDomainObject.cs" />
     <Compile Include="Security\Constraints\Constraint.cs" />
     <Compile Include="Security\Constraints\ContainsConstraint.cs" />
     <Compile Include="Security\Constraints\EqualityConstraint.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="Security\Constraints\InequalityConstraint.cs" />
     <Compile Include="Security\Constraints\LowerThanConstraint.cs" />
     <Compile Include="Security\Function.cs" />
+    <Compile Include="Security\IAuditable.cs" />
     <Compile Include="Security\ISecurizable.cs" />
     <Compile Include="Security\Role.cs" />
     <Compile Include="Ticket.cs" />
