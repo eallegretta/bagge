@@ -9,7 +9,7 @@ using Bagge.Seti.BusinessEntities.Properties;
 namespace Bagge.Seti.Security.BusinessEntities
 {
 	[ActiveRecord]
-	public class Role : PrimaryKeyWithNameDomainObject<Role, int>
+	public class Role : AuditablePrimaryKeyWithNameDomainObject<Role, int>
 	{
 		public static int SuperAdministratorId
 		{

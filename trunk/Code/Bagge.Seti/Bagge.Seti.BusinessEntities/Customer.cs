@@ -1,10 +1,10 @@
-﻿
+﻿using Castle.ActiveRecord;
+using Bagge.Seti.Security.BusinessEntities;
 
-using Castle.ActiveRecord;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class Customer : PrimaryKeyWithNameDomainObject<Customer, int>
+	public class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
 	{
 		[Property]
 		public string CUIT 

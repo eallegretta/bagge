@@ -1,10 +1,11 @@
 ﻿
 using System.Collections.Generic;
 using Castle.ActiveRecord;
+using Bagge.Seti.Security.BusinessEntities;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class Product : PrimaryKeyWithNameAndDescriptionDomainObject<Product, int>
+	public class Product : AuditablePrimaryKeyWithNameAndDescriptionDomainObject<Product, int>
 	{
 		[HasAndBelongsToMany(typeof(ProductProvider), ColumnKey = "ProductId", ColumnRef = "ProviderId", Lazy = true)]
 		public virtual IList<ProductProvider> Providers

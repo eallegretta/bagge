@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Castle.ActiveRecord;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class Ticket : PrimaryKeyDomainObject<Ticket, int>
+	public class Ticket : AuditablePrimaryKeyDomainObject<Ticket, int>
 	{
 		[BelongsTo("CustomerId")]
 		public Customer Customer

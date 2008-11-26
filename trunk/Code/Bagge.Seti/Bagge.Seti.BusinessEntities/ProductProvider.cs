@@ -1,5 +1,6 @@
 ﻿
 using Castle.ActiveRecord;
+
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
