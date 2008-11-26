@@ -79,6 +79,13 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[BelongsTo("EmployeeCreatorId")]
+		public Employee Creator
+		{
+			get;
+			set;
+		}
+
 		[BelongsTo("TicketStatusId")]
 		public TicketStatus Status
 		{

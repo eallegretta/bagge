@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertConfiguration.cs" />
     <Compile Include="District.cs" />
     <Compile Include="CountryState.cs" />
     <Compile Include="Customer.cs" />
