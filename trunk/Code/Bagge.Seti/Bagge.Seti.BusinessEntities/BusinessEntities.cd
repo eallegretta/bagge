@@ -160,7 +160,7 @@
         <Point X="6.587" Y="0.938" />
         <Point X="6.587" Y="1.281" />
         <Point X="5.771" Y="1.281" Type="JumpStart" />
-        <Point X="5.604" Y="1.281" Type="JumpEnd" />
+        <Point X="5.605" Y="1.281" Type="JumpEnd" />
         <Point X="5.188" Y="1.281" />
         <Point X="5.188" Y="4" />
       </Path>
@@ -263,12 +263,12 @@
         <Point X="5" Y="1.13" />
         <Point X="5" Y="3.75" />
         <Point X="5" Y="3.75" />
-        <Point X="5" Y="8.625" />
-        <Point X="5.25" Y="8.625" />
+        <Point X="5" Y="8.706" />
+        <Point X="5.25" Y="8.706" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIACAAACAAAAAAAAAAAAAA=</HashCode>
       <FileName>Security\Role.cs</FileName>
     </TypeIdentifier>
   </Class>

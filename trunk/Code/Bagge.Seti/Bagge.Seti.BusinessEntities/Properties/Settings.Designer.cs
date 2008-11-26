@@ -31,5 +31,14 @@ namespace Bagge.Seti.BusinessEntities.Properties {
                 return ((string)(this["EmployeeFullNameFormat"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int SuperAdministratorRoleId {
+            get {
+                return ((int)(this["SuperAdministratorRoleId"]));
+            }
+        }
     }
 }
