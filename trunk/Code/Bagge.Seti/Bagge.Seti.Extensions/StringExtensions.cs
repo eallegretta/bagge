@@ -259,7 +259,7 @@ namespace System
 		/// <param name="s"></param>
 		/// <param name="format"></param>
 		/// <returns></returns>
-		public static string ToFormattedString(this string s, string format)
+		public static string ToFormat(this string s, string format)
 		{
 			return string.Format(format, s);
 		}

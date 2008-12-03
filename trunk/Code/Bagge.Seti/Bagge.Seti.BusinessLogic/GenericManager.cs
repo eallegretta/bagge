@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess;
+using Bagge.Seti.DesignByContract;
+using Bagge.Seti.BusinessLogic.Properties;
+using Bagge.Seti.BusinessLogic.Contracts;
+using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -20,35 +24,44 @@ namespace Bagge.Seti.BusinessLogic
 
 		public T Get(PK id)
 		{
-			return Dao.Get(id);
+			Check.Require(!id.Equals(default(PK)), string.Format(Resources.IdCannotBeDefault, default(PK)));
+
+			T instance = Dao.Get(id);
+
+			Check.Ensure(instance != null, string.Format(Resources.InstanceNotFound, id, typeof(T)));
+
+			return instance;
 		}
 		
 		public virtual PK Create(T instance)
 		{
-			if (instance == null)
-				throw new ArgumentNullException("instance");
+			Check.Require(instance != null, string.Format(Resources.InstanceCannotBeNull, typeof(T)));
 
 			Dao.Create(instance);
+
+			Check.Ensure(!instance.Id.Equals(default(PK)), string.Format(Resources.InstanceIdCannotBeDefault, default(PK), typeof(T)));
+
 			return instance.Id;
 		}
 
 		public virtual void Update(T instance)
 		{
-			if (instance == null)
-				throw new ArgumentNullException("instance");
+			Check.Require(instance != null, string.Format(Resources.InstanceCannotBeNull, typeof(T)));
 
 			Dao.Update(instance);
 		}
 
 		public virtual void Delete(T instance)
 		{
-			if (instance == null)
-				throw new ArgumentNullException("instance");
+			Check.Require(instance != null, string.Format(Resources.InstanceCannotBeNull, typeof(T)));
+			Check.Require(!instance.Id.Equals(default(PK)), string.Format(Resources.IdCannotBeDefault, default(PK)));
 
 			Dao.Delete(instance.Id);
 		}
 		public virtual void Delete(PK id)
 		{
+			Check.Require(!id.Equals(default(PK)), string.Format(Resources.IdCannotBeDefault, default(PK)));
+
 			Dao.Delete(id);
 		}
 
