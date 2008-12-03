@@ -7,6 +7,7 @@ using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.BusinessLogic;
 using System.Web.UI.WebControls;
 using System.Web.UI;
+using Bagge.Seti.BusinessLogic.Contracts;
 
 namespace Bagge.Seti.WebSite.Presenters
 {

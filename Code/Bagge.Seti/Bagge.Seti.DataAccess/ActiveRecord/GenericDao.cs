@@ -3,6 +3,7 @@ using Bagge.Seti.BusinessEntities;
 using Castle.ActiveRecord;
 using Castle.ActiveRecord.Framework.Scopes;
 using NHibernate.Expression;
+using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {

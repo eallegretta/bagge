@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Bagge.Seti.BusinessEntities;
 
-
-namespace Bagge.Seti.BusinessLogic
+namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IManager<T, PK> where T: PrimaryKeyDomainObject<T,PK>
+	public interface ISlicedFindManager<T, PK> where T : PrimaryKeyDomainObject<T, PK>
 	{
-		T[] FindAll();
-		T[] FindAllOrdered(string orderBy);
-		T[] FindAllOrdered(string orderBy, bool ascending);
-		T[] FindAllByProperty(string property, object value);
-		T[] FindAllByPropertyOrdered(string property, object value, string orderBy);
-		T[] FindAllByPropertyOrdered(string property, object value, string orderBy, bool ascencing);
 		T[] SlicedFindAll(int startIndex, int pageSize);
 		T[] SlicedFindAllOrdered(int startIndex, int pageSize, string orderBy);
 		T[] SlicedFindAllOrdered(int startIndex, int pageSize, string orderBy, bool ascending);
@@ -22,9 +16,5 @@ namespace Bagge.Seti.BusinessLogic
 		T[] SlicedFindAllByPropertyOrdered(int startIndex, int pageSize, string property, object value, string orderBy, bool ascending);
 		int Count();
 		int CountByProperty(string property, object value);
-		T Get(PK id);
-		PK Create(T instance);
-		void Update(T instance);
-		void Delete(PK id);
 	}
 }

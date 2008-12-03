@@ -5,6 +5,7 @@ using System.Text;
 using Bagge.Seti.BusinessLogic;
 using Bagge.Seti.BusinessEntities;
 using Spring.Context.Support;
+using Bagge.Seti.BusinessLogic.Contracts;
 
 namespace Bagge.Seti.Common
 {

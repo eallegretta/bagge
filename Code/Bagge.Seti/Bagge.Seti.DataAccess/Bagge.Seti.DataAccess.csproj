@@ -58,7 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveRecord\GenericDao.cs" />
-    <Compile Include="IDao.cs" />
+    <Compile Include="Contracts\ICreateDao.cs" />
+    <Compile Include="Contracts\IDao.cs" />
+    <Compile Include="Contracts\IDeleteDao.cs" />
+    <Compile Include="Contracts\IFindDao.cs" />
+    <Compile Include="Contracts\IGetDao.cs" />
+    <Compile Include="Contracts\ISlicedFindDao.cs" />
+    <Compile Include="Contracts\IUpdateDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
