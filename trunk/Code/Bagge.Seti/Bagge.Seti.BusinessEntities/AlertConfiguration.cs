@@ -6,16 +6,12 @@ using Castle.ActiveRecord;
 
 namespace Bagge.Seti.BusinessEntities
 {
-	[ActiveRecord]
 	public class AlertConfiguration
 	{
-		[Property]
 		public int Days { get; set; }
 		
-		[Property]
 		public bool SendEmailToCreator { get; set; }
 		
-		[Property]
 		public bool SendEmailToEmployees { get; set; }
 	}
 }

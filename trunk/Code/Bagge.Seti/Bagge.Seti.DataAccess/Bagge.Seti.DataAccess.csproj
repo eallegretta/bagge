@@ -57,7 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveRecord\AlertConfigurationDao.cs" />
     <Compile Include="ActiveRecord\GenericDao.cs" />
+    <Compile Include="Contracts\IAlertConfigurationDao.cs" />
     <Compile Include="Contracts\ICreateDao.cs" />
     <Compile Include="Contracts\IDao.cs" />
     <Compile Include="Contracts\IDeleteDao.cs" />

@@ -12,10 +12,17 @@ namespace Bagge.Seti.DataAccess.Tests
 	public class CustomerDaoTestFixture: BaseTestFixture
 	{
 		[Test]
+		public void TestShouldCreateAndDeleteACustomer()
+		{
+			var dao = new GenericDao<Customer, int>();
+			var customer = new Customer();
+		}
+
+		[Test]
 		public void TestShouldFindAllCustomers()
 		{
 			var dao = new GenericDao<Customer, int>();
-			Assert.IsTrue(dao.FindAll().Length > 0);
+			Assert.IsTrue(dao.FindAll() != null);
 		}
 	}
 }
