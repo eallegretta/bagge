@@ -17,5 +17,10 @@ namespace Bagge.Seti.Common
 		{
 			get { return _customerManager; }
 		}
+
+		public static IAlertConfigurationManager AlertConfigurationManager
+		{
+			get { return null; }
+		}
 	}
 }

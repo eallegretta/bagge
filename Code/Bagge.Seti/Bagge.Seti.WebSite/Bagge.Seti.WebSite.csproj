@@ -77,6 +77,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertConfiguration.aspx.cs">
+      <DependentUpon>AlertConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlertConfiguration.aspx.designer.cs">
+      <DependentUpon>AlertConfiguration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EditorCommands.ascx.cs">
       <DependentUpon>EditorCommands.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -125,6 +132,7 @@
     <Compile Include="ListPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Presenters\AlertConfigurationPresenter.cs" />
     <Compile Include="Presenters\EditorPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,6 +170,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AlertConfiguration.aspx" />
     <Content Include="Controls\EditorCommands.ascx" />
     <Content Include="Controls\ListCommands.ascx" />
     <Content Include="CustomerEditor.aspx" />

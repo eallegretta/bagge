@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertConfigurationManager.cs" />
+    <Compile Include="Contracts\IAlertConfigurationManager.cs" />
     <Compile Include="Contracts\ICreateManager.cs" />
     <Compile Include="Contracts\IDeleteManager.cs" />
     <Compile Include="Contracts\IFindManager.cs" />
