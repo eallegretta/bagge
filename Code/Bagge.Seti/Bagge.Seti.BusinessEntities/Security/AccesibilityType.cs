@@ -3,7 +3,7 @@ using System;
 
 namespace Bagge.Seti.Security.BusinessEntities
 {
-	public class AccesibilityType : PrimaryKeyWithNameDomainObject<AccesibilityType, byte>, IEquatable<AccesibilityTypes>
+	public class AccessibilityType : PrimaryKeyWithNameDomainObject<AccessibilityType, byte>, IEquatable<AccesibilityTypes>
 	{
 
 

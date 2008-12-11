@@ -123,6 +123,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditorAction.cs" />
+    <Compile Include="FunctionEditor.aspx.cs">
+      <DependentUpon>FunctionEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FunctionEditor.aspx.designer.cs">
+      <DependentUpon>FunctionEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,7 +141,9 @@
     </Compile>
     <Compile Include="Presenters\AlertConfigurationPresenter.cs" />
     <Compile Include="Presenters\EditorPresenter.cs" />
+    <Compile Include="Presenters\FunctionEditorPresenter.cs" />
     <Compile Include="Presenters\ListPresenter.cs" />
+    <Compile Include="Presenters\TicketEditorPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -143,6 +152,15 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="TicketEditor.aspx.cs">
+      <DependentUpon>TicketEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketEditor.aspx.designer.cs">
+      <DependentUpon>TicketEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IFunctionEditorView.cs" />
+    <Compile Include="Views\ITicketEditorView.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Views\IEditorView.cs" />
     <Compile Include="Views\IListView.cs" />
@@ -175,8 +193,10 @@
     <Content Include="Controls\ListCommands.ascx" />
     <Content Include="CustomerEditor.aspx" />
     <Content Include="CustomerList.aspx" />
+    <Content Include="FunctionEditor.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="TicketEditor.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

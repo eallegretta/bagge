@@ -318,7 +318,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Bagge.Seti.Security.BusinessEntities.AccesibilityType">
+  <Class Name="Bagge.Seti.Security.BusinessEntities.AccessibilityType">
     <Position X="5.75" Y="2" Width="1.5" />
     <Members>
       <Method Name="Equals" Hidden="true" />
