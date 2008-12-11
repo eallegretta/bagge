@@ -57,15 +57,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveRecord\AccessibilityDao.cs" />
     <Compile Include="ActiveRecord\AlertConfigurationDao.cs" />
+    <Compile Include="ActiveRecord\CustomerDao.cs" />
+    <Compile Include="ActiveRecord\EmployeeDao.cs" />
+    <Compile Include="ActiveRecord\FunctionDao.cs" />
     <Compile Include="ActiveRecord\GenericDao.cs" />
+    <Compile Include="ActiveRecord\ProductDao.cs" />
+    <Compile Include="ActiveRecord\RoleDao.cs" />
+    <Compile Include="ActiveRecord\TicketDao.cs" />
+    <Compile Include="ActiveRecord\TicketStatusDao.cs" />
+    <Compile Include="Contracts\IAccessibilityDao.cs" />
     <Compile Include="Contracts\IAlertConfigurationDao.cs" />
     <Compile Include="Contracts\ICreateDao.cs" />
+    <Compile Include="Contracts\ICustomerDao.cs" />
     <Compile Include="Contracts\IDao.cs" />
     <Compile Include="Contracts\IDeleteDao.cs" />
+    <Compile Include="Contracts\IEmployeeDao.cs" />
     <Compile Include="Contracts\IFindDao.cs" />
+    <Compile Include="Contracts\IFunctionDao.cs" />
     <Compile Include="Contracts\IGetDao.cs" />
+    <Compile Include="Contracts\IProductDao.cs" />
+    <Compile Include="Contracts\IRoleDao.cs" />
     <Compile Include="Contracts\ISlicedFindDao.cs" />
+    <Compile Include="Contracts\ITicketDao.cs" />
+    <Compile Include="Contracts\ITicketStatusDao.cs" />
     <Compile Include="Contracts\IUpdateDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

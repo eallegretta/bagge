@@ -12,5 +12,14 @@ namespace Bagge.Seti.WebSite {
     
     
     public partial class AlertConfigurationEditor {
+        
+        /// <summary>
+        /// _dataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSource _dataSource;
     }
 }

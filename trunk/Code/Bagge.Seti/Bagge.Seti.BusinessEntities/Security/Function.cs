@@ -39,7 +39,7 @@ namespace Bagge.Seti.Security.BusinessEntities
 		}
 
 		[BelongsTo("AccesibilityTypeId")]
-		public AccesibilityType Accesibility
+		public AccessibilityType Accesibility
 		{
 			get;
 			set;

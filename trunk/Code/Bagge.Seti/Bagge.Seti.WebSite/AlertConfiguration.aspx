@@ -2,4 +2,5 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="_head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="_content" runat="server">
+<asp:ObjectContainerDataSource id="_dataSource" runat="server"></asp:ObjectContainerDataSource>
 </asp:Content>

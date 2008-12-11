@@ -9,49 +9,44 @@ using Bagge.Seti.BusinessEntities;
 using Microsoft.Practices.Web.UI.WebControls.Utility;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.WebSite.Views;
+using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite
 {
 	public partial class AlertConfigurationEditor : System.Web.UI.Page, IView
 	{
+		AlertConfigurationPresenter _presenter;
 
+		public AlertConfigurationEditor()
+		{
+			_presenter = new AlertConfigurationPresenter(this, SpringContext.AlertConfigurationManager);
+		}
 
 		protected override void OnInit(EventArgs e)
 		{
-			ObjectDataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(ObjectDataSource_Selecting);
-			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
-			ObjectDataSource.DataObjectTypeName = typeof(AlertConfiguration).FullName;
+			_dataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(_dataSource_Selecting);
+			_dataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(_dataSource_Updating);
+			_dataSource.DataObjectTypeName = typeof(AlertConfiguration).FullName;
 			base.OnInit(e);
 		}
 
-		void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
+		void _dataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
 		{
-			Presenter.Select();
+			_presenter.Select();
 		}
 
-		void ObjectDataSource_Updating(object sender, ObjectContainerDataSourceUpdatingEventArgs e)
+		void _dataSource_Updating(object sender, ObjectContainerDataSourceUpdatingEventArgs e)
 		{
 			AlertConfiguration instance = new AlertConfiguration();
 			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
-			Presenter.Save(instance);
+			_presenter.Save(instance);
 		}
-
-
-		protected AlertConfigurationPresenter Presenter
-		{
-			get { return null; }
-		}
-		protected ObjectContainerDataSource ObjectDataSource
-		{
-			get { return null; }
-		}
-
 
 		public object DataSource
 		{
 			set
 			{
-				ObjectDataSource.DataSource = value;
+				_dataSource.DataSource = value;
 			}
 		}
 	}
