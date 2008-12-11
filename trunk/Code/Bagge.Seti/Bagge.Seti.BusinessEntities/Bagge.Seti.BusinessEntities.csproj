@@ -63,7 +63,7 @@
     </Compile>
     <Compile Include="Provider.cs" />
     <Compile Include="ProviderCalification.cs" />
-    <Compile Include="Security\AccesibilityType.cs" />
+    <Compile Include="Security\AccessibilityType.cs" />
     <Compile Include="Security\AuditablePrimaryKeyDomainObject.cs" />
     <Compile Include="Security\AuditablePrimaryKeyWithNameAndDescriptionDomainObject.cs" />
     <Compile Include="Security\AuditablePrimaryKeyWithNameDomainObject.cs" />

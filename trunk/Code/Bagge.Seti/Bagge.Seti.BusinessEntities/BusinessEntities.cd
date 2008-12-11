@@ -331,7 +331,7 @@
     </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Security\AccesibilityType.cs</FileName>
+      <FileName>Security\AccessibilityType.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -360,14 +360,14 @@
     <Position X="4" Y="7.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>Security\AccesibilityType.cs</FileName>
+      <FileName>Security\AccessibilityType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Bagge.Seti.Security.BusinessEntities.AccesibilityTypes">
     <Position X="4" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAABAAACAAAAAAEAAAA=</HashCode>
-      <FileName>Security\AccesibilityType.cs</FileName>
+      <FileName>Security\AccessibilityType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Tahoma" Size="8.25" />
