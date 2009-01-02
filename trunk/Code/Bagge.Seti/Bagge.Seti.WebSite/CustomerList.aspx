@@ -8,6 +8,7 @@
 			<asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=Edit" Text="Editar" />
 			<asp:DeleteCommandField Text="Borrar" ButtonType="Image" ConfirmationMessage="¿Esta seguro que desea borrar el cliente?"></asp:DeleteCommandField>
 		</Columns>
+		<EmptyDataTemplate>No Data</EmptyDataTemplate>
 	</asp:GridView>
 	<asp:Button PostBackUrl="~/CustomerEditor.aspx" ID="_new" runat="server" Text="Nuevo" />
 	<asp:ObjectContainerDataSource id="_dataSource" runat="server"></asp:ObjectContainerDataSource>

@@ -100,7 +100,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[HasAndBelongsToMany(typeof(ProductProvider), ColumnKey = "ProviderId", ColumnRef = "ProductId", Lazy = true)]
+		[HasAndBelongsToMany(typeof(ProductProvider), Table= "ProductProvider", ColumnKey = "ProviderId", ColumnRef = "ProductId", Lazy = true)]
 		public virtual IList<ProductProvider> Products
 		{
 			get; set;

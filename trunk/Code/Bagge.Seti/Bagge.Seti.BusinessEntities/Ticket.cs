@@ -65,14 +65,14 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 
-		[HasAndBelongsToMany(typeof(TicketEmployee), ColumnKey = "TicketId", ColumnRef = "EmployeeId", Lazy = true)]
+		[HasAndBelongsToMany(typeof(TicketEmployee), Table = "TicketEmployee", ColumnKey = "TicketId", ColumnRef = "EmployeeId", Lazy = true)]
 		public virtual IList<TicketEmployee> Employees
 		{
 			get;
 			set;
 		}
 
-		[HasAndBelongsToMany(typeof(ProductTicket), ColumnKey = "TicketId", ColumnRef = "ProductId", Lazy = true)]
+		[HasAndBelongsToMany(typeof(ProductTicket), Table = "ProductTicket", ColumnKey = "TicketId", ColumnRef = "ProductId", Lazy = true)]
 		public virtual IList<ProductTicket> Products
 		{
 			get;

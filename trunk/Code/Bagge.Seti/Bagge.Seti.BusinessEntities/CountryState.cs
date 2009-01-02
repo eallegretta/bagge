@@ -6,7 +6,7 @@ using Castle.ActiveRecord;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class CountryState : PrimaryKeyWithNameDomainObject<object, object>
+	public class CountryState : PrimaryKeyWithNameDomainObject<CountryState, int>
 	{
 		[Property]
 		public string ShortName

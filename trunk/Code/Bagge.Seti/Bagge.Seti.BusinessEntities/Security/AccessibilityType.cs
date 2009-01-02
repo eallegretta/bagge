@@ -1,8 +1,10 @@
 ﻿using Bagge.Seti.BusinessEntities;
 using System;
+using Castle.ActiveRecord;
 
 namespace Bagge.Seti.Security.BusinessEntities
 {
+	[ActiveRecord]
 	public class AccessibilityType : PrimaryKeyWithNameDomainObject<AccessibilityType, byte>, IEquatable<AccesibilityTypes>
 	{
 

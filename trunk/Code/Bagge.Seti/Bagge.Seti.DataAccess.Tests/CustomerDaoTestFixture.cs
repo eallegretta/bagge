@@ -5,6 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess.ActiveRecord;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.DataAccess.Tests
 {
@@ -21,8 +22,10 @@ namespace Bagge.Seti.DataAccess.Tests
 		[Test]
 		public void TestShouldFindAllCustomers()
 		{
-			var dao = new GenericDao<Customer, int>();
-			Assert.IsTrue(dao.FindAll() != null);
+			var dao = new CustomerDao();
+			Assert.IsNotNull(dao.FindAll());
+
+			
 		}
 	}
 }
