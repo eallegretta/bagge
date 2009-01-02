@@ -7,7 +7,7 @@ using Castle.ActiveRecord;
 
 namespace Bagge.Seti.Security.BusinessEntities
 {
-	[ActiveRecord]
+	[ActiveRecord("[Function]")]
 	public class Function : AuditablePrimaryKeyWithNameDomainObject<Function, int>
 	{
 		[Property]
@@ -38,8 +38,8 @@ namespace Bagge.Seti.Security.BusinessEntities
 			set;
 		}
 
-		[BelongsTo("AccesibilityTypeId")]
-		public AccessibilityType Accesibility
+		[BelongsTo("AccessibilityTypeId")]
+		public AccessibilityType Accessibility
 		{
 			get;
 			set;
@@ -53,7 +53,7 @@ namespace Bagge.Seti.Security.BusinessEntities
 		}
 
 		[Property]
-		public object Value
+		public string Value
 		{
 			get;
 			set;

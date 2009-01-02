@@ -43,7 +43,6 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[Property]
 		public string Fullname
 		{
 			get
@@ -80,7 +79,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[HasAndBelongsToMany(typeof(TicketEmployee), ColumnKey = "EmployeeId", ColumnRef = "TicketId", Lazy = true)]
+		[HasAndBelongsToMany(typeof(TicketEmployee), Table = "TicketEmployee", ColumnKey = "EmployeeId", ColumnRef = "TicketId", Lazy = true)]
 		public IList<TicketEmployee> Tickets
 		{
 			get;

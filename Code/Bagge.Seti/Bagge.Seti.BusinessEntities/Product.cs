@@ -7,7 +7,7 @@ namespace Bagge.Seti.BusinessEntities
 	[ActiveRecord]
 	public class Product : AuditablePrimaryKeyWithNameAndDescriptionDomainObject<Product, int>
 	{
-		[HasAndBelongsToMany(typeof(ProductProvider), ColumnKey = "ProductId", ColumnRef = "ProviderId", Lazy = true)]
+		[HasAndBelongsToMany(typeof(ProductProvider), Table = "ProductProvider", ColumnKey = "ProductId", ColumnRef = "ProviderId", Lazy = true)]
 		public virtual IList<ProductProvider> Providers
 		{
 			get;
@@ -15,7 +15,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 
-		[HasAndBelongsToMany(typeof(ProductTicket), ColumnKey = "ProductId", ColumnRef = "TicketId", Lazy = true)]
+		[HasAndBelongsToMany(typeof(ProductTicket), Table = "ProductTicket", ColumnKey = "ProductId", ColumnRef = "TicketId", Lazy = true)]
 		public virtual IList<ProductTicket> Tickets
 		{
 			get;
