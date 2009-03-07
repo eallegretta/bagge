@@ -18,7 +18,7 @@ namespace Bagge.Seti.Security.BusinessEntities
 			set;
 		}
 
-		[Property]
+		[Property(Insert = false, Update = false)]
 		public byte[] AuditTimeStamp
 		{
 			get; 

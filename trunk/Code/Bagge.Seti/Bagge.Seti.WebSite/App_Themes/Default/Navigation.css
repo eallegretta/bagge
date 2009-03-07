@@ -1,0 +1,29 @@
+﻿.staticMenuStyle
+{
+	height:55px;
+	margin-top:26px;
+	background-image:url(Images/menuItemBackground.gif);
+	background-repeat:repeat-x;
+}
+.staticMenuItemStyle td
+{
+	height:55px;
+	padding:0px;
+	margin:0px;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.staticMenuItemStyle td a
+{
+	display:block;
+	color:White;
+	padding:10px;
+}
+
+.staticMenuItemHoverStyle td
+{
+	background-image:url(Images/menuItemBackgroundHover.gif);
+	background-repeat:repeat-x;
+}

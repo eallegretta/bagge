@@ -1,0 +1,71 @@
+﻿body
+{
+	font-family:Verdana;
+	font-size:11px;
+	padding:0px;
+	border:0px;
+	margin:0px;
+}
+
+#site
+{
+	background-color:#cccccc;
+	width:1000px;
+	border-top:3px solid #5483a1;
+	margin:0px auto;
+	border-left:1px solid #aaaaaa;
+	border-right:1px solid #aaaaaa;
+	border-bottom:1px solid #aaaaaa;
+}
+
+#content
+{
+	min-height:600px;
+	background-color:White;
+	background-image:url(Images/contentBackground.gif);
+	background-repeat:repeat-x;
+	padding:5px;
+}
+
+#menuBar
+{
+	background-image:url(Images/backgroundMenuBar.gif);
+	background-repeat:repeat-x;
+	height:81px;
+}
+#menuBar #menuBarContent
+{
+	margin:0px auto;
+	width:800px;
+	text-align:center;
+}
+
+#menuBar #menuBarContent #menu
+{
+	float:left;
+}
+
+#menuBar #menuBarContent #endLeft
+{
+	background-image:url(Images/menuBarEndLeft.gif);
+	width:51px;
+	height:55px;
+	float:left;
+	margin-top:26px;
+}
+
+#menuBar #menuBarContent #endRight
+{
+	background-image:url(Images/menuBarEndRight.gif);
+	width:51px;
+	height:55px;
+	float:left;
+	margin-top:26px;
+}
+
+#footer
+{
+	background-image:url(Images/footerBackground.gif);
+	background-repeat:repeat-x;
+	height:34px;
+}
