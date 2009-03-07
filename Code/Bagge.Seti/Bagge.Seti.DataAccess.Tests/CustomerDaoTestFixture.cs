@@ -6,6 +6,8 @@ using NUnit.Framework;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
+using Rhino.Mocks;
+using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.DataAccess.Tests
 {
@@ -15,15 +17,25 @@ namespace Bagge.Seti.DataAccess.Tests
 		[Test]
 		public void TestShouldCreateAndDeleteACustomer()
 		{
-			var dao = new GenericDao<Customer, int>();
-			var customer = new Customer();
+			
+			
 		}
 
 		[Test]
 		public void TestShouldFindAllCustomers()
 		{
-			var dao = new CustomerDao();
-			Assert.IsNotNull(dao.FindAll());
+			MockRepository mocks = new MockRepository();
+			ICustomerDao dao = mocks.StrictMock<ICustomerDao>();
+			using (mocks.Record())
+			{
+				Expect.Call(dao.FindAll()).Return(new Customer[] { new Customer(), new Customer() });
+			}
+			using (mocks.Playback())
+			{
+				var customers = dao.FindAll();
+				Assert.IsNotNull(customers);
+				Assert.IsTrue(customers.Length > 0);
+			}
 
 			
 		}
