@@ -1,24 +1,52 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Bagge.Seti.WebSite.Site" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="_head" runat="server">
-    </asp:ContentPlaceHolder>
+	<title></title>
+	<asp:ContentPlaceHolder ID="_head" runat="server">
+	</asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <asp:ScriptManager ID="_scriptManager" runat="server"></asp:ScriptManager>
-    <div>
-		<asp:UpdatePanel ID="_contentUpdatePanel" runat="server" UpdateMode="Conditional">
-			<ContentTemplate>
-				<asp:ContentPlaceHolder ID="_content" runat="server">
-				</asp:ContentPlaceHolder>
-			</ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
-    </form>
+	<form id="form1" runat="server">
+	<asp:ScriptManager ID="_scriptManager" runat="server" OnAsyncPostBackError="_scriptManager_AsyncPostBackError">
+	</asp:ScriptManager>
+	<div id="site">
+		<div id="header">
+		</div>
+		<div id="menuBar">
+			<div id="menuBarContent">
+				<div id="endLeft">
+				</div>
+				<div id="menu">
+					<asp:Menu ID="_menu" runat="server" >
+						<Items>
+							<asp:MenuItem Text="Home"></asp:MenuItem>
+							<asp:MenuItem Text="Clientes"></asp:MenuItem>
+							<asp:MenuItem Text="Proveedores"></asp:MenuItem>
+							<asp:MenuItem Text="Insumos"></asp:MenuItem>
+							<asp:MenuItem Text="Tickets"></asp:MenuItem>
+							<asp:MenuItem Text="Empleados"></asp:MenuItem>
+							<asp:MenuItem Text="Roles"></asp:MenuItem>
+						</Items>
+						
+					</asp:Menu>
+				</div>
+				<div id="endRight">
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<asp:UpdatePanel ID="_contentUpdatePanel" runat="server" UpdateMode="Conditional">
+				<ContentTemplate>
+					<asp:ContentPlaceHolder ID="_content" runat="server">
+					</asp:ContentPlaceHolder>
+				</ContentTemplate>
+			</asp:UpdatePanel>
+		</div>
+		<div id="footer">
+		</div>
+	</div>
+	</form>
 </body>
 </html>

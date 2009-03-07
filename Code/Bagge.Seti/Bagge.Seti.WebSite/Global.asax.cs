@@ -40,7 +40,12 @@ namespace Bagge.Seti.WebSite
 
 		protected void Application_Error(object sender, EventArgs e)
 		{
-
+			Exception lastError = Server.GetLastError();
+			if (lastError != null)
+			{
+				Context.Items.Add("LastError", Server.GetLastError());
+				Server.Transfer("~/Error.aspx");
+			}
 		}
 
 		protected void Session_End(object sender, EventArgs e)

@@ -11,7 +11,12 @@ namespace Bagge.Seti.WebSite
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+		}
 
+		protected void _scriptManager_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e)
+		{
+			Session["LastError"] = e.Exception;
+			Response.Redirect("~/Error.aspx");
 		}
 	}
 }

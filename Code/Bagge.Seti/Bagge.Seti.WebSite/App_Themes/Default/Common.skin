@@ -1,0 +1,2 @@
+﻿<asp:Label SkinID="_error" runat="server" Font-Bold="true" ForeColor="red" />
+<asp:Label SkinID="_errorDescription" runat="server" Font-Bold="true" ForeColor="black" />

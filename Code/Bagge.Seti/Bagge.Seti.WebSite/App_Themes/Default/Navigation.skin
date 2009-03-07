@@ -1,0 +1,5 @@
+﻿<asp:Menu runat="server" Orientation="Horizontal" StaticMenuItemStyle-ItemSpacing="0"  StaticTopSeparatorImageUrl="Images/menuItemSeparator.gif">
+	<StaticMenuStyle CssClass="staticMenuStyle" />
+	<StaticMenuItemStyle CssClass="staticMenuItemStyle" />
+	<StaticHoverStyle CssClass="staticMenuItemHoverStyle" />
+</asp:Menu>
