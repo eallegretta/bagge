@@ -17,9 +17,9 @@ namespace Bagge.Seti.WebSite
 
 		public TicketEditor()
 		{
-			_presenter = new TicketEditorPresenter(this, SpringContext.TicketManager, 
-				SpringContext.EmployeeManager, SpringContext.CustomerManager, 
-				SpringContext.TicketStatusManager, SpringContext.ProductManager);
+			_presenter = new TicketEditorPresenter(this, IoCContainer.TicketManager, 
+				IoCContainer.EmployeeManager, IoCContainer.CustomerManager, 
+				IoCContainer.TicketStatusManager, IoCContainer.ProductManager);
 		}
 
 

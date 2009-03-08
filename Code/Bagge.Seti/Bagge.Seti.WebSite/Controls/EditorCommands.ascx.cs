@@ -31,6 +31,24 @@ namespace Bagge.Seti.WebSite.Controls
 			set { _cancel.PostBackUrl = _back.PostBackUrl = value; }
 		}
 
+		public string AcceptText
+		{
+			get { return _accept.Text; }
+			set { _accept.Text = value; }
+		}
+
+		public string CancelText
+		{
+			get { return _cancel.Text; }
+			set { _cancel.Text = value; }
+		}
+
+		public string BackText
+		{
+			get { return _back.Text; }
+			set { _back.Text = value; }
+		}
+
 		protected override void OnInit(EventArgs e)
 		{
 			DetailsView.DataBound += new EventHandler(DetailsView_DataBound);
@@ -39,10 +57,10 @@ namespace Bagge.Seti.WebSite.Controls
 
 		void DetailsView_DataBound(object sender, EventArgs e)
 		{
-			if (DetailsView.CurrentMode == DetailsViewMode.Edit && DetailsView.DataItemCount == 0)
+			if (DetailsView.CurrentMode == DetailsViewMode.Edit && (!DetailsView.Visible || DetailsView.DataItemCount == 0))
 			{
 				_accept.Visible = _cancel.Visible = false;
-				_noRecord.Visible = true;
+				//_noRecord.Visible = true;
 				_back.Visible = true;
 			}
 			else if (DetailsView.CurrentMode == DetailsViewMode.ReadOnly)

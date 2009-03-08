@@ -44,7 +44,14 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public T Get(PK id)
 		{
-			return ActiveRecordMediator<T>.FindByPrimaryKey(id);
+			try
+			{
+				return ActiveRecordMediator<T>.FindByPrimaryKey(id);
+			}
+			catch (NotFoundException)
+			{
+				throw new BusinessEntities.Exceptions.ObjectNotFoundException();
+			}
 		}
 
 		public PK Create(T instance)

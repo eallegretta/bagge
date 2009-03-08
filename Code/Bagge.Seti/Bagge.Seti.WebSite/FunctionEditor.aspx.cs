@@ -17,7 +17,7 @@ namespace Bagge.Seti.WebSite
 
 		public FunctionEditor()
 		{
-			_presenter = new FunctionEditorPresenter(this, SpringContext.FunctionManager, SpringContext.RoleManager);
+			_presenter = new FunctionEditorPresenter(this, IoCContainer.FunctionManager, IoCContainer.RoleManager);
 		}
 		
 		#region IFunctionEditorView Members

@@ -23,8 +23,8 @@ namespace Bagge.Seti.WebSite
 			ObjectDataSource.Inserting += new EventHandler<ObjectContainerDataSourceInsertingEventArgs>(ObjectDataSource_Inserting);
 			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
+
 			base.OnInit(e);
-			
 		}
 
 		void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
@@ -90,9 +90,6 @@ namespace Bagge.Seti.WebSite
 			Presenter.Select();
 		}
 
-		
-
-		
 
 		protected abstract EditorPresenter<T, PK> Presenter
 		{
@@ -116,6 +113,13 @@ namespace Bagge.Seti.WebSite
 
 		#region IView Members
 
+
+
+		private bool IsDataSourceEmpty
+		{
+			get;
+			set;
+		}
 
 		public object DataSource
 		{
@@ -147,15 +151,15 @@ namespace Bagge.Seti.WebSite
 				{
 					if (Request.QueryString["Id"] == null)
 						ViewState["Mode"] = EditorAction.Insert;
-					else if (Request.QueryString["Action"].ToLowerInvariant() == "view")
+					else if (Request.QueryString["Action"] == null || Request.QueryString["Action"].ToUpperInvariant() == "VIEW")
 					{
 						ViewState["Id"] = Request.QueryString["Id"];
-						ViewState["Mode"] = EditorAction.View;
+						ViewState["Mode"] = EditorAction.Update;
 					}
 					else
 					{
 						ViewState["Id"] = Request.QueryString["Id"];
-						ViewState["Mode"] = EditorAction.Update;
+						ViewState["Mode"] = EditorAction.View;
 					}
 				}
 				return (EditorAction)ViewState["Mode"];

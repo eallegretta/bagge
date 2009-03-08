@@ -41,6 +41,15 @@ namespace Bagge.Seti.WebSite {
         protected global::System.Web.UI.ScriptManager _scriptManager;
         
         /// <summary>
+        /// _siteMapDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapDataSource _siteMapDataSource;
+        
+        /// <summary>
         /// _menu control.
         /// </summary>
         /// <remarks>

@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate, Version=1.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Aop.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Archivos de programa\Spring.NET 1.2.0\bin\net\2.0\release\Spring.Core.dll</HintPath>
@@ -49,8 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interceptors\SecurityInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpringContext.cs" />
+    <Compile Include="IoCContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bagge.Seti.BusinessEntities\Bagge.Seti.BusinessEntities.csproj">
@@ -60,10 +69,6 @@
     <ProjectReference Include="..\Bagge.Seti.BusinessLogic\Bagge.Seti.BusinessLogic.csproj">
       <Project>{2A4DB60F-1B1C-49FC-B1AA-C18C595F1B1D}</Project>
       <Name>Bagge.Seti.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
-      <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
-      <Name>Bagge.Seti.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

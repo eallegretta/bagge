@@ -11,6 +11,7 @@
 	<form id="form1" runat="server">
 	<asp:ScriptManager ID="_scriptManager" runat="server" OnAsyncPostBackError="_scriptManager_AsyncPostBackError">
 	</asp:ScriptManager>
+	<asp:SiteMapDataSource ID="_siteMapDataSource" runat="server" ShowStartingNode="false" />
 	<div id="site">
 		<div id="header">
 		</div>
@@ -19,16 +20,7 @@
 				<div id="endLeft">
 				</div>
 				<div id="menu">
-					<asp:Menu ID="_menu" runat="server" >
-						<Items>
-							<asp:MenuItem Text="Home"></asp:MenuItem>
-							<asp:MenuItem Text="Clientes"></asp:MenuItem>
-							<asp:MenuItem Text="Proveedores"></asp:MenuItem>
-							<asp:MenuItem Text="Insumos"></asp:MenuItem>
-							<asp:MenuItem Text="Tickets"></asp:MenuItem>
-							<asp:MenuItem Text="Empleados"></asp:MenuItem>
-							<asp:MenuItem Text="Roles"></asp:MenuItem>
-						</Items>
+					<asp:Menu ID="_menu" runat="server" DataSourceID="_siteMapDataSource">
 						
 					</asp:Menu>
 				</div>

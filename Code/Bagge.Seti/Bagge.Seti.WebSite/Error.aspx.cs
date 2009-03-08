@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Bagge.Seti.BusinessEntities.Exceptions;
 
 namespace Bagge.Seti.WebSite
 {
@@ -21,21 +22,30 @@ namespace Bagge.Seti.WebSite
 
 			if (ex != null)
 			{
-				ShowErrorMessage(ex);
+				if (ex.InnerException != null && ex.InnerException is BusinessRuleException)
+					ShowBusinessRuleErrorMessage(ex.InnerException);
+				else
+					ShowErrorMessage(ex);
 			}
+		}
+
+		private void ShowBusinessRuleErrorMessage(Exception ex)
+		{
+			_errorMessage.Text = ex.Message;
 		}
 
 		private void ShowErrorMessage(Exception ex)
 		{
-			_errorDescription.Text = ex.StackTrace.Replace(Environment.NewLine, "<br />");
+			
 
 			_error.Text += "<ul>";
 			while (ex != null)
 			{
 				_error.Text += "<li>" + ex.Message + "</li>";
-
+				_errorDescription.Text = ex.StackTrace.Replace(Environment.NewLine, "</li><li>") + _errorDescription.Text;
 				ex = ex.InnerException;
 			}
+			_errorDescription.Text = "<ul><li>" + _errorDescription.Text + "</li></ul>";
 			_error.Text += "</ul>";
 		}
 	}

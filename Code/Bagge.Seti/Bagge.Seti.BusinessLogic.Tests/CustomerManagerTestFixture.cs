@@ -16,7 +16,7 @@ namespace Bagge.Seti.BusinessLogic.Tests
 		[Test]
 		public void TestShouldFindAllCustomers()
 		{
-			Assert.IsTrue(SpringContext.CustomerManager.FindAll().Length > 0);
+			Assert.IsTrue(IoCContainer.CustomerManager.FindAll().Length > 0);
 		}
 	}
 }

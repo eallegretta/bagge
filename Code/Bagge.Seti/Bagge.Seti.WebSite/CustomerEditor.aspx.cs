@@ -17,7 +17,7 @@ namespace Bagge.Seti.WebSite
 
 		public CustomerEditor()
 		{
-			_presenter = new EditorPresenter<Customer, int>(this, SpringContext.CustomerManager);
+			_presenter = new EditorPresenter<Customer, int>(this, IoCContainer.CustomerManager);
 		}
 
 		protected override EditorPresenter<Customer, int> Presenter
