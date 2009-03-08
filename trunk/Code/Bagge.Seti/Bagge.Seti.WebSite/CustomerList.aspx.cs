@@ -20,7 +20,7 @@ namespace Bagge.Seti.WebSite
 
 		public CustomerList()
 		{
-			_presenter = new ListPresenter<Customer, int>(this, SpringContext.CustomerManager);
+			_presenter = new ListPresenter<Customer, int>(this, IoCContainer.CustomerManager);
 		}
 
 		protected override ObjectContainerDataSource ObjectDataSource

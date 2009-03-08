@@ -19,7 +19,7 @@ namespace Bagge.Seti.WebSite
 
 		public AlertConfigurationEditor()
 		{
-			_presenter = new AlertConfigurationPresenter(this, SpringContext.AlertConfigurationManager);
+			_presenter = new AlertConfigurationPresenter(this, IoCContainer.AlertConfigurationManager);
 		}
 
 		protected override void OnInit(EventArgs e)

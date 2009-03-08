@@ -98,6 +98,9 @@
     <Compile Include="Controls\ListCommands.ascx.designer.cs">
       <DependentUpon>ListCommands.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SecureDetailsView.cs" />
+    <Compile Include="Controls\SecureFormView.cs" />
+    <Compile Include="Controls\SecureGridView.cs" />
     <Compile Include="EditorPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -189,10 +192,6 @@
       <Project>{108362FC-4C87-4D0D-8EBF-523F4235DAC0}</Project>
       <Name>Bagge.Seti.Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
-      <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
-      <Name>Bagge.Seti.Security</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\Database\SETI.mdf">
@@ -229,6 +228,19 @@
     <Content Include="App_Themes\Default\Navigation.css" />
     <Content Include="App_Themes\Default\Navigation.skin" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\CustomerList.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\CustomerEditor.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Error.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Objects.xml" />
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -244,7 +256,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2792</DevelopmentServerPort>
+          <DevelopmentServerPort>1933</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -82,10 +82,6 @@
       <Project>{35261AD9-48F9-4405-8295-493C5EF8541D}</Project>
       <Name>Bagge.Seti.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
-      <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
-      <Name>Bagge.Seti.Security</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

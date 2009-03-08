@@ -93,10 +93,6 @@
       <Project>{108362FC-4C87-4D0D-8EBF-523F4235DAC0}</Project>
       <Name>Bagge.Seti.Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bagge.Seti.Security\Bagge.Seti.Security.csproj">
-      <Project>{64FD2640-69CE-4CF7-B49D-A4895AE4ED72}</Project>
-      <Name>Bagge.Seti.Security</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
