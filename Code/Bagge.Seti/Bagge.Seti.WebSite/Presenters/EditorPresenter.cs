@@ -31,24 +31,31 @@ namespace Bagge.Seti.WebSite.Presenters
 			_view = view;
 			_view.Init += new EventHandler(OnInit);
 			_view.Load += new EventHandler(OnLoad);
+			
 			_manager = manager;
 		}
 
+
 		protected virtual void OnInit(object sender, EventArgs e)
 		{
-			
 		}
 		protected virtual void OnLoad(object sender, EventArgs e)
 		{
 		}
 
-
-		public void Select()
+		protected T SelectedEntity
 		{
-			_view.DataSource = _manager.Get(_view.PrimaryKey).ToSingleItemArray<T>();
+			get;
+			set;
 		}
 
-		public void Save(T entity)
+		public virtual void Select()
+		{
+			SelectedEntity = _manager.Get(_view.PrimaryKey);
+			_view.DataSource = SelectedEntity.ToSingleItemArray<T>();
+		}
+
+		public virtual void Save(T entity)
 		{
 			if (_view.Mode == EditorAction.View)
 				throw new Exception("EditorAction cannot be View");

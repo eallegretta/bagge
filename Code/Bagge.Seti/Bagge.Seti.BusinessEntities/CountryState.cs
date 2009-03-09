@@ -15,7 +15,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[HasMany(Table = "District", Lazy = true, ColumnKey = "CountryStateId")]
+		[HasMany(Table = "District", Lazy = true, ColumnKey = "CountryStateId", OrderBy = "Name")]
 		public IList<District> Districts
 		{
 			get;

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertConfigurationManager.cs" />
+    <Compile Include="AuditableGenericManager.cs" />
     <Compile Include="Contracts\IAlertConfigurationManager.cs" />
     <Compile Include="Contracts\ICreateManager.cs" />
     <Compile Include="Contracts\ICustomerManager.cs" />

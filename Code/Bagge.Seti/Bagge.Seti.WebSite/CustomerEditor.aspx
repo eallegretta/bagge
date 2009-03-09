@@ -26,6 +26,27 @@
 					<%#Eval("CUIT")%>
 				</ItemTemplate>
 			</asp:TemplateField>
+			<asp:TemplateField meta:resourcekey="CountryStateField">
+				<InsertItemTemplate>
+					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelecteIndexChanged"></asp:DropDownList>
+				</InsertItemTemplate>
+				<EditItemTemplate>
+					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelecteIndexChanged"></asp:DropDownList>
+				</EditItemTemplate>
+				<ItemTemplate>
+				</ItemTemplate>			
+			</asp:TemplateField>
+			<asp:TemplateField meta:resourcekey="DistrictField">
+				<InsertItemTemplate>
+					<asp:DropDownList ID="_district" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="DistrictDropDown"></asp:DropDownList>
+				</InsertItemTemplate>
+				<EditItemTemplate>
+					<asp:DropDownList ID="_district" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="DistrictDropDown"></asp:DropDownList>
+				</EditItemTemplate>
+				<ItemTemplate>
+					<%#Eval("District")%>
+				</ItemTemplate>
+			</asp:TemplateField>
 			<asp:TemplateField meta:resourcekey="AddressField">
 				<InsertItemTemplate>
 					<asp:TextBox ID="_address" runat="server" Text='<%# Bind("Address") %>' meta:resourcekey="AddressTextBox"></asp:TextBox>
@@ -34,7 +55,7 @@
 					<asp:TextBox ID="_address" runat="server" Text='<%# Bind("Address") %>' meta:resourcekey="AddressTextBox"></asp:TextBox>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<%#Eval("Name")%>
+					<%#Eval("Address")%>
 				</ItemTemplate>
 			</asp:TemplateField>
 			<asp:TemplateField meta:resourcekey="FloorField">
@@ -116,10 +137,10 @@
 			</asp:TemplateField>
 			<asp:TemplateField meta:resourcekey="SubscriptionField">
 				<InsertItemTemplate>
-					<asp:TextBox ID="_subscription" runat="server" Text='<%# Bind("Subscription") %>' meta:resourcekey="SubscriptionTextBox"></asp:TextBox>
+					<asp:CheckBox ID="_subscription" runat="server" Checked='<%# Bind("Subscription") %>' meta:resourcekey="SubscriptionCheckBox"></asp:CheckBox>
 				</InsertItemTemplate>
 				<EditItemTemplate>
-					<asp:TextBox ID="_subscription" runat="server" Text='<%# Bind("Subscription") %>' meta:resourcekey="SubscriptionTextBox"></asp:TextBox>
+					<asp:CheckBox ID="_subscription" runat="server" Checked='<%# Bind("Subscription") %>' meta:resourcekey="SubscriptionCheckBox"></asp:CheckBox>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<%#Eval("Subscription")%>

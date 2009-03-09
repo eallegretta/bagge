@@ -106,6 +106,8 @@ namespace Bagge.Seti.WebSite
 
 
 
+
+
 		#region IListView Members
 
 		
@@ -151,7 +153,7 @@ namespace Bagge.Seti.WebSite
 				{
 					if (Request.QueryString["Id"] == null)
 						ViewState["Mode"] = EditorAction.Insert;
-					else if (Request.QueryString["Action"] == null || Request.QueryString["Action"].ToUpperInvariant() == "VIEW")
+					else if (Request.QueryString["Action"] == null || Request.QueryString["Action"].ToUpperInvariant() == "EDIT")
 					{
 						ViewState["Id"] = Request.QueryString["Id"];
 						ViewState["Mode"] = EditorAction.Update;
@@ -165,6 +167,7 @@ namespace Bagge.Seti.WebSite
 				return (EditorAction)ViewState["Mode"];
 			}
 		}
+
 
 		#endregion
 	}

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EmployeeByUsernameNotFoundErrorMessage" xml:space="preserve">
+    <value>El empleado cuyo nombre de usuario es {0} no pudo ser encontrado</value>
+  </data>
   <data name="IdCannotBeDefault" xml:space="preserve">
     <value>El id no puede ser {0}</value>
   </data>
@@ -128,5 +131,8 @@
   </data>
   <data name="InstanceNotFound" xml:space="preserve">
     <value>El objeto de tipo {1} cuyo id es {0} no pudo ser encontrado</value>
+  </data>
+  <data name="MultipleUsernamesErrorMessage" xml:space="preserve">
+    <value>Hay multiples empleados con el mismo nombre de usuario</value>
   </data>
 </root>

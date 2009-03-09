@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
+using System.Security.Principal;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class Employee : AuditablePrimaryKeyDomainObject<Employee, int>
+	public class Employee : AuditablePrimaryKeyDomainObject<Employee, int>, IUser
 	{
 		[Property]
 		public string Username
@@ -72,7 +74,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[BelongsTo("EmployeeCategoryId")]
+		[BelongsTo("CategoryId")]
 		public EmployeeCategory Category
 		{
 			get;
@@ -85,5 +87,38 @@ namespace Bagge.Seti.BusinessEntities
 			get;
 			set;
 		}
+
+
+		[HasAndBelongsToMany(Table = "RoleEmployee", ColumnKey = "EmployeeId", ColumnRef = "RoleId", Lazy = true, Inverse = true)]
+		public virtual IList<Role> Roles
+		{
+			get;
+			set;
+		}
+
+		#region IIdentity Members
+
+		public string AuthenticationType
+		{
+			get { return "SetiAuthentication"; }
+		}
+
+		public bool IsAuthenticated
+		{
+			get;
+			set;
+		}
+
+		public string Name
+		{
+			get 
+			{
+				if (IsAuthenticated)
+					return Username;
+				return string.Empty;
+			}
+		}
+
+		#endregion
 	}
 }

@@ -77,8 +77,8 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[Property(NotNull = false)]
-		public decimal? Subscription
+		[Property]
+		public bool Subscription
 		{
 			get;
 			set;
