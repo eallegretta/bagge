@@ -17,15 +17,18 @@
 		</div>
 		<div id="menuBar">
 			<div id="menuBarContent">
-				<div id="endLeft">
-				</div>
-				<div id="menu">
-					<asp:Menu ID="_menu" runat="server" DataSourceID="_siteMapDataSource">
-						
-					</asp:Menu>
-				</div>
-				<div id="endRight">
-				</div>
+				<asp:LoginView ID="_menuLoginView" runat="server">
+					<LoggedInTemplate>
+						<div id="endLeft">
+						</div>
+						<div id="menu">
+							<asp:Menu ID="_menu" runat="server" DataSourceID="_siteMapDataSource">
+							</asp:Menu>
+						</div>
+						<div id="endRight">
+						</div>
+					</LoggedInTemplate>
+				</asp:LoginView>
 			</div>
 		</div>
 		<div id="content">

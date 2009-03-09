@@ -84,6 +84,7 @@
     <Compile Include="Security\Function.cs" />
     <Compile Include="Security\IAuditable.cs" />
     <Compile Include="Security\ISecurizable.cs" />
+    <Compile Include="Security\IUser.cs" />
     <Compile Include="Security\Role.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketEmployee.cs" />

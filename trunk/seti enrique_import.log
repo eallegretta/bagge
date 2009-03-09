@@ -1,0 +1,26 @@
+
+Importing Model from XMI
+***** Root Package: 03 - Seguridad *****
+Add Classifier: Usuario
+Add Classifier: Tipo de Miembro de Clase
+Add Classifier Role: AccesibilityDataAccess
+Add Classifier Role: FunctionEditorPresenter
+Add Classifier Role: IFunctionEditorView
+Add Classifier Role: FunctionEditor.aspx
+Add Classifier Role: FunctionManager
+Add Classifier Role: RoleManager
+Add Classifier Role: RoleDataAccess
+Add Classifier Role: FunctionList.aspx
+Add Classifier Role: FunctionDataAccess
+***** Resolving Classifiers *****
+***** Resolving Ownerss *****
+***** Resolve Package Links *****
+***** Add Extensions ******
+***** Add Diagrams *****
+***** Resolving DiagramIDs *****
+***** Resolving Association Classes *****
+***** Resolving Parameter Types *****
+***** Resolving Attribute Types *****
+***** Resolving Note links *****
+***** Fixup external references *****
+Import Complete!

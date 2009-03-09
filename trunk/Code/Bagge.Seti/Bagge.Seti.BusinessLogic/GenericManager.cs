@@ -56,7 +56,7 @@ namespace Bagge.Seti.BusinessLogic
 			Check.Require(instance != null, string.Format(Resources.InstanceCannotBeNull, typeof(T)));
 			Check.Require(!instance.Id.Equals(default(PK)), string.Format(Resources.IdCannotBeDefault, default(PK)));
 
-			Dao.Delete(instance.Id);
+			Delete(instance.Id);
 		}
 		public virtual void Delete(PK id)
 		{

@@ -13,16 +13,16 @@ namespace Bagge.Seti.WebSite
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Exception ex = null;
-			if (Session != null && Session["LastError"] != null)
-			{
-				ex = (Exception)Session["LastError"];
-			}
-			else if (Context != null && Context.Items["LastError"] != null)
+			if (Context != null && Context.Items["LastError"] != null) 
 				ex = (Exception)Context.Items["LastError"];
+			else if (Session != null && Session["LastError"] != null)
+				ex = (Exception)Session["LastError"];
 
 			if (ex != null)
 			{
-				if (ex.InnerException != null && ex.InnerException is BusinessRuleException)
+				if (ex is BusinessRuleException)
+					ShowBusinessRuleErrorMessage(ex);
+				else if (ex.InnerException != null && ex.InnerException is BusinessRuleException)
 					ShowBusinessRuleErrorMessage(ex.InnerException);
 				else
 					ShowErrorMessage(ex);

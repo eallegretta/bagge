@@ -1,0 +1,20 @@
+
+Importing Model from XMI
+***** Root Package: 01 - Autenticación al Sistema *****
+Add Classifier: usuario
+Add Classifier Role: datos(Employee)
+Add Classifier Role: login.aspx
+Add Classifier Role: Manager
+Add Classifier Role: Editor Presenter
+***** Resolving Classifiers *****
+***** Resolving Ownerss *****
+***** Resolve Package Links *****
+***** Add Extensions ******
+***** Add Diagrams *****
+***** Resolving DiagramIDs *****
+***** Resolving Association Classes *****
+***** Resolving Parameter Types *****
+***** Resolving Attribute Types *****
+***** Resolving Note links *****
+***** Fixup external references *****
+Import Complete!

@@ -8,16 +8,17 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Microsoft.Practices.Web.UI.WebControls;
+using Bagge.Seti.WebSite.Views;
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class CustomerEditor : EditorPage<Customer, int>
+	public partial class CustomerEditor : EditorPage<Customer, int>, ICustomerEditorView 
 	{
-		EditorPresenter<Customer, int> _presenter;
+		CustomerEditorPresenter _presenter;
 
 		public CustomerEditor()
 		{
-			_presenter = new EditorPresenter<Customer, int>(this, IoCContainer.CustomerManager);
+			_presenter = new CustomerEditorPresenter(this, IoCContainer.CustomerManager, IoCContainer.CountryStateManager, IoCContainer.DistrictManager);
 		}
 
 		protected override EditorPresenter<Customer, int> Presenter
@@ -35,5 +36,54 @@ namespace Bagge.Seti.WebSite
 			get { return _dataSource; }
 		}
 
+
+		protected void _countryState_SelecteIndexChanged(object sender, EventArgs e)
+		{
+			int countryStateId = ((DropDownList)sender).SelectedValue.ToInt32();
+			_presenter.SelectDistricts(countryStateId);
+		}
+
+		#region ICustomerEditorView Members
+
+
+
+		public CountryState[] CountryStates
+		{
+			set 
+			{
+				var countryState = ((DropDownList)Details.FindControl("_countryState"));
+				countryState.DataSource = value;
+				countryState.DataBind();
+			}
+		}
+
+		public District[] Districts
+		{
+			set 
+			{
+				var countryState = ((DropDownList)Details.FindControl("_district"));
+				countryState.DataSource = value;
+				countryState.DataBind();
+			}
+		}
+
+		public int SelectedCountryId
+		{
+			set { ((DropDownList)Details.FindControl("_countryState")).SelectedValue = value.ToString(); }
+		}
+
+		public int SelectedDistrictId
+		{
+			get
+			{
+				return ((DropDownList)Details.FindControl("_district")).SelectedValue.ToInt32();
+			}
+			set
+			{
+				((DropDownList)Details.FindControl("_district")).SelectedValue = value.ToString();
+			}
+		}
+
+		#endregion
 	}
 }

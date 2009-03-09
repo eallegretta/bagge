@@ -9,5 +9,6 @@ namespace Bagge.Seti.Security.BusinessEntities
 	{
 		string AuditUserName { get; set; }
 		byte[] AuditTimeStamp { get; set; }
+		bool Deleted { get; set; }
 	}
 }

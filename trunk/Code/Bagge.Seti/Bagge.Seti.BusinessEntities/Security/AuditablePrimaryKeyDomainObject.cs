@@ -25,6 +25,13 @@ namespace Bagge.Seti.Security.BusinessEntities
 			set;
 		}
 
+		//[Property]
+		public bool Deleted
+		{
+			get;
+			set;
+		}
+
 		#endregion
 	}
 }

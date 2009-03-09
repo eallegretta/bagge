@@ -12,5 +12,9 @@ namespace Bagge.Seti.BusinessEntities.Exceptions
 			: base(Resources.ObjectNotFoundErrorMessage)
 		{
 		}
+		public ObjectNotFoundException(string message)
+			: base(message)
+		{
+		}
 	}
 }

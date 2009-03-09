@@ -8,5 +8,7 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface IEmployeeManager: IManager<Employee, int>
 	{
+		bool Authenticate(string username, string password);
+		Employee GetByUsername(string username);
 	}
 }

@@ -50,13 +50,13 @@ namespace Bagge.Seti.WebSite {
         protected global::System.Web.UI.WebControls.SiteMapDataSource _siteMapDataSource;
         
         /// <summary>
-        /// _menu control.
+        /// _menuLoginView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu _menu;
+        protected global::System.Web.UI.WebControls.LoginView _menuLoginView;
         
         /// <summary>
         /// _contentUpdatePanel control.

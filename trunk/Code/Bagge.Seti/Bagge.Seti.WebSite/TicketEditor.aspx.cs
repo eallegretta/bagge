@@ -20,6 +20,7 @@ namespace Bagge.Seti.WebSite
 			_presenter = new TicketEditorPresenter(this, IoCContainer.TicketManager, 
 				IoCContainer.EmployeeManager, IoCContainer.CustomerManager, 
 				IoCContainer.TicketStatusManager, IoCContainer.ProductManager);
+
 		}
 
 

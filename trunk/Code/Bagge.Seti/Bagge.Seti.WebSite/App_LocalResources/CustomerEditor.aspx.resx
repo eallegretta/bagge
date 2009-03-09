@@ -162,4 +162,10 @@
   <data name="MobilePhoneField.HeaderText" xml:space="preserve">
     <value>Celular</value>
   </data>
+  <data name="CountryStateField.HeaderText" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="DistrictField.HeaderText" xml:space="preserve">
+    <value>Localidad</value>
+  </data>
 </root>
