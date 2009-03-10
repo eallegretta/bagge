@@ -1,5 +1,6 @@
 ﻿using System;
 using Castle.ActiveRecord;
+using Castle.Components.Validator;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -16,6 +17,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[ValidateNonEmpty]
 		public virtual string Name { get ; set; }
 
 		public override string ToString()

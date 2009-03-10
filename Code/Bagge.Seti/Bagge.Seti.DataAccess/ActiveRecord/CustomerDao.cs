@@ -7,7 +7,7 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
-	public class CustomerDao: GenericDao<Customer, int>, ICustomerDao
+	public class CustomerDao: AuditableGenericDao<Customer, int>, ICustomerDao
 	{
 	}
 }

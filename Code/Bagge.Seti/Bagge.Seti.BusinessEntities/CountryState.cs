@@ -9,6 +9,7 @@ namespace Bagge.Seti.BusinessEntities
 	public class CountryState : PrimaryKeyWithNameDomainObject<CountryState, int>
 	{
 		[Property]
+	
 		public string ShortName
 		{
 			get;

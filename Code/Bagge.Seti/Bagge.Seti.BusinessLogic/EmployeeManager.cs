@@ -9,10 +9,11 @@ using Bagge.Seti.BusinessEntities.Exceptions;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DesignByContract;
 using System.Diagnostics;
+using Castle.Components.Validator;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class EmployeeManager: AuditableGenericManager<Employee, int>, IEmployeeManager
+	public class EmployeeManager: GenericManager<Employee, int>, IEmployeeManager
 	{
 		public EmployeeManager(IEmployeeDao dao)
 			: base(dao)
@@ -23,6 +24,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		public bool Authenticate(string username, string password)
 		{
+
 			Check.Require(!username.IsNullOrEmpty());
 			Check.Require(!password.IsNullOrEmpty());
 

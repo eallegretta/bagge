@@ -22,6 +22,7 @@ namespace Bagge.Seti.WebSite
 			ObjectDataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(ObjectDataSource_Selecting);
 			ObjectDataSource.Inserting += new EventHandler<ObjectContainerDataSourceInsertingEventArgs>(ObjectDataSource_Inserting);
 			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
+
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 
 			base.OnInit(e);
@@ -90,6 +91,8 @@ namespace Bagge.Seti.WebSite
 			Presenter.Select();
 		}
 
+
+		
 
 		protected abstract EditorPresenter<T, PK> Presenter
 		{
@@ -168,6 +171,23 @@ namespace Bagge.Seti.WebSite
 			}
 		}
 
+
+		#endregion
+
+		#region IEditorView<PK> Members
+
+
+		public event EventHandler DataBound
+		{
+			add
+			{
+				Details.DataBound += value;
+			}
+			remove
+			{
+				Details.DataBound -= value;
+			}
+		}
 
 		#endregion
 	}

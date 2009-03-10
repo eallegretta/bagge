@@ -28,20 +28,20 @@
 			</asp:TemplateField>
 			<asp:TemplateField meta:resourcekey="CountryStateField">
 				<InsertItemTemplate>
-					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelecteIndexChanged"></asp:DropDownList>
+					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelectedIndexChanged"></asp:DropDownList>
 				</InsertItemTemplate>
 				<EditItemTemplate>
-					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelecteIndexChanged"></asp:DropDownList>
+					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelectedIndexChanged"></asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
 				</ItemTemplate>			
 			</asp:TemplateField>
 			<asp:TemplateField meta:resourcekey="DistrictField">
 				<InsertItemTemplate>
-					<asp:DropDownList ID="_district" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="DistrictDropDown"></asp:DropDownList>
+					<asp:DropDownList ID="_district" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="DistrictDropDown" OnSelectedIndexChanged="_district_SelectedIndexChanged"></asp:DropDownList>
 				</InsertItemTemplate>
 				<EditItemTemplate>
-					<asp:DropDownList ID="_district" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="DistrictDropDown"></asp:DropDownList>
+					<asp:DropDownList ID="_district" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="DistrictDropDown" OnSelectedIndexChanged="_district_SelectedIndexChanged"></asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<%#Eval("District")%>

@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Castle.ActiveRecord.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Castle.Components.Validator.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -52,6 +56,7 @@
     <Compile Include="Exceptions\BusinessRuleException.cs" />
     <Compile Include="Exceptions\MethodAccessDeniedException.cs" />
     <Compile Include="Exceptions\ObjectNotFoundException.cs" />
+    <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="PrimaryKeyDomainObject.cs" />
     <Compile Include="PrimaryKeyWithNameAndDescriptionDomainObject.cs" />
     <Compile Include="PrimaryKeyWithNameDomainObject.cs" />

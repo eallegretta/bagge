@@ -37,10 +37,18 @@ namespace Bagge.Seti.WebSite
 		}
 
 
-		protected void _countryState_SelecteIndexChanged(object sender, EventArgs e)
+		protected void _countryState_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			
+
 			int countryStateId = ((DropDownList)sender).SelectedValue.ToInt32();
 			_presenter.SelectDistricts(countryStateId);
+			_presenter.SelectZipCode();
+		}
+
+		protected void _district_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			_presenter.SelectZipCode();
 		}
 
 		#region ICustomerEditorView Members
@@ -81,6 +89,14 @@ namespace Bagge.Seti.WebSite
 			set
 			{
 				((DropDownList)Details.FindControl("_district")).SelectedValue = value.ToString();
+			}
+		}
+
+		public string ZipCode
+		{
+			set
+			{
+				((TextBox)Details.FindControl("_zipCode")).Text = value;
 			}
 		}
 

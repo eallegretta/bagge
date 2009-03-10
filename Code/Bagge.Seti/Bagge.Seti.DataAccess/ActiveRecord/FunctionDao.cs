@@ -7,7 +7,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
-	public class FunctionDao: GenericDao<Function, int>, IFunctionDao
+	public class FunctionDao : AuditableGenericDao<Function, int>, IFunctionDao
 	{
 	}
 }

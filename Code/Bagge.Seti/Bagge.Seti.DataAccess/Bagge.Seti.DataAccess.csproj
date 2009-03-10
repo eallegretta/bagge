@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ActiveRecord\AccessibilityDao.cs" />
     <Compile Include="ActiveRecord\AlertConfigurationDao.cs" />
+    <Compile Include="ActiveRecord\AuditableGenericDao.cs" />
     <Compile Include="ActiveRecord\CustomerDao.cs" />
     <Compile Include="ActiveRecord\EmployeeDao.cs" />
     <Compile Include="ActiveRecord\FunctionDao.cs" />

@@ -11,17 +11,17 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 	{
 		#region IDao<T,PK> Members
 
-		public T[] FindAll()
+		public virtual T[] FindAll()
 		{
 			return ActiveRecordMediator<T>.FindAll();
 		}
 
-		public T[] FindAllOrdered(string orderBy)
+		public virtual T[] FindAllOrdered(string orderBy)
 		{
 			return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, true) });
 		}
 
-		public T[] FindAllOrdered(string orderBy, bool ascending)
+		public virtual T[] FindAllOrdered(string orderBy, bool ascending)
 		{
 			return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, ascending) });
 		}
@@ -42,7 +42,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 				Expression.Eq(property, value));
 		}
 
-		public T Get(PK id)
+		public virtual T Get(PK id)
 		{
 			try
 			{
@@ -54,13 +54,13 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			}
 		}
 
-		public PK Create(T instance)
+		public virtual PK Create(T instance)
 		{
 			ActiveRecordMediator<T>.Create(instance);
 			return instance.Id;
 		}
 
-		public void Update(T instance)
+		public virtual void Update(T instance)
 		{
 			try
 			{
@@ -77,7 +77,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			}
 		}
 
-		public void Delete(PK id)
+		public virtual void Delete(PK id)
 		{
 			ActiveRecordMediator<T>.Delete(Get(id));	
 		}
