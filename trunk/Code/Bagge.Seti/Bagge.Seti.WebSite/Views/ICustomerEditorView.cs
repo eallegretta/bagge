@@ -13,5 +13,7 @@ namespace Bagge.Seti.WebSite.Views
 
 		int SelectedCountryId { set; }
 		int SelectedDistrictId { get; set; }
+
+		string ZipCode { set; }
 	}
 }

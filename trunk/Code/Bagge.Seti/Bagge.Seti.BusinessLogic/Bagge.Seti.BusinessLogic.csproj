@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Castle.Components.Validator.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -46,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertConfigurationManager.cs" />
-    <Compile Include="AuditableGenericManager.cs" />
     <Compile Include="Contracts\IAlertConfigurationManager.cs" />
     <Compile Include="Contracts\ICreateManager.cs" />
     <Compile Include="Contracts\ICustomerManager.cs" />

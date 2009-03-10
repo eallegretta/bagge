@@ -9,6 +9,8 @@ using Bagge.Seti.BusinessLogic.Contracts;
 using System.Security.Principal;
 using System.Web;
 using Spring.Context;
+using Castle.Components.Validator;
+using Bagge.Seti.Common.Validation;
 
 namespace Bagge.Seti.Common
 {
@@ -31,6 +33,14 @@ namespace Bagge.Seti.Common
 		private static IEmployeeManager _employeeManager = (IEmployeeManager)ContextRegistry.GetContext().GetObject("EmployeeManager");
 		private static IManager<CountryState, int> _countryStateManager = (IManager<CountryState, int>)ContextRegistry.GetContext().GetObject("CountryStateManager");
 		private static IManager<District, int> _districtManager = (IManager<District, int>)ContextRegistry.GetContext().GetObject("DistrictManager");
+
+		private static IValidationEngine _validationEngine = (IValidationEngine)ContextRegistry.GetContext().GetObject("ValidationEngine");
+
+		public static IValidationEngine ValidationEngine
+		{
+			get { return _validationEngine; }
+		}
+
 
 		public static IManager<CountryState, int> CountryStateManager
 		{

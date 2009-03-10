@@ -1,5 +1,6 @@
 ﻿using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
+using Castle.Components.Validator;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -7,6 +8,7 @@ namespace Bagge.Seti.BusinessEntities
 	public class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
 	{
 		[Property]
+		[ValidateRegExp(@"\d{2}-\d{9}-\d")]
 		public string CUIT 
 		{ 
 			get; 

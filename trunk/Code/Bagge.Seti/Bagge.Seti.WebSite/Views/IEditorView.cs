@@ -10,5 +10,7 @@ namespace Bagge.Seti.WebSite.Views
 	{
 		PK PrimaryKey { get; }
 		EditorAction Mode { get; }
+
+		event EventHandler DataBound;
 	}
 }

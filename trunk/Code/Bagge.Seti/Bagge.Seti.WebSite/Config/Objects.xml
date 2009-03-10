@@ -26,6 +26,7 @@
 			<list>
 				<value>SecurityInterceptor</value>
 				<value>AuditInterceptor</value>
+				<value>ValidationInterceptor</value>
 			</list>
 		</property>
 	</object>
@@ -45,8 +46,23 @@
 			</list>
 		</property>
 	</object>
+
+	
+	
+	
+
+	<object id="ValidationEngine" type="Bagge.Seti.Common.Validation.CastleValidationEngine">
+		<constructor-arg>
+			<object id="CastleValidatorRunner" type="Castle.Components.Validator.ValidatorRunner">
+				<constructor-arg>
+					<object  type="Castle.Components.Validator.CachedValidationRegistry, Castle.Components.Validator"></object>
+				</constructor-arg>
+			</object>
+		</constructor-arg>
+	</object>
 	
 	<!-- Interceptors -->
 	<object id="SecurityInterceptor" type="Bagge.Seti.Common.Interceptors.SecurityInterceptor, Bagge.Seti.Common" />
 	<object id="AuditInterceptor" type="Bagge.Seti.Common.Interceptors.AuditInterceptor, Bagge.Seti.Common" />
+	<object id="ValidationInterceptor" type="Bagge.Seti.Common.Interceptors.ValidationInterceptor, Bagge.Seti.Common" />
 </objects>
