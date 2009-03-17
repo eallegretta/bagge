@@ -77,7 +77,8 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		public override void Save(Customer entity)
 		{
-			entity.District = _districtManager.Get(View.SelectedDistrictId);
+			if(View.SelectedDistrictId.HasValue)
+				entity.District = _districtManager.Get(View.SelectedDistrictId.Value);
 
 			base.Save(entity);
 		}
@@ -90,8 +91,11 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		public void SelectZipCode()
 		{
-			District district = _districtManager.Get(View.SelectedDistrictId);
-			View.ZipCode = district.ZipCode;
+			if (View.SelectedDistrictId.HasValue)
+			{
+				District district = _districtManager.Get(View.SelectedDistrictId.Value);
+				View.ZipCode = district.ZipCode;
+			}
 		}
 	}
 }

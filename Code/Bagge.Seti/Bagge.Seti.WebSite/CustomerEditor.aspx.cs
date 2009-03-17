@@ -80,15 +80,20 @@ namespace Bagge.Seti.WebSite
 			set { ((DropDownList)Details.FindControl("_countryState")).SelectedValue = value.ToString(); }
 		}
 
-		public int SelectedDistrictId
+		public int? SelectedDistrictId
 		{
 			get
 			{
-				return ((DropDownList)Details.FindControl("_district")).SelectedValue.ToInt32();
+				var districts = ((DropDownList)Details.FindControl("_district"));
+				if (districts.SelectedValue.IsNullOrEmpty())
+					return null;
+
+				return districts.SelectedValue.ToInt32();
 			}
 			set
 			{
-				((DropDownList)Details.FindControl("_district")).SelectedValue = value.ToString();
+				if(value.HasValue)
+					((DropDownList)Details.FindControl("_district")).SelectedValue = value.ToString();
 			}
 		}
 

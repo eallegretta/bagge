@@ -23,6 +23,15 @@ namespace Bagge.Seti.WebSite.Controls {
         protected global::System.Web.UI.WebControls.PlaceHolder _noRecord;
         
         /// <summary>
+        /// _noRecordMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label _noRecordMessage;
+        
+        /// <summary>
         /// _accept control.
         /// </summary>
         /// <remarks>

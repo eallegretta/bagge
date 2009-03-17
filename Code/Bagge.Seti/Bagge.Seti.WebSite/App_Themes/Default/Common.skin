@@ -1,2 +1,8 @@
 ﻿<asp:Label SkinID="_error" runat="server" Font-Bold="true" ForeColor="red" />
 <asp:Label SkinID="_errorDescription" runat="server" Font-Bold="true" ForeColor="black" />
+
+<seti:SecureDetailsView CssClass="details" CellSpacing="2" HeaderStyle-CssClass="detailsHeader" RowStyle-CssClass="detailsRow" GridLines="None" runat="server">
+</seti:SecureDetailsView>
+
+<seti:SecureGridView CssClass="grid" CellSpacing="2" HeaderStyle-CssClass="gridHeader" RowStyle-CssClass="gridRow" AlternatingRowStyle-CssClass="gridRowAlternate" GridLines="None" runat="server">
+</seti:SecureGridView>

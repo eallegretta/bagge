@@ -11,7 +11,7 @@ using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Bagge.Seti.WebSite
 {
-	public abstract class ListPage<T,PK> : System.Web.UI.Page, IListView where T: PrimaryKeyDomainObject<T, PK>
+	public abstract class ListPage<T,PK> :  Page, IListView where T: PrimaryKeyDomainObject<T, PK>
 	{
 		protected override void OnInit(EventArgs e)
 		{
@@ -41,9 +41,15 @@ namespace Bagge.Seti.WebSite
 			Presenter.Delete(id);
 		}
 
+		bool _selected = false;
+
 		protected virtual void OnSelecting(int pageIndex, int pageSize, string orderBy)
 		{
-			Presenter.Select(pageIndex, pageSize, orderBy);
+			if (!_selected)
+			{
+				Presenter.Select(pageIndex, pageSize, orderBy);
+				_selected = true;
+			}
 		}
 
 

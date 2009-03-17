@@ -77,5 +77,32 @@ namespace Bagge.Seti.BusinessEntities.Properties {
                 return ResourceManager.GetString("ObjectNotFoundErrorMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El campo CUIT debe tener el formato 00-000000000-0.
+        /// </summary>
+        internal static string Validators_Customer_CUIT {
+            get {
+                return ResourceManager.GetString("Validators.Customer.CUIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \d{2}-\d{9}-\d{1}.
+        /// </summary>
+        internal static string Validators_Customer_CUIT_Pattern {
+            get {
+                return ResourceManager.GetString("Validators.Customer.CUIT.Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre es requerido.
+        /// </summary>
+        internal static string Validators_PrimaryKeyDomainObject_Name {
+            get {
+                return ResourceManager.GetString("Validators.PrimaryKeyDomainObject.Name", resourceCulture);
+            }
+        }
     }
 }

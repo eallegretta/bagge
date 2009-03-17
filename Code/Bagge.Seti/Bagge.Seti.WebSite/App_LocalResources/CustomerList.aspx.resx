@@ -156,4 +156,13 @@
   <data name="ListCommands.NewText" xml:space="preserve">
     <value>Nuevo Cliente</value>
   </data>
+  <data name="AddressField.HeaderText" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="CountryStateField.HeaderText" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="DistrictField.HeaderText" xml:space="preserve">
+    <value>Localidad</value>
+  </data>
 </root>

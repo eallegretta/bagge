@@ -2,14 +2,16 @@
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource" 
-		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
+		runat="server" AutoGenerateRows="False" meta:resourcekey="Details"> 
 		<Fields>
 			<asp:TemplateField meta:resourcekey="NameField">
 				<InsertItemTemplate>
 					<asp:TextBox ID="_name" runat="server" Text='<%# Bind("Name") %>' meta:resourcekey="NameTextBox"></asp:TextBox>
+					<asp:PropertyProxyValidator ID="_nameVal" runat="server" RulesetName="Rules" PropertyName="Name" ControlToValidate="_name" SourceTypeName="Bagge.Seti.BusinessEntities.Customer"></asp:PropertyProxyValidator>
 				</InsertItemTemplate>
 				<EditItemTemplate>
 					<asp:TextBox ID="_name" runat="server" Text='<%# Bind("Name") %>' meta:resourcekey="NameTextBox"></asp:TextBox>
+					<asp:PropertyProxyValidator ID="_nameVal" runat="server" RulesetName="Rules" PropertyName="Name" ControlToValidate="_name" SourceTypeName="Bagge.Seti.BusinessEntities.Customer"></asp:PropertyProxyValidator>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<%#Eval("Name")%>
@@ -18,9 +20,13 @@
 			<asp:TemplateField meta:resourcekey="CUITField">
 				<InsertItemTemplate>
 					<asp:TextBox ID="_cuit" runat="server" Text='<%# Bind("CUIT") %>' meta:resourcekey="CUITTextBox"></asp:TextBox>
+					<asp:PropertyProxyValidator ID="_cuitVal" runat="server" RulesetName="Rules" PropertyName="CUIT" ControlToValidate="_cuit" SourceTypeName="Bagge.Seti.BusinessEntities.Customer"></asp:PropertyProxyValidator>
+					<ajax:MaskedEditExtender Id="_cuitMask" TargetControlID="_cuit" AutoComplete="true" ClearMaskOnLostFocus="false" Mask="99-999999999-9" runat="server"></ajax:MaskedEditExtender>
 				</InsertItemTemplate>
 				<EditItemTemplate>
 					<asp:TextBox ID="_cuit" runat="server" Text='<%# Bind("CUIT") %>' meta:resourcekey="CUITTextBox"></asp:TextBox>
+					<asp:PropertyProxyValidator ID="_cuitVal" runat="server" RulesetName="Rules" PropertyName="CUIT" ControlToValidate="_cuit" SourceTypeName="Bagge.Seti.BusinessEntities.Customer"></asp:PropertyProxyValidator>
+					<ajax:MaskedEditExtender Id="_cuitMask" TargetControlID="_cuit" AutoComplete="true" ClearMaskOnLostFocus="false" Mask="99-999999999-9" runat="server"></ajax:MaskedEditExtender>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<%#Eval("CUIT")%>
@@ -28,12 +34,15 @@
 			</asp:TemplateField>
 			<asp:TemplateField meta:resourcekey="CountryStateField">
 				<InsertItemTemplate>
-					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelectedIndexChanged"></asp:DropDownList>
+					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelectedIndexChanged">
+						<asp:ListItem Text="-- Seleccione --" Value=""></asp:ListItem>
+					</asp:DropDownList>
 				</InsertItemTemplate>
 				<EditItemTemplate>
 					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id" runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelectedIndexChanged"></asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
+					<%#((Bagge.Seti.BusinessEntities.Customer)Container.DataItem).District.CountryState.Name%>
 				</ItemTemplate>			
 			</asp:TemplateField>
 			<asp:TemplateField meta:resourcekey="DistrictField">

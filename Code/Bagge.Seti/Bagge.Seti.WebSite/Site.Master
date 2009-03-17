@@ -4,6 +4,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 	<title></title>
+
+	<script type="text/javascript" src="Scripts/jquery-1.3.2.min.js"></script>
+
+	<script type="text/javascript">
+		
+
+		function pageLoad() {
+			$(document).ready(function() {
+
+				$("input[type=text],textarea").focus(function() {
+					$(this).addClass("selected");
+				}).blur(function() {
+					$(this).removeClass("selected");
+				})/*.change(function() {
+					if (this.value == this.origValue)
+						$(this).removeClass("changed");
+					else
+						$(this).addClass("changed");
+				})*/.each(function() {
+					this.origValue = this.value;
+				});
+
+
+			});
+		}
+	</script>
+
 	<asp:ContentPlaceHolder ID="_head" runat="server">
 	</asp:ContentPlaceHolder>
 </head>
