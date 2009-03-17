@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Archivos de programa\Spring.NET 1.2.0\bin\net\2.0\release\Spring.Core.dll</HintPath>
+      <HintPath>..\Dlls\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
