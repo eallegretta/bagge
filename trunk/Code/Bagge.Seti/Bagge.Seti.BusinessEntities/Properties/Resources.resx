@@ -123,4 +123,13 @@
   <data name="ObjectNotFoundErrorMessage" xml:space="preserve">
     <value>El registro especificado no existe</value>
   </data>
+  <data name="Validators.Customer.CUIT" xml:space="preserve">
+    <value>El campo CUIT debe tener el formato 00-000000000-0</value>
+  </data>
+  <data name="Validators.Customer.CUIT.Pattern" xml:space="preserve">
+    <value>\d{2}-\d{9}-\d{1}</value>
+  </data>
+  <data name="Validators.PrimaryKeyDomainObject.Name" xml:space="preserve">
+    <value>El nombre es requerido</value>
+  </data>
 </root>

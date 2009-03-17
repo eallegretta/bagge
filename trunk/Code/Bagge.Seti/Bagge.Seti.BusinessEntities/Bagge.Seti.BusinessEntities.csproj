@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Castle.Components.Validator.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -94,6 +98,8 @@
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketEmployee.cs" />
     <Compile Include="TicketStatus.cs" />
+    <Compile Include="Validators\RequiredStringValidator.cs" />
+    <Compile Include="Validators\RequiredStringValidatorAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

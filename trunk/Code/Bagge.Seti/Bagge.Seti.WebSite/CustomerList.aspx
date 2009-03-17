@@ -9,14 +9,21 @@
 				meta:resourcekey="NameField" />
 			<asp:BoundField DataField="CUIT" SortExpression="CUIT" 
 				meta:resourcekey="CUITField" />
+			<asp:BoundField DataField="FullAddress" SortExpression="Address" meta:resourcekey="AddressField" />
+			<asp:BoundField DataField="District" SortExpression="District" meta:resourcekey="DistrictField" />
+			<asp:TemplateField meta:resourcekey="CountryStateField" >
+				<ItemTemplate>
+					<%#((Bagge.Seti.BusinessEntities.Customer)(Container.DataItem)).District.CountryState%>
+				</ItemTemplate>
+			</asp:TemplateField>
 			<asp:HyperLinkField DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=View"
 				meta:resourcekey="ViewField" />
 			<asp:HyperLinkField DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=Edit" 
 				meta:resourcekey="EditField" />
-			<asp:DeleteCommandField 
-				meta:resourcekey="DeleteField"></asp:DeleteCommandField>
+			<eaa:DeleteCommandField 
+				meta:resourcekey="DeleteField"></eaa:DeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
 	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/CustomerEditor.aspx" />

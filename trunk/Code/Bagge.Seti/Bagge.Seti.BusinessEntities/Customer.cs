@@ -1,6 +1,8 @@
 ﻿using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
-using Castle.Components.Validator;
+using Bagge.Seti.BusinessEntities.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+using System.Text.RegularExpressions;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -8,7 +10,9 @@ namespace Bagge.Seti.BusinessEntities
 	public class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
 	{
 		[Property]
-		[ValidateRegExp(@"\d{2}-\d{9}-\d")]
+		[ValidatorComposition(Microsoft.Practices.EnterpriseLibrary.Validation.CompositionType.Or)]
+		[RequiredStringValidator(Negated = true)]
+		[RegexValidator("Validators.Customer.CUIT.Pattern", typeof(Customer), Ruleset = "Rules", MessageTemplateResourceName = "Validators.Customer.CUIT", MessageTemplateResourceType = typeof(Customer))]
 		public string CUIT 
 		{ 
 			get; 
@@ -22,6 +26,22 @@ namespace Bagge.Seti.BusinessEntities
 			get;
 			set;
 		}
+
+		public string FullAddress
+		{
+			get
+			{
+				string address = "";
+				if (!string.IsNullOrEmpty(Address))
+					address += Address + " ";
+				if (Floor.HasValue)
+					address += Floor.Value;
+				if (Apartment.HasValue)
+					address += Apartment.Value;
+
+				return address;
+			}
+		}
 		
 		[Property]
 		public string Address
@@ -31,14 +51,14 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
-		public char Floor
+		public char? Floor
 		{
 			get;
 			set;
 		}
 
 		[Property("Departament")]
-		public char Apartment
+		public char? Apartment
 		{
 			get;
 			set;

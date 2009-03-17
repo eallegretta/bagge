@@ -1,0 +1,36 @@
+﻿.changed
+{
+	border:1px solid #00cc66;
+	background-color:#00ff66;
+	color:black;
+}
+.selected
+{
+	border:1px solid #0066cc;
+	background-color:#0066ff;
+	color:White;
+}
+
+
+input.textBox
+{
+	font-family:Verdana;
+	font-size:10px;
+	border:1px solid #999999;
+	padding:5px;
+}
+
+
+textarea
+{
+	font-family:Verdana;
+	font-size:10px;
+	padding:5px;
+}
+
+select
+{
+	font-family:Verdana;
+	font-size:10px;
+	padding:5px;
+}

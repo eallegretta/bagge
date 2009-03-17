@@ -14,7 +14,7 @@ using Microsoft.Practices.Web.UI.WebControls.Utility;
 
 namespace Bagge.Seti.WebSite
 {
-	public abstract class EditorPage<T, PK> : System.Web.UI.Page, IEditorView<PK> where T: PrimaryKeyDomainObject<T, PK>
+	public abstract class EditorPage<T, PK> : Page, IEditorView<PK> where T: PrimaryKeyDomainObject<T, PK>
 	{
 
 		protected override void OnInit(EventArgs e)

@@ -69,3 +69,56 @@
 	background-repeat:repeat-x;
 	height:34px;
 }
+
+a
+{
+	color:#0066cc;
+	text-decoration:none;
+}
+
+a:hover
+{
+	text-decoration:underline;
+}
+
+
+
+table.details
+{
+	min-width:700px;
+	empty-cells:show;
+}
+
+tr.detailsRow td:first-child
+{
+	font-weight:bold;
+	background-color:#cccccc;
+}
+
+tr.detailsRow td
+{
+	padding:5px;
+}
+
+.commands
+{
+	text-align:right;
+	padding-right:10px;
+}
+
+table.grid
+{
+	width:100%;
+	font-family:Verdana;
+	font-size:11px;
+}
+
+tr.gridHeader th a
+{
+	text-decoration:none;
+}
+
+tr.gridHeader th a:hover
+{
+	text-decoration:underline;
+}
