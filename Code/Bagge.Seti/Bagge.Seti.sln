@@ -17,21 +17,29 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bagge.Seti.DesignByContract
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{B04E509E-D024-47A4-875A-B33A5B32CBAC}"
 	ProjectSection(SolutionItems) = preProject
+		Dlls\AjaxControlToolkit.dll = Dlls\AjaxControlToolkit.dll
 		Dlls\antlr.runtime.dll = Dlls\antlr.runtime.dll
 		Dlls\Castle.ActiveRecord.dll = Dlls\Castle.ActiveRecord.dll
 		Dlls\Castle.Components.Validator.dll = Dlls\Castle.Components.Validator.dll
 		Dlls\Castle.Core.dll = Dlls\Castle.Core.dll
 		Dlls\Castle.DynamicProxy.dll = Dlls\Castle.DynamicProxy.dll
 		Dlls\Common.Logging.dll = Dlls\Common.Logging.dll
+		Dlls\Coolite.Ext.Web.dll = Dlls\Coolite.Ext.Web.dll
 		Dlls\Eaa.Framework.Web.dll = Dlls\Eaa.Framework.Web.dll
 		Dlls\Iesi.Collections.dll = Dlls\Iesi.Collections.dll
 		Dlls\log4net.dll = Dlls\log4net.dll
+		Dlls\Microsoft.Practices.EnterpriseLibrary.Common.dll = Dlls\Microsoft.Practices.EnterpriseLibrary.Common.dll
+		Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll = Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll
+		Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll = Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll
+		Dlls\Microsoft.Practices.ObjectBuilder2.dll = Dlls\Microsoft.Practices.ObjectBuilder2.dll
 		Dlls\Microsoft.Practices.Web.UI.WebControls.dll = Dlls\Microsoft.Practices.Web.UI.WebControls.dll
 		Dlls\NHibernate.dll = Dlls\NHibernate.dll
 		Dlls\nunit.framework.dll = Dlls\nunit.framework.dll
 		Dlls\Rhino.Mocks.dll = Dlls\Rhino.Mocks.dll
 		Dlls\Spring.Aop.dll = Dlls\Spring.Aop.dll
 		Dlls\Spring.Core.dll = Dlls\Spring.Core.dll
+		Dlls\Spring.Web.dll = Dlls\Spring.Web.dll
+		Dlls\Spring.Web.Extensions.dll = Dlls\Spring.Web.Extensions.dll
 	EndProjectSection
 EndProject
 Global
