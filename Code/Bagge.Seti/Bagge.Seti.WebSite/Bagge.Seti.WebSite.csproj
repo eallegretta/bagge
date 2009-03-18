@@ -104,6 +104,7 @@
     <Compile Include="Controls\EditorCommands.ascx.designer.cs">
       <DependentUpon>EditorCommands.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ISecureControl.cs" />
     <Compile Include="Controls\ListCommands.ascx.cs">
       <DependentUpon>ListCommands.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -114,6 +115,9 @@
     <Compile Include="Controls\SecureDetailsView.cs" />
     <Compile Include="Controls\SecureFormView.cs" />
     <Compile Include="Controls\SecureGridView.cs" />
+    <Compile Include="Controls\SecurePlaceHolder.cs" />
+    <Compile Include="Controls\SecureTemplateColumn.cs" />
+    <Compile Include="Controls\SecureTemplateField.cs" />
     <Compile Include="EditorPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

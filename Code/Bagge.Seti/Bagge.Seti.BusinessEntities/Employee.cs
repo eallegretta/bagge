@@ -1,9 +1,10 @@
-﻿using Bagge.Seti.BusinessEntities.Properties;
-using System.Collections.Generic;
-using Castle.ActiveRecord;
-using Bagge.Seti.Security.BusinessEntities;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
+using Bagge.Seti.BusinessEntities.Properties;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
+using Castle.ActiveRecord;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -94,6 +95,31 @@ namespace Bagge.Seti.BusinessEntities
 		{
 			get;
 			set;
+		}
+
+		IList<Function> _functions; 
+
+		public IList<Function> Functions
+		{
+			get
+			{
+				if (_functions == null)
+					_functions = GetDistinctFunctions();
+				return _functions;
+			}
+		}
+
+		private IList<Function> GetDistinctFunctions()
+		{
+			List<Function> functions = new List<Function>();
+			foreach (var role in Roles)
+			{
+				var distinctFunctions = from function in role.Functions
+										where !functions.Contains(function)
+										select function;
+				functions.AddRange(distinctFunctions.ToArray());
+			}
+			return functions;
 		}
 
 		#region IIdentity Members

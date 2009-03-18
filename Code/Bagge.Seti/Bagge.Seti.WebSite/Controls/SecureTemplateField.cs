@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Bagge.Seti.WebSite
+namespace Bagge.Seti.WebSite.Controls
 {
-	public partial class _Default : Page
+	public class SecureTemplateField: TemplateField
 	{
-		protected void Page_Load(object sender, EventArgs e)
+		public string DataField
 		{
-
+			get;
+			set;
 		}
 	}
 }

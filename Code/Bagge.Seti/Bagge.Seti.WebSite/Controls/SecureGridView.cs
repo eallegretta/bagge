@@ -7,7 +7,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class SecureGridView: GridView
+	public class SecureGridView: GridView, ISecureControl
 	{
 		public SecureGridView()
 		{
@@ -30,5 +30,18 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 		}
 
+
+		#region ISecureControl Members
+
+		public string SecureTypeName
+		{
+			get; set;
+		}
+
+		public void ApplySecurityRestrictions(IList<Function> functions)
+		{
+		}
+
+		#endregion
 	}
 }
