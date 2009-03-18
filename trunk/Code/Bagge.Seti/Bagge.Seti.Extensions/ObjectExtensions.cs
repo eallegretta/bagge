@@ -303,6 +303,7 @@ namespace System
 		}
 
 
+
 		public static bool HasProperty(this object source, string propertyName)
 		{
 			return source.GetType().GetProperty(propertyName) != null;
