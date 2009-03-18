@@ -12,6 +12,7 @@ namespace Bagge.Seti.BusinessEntities.Security
 		string Username { get; set; }
 		string Password { get; set; }
 		IList<Role> Roles { get; set; }
+		IList<Function> Functions { get; }
 		new bool IsAuthenticated { get; set; }
 	}
 }
