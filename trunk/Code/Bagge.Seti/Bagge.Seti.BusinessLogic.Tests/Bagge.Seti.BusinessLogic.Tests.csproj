@@ -34,10 +34,12 @@
     <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Castle.ActiveRecord.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="NHibernate, Version=1.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\NHibernate.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,18 +71,22 @@
     <ProjectReference Include="..\Bagge.Seti.BusinessEntities\Bagge.Seti.BusinessEntities.csproj">
       <Project>{32F8F81B-0F4D-4ABA-9CBE-1613FDA7B328}</Project>
       <Name>Bagge.Seti.BusinessEntities</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Bagge.Seti.BusinessLogic\Bagge.Seti.BusinessLogic.csproj">
       <Project>{2A4DB60F-1B1C-49FC-B1AA-C18C595F1B1D}</Project>
       <Name>Bagge.Seti.BusinessLogic</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Bagge.Seti.Common\Bagge.Seti.Common.csproj">
       <Project>{F6D1CEE2-50AC-4415-B6C5-0C16F9C5155F}</Project>
       <Name>Bagge.Seti.Common</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Bagge.Seti.Extensions\Bagge.Seti.Extensions.csproj">
       <Project>{108362FC-4C87-4D0D-8EBF-523F4235DAC0}</Project>
       <Name>Bagge.Seti.Extensions</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
