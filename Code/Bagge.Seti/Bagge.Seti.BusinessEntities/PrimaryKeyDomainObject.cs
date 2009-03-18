@@ -34,15 +34,15 @@ namespace Bagge.Seti.BusinessEntities
 
 		#region ISecurizable Members
 
-		private Dictionary<string, AccesibilityTypes> _accesibilities;
+		private Dictionary<string, AccessibilityTypes> _accesibilities;
 		private Dictionary<string, IList<Constraint>> _constraints;
 
-		private Dictionary<string, AccesibilityTypes> Accesibilities
+		private Dictionary<string, AccessibilityTypes> Accesibilities
 		{
 			get
 			{
 				if (_accesibilities == null)
-					_accesibilities = new Dictionary<string, AccesibilityTypes>();
+					_accesibilities = new Dictionary<string, AccessibilityTypes>();
 				return _accesibilities;
 			}
 		}
@@ -57,14 +57,14 @@ namespace Bagge.Seti.BusinessEntities
 			}
 		}
 
-		public AccesibilityTypes GetAccesibility(string propertyName)
+		public AccessibilityTypes GetAccesibility(string propertyName)
 		{
 			if (Accesibilities.ContainsKey(propertyName))
 				return Accesibilities[propertyName];
-			return AccesibilityTypes.Edit;
+			return AccessibilityTypes.Edit;
 		}
 
-		public void SetAccesibility(string propertyName, AccesibilityTypes accesibility)
+		public void SetAccesibility(string propertyName, AccessibilityTypes accesibility)
 		{
 			if (!Accesibilities.ContainsKey(propertyName))
 				Accesibilities.Add(propertyName, accesibility);

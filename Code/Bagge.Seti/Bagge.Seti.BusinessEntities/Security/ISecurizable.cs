@@ -8,8 +8,8 @@ namespace Bagge.Seti.Security.BusinessEntities
 {
 	public interface ISecurizable
 	{
-		AccesibilityTypes GetAccesibility(string propertyName);
-		void SetAccesibility(string propertyName, AccesibilityTypes accesibitily);
+		AccessibilityTypes GetAccesibility(string propertyName);
+		void SetAccesibility(string propertyName, AccessibilityTypes accesibitily);
 		void SetConstraint(string propertyName, Constraint constraint);
 		IList<Constraint> GetConstraints(string propertyName);
 	}

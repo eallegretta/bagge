@@ -4,14 +4,23 @@ using System.Linq;
 using System.Text;
 using Bagge.Seti.BusinessEntities;
 using Castle.ActiveRecord;
+using System.Reflection;
 
 namespace Bagge.Seti.Security.BusinessEntities
 {
 	[ActiveRecord("[Function]")]
 	public class Function : AuditablePrimaryKeyWithNameDomainObject<Function, int>
 	{
-		[Property]
-		public string Assembly
+		public Type TargetType
+		{
+			get
+			{
+				return Type.GetType(Assembly.CreateQualifiedName(AssemblyName, ClassFullQualifiedName));
+			}
+		}
+
+		[Property("Assembly")]
+		public string AssemblyName
 		{
 			get;
 			set;
@@ -58,7 +67,6 @@ namespace Bagge.Seti.Security.BusinessEntities
 			get;
 			set;
 		}
-
 
 		[HasAndBelongsToMany(Table="RoleFunction", ColumnKey="FunctionId", ColumnRef="RoleId")]
 		public virtual IList<Role> Roles

@@ -11,7 +11,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 	{
 		#region IAccessibilityDao Members
 
-		public AccessibilityType[] FindByType(AccesibilityTypeType type)
+		public AccessibilityType[] FindByType(AccessibilityTypeType type)
 		{
 			throw new NotImplementedException();
 		}

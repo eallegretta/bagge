@@ -8,6 +8,6 @@ namespace Bagge.Seti.DataAccess.Contracts
 {
 	public interface IAccessibilityDao: IGetDao<AccessibilityType, byte> 
 	{
-		AccessibilityType[] FindByType(AccesibilityTypeType type);
+		AccessibilityType[] FindByType(AccessibilityTypeType type);
 	}
 }
