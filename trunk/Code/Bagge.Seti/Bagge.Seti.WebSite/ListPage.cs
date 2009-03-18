@@ -8,6 +8,7 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.BusinessLogic;
 using Microsoft.Practices.Web.UI.WebControls;
+using Bagge.Seti.WebSite.Controls;
 
 namespace Bagge.Seti.WebSite
 {
@@ -19,6 +20,9 @@ namespace Bagge.Seti.WebSite
 			ObjectDataSource.Deleting += new EventHandler<ObjectContainerDataSourceDeletingEventArgs>(ObjectDataSource_Deleting);
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 			ObjectDataSource.UsingServerPaging = true;
+
+			if (Grid is SecureGridView)
+				((SecureGridView)Grid).SecureTypeName = typeof(T).AssemblyQualifiedName;
 
 			base.OnInit(e);
 		}
@@ -52,7 +56,10 @@ namespace Bagge.Seti.WebSite
 			}
 		}
 
-
+		protected abstract GridView Grid
+		{
+			get;
+		}
 
 		protected abstract ListPresenter<T, PK> Presenter
 		{

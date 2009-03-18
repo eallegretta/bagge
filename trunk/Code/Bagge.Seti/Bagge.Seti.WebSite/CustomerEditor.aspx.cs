@@ -19,6 +19,8 @@ namespace Bagge.Seti.WebSite
 		public CustomerEditor()
 		{
 			_presenter = new CustomerEditorPresenter(this, IoCContainer.CustomerManager, IoCContainer.CountryStateManager, IoCContainer.DistrictManager);
+
+			
 		}
 
 		protected override EditorPresenter<Customer, int> Presenter

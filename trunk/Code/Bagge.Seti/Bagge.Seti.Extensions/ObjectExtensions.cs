@@ -302,14 +302,37 @@ namespace System
 			return (T)binaryFormatter.Deserialize(memoryStream);
 		}
 
+
+		public static bool HasProperty(this object source, string propertyName)
+		{
+			return source.GetType().GetProperty(propertyName) != null;
+		}
+
 		public static object GetPropertyValue(this object source, string propertyName)
+		{
+			PropertyInfo property = source.GetType().GetProperty(propertyName);
+
+			return property ?? property.GetValue(source, null);
+
+			/*if (property != null)
+			{
+				return property.GetValue(source, null);
+			}
+			return null;*/
+		}
+
+		public static void SetPropertyValue(this object source, string propertyName, object value)
+		{
+			SetPropertyValue(source, propertyName, value, null);
+		}
+
+		public static void SetPropertyValue(this object source, string propertyName, object value, object[] index)
 		{
 			PropertyInfo property = source.GetType().GetProperty(propertyName);
 			if (property != null)
 			{
-				return property.GetValue(source, null);
+				property.SetValue(source, value, index);
 			}
-			return null;
 		}
 
 		//public static string ToJSON(this object source)

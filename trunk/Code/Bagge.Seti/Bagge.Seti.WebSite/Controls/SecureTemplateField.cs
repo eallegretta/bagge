@@ -6,12 +6,15 @@ using System.Web.UI.WebControls;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class SecureTemplateField: TemplateField
+	public class SecureTemplateField: TemplateField, IPropertySecureControl
 	{
-		public string DataField
+		#region IPropertySecureControl Members
+
+		public string PropertyName
 		{
-			get;
-			set;
+			get; set;
 		}
+
+		#endregion
 	}
 }

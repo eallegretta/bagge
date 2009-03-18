@@ -11,6 +11,7 @@ using System.Collections;
 using System.ComponentModel;
 using Microsoft.Practices.Web.UI.WebControls;
 using Microsoft.Practices.Web.UI.WebControls.Utility;
+using Bagge.Seti.WebSite.Controls;
 
 namespace Bagge.Seti.WebSite
 {

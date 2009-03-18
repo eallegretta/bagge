@@ -32,5 +32,10 @@ namespace Bagge.Seti.WebSite
 		{
 			get { return _presenter; }
 		}
+
+		protected override GridView Grid
+		{
+			get { return _customers; }
+		}
 	}
 }

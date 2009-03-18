@@ -11,25 +11,8 @@ namespace Bagge.Seti.WebSite.Controls
 	{
 		public SecureGridView()
 		{
-			this.RowDataBound += new GridViewRowEventHandler(SecureGridView_RowDataBound);
+			
 		}
-
-		
-
-		protected override void ExtractRowValues(System.Collections.Specialized.IOrderedDictionary fieldValues, GridViewRow row, bool includeReadOnlyFields, bool includePrimaryKey)
-		{
-			base.ExtractRowValues(fieldValues, row, includeReadOnlyFields, includePrimaryKey);
-		}
-
-		void SecureGridView_RowDataBound(object sender, GridViewRowEventArgs e)
-		{
-			if (e.Row.RowType.In(DataControlRowType.DataRow, DataControlRowType.Header))
-			{
-				var item = (ISecurizable)e.Row.DataItem;
-				
-			}
-		}
-
 
 		#region ISecureControl Members
 
@@ -40,6 +23,29 @@ namespace Bagge.Seti.WebSite.Controls
 
 		public void ApplySecurityRestrictions(IList<Function> functions)
 		{
+			foreach (DataControlField field in Columns)
+			{
+				if (field is BoundField || field is IPropertySecureControl)
+				{
+					string propertyName;
+					if(field is BoundField)
+						propertyName = ((BoundField)field).DataField;
+					else
+						propertyName = ((IPropertySecureControl)field).PropertyName;
+
+					switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), propertyName, functions))
+					{
+						case AccessibilityTypes.Edit:
+						case AccessibilityTypes.View:
+							field.Visible = true;
+							break;
+						case AccessibilityTypes.None:
+							field.Visible = false;
+							break;
+					}
+
+				}
+			}
 		}
 
 		#endregion
