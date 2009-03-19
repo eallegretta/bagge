@@ -17,7 +17,7 @@ namespace Bagge.Seti.Common.Validation
 
 		private static ValidationResults GetValidationResults(object instance)
 		{
-			Validator validator = ValidationFactory.CreateValidatorFromConfiguration(instance.GetType(), "Rules");
+			Validator validator = ValidationFactory.CreateValidator(instance.GetType());
 
 			ValidationResults results = validator.Validate(instance);
 

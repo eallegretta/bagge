@@ -129,7 +129,10 @@
   <data name="Validators.Customer.CUIT.Pattern" xml:space="preserve">
     <value>\d{2}-\d{9}-\d{1}</value>
   </data>
-  <data name="Validators.PrimaryKeyDomainObject.Name" xml:space="preserve">
+  <data name="Validators.PrimaryKeyDomainObject.Name.Length" xml:space="preserve">
+    <value>El nombre debe tener una longitud entre 1 y 50 caracteres</value>
+  </data>
+  <data name="Validators.PrimaryKeyDomainObject.Name.Required" xml:space="preserve">
     <value>El nombre es requerido</value>
   </data>
 </root>

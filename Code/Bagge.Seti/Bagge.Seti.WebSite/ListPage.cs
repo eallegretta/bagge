@@ -30,6 +30,7 @@ namespace Bagge.Seti.WebSite
 		void ObjectDataSource_Deleting(object sender, ObjectContainerDataSourceDeletingEventArgs e)
 		{
 			OnDeleting((PK)e.Keys["Id"]);
+			e.Cancel = true;
 		}
 
 		private void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)

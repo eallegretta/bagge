@@ -62,7 +62,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public virtual void Update(T instance)
 		{
-			try
+			/*try
 			{
 				ISessionScope scope = ThreadScopeAccessor.Instance.GetRegisteredScope();
 				if (scope != null)
@@ -71,10 +71,12 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 					scope.Dispose();
 				}
 				ActiveRecordMediator<T>.Update(instance);
+				
 			}
 			catch (ScopeMachineryException)
 			{
-			}
+			}*/
+			ActiveRecordMediator<T>.Update(instance);
 		}
 
 		public virtual void Delete(PK id)

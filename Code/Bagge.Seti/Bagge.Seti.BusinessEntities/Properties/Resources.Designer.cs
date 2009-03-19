@@ -97,11 +97,20 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El nombre debe tener una longitud entre 1 y 50 caracteres.
+        /// </summary>
+        internal static string Validators_PrimaryKeyDomainObject_Name_Length {
+            get {
+                return ResourceManager.GetString("Validators.PrimaryKeyDomainObject.Name.Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El nombre es requerido.
         /// </summary>
-        internal static string Validators_PrimaryKeyDomainObject_Name {
+        internal static string Validators_PrimaryKeyDomainObject_Name_Required {
             get {
-                return ResourceManager.GetString("Validators.PrimaryKeyDomainObject.Name", resourceCulture);
+                return ResourceManager.GetString("Validators.PrimaryKeyDomainObject.Name.Required", resourceCulture);
             }
         }
     }

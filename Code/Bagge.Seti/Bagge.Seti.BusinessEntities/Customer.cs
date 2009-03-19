@@ -3,6 +3,7 @@ using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.BusinessEntities.Validators;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using System.Text.RegularExpressions;
+using Microsoft.Practices.EnterpriseLibrary.Validation;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -10,9 +11,9 @@ namespace Bagge.Seti.BusinessEntities
 	public class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
 	{
 		[Property]
-		[ValidatorComposition(Microsoft.Practices.EnterpriseLibrary.Validation.CompositionType.Or)]
+		[ValidatorComposition(CompositionType.Or)]
 		[RequiredStringValidator(Negated = true)]
-		[RegexValidator("Validators.Customer.CUIT.Pattern", typeof(Customer), Ruleset = "Rules", MessageTemplateResourceName = "Validators.Customer.CUIT", MessageTemplateResourceType = typeof(Customer))]
+		[RegexValidator("Validators.Customer.CUIT.Pattern", typeof(Customer), MessageTemplateResourceName = "Validators.Customer.CUIT", MessageTemplateResourceType = typeof(Customer))]
 		public string CUIT 
 		{ 
 			get; 
@@ -44,6 +45,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 		
 		[Property]
+		[StringLengthValidator(50, MessageTemplateResourceName = "Validators.Customer.Address.Length", MessageTemplateResourceType = typeof(Customer))]
 		public string Address
 		{
 			get;
@@ -65,6 +67,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[StringLengthValidator(7, MessageTemplateResourceName = "Validators.Customer.ZipCode.Length", MessageTemplateResourceType = typeof(Customer))]
 		public string ZipCode
 		{
 			get;
