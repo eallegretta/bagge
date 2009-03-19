@@ -23,6 +23,13 @@ namespace Bagge.Seti.WebSite
 			
 		}
 
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			if (!IsPostBack)
+			{
+			}
+		}
+
 		protected override EditorPresenter<Customer, int> Presenter
 		{
 			get { return _presenter; }

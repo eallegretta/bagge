@@ -46,6 +46,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Eaa.Framework.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll</HintPath>
@@ -97,6 +101,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BoundField.cs" />
     <Compile Include="Controls\EditorCommands.ascx.cs">
       <DependentUpon>EditorCommands.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -295,6 +300,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controls\App_LocalResources\ListCommands.ascx.resx" />
+    <Content Include="Scripts\jquery.maskedinput-1.2.2.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -3,6 +3,7 @@ using Castle.ActiveRecord;
 using Castle.Components.Validator;
 using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.BusinessEntities.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -19,7 +20,8 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
-		[RequiredStringValidator(Ruleset="Rules", MessageTemplateResourceName="Validators.PrimaryKeyDomainObject.Name", MessageTemplateResourceType = typeof(ISecurizable))]
+		[StringLengthValidator(1,50, MessageTemplateResourceName = "Validators.PrimaryKeyDomainObject.Name.Length", MessageTemplateResourceType = typeof(ISecurizable))]
+		[RequiredStringValidator(MessageTemplateResourceName="Validators.PrimaryKeyDomainObject.Name.Required", MessageTemplateResourceType = typeof(ISecurizable))]
 		public virtual string Name { get ; set; }
 
 		public override string ToString()

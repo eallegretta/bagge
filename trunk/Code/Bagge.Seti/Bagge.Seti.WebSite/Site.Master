@@ -8,8 +8,6 @@
 	<script type="text/javascript" src="Scripts/jquery-1.3.2.min.js"></script>
 
 	<script type="text/javascript">
-		
-
 		function pageLoad() {
 			$(document).ready(function() {
 
@@ -17,16 +15,7 @@
 					$(this).addClass("selected");
 				}).blur(function() {
 					$(this).removeClass("selected");
-				})/*.change(function() {
-					if (this.value == this.origValue)
-						$(this).removeClass("changed");
-					else
-						$(this).addClass("changed");
-				})*/.each(function() {
-					this.origValue = this.value;
 				});
-
-
 			});
 		}
 	</script>
