@@ -8,5 +8,7 @@ namespace Bagge.Seti.WebSite.Controls
 	public interface IPropertySecureControl
 	{
 		string PropertyName { get; set; }
+		bool Visible { get; set; }
+		bool ReadOnly { get; set; }
 	}
 }

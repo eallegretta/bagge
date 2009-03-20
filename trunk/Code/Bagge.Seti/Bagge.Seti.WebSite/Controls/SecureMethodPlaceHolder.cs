@@ -28,7 +28,6 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			get; set;
 		}
-
 		#endregion
 	}
 }

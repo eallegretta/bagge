@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
-using Bagge.Seti.Helpers;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class SecureTemplateField: TemplateField, IPropertySecureControl, IMethodSecureControl
+	public class SecureCheckBoxField: CheckBoxField, IPropertySecureControl, IMethodSecureControl
 	{
 		#region IPropertySecureControl Members
 
 		public string PropertyName
 		{
-			get; set;
-		}
-
-		public bool ReadOnly
-		{
-			get { return (bool)(ViewState["ReadOnly"] ?? false); }
-			set { ViewState["ReadOnly"] = value; }
+			get	{ return DataField; }
+			set { DataField = value; }
 		}
 
 		#endregion

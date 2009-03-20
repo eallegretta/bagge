@@ -37,6 +37,12 @@ namespace Bagge.Seti.WebSite.Controls
 			set;
 		}
 
+		public bool ReadOnly
+		{
+			get {  return (bool)(ViewState["ReadOnly"] ?? false); }
+			set {  ViewState["ReadOnly"] = value; }
+		}
+
 		#endregion
 	}
 }

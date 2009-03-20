@@ -8,5 +8,6 @@ namespace Bagge.Seti.WebSite.Controls
 	public interface IMethodSecureControl
 	{
 		string MethodName { get; set; }
+		bool Visible { get; set; }
 	}
 }
