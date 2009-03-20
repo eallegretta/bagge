@@ -101,7 +101,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BoundField.cs" />
+    <Compile Include="Controls\SecureBoundField.cs" />
     <Compile Include="Controls\EditorCommands.ascx.cs">
       <DependentUpon>EditorCommands.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -119,6 +119,7 @@
     <Compile Include="Controls\ListCommands.ascx.designer.cs">
       <DependentUpon>ListCommands.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SecureCheckBoxField.cs" />
     <Compile Include="Controls\SecureDetailsView.cs" />
     <Compile Include="Controls\SecureFormView.cs" />
     <Compile Include="Controls\SecureGridView.cs" />

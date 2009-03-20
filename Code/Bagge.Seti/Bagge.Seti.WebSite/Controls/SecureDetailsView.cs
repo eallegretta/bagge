@@ -21,25 +21,37 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			foreach (DataControlField field in Fields)
 			{
-				if (field is System.Web.UI.WebControls.BoundField || field is IPropertySecureControl)
+				if (field is IPropertySecureControl)
 				{
-					string propertyName;
-					if (field is System.Web.UI.WebControls.BoundField)
-						propertyName = ((System.Web.UI.WebControls.BoundField)field).DataField;
-					else
-						propertyName = ((IPropertySecureControl)field).PropertyName;
+					var secureField = (IPropertySecureControl)field;
 
-					switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), propertyName, functions))
+					switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), secureField.PropertyName, functions))
 					{
-						case AccessibilityTypes.Edit:
 						case AccessibilityTypes.View:
-							field.Visible = true;
+							secureField.ReadOnly = false;
+							secureField.Visible = true;
+							break;
+						case AccessibilityTypes.Edit:
+							secureField.ReadOnly = false;
+							secureField.Visible = true;
 							break;
 						case AccessibilityTypes.None:
-							field.Visible = false;
+							secureField.Visible = false;
 							break;
 					}
-
+				}
+				else if (field is IMethodSecureControl)
+				{
+					var secureField = (IMethodSecureControl)field;
+					switch (AccessibilityType.GetAccessibilityForMethod(Type.GetType(SecureTypeName), secureField.MethodName, functions))
+					{
+						case AccessibilityTypes.None:
+							secureField.Visible = false;
+							break;
+						case AccessibilityTypes.Execute:
+							secureField.Visible = true;
+							break;
+					}
 				}
 			}
 		}

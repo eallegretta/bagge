@@ -8,7 +8,7 @@ using Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class BoundField: System.Web.UI.WebControls.BoundField
+	public class SecureBoundField: System.Web.UI.WebControls.BoundField, IPropertySecureControl
 	{
 		public int MaxLength
 		{
@@ -53,5 +53,15 @@ namespace Bagge.Seti.WebSite.Controls
 			if (MaxLength > 0)
 				textBox.MaxLength = MaxLength;
 		}
+
+		#region IPropertySecureControl Members
+
+		public string PropertyName
+		{
+			get{ return DataField; }
+			set { DataField = value; }
+		}
+
+		#endregion
 	}
 }

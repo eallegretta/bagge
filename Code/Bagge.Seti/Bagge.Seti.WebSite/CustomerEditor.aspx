@@ -27,7 +27,7 @@
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
 		<Fields>
-			<seti:BoundField DataField="Name" meta:resourcekey="NameField"></seti:BoundField>
+			<seti:SecureBoundField DataField="Name" meta:resourcekey="NameField"></seti:SecureBoundField>
 			<seti:SecureTemplateField meta:resourcekey="CUITField">
 				<InsertItemTemplate>
 					<asp:TextBox ID="_cuit" runat="server" Text='<%# Bind("CUIT") %>' meta:resourcekey="CUITTextBox"></asp:TextBox>
@@ -74,9 +74,9 @@
 					<%#Eval("District")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:BoundField DataField="Address" meta:resourcekey="AddressField" />
-			<seti:BoundField DataField="Floor" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="FloorField" />
-			<seti:BoundField DataField="Apartment" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="ApartmentField" />
+			<seti:SecureBoundField DataField="Address" meta:resourcekey="AddressField" />
+			<seti:SecureBoundField DataField="Floor" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="FloorField" />
+			<seti:SecureBoundField DataField="Apartment" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="ApartmentField" />
 			<seti:SecureTemplateField PropertyName="ZipCode" meta:resourcekey="ZipCodeField">
 				<InsertItemTemplate>
 					<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>'></asp:TextBox>
@@ -88,10 +88,10 @@
 				<%#Eval("ZipCode")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:BoundField DataField="City" meta:resourcekey="CityField" />
-			<seti:BoundField DataField="Phone" meta:resourcekey="PhoneField" />
-			<seti:BoundField DataField="MobilePhone" meta:resourcekey="MobilePhoneField" />
-			<seti:BoundField DataField="Email" meta:resourcekey="EmailField" />
+			<seti:SecureBoundField DataField="City" meta:resourcekey="CityField" />
+			<seti:SecureBoundField DataField="Phone" meta:resourcekey="PhoneField" />
+			<seti:SecureBoundField DataField="MobilePhone" meta:resourcekey="MobilePhoneField" />
+			<seti:SecureBoundField DataField="Email" meta:resourcekey="EmailField" />
 			<asp:CheckBoxField DataField="Subscription" meta:resourcekey="SubscriptionField" />
 		</Fields>
 	</seti:SecureDetailsView>
