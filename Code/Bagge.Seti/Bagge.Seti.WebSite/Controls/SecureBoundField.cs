@@ -40,11 +40,13 @@ namespace Bagge.Seti.WebSite.Controls
 		private void SetupValidator(DataControlFieldCell cell, TextBox textBox)
 		{
 			PropertyProxyValidator validator = new PropertyProxyValidator();
-			validator.SourceTypeName = ((ISecureControl)Control).SecureTypeName;
+			validator.SourceTypeName = ((ISecureControlContainer)Control).SecureTypeName;
 			validator.PropertyName = DataField;
 			if (string.IsNullOrEmpty(textBox.ID))
 				textBox.ID = DataField + "_txt";
 			validator.ControlToValidate = textBox.ID;
+			validator.Display = ValidatorDisplay.Dynamic;
+			validator.DisplayMode = ValidationSummaryDisplayMode.SingleParagraph;
 			cell.Controls.Add(validator);
 		}
 

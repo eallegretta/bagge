@@ -26,7 +26,7 @@ namespace Bagge.Seti.WebSite
 
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 
-			ISecureControl details = Details as ISecureControl;
+			ISecureControlContainer details = Details as ISecureControlContainer;
 			if (details != null)
 				details.SecureTypeName = typeof(T).AssemblyQualifiedName;
 

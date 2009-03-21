@@ -10,8 +10,7 @@
 	<script type="text/javascript">
 		function pageLoad() {
 			$(document).ready(function() {
-
-				$("input[type=text],textarea").focus(function() {
+				$("input[type=text],input[type=password],input[type=file],textarea").focus(function() {
 					$(this).addClass("selected");
 				}).blur(function() {
 					$(this).removeClass("selected");

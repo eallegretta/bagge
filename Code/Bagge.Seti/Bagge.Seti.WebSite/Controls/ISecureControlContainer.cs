@@ -6,7 +6,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public interface ISecureControl
+	public interface ISecureControlContainer
 	{
 		string SecureTypeName { get; set; }
 		void ApplySecurityRestrictions(IList<Function> functions);

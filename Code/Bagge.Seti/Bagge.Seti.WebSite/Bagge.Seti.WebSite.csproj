@@ -101,6 +101,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\FilteredGridView.cs" />
+    <Compile Include="Controls\FilteredGridViewEventArgs.cs" />
     <Compile Include="Controls\SecureBoundField.cs" />
     <Compile Include="Controls\EditorCommands.ascx.cs">
       <DependentUpon>EditorCommands.ascx</DependentUpon>
@@ -111,7 +113,7 @@
     </Compile>
     <Compile Include="Controls\IMethodSecureControl.cs" />
     <Compile Include="Controls\IPropertySecureControl.cs" />
-    <Compile Include="Controls\ISecureControl.cs" />
+    <Compile Include="Controls\ISecureControlContainer.cs" />
     <Compile Include="Controls\ListCommands.ascx.cs">
       <DependentUpon>ListCommands.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -284,6 +286,7 @@
       <DependentUpon>SETI.mdf</DependentUpon>
     </Content>
     <Content Include="App_Themes\Default\Forms.skin" />
+    <Content Include="App_Themes\Default\Login.skin" />
     <None Include="Config\Objects.config" />
     <None Include="Config\TypeAliases.config" />
     <Content Include="Login.aspx" />
@@ -300,6 +303,7 @@
     <Content Include="Controls\App_LocalResources\EditorCommands.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Default\Images\inputBackground.gif" />
     <Content Include="Controls\App_LocalResources\ListCommands.ascx.resx" />
     <Content Include="Scripts\jquery.maskedinput-1.2.2.min.js" />
   </ItemGroup>

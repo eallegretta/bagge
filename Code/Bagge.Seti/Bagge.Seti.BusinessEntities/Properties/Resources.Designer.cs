@@ -61,7 +61,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usted no posee permisos para ejecutar la acción que desea realizar.
+        ///   Looks up a localized string similar to Usted no posee permisos para ejecutar la acción que desea realizar..
         /// </summary>
         internal static string MethodAccessDeniedErrorMessage {
             get {
@@ -70,7 +70,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El registro especificado no existe.
+        ///   Looks up a localized string similar to El registro especificado no existe..
         /// </summary>
         internal static string ObjectNotFoundErrorMessage {
             get {
@@ -79,7 +79,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El campo CUIT debe tener el formato 00-000000000-0.
+        ///   Looks up a localized string similar to El campo CUIT debe tener el formato 00-000000000-0..
         /// </summary>
         internal static string Validators_Customer_CUIT {
             get {
@@ -97,7 +97,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El nombre debe tener una longitud entre 1 y 50 caracteres.
+        ///   Looks up a localized string similar to El nombre debe tener una longitud entre 1 y 50 caracteres..
         /// </summary>
         internal static string Validators_PrimaryKeyDomainObject_Name_Length {
             get {
@@ -106,7 +106,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El nombre es requerido.
+        ///   Looks up a localized string similar to El nombre es requerido..
         /// </summary>
         internal static string Validators_PrimaryKeyDomainObject_Name_Required {
             get {
