@@ -7,7 +7,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class SecureGridView: GridView, ISecureControl
+	public class SecureGridView: GridView, ISecureControlContainer
 	{
 		public SecureGridView()
 		{

@@ -21,8 +21,8 @@ namespace Bagge.Seti.WebSite
 		{
 			foreach (Control ctrl in controlCollection)
 			{
-				if (ctrl is ISecureControl)
-					((ISecureControl)ctrl).ApplySecurityRestrictions(((IUser)Page.User.Identity).Functions);
+				if (ctrl is ISecureControlContainer)
+					((ISecureControlContainer)ctrl).ApplySecurityRestrictions(((IUser)Page.User.Identity).Functions);
 				ApplySecurityRestrictions(ctrl.Controls);
 			}
 		}

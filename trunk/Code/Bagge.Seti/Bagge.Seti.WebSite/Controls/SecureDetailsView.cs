@@ -7,7 +7,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class SecureDetailsView: DetailsView, ISecureControl
+	public class SecureDetailsView: DetailsView, ISecureControlContainer
 	{
 		#region ISecureControl Members
 
@@ -23,36 +23,46 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				if (field is IPropertySecureControl)
 				{
-					var secureField = (IPropertySecureControl)field;
-
-					switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), secureField.PropertyName, functions))
-					{
-						case AccessibilityTypes.View:
-							secureField.ReadOnly = false;
-							secureField.Visible = true;
-							break;
-						case AccessibilityTypes.Edit:
-							secureField.ReadOnly = false;
-							secureField.Visible = true;
-							break;
-						case AccessibilityTypes.None:
-							secureField.Visible = false;
-							break;
-					}
+					ApplySecurityRestrictionsForProperty(functions, field);
 				}
-				else if (field is IMethodSecureControl)
+				if (field is IMethodSecureControl)
 				{
-					var secureField = (IMethodSecureControl)field;
-					switch (AccessibilityType.GetAccessibilityForMethod(Type.GetType(SecureTypeName), secureField.MethodName, functions))
-					{
-						case AccessibilityTypes.None:
-							secureField.Visible = false;
-							break;
-						case AccessibilityTypes.Execute:
-							secureField.Visible = true;
-							break;
-					}
+					ApplySecurityRestrictionsForMethod(functions, field);
 				}
+			}
+		}
+
+		private void ApplySecurityRestrictionsForMethod(IList<Bagge.Seti.Security.BusinessEntities.Function> functions, DataControlField field)
+		{
+			var secureField = (IMethodSecureControl)field;
+			switch (AccessibilityType.GetAccessibilityForMethod(Type.GetType(SecureTypeName), secureField.MethodName, functions))
+			{
+				case AccessibilityTypes.None:
+					secureField.Visible = false;
+					break;
+				case AccessibilityTypes.Execute:
+					secureField.Visible = true;
+					break;
+			}
+		}
+
+		private void ApplySecurityRestrictionsForProperty(IList<Bagge.Seti.Security.BusinessEntities.Function> functions, DataControlField field)
+		{
+			var secureField = (IPropertySecureControl)field;
+
+			switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), secureField.PropertyName, functions))
+			{
+				case AccessibilityTypes.View:
+					secureField.ReadOnly = false;
+					secureField.Visible = true;
+					break;
+				case AccessibilityTypes.Edit:
+					secureField.ReadOnly = false;
+					secureField.Visible = true;
+					break;
+				case AccessibilityTypes.None:
+					secureField.Visible = false;
+					break;
 			}
 		}
 

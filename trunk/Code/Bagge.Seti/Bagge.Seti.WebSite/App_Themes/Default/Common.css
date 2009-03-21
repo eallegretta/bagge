@@ -10,7 +10,7 @@
 #site
 {
 	background-color:#cccccc;
-	width:1000px;
+	width:990px;
 	border-top:3px solid #5483a1;
 	margin:0px auto;
 	border-left:1px solid #aaaaaa;
@@ -93,6 +93,8 @@ tr.detailsRow td:first-child
 {
 	font-weight:bold;
 	background-color:#cccccc;
+	width:100px;
+	white-space:nowrap;
 }
 
 tr.detailsRow td

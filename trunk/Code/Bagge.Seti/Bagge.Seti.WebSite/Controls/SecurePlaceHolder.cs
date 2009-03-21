@@ -8,7 +8,7 @@ using Bagge.Seti.Helpers;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public abstract class SecurePlaceHolder : PlaceHolder, ISecureControl
+	public abstract class SecurePlaceHolder : PlaceHolder, ISecureControlContainer
 	{
 		public string SecureTypeName
 		{
