@@ -11,10 +11,6 @@ namespace Bagge.Seti.BusinessLogic
 {
 	public class CustomerManager: GenericManager<Customer, int>, ICustomerManager
 	{
-
-		public CustomerManager(): base(new CustomerDao())
-		{
-		}
 		public CustomerManager(ICustomerDao dao)
 			: base(dao)
 		{

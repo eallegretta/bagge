@@ -93,5 +93,48 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			instance.Deleted = true;
 			Update(instance);
 		}
+
+		public override T[] FindAllByProperties(IList<FilterPropertyValue> filter)
+		{
+			filter.Add(new FilterPropertyValue { Property = "Deleted", Value = false, Type = FilterPropertyValueType.Equals });
+			return base.FindAllByProperties(filter);
+		}
+
+		public override T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy)
+		{
+			filter.Add(new FilterPropertyValue { Property = "Deleted", Value = false, Type = FilterPropertyValueType.Equals });
+			return base.FindAllByPropertiesOrdered(filter, orderBy);
+		}
+
+		public override T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		{
+			filter.Add(new FilterPropertyValue { Property = "Deleted", Value = false, Type = FilterPropertyValueType.Equals });
+			return base.FindAllByPropertiesOrdered(filter, orderBy, ascending);
+		}
+
+		public override T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter)
+		{
+			filter.Add(new FilterPropertyValue { Property = "Deleted", Value = false, Type = FilterPropertyValueType.Equals });
+			return base.SlicedFindAllByProperties(startIndex, pageSize, filter);
+		}
+
+		public override T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy)
+		{
+			filter.Add(new FilterPropertyValue { Property = "Deleted", Value = false, Type = FilterPropertyValueType.Equals });
+			return base.SlicedFindAllByPropertiesOrdered(startIndex, pageSize, filter, orderBy);
+		}
+
+		public override T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		{
+			filter.Add(new FilterPropertyValue { Property = "Deleted", Value = false, Type = FilterPropertyValueType.Equals });
+			return base.SlicedFindAllByPropertiesOrdered(startIndex, pageSize, filter, orderBy, ascending);
+		}
+
+		public override int CountByProperties(IList<FilterPropertyValue> filter)
+		{
+			filter.Add(new FilterPropertyValue { Property = "Deleted", Value = false, Type = FilterPropertyValueType.Equals });
+			return base.CountByProperties(filter);
+		}
+
 	}
 }

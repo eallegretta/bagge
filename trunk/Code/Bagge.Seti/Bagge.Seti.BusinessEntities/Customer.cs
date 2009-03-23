@@ -13,7 +13,7 @@ namespace Bagge.Seti.BusinessEntities
 		[Property]
 		[ValidatorComposition(CompositionType.Or)]
 		[RequiredStringValidator(Negated = true)]
-		[RegexValidator("Validators.Customer.CUIT.Pattern", typeof(Customer), MessageTemplateResourceName = "Validators.Customer.CUIT", MessageTemplateResourceType = typeof(Customer))]
+		[RegexValidator("Validators_Customer_CUIT_Pattern", typeof(Customer), MessageTemplateResourceName = "Validators_Customer_CUIT", MessageTemplateResourceType = typeof(Customer))]
 		public string CUIT 
 		{ 
 			get; 
@@ -45,7 +45,6 @@ namespace Bagge.Seti.BusinessEntities
 		}
 		
 		[Property]
-		[StringLengthValidator(50, MessageTemplateResourceName = "Validators.Customer.Address.Length", MessageTemplateResourceType = typeof(Customer))]
 		public string Address
 		{
 			get;
@@ -67,7 +66,6 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
-		[StringLengthValidator(7, MessageTemplateResourceName = "Validators.Customer.ZipCode.Length", MessageTemplateResourceType = typeof(Customer))]
 		public string ZipCode
 		{
 			get;

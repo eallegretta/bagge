@@ -15,22 +15,22 @@ namespace Bagge.Seti.WebSite.Controls
 	{
 		public string PostBackUrl
 		{
-			get { return _new.PostBackUrl; }
-			set { _new.PostBackUrl = value; }
+			get { return ViewState["PostBackUrl"].ToString() ?? string.Empty; }
+			set { ViewState["PostBackUrl"] = value; }
 		}
 		public string NewText
 		{
-			get { return _new.Text; }
-			set { _new.Text = value; }
+			get { return _newText.Text; }
+			set { _newText.Text = value; }
 		}
-		public Unit Width
-		{
-			get { return _new.Width; }
-			set { _new.Width = value; }
-		}
+	
 		protected void Page_Load(object sender, EventArgs e)
 		{
+		}
 
+		protected void _new_ServerClick(object sender, EventArgs e)
+		{
+			Response.Redirect(PostBackUrl);
 		}
 	} 
 }

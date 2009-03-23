@@ -6,7 +6,7 @@ using Castle.ActiveRecord;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class District : PrimaryKeyWithNameDomainObject<District, int>
+	public class District : PrimaryKeyWithNameDomainObject<District, int>, IComparable, IComparable<District>
 	{
 		[BelongsTo("CountryStateId")]
 		public CountryState CountryState
@@ -21,5 +21,23 @@ namespace Bagge.Seti.BusinessEntities
 			get;
 			set;
 		}
+
+		#region IComparable<District> Members
+
+		public int CompareTo(District other)
+		{
+			return Name.CompareTo(other.Name);
+		}
+
+		#endregion
+
+		#region IComparable Members
+
+		int IComparable.CompareTo(object obj)
+		{
+			return CompareTo((District)obj);
+		}
+
+		#endregion
 	}
 }

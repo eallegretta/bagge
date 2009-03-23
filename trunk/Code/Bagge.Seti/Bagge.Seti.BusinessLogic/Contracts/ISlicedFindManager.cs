@@ -14,7 +14,11 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 		T[] SlicedFindAllByProperty(int startIndex, int pageSize, string property, object value);
 		T[] SlicedFindAllByPropertyOrdered(int startIndex, int pageSize, string property, object value, string orderBy);
 		T[] SlicedFindAllByPropertyOrdered(int startIndex, int pageSize, string property, object value, string orderBy, bool ascending);
+		T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter);
+		T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy);
+		T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool ascending);
 		int Count();
 		int CountByProperty(string property, object value);
+		int CountByProperties(IList<FilterPropertyValue> filter);
 	}
 }

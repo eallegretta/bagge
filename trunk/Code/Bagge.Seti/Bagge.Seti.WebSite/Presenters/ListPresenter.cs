@@ -35,6 +35,26 @@ namespace Bagge.Seti.WebSite.Presenters
 			
 		}
 
+		public virtual void Select(int pageIndex, int pageSize, string orderBy, IList<FilterPropertyValue> filters)
+		{
+			_view.TotalRows = _manager.CountByProperties(filters);
+			if (string.IsNullOrEmpty(orderBy))
+				_view.DataSource = _manager.SlicedFindAllByProperties(pageIndex, pageSize, filters);
+			else
+			{
+				if (orderBy.Contains("DESC"))
+				{
+					orderBy = orderBy.Replace("DESC", string.Empty);
+					_view.DataSource = _manager.SlicedFindAllByPropertiesOrdered(pageIndex, pageSize, filters, orderBy.Trim(), false);
+				}
+				else
+				{
+					orderBy = orderBy.Trim();
+					_view.DataSource = _manager.SlicedFindAllByPropertiesOrdered(pageIndex, pageSize, filters, orderBy.Trim());
+				}
+			}
+		}
+
 		public virtual void Select(int pageIndex, int pageSize, string orderBy)
 		{
 			_view.TotalRows = _manager.Count();

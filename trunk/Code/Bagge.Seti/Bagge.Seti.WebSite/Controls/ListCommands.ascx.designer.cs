@@ -20,6 +20,24 @@ namespace Bagge.Seti.WebSite.Controls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _new;
+        protected global::System.Web.UI.HtmlControls.HtmlButton _new;
+        
+        /// <summary>
+        /// _iconAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image _iconAdd;
+        
+        /// <summary>
+        /// _newText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _newText;
     }
 }

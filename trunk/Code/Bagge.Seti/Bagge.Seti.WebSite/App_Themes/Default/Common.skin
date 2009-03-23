@@ -1,8 +1,20 @@
 ﻿<asp:Label SkinID="_error" runat="server" Font-Bold="true" ForeColor="red" />
 <asp:Label SkinID="_errorDescription" runat="server" Font-Bold="true" ForeColor="black" />
 
-<seti:SecureDetailsView Width="100%" CssClass="details" CellSpacing="2" HeaderStyle-CssClass="detailsHeader" RowStyle-CssClass="detailsRow" GridLines="None" runat="server">
+<asp:Panel SkinId="filters" runat="server" CssClass="filters collapsible"></asp:Panel> 
+
+<seti:SecureDetailsView 
+	Width="100%" CssClass="details" 
+	CellSpacing="2" HeaderStyle-CssClass="detailsHeader" 
+	RowStyle-CssClass="detailsRow" GridLines="None" 
+	runat="server">
 </seti:SecureDetailsView>
 
-<seti:SecureGridView CssClass="grid" CellSpacing="2" HeaderStyle-CssClass="gridHeader" RowStyle-CssClass="gridRow" AlternatingRowStyle-CssClass="gridRowAlternate" GridLines="None" runat="server">
+<seti:SecureGridView 
+	CssClass="grid" AllowPaging="True" AllowSorting="True" 
+	AutoGenerateColumns="false" CellPadding="0" CellSpacing="0"  
+	PageSize="4" HeaderStyle-CssClass="gridHeader" 
+	PagerStyle-CssClass="gridPager" RowStyle-CssClass="gridRow" 
+	AlternatingRowStyle-CssClass="gridRowAlternate" GridLines="None" 
+	runat="server">
 </seti:SecureGridView>

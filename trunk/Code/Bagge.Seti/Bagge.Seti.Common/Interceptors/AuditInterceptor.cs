@@ -13,7 +13,7 @@ namespace Bagge.Seti.Common.Interceptors
 
 		public void Before(System.Reflection.MethodInfo method, object[] args, object target)
 		{
-			if (args != null && method.Name.ToUpper().In<string>("Create", "Update"))
+			if (args != null && method.Name.ToUpper().In<string>("CREATE", "UPDATE"))
 			{
 				foreach (object obj in args)
 				{

@@ -117,25 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MethodAccessDeniedErrorMessage" xml:space="preserve">
-    <value>Usted no posee permisos para ejecutar la acción que desea realizar.</value>
+  <data name="Controls_Pager_ItemRangeShow" xml:space="preserve">
+    <value>Mostrar {0} a {1} de {2} registros.</value>
   </data>
-  <data name="ObjectNotFoundErrorMessage" xml:space="preserve">
-    <value>El registro especificado no existe.</value>
+  <data name="Controls_Pager_ItemRangeShowing" xml:space="preserve">
+    <value>Mostrando {0} a {1} de {2} registros.</value>
   </data>
-  <data name="Validators_Customer_Address_Length" xml:space="preserve">
-    <value>La dirección debe tener una longitud igual o menor a 50 caracteres.</value>
+  <data name="Controls_Pager_ItemsCount" xml:space="preserve">
+    <value>Mostrando registros del {0} al {1} de un total de {2}.</value>
   </data>
-  <data name="Validators_Customer_CUIT" xml:space="preserve">
-    <value>El campo CUIT debe tener el formato 00-000000000-0.</value>
+  <data name="Controls_Pager_NextItemRangeShow" xml:space="preserve">
+    <value>Mostrar siguientes {0} de {1} registros.</value>
   </data>
-  <data name="Validators_Customer_CUIT_Pattern" xml:space="preserve">
-    <value>\d{2}-\d{9}-\d{1}</value>
+  <data name="Controls_Pager_NextLink" xml:space="preserve">
+    <value>siguiente</value>
   </data>
-  <data name="Validators_PrimaryKeyDomainObject_Name_Length" xml:space="preserve">
-    <value>El nombre debe tener una longitud entre 1 y 50 caracteres.</value>
+  <data name="Controls_Pager_PageClause" xml:space="preserve">
+    <value>Página:</value>
   </data>
-  <data name="Validators_PrimaryKeyDomainObject_Name_Required" xml:space="preserve">
-    <value>El nombre es requerido.</value>
+  <data name="Controls_Pager_PreviousLink" xml:space="preserve">
+    <value>anterior</value>
+  </data>
+  <data name="FilterPanelTitle" xml:space="preserve">
+    <value>Filtros</value>
+  </data>
+  <data name="IconDeleteImagePath" xml:space="preserve">
+    <value>~/App_Themes/Default/Images/iconDelete.gif</value>
+  </data>
+  <data name="IconEditImageTag" xml:space="preserve">
+    <value>&lt;img src='App_Themes/Default/Images/iconEdit.gif' /&gt;</value>
+  </data>
+  <data name="IconViewImageTag" xml:space="preserve">
+    <value>&lt;img src='App_Themes/Default/Images/iconView.gif' /&gt;</value>
   </data>
 </root>

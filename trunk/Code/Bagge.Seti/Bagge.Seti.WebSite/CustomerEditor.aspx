@@ -15,11 +15,14 @@
 			setCuitMask();
 		});
 
+
+	<%if(_details.FindControl("_cuit") != null){%>
 		function setCuitMask() {
 			var obj = $('#<%=_details.FindControl("_cuit").ClientID%>');
 			if (obj)
 				obj.mask("99-999999999-9");
 		}
+	<%} %>
 	</script>
 
 </asp:Content>
