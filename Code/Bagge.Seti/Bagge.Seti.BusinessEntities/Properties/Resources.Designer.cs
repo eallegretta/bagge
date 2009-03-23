@@ -79,11 +79,20 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La dirección debe tener una longitud igual o menor a 50 caracteres..
+        /// </summary>
+        internal static string Validators_Customer_Address_Length {
+            get {
+                return ResourceManager.GetString("Validators_Customer_Address_Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El campo CUIT debe tener el formato 00-000000000-0..
         /// </summary>
         internal static string Validators_Customer_CUIT {
             get {
-                return ResourceManager.GetString("Validators.Customer.CUIT", resourceCulture);
+                return ResourceManager.GetString("Validators_Customer_CUIT", resourceCulture);
             }
         }
         
@@ -92,7 +101,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         /// </summary>
         internal static string Validators_Customer_CUIT_Pattern {
             get {
-                return ResourceManager.GetString("Validators.Customer.CUIT.Pattern", resourceCulture);
+                return ResourceManager.GetString("Validators_Customer_CUIT_Pattern", resourceCulture);
             }
         }
         
@@ -101,7 +110,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         /// </summary>
         internal static string Validators_PrimaryKeyDomainObject_Name_Length {
             get {
-                return ResourceManager.GetString("Validators.PrimaryKeyDomainObject.Name.Length", resourceCulture);
+                return ResourceManager.GetString("Validators_PrimaryKeyDomainObject_Name_Length", resourceCulture);
             }
         }
         
@@ -110,7 +119,7 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         /// </summary>
         internal static string Validators_PrimaryKeyDomainObject_Name_Required {
             get {
-                return ResourceManager.GetString("Validators.PrimaryKeyDomainObject.Name.Required", resourceCulture);
+                return ResourceManager.GetString("Validators_PrimaryKeyDomainObject_Name_Required", resourceCulture);
             }
         }
     }

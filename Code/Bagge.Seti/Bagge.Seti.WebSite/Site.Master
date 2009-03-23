@@ -15,6 +15,17 @@
 				}).blur(function() {
 					$(this).removeClass("selected");
 				});
+
+				$("button,input[type=submit]").mouseover(function() {
+					$(this).addClass("buttonHover");
+				}).mouseout(function() {
+					$(this).removeClass("buttonHover");
+				});
+
+				$(".collapsible h3").click(function() {
+					$(".collapsible table").toggle("fast");
+					$(this).toggleClass("collapsed");
+				});
 			});
 		}
 	</script>

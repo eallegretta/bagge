@@ -1,28 +1,52 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CustomerList.aspx.cs" Inherits="Bagge.Seti.WebSite.CustomerList" meta:resourcekey="Page"%>
 <%@ Register TagPrefix="seti" TagName="ListCommands" Src="~/Controls/ListCommands.ascx" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+	<asp:Panel ID="_filters" SkinId="filters" runat="server">
+		<h3><%=Resources.WebSite.FilterPanelTitle%></h3>
+		<div>
+			<table cellpadding="0" cellspacing="0">
+				<tr>
+					<th><asp:Literal ID="_nameLiteral" runat="server" meta:resourcekey="FilterNameLiteral"></asp:Literal></th>
+					<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
+					<th><asp:Literal ID="_cuitLiteral" runat="server" meta:resourcekey="FilterCuitLiteral"></asp:Literal></th>
+					<td><asp:TextBox ID="_cuit" runat="server"></asp:TextBox></td>
+					<td><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
+					</td>
+				</tr>
+				<tr>
+					<th><asp:Literal ID="_addressLiteral" runat="server" meta:resourcekey="FilterAddressLiteral"></asp:Literal></th>
+					<td><asp:TextBox ID="_address" runat="server"></asp:TextBox></td>
+					<th><asp:Literal ID="_phoneLiteral" runat="server" meta:resourcekey="FilterPhoneLiteral"></asp:Literal></th>
+					<td colspan="2"><asp:TextBox ID="_phone" runat="server"></asp:TextBox></td>
+				</tr>
+			</table>
+		</div>
+	</asp:Panel>
+	
 	<seti:SecureGridView ID="_customers" runat="server" DataKeyNames="Id" 
-		DataSourceID="_dataSource" PageSize="20" AllowPaging="True" AllowSorting="True" 
-		AutoGenerateColumns="False" meta:resourcekey="Grid">
+		DataSourceID="_dataSource"
+		meta:resourcekey="Grid">
 		<Columns>
-			<asp:BoundField DataField="Name" SortExpression="Name" 
+			<asp:BoundField DataField="Name" 
 				meta:resourcekey="NameField" />
-			<asp:BoundField DataField="CUIT" SortExpression="CUIT" 
+			<asp:BoundField DataField="CUIT" 
 				meta:resourcekey="CUITField" />
-			<asp:BoundField DataField="FullAddress" SortExpression="Address" meta:resourcekey="AddressField" />
-			<asp:BoundField DataField="District" SortExpression="District" meta:resourcekey="DistrictField" />
+			<asp:BoundField DataField="FullAddress" meta:resourcekey="AddressField" />
+			<asp:BoundField DataField="District" meta:resourcekey="DistrictField" />
 			<asp:TemplateField meta:resourcekey="CountryStateField" >
 				<ItemTemplate>
 					<%#((Bagge.Seti.BusinessEntities.Customer)(Container.DataItem)).District.CountryState%>
 				</ItemTemplate>
 			</asp:TemplateField>
-			<asp:HyperLinkField DataNavigateUrlFields="Id" 
+			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=View"
+				Text="<%$ Resources:WebSite, IconViewImageTag %>"
 				meta:resourcekey="ViewField" />
-			<asp:HyperLinkField DataNavigateUrlFields="Id" 
-				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=Edit" 
+			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=Edit"
+				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" />
-			<eaa:DeleteCommandField 
+			<eaa:DeleteCommandField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
 				meta:resourcekey="DeleteField"></eaa:DeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>

@@ -22,8 +22,8 @@
 {
 	min-height:600px;
 	background-color:White;
-	background-image:url(Images/contentBackground.gif);
-	background-repeat:repeat-x;
+	/*background-image:url(Images/contentBackground.gif);
+	background-repeat:repeat-x;*/
 	padding:5px;
 }
 
@@ -74,6 +74,7 @@ a
 {
 	color:#0066cc;
 	text-decoration:none;
+	outline:none;
 }
 
 a:hover
@@ -81,7 +82,10 @@ a:hover
 	text-decoration:underline;
 }
 
-
+img
+{
+	border:0px;
+}
 
 table.details
 {
@@ -113,6 +117,15 @@ table.grid
 	width:100%;
 	font-family:Verdana;
 	font-size:11px;
+	border:1px solid #99BBE8;
+}
+
+tr.gridHeader th
+{
+	border:1px solid #D0D0D0;
+	background-color:#EBECEE;
+	background-image:url(Images/gridHeaderBackground.gif);
+	padding:5px;
 }
 
 tr.gridHeader th a
@@ -123,4 +136,96 @@ tr.gridHeader th a
 tr.gridHeader th a:hover
 {
 	text-decoration:underline;
+}
+
+tr.gridRow
+{
+	background-color:White;
+}
+
+tr.gridRow td
+{
+	border:1px solid #EDEDED;
+	padding:3px;
+}
+
+tr.gridRowAlternate
+{
+	background-color:#FAFAFA;
+	
+}
+
+
+tr.gridRowAlternate td
+{
+	border:1px solid #EDEDED;
+	padding:3px;
+}
+
+tr.gridPager
+{
+	width:100%;
+	background-color:#D2E0F1;
+}
+
+tr.gridPager table 
+{
+	width:100%;
+}
+
+tr.gridPager table td a
+{
+	border:1px solid #99BBE8;
+	display:block;
+	padding:5px;
+}
+
+tr.gridPager table td span
+{
+	border:1px solid #99BBE8;
+	background-color:White;
+	display:block;
+	padding:5px;
+}
+
+tr.gridPager table td.lastCell
+{
+	width:90%;
+	text-align:right;
+}
+
+
+div.filters
+{
+	margin-bottom:10px;
+}
+
+div.filters h3
+{
+	font-size:11px;
+	padding:0px;
+	padding-bottom:5px;
+	margin:0px;
+	cursor:pointer;
+	cursor:hand;
+	background-image:url(Images/iconCollapse.gif);
+	background-repeat:no-repeat;
+	padding-left: 20px;
+}
+
+div.filters h3.collapsed
+{
+	background-image:url(Images/iconExpand.gif);
+	background-repeat:no-repeat;
+}
+
+div.filters table th
+{
+	text-align:left;
+	padding: 5px 5px 5px 0px;
+}
+div.filters table td
+{
+	text-align:left;
+	padding: 5px 5px 5px 0px;
 }

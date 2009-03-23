@@ -1,1 +1,1 @@
-﻿<asp:Login  runat="server" TextBoxStyle-CssClass="textBox"></asp:Login>
+﻿<asp:Login  runat="server" TextBoxStyle-CssClass="textBox" LoginButtonStyle-CssClass="button"></asp:Login>

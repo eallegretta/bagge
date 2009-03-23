@@ -10,11 +10,11 @@ namespace Bagge.Seti.WebSite
 {
 	public class Page: System.Web.UI.Page
 	{
+
 		protected override void OnPreRender(EventArgs e)
 		{
 			base.OnPreRender(e);
-			ApplySecurityRestrictions(Page.Controls);		
-		
+			ApplySecurityRestrictions(Page.Controls);
 		}
 
 		private void ApplySecurityRestrictions(System.Web.UI.ControlCollection controlCollection)

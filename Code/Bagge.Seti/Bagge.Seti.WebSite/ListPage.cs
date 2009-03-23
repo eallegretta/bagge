@@ -9,6 +9,7 @@ using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.BusinessLogic;
 using Microsoft.Practices.Web.UI.WebControls;
 using Bagge.Seti.WebSite.Controls;
+using System.Web.UI;
 
 namespace Bagge.Seti.WebSite
 {
@@ -27,6 +28,7 @@ namespace Bagge.Seti.WebSite
 			base.OnInit(e);
 		}
 
+
 		void ObjectDataSource_Deleting(object sender, ObjectContainerDataSourceDeletingEventArgs e)
 		{
 			OnDeleting((PK)e.Keys["Id"]);
@@ -35,10 +37,12 @@ namespace Bagge.Seti.WebSite
 
 		private void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
 		{
-			if(!IsPostBack)
+			if (!IsPostBack)
 				OnSelecting(e.Arguments.StartRowIndex, e.Arguments.MaximumRows, DefaultSortExpression);
 			else
 				OnSelecting(e.Arguments.StartRowIndex, e.Arguments.MaximumRows, e.Arguments.SortExpression);
+
+			
 		}
 
 		protected virtual void OnDeleting(PK id)
@@ -96,7 +100,10 @@ namespace Bagge.Seti.WebSite
 
 		public virtual int TotalRows
 		{
-			set { ObjectDataSource.TotalRowCount = value; }
+			set 
+			{ 
+				ObjectDataSource.TotalRowCount = value;
+			}
 		
 		}
 

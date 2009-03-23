@@ -101,8 +101,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\FilteredGridView.cs" />
-    <Compile Include="Controls\FilteredGridViewEventArgs.cs" />
+    <Compile Include="App_GlobalResources\WebSite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSite.resx</DependentUpon>
+    </Compile>
+    <Content Include="App_Themes\Default\Pager.css" />
+    <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Controls\SecureBoundField.cs" />
     <Compile Include="Controls\EditorCommands.ascx.cs">
       <DependentUpon>EditorCommands.ascx</DependentUpon>
@@ -162,6 +167,9 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FilteredListPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,6 +222,7 @@
     <Compile Include="Views\IEditorView.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\IFilteredListView.cs" />
     <Compile Include="Views\IFunctionEditorView.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -287,6 +296,7 @@
     </Content>
     <Content Include="App_Themes\Default\Forms.skin" />
     <Content Include="App_Themes\Default\Login.skin" />
+    <Content Include="App_Themes\Default\Images.skin" />
     <None Include="Config\Objects.config" />
     <None Include="Config\TypeAliases.config" />
     <Content Include="Login.aspx" />
@@ -303,9 +313,21 @@
     <Content Include="Controls\App_LocalResources\EditorCommands.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Default\Images\buttonBackground.gif" />
+    <Content Include="App_Themes\Default\Images\iconAdd.gif" />
+    <Content Include="App_Themes\Default\Images\iconDelete.gif" />
+    <Content Include="App_Themes\Default\Images\iconEdit.gif" />
+    <Content Include="App_Themes\Default\Images\iconView.gif" />
     <Content Include="App_Themes\Default\Images\inputBackground.gif" />
     <Content Include="Controls\App_LocalResources\ListCommands.ascx.resx" />
     <Content Include="Scripts\jquery.maskedinput-1.2.2.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\WebSite.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>WebSite.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_Themes\Default\Images\gridHeaderBackground.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -70,6 +70,8 @@
     <Compile Include="Exceptions\MethodAccessDeniedException.cs" />
     <Compile Include="Exceptions\ObjectNotFoundException.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
+    <Compile Include="FilterPropertyValue.cs" />
+    <Compile Include="FilterPropertyValueType.cs" />
     <Compile Include="PrimaryKeyDomainObject.cs" />
     <Compile Include="PrimaryKeyWithNameAndDescriptionDomainObject.cs" />
     <Compile Include="PrimaryKeyWithNameDomainObject.cs" />

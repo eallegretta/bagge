@@ -1,39 +1,46 @@
-﻿.changed
+﻿input.textBox, textarea
 {
-	border:1px solid #00cc66;
-	background-color:#00ff66;
-	color:black;
-}
-.selected
-{
-	border:1px solid #7EADD9;
-	background-color:#7EADD9;
-}
-
-
-input.textBox
-{
+	
+	padding:5px;
+	border: 1px solid;
+	border-color: #999999;
+	background-color: #f5f5f5;
+	background-image:url(Images/inputBackground.gif);
+	background-repeat: repeat-x;
+	background-position: left center;
 	font-family:Verdana;
 	font-size:10px;
-	border:1px solid #999999;
-	padding:5px;
-	background-image:url(Images/inputBackground.gif);
-	background-repeat:repeat-x;
 }
 
-
-textarea
+input.selected, textarea.selected
 {
+	border:1px solid #73ABC5;
+}
+
+input.button, button
+{
+	border: 1px solid;
+	padding:0px;
+	height:24px;
+	border-color: #999999;
+	background-color: #f5f5f5;
+	background-image:url(Images/buttonBackground.gif);
+	background-repeat: repeat-x;
+	background-position: left center;
 	font-family:Verdana;
 	font-size:10px;
-	padding:5px;
-	background-image:url(Images/inputBackground.gif);
-	background-repeat:repeat-x;
+	outline:none;
+}
+
+input.buttonHover, button.buttonHover
+{
+	border-color:#73ABC5;
 }
 
 select
 {
+	padding:3px;
 	font-family:Verdana;
 	font-size:10px;
-	padding:5px;
 }
+
