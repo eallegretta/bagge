@@ -26,7 +26,37 @@
 					$(".collapsible table").toggle("fast");
 					$(this).toggleClass("collapsed");
 				});
+
+
+				Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(beginRequestHandler);
+				Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
 			});
+		}
+
+		
+
+		function beginRequestHandler() {
+			showLoadingAnimation();
+		}
+		function endRequestHandler() {
+			hideLoadingAnimation();
+		}
+		
+
+		function showLoadingAnimation() {
+			var content = $("#content");
+			var loading = $("#loadingAnimation");
+			var top = (content.position().top + content.height() / 2) - (loading.height() / 2);
+			var left = (content.position().left + content.width() / 2) - (loading.width() / 2);
+
+			loading.css("left", left + "px");
+			loading.css("top", top + "px");
+			loading.css("display", "");
+		}
+
+		function hideLoadingAnimation() {
+			var loading = $("#loadingAnimation");
+			loading.css("display", "none");
 		}
 	</script>
 
@@ -57,11 +87,25 @@
 					</asp:ContentPlaceHolder>
 				</ContentTemplate>
 			</asp:UpdatePanel>
+			<ajax:UpdatePanelAnimationExtender ID="_contentUpdatePanelAnimation" runat="server" TargetControlID="_contentUpdatePanel">
+				<Animations>
+					<OnUpdating>
+						<EnableAction enabled="true"></EnableAction>
+					</OnUpdating>
+					<OnUpdated>
+						<EnableAction enabled="true"></EnableAction>
+					</OnUpdated>
+				</Animations>
+			</ajax:UpdatePanelAnimationExtender>
 		</div>
 		<div id="footer">
 			SETI - &copy; - 2009 - Bagge Consulting - Todos los derechos reservados
 		</div>
 	</div>
 	</form>
+	
+	<div id="loadingAnimation" style="position:absolute;display:none">
+		<asp:Image ID="_loadingAnimationImage" runat="server" SkinID="loading" /><asp:Literal ID="_loadingAnimationText" runat="server" meta:resourcekey="LoadingAnimation"></asp:Literal>
+	</div>
 </body>
 </html>

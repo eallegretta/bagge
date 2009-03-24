@@ -84,5 +84,32 @@ namespace Bagge.Seti.WebSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder _content;
+        
+        /// <summary>
+        /// _contentUpdatePanelAnimation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.UpdatePanelAnimationExtender _contentUpdatePanelAnimation;
+        
+        /// <summary>
+        /// _loadingAnimationImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image _loadingAnimationImage;
+        
+        /// <summary>
+        /// _loadingAnimationText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _loadingAnimationText;
     }
 }
