@@ -150,4 +150,7 @@
   <data name="IconViewImageTag" xml:space="preserve">
     <value>&lt;img src='App_Themes/Default/Images/iconView.gif' /&gt;</value>
   </data>
+  <data name="RequiredInformationText" xml:space="preserve">
+    <value>Los campos marcados con * son requeridos</value>
+  </data>
 </root>

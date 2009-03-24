@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.Validation;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Bagge.Seti.Common.Validation
@@ -26,21 +27,8 @@ namespace Bagge.Seti.Common.Validation
 
 		public string[] GetErrorMessages(object instance)
 		{
-			ValidationResults results = GetValidationResults(instance);
-
-			List<string> errors = new List<string>();
-
-			if (!results.IsValid)
-			{
-				foreach (ValidationResult result in results)
-				{
-					errors.Add(result.Message);
-				}
-			}
-
-			return errors.ToArray();
+			return EnterpriseLibraryValidationResultsHelper.GetErrorMessages(GetValidationResults(instance));
 		}
-
 		#endregion
 	}
 }

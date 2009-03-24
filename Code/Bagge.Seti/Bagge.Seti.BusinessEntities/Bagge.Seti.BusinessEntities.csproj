@@ -109,6 +109,8 @@
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketEmployee.cs" />
     <Compile Include="TicketStatus.cs" />
+    <Compile Include="Validators\EmailValidator.cs" />
+    <Compile Include="Validators\EmailValidatorAttribute.cs" />
     <Compile Include="Validators\RequiredStringValidator.cs" />
     <Compile Include="Validators\RequiredStringValidatorAttribute.cs" />
   </ItemGroup>

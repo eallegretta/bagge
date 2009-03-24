@@ -158,5 +158,14 @@ namespace Resources {
                 return ResourceManager.GetString("IconViewImageTag", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Los campos marcados con * son requeridos.
+        /// </summary>
+        internal static string RequiredInformationText {
+            get {
+                return ResourceManager.GetString("RequiredInformationText", resourceCulture);
+            }
+        }
     }
 }

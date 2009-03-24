@@ -108,6 +108,7 @@
     </Compile>
     <Content Include="App_Themes\Default\Pager.css" />
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\PropertyProxyValidator.cs" />
     <Compile Include="Controls\SecureBoundField.cs" />
     <Compile Include="Controls\EditorCommands.ascx.cs">
       <DependentUpon>EditorCommands.ascx</DependentUpon>
@@ -135,6 +136,13 @@
     <Compile Include="Controls\SecurePropertyPlaceHolder.cs" />
     <Compile Include="Controls\SecureTemplateColumn.cs" />
     <Compile Include="Controls\SecureTemplateField.cs" />
+    <Compile Include="Editor.Master.cs">
+      <DependentUpon>Editor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editor.Master.designer.cs">
+      <DependentUpon>Editor.Master</DependentUpon>
+    </Compile>
     <Compile Include="EditorPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -177,6 +185,13 @@
     <Compile Include="Helpers\ObjectBuilder.cs" />
     <Compile Include="HttpModules\AuthenticationModule.cs" />
     <Compile Include="HttpModules\SessionScopeWebModule.cs" />
+    <Compile Include="List.Master.cs">
+      <DependentUpon>List.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="List.Master.designer.cs">
+      <DependentUpon>List.Master</DependentUpon>
+    </Compile>
     <Compile Include="ListPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -299,6 +314,8 @@
     <Content Include="App_Themes\Default\Images.skin" />
     <None Include="Config\Objects.config" />
     <None Include="Config\TypeAliases.config" />
+    <Content Include="List.Master" />
+    <Content Include="Editor.Master" />
     <Content Include="Login.aspx" />
     <Content Include="Web.sitemap" />
   </ItemGroup>

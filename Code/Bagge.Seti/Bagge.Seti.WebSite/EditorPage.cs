@@ -12,6 +12,7 @@ using System.ComponentModel;
 using Microsoft.Practices.Web.UI.WebControls;
 using Microsoft.Practices.Web.UI.WebControls.Utility;
 using Bagge.Seti.WebSite.Controls;
+using System.Web.UI;
 
 namespace Bagge.Seti.WebSite
 {
@@ -25,6 +26,8 @@ namespace Bagge.Seti.WebSite
 			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
 
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
+
+			((Editor)Master).RequiredInformation.Visible = ShowRequiredInformationLabel;
 
 			ISecureControlContainer details = Details as ISecureControlContainer;
 			if (details != null)
@@ -108,6 +111,11 @@ namespace Bagge.Seti.WebSite
 			get;
 		}
 		protected abstract ObjectContainerDataSource ObjectDataSource
+		{
+			get;
+		}
+
+		protected abstract bool ShowRequiredInformationLabel
 		{
 			get;
 		}

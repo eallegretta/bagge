@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Editor.Master" AutoEventWireup="true"
 	CodeBehind="CustomerEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.CustomerEditor"
 	meta:resourcekey="Page" %>
 
@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="Scripts/jquery.maskedinput-1.2.2.min.js"></script>
 
 	<script type="text/javascript">
+	<%if(_details.FindControl("_cuit") != null){%>
 		$(document).ready(function() {
 			Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
 				setCuitMask();
@@ -15,8 +16,6 @@
 			setCuitMask();
 		});
 
-
-	<%if(_details.FindControl("_cuit") != null){%>
 		function setCuitMask() {
 			var obj = $('#<%=_details.FindControl("_cuit").ClientID%>');
 			if (obj)
@@ -30,7 +29,7 @@
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
 		<Fields>
-			<seti:SecureBoundField DataField="Name" meta:resourcekey="NameField"></seti:SecureBoundField>
+			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Name" meta:resourcekey="NameField"></seti:SecureBoundField>
 			<seti:SecureTemplateField meta:resourcekey="CUITField">
 				<InsertItemTemplate>
 					<asp:TextBox ID="_cuit" runat="server" Text='<%# Bind("CUIT") %>' meta:resourcekey="CUITTextBox"></asp:TextBox>
@@ -77,7 +76,7 @@
 					<%#Eval("District")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:SecureBoundField DataField="Address" meta:resourcekey="AddressField" />
+			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Address" meta:resourcekey="AddressField" />
 			<seti:SecureBoundField DataField="Floor" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="FloorField" />
 			<seti:SecureBoundField DataField="Apartment" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="ApartmentField" />
 			<seti:SecureTemplateField PropertyName="ZipCode" meta:resourcekey="ZipCodeField">
@@ -91,11 +90,11 @@
 				<%#Eval("ZipCode")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:SecureBoundField DataField="City" meta:resourcekey="CityField" />
-			<seti:SecureBoundField DataField="Phone" meta:resourcekey="PhoneField" />
-			<seti:SecureBoundField DataField="MobilePhone" meta:resourcekey="MobilePhoneField" />
-			<seti:SecureBoundField DataField="Email" meta:resourcekey="EmailField" />
-			<asp:CheckBoxField DataField="Subscription" meta:resourcekey="SubscriptionField" />
+			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="City" meta:resourcekey="CityField" />
+			<seti:SecureBoundField ControlStyle-Width="120px" MaxLength="50" DataField="Phone" meta:resourcekey="PhoneField" />
+			<seti:SecureBoundField ControlStyle-Width="120px" MaxLength="50" DataField="MobilePhone" meta:resourcekey="MobilePhoneField" />
+			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Email" meta:resourcekey="EmailField" />
+			<seti:SecureCheckBoxField DataField="Subscription" meta:resourcekey="SubscriptionField" />
 		</Fields>
 	</seti:SecureDetailsView>
 	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/CustomerList.aspx"
