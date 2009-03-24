@@ -130,7 +130,7 @@
     <value>Seti &gt; Editor de Clientes</value>
   </data>
   <data name="NameField.HeaderText" xml:space="preserve">
-    <value>Nombre</value>
+    <value>Nombre *</value>
   </data>
   <data name="EmailField.HeaderText" xml:space="preserve">
     <value>Email</value>

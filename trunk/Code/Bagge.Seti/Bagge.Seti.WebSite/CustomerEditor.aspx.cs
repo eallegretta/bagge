@@ -23,11 +23,9 @@ namespace Bagge.Seti.WebSite
 			
 		}
 
-		protected void Page_Load(object sender, EventArgs e)
+		protected override bool ShowRequiredInformationLabel
 		{
-			if (!IsPostBack)
-			{
-			}
+			get { return true; }
 		}
 
 		protected override EditorPresenter<Customer, int> Presenter
@@ -113,6 +111,7 @@ namespace Bagge.Seti.WebSite
 				((TextBox)Details.FindControl("_zipCode")).Text = value;
 			}
 		}
+
 
 		#endregion
 	}

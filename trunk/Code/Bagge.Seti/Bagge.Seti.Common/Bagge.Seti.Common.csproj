@@ -92,6 +92,7 @@
     <Compile Include="Validation\CastleValidationEngine.cs" />
     <Compile Include="Validation\EnterpriseLibraryValidationEngine.cs" />
     <Compile Include="Validation\IValidationEngine.cs" />
+    <Compile Include="Validation\EnterpriseLibraryValidationResultsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bagge.Seti.BusinessEntities\Bagge.Seti.BusinessEntities.csproj">

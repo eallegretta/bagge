@@ -106,6 +106,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El e-mail es inválido.
+        /// </summary>
+        internal static string Validators_Customer_Email {
+            get {
+                return ResourceManager.GetString("Validators_Customer_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El nombre debe tener una longitud entre 1 y 50 caracteres..
         /// </summary>
         internal static string Validators_PrimaryKeyDomainObject_Name_Length {

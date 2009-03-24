@@ -1,0 +1,8 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Editor.master.cs" Inherits="Bagge.Seti.WebSite.Editor" MasterPageFile="~/Site.Master" %>
+<asp:Content ID="_headContent" runat="server" ContentPlaceHolderID="_head">
+	<asp:ContentPlaceHolder ID="_head" runat="server"></asp:ContentPlaceHolder> 
+</asp:Content>
+<asp:Content ID="_contentContent" runat="server" ContentPlaceHolderID="_content">
+	<asp:Label ID="_requiredInformationLabel" runat="server"><%=Resources.WebSite.RequiredInformationText%></asp:Label>
+	<asp:ContentPlaceHolder ID="_content" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

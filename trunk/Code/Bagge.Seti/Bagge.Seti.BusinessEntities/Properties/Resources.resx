@@ -132,6 +132,9 @@
   <data name="Validators_Customer_CUIT_Pattern" xml:space="preserve">
     <value>\d{2}-\d{9}-\d{1}</value>
   </data>
+  <data name="Validators_Customer_Email" xml:space="preserve">
+    <value>El e-mail es inválido</value>
+  </data>
   <data name="Validators_PrimaryKeyDomainObject_Name_Length" xml:space="preserve">
     <value>El nombre debe tener una longitud entre 1 y 50 caracteres.</value>
   </data>

@@ -94,6 +94,8 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[ValidatorComposition(CompositionType.Or)]
+		[EmailValidator(Required = false, MessageTemplateResourceName = "Validators_Customer_Email", MessageTemplateResourceType = typeof(Customer))]
 		public string Email
 		{
 			get;
