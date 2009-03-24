@@ -6,11 +6,17 @@ using System.Web.UI.WebControls;
 
 namespace Bagge.Seti.WebSite.Views
 {
-	public interface IEditorView<PK>: IView
+	//Marker interface for siteMap
+	public interface IEditorView: IView
 	{
-		PK PrimaryKey { get; }
 		EditorAction Mode { get; }
 
 		event EventHandler DataBound;
+	}
+
+	public interface IEditorView<PK>: IEditorView
+	{
+		PK PrimaryKey { get; }
+		
 	}
 }

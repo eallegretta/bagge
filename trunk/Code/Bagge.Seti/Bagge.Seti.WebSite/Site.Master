@@ -34,30 +34,23 @@
 	</asp:ContentPlaceHolder>
 </head>
 <body>
-	<form id="form1" runat="server">
-	<asp:ScriptManager ID="_scriptManager" runat="server" OnAsyncPostBackError="_scriptManager_AsyncPostBackError">
+	<form id="_mainForm" runat="server">
+	<asp:ScriptManager ID="_scriptManager" runat="server" EnablePageMethods="true" EnablePartialRendering="true" EnableScriptGlobalization="true" EnableScriptLocalization="true"  OnAsyncPostBackError="_scriptManager_AsyncPostBackError">
 	</asp:ScriptManager>
-	<asp:SiteMapDataSource ID="_siteMapDataSource" runat="server" ShowStartingNode="false" />
+	<asp:SiteMapDataSource ID="_siteMapDataSource" runat="server"  />
 	<div id="site">
 		<div id="header">
 		</div>
-		<div id="menuBar">
-			<div id="menuBarContent">
-				<asp:LoginView ID="_menuLoginView" runat="server">
-					<LoggedInTemplate>
-						<div id="endLeft">
-						</div>
-						<div id="menu">
-							<asp:Menu ID="_menu" runat="server" DataSourceID="_siteMapDataSource">
-							</asp:Menu>
-						</div>
-						<div id="endRight">
-						</div>
-					</LoggedInTemplate>
-				</asp:LoginView>
-			</div>
+		<div id="menu">
+			<asp:LoginView ID="_menuLoginView" runat="server">
+				<LoggedInTemplate>
+					<asp:Menu ID="_menu" runat="server" DataSourceID="_siteMapDataSource">
+					</asp:Menu>
+				</LoggedInTemplate>
+			</asp:LoginView>
 		</div>
 		<div id="content">
+			<asp:SiteMapPath ID="_siteMapPath" runat="server"></asp:SiteMapPath>
 			<asp:UpdatePanel ID="_contentUpdatePanel" runat="server" UpdateMode="Conditional">
 				<ContentTemplate>
 					<asp:ContentPlaceHolder ID="_content" runat="server">
@@ -66,6 +59,7 @@
 			</asp:UpdatePanel>
 		</div>
 		<div id="footer">
+			SETI - &copy; - 2009 - Bagge Consulting - Todos los derechos reservados
 		</div>
 	</div>
 	</form>
