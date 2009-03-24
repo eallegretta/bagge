@@ -23,13 +23,13 @@ namespace Bagge.Seti.WebSite {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder _head;
         
         /// <summary>
-        /// form1 control.
+        /// _mainForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm _mainForm;
         
         /// <summary>
         /// _scriptManager control.
@@ -57,6 +57,15 @@ namespace Bagge.Seti.WebSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LoginView _menuLoginView;
+        
+        /// <summary>
+        /// _siteMapPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapPath _siteMapPath;
         
         /// <summary>
         /// _contentUpdatePanel control.
