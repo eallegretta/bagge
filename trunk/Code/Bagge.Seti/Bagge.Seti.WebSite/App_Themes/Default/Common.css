@@ -215,3 +215,21 @@ div.filters table td
 	text-align:left;
 	padding: 5px 5px 5px 0px;
 }
+
+#loginPage
+{
+	text-align:center;
+}
+
+.loginLabel
+{
+	font-weight:bold;
+}
+
+#loadingAnimation
+{
+	border:2px solid black;
+	font-weight:bold;
+	padding:15px;
+	text-align:center;
+}

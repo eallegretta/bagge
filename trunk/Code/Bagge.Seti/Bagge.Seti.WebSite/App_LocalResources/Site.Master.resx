@@ -117,37 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login.CreateUserText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Login.FailureText" xml:space="preserve">
-    <value>Usted a ingresado usuario o contraseña inválidos. Por favor intente nuevamente.</value>
-  </data>
-  <data name="Login.LoginButtonText" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="Login.PasswordLabelText" xml:space="preserve">
-    <value>Contraseña:</value>
-  </data>
-  <data name="Login.PasswordRecoveryText" xml:space="preserve">
-    <value>Recuperar Contraseña</value>
-  </data>
-  <data name="Login.PasswordRequiredErrorMessage" xml:space="preserve">
-    <value>La contraseña es requerida.</value>
-  </data>
-  <data name="Login.RememberMeText" xml:space="preserve">
-    <value>Recordame.</value>
-  </data>
-  <data name="Login.TitleText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Login.UserNameLabelText" xml:space="preserve">
-    <value>Usuario:</value>
-  </data>
-  <data name="Login.UserNameRequiredErrorMessage" xml:space="preserve">
-    <value>El usuario es requerido.</value>
-  </data>
-  <data name="Page.Title" xml:space="preserve">
-    <value>Seti &gt; Iniciar sesión</value>
+  <data name="LoadingAnimation.Text" xml:space="preserve">
+    <value>Cargando</value>
   </data>
 </root>

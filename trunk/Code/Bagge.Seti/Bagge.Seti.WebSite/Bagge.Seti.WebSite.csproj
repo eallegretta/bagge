@@ -327,8 +327,13 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>WebSite.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="App_Themes\Default\Images\ajaxLoader.gif" />
     <Content Include="App_Themes\Default\Images\gridHeaderBackground.gif" />
     <Content Include="App_Themes\Default\Images\siteHeader.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Site.Master.resx">
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
