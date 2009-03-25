@@ -21,9 +21,19 @@ namespace Bagge.Seti.WebSite.Presenters
 			get { return _manager; }
 		}
 
+		protected M GetManager<M>() where M : class
+		{
+			return _manager as M;
+		}
+
 		protected IEditorView<PK> View
 		{
 			get { return _view; }
+		}
+
+		protected V GetView<V>() where V : class
+		{
+			return View as V;
 		}
 
 		public EditorPresenter(IEditorView<PK> view, IManager<T, PK> manager)

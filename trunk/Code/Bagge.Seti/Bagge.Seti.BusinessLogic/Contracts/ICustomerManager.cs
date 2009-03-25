@@ -8,5 +8,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface ICustomerManager: IManager<Customer, int>
 	{
+		Customer GetByCuit(string cuit);
 	}
 }

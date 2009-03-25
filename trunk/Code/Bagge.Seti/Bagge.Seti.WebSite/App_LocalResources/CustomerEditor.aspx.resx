@@ -168,4 +168,7 @@
   <data name="DistrictField.HeaderText" xml:space="preserve">
     <value>Localidad</value>
   </data>
+  <data name="CUITUniqueValidator.ErrorMessage" xml:space="preserve">
+    <value>El CUIT ingresado ya existe.</value>
+  </data>
 </root>
