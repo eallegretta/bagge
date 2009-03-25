@@ -75,6 +75,19 @@ namespace Bagge.Seti.WebSite.Presenters
 			}
 		}
 
+		public bool IsCuitValid(string cuit)
+		{
+			if (View.Mode == EditorAction.Insert)
+				return GetManager<ICustomerManager>().GetByCuit(cuit) == null;
+			else
+			{
+				var customer = GetManager<ICustomerManager>().GetByCuit(cuit);
+				if (customer == null)
+					return true;
+				return customer.Id == View.PrimaryKey;
+			}
+		}
+
 		public override void Save(Customer entity)
 		{
 			if(View.SelectedDistrictId.HasValue)

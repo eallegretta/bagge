@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace Bagge.Seti.WebSite.Controls
 {
 	public class SecureBoundField: System.Web.UI.WebControls.BoundField, IPropertySecureControl
 	{
+
+		public SecureBoundField()
+		{
+			Validators = new List<BaseValidator>();
+		}
+
+		[PersistenceMode(PersistenceMode.InnerProperty)]
+		public List<BaseValidator> Validators
+		{
+			get;
+			private set;
+		}
+
+
 		public int MaxLength
 		{
 			get
@@ -30,22 +45,32 @@ namespace Bagge.Seti.WebSite.Controls
 				if (textBox != null)
 				{
 					SetupMaxLength(textBox);
-					SetupValidator(cell, textBox);
+					AddPropertyProxyValidator();
+					SetupValidators(cell, textBox);
 				}
 			}
 		}
 
-		private void SetupValidator(DataControlFieldCell cell, TextBox textBox)
+		private void AddPropertyProxyValidator()
 		{
 			PropertyProxyValidator validator = new PropertyProxyValidator();
 			validator.SourceTypeName = ((ISecureControlContainer)Control).SecureTypeName;
 			validator.PropertyName = DataField;
+			validator.DisplayMode = ValidationSummaryDisplayMode.SingleParagraph;
+			Validators.Add(validator);
+		}
+
+		private void SetupValidators(DataControlFieldCell cell, TextBox textBox)
+		{
 			if (string.IsNullOrEmpty(textBox.ID))
 				textBox.ID = DataField + "_txt";
-			validator.ControlToValidate = textBox.ID;
-			validator.Display = ValidatorDisplay.Dynamic;
-			validator.DisplayMode = ValidationSummaryDisplayMode.SingleParagraph;
-			cell.Controls.Add(validator);
+
+			foreach (var validator in Validators)
+			{
+				validator.ControlToValidate = textBox.ID;
+				validator.Display = ValidatorDisplay.Dynamic;
+				cell.Controls.Add(validator);
+			}
 		}
 
 		private void SetupMaxLength(TextBox textBox)

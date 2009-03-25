@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="Scripts/jquery.maskedinput-1.2.2.min.js"></script>
 
 	<script type="text/javascript">
-	<%if(_details.FindControl("_cuit") != null){%>
+	
 		$(document).ready(function() {
 			Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
 				setCuitMask();
@@ -17,11 +17,11 @@
 		});
 
 		function setCuitMask() {
-			var obj = $('#<%=_details.FindControl("_cuit").ClientID%>');
-			if (obj)
-				obj.mask("99-999999999-9");
+			$("input[type=text]").each(function() {
+				if (this.id.indexOf("CUIT_txt") > -1)
+					$(this).mask("99-999999999-9");
+			});
 		}
-	<%} %>
 	</script>
 
 </asp:Content>
@@ -29,22 +29,13 @@
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
 		<Fields>
-			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Name" meta:resourcekey="NameField"></seti:SecureBoundField>
-			<seti:SecureTemplateField meta:resourcekey="CUITField">
-				<InsertItemTemplate>
-					<asp:TextBox ID="_cuit" runat="server" Text='<%# Bind("CUIT") %>' meta:resourcekey="CUITTextBox"></asp:TextBox>
-					<asp:PropertyProxyValidator ID="_cuitVal" runat="server" PropertyName="CUIT"
-						ControlToValidate="_cuit" SourceTypeName="Bagge.Seti.BusinessEntities.Customer"></asp:PropertyProxyValidator>
-				</InsertItemTemplate>
-				<EditItemTemplate>
-					<asp:TextBox ID="_cuit" runat="server" Text='<%# Bind("CUIT") %>' meta:resourcekey="CUITTextBox"></asp:TextBox>
-					<asp:PropertyProxyValidator ID="_cuitVal" runat="server" PropertyName="CUIT"
-						ControlToValidate="_cuit" SourceTypeName="Bagge.Seti.BusinessEntities.Customer"></asp:PropertyProxyValidator>
-				</EditItemTemplate>
-				<ItemTemplate>
-					<%#Eval("CUIT")%>
-				</ItemTemplate>
-			</seti:SecureTemplateField>
+			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Name" meta:resourcekey="NameField">
+			</seti:SecureBoundField>
+			<seti:SecureBoundField DataField="CUIT" meta:resourcekey="CUITField">
+				<Validators>
+					<asp:CustomValidator id="_cuitUniqueVal" runat="server" OnServerValidate="_cuitUniqueVal_ServerValidate" meta:resourcekey="CUITUniqueValidator"></asp:CustomValidator>
+				</Validators>
+			</seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="CountryStateField">
 				<InsertItemTemplate>
 					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id"

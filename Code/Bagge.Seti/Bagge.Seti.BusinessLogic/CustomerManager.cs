@@ -18,16 +18,22 @@ namespace Bagge.Seti.BusinessLogic
 		{
 		}
 
+		public virtual Customer GetByCuit(string cuit)
+		{
+			Customer[] customers = this.FindAllByProperty("CUIT", cuit);
+			if (customers.Length > 0)
+				return customers[0];
+			return null;
+		}
+
 		private bool IsCuitUnique(Customer customer)
 		{
 			if (customer.Id == 0)
-				return this.FindAllByProperty("CUIT", customer.CUIT).Length == 0;
+				return GetByCuit(customer.CUIT) == null;
 			else
 			{
-				Customer[] customers = this.FindAllByProperty("CUIT", customer);
-				if (customers.Length == 0)
-					return true;
-				return customers[0].Equals(customer);
+				Customer customerInDb = GetByCuit(customer.CUIT);
+				return customerInDb.Equals(customer);
 			}
 		}
 

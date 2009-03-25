@@ -20,8 +20,13 @@ namespace Bagge.Seti.WebSite
 		{
 			_presenter = new CustomerEditorPresenter(this, IoCContainer.CustomerManager, IoCContainer.CountryStateManager, IoCContainer.DistrictManager);
 
-			
 		}
+
+		protected void _cuitUniqueVal_ServerValidate(object source, ServerValidateEventArgs args)
+		{
+			args.IsValid = _presenter.IsCuitValid(args.Value);
+		}
+
 
 		protected override bool ShowRequiredInformationLabel
 		{
