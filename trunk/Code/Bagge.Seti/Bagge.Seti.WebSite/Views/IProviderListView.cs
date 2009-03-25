@@ -6,8 +6,8 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Views
 {
-	public interface IFilteredListView: IListView
+	public interface IProviderListView: IListView
 	{
-		IList<FilterPropertyValue> Filters { get; }
+		Product[] Products { set; } 
 	}
 }

@@ -11,8 +11,11 @@ namespace Bagge.Seti.BusinessEntities
 		NotEquals,
 		Like,
 		NotLike,
-		Between,
 		Greater,
-		Lower
+		GreaterEquals,
+		Lower,
+		LowerEquals,
+		In,
+		NotIn
 	}
 }

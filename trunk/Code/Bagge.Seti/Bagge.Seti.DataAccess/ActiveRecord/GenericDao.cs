@@ -5,6 +5,9 @@ using Castle.ActiveRecord.Framework.Scopes;
 using NHibernate.Expression;
 using Bagge.Seti.DataAccess.Contracts;
 using System.Collections.Generic;
+using NHibernate.SqlCommand;
+using System.Text;
+using Castle.ActiveRecord.Queries;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
@@ -158,8 +161,14 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 					case FilterPropertyValueType.Greater:
 						list.Add(Expression.Gt(filter.Property, filter.Value));
 						break;
+					case FilterPropertyValueType.GreaterEquals:
+						list.Add(Expression.Ge(filter.Property, filter.Value));
+						break;
 					case FilterPropertyValueType.Lower:
 						list.Add(Expression.Lt(filter.Property, filter.Value));
+						break;
+					case FilterPropertyValueType.LowerEquals:
+						list.Add(Expression.Le(filter.Property, filter.Value));
 						break;
 				}
 			}
@@ -188,7 +197,9 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, System.Collections.Generic.IList<FilterPropertyValue> filter)
 		{
-			return ActiveRecordMediator<T>.SlicedFindAll(startIndex, pageSize, BuildCriteriaFromFilters(filter));
+			return GetFilteredRecords(startIndex, pageSize, filter);
+
+			//return ActiveRecordMediator<T>.SlicedFindAll(startIndex, pageSize, BuildCriteriaFromFilters(filter));
 		}
 
 		public virtual T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, System.Collections.Generic.IList<FilterPropertyValue> filter, string orderBy)
@@ -204,6 +215,91 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 		public virtual int CountByProperties(System.Collections.Generic.IList<FilterPropertyValue> filter)
 		{
 			return ActiveRecordMediator<T>.Count(BuildCriteriaFromFilters(filter));
+		}
+
+
+		protected T[] GetFilteredRecords(IList<FilterPropertyValue> filters)
+		{
+			return GetFilteredRecords(null, null, string.Empty, true, filters);
+		}
+
+		protected T[] GetFilteredRecords(int firstResult, int maxResults, IList<FilterPropertyValue> filters)
+		{
+			return GetFilteredRecords(firstResult, maxResults, string.Empty, true, filters);
+		}
+
+		protected T[] GetFilteredRecords(string orderBy, IList<FilterPropertyValue> filters)
+		{
+			return GetFilteredRecords(null, null, orderBy, true, filters);
+		}
+
+		protected T[] GetFilteredRecords(string orderBy, bool ascending, IList<FilterPropertyValue> filters)
+		{
+			return GetFilteredRecords(null, null, orderBy, ascending, filters);
+		}
+
+		protected T[] GetFilteredRecords(int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
+		{
+			StringBuilder hql = new StringBuilder();
+			hql.AppendFormat("from {0} el where ", typeof(T).Name);
+			for (int index = 0; index < filters.Count; index++)
+			{
+				if (index < filters.Count - 1)
+					hql.Append(GetWhereClauseBasedOnFilter(filters[index], true));
+				else
+					hql.Append(GetWhereClauseBasedOnFilter(filters[index], false));
+			}
+			if(!string.IsNullOrEmpty(orderBy))
+				hql.AppendFormat(" orderby {0} {1}", orderBy, (ascending) ? "asc" : "desc");
+	
+			SimpleQuery<T> query = new SimpleQuery<T>(hql.ToString());
+
+			foreach (FilterPropertyValue filter in filters)
+			{
+				if (query.Query.Contains(":" + filter.Property.ToLower()))
+				{
+					if (filter.Type == FilterPropertyValueType.Like || filter.Type == FilterPropertyValueType.NotLike)
+						query.SetParameter(filter.Property.ToLower(), filter.Value + "%");
+					else
+						query.SetParameter(filter.Property.ToLower(), filter.Value);
+				}
+			}
+			if (firstResult.HasValue && maxResults.HasValue)
+				query.SetQueryRange(firstResult.Value, maxResults.Value);
+
+			return query.Execute();
+		}
+
+		private string GetWhereClauseBasedOnFilter(FilterPropertyValue filter, bool appendAnd)
+		{
+			switch (filter.Type)
+			{
+				case FilterPropertyValueType.Equals:
+					return string.Format("el.{0} = :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+				case FilterPropertyValueType.NotEquals:
+					return string.Format("el.{0} <> :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+				case FilterPropertyValueType.Like:
+					if (!string.IsNullOrEmpty(filter.Value.ToString()))
+						return string.Format("el.{0} like :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Empty;
+				case FilterPropertyValueType.NotLike:
+					if (!string.IsNullOrEmpty(filter.Value.ToString()))
+						return string.Format("el.{0} not like :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Empty;
+				case FilterPropertyValueType.Greater:
+					return string.Format("el.{0} > :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+				case FilterPropertyValueType.GreaterEquals:
+					return string.Format("el.{0} >= :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+				case FilterPropertyValueType.Lower:
+					return string.Format("el.{0} < :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+				case FilterPropertyValueType.LowerEquals:
+					return string.Format("el.{0} <= :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+				case FilterPropertyValueType.In:
+					return string.Format(":{1} in elements(el.{0}){2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+				case FilterPropertyValueType.NotIn:
+					return string.Format(":{1} not in elements(el.{0}){2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+			}
+			return string.Empty;
 		}
 
 		#endregion

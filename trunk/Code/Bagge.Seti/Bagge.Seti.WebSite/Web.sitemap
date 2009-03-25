@@ -2,10 +2,12 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="~/Default.aspx" title="Home"  description="">
 		<siteMapNode url="~/CustomerList.aspx" title="Clientes">
-			<siteMapNode url="~/CustomerEditor.aspx" title="Alta" editTitle="Editar" viewTitle="Ver"></siteMapNode>
+			<siteMapNode url="~/CustomerEditor.aspx" title="Alta Cliente" editTitle="Editar Cliente" viewTitle="Ver Cliente"></siteMapNode>
 			
 		</siteMapNode>
-		<siteMapNode url="" title="Proveedores"></siteMapNode>
+		<siteMapNode title="Proveedores" url="~/ProviderList.aspx">
+			<siteMapNode title="Alta Proveedor" url="~/ProviderEditor.aspx" editTitle="Editar Proveedor" viewTitle="Ver Proveedor"></siteMapNode>
+		</siteMapNode>
 		<siteMapNode url="" title="Insumos"></siteMapNode>
 		<siteMapNode url="" title="Tickets"></siteMapNode>
 		<siteMapNode url="" title="Empleados"></siteMapNode>

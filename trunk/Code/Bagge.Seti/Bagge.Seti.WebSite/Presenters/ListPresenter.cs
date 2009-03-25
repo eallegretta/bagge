@@ -16,7 +16,15 @@ namespace Bagge.Seti.WebSite.Presenters
 		IListView _view;
 		IManager<T, PK> _manager;
 
+		protected IListView View
+		{
+			get { return _view; }
+		}
 
+		protected V GetView<V>() where V:class
+		{
+			return View as V;
+		}
 
 		public ListPresenter(IListView view, IManager<T, PK> manager)
 		{
