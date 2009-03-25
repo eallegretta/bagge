@@ -61,6 +61,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El CUIT ingresado ya existe..
+        /// </summary>
+        internal static string CUITNotUniqueErrorMessage {
+            get {
+                return ResourceManager.GetString("CUITNotUniqueErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El empleado cuyo nombre de usuario es {0} no pudo ser encontrado.
         /// </summary>
         internal static string EmployeeByUsernameNotFoundErrorMessage {
