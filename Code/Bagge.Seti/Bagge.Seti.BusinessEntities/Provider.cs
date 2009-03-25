@@ -58,8 +58,8 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 
-		[Property]
-		public string PrimayPhone
+		[Property("Phone")]
+		public string PrimaryPhone
 		{
 			get;
 			set;

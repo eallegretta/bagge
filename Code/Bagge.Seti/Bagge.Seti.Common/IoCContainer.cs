@@ -29,69 +29,78 @@ namespace Bagge.Seti.Common
 			set { HttpContext.Current.User = value; }
 		}
 
-		private static ICustomerManager _customerManager = (ICustomerManager)ContextRegistry.GetContext().GetObject("CustomerManager");
-		private static IEmployeeManager _employeeManager = (IEmployeeManager)ContextRegistry.GetContext().GetObject("EmployeeManager");
-		private static IManager<CountryState, int> _countryStateManager = (IManager<CountryState, int>)ContextRegistry.GetContext().GetObject("CountryStateManager");
-		private static IManager<District, int> _districtManager = (IManager<District, int>)ContextRegistry.GetContext().GetObject("DistrictManager");
 
-		private static IValidationEngine _validationEngine = (IValidationEngine)ContextRegistry.GetContext().GetObject("ValidationEngine");
-
-		public static IValidationEngine ValidationEngine
+		private static T GetObject<T>(string key) where T:class
 		{
-			get { return _validationEngine; }
-		}
-
-
-		public static IManager<CountryState, int> CountryStateManager
-		{
-			get {
-
-				return _countryStateManager; }
-		}
-
-		public static IManager<District, int> DistrictManager
-		{
-			get { return _districtManager; }
-		}
-
-		public static ICustomerManager CustomerManager
-		{
-			get { return _customerManager; }
+			return ContextRegistry.GetContext().GetObject(key) as T;
 		}
 
 		public static IAlertConfigurationManager AlertConfigurationManager
 		{
-			get { return null; }
+			get { return GetObject<IAlertConfigurationManager>("AlertConfigurationManager"); }
 		}
 
-		public static IProductManager ProductManager
+		public static IManager<CountryState, int> CountryStateManager
 		{
-			get { return null; }
+			get { return GetObject<IManager<CountryState, int>>("CountryStateManager"); }
+		}
+
+		public static ICustomerManager CustomerManager
+		{
+			get { return GetObject<ICustomerManager>("CustomerManager"); }
+		}
+
+		public static IManager<District, int> DistrictManager
+		{
+			get { return GetObject<IManager<District, int>>("DistrictManager"); }
 		}
 
 		public static IEmployeeManager EmployeeManager
 		{
-			get { return _employeeManager; }
-		}
-
-		public static ITicketManager TicketManager
-		{
-			get { return null; }
-		}
-
-		public static ITicketStatusManager TicketStatusManager
-		{
-			get { return null; }
+			get { return GetObject<IEmployeeManager>("EmployeeManager"); }
 		}
 
 		public static IFunctionManager FunctionManager
 		{
-			get { return null; }
+			get { return GetObject<IFunctionManager>("FunctionManager"); }
+		}
+
+		public static IProductManager ProductManager
+		{
+			get { return GetObject<IProductManager>("ProductManager"); }
+		}
+
+
+		public static IProviderManager ProviderManager
+		{
+			get { return GetObject<IProviderManager>("ProviderManager"); }
+		}
+
+
+		public static IManager<ProviderCalification, int> ProviderCalificationManager
+		{
+			get { return GetObject<IManager<ProviderCalification, int>>("ProviderCalificationManager"); }
 		}
 
 		public static IRoleManager RoleManager
 		{
-			get { return null; }
+			get { return GetObject<IRoleManager>("RoleManager"); }
 		}
+
+		public static ITicketManager TicketManager
+		{
+			get { return GetObject<ITicketManager>("TicketManager"); }
+		}
+
+		public static ITicketStatusManager TicketStatusManager
+		{
+			get { return GetObject<ITicketStatusManager>("TicketStatusManager"); }
+		}
+
+		public static IValidationEngine ValidationEngine
+		{
+			get { return GetObject<IValidationEngine>("ValidationEngine"); }
+		}
+		
 	}
 }

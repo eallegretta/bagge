@@ -12,7 +12,18 @@ namespace Bagge.Seti.BusinessLogic
 {
 	public class GenericManager<T, PK>: IManager<T, PK>  where T: PrimaryKeyDomainObject<T, PK>
 	{
-		protected IDao<T,PK> Dao;
+		protected IDao<T, PK> Dao
+		{
+			get;
+			private set;
+		}
+
+		protected D GetDao<D>() where D : class
+		{
+			return Dao as D;
+		}
+
+
 
 
 		public GenericManager(IDao<T, PK> dao)

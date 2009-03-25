@@ -121,7 +121,7 @@
     <value />
   </data>
   <data name="Grid.EmptyDataText" xml:space="preserve">
-    <value>No se han encontrado clientes</value>
+    <value>No se han encontrado proveedores</value>
   </data>
   <data name="NameField.HeaderText" xml:space="preserve">
     <value>Nombre</value>
@@ -139,13 +139,13 @@
     <value>Editar</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
-    <value>Seti &gt; Listado de Clientes</value>
+    <value>Seti &gt; Listado de Proveedores</value>
   </data>
   <data name="DeleteField.ConfirmationMessage" xml:space="preserve">
-    <value>¿Esta seguro que desea borrar el cliente?</value>
+    <value>¿Esta seguro que desea borrar el proveedor?</value>
   </data>
   <data name="ListCommands.NewText" xml:space="preserve">
-    <value>Nuevo Cliente</value>
+    <value>Nuevo Proveedor</value>
   </data>
   <data name="AddressField.HeaderText" xml:space="preserve">
     <value>Dirección</value>
@@ -160,7 +160,7 @@
     <value>Direcci&amp;oacute;n:</value>
   </data>
   <data name="FilterButton.Text" xml:space="preserve">
-    <value>Filtrar Clientes</value>
+    <value>Filtrar Proveedores</value>
   </data>
   <data name="FilterCuitLiteral.Text" xml:space="preserve">
     <value>CUIT:</value>
@@ -173,5 +173,8 @@
   </data>
   <data name="PhoneField.HeaderText" xml:space="preserve">
     <value>Teléfono</value>
+  </data>
+  <data name="FilterProductLiteral.Text" xml:space="preserve">
+    <value>Producto:</value>
   </data>
 </root>

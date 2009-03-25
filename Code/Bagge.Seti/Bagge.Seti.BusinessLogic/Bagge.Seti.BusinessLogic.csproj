@@ -60,6 +60,7 @@
     <Compile Include="Contracts\IFunctionManager.cs" />
     <Compile Include="Contracts\IGetManager.cs" />
     <Compile Include="Contracts\IProductManager.cs" />
+    <Compile Include="Contracts\IProviderManager.cs" />
     <Compile Include="Contracts\IRoleManager.cs" />
     <Compile Include="Contracts\ISlicedFindManager.cs" />
     <Compile Include="Contracts\ITicketManager.cs" />
@@ -77,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ProviderManager.cs" />
     <Compile Include="RoleManager.cs" />
     <Compile Include="TicketManager.cs" />
     <Compile Include="TicketStatusManager.cs" />
