@@ -174,4 +174,7 @@
   <data name="PhoneField.HeaderText" xml:space="preserve">
     <value>Teléfono</value>
   </data>
+  <data name="DeleteField.UndeleteConfirmationMessage" xml:space="preserve">
+    <value>¿Esta seguro que desea reciclar el cliente?</value>
+  </data>
 </root>

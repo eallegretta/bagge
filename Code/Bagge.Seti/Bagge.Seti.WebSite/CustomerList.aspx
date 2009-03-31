@@ -7,14 +7,20 @@
 			<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
 			<th><asp:Literal ID="_cuitLiteral" runat="server" meta:resourcekey="FilterCuitLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_cuit" runat="server"></asp:TextBox></td>
-			<td><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
-			</td>
+			<th><asp:Literal ID="_deletedLiteral" runat="server" meta:resourcekey="FilterDeleteLiteral"></asp:Literal></th>
+			<td><asp:DropDownList ID="_isDeleted" runat="server">
+				<asp:ListItem></asp:ListItem>
+				<asp:ListItem Value="true"><%$ Resources:WebSite, YesText%></asp:ListItem>
+				<asp:ListItem Value="false"><%$ Resources:WebSite, NoText%></asp:ListItem>
+			</asp:DropDownList></td>
 		</tr>
 		<tr>
 			<th><asp:Literal ID="_addressLiteral" runat="server" meta:resourcekey="FilterAddressLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_address" runat="server"></asp:TextBox></td>
 			<th><asp:Literal ID="_phoneLiteral" runat="server" meta:resourcekey="FilterPhoneLiteral"></asp:Literal></th>
-			<td colspan="2"><asp:TextBox ID="_phone" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="_phone" runat="server"></asp:TextBox></td>
+			<td colspan="2"><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
+			</td>
 		</tr>
 	</table>
 </asp:Content>
@@ -44,8 +50,11 @@
 				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=Edit"
 				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" />
-			<eaa:DeleteCommandField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
-				meta:resourcekey="DeleteField"></eaa:DeleteCommandField>
+			<seti:DeleteUndeleteCommandField DeleteDataField="Deleted" ItemStyle-Width="20px" 
+				ItemStyle-HorizontalAlign="Center" 
+				UndeleteImageUrl="<%$ Resources:WebSite, IconRecycleImagePath%>"
+				ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
+				meta:resourcekey="DeleteField"></seti:DeleteUndeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
 	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/CustomerEditor.aspx" />

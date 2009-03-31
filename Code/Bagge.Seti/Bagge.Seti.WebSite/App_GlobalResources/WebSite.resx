@@ -147,6 +147,9 @@
   <data name="IconEditImageTag" xml:space="preserve">
     <value>&lt;img src='App_Themes/Default/Images/iconEdit.gif' /&gt;</value>
   </data>
+  <data name="IconRecycleImagePath" xml:space="preserve">
+    <value>~/App_Themes/Default/Images/iconRecycle.gif</value>
+  </data>
   <data name="IconViewImageTag" xml:space="preserve">
     <value>&lt;img src='App_Themes/Default/Images/iconView.gif' /&gt;</value>
   </data>

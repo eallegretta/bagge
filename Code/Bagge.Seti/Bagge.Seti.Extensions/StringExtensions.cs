@@ -530,5 +530,10 @@ namespace System
 
 			return sb.ToString();
 		}
+
+		public static T To<T>(this string s)
+		{
+			return (T)Convert.ChangeType(s, typeof(T));
+		}
 	}
 }

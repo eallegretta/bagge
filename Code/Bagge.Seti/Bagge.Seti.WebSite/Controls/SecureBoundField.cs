@@ -39,11 +39,14 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			base.InitializeDataCell(cell, rowState);
 
-			if (rowState.In(DataControlRowState.Insert, DataControlRowState.Edit))
+			if ((rowState & DataControlRowState.Insert) == DataControlRowState.Insert || 
+				(rowState & DataControlRowState.Edit) == DataControlRowState.Edit)
 			{
 				if (cell.Controls.Count == 1)
 				{
 					TextBox textBox = cell.Controls[0] as TextBox;
+					if (string.IsNullOrEmpty(textBox.ID))
+						textBox.ID = DataField + "_txt";
 					if (textBox != null)
 					{
 						SetupMaxLength(textBox);
@@ -65,9 +68,6 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void SetupValidators(DataControlFieldCell cell, TextBox textBox)
 		{
-			if (string.IsNullOrEmpty(textBox.ID))
-				textBox.ID = DataField + "_txt";
-
 			foreach (var validator in Validators)
 			{
 				validator.ControlToValidate = textBox.ID;

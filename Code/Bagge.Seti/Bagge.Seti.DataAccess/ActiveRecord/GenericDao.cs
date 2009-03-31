@@ -241,17 +241,30 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 		protected T[] GetFilteredRecords(int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
 		{
 			StringBuilder hql = new StringBuilder();
-			hql.AppendFormat("from {0} el where ", typeof(T).Name);
+			hql.AppendFormat("from {0} el", typeof(T).Name);
+
+			StringBuilder where = new StringBuilder();
 			for (int index = 0; index < filters.Count; index++)
 			{
 				if (index < filters.Count - 1)
-					hql.Append(GetWhereClauseBasedOnFilter(filters[index], true));
+					where.Append(GetWhereClauseBasedOnFilter(filters[index], true));
 				else
-					hql.Append(GetWhereClauseBasedOnFilter(filters[index], false));
+					where.Append(GetWhereClauseBasedOnFilter(filters[index], false));
 			}
+
+			if (where.Length > 0)
+			{
+				if (where.ToString().EndsWith("and "))
+					where = where.Remove(where.Length - 5, 4);
+
+				hql.AppendFormat(" where {0}", where.ToString());
+			}
+
 			if(!string.IsNullOrEmpty(orderBy))
 				hql.AppendFormat(" orderby {0} {1}", orderBy, (ascending) ? "asc" : "desc");
 	
+			
+
 			SimpleQuery<T> query = new SimpleQuery<T>(hql.ToString());
 
 			foreach (FilterPropertyValue filter in filters)
