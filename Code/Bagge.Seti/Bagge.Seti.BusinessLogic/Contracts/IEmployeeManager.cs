@@ -6,7 +6,7 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IEmployeeManager: IManager<Employee, int>
+	public interface IEmployeeManager: IAuditableManager<Employee, int>
 	{
 		bool Authenticate(string username, string password);
 		Employee GetByUsername(string username);

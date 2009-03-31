@@ -8,7 +8,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class RoleManager: GenericManager<Role, int>, IRoleManager
+	public class RoleManager : AuditableGenericManager<Role, int>, IRoleManager
 	{
 		public RoleManager(IRoleDao dao)
 			: base(dao)

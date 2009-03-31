@@ -39,14 +39,17 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			base.InitializeDataCell(cell, rowState);
 
-			if (cell.Controls.Count == 1)
+			if (rowState.In(DataControlRowState.Insert, DataControlRowState.Edit))
 			{
-				TextBox textBox = cell.Controls[0] as TextBox;
-				if (textBox != null)
+				if (cell.Controls.Count == 1)
 				{
-					SetupMaxLength(textBox);
-					AddPropertyProxyValidator();
-					SetupValidators(cell, textBox);
+					TextBox textBox = cell.Controls[0] as TextBox;
+					if (textBox != null)
+					{
+						SetupMaxLength(textBox);
+						AddPropertyProxyValidator();
+						SetupValidators(cell, textBox);
+					}
 				}
 			}
 		}

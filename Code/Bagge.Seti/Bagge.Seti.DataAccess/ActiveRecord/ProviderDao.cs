@@ -7,7 +7,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
-	public class ProviderDao: AuditableGenericDao<Provider, int>, IProviderDao
+	public class ProviderDao : GenericDao<Provider, int>, IProviderDao
 	{
 
 		public override Provider[] FindAllByProperties(IList<FilterPropertyValue> filter)

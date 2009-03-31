@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{35261AD9-48F9-4405-8295-493C5EF8541D}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="ActiveRecord\AccessibilityDao.cs" />
     <Compile Include="ActiveRecord\AlertConfigurationDao.cs" />
-    <Compile Include="ActiveRecord\AuditableGenericDao.cs" />
     <Compile Include="ActiveRecord\CustomerDao.cs" />
     <Compile Include="ActiveRecord\EmployeeDao.cs" />
     <Compile Include="ActiveRecord\FunctionDao.cs" />

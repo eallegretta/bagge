@@ -8,7 +8,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class FunctionManager: GenericManager<Function, int>, IFunctionManager
+	public class FunctionManager : AuditableGenericManager<Function, int>, IFunctionManager
 	{
 		private IAccessibilityDao _accessibilityDao;
 

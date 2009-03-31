@@ -6,7 +6,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IFunctionManager: IManager<Function, int>
+	public interface IFunctionManager: IAuditableManager<Function, int>
 	{
 		AccessibilityType[] ListMethodAccessibilities();
 		AccessibilityType[] ListPropertyAccessibilities(); 

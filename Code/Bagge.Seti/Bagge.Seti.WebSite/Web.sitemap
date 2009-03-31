@@ -11,6 +11,11 @@
 		<siteMapNode url="" title="Insumos"></siteMapNode>
 		<siteMapNode url="" title="Tickets"></siteMapNode>
 		<siteMapNode url="" title="Empleados"></siteMapNode>
-		<siteMapNode url="" title="Roles"></siteMapNode>
+		<siteMapNode url="" title="Reportes"></siteMapNode>
+		<siteMapNode url="" title="Alertas"></siteMapNode>
+		<siteMapNode url="" title="Seguridad">
+			<siteMapNode url="" title="Roles"></siteMapNode>
+			<siteMapNode url="" title="Funciones"></siteMapNode>
+		</siteMapNode>
 	</siteMapNode>
 </siteMap>

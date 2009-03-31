@@ -6,7 +6,8 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IProviderManager: IAuditableManager<Provider, int>
+	public interface IUpdateManager<T, PK> where T : PrimaryKeyDomainObject<T, PK>
 	{
+		void Update(T instance);
 	}
 }

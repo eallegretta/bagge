@@ -13,7 +13,7 @@ using Castle.Components.Validator;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class EmployeeManager: GenericManager<Employee, int>, IEmployeeManager
+	public class EmployeeManager: AuditableGenericManager<Employee, int>, IEmployeeManager
 	{
 		public EmployeeManager(IEmployeeDao dao)
 			: base(dao)

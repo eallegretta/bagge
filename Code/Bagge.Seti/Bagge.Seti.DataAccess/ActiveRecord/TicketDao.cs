@@ -7,7 +7,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
-	public class TicketDao : AuditableGenericDao<Ticket, int>, ITicketDao
+	public class TicketDao : GenericDao<Ticket, int>, ITicketDao
 	{
 	}
 }

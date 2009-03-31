@@ -18,6 +18,7 @@ namespace Bagge.Seti.WebSite
 		protected override void OnInit(EventArgs e)
 		{
 			ObjectDataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(ObjectDataSource_Selecting);
+			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
 			ObjectDataSource.Deleting += new EventHandler<ObjectContainerDataSourceDeletingEventArgs>(ObjectDataSource_Deleting);
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 			ObjectDataSource.UsingServerPaging = true;
@@ -26,6 +27,11 @@ namespace Bagge.Seti.WebSite
 				((SecureGridView)Grid).SecureTypeName = typeof(T).AssemblyQualifiedName;
 
 			base.OnInit(e);
+		}
+
+		void ObjectDataSource_Updating(object sender, ObjectContainerDataSourceUpdatingEventArgs e)
+		{
+			
 		}
 
 

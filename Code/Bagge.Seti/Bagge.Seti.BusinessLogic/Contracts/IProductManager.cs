@@ -6,7 +6,7 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IProductManager: IManager<Product, int>
+	public interface IProductManager: IAuditableManager<Product, int>
 	{
 	}
 }
