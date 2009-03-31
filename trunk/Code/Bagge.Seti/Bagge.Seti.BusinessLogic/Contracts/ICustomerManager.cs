@@ -6,7 +6,7 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface ICustomerManager: IManager<Customer, int>
+	public interface ICustomerManager: IAuditableManager<Customer, int>
 	{
 		Customer GetByCuit(string cuit);
 	}

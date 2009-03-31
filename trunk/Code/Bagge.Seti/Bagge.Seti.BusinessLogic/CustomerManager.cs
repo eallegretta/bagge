@@ -11,7 +11,7 @@ using Bagge.Seti.BusinessLogic.Properties;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class CustomerManager: GenericManager<Customer, int>, ICustomerManager
+	public class CustomerManager: AuditableGenericManager<Customer, int>, ICustomerManager
 	{
 		public CustomerManager(ICustomerDao dao)
 			: base(dao)

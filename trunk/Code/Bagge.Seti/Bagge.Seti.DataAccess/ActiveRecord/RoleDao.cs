@@ -7,7 +7,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
-	public class RoleDao : AuditableGenericDao<Role, int>, IRoleDao
+	public class RoleDao : GenericDao<Role, int>, IRoleDao
 	{
 	}
 }

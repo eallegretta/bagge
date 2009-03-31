@@ -6,7 +6,8 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IProviderManager: IAuditableManager<Provider, int>
+	public interface ICreateManager<T, PK> where T : PrimaryKeyDomainObject<T, PK>
 	{
+		PK Create(T instance);
 	}
 }

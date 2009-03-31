@@ -8,7 +8,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class ProviderManager: GenericManager<Provider, int>, IProviderManager
+	public class ProviderManager : AuditableGenericManager<Provider, int>, IProviderManager
 	{
 		public ProviderManager(IProviderDao dao)
 			: base(dao)

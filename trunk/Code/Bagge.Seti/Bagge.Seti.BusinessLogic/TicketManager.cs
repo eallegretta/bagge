@@ -8,7 +8,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class TicketManager: GenericManager<Ticket, int>, ITicketManager
+	public class TicketManager : AuditableGenericManager<Ticket, int>, ITicketManager
 	{
 
 		public TicketManager(ITicketDao dao): base(dao)
