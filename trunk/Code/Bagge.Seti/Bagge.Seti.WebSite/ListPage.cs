@@ -10,6 +10,7 @@ using Bagge.Seti.BusinessLogic;
 using Microsoft.Practices.Web.UI.WebControls;
 using Bagge.Seti.WebSite.Controls;
 using System.Web.UI;
+using Bagge.Seti.Extensions;
 
 namespace Bagge.Seti.WebSite
 {
@@ -18,22 +19,23 @@ namespace Bagge.Seti.WebSite
 		protected override void OnInit(EventArgs e)
 		{
 			ObjectDataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(ObjectDataSource_Selecting);
-			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
 			ObjectDataSource.Deleting += new EventHandler<ObjectContainerDataSourceDeletingEventArgs>(ObjectDataSource_Deleting);
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 			ObjectDataSource.UsingServerPaging = true;
 
+			Grid.RowCommand += new GridViewCommandEventHandler(Grid_RowCommand);
 			if (Grid is SecureGridView)
 				((SecureGridView)Grid).SecureTypeName = typeof(T).AssemblyQualifiedName;
 
 			base.OnInit(e);
 		}
 
-		void ObjectDataSource_Updating(object sender, ObjectContainerDataSourceUpdatingEventArgs e)
+		void Grid_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
-			
+			if (e.CommandName == "Undelete")
+				OnUndeleting((PK)Grid.DataKeys[e.CommandArgument.ToString().To<int>()].Value);
+			DataBind();
 		}
-
 
 		void ObjectDataSource_Deleting(object sender, ObjectContainerDataSourceDeletingEventArgs e)
 		{
@@ -49,6 +51,11 @@ namespace Bagge.Seti.WebSite
 				OnSelecting(e.Arguments.StartRowIndex, e.Arguments.MaximumRows, e.Arguments.SortExpression);
 
 			
+		}
+
+		protected virtual void OnUndeleting(PK id)
+		{
+			Presenter.Undelete(id);
 		}
 
 		protected virtual void OnDeleting(PK id)
