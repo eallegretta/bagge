@@ -13,7 +13,7 @@
 <seti:SecureGridView 
 	CssClass="grid" AllowPaging="True" AllowSorting="True" 
 	AutoGenerateColumns="false" CellPadding="0" CellSpacing="0"  
-	PageSize="4" HeaderStyle-CssClass="gridHeader" 
+	PageSize="15" HeaderStyle-CssClass="gridHeader" 
 	PagerStyle-CssClass="gridPager" RowStyle-CssClass="gridRow" 
 	AlternatingRowStyle-CssClass="gridRowAlternate" GridLines="None" 
 	runat="server">

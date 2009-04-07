@@ -136,7 +136,7 @@
     <value>Email</value>
   </data>
   <data name="SubscriptionField.HeaderText" xml:space="preserve">
-    <value>Subscripción</value>
+    <value>Abono</value>
   </data>
   <data name="CUITField.HeaderText" xml:space="preserve">
     <value>CUIT</value>

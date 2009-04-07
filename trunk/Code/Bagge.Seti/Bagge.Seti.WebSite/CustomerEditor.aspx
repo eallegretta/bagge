@@ -40,7 +40,6 @@
 				<InsertItemTemplate>
 					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
 						runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelectedIndexChanged">
-						<asp:ListItem Text="-- Seleccione --" Value=""></asp:ListItem>
 					</asp:DropDownList>
 				</InsertItemTemplate>
 				<EditItemTemplate>
