@@ -35,9 +35,9 @@ namespace Bagge.Seti.BusinessEntities
 				string address = "";
 				if (!string.IsNullOrEmpty(Address))
 					address += Address + " ";
-				if (Floor.HasValue)
+				if (Floor.HasValue && Floor.Value != '\0')
 					address += Floor.Value;
-				if (Apartment.HasValue)
+				if (Apartment.HasValue && Apartment.Value != '\0')
 					address += Apartment.Value;
 
 				return address;

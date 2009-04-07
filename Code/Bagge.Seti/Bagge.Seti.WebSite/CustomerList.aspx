@@ -7,11 +7,9 @@
 			<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
 			<th><asp:Literal ID="_cuitLiteral" runat="server" meta:resourcekey="FilterCuitLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_cuit" runat="server"></asp:TextBox></td>
-			<th><asp:Literal ID="_deletedLiteral" runat="server" meta:resourcekey="FilterDeleteLiteral"></asp:Literal></th>
+			<th><asp:Literal ID="_deletedLiteral" runat="server" meta:resourcekey="FilterDeletedLiteral"></asp:Literal></th>
 			<td><asp:DropDownList ID="_isDeleted" runat="server">
 				<asp:ListItem></asp:ListItem>
-				<asp:ListItem Value="true"><%$ Resources:WebSite, YesText%></asp:ListItem>
-				<asp:ListItem Value="false"><%$ Resources:WebSite, NoText%></asp:ListItem>
 			</asp:DropDownList></td>
 		</tr>
 		<tr>
@@ -30,18 +28,18 @@
 		DataSourceID="_dataSource"
 		meta:resourcekey="Grid">
 		<Columns>
-			<asp:BoundField DataField="Name" 
+			<asp:BoundField NullDisplayText="" DataField="Name" 
 				meta:resourcekey="NameField" />
-			<asp:BoundField DataField="CUIT" 
+			<asp:BoundField NullDisplayText="" DataField="CUIT" 
 				meta:resourcekey="CUITField" />
-			<asp:BoundField DataField="FullAddress" meta:resourcekey="AddressField" />
-			<asp:BoundField DataField="District" meta:resourcekey="DistrictField" />
+			<asp:BoundField NullDisplayText="" DataField="FullAddress" meta:resourcekey="AddressField" />
+			<asp:BoundField NullDisplayText="" DataField="District" meta:resourcekey="DistrictField" />
 			<asp:TemplateField meta:resourcekey="CountryStateField" >
 				<ItemTemplate>
 					<%#((Bagge.Seti.BusinessEntities.Customer)(Container.DataItem)).District.CountryState%>
 				</ItemTemplate>
 			</asp:TemplateField>
-			<asp:BoundField DataField="Phone" meta:resourcekey="PhoneField" />
+			<asp:BoundField NullDisplayText="" DataField="Phone" meta:resourcekey="PhoneField" />
 			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=View"
 				Text="<%$ Resources:WebSite, IconViewImageTag %>"

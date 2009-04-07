@@ -87,7 +87,7 @@
 					</asp:ContentPlaceHolder>
 				</ContentTemplate>
 			</asp:UpdatePanel>
-			<ajax:UpdatePanelAnimationExtender ID="_contentUpdatePanelAnimation" runat="server" TargetControlID="_contentUpdatePanel">
+			<%--<ajax:UpdatePanelAnimationExtender ID="_contentUpdatePanelAnimation" runat="server" TargetControlID="_contentUpdatePanel">
 				<Animations>
 					<OnUpdating>
 						<EnableAction enabled="true"></EnableAction>
@@ -96,7 +96,7 @@
 						<EnableAction enabled="true"></EnableAction>
 					</OnUpdated>
 				</Animations>
-			</ajax:UpdatePanelAnimationExtender>
+			</ajax:UpdatePanelAnimationExtender>--%>
 		</div>
 		<div id="footer">
 			SETI - &copy; - 2009 - Bagge Consulting - Todos los derechos reservados
