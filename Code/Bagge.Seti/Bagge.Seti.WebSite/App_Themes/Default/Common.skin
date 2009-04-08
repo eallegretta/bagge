@@ -18,3 +18,22 @@
 	AlternatingRowStyle-CssClass="gridRowAlternate" GridLines="None" 
 	runat="server">
 </seti:SecureGridView>
+
+
+<seti:SecureGridView 
+	SkinId="NoPaging" CssClass="grid" AllowPaging="false" AllowSorting="false" 
+	AutoGenerateColumns="false" CellPadding="0" CellSpacing="0"  
+	PageSize="15" HeaderStyle-CssClass="gridHeader" 
+	PagerStyle-CssClass="gridPager" RowStyle-CssClass="gridRow" 
+	AlternatingRowStyle-CssClass="gridRowAlternate" GridLines="None" 
+	runat="server">
+</seti:SecureGridView>
+
+<asp:GridView 
+	SkinId="NoPaging" CssClass="grid" AllowPaging="false" AllowSorting="false" 
+	AutoGenerateColumns="false" CellPadding="0" CellSpacing="0"  
+	PageSize="15" HeaderStyle-CssClass="gridHeader" 
+	PagerStyle-CssClass="gridPager" RowStyle-CssClass="gridRow" 
+	AlternatingRowStyle-CssClass="gridRowAlternate" GridLines="None" 
+	runat="server">
+</asp:GridView>

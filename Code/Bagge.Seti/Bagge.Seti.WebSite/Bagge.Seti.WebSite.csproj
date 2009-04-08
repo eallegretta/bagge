@@ -109,6 +109,13 @@
     <Content Include="App_Themes\Default\Pager.css" />
     <Compile Include="Controls\DeleteUndeleteCommandField.cs" />
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\ProductSelectionGrid.ascx.cs">
+      <DependentUpon>ProductSelectionGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ProductSelectionGrid.ascx.designer.cs">
+      <DependentUpon>ProductSelectionGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PropertyProxyValidator.cs" />
     <Compile Include="Controls\SecureBoundField.cs" />
     <Compile Include="Controls\EditorCommands.ascx.cs">
@@ -391,6 +398,7 @@
     <Content Include="App_Themes\Default\Images\iconExpand.gif" />
     <Content Include="App_Themes\Default\Images\iconFilter.gif" />
     <Content Include="App_Themes\Default\Images\iconRecycle.gif" />
+    <Content Include="Controls\ProductSelectionGrid.ascx" />
     <Content Include="ProviderEditor.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
