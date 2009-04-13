@@ -12,5 +12,41 @@ namespace Bagge.Seti.WebSite {
     
     
     public partial class ProviderEditor {
+        
+        /// <summary>
+        /// _details control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Bagge.Seti.WebSite.Controls.SecureDetailsView _details;
+        
+        /// <summary>
+        /// _cuitUniqueVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator _cuitUniqueVal;
+        
+        /// <summary>
+        /// _commands control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Bagge.Seti.WebSite.Controls.EditorCommands _commands;
+        
+        /// <summary>
+        /// _dataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSource _dataSource;
     }
 }

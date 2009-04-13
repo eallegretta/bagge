@@ -115,6 +115,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hay multiples registros con el mismo nombre..
+        /// </summary>
+        internal static string MultipleNamesErrorMessage {
+            get {
+                return ResourceManager.GetString("MultipleNamesErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hay multiples empleados con el mismo nombre de usuario.
         /// </summary>
         internal static string MultipleUsernamesErrorMessage {

@@ -6,7 +6,7 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IProviderManager: IAuditableManager<Provider, int>
+	public interface IProviderManager: IAuditableManager<Provider, int>, IByNameSelectableManager<Provider, int>
 	{
 	}
 }

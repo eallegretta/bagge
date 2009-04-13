@@ -117,28 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CUITNotUniqueErrorMessage" xml:space="preserve">
-    <value>El CUIT ingresado ya existe.</value>
+  <data name="DeleteField.DeleteText" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="EmployeeByUsernameNotFoundErrorMessage" xml:space="preserve">
-    <value>El empleado cuyo nombre de usuario es {0} no pudo ser encontrado</value>
+  <data name="PriceTitleLiteral.Text" xml:space="preserve">
+    <value>Precio</value>
   </data>
-  <data name="IdCannotBeDefault" xml:space="preserve">
-    <value>El id no puede ser {0}</value>
+  <data name="AddButton.Text" xml:space="preserve">
+    <value>Agregar</value>
   </data>
-  <data name="InstanceCannotBeNull" xml:space="preserve">
-    <value>El objeto de tipo {0} no puede ser nulo</value>
+  <data name="NameTitleLiteral.Text" xml:space="preserve">
+    <value>Nombre</value>
   </data>
-  <data name="InstanceIdCannotBeDefault" xml:space="preserve">
-    <value>El objeto de tipo {1} no puede tener un id igual a {0}</value>
+  <data name="ProductField.HeaderText" xml:space="preserve">
+    <value>Producto</value>
   </data>
-  <data name="InstanceNotFound" xml:space="preserve">
-    <value>El objeto de tipo {1} cuyo id es {0} no pudo ser encontrado</value>
-  </data>
-  <data name="MultipleNamesErrorMessage" xml:space="preserve">
-    <value>Hay multiples registros con el mismo nombre.</value>
-  </data>
-  <data name="MultipleUsernamesErrorMessage" xml:space="preserve">
-    <value>Hay multiples empleados con el mismo nombre de usuario</value>
+  <data name="ProviderField.HeaderText" xml:space="preserve">
+    <value>Proveedor</value>
   </data>
 </root>
