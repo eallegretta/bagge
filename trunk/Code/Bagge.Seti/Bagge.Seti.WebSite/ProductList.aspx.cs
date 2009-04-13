@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Bagge.Seti.WebSite.Controls
+namespace Bagge.Seti.WebSite
 {
-	public partial class ProductSelectionGrid : System.Web.UI.UserControl
+	public partial class ProductList : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

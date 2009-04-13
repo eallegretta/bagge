@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
+using System;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
+	[Serializable]
 	public class Product : AuditablePrimaryKeyWithNameAndDescriptionDomainObject<Product, int>
 	{
 		[HasAndBelongsToMany(typeof(ProductProvider), Table = "ProductProvider", ColumnKey = "ProductId", ColumnRef = "ProviderId", Lazy = true)]

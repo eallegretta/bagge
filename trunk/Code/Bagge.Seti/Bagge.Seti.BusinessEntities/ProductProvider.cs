@@ -1,9 +1,11 @@
 ﻿
 using Castle.ActiveRecord;
+using System;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
+	[Serializable]
 	public class ProductProvider : PrimaryKeyDomainObject<ProductProvider, int>
 	{
 		[BelongsTo("ProductId")]

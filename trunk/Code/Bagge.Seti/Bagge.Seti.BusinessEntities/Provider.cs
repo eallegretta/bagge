@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
+using System;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class Provider : AuditablePrimaryKeyDomainObject<Provider, int>
+	[Serializable]
+	public class Provider : AuditablePrimaryKeyWithNameDomainObject<Provider, int>
 	{
 		[BelongsTo("CalificationId")]
 		public ProviderCalification Calification

@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Editor.Master" AutoEventWireup="true"
 	CodeBehind="ProviderEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.ProviderEditor"
 	meta:resourcekey="Page" %>
-
+<%@ Register TagName="ProductProviderGrid" TagPrefix="controls" Src="~/Controls/ProductProviderSelectionGrid.ascx"%>
+<%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_head" ContentPlaceHolderID="_head" runat="server">
 
 	<script type="text/javascript" src="Scripts/jquery.maskedinput-1.2.2.min.js"></script>
@@ -37,7 +38,7 @@
 						meta:resourcekey="CUITUniqueValidator"></asp:CustomValidator>
 				</Validators>
 			</seti:SecureBoundField>
-			<asp:SecureTemplateField PropertyName="Calification" meta:resourcekey="CalificationField">
+			<seti:SecureTemplateField PropertyName="Calification" meta:resourcekey="CalificationField">
 				<InsertItemTemplate>
 					<asp:DropDownList ID="_calification" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
 						runat="server" meta:resourcekey="CalificationDropDown">
@@ -51,7 +52,7 @@
 				<ItemTemplate>
 					<%#Eval("Calification")%>
 				</ItemTemplate>
-			</asp:SecureTemplateField>
+			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="CountryStateField">
 				<InsertItemTemplate>
 					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
@@ -111,8 +112,14 @@
 			<seti:SecureBoundField DataField="ContactName" ControlStyle-Width="320px" meta:resourcekey="ContactNameField"></seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="Products" meta:resourcekey="ProductsField">
 				<InsertItemTemplate>
-					
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" />					
 				</InsertItemTemplate>
+				<EditItemTemplate>
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" />					
+				</EditItemTemplate>
+				<ItemTemplate>
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" ReadOnly="true" />
+				</ItemTemplate>
 			</seti:SecureTemplateField>
 		</Fields>
 	</seti:SecureDetailsView>
