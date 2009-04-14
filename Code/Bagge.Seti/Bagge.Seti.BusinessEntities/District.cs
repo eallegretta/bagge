@@ -6,6 +6,7 @@ using Castle.ActiveRecord;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
+	[Serializable]
 	public class District : PrimaryKeyWithNameDomainObject<District, int>, IComparable, IComparable<District>
 	{
 		[BelongsTo("CountryStateId")]

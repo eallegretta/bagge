@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.BusinessEntities.Exceptions;
+using System.Web.Services;
+using System.Web.Script.Services;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -26,11 +28,22 @@ namespace Bagge.Seti.WebSite.Controls
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (SourceType == ProductProviderSelectionGridSourceType.Product)
+				_nameExt.ServiceMethod = "GetProducts";
+			else
+				_nameExt.ServiceMethod = "GetProviders";
+
 			if (!IsPostBack)
 			{
 				SelectedItems = new List<ProductProvider>();
 				if (ReadOnly)
 					_addControls.Visible = false;
+
+				_legendProvider.Visible = _legendProduct.Visible = false;
+				if (SourceType == ProductProviderSelectionGridSourceType.Product)
+					_legendProduct.Visible = true;
+				else
+					_legendProvider.Visible = true;
 			}
 
 		}
@@ -51,33 +64,19 @@ namespace Bagge.Seti.WebSite.Controls
 			get;
 			set;
 		}
-		
 
-		private List<ProductProvider> SelectedItems
+
+		public List<ProductProvider> SelectedItems
 		{
 			get { return ViewState["SelectedItems"] as List<ProductProvider>; }
-			set 
+			set
 			{
 				ViewState["SelectedItems"] = value;
 				BindItems();
 			}
 		}
 
-		public string[] GetItems(string prefixText, int count)
-		{
-			if (SourceType == ProductProviderSelectionGridSourceType.Product)
-			{
-				var productNames = from product in IoCContainer.ProductManager.FindAllByName(prefixText, count)
-								   select product.Name;
-				return productNames.ToArray();
-			}
-			else
-			{
-				var providerNames = from provider in IoCContainer.ProviderManager.FindAllByName(prefixText, count)
-									select provider.Name;
-				return providerNames.ToArray();
-			}
-		}
+		
 
 		protected void _add_Click(object sender, EventArgs e)
 		{
@@ -89,22 +88,32 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				AddSelectedProvider();
 			}
-			
+
 		}
 
 		private void AddSelectedProvider()
 		{
 			Provider provider = null;
+			decimal price = 0;
 			try
 			{
 				provider = IoCContainer.ProviderManager.GetByName(_name.Text);
+				price = decimal.Parse(_price.Text);
 			}
 			catch (ObjectNotFoundException)
 			{
+				return;
+			}
+			catch (FormatException)
+			{
+				return;
 			}
 			if (provider != null)
 			{
-				SelectedItems.Add(new ProductProvider { Provider = provider });
+				if (SelectedItems.Where(p => p.Provider.Equals(provider)).Select(p => p).Count() == 0)
+				{
+					SelectedItems.Add(new ProductProvider { Provider = provider, Price = price });
+				}
 				BindItems();
 			}
 		}
@@ -119,17 +128,29 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void AddSelectedProduct()
 		{
+			
+
 			Product product = null;
+			decimal price = 0;
 			try
 			{
 				product = IoCContainer.ProductManager.GetByName(_name.Text);
+				price = decimal.Parse(_price.Text);
 			}
 			catch (ObjectNotFoundException)
 			{
+				return;
+			}
+			catch (FormatException)
+			{
+				return;
 			}
 			if (product != null)
 			{
-				SelectedItems.Add(new ProductProvider { Product = product } );
+				if (SelectedItems.Where(p => p.Product.Equals(product)).Select(p => p).Count() == 0)
+				{
+					SelectedItems.Add(new ProductProvider { Product = product, Price = price });
+				}
 				BindItems();
 			}
 		}

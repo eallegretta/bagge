@@ -8,6 +8,7 @@ using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.DataAccess.ActiveRecord;
 using Bagge.Seti.BusinessEntities.Exceptions;
 using Bagge.Seti.BusinessLogic.Properties;
+using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -20,6 +21,8 @@ namespace Bagge.Seti.BusinessLogic
 
 		public virtual Customer GetByCuit(string cuit)
 		{
+			Check.Require(!string.IsNullOrEmpty(cuit));
+
 			Customer[] customers = this.FindAllByProperty("CUIT", cuit);
 			if (customers.Length > 0)
 				return customers[0];
@@ -28,6 +31,8 @@ namespace Bagge.Seti.BusinessLogic
 
 		private bool IsCuitUnique(Customer customer)
 		{
+			Check.Require(customer != null);
+
 			if (customer.Id == 0)
 				return GetByCuit(customer.CUIT) == null;
 			else

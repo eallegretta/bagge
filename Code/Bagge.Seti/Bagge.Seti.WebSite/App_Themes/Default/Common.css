@@ -87,6 +87,18 @@ tr.detailsRow td:first-child
 	height:24px;
 }
 
+tr.detailsRow table tr td:first-child
+{
+	font-weight:normal;
+	width:auto;
+	white-space:nowrap;
+	border:0px;
+	background-color:white;
+	background-image:none;
+	height:auto;
+}
+
+
 tr.detailsRow td
 {
 	padding:2px;

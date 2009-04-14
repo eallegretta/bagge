@@ -9,6 +9,7 @@ using System.Reflection;
 namespace Bagge.Seti.Security.BusinessEntities
 {
 	[ActiveRecord("[Function]")]
+	[Serializable]
 	public class Function : AuditablePrimaryKeyWithNameDomainObject<Function, int>
 	{
 		public Type TargetType

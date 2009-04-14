@@ -54,13 +54,38 @@ namespace Bagge.Seti.BusinessLogic
 			Check.Require(!string.IsNullOrEmpty(name));
 
 			var products = Dao.FindAllByProperty("Name", name);
-			if (products.Length > 0)
+			if (products.Length > 1)
 				throw new BusinessRuleException(Resources.MultipleNamesErrorMessage);
 
 			if (products.Length == 1)
 				return products[0];
 
 			throw new ObjectNotFoundException(Resources.InstanceNotFound);
+		}
+
+		public override int Create(Product instance)
+		{
+			Check.Require(instance != null);
+
+			foreach (ProductProvider provider in instance.Providers)
+			{
+				provider.Product = instance;
+			}
+
+
+			return base.Create(instance);
+		}
+
+		public override void Update(Product instance)
+		{
+			Check.Require(instance != null);
+
+			foreach (ProductProvider provider in instance.Providers)
+			{
+				provider.Product = instance;
+			}
+
+			base.Update(instance);
 		}
 	}
 }

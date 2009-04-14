@@ -18,6 +18,17 @@ namespace Bagge.Seti.BusinessLogic
 		{
 		}
 
+		public virtual Provider GetByCuit(string cuit)
+		{
+			Check.Require(!string.IsNullOrEmpty(cuit));
+
+			Provider[] providers = this.FindAllByProperty("CUIT", cuit);
+			if (providers.Length > 0)
+				return providers[0];
+			return null;
+		}
+
+
 		public Provider[] FindAllByName(string productName, int maxRecords)
 		{
 			Check.Require(!string.IsNullOrEmpty(productName));
@@ -53,13 +64,56 @@ namespace Bagge.Seti.BusinessLogic
 			Check.Require(!string.IsNullOrEmpty(name));
 
 			var products = Dao.FindAllByProperty("Name", name);
-			if (products.Length > 0)
+			if (products.Length > 1)
 				throw new BusinessRuleException(Resources.MultipleNamesErrorMessage);
 
 			if (products.Length == 1)
 				return products[0];
 
 			throw new ObjectNotFoundException(Resources.InstanceNotFound);
+		}
+
+		private bool IsCuitUnique(Provider provider)
+		{
+			Check.Require(provider != null);
+
+			if (provider.Id == 0)
+				return GetByCuit(provider.CUIT) == null;
+			else
+			{
+				Provider providerInDb = GetByCuit(provider.CUIT);
+				return providerInDb.Equals(provider);
+			}
+		}
+
+		public override int Create(Provider instance)
+		{
+			Check.Require(instance != null);
+
+			foreach (ProductProvider product in instance.Products)
+			{
+				product.Provider = instance;
+			}
+
+			if (!IsCuitUnique(instance))
+				throw new BusinessRuleException(Resources.CUITNotUniqueErrorMessage);
+
+			return base.Create(instance);
+		}
+
+		public override void Update(Provider instance)
+		{
+			Check.Require(instance != null);
+
+			foreach (ProductProvider product in instance.Products)
+			{
+				product.Provider = instance;
+			}
+
+			if (!IsCuitUnique(instance))
+				throw new BusinessRuleException(Resources.CUITNotUniqueErrorMessage);
+
+			base.Update(instance);
 		}
 	}
 }

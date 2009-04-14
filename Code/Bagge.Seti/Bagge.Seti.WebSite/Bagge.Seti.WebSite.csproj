@@ -116,6 +116,10 @@
     <Compile Include="Controls\ProductProviderSelectionGrid.ascx.designer.cs">
       <DependentUpon>ProductProviderSelectionGrid.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ProductProviderSelectionGridUIService.asmx.cs">
+      <DependentUpon>ProductProviderSelectionGridUIService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\PropertyProxyValidator.cs" />
     <Compile Include="Controls\SecureBoundField.cs" />
     <Compile Include="Controls\EditorCommands.ascx.cs">
@@ -215,6 +219,7 @@
     <Compile Include="Presenters\AlertConfigurationPresenter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Presenters\ProviderEditorPresenter.cs" />
     <Compile Include="Presenters\ProviderListPresenter.cs" />
     <Compile Include="Presenters\CustomerEditorPresenter.cs">
       <SubType>Code</SubType>
@@ -273,6 +278,7 @@
     <Compile Include="Views\IListView.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\IProviderEditorView.cs" />
     <Compile Include="Views\IProviderListView.cs" />
     <Compile Include="Views\ITicketEditorView.cs">
       <SubType>Code</SubType>
@@ -410,7 +416,11 @@
     <Content Include="ProviderEditor.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_LocalResources\ProviderEditor.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Controls\App_LocalResources\ProductProviderSelectionGrid.ascx.resx" />
+    <Content Include="Controls\ProductProviderSelectionGridUIService.asmx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
