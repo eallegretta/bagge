@@ -6,6 +6,7 @@ using Castle.ActiveRecord;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
+	[Serializable]
 	public class CountryState : PrimaryKeyWithNameDomainObject<CountryState, int>
 	{
 		[Property]

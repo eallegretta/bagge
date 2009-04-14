@@ -6,6 +6,7 @@ using Bagge.Seti.Security.BusinessEntities;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
+	[Serializable]
 	public class Ticket : AuditablePrimaryKeyDomainObject<Ticket, int>
 	{
 		[BelongsTo("CustomerId")]

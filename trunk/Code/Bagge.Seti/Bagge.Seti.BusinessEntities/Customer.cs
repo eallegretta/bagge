@@ -4,10 +4,12 @@ using Bagge.Seti.BusinessEntities.Validators;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using System.Text.RegularExpressions;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
+using System;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
+	[Serializable]
 	public class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
 	{
 		[Property]

@@ -7,6 +7,7 @@ using System.Linq;
 namespace Bagge.Seti.Security.BusinessEntities
 {
 	[ActiveRecord]
+	[Serializable]
 	public class AccessibilityType : PrimaryKeyWithNameDomainObject<AccessibilityType, byte>, IEquatable<AccessibilityTypes>
 	{
 

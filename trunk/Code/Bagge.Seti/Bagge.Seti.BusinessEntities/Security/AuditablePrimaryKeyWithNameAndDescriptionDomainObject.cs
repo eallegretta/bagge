@@ -7,6 +7,7 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.Security.BusinessEntities
 {
+	[Serializable]
 	public class AuditablePrimaryKeyWithNameAndDescriptionDomainObject<T, PK>: PrimaryKeyWithNameAndDescriptionDomainObject<T, PK>, IAuditable
 	{
 		#region IAuditable Members

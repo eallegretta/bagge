@@ -8,5 +8,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface IProviderManager: IAuditableManager<Provider, int>, IByNameSelectableManager<Provider, int>
 	{
+		Provider GetByCuit(string cuit);
 	}
 }

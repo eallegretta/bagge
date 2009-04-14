@@ -83,7 +83,7 @@
 					<%#Eval("District")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:SecureBoundField DataField="Company" ControlStyle-Width="300px" MaxLength="50"></seti:SecureBoundField>
+			<seti:SecureBoundField DataField="Company" ControlStyle-Width="300px" MaxLength="50" meta:resourcekey="CompanyField"></seti:SecureBoundField>
 			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Address"
 				meta:resourcekey="AddressField" />
 			<seti:SecureBoundField DataField="Floor" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="FloorField" />
@@ -126,5 +126,6 @@
 	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/CustomerList.aspx"
 		CancelPostBackUrl="~/CustomerList.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
 	</seti:EditorControls>
-	<asp:ObjectContainerDataSource ID="_dataSource" runat="server"></asp:ObjectContainerDataSource>
+	<asp:ObjectContainerDataSource ID="_dataSource" runat="server" 
+		DataObjectTypeName=""></asp:ObjectContainerDataSource>
 </asp:Content>
