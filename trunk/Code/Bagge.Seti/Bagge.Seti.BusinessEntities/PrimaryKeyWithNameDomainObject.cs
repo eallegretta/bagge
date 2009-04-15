@@ -21,8 +21,6 @@ namespace Bagge.Seti.BusinessEntities
 
 		[Property]
 		[StringLengthValidator(1, 50, MessageTemplateResourceName = "Validators_PrimaryKeyDomainObject_Name_Length", MessageTemplateResourceType = typeof(ISecurizable))]
-		
-		
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_PrimaryKeyDomainObject_Name_Required", MessageTemplateResourceType = typeof(ISecurizable))]
 		public virtual string Name { get ; set; }
 

@@ -215,6 +215,8 @@
     <Compile Include="Presenters\AlertConfigurationPresenter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Presenters\ProductEditorPresenter.cs" />
+    <Compile Include="Presenters\ProductListPresenter.cs" />
     <Compile Include="Presenters\ProviderEditorPresenter.cs" />
     <Compile Include="Presenters\ProviderListPresenter.cs" />
     <Compile Include="Presenters\CustomerEditorPresenter.cs">
@@ -231,6 +233,13 @@
     </Compile>
     <Compile Include="Presenters\TicketEditorPresenter.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProductEditor.aspx.cs">
+      <DependentUpon>ProductEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductEditor.aspx.designer.cs">
+      <DependentUpon>ProductEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductList.aspx.cs">
       <DependentUpon>ProductList.aspx</DependentUpon>
@@ -274,6 +283,8 @@
     <Compile Include="Views\IListView.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\IProductEditorView.cs" />
+    <Compile Include="Views\IProductListView.cs" />
     <Compile Include="Views\IProviderEditorView.cs" />
     <Compile Include="Views\IProviderListView.cs" />
     <Compile Include="Views\ITicketEditorView.cs">
@@ -416,6 +427,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controls\App_LocalResources\ProductProviderSelectionGrid.ascx.resx" />
+    <Content Include="ProductEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ProductList.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ProductEditor.aspx.resx">
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

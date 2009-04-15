@@ -64,11 +64,7 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				ListItem item = new ListItem();
 				item.Value = provider.Id.ToString();
-				item.Text = provider.Name;
-				if (!string.IsNullOrEmpty(provider.CUIT))
-				{
-					item.Text += " (" + provider.CUIT + ")";
-				}
+				item.Text = provider.NameAndCUIT;
 				_name.Items.Add(item);
 			}
 		}
@@ -80,7 +76,7 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				ListItem item = new ListItem();
 				item.Value = product.Id.ToString();
-				item.Text = product.Name;
+				item.Text = product.NameAndDescription;
 				_name.Items.Add(item);
 			}
 		}
@@ -92,7 +88,7 @@ namespace Bagge.Seti.WebSite.Controls
 			else
 				_items.Columns[1].Visible = false;
 			if (ReadOnly)
-				_items.Columns[2].Visible = false;
+				_items.Columns[3].Visible = false;
 		}
 
 

@@ -18,24 +18,6 @@ namespace Bagge.Seti.WebSite
 	{
 		ListPresenter<Customer, int> _presenter;
 
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			if (!IsPostBack)
-			{
-				AddDeletedFilterItems();
-			}
-
-           
-            
-
-		}
-
-		private void AddDeletedFilterItems()
-		{
-			_isDeleted.Items.Add(new ListItem(Resources.WebSite.YesText, "true"));
-			_isDeleted.Items.Add(new ListItem(Resources.WebSite.NoText, "false"));
-		}
-
 		public CustomerList()
 		{
 			_presenter = new ListPresenter<Customer, int>(this, IoCContainer.CustomerManager);
@@ -80,10 +62,14 @@ namespace Bagge.Seti.WebSite
 				filters.Add(new FilterPropertyValue { Property = "Address", Value = _address.Text, Type = FilterPropertyValueType.Like });
 			if(!string.IsNullOrEmpty(_phone.Text))
 				filters.Add(new FilterPropertyValue { Property = "Phone", Value = _phone.Text, Type = FilterPropertyValueType.Like });
-			if (!string.IsNullOrEmpty(_isDeleted.SelectedValue))
-				filters.Add(new FilterPropertyValue { Property = "Deleted", Value = _isDeleted.SelectedValue.ToBoolean(), Type = FilterPropertyValueType.Equals });
+			AddDeletedFilterValue(filters);
 			
 			return filters;
+		}
+
+		protected override DropDownList DeletedDropDownList
+		{
+			get { return _isDeleted; }
 		}
 	}
 }
