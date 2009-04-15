@@ -1,0 +1,5 @@
+C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.DataAccess.dll
+C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.DataAccess.pdb
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\obj\Debug\Bagge.Seti.DataAccess.dll
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\obj\Debug\Bagge.Seti.DataAccess.pdb

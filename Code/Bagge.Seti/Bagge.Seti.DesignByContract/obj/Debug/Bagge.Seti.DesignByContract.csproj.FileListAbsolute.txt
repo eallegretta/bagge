@@ -1,0 +1,5 @@
+C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.DesignByContract.dll
+C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.DesignByContract.pdb
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.DesignByContract\obj\Debug\ResolveAssemblyReference.cache
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.DesignByContract\obj\Debug\Bagge.Seti.DesignByContract.dll
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.DesignByContract\obj\Debug\Bagge.Seti.DesignByContract.pdb

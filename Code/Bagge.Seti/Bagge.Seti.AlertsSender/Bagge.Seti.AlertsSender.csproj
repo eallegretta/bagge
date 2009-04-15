@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3B8BC9F6-F869-4FE3-B3D7-92CB54B91C49}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -38,6 +38,16 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bagge.Seti.BusinessEntities\Bagge.Seti.BusinessEntities.csproj">
+      <Project>{32F8F81B-0F4D-4ABA-9CBE-1613FDA7B328}</Project>
+      <Name>Bagge.Seti.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.BusinessLogic\Bagge.Seti.BusinessLogic.csproj">
+      <Project>{2A4DB60F-1B1C-49FC-B1AA-C18C595F1B1D}</Project>
+      <Name>Bagge.Seti.BusinessLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
