@@ -66,20 +66,6 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public virtual void Update(T instance)
 		{
-			/*try
-			{
-				ISessionScope scope = ThreadScopeAccessor.Instance.GetRegisteredScope();
-				if (scope != null)
-				{
-					scope.Flush();
-					scope.Dispose();
-				}
-				ActiveRecordMediator<T>.Update(instance);
-				
-			}
-			catch (ScopeMachineryException)
-			{
-			}*/
 			ActiveRecordMediator<T>.Update(instance);
 		}
 

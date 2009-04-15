@@ -17,6 +17,6 @@ namespace Bagge.Seti.WebSite.Views
 	public interface IEditorView<PK>: IEditorView
 	{
 		PK PrimaryKey { get; }
-		
+		byte[] Timestamp { get; set; }
 	}
 }

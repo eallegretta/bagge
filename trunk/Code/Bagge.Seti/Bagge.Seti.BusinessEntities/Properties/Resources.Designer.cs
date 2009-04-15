@@ -131,5 +131,50 @@ namespace Bagge.Seti.BusinessEntities.Properties {
                 return ResourceManager.GetString("Validators_PrimaryKeyDomainObject_Name_Required", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El nombre del contácto es requerido.
+        /// </summary>
+        internal static string Validators_Provider_ContactName_Required {
+            get {
+                return ResourceManager.GetString("Validators_Provider_ContactName_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El e-mail es inválido.
+        /// </summary>
+        internal static string Validators_Provider_Email {
+            get {
+                return ResourceManager.GetString("Validators_Provider_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono primario es requerido.
+        /// </summary>
+        internal static string Validators_Provider_PrimaryPhone_Required {
+            get {
+                return ResourceManager.GetString("Validators_Provider_PrimaryPhone_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El teléfono secundario es requerido.
+        /// </summary>
+        internal static string Validators_Provider_SecondaryPhone_Required {
+            get {
+                return ResourceManager.GetString("Validators_Provider_SecondaryPhone_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El website es inválido.
+        /// </summary>
+        internal static string Validators_Provider_Website {
+            get {
+                return ResourceManager.GetString("Validators_Provider_Website", resourceCulture);
+            }
+        }
     }
 }

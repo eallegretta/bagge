@@ -23,7 +23,7 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(!string.IsNullOrEmpty(cuit));
 
-			Customer[] customers = this.FindAllByProperty("CUIT", cuit);
+			Customer[] customers = this.FindAllActiveByProperty("CUIT", cuit);
 			if (customers.Length > 0)
 				return customers[0];
 			return null;

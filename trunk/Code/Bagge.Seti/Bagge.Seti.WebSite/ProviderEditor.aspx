@@ -26,7 +26,7 @@
 
 </asp:Content>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
-	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
+	<seti:SecureDetailsView ID="_details" DataKeyNames="Id, AuditTimeStamp" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
 		<Fields>
 			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Name"
@@ -100,11 +100,9 @@
 					<%#Eval("ZipCode")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="City"
-				meta:resourcekey="CityField" />
-			<seti:SecureBoundField ControlStyle-Width="120px" MaxLength="50" DataField="PrimaryPhone"
+			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="PrimaryPhone"
 				meta:resourcekey="PrimaryPhoneField" />
-			<seti:SecureBoundField ControlStyle-Width="120px" MaxLength="50" DataField="SecondaryPhone"
+			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="SecondaryPhone"
 				meta:resourcekey="SecondaryPhoneField" />
 			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Email"
 				meta:resourcekey="EmailField" />
@@ -112,19 +110,19 @@
 			<seti:SecureBoundField DataField="ContactName" ControlStyle-Width="320px" meta:resourcekey="ContactNameField"></seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="Products" meta:resourcekey="ProductsField">
 				<InsertItemTemplate>
-					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" />					
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" SelectedItems='<%#Bind("Products")%>' />					
 				</InsertItemTemplate>
 				<EditItemTemplate>
-					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" />					
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" SelectedItems='<%#Bind("Products")%>' />					
 				</EditItemTemplate>
 				<ItemTemplate>
-					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" ReadOnly="true" />
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" SelectedItems='<%#Bind("Products")%>' ReadOnly="true" />
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 		</Fields>
 	</seti:SecureDetailsView>
-	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/CustomerList.aspx"
-		CancelPostBackUrl="~/CustomerList.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
+	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/ProviderList.aspx"
+		CancelPostBackUrl="~/ProviderList.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server" 
 		DataObjectTypeName=""></asp:ObjectContainerDataSource>

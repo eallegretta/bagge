@@ -23,7 +23,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[Property]
+		[Property("UnitaryPrice")]
 		public decimal? Price
 		{
 			get;

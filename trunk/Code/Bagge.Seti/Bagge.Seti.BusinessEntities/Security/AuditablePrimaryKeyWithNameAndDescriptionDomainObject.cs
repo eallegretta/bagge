@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Castle.ActiveRecord;
 using Bagge.Seti.BusinessEntities;
+using Bagge.Seti.BusinessEntities.CustomTypes;
 
 namespace Bagge.Seti.Security.BusinessEntities
 {

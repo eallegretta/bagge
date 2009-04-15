@@ -13,6 +13,7 @@ using Microsoft.Practices.Web.UI.WebControls;
 using Microsoft.Practices.Web.UI.WebControls.Utility;
 using Bagge.Seti.WebSite.Controls;
 using System.Web.UI;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
@@ -46,6 +47,10 @@ namespace Bagge.Seti.WebSite
 			T instance = Activator.CreateInstance<T>();
 			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
 			instance.Id = PrimaryKey;
+			if (instance is IAuditable)
+			{
+				((IAuditable)instance).AuditTimeStamp = Timestamp;
+			}
 			OnUpdating(instance);
 		}
 
@@ -159,6 +164,12 @@ namespace Bagge.Seti.WebSite
 					return default(PK);
 				return (PK)Convert.ChangeType(ViewState["Id"], typeof(PK));
 			}
+		}
+
+		public byte[] Timestamp
+		{
+			get { return ViewState["Timestamp"] as byte[]; }
+			set { ViewState["Timestamp"] = value; }
 		}
 
 		public EditorAction Mode
