@@ -66,6 +66,7 @@
     <Compile Include="ActiveRecord\FunctionDao.cs" />
     <Compile Include="ActiveRecord\GenericDao.cs" />
     <Compile Include="ActiveRecord\ProductDao.cs" />
+    <Compile Include="ActiveRecord\ProductProviderDao.cs" />
     <Compile Include="ActiveRecord\ProviderDao.cs" />
     <Compile Include="ActiveRecord\RoleDao.cs" />
     <Compile Include="ActiveRecord\TicketDao.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Contracts\IFunctionDao.cs" />
     <Compile Include="Contracts\IGetDao.cs" />
     <Compile Include="Contracts\IProductDao.cs" />
+    <Compile Include="Contracts\IProductProviderDao.cs" />
     <Compile Include="Contracts\IProviderDao.cs" />
     <Compile Include="Contracts\IRoleDao.cs" />
     <Compile Include="Contracts\ISlicedFindDao.cs" />
