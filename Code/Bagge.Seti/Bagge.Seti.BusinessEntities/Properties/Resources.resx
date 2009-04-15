@@ -141,6 +141,12 @@
   <data name="Validators_PrimaryKeyDomainObject_Name_Required" xml:space="preserve">
     <value>El nombre es requerido.</value>
   </data>
+  <data name="Validators_Product_Name_Length" xml:space="preserve">
+    <value>El código debe tener una longitud entre 1 y 50 caracteres.</value>
+  </data>
+  <data name="Validators_Product_Name_Required" xml:space="preserve">
+    <value>El código es requerido.</value>
+  </data>
   <data name="Validators_Provider_ContactName_Required" xml:space="preserve">
     <value>El nombre del contácto es requerido</value>
   </data>

@@ -8,14 +8,18 @@ using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.BusinessEntities.Exceptions;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DesignByContract;
+using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
 	public class ProductManager : AuditableGenericManager<Product, int>, IProductManager
 	{
-		public ProductManager(IProductDao dao)
+		IProductProviderDao _productProviderDao;
+
+		public ProductManager(IProductDao dao, IProductProviderDao productProviderDao)
 			: base(dao)
 		{
+			_productProviderDao = productProviderDao;
 		}
 
 
@@ -84,6 +88,10 @@ namespace Bagge.Seti.BusinessLogic
 			{
 				provider.Product = instance;
 			}
+
+			SessionScopeUtils.FlushSessionScope();
+
+			_productProviderDao.DeleteByProduct(instance.Id);
 
 			base.Update(instance);
 		}

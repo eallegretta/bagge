@@ -11,6 +11,29 @@ namespace Bagge.Seti.WebSite
 	public abstract class FilteredListPage<T, PK>: ListPage<T, PK>, IFilteredListView where T: PrimaryKeyDomainObject<T, PK>
 	{
 
+		protected virtual void AddDeletedFilterValue(IList<FilterPropertyValue> filters)
+		{
+			if (!string.IsNullOrEmpty(DeletedDropDownList.SelectedValue))
+				filters.Add(new FilterPropertyValue { Property = "Deleted", Value = DeletedDropDownList.SelectedValue.ToBoolean(), Type = FilterPropertyValueType.Equals });
+		}
+
+		protected virtual void AddDeletedFilterItems(DropDownList deleted)
+		{
+			deleted.Items.Add(new ListItem(Resources.WebSite.YesText, "true"));
+			deleted.Items.Add(new ListItem(Resources.WebSite.NoText, "false"));
+		}
+
+
+		protected override void OnLoad(EventArgs e)
+		{
+			if (!IsPostBack)
+			{
+				AddDeletedFilterItems(DeletedDropDownList);
+			}
+
+			base.OnLoad(e);
+		}
+
 		protected override void OnInit(EventArgs e)
 		{
 			base.OnInit(e);
@@ -44,6 +67,11 @@ namespace Bagge.Seti.WebSite
 		protected abstract Button FilterButton
 		{
 			get; 
+		}
+
+		protected abstract DropDownList DeletedDropDownList
+		{
+			get;
 		}
 
 	}

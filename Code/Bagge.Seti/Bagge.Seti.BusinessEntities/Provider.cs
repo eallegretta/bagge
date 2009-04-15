@@ -10,6 +10,18 @@ namespace Bagge.Seti.BusinessEntities
 	[Serializable]
 	public class Provider : AuditablePrimaryKeyWithNameDomainObject<Provider, int>
 	{
+
+		public string NameAndCUIT
+		{
+			get
+			{
+				string nameCuit = Name;
+				if (!string.IsNullOrEmpty(CUIT))
+					nameCuit += " (" + CUIT + ")";
+				return nameCuit;
+			}
+		}
+
 		[BelongsTo("CalificationId")]
 		public ProviderCalification Calification
 		{

@@ -8,7 +8,9 @@
 		<siteMapNode title="Proveedores" url="~/ProviderList.aspx">
 			<siteMapNode title="Alta Proveedor" url="~/ProviderEditor.aspx" editTitle="Editar Proveedor" viewTitle="Ver Proveedor"></siteMapNode>
 		</siteMapNode>
-		<siteMapNode url="" title="Insumos"></siteMapNode>
+		<siteMapNode url="~/ProductList.aspx" title="Insumos">
+			<siteMapNode title="Alta Insumo" url="~/ProductEditor.aspx" editTitle="Editar Insumo" viewTitle="Ver Insumo"></siteMapNode>
+		</siteMapNode>
 		<siteMapNode url="" title="Tickets"></siteMapNode>
 		<siteMapNode url="" title="Empleados"></siteMapNode>
 		<siteMapNode url="" title="Reportes"></siteMapNode>

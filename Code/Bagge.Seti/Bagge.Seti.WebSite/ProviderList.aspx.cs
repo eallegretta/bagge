@@ -35,6 +35,9 @@ namespace Bagge.Seti.WebSite
 			filters.Add(new FilterPropertyValue { Property = "CUIT", Value = _cuit.Text, Type = FilterPropertyValueType.Like });
 			filters.Add(new FilterPropertyValue { Property = "Address", Value = _address.Text, Type = FilterPropertyValueType.Like });
 			filters.Add(new FilterPropertyValue { Property = "Phone", Value = _phone.Text, Type = FilterPropertyValueType.Like });
+
+			AddDeletedFilterValue(filters);
+
 			if(!_products.SelectedValue.IsNullOrEmpty())
 				filters.Add(new FilterPropertyValue { Property = "Products", Value = _products.SelectedValue, Type = FilterPropertyValueType.In });
 			
@@ -74,5 +77,10 @@ namespace Bagge.Seti.WebSite
 		}
 
 		#endregion
+
+		protected override DropDownList DeletedDropDownList
+		{
+			get { return _isDeleted; }
+		}
 	}
 }

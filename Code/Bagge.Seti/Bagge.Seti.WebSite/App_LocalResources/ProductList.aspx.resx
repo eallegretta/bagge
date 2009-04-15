@@ -117,67 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Grid.Caption" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Grid.EmptyDataText" xml:space="preserve">
-    <value>No se han encontrado proveedores</value>
-  </data>
-  <data name="NameField.HeaderText" xml:space="preserve">
-    <value>Nombre</value>
-  </data>
-  <data name="CUITField.HeaderText" xml:space="preserve">
-    <value>CUIT</value>
-  </data>
   <data name="DeleteField.HeaderText" xml:space="preserve">
     <value>Borrar</value>
   </data>
-  <data name="ViewField.HeaderText" xml:space="preserve">
-    <value>Ver</value>
+  <data name="DescriptionField.HeaderText" xml:space="preserve">
+    <value>Descripción</value>
   </data>
   <data name="EditField.HeaderText" xml:space="preserve">
     <value>Editar</value>
   </data>
-  <data name="Page.Title" xml:space="preserve">
-    <value>Seti &gt; Listado de Proveedores</value>
-  </data>
-  <data name="DeleteField.ConfirmationMessage" xml:space="preserve">
-    <value>¿Esta seguro que desea borrar el proveedor?</value>
-  </data>
-  <data name="ListCommands.NewText" xml:space="preserve">
-    <value>Nuevo Proveedor</value>
-  </data>
-  <data name="AddressField.HeaderText" xml:space="preserve">
-    <value>Dirección</value>
-  </data>
-  <data name="CountryStateField.HeaderText" xml:space="preserve">
-    <value>Provincia</value>
-  </data>
-  <data name="DistrictField.HeaderText" xml:space="preserve">
-    <value>Localidad</value>
-  </data>
-  <data name="FilterAddressLiteral.Text" xml:space="preserve">
-    <value>Direcci&amp;oacute;n:</value>
-  </data>
   <data name="FilterButton.Text" xml:space="preserve">
-    <value>Filtrar Proveedores</value>
-  </data>
-  <data name="FilterCuitLiteral.Text" xml:space="preserve">
-    <value>CUIT:</value>
-  </data>
-  <data name="FilterNameLiteral.Text" xml:space="preserve">
-    <value>Nombre:</value>
-  </data>
-  <data name="FilterPhoneLiteral.Text" xml:space="preserve">
-    <value>Tel&amp;eacute;fono:</value>
-  </data>
-  <data name="PhoneField.HeaderText" xml:space="preserve">
-    <value>Teléfono</value>
-  </data>
-  <data name="FilterProductLiteral.Text" xml:space="preserve">
-    <value>Producto:</value>
+    <value>Filtrar Productos</value>
   </data>
   <data name="FilterDeletedLiteral.Text" xml:space="preserve">
     <value>Borrado:</value>
+  </data>
+  <data name="FilterDescriptionLiteral.Text" xml:space="preserve">
+    <value>Descripción:</value>
+  </data>
+  <data name="FilterNameLiteral.Text" xml:space="preserve">
+    <value>Código:</value>
+  </data>
+  <data name="FilterProvidersLiteral.Text" xml:space="preserve">
+    <value>Proveedores:</value>
+  </data>
+  <data name="Grid.EmptyDataText" xml:space="preserve">
+    <value>No se han encontrado productos</value>
+  </data>
+  <data name="ListCommands.NewText" xml:space="preserve">
+    <value>Nuevo Producto</value>
+  </data>
+  <data name="NameField.HeaderText" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Page.Title" xml:space="preserve">
+    <value>Seti &gt; Listado de Productos</value>
+  </data>
+  <data name="ViewField.HeaderText" xml:space="preserve">
+    <value>Ver</value>
   </data>
 </root>

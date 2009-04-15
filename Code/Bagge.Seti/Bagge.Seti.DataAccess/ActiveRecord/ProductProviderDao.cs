@@ -15,20 +15,12 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public void DeleteByProduct(int productId)
 		{
-//			ActiveRecordMediator<ProductProvider>.DeleteAll("
-
-			string hql = "delete ProductProvider pp where pp.Product.Id = ?";
-			ScalarQuery<ProductProvider> query = new ScalarQuery<ProductProvider>(
-				typeof(ProductProvider), hql, productId);
-			query.Execute();
+			ActiveRecordMediator<ProductProvider>.DeleteAll("ProductId = " + productId);
 		}
 
 		public void DeleteByProvider(int providerId)
 		{
-			string hql = "delete ProductProvider pp where pp.Provider.Id = ?";
-			ScalarQuery<ProductProvider> query = new ScalarQuery<ProductProvider>(
-				typeof(ProductProvider), hql, providerId);
-			query.Execute();
+			ActiveRecordMediator<ProductProvider>.DeleteAll("ProviderId = " + providerId);
 		}
 
 		#endregion

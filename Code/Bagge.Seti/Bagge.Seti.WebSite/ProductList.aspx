@@ -1,7 +1,54 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/List.Master" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="Bagge.Seti.WebSite.ProductList" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="_head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/List.Master" AutoEventWireup="true" CodeBehind="ProductList.aspx.cs" Inherits="Bagge.Seti.WebSite.ProductList" meta:resourcekey="PageResource1" %>
+<%@ Register TagPrefix="seti" TagName="ListCommands" Src="~/Controls/ListCommands.ascx" %>
+<asp:Content ID="_filters" runat="server" ContentPlaceHolderID="_filters">
+	<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th><asp:Literal ID="_nameLiteral" runat="server" meta:resourcekey="FilterNameLiteral"></asp:Literal></th>
+			<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
+			<th><asp:Literal ID="_descriptionLiteral" runat="server" meta:resourcekey="FilterDescriptionLiteral"></asp:Literal></th>
+			<td><asp:TextBox ID="_description" runat="server"></asp:TextBox></td>
+		</tr>
+		<tr>
+			<th><asp:Literal ID="_deletedLiteral" runat="server" meta:resourcekey="FilterDeletedLiteral"></asp:Literal></th>
+			<td><asp:DropDownList ID="_isDeleted" runat="server">
+				<asp:ListItem></asp:ListItem>
+				</asp:DropDownList></td>
+			<th><asp:Literal ID="_providersLiteral" runat="server" meta:resourcekey="FilterProvidersLiteral"></asp:Literal></th>
+			<td><asp:DropDownList ID="_providers" runat="server" DataValueField="Id" DataTextField="NameAndCUIT" AppendDataBoundItems="true">
+			<asp:ListItem></asp:ListItem>
+			</asp:DropDownList></td>
+			<td colspan="2"><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
+			</td>
+		</tr>
+	</table>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="_filters" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="_content" runat="server">
+
+<asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+	<seti:SecureGridView ID="_products" runat="server" DataKeyNames="Id" 
+		DataSourceID="_dataSource"
+		meta:resourcekey="Grid">
+		<Columns>
+			<asp:BoundField DataField="Name" meta:resourcekey="NameField" />
+			<asp:BoundField DataField="Description" meta:resourcekey="DescriptionField" />
+			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+				DataNavigateUrlFormatString="ProductEditor.aspx?Id={0}&Action=View"
+				Text="<%$ Resources:WebSite, IconViewImageTag %>"
+				meta:resourcekey="ViewField" >
+<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
+			</asp:HyperLinkField>
+			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+				DataNavigateUrlFormatString="ProductEditor.aspx?Id={0}&Action=Edit"
+				Text="<%$ Resources:WebSite, IconEditImageTag %>"
+				meta:resourcekey="EditField" >
+<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
+			</asp:HyperLinkField>
+			<eaa:DeleteCommandField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
+				meta:resourcekey="DeleteField">
+<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
+			</eaa:DeleteCommandField>
+		</Columns>
+	</seti:SecureGridView>
+	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/ProductEditor.aspx" />
+	<asp:ObjectContainerDataSource id="_dataSource" runat="server" 
+		DataObjectTypeName=""></asp:ObjectContainerDataSource>
 </asp:Content>

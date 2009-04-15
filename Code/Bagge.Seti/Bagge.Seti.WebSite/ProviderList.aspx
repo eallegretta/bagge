@@ -11,12 +11,17 @@
 			<td><asp:DropDownList ID="_products" runat="server" DataValueField="Id" DataTextField="Name" AppendDataBoundItems="true">
 			<asp:ListItem></asp:ListItem>
 			</asp:DropDownList></td>
+			
 		</tr>
 		<tr>
 			<th><asp:Literal ID="_addressLiteral" runat="server" meta:resourcekey="FilterAddressLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_address" runat="server"></asp:TextBox></td>
 			<th><asp:Literal ID="_phoneLiteral" runat="server" meta:resourcekey="FilterPhoneLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_phone" runat="server"></asp:TextBox></td>
+			<th><asp:Literal ID="_deletedLiteral" runat="server" meta:resourcekey="FilterDeletedLiteral"></asp:Literal></th>
+			<td><asp:DropDownList ID="_isDeleted" runat="server">
+				<asp:ListItem></asp:ListItem>
+				</asp:DropDownList></td>
 			<td colspan="2"><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
 			</td>
 		</tr>
@@ -51,7 +56,7 @@
 				meta:resourcekey="DeleteField"></eaa:DeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
-	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/CustomerEditor.aspx" />
+	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/ProviderEditor.aspx" />
 	<asp:ObjectContainerDataSource id="_dataSource" runat="server"></asp:ObjectContainerDataSource>
 </asp:Content>
 
