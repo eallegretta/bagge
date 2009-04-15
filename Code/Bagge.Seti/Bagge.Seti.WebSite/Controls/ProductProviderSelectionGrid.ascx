@@ -12,15 +12,14 @@
 	</tr>
 	
 	<tr>
-		<td><asp:TextBox ID="_name" runat="server" MaxLength="50" Width="250px" 
-				meta:resourcekey="NameTextBox"></asp:TextBox></td>
+		<td><asp:DropDownList ID="_name" runat="server" Width="250px" 
+				meta:resourcekey="NameDropDownList"></asp:DropDownList></td>
 		<td><asp:TextBox ID="_price" runat="server" meta:resourcekey="PriceTextBox"></asp:TextBox></td>
 	</tr>
 </table>
-<ajax:AutoCompleteExtender ID="_nameExt" runat="server" TargetControlID="_name" ServicePath="ProductProviderSelectionGridUIService.asmx"></ajax:AutoCompleteExtender>
 </asp:PlaceHolder>
 <asp:GridView ID="_items" DataKeyNames="Id" SkinID="NoPaging" runat="server" 
-	OnDataBound="_items_DataBound" OnRowCommand="_items_RowCommand" meta:resourcekey="ItemsGridView" >
+	OnDataBound="_items_DataBound" OnRowDeleting="_items_RowDeleting" meta:resourcekey="ItemsGridView" >
 	<Columns>
 		<asp:BoundField DataField="Provider" meta:resourcekey="ProviderField" />
 		<asp:BoundField DataField="Product" meta:resourcekey="ProductField" />

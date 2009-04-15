@@ -8,6 +8,7 @@ using Bagge.Seti.BusinessLogic;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 using Bagge.Seti.BusinessLogic.Contracts;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
@@ -63,6 +64,11 @@ namespace Bagge.Seti.WebSite.Presenters
 		{
 			SelectedEntity = _manager.Get(_view.PrimaryKey);
 			_view.DataSource = SelectedEntity.ToSingleItemArray<T>();
+
+			if (SelectedEntity is IAuditable)
+			{
+				_view.Timestamp = ((IAuditable)SelectedEntity).AuditTimeStamp;
+			}
 		}
 
 		public virtual void Save(T entity)

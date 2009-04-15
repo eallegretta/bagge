@@ -19,7 +19,7 @@ namespace Bagge.Seti.WebSite
 
 		public ProviderEditor()
 		{
-			_presenter = new ProviderEditorPresenter(this, IoCContainer.ProviderManager, IoCContainer.CountryStateManager, IoCContainer.DistrictManager);
+			_presenter = new ProviderEditorPresenter(this, IoCContainer.ProviderManager, IoCContainer.ProviderCalificationManager, IoCContainer.CountryStateManager, IoCContainer.DistrictManager);
 
 		}
 
@@ -127,6 +127,32 @@ namespace Bagge.Seti.WebSite
 			set
 			{
 				((ProductProviderSelectionGrid)Details.FindControl("_products")).SelectedItems = value.ToList();
+			}
+		}
+
+		#endregion
+
+		#region IProviderEditorView Members
+
+		public ProviderCalification[] Califications
+		{
+			set
+			{
+				var calification = ((DropDownList)Details.FindControl("_calification"));
+				calification.DataSource = value;
+				calification.DataBind();
+			}
+		}
+
+		public int SelectedCalificationId
+		{
+			get
+			{
+				return ((DropDownList)Details.FindControl("_calification")).SelectedValue.ToInt32();
+			}
+			set
+			{
+				((DropDownList)Details.FindControl("_calification")).SelectedValue = value.ToString();
 			}
 		}
 

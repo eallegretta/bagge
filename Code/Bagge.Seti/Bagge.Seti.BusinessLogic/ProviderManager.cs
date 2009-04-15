@@ -8,6 +8,7 @@ using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.BusinessEntities.Exceptions;
+using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -22,7 +23,7 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(!string.IsNullOrEmpty(cuit));
 
-			Provider[] providers = this.FindAllByProperty("CUIT", cuit);
+			Provider[] providers = this.FindAllActiveByProperty("CUIT", cuit);
 			if (providers.Length > 0)
 				return providers[0];
 			return null;
@@ -112,6 +113,8 @@ namespace Bagge.Seti.BusinessLogic
 
 			if (!IsCuitUnique(instance))
 				throw new BusinessRuleException(Resources.CUITNotUniqueErrorMessage);
+
+			SessionScopeUtils.FlushSessionScope();
 
 			base.Update(instance);
 		}

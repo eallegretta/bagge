@@ -9,6 +9,7 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.BusinessEntities.Exceptions;
 using System.Web.Services;
 using System.Web.Script.Services;
+using System.ComponentModel;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -28,24 +29,60 @@ namespace Bagge.Seti.WebSite.Controls
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (SourceType == ProductProviderSelectionGridSourceType.Product)
-				_nameExt.ServiceMethod = "GetProducts";
-			else
-				_nameExt.ServiceMethod = "GetProviders";
-
 			if (!IsPostBack)
 			{
-				SelectedItems = new List<ProductProvider>();
-				if (ReadOnly)
-					_addControls.Visible = false;
-
 				_legendProvider.Visible = _legendProduct.Visible = false;
 				if (SourceType == ProductProviderSelectionGridSourceType.Product)
+				{
+					LoadProducts();
 					_legendProduct.Visible = true;
+				}
 				else
+				{
+					LoadProviders();
 					_legendProvider.Visible = true;
+				}
+
+				SelectedItems = new List<ProductProvider>();
+
+				if (ReadOnly)
+					_addControls.Visible = false;
 			}
 
+		}
+
+		protected void _items_RowDeleting(object sender, GridViewDeleteEventArgs e)
+		{
+			SelectedItems.RemoveAt(e.RowIndex);
+			BindItems();
+		}
+
+		private void LoadProviders()
+		{
+			var providers = IoCContainer.ProviderManager.FindAllActiveOrdered("Name");
+			foreach (var provider in providers)
+			{
+				ListItem item = new ListItem();
+				item.Value = provider.Id.ToString();
+				item.Text = provider.Name;
+				if (!string.IsNullOrEmpty(provider.CUIT))
+				{
+					item.Text += " (" + provider.CUIT + ")";
+				}
+				_name.Items.Add(item);
+			}
+		}
+
+		private void LoadProducts()
+		{
+			var products = IoCContainer.ProductManager.FindAllActiveOrdered("Name");
+			foreach (var product in products)
+			{
+				ListItem item = new ListItem();
+				item.Value = product.Id.ToString();
+				item.Text = product.Name;
+				_name.Items.Add(item);
+			}
 		}
 
 		protected void _items_DataBound(object sender, EventArgs e)
@@ -66,9 +103,10 @@ namespace Bagge.Seti.WebSite.Controls
 		}
 
 
-		public List<ProductProvider> SelectedItems
+		[Bindable(true, BindingDirection.TwoWay)]
+		public IList<ProductProvider> SelectedItems
 		{
-			get { return ViewState["SelectedItems"] as List<ProductProvider>; }
+			get { return ViewState["SelectedItems"] as IList<ProductProvider>; }
 			set
 			{
 				ViewState["SelectedItems"] = value;
@@ -93,29 +131,23 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void AddSelectedProvider()
 		{
-			Provider provider = null;
+			Provider provider = new Provider();
+			provider.Id = _name.SelectedValue.ToInt32();
+			provider.Name = _name.SelectedItem.Text;
 			decimal price = 0;
 			try
 			{
-				provider = IoCContainer.ProviderManager.GetByName(_name.Text);
 				price = decimal.Parse(_price.Text);
-			}
-			catch (ObjectNotFoundException)
-			{
-				return;
 			}
 			catch (FormatException)
 			{
 				return;
 			}
-			if (provider != null)
+			if (SelectedItems.Where(p => p.Provider.Equals(provider)).Select(p => p).Count() == 0)
 			{
-				if (SelectedItems.Where(p => p.Provider.Equals(provider)).Select(p => p).Count() == 0)
-				{
-					SelectedItems.Add(new ProductProvider { Provider = provider, Price = price });
-				}
-				BindItems();
+				SelectedItems.Add(new ProductProvider { Provider = provider, Price = price });
 			}
+			BindItems();
 		}
 
 		private void BindItems()
@@ -128,38 +160,23 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void AddSelectedProduct()
 		{
-			
-
-			Product product = null;
+			Product product = new Product();
+			product.Id = _name.SelectedValue.ToInt32();
+			product.Name = _name.SelectedItem.Text;
 			decimal price = 0;
 			try
 			{
-				product = IoCContainer.ProductManager.GetByName(_name.Text);
 				price = decimal.Parse(_price.Text);
-			}
-			catch (ObjectNotFoundException)
-			{
-				return;
 			}
 			catch (FormatException)
 			{
 				return;
 			}
-			if (product != null)
+			if (SelectedItems.Where(p => p.Product.Equals(product)).Select(p => p).Count() == 0)
 			{
-				if (SelectedItems.Where(p => p.Product.Equals(product)).Select(p => p).Count() == 0)
-				{
-					SelectedItems.Add(new ProductProvider { Product = product, Price = price });
-				}
-				BindItems();
+				SelectedItems.Add(new ProductProvider { Product = product, Price = price });
 			}
-		}
-
-		protected void _items_RowCommand(object sender, GridViewCommandEventArgs e)
-		{
-			if (e.CommandName == "Delete")
-			{
-			}
+			BindItems();
 		}
 	}
 }
