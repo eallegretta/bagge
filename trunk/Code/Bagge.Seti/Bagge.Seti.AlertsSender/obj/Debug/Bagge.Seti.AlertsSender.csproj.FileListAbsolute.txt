@@ -1,0 +1,13 @@
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\obj\Debug\ResolveAssemblyReference.cache
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.AlertsSender.exe
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.AlertsSender.pdb
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.BusinessEntities.dll
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.BusinessLogic.dll
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.Extensions.dll
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.DataAccess.dll
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.BusinessLogic.pdb
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.BusinessEntities.pdb
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.Extensions.pdb
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\bin\Debug\Bagge.Seti.DataAccess.pdb
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\obj\Debug\Bagge.Seti.AlertsSender.exe
+C:\bagge\Code\Bagge.Seti\Bagge.Seti.AlertsSender\obj\Debug\Bagge.Seti.AlertsSender.pdb

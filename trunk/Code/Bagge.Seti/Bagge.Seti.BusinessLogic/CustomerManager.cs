@@ -27,6 +27,8 @@ namespace Bagge.Seti.BusinessLogic
 			if (customers.Length > 0)
 				return customers[0];
 			return null;
+
+
 		}
 
 		private bool IsCuitUnique(Customer customer)
