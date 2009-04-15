@@ -14,9 +14,12 @@ namespace Bagge.Seti.BusinessLogic
 {
 	public class ProviderManager : AuditableGenericManager<Provider, int>, IProviderManager
 	{
-		public ProviderManager(IProviderDao dao)
+		IProductProviderDao _productProviderDao;
+
+		public ProviderManager(IProviderDao dao, IProductProviderDao productProviderDao)
 			: base(dao)
 		{
+			_productProviderDao = productProviderDao;
 		}
 
 		public virtual Provider GetByCuit(string cuit)
@@ -106,6 +109,7 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(instance != null);
 
+
 			foreach (ProductProvider product in instance.Products)
 			{
 				product.Provider = instance;
@@ -115,6 +119,8 @@ namespace Bagge.Seti.BusinessLogic
 				throw new BusinessRuleException(Resources.CUITNotUniqueErrorMessage);
 
 			SessionScopeUtils.FlushSessionScope();
+
+			_productProviderDao.DeleteByProvider(instance.Id);
 
 			base.Update(instance);
 		}

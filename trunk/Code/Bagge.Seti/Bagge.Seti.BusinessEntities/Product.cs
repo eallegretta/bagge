@@ -9,7 +9,8 @@ namespace Bagge.Seti.BusinessEntities
 	[Serializable]
 	public class Product : AuditablePrimaryKeyWithNameAndDescriptionDomainObject<Product, int>
 	{
-		[HasAndBelongsToMany(typeof(ProductProvider), Table = "ProductProvider", ColumnKey = "ProductId", ColumnRef = "ProviderId", Lazy = true)]
+		[HasMany(typeof(ProductProvider), Table = "ProductProvider", ColumnKey = "ProductId", Lazy = true,
+			Cascade = ManyRelationCascadeEnum.AllDeleteOrphan, Inverse = true)]
 		public virtual IList<ProductProvider> Providers
 		{
 			get;

@@ -131,8 +131,8 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[HasAndBelongsToMany(typeof(ProductProvider), Table= "ProductProvider", ColumnKey = "ProviderId", ColumnRef = "ProductId", 
-			Lazy = true, Cascade = ManyRelationCascadeEnum.AllDeleteOrphan, Inverse = true)]
+		[HasMany(typeof(ProductProvider), Table= "ProductProvider", ColumnKey = "ProviderId", Lazy = true, 
+			Cascade = ManyRelationCascadeEnum.SaveUpdate, Inverse = true)]
 		public virtual IList<ProductProvider> Products
 		{
 			get; set;
