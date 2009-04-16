@@ -25,8 +25,8 @@ namespace Bagge.Seti.Common
 
 		public static IPrincipal User
 		{
-			get { return HttpContext.Current.User; }
-			set { HttpContext.Current.User = value; }
+			get { return GetObject<IAuthenticator>("AuthenticationManager").LoggedInUser; }
+			set { GetObject<IAuthenticator>("AuthenticationManager").LoggedInUser = value; }
 		}
 
 
