@@ -1,5 +1,0 @@
-C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.Extensions.dll
-C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.Extensions.pdb
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.Extensions\obj\Debug\ResolveAssemblyReference.cache
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.Extensions\obj\Debug\Bagge.Seti.Extensions.dll
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.Extensions\obj\Debug\Bagge.Seti.Extensions.pdb

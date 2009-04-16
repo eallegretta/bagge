@@ -1,7 +1,0 @@
-C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.BusinessLogic.dll
-C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.BusinessLogic.pdb
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessLogic\obj\Debug\ResolveAssemblyReference.cache
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessLogic\obj\Debug\Bagge.Seti.BusinessLogic.Properties.Resources.resources
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessLogic\obj\Debug\Bagge.Seti.BusinessLogic.csproj.GenerateResource.Cache
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessLogic\obj\Debug\Bagge.Seti.BusinessLogic.dll
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessLogic\obj\Debug\Bagge.Seti.BusinessLogic.pdb
