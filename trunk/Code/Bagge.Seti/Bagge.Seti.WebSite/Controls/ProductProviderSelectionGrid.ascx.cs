@@ -10,6 +10,7 @@ using Bagge.Seti.BusinessEntities.Exceptions;
 using System.Web.Services;
 using System.Web.Script.Services;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -48,7 +49,17 @@ namespace Bagge.Seti.WebSite.Controls
 				if (ReadOnly)
 					_addControls.Visible = false;
 			}
+			SetAddButtonClickBehaviour();
+		}
 
+		private void SetAddButtonClickBehaviour()
+		{
+			_add.OnClientClick = string.Format(
+				"addSelectedItem('{0}', '{1}', '{2}', '{3}', '{4}')",
+				_items.ClientID, _selectedItems.ClientID, 
+				_name.ClientID, _price.ClientID,
+				SourceType.ToString()
+			);
 		}
 
 		protected void _items_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -102,11 +113,13 @@ namespace Bagge.Seti.WebSite.Controls
 		[Bindable(true, BindingDirection.TwoWay)]
 		public IList<ProductProvider> SelectedItems
 		{
-			get { return ViewState["SelectedItems"] as IList<ProductProvider>; }
+			get 
+			{
+				return JavaScriptConvert.DeserializeObject<List<ProductProvider>>(_selectedItems.Value);
+			}
 			set
 			{
-				ViewState["SelectedItems"] = value;
-				//BindItems();
+				_selectedItems.Value = JavaScriptConvert.SerializeObject(value);
 			}
 		}
 
