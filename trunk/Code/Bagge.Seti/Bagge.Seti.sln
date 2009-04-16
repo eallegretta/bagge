@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 		Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll = Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll
 		Dlls\Microsoft.Practices.ObjectBuilder2.dll = Dlls\Microsoft.Practices.ObjectBuilder2.dll
 		Dlls\Microsoft.Practices.Web.UI.WebControls.dll = Dlls\Microsoft.Practices.Web.UI.WebControls.dll
+		Dlls\Newtonsoft.Json.dll = Dlls\Newtonsoft.Json.dll
 		Dlls\NHibernate.dll = Dlls\NHibernate.dll
 		Dlls\nunit.framework.dll = Dlls\nunit.framework.dll
 		Dlls\Rhino.Mocks.dll = Dlls\Rhino.Mocks.dll
@@ -47,6 +48,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bagge.Seti.DataAccess.Tests", "Bagge.Seti.DataAccess.Tests\Bagge.Seti.DataAccess.Tests.csproj", "{75543158-68E6-4971-9420-F8DB136D09CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bagge.Seti.AlertsSender", "Bagge.Seti.AlertsSender\Bagge.Seti.AlertsSender.csproj", "{3B8BC9F6-F869-4FE3-B3D7-92CB54B91C49}"
+EndProject
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "Database", "Database\Database.dbp", "{8F154DD2-8F31-4F72-BDE3-4490FD4FE9E3}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

@@ -120,9 +120,6 @@
   <data name="AddButton.Text" xml:space="preserve">
     <value>Agregar</value>
   </data>
-  <data name="DeleteField.DeleteText" xml:space="preserve">
-    <value>Delete</value>
-  </data>
   <data name="LegendProductLabel.Text" xml:space="preserve">
     <value>Ingrese el nombre del producto, luego ingrese el precio y luego presione en Agregar</value>
   </data>
@@ -132,16 +129,19 @@
   <data name="NameTitleLiteral.Text" xml:space="preserve">
     <value>Nombre</value>
   </data>
-  <data name="PriceField.HeaderText" xml:space="preserve">
+  <data name="PriceFieldLiteral.Text" xml:space="preserve">
     <value>Precio</value>
   </data>
   <data name="PriceTitleLiteral.Text" xml:space="preserve">
     <value>Precio</value>
   </data>
-  <data name="ProductField.HeaderText" xml:space="preserve">
+  <data name="ProductFieldLietral.Text" xml:space="preserve">
     <value>Producto</value>
   </data>
   <data name="ProviderAddLegend" xml:space="preserve">
     <value>Ingrese el nombre del proveedor, luego ingrese el precio y luego presione en Agregar</value>
+  </data>
+  <data name="ProviderFieldLiteral.Text" xml:space="preserve">
+    <value>Proveedor</value>
   </data>
 </root>
