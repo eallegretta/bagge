@@ -8,5 +8,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface ITicketManager: IManager<Ticket, int>
 	{
+		Ticket[] FindAllByStatus(TicketStatusEnum status);
 	}
 }

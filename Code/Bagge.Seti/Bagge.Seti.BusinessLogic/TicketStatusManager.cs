@@ -20,6 +20,11 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ITicketStatusManager Members
 
+		public TicketStatus Get(TicketStatusEnum status)
+		{
+			return Get((int)status);
+		}
+
 		public TicketStatus[] FindAll()
 		{
 			return _dao.FindAll();
