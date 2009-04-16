@@ -11,6 +11,7 @@ Begin DataProject = "Database"
       Script = "002 - Alter table AlertConfiguration.sql"
    End
    Begin Folder = "Create Scripts"
+      Script = "000 - Tables Initial Setup.sql"
    End
    Begin DBRefFolder = "Database References"
       Begin DBRefNode = "SETI.mdf"
@@ -20,5 +21,10 @@ Begin DataProject = "Database"
       End
    End
    Begin Folder = "Queries"
+      Begin Folder = "Default Values"
+         Script = "AccessibilityType.sql"
+         Script = "ProviderCalification.sql"
+         Script = "TicketStatus.sql"
+      End
    End
 End

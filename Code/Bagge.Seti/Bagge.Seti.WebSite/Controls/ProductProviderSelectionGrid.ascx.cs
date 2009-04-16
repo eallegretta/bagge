@@ -54,7 +54,7 @@ namespace Bagge.Seti.WebSite.Controls
 		protected void _items_RowDeleting(object sender, GridViewDeleteEventArgs e)
 		{
 			SelectedItems.RemoveAt(e.RowIndex);
-			BindItems();
+			//BindItems();
 		}
 
 		private void LoadProviders()
@@ -81,15 +81,15 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 		}
 
-		protected void _items_DataBound(object sender, EventArgs e)
-		{
-			if (SourceType == ProductProviderSelectionGridSourceType.Product)
-				_items.Columns[0].Visible = false;
-			else
-				_items.Columns[1].Visible = false;
-			if (ReadOnly)
-				_items.Columns[3].Visible = false;
-		}
+		//protected void _items_DataBound(object sender, EventArgs e)
+		//{
+		//    if (SourceType == ProductProviderSelectionGridSourceType.Product)
+		//        _items.Columns[0].Visible = false;
+		//    else
+		//        _items.Columns[1].Visible = false;
+		//    if (ReadOnly)
+		//        _items.Columns[3].Visible = false;
+		//}
 
 
 		public bool ReadOnly
@@ -106,7 +106,7 @@ namespace Bagge.Seti.WebSite.Controls
 			set
 			{
 				ViewState["SelectedItems"] = value;
-				BindItems();
+				//BindItems();
 			}
 		}
 
@@ -143,14 +143,14 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				SelectedItems.Add(new ProductProvider { Provider = provider, Price = price });
 			}
-			BindItems();
+			//BindItems();
 		}
 
-		private void BindItems()
-		{
-			_items.DataSource = SelectedItems;
-			_items.DataBind();
-		}
+		//private void BindItems()
+		//{
+		//    _items.DataSource = SelectedItems;
+		//    _items.DataBind();
+		//}
 
 
 
@@ -172,7 +172,7 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				SelectedItems.Add(new ProductProvider { Product = product, Price = price });
 			}
-			BindItems();
+			//BindItems();
 		}
 	}
 }
