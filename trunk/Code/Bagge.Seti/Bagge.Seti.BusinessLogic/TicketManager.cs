@@ -10,9 +10,22 @@ namespace Bagge.Seti.BusinessLogic
 {
 	public class TicketManager : AuditableGenericManager<Ticket, int>, ITicketManager
 	{
+		ITicketStatusManager _ticketStatusManager;
 
-		public TicketManager(ITicketDao dao): base(dao)
+		public TicketManager(ITicketDao dao, ITicketStatusManager ticketStatusManager)
+			: base(dao)
 		{
+			_ticketStatusManager = ticketStatusManager;
 		}
+
+		#region ITicketManager Members
+
+		public Ticket[] FindAllByStatus(TicketStatusEnum status)
+		{
+			return FindAllActiveByProperty("Status",
+				_ticketStatusManager.Get(status));
+		}
+
+		#endregion
 	}
 }
