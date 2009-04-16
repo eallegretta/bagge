@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.BusinessLogic;
+using Castle.ActiveRecord.Framework;
+using System.Reflection;
+using Castle.ActiveRecord;
+using Castle.ActiveRecord.Framework.Config;
+using Bagge.Seti.Common;
+using System.Threading;
 
 namespace Bagge.Seti.AlertsSender
 {
@@ -10,55 +16,67 @@ namespace Bagge.Seti.AlertsSender
 	{
 		static void Main(string[] args)
 		{
-            SendAlertsByTicketExpired();
-            SendlertsByBudgetExpired();
+			Initialize();
+
+			Console.WriteLine("Hello World!!!");
+			//SendAlertsByTicketExpired();
+			//SendlertsByBudgetExpired();
 		}
 
-        public static void SendAlertsByTicketExpired()
-        {
-            TicketManager ticketManager = new TicketManager();
-            Ticket[] tickets = ticketManager.FindAllByStatus("Status", "Abierto");
+		private static void Initialize()
+		{
+			IConfigurationSource config = ActiveRecordSectionHandler.Instance;
+			Assembly asm = Assembly.Load("Bagge.Seti.BusinessEntities");
+			ActiveRecordStarter.Initialize(asm, config);
 
-            AlertConfigurationManager alertConfigurationManager = new AlertConfigurationManager();
-            AlertConfiguration alert = alert.GetActualAlert();
+			IoCContainer.User = Thread.CurrentPrincipal;
+		}
 
-            for (int i = 0; i < tickets.Length; i++)
-            {
-                if (tickets[i].ExecutionDate > DateTime.Now)
-                {
-                    Ticket ticket = new Ticket();
-                    ticket = ticketManager.Get(tickets[i].Id);
-                    ticket.Status = "Vencido";
-                    ticketManager.Update(ticket);
+		//public static void SendAlertsByTicketExpired()
+		//{
+		//    TicketManager ticketManager = new TicketManager();
+		//    Ticket[] tickets = ticketManager.FindAllByStatus("Status", "Abierto");
 
-                    SendMailByExpired(ticket, "Ticket");
-                }
-            }
-        }
-        public static void SendAlertsByBudgetExpired()
-        {
-            TicketManager ticketManager = new TicketManager();
-            Ticket[] tickets = ticketManager.FindAllByStatus("Status", "Pendientes de Aprobacion");
+		//    AlertConfigurationManager alertConfigurationManager = new AlertConfigurationManager();
+		//    AlertConfiguration alert = alert.GetActualAlert();
+
+		//    for (int i = 0; i < tickets.Length; i++)
+		//    {
+		//        if (tickets[i].ExecutionDate > DateTime.Now)
+		//        {
+		//            Ticket ticket = new Ticket();
+		//            ticket = ticketManager.Get(tickets[i].Id);
+		//            ticket.Status = "Vencido";
+		//            ticketManager.Update(ticket);
+
+		//            SendMailByExpired(ticket, "Ticket");
+		//        }
+		//    }
+		//}
+		//public static void SendAlertsByBudgetExpired()
+		//{
+		//    TicketManager ticketManager = new TicketManager();
+		//    Ticket[] tickets = ticketManager.FindAllByStatus("Status", "Pendientes de Aprobacion");
             
-            AlertConfigurationManager alertConfigurationManager = new AlertConfigurationManager();
-            AlertConfiguration alert = alert.GetActualAlert();
+		//    AlertConfigurationManager alertConfigurationManager = new AlertConfigurationManager();
+		//    AlertConfiguration alert = alert.GetActualAlert();
 
-             for (int i = 0; i < tickets.Length; i++) 
-             {
-                 if (tickets[i].CreationDate > tickets[i].CreationDate + alert.Days)
-                 {
-                     Ticket ticket = new Ticket();
-                     ticket = ticketManager.Get(tickets[i].Id);
-                     ticket.Status = "Cancelado";
-                     ticketManager.Update(ticket);
+		//     for (int i = 0; i < tickets.Length; i++) 
+		//     {
+		//         if (tickets[i].CreationDate > tickets[i].CreationDate + alert.Days)
+		//         {
+		//             Ticket ticket = new Ticket();
+		//             ticket = ticketManager.Get(tickets[i].Id);
+		//             ticket.Status = "Cancelado";
+		//             ticketManager.Update(ticket);
 
-                     SendMailByExpired(ticket, "Budget");
-                 }
-             }
-        }
-        public static void SendMailByExpired(string expirationConcept)
-        { 
+		//             SendMailByExpired(ticket, "Budget");
+		//         }
+		//     }
+		//}
+		//public static void SendMailByExpired(string expirationConcept)
+		//{ 
         
-        }
+		//}
 	}
 }
