@@ -1,8 +1,0 @@
-C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.BusinessEntities.dll.config
-C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.BusinessEntities.dll
-C:\bagge\Code\Bagge.Seti\bin\Debug\Bagge.Seti.BusinessEntities.pdb
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessEntities\obj\Debug\ResolveAssemblyReference.cache
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessEntities\obj\Debug\Bagge.Seti.BusinessEntities.Properties.Resources.resources
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessEntities\obj\Debug\Bagge.Seti.BusinessEntities.csproj.GenerateResource.Cache
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessEntities\obj\Debug\Bagge.Seti.BusinessEntities.dll
-C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessEntities\obj\Debug\Bagge.Seti.BusinessEntities.pdb
