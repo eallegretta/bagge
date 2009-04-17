@@ -21,12 +21,12 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			_productProviderDao = productProviderDao;
 		}
-
+        
 
 		public Product[] FindAllByName(string productName, int maxRecords)
 		{
 			Check.Require(!string.IsNullOrEmpty(productName));
-
+            
 			FilterPropertyValue filter = new FilterPropertyValue();
 			filter.Property = "Name";
 			filter.Type = FilterPropertyValueType.Like;
@@ -54,7 +54,7 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 		public Product GetByName(string name)
-		{
+		{   
 			Check.Require(!string.IsNullOrEmpty(name));
 
 			var products = Dao.FindAllByProperty("Name", name);
