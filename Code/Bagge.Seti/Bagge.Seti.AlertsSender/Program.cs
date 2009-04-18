@@ -35,7 +35,7 @@ namespace Bagge.Seti.AlertsSender
 		public static void SendAlertsByTicketExpired()
         {
             Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.Open);
-            //AlertConfiguration alert = IoCContainer.AlertConfigurationManager.GetActualAlert();
+            AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
 
             for (int index=0; index<tickets.Length; index++)
             {
@@ -43,7 +43,9 @@ namespace Bagge.Seti.AlertsSender
                 {
                     Ticket ticket = new Ticket();
                     ticket = IoCContainer.TicketManager.Get(tickets[index].Id);
-                    //ticket.Status = TicketStatusEnum.Expired;
+                    TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.Expired);
+                    ticket.Status = ticketStatus;
+
                     IoCContainer.TicketManager.Update(ticket);
 
                     SendMail(true, ticket, "Alerta: Vencimiento de Ticket", "Se vencio el Ticket: ");
@@ -54,15 +56,17 @@ namespace Bagge.Seti.AlertsSender
         public static void SendAlertsByBudgetExpired()
         {
             Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.PendingAproval);
-            //AlertConfiguration alert = IoCContainer.AlertConfigurationManager.GetActualAlert();
+            AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
+            
             for (int index=0; index<tickets.Length; index++)
             {
-                //'Clave' un parametro para que compile temporalmente, ya que va 'alert.Days'
-                if ((tickets[index].CreationDate).AddDays(10) > DateTime.Now)
+                if ((tickets[index].CreationDate).AddDays(alert.Days) > DateTime.Now)
                 {
                     Ticket ticket = new Ticket();
                     ticket = IoCContainer.TicketManager.Get(tickets[index].Id);
-                    //ticket.Status = TicketStatusEnum.Canceled;
+                    TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.Canceled);
+                    ticket.Status = ticketStatus;
+
                     IoCContainer.TicketManager.Update(ticket);
 
                     SendMail(false, ticket, "Alerta: Cancelacion de Ticket", "Se cancelo el Ticket: ");
@@ -73,7 +77,6 @@ namespace Bagge.Seti.AlertsSender
         public static void SendMail(bool toAll, Ticket ticket, string subjectEmail, string bodyEmail)
         {
             MailMessage msg = new MailMessage();
-
             msg.To.Add(new MailAddress(ticket.Creator.Email.ToString()));
 
             if (toAll == true)
@@ -86,19 +89,18 @@ namespace Bagge.Seti.AlertsSender
                 }   
             }
 
-            msg.From = new MailAddress("admin@seti.com");
+            msg.From = new MailAddress("no-replay@seti.com");
             msg.Subject = subjectEmail;
 
             msg.Body = bodyEmail + "\n";
-            msg.Body = msg.Body + ticket.Id.ToString() + "\n";
-            msg.Body = msg.Body + ticket.Customer.ToString() + "\n";
-            msg.Body = msg.Body + ticket.Description.ToString() + "\n";
-            msg.Body = msg.Body + ticket.CreationDate.ToString() + "\n";
-            msg.Body = msg.Body + ticket.ExecutionDate.ToString() + "\n";
-            msg.Body = msg.Body + ticket.EstimatedDuration.ToString() + "\n";
+            msg.Body += "Id: " + ticket.Id.ToString() + "\n";
+            msg.Body += "Customer: " + ticket.Customer.ToString() + "\n";
+            msg.Body += "Description " + ticket.Description.ToString() + "\n";
+            msg.Body += "CreationDate: " + ticket.CreationDate.ToString() + "\n";
+            msg.Body += "ExecutionDate: " + ticket.ExecutionDate.ToString() + "\n";
+            msg.Body += "EstimatedDuration: " + ticket.EstimatedDuration.ToString();
 
             SmtpClient clienteSmtp = new SmtpClient("smtp.seti.com");
-
             clienteSmtp.Credentials = new NetworkCredential("admin", "1234");
 
             try
@@ -108,8 +110,7 @@ namespace Bagge.Seti.AlertsSender
 
             catch (Exception ex)
             {
-                Console.Write(ex.Message);
-                Console.ReadLine();
+                throw ex;
             }
         }
 	}
