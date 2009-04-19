@@ -74,16 +74,16 @@ namespace Bagge.Seti.AlertsSender
             }
         }
 
-        public static void SendMail(bool toAll, bool sendEmailToCreator, bool sendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
+        public static void SendMail(bool toAll, bool isSendEmailToCreator, bool isSendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
         {
             MailMessage msg = new MailMessage();
 
-            if (sendEmailToCreator == true)
+            if (isSendEmailToCreator == true)
             {
                 msg.To.Add(new MailAddress(ticket.Creator.Email.ToString()));
             }
 
-            if ((toAll == true) && (sendEmailToEmployees == true))
+            if ((toAll == true) && (isSendEmailToEmployees == true))
             {
                 List<Employee> lstEmployees = (List<Employee>)((object)ticket.Employees);
 
@@ -110,7 +110,7 @@ namespace Bagge.Seti.AlertsSender
 
             try
             {
-                if ((sendEmailToCreator == true) || (sendEmailToEmployees == true))
+                if ((isSendEmailToCreator == true) || (isSendEmailToEmployees == true))
                 {
                     clienteSmtp.Send(msg);
                 }
