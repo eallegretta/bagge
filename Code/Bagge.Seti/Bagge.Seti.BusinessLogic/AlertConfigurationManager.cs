@@ -33,19 +33,6 @@ namespace Bagge.Seti.BusinessLogic
 			_dao.Update(alertConfiguration);		
         }
 
-        public AlertConfiguration GetActualAlert()
-        {
-            //AlertConfiguration[] alerts = Dao.FindAll();
-            AlertConfiguration[] alerts = new AlertConfiguration[0];
-            if (alerts.Length > 1)
-                throw new BusinessRuleException(Resources.MultipleNamesErrorMessage);
-
-            if (alerts.Length == 1)
-                return alerts[0];
-
-            throw new ObjectNotFoundException(Resources.InstanceNotFound);
-
-        }
 		#endregion
 	}
 }
