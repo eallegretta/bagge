@@ -103,7 +103,7 @@ namespace Bagge.Seti.AlertsSender
             msg.Body += "CreationDate: " + ticket.CreationDate.ToString() + "\n";
             msg.Body += "ExecutionDate: " + ticket.ExecutionDate.ToString() + "\n";
             msg.Body += "EstimatedDuration: " + ticket.EstimatedDuration.ToString() + "\n";
-            msg.Body += "Status: " + ticket.Status.Description;
+            msg.Body += "Status: " + ticket.Status.Description.ToString();
 
             SmtpClient clienteSmtp = new SmtpClient("smtp.seti.com");
             clienteSmtp.Credentials = new NetworkCredential("admin", "1234");
