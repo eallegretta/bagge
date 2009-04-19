@@ -19,9 +19,9 @@ namespace Bagge.Seti.AlertsSender
 		static void Main(string[] args)
 		{
 			Initialize();
-			SendAlertsByTicketExpired();
-			SendAlertsByBudgetExpired();
-		}
+            SendAlertsByTicketExpired();
+            SendAlertsByBudgetExpired();
+        }
 
 		private static void Initialize()
 		{
@@ -48,7 +48,7 @@ namespace Bagge.Seti.AlertsSender
 
                     IoCContainer.TicketManager.Update(ticket);
 
-                    SendMail(true, ticket, "Alerta: Vencimiento de Ticket", "Se vencio el Ticket: ");
+                    SendMail(true, alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Vencimiento de Ticket", "Se vencio el Ticket: ");
                 }
             }
         }
@@ -69,17 +69,21 @@ namespace Bagge.Seti.AlertsSender
 
                     IoCContainer.TicketManager.Update(ticket);
 
-                    SendMail(false, ticket, "Alerta: Cancelacion de Ticket", "Se cancelo el Ticket: ");
+                    SendMail(false, alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Cancelacion de Ticket", "Se cancelo el Ticket: ");
                 }
             }
         }
 
-        public static void SendMail(bool toAll, Ticket ticket, string subjectEmail, string bodyEmail)
+        public static void SendMail(bool toAll, bool sendEmailToCreator, bool sendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
         {
             MailMessage msg = new MailMessage();
-            msg.To.Add(new MailAddress(ticket.Creator.Email.ToString()));
 
-            if (toAll == true)
+            if (sendEmailToCreator == true)
+            {
+                msg.To.Add(new MailAddress(ticket.Creator.Email.ToString()));
+            }
+
+            if ((toAll == true) && (sendEmailToEmployees == true))
             {
                 List<Employee> lstEmployees = (List<Employee>)((object)ticket.Employees);
 
@@ -92,20 +96,24 @@ namespace Bagge.Seti.AlertsSender
             msg.From = new MailAddress("no-replay@seti.com");
             msg.Subject = subjectEmail;
 
-            msg.Body = bodyEmail + "\n";
+            msg.Body = bodyEmail + "\n\n";
             msg.Body += "Id: " + ticket.Id.ToString() + "\n";
-            msg.Body += "Customer: " + ticket.Customer.ToString() + "\n";
+            msg.Body += "CustomerName: " + ticket.Customer.Name.ToString() + "\n";
             msg.Body += "Description " + ticket.Description.ToString() + "\n";
             msg.Body += "CreationDate: " + ticket.CreationDate.ToString() + "\n";
             msg.Body += "ExecutionDate: " + ticket.ExecutionDate.ToString() + "\n";
-            msg.Body += "EstimatedDuration: " + ticket.EstimatedDuration.ToString();
+            msg.Body += "EstimatedDuration: " + ticket.EstimatedDuration.ToString() + "\n";
+            msg.Body += "Status: " + ticket.Status.Description;
 
             SmtpClient clienteSmtp = new SmtpClient("smtp.seti.com");
             clienteSmtp.Credentials = new NetworkCredential("admin", "1234");
 
             try
             {
-                clienteSmtp.Send(msg);
+                if ((sendEmailToCreator == true) || (sendEmailToEmployees == true))
+                {
+                    clienteSmtp.Send(msg);
+                }
             }
 
             catch (Exception ex)
