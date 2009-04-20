@@ -24,8 +24,17 @@ namespace Bagge.Seti.WebSite.Presenters
 		protected override void OnInit(object sender, EventArgs e)
 		{
 			base.OnInit(sender, e);
-
+			View.DataBound += new EventHandler(View_DataBound);
 		}
+
+		void View_DataBound(object sender, EventArgs e)
+		{
+			if (View.Mode == EditorAction.Update || View.Mode == EditorAction.View)
+			{
+				View.Providers = SelectedEntity.Providers.ToArray();
+			}
+		}
+
 
 		public override void Save(Product entity)
 		{

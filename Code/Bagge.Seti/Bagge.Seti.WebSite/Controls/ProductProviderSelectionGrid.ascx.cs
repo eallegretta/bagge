@@ -11,9 +11,14 @@ using System.Web.Services;
 using System.Web.Script.Services;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using System.Web.UI.HtmlControls;
+using System.IO;
+using System.Text;
+
 
 namespace Bagge.Seti.WebSite.Controls
 {
+
 	public enum ProductProviderSelectionGridSourceType
 	{
 		Product,
@@ -22,6 +27,72 @@ namespace Bagge.Seti.WebSite.Controls
 
 	public partial class ProductProviderSelectionGrid : System.Web.UI.UserControl
 	{
+		private class ProductProviderBindItem
+		{
+			public int Id { get; set; }
+			public string Name { get; set; }
+			public decimal? Price { get; set; }
+
+			public ProductProviderBindItem()
+			{
+			}
+
+			public ProductProviderBindItem(ProductProvider productProvider,
+				ProductProviderSelectionGridSourceType sourceType)
+			{
+				if (sourceType == ProductProviderSelectionGridSourceType.Product)
+				{
+					Id = productProvider.Product.Id;
+					Name = productProvider.Product.NameAndDescription;
+				}
+				else
+				{
+					Id = productProvider.Provider.Id;
+					Name = productProvider.Provider.NameAndCUIT;
+				}
+				Price = productProvider.Price;
+			}
+
+			public static IList<ProductProviderBindItem> ToProductProviderBindItems(IList<ProductProvider> productProviders,
+				ProductProviderSelectionGridSourceType sourceType)
+			{
+				List<ProductProviderBindItem> items = new List<ProductProviderBindItem>();
+				foreach (var productProvider in productProviders)
+					items.Add(new ProductProviderBindItem(productProvider, sourceType));
+				return items;
+			}
+
+			public static IList<ProductProvider> ToProductProviderItems(IList<ProductProviderBindItem> productProviderBindItems,
+				ProductProviderSelectionGridSourceType sourceType)
+			{
+				List<ProductProvider> items = new List<ProductProvider>();
+				foreach (var productProviderBindItem in productProviderBindItems)
+				{
+					if (sourceType == ProductProviderSelectionGridSourceType.Product)
+						items.Add(new ProductProvider
+									{
+										Price = productProviderBindItem.Price,
+										Product = new Product
+													{
+														Id = productProviderBindItem.Id,
+														Name = productProviderBindItem.Name
+													}
+									});
+					else
+						items.Add(new ProductProvider
+									{
+										Price = productProviderBindItem.Price,
+										Provider = new Provider
+													{
+														Id = productProviderBindItem.Id,
+														Name = productProviderBindItem.Name
+													}
+									});
+				}
+				return items;
+			}
+		}
+
 		public ProductProviderSelectionGridSourceType SourceType
 		{
 			get;
@@ -44,22 +115,48 @@ namespace Bagge.Seti.WebSite.Controls
 					_legendProvider.Visible = true;
 				}
 
-				SelectedItems = new List<ProductProvider>();
-
 				if (ReadOnly)
 					_addControls.Visible = false;
 			}
-			SetAddButtonClickBehaviour();
+			else
+				DataBind();
+
+			RegisterJavascripts();
+
 		}
 
-		private void SetAddButtonClickBehaviour()
+		private void RegisterJavascripts()
 		{
-			_add.OnClientClick = string.Format(
-				"addSelectedItem('{0}', '{1}', '{2}', '{3}', '{4}')",
-				_items.ClientID, _selectedItems.ClientID, 
-				_name.ClientID, _price.ClientID,
-				SourceType.ToString()
-			);
+			if (!ScriptManager.GetCurrent(Page).IsInAsyncPostBack)
+			{
+				if (!Page.ClientScript.IsClientScriptIncludeRegistered("ProductProviderSelectionGrid"))
+				{
+					Page.ClientScript.RegisterClientScriptInclude("ProductProviderSelectionGrid", ResolveUrl("ProductProviderSelectionGrid.js"));
+					Page.ClientScript.RegisterStartupScript(typeof(string), "ProductProviderSelectionGridObject",
+						string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
+							ClientID, _items.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
+							SourceType.ToString(), GetDeleteImagePath()),
+							true);
+					_add.OnClientClick = string.Format("{0}_instance.addSelectedItem();return false;", ClientID);
+				}
+			}
+			else
+			{
+				string script = string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
+							ClientID, _items.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
+							SourceType.ToString(), GetDeleteImagePath());
+				ScriptManager.RegisterStartupScript(this,
+					typeof(string),
+					"ProductProviderSelectionGridObject",
+					script,
+					true);
+				_add.OnClientClick = string.Format("{0}_instance.addSelectedItem();return false;", ClientID);
+			}
+		}
+
+		private string GetDeleteImagePath()
+		{
+			return ResolveUrl(string.Format("~/App_Themes/{0}/images/iconDelete.gif", Page.Theme));
 		}
 
 		protected void _items_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -113,17 +210,37 @@ namespace Bagge.Seti.WebSite.Controls
 		[Bindable(true, BindingDirection.TwoWay)]
 		public IList<ProductProvider> SelectedItems
 		{
-			get 
+			get
 			{
-				return JavaScriptConvert.DeserializeObject<List<ProductProvider>>(_selectedItems.Value);
+				return ProductProviderBindItem.ToProductProviderItems(
+						JavaScriptConvert.DeserializeObject<List<ProductProviderBindItem>>(_selectedItems.Value), 
+						SourceType);
 			}
 			set
 			{
-				_selectedItems.Value = JavaScriptConvert.SerializeObject(value);
+				_selectedItems.Value = JavaScriptConvert.SerializeObject(
+						ProductProviderBindItem.ToProductProviderBindItems(value,
+						SourceType));
+				RemoveDropDownItems(value);
+				DataBind();
 			}
 		}
 
-		
+		private void RemoveDropDownItems(IList<ProductProvider> productProviders)
+		{
+			foreach (var productProvider in productProviders)
+			{
+				ListItem item;
+				if (SourceType == ProductProviderSelectionGridSourceType.Product)
+					item = _name.Items.FindByValue(productProvider.Product.Id.ToString());
+				else
+					item = _name.Items.FindByValue(productProvider.Provider.Id.ToString());
+				if (item != null)
+					_name.Items.Remove(item);
+			}
+		}
+
+
 
 		protected void _add_Click(object sender, EventArgs e)
 		{
@@ -186,6 +303,21 @@ namespace Bagge.Seti.WebSite.Controls
 				SelectedItems.Add(new ProductProvider { Product = product, Price = price });
 			}
 			//BindItems();
+		}
+
+		public override void DataBind()
+		{
+			if (SelectedItems.Count > 0)
+			{
+				string script = string.Format("{0}_instance.refresh();", ClientID);
+				if (ScriptManager.GetCurrent(Page).IsInAsyncPostBack)
+				{
+					RegisterJavascripts();
+					ScriptManager.RegisterStartupScript(this, typeof(string), Guid.NewGuid().ToString(), script, true);
+				}
+				else
+					Page.ClientScript.RegisterStartupScript(typeof(string), Guid.NewGuid().ToString(), script, true);
+			}
 		}
 	}
 }

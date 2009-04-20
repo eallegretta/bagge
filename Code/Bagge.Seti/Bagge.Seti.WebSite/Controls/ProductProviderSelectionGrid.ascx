@@ -12,13 +12,14 @@
 				<asp:Literal ID="_priceTitle" runat="server" meta:resourcekey="PriceTitleLiteral"></asp:Literal>
 			</th>
 			<td rowspan="2" valign="bottom" style="padding-bottom: 4px">
-				<asp:Button ID="_add" runat="server" UseSubmitBehavior="false" meta:resourcekey="AddButton"
+				<asp:Button  ID="_add" runat="server" UseSubmitBehavior="false" meta:resourcekey="AddButton"
 					CausesValidation="true" ValidationGroup="ProductProviderSelectionGrid" />
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<asp:DropDownList ID="_name" runat="server" Width="250px" meta:resourcekey="NameDropDownList">
+				<asp:DropDownList ID="_name" runat="server" AppendDataBoundItems="true" Width="250px" meta:resourcekey="NameDropDownList">
+					<asp:ListItem></asp:ListItem>
 				</asp:DropDownList>
 			</td>
 			<td>
@@ -29,16 +30,17 @@
 		</tr>
 	</table>
 </asp:PlaceHolder>
-<table id="_items" runat="server">
+<table id="_items" width="100%" runat="server">
 	<tr>
 		<th>
 			<asp:Literal ID="_itemNameHeaderTitle" runat="server" meta:resourcekey="ItemNameHeaderLiteral"></asp:Literal>
 		</th>
-		<th>
-			<asp:Literal ID="_priceHeaderTitle" runat="server" meta:resourcekey="PriceTitleLiteral"></asp:Literal>
+		<th style="width:200px">
+			<asp:Literal ID="_priceHeaderTitle" runat="server" meta:resourcekey="PriceHeaderLiteral"></asp:Literal>
 		</th>
-		<th>
+		<th style="width:20px">
+			<asp:Literal id="_deleteHeaderTitle" runat="server" meta:resourcekey="DeleteHeaderLiteral"></asp:Literal>
 		</th>
 	</tr>
 </table>
-<asp:HiddenField ID="_selectedItems" runat="server" />
+<asp:HiddenField ID="_selectedItems" runat="server" Value="[]" />
