@@ -65,7 +65,7 @@
 					</asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<%#((Bagge.Seti.BusinessEntities.Customer)Container.DataItem).District.CountryState.Name%>
+					<%#((Bagge.Seti.BusinessEntities.Provider)Container.DataItem).District.CountryState.Name%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="DistrictField">

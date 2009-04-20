@@ -5,13 +5,15 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
-function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIconUrl) {
+function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIconUrl, isReadOnly) {
 
 	this.table = $("#" + tableId);
 	this.hdn = $("#" + hdnId);
 	this.items = $("#" + itemId);
 	this.price = $("#" + priceId);
 	this.deleteIconUrl = deleteIconUrl;
+	this.isReadOnly = isReadOnly;
+
 
 	this.getSelectedOption = function() {
 		return $("option:selected", this.items);
@@ -31,7 +33,7 @@ function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIco
 		var item = this.getSelecteItem();
 		if (item.Name.length > 0 && this.isValidPrice(item.Price)) {
 			this.getSelectedOption().remove();
-			this.addItem(item.id, item.text, item.price);
+			this.addItem(item.Id, item.Name, item.Price);
 			this.price.val("");
 		}
 	}
@@ -95,9 +97,10 @@ function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIco
 						$("<td></td>").text(item.Name)
 					).append(
 						$("<td style='text-align:right'></td>").text(item.Price)
-				).append(
-					$("<td style='text-align:center'></td>").append(img)
-				).data("item", item);
+				);
+		if(!this.isReadOnly)		
+			row.append($("<td style='text-align:center'></td>").append(img));
+		row.data("item", item);
 		img.behaviour = this;
 		$(img).click(function() {
 			this.behaviour.removeSelectedItem(this);
