@@ -110,13 +110,13 @@
 			<seti:SecureBoundField DataField="ContactName" ControlStyle-Width="320px" meta:resourcekey="ContactNameField"></seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="Products" meta:resourcekey="ProductsField">
 				<InsertItemTemplate>
-					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" SelectedItems='<%#Bind("Products")%>' />					
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" />					
 				</InsertItemTemplate>
 				<EditItemTemplate>
-					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" SelectedItems='<%#Bind("Products")%>' />					
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" />					
 				</EditItemTemplate>
 				<ItemTemplate>
-					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" SelectedItems='<%#Bind("Products")%>' ReadOnly="true" />
+					<controls:ProductProviderGrid id="_products" runat="server" SourceType="Product" ReadOnly="true" />
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 		</Fields>

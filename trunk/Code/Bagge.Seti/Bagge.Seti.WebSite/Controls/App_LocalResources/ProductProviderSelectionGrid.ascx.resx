@@ -120,19 +120,22 @@
   <data name="AddButton.Text" xml:space="preserve">
     <value>Agregar</value>
   </data>
+  <data name="DeleteHeaderLiteral.Text" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ItemNameHeaderLiteral.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="LegendProductLabel.Text" xml:space="preserve">
     <value>Ingrese el nombre del producto, luego ingrese el precio y luego presione en Agregar</value>
   </data>
   <data name="LegendProviderLabel.Text" xml:space="preserve">
-    <value>Proveedor</value>
-  </data>
-  <data name="NameTitleLiteral.Text" xml:space="preserve">
-    <value>Nombre</value>
+    <value>Ingrese el nombre del proveedor, luego ingrese el precio y luego presione en Agregar</value>
   </data>
   <data name="PriceFieldLiteral.Text" xml:space="preserve">
     <value>Precio</value>
   </data>
-  <data name="PriceTitleLiteral.Text" xml:space="preserve">
+  <data name="PriceHeaderLiteral.Text" xml:space="preserve">
     <value>Precio</value>
   </data>
   <data name="ProductFieldLietral.Text" xml:space="preserve">

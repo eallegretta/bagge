@@ -8,7 +8,7 @@ namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
-	public class Provider : AuditablePrimaryKeyWithNameDomainObject<Provider, int>
+	public partial class Provider : AuditablePrimaryKeyWithNameDomainObject<Provider, int>
 	{
 
 		public string NameAndCUIT

@@ -66,7 +66,10 @@ namespace Bagge.Seti.WebSite.Presenters
 					View.Districts = state.Districts.ToArray();
 					View.SelectedDistrictId = SelectedEntity.District.Id;
 					View.SelectedCalificationId = SelectedEntity.Calification.Id;
-
+					View.Products = SelectedEntity.Products.ToArray();
+					break;
+				case EditorAction.View:
+					View.Products = SelectedEntity.Products.ToArray();
 					break;
 			}
 		}
