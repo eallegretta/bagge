@@ -43,10 +43,11 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		private void LoadView(EditorAction mode)
 		{
-			View.Califications = _providerCalificationManager.FindAllOrdered("Name").ToArray();
+			
 			switch (mode)
 			{
 				case EditorAction.Insert:
+					View.Califications = _providerCalificationManager.FindAllOrdered("Name").ToArray();
 					CountryState[] states = _countryStateManager.FindAllOrdered("Name");
 
 					View.CountryStates = states;
@@ -59,6 +60,7 @@ namespace Bagge.Seti.WebSite.Presenters
 					}
 					break;
 				case EditorAction.Update:
+					View.Califications = _providerCalificationManager.FindAllOrdered("Name").ToArray();
 					View.CountryStates = _countryStateManager.FindAllOrdered("Name");
 
 					CountryState state = SelectedEntity.District.CountryState;

@@ -116,7 +116,10 @@ namespace Bagge.Seti.WebSite.Controls
 				}
 
 				if (ReadOnly)
+				{
 					_addControls.Visible = false;
+					_items.Rows[0].Cells.RemoveAt(2);
+				}
 			}
 			else
 				DataBind();
@@ -133,18 +136,18 @@ namespace Bagge.Seti.WebSite.Controls
 				{
 					Page.ClientScript.RegisterClientScriptInclude("ProductProviderSelectionGrid", ResolveUrl("ProductProviderSelectionGrid.js"));
 					Page.ClientScript.RegisterStartupScript(typeof(string), "ProductProviderSelectionGridObject",
-						string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
+						string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', {6});",
 							ClientID, _items.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
-							SourceType.ToString(), GetDeleteImagePath()),
+							GetDeleteImagePath(), ReadOnly.ToString().ToLower()),
 							true);
 					_add.OnClientClick = string.Format("{0}_instance.addSelectedItem();return false;", ClientID);
 				}
 			}
 			else
 			{
-				string script = string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}');",
+				string script = string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', {6});",
 							ClientID, _items.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
-							SourceType.ToString(), GetDeleteImagePath());
+							GetDeleteImagePath(), ReadOnly.ToString().ToLower());
 				ScriptManager.RegisterStartupScript(this,
 					typeof(string),
 					"ProductProviderSelectionGridObject",
