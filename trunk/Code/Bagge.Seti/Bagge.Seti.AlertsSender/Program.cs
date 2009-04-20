@@ -77,7 +77,7 @@ namespace Bagge.Seti.AlertsSender
         public static void SendMail(bool toAll, bool isSendEmailToCreator, bool isSendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
         {
             MailMessage msg = new MailMessage();
-
+            
             if (isSendEmailToCreator == true)
             {
                 msg.To.Add(new MailAddress(ticket.Creator.Email.ToString()));
@@ -93,7 +93,6 @@ namespace Bagge.Seti.AlertsSender
                 }   
             }
 
-            msg.From = new MailAddress("no-replay@seti.com");
             msg.Subject = subjectEmail;
 
             msg.Body = bodyEmail + "\n\n";
@@ -105,8 +104,7 @@ namespace Bagge.Seti.AlertsSender
             msg.Body += "EstimatedDuration: " + ticket.EstimatedDuration.ToString() + "\n";
             msg.Body += "Status: " + ticket.Status.Description.ToString();
 
-            SmtpClient clienteSmtp = new SmtpClient("smtp.seti.com");
-            clienteSmtp.Credentials = new NetworkCredential("admin", "1234");
+            SmtpClient clienteSmtp = new SmtpClient();
 
             try
             {
@@ -120,6 +118,8 @@ namespace Bagge.Seti.AlertsSender
             {
                 throw ex;
             }
+
+            msg.Dispose();
         }
 	}
 }
