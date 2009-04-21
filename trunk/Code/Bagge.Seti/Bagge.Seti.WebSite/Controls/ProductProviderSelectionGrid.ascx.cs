@@ -35,6 +35,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 			public ProductProviderBindItem()
 			{
+				
 			}
 
 			public ProductProviderBindItem(ProductProvider productProvider,

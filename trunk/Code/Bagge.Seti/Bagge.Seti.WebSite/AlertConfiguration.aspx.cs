@@ -13,13 +13,11 @@ using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class AlertConfigurationEditor : System.Web.UI.Page, IView
+	public partial class AlertConfigurationEditor : Page
 	{
-		AlertConfigurationPresenter _presenter;
 
 		public AlertConfigurationEditor()
 		{
-			_presenter = new AlertConfigurationPresenter(this, IoCContainer.AlertConfigurationManager);
 		}
 
 		protected override void OnInit(EventArgs e)
@@ -32,14 +30,14 @@ namespace Bagge.Seti.WebSite
 
 		void _dataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
 		{
-			_presenter.Select();
+			_dataSource.DataSource = IoCContainer.AlertConfigurationManager.Get();
 		}
 
 		void _dataSource_Updating(object sender, ObjectContainerDataSourceUpdatingEventArgs e)
 		{
 			AlertConfiguration instance = new AlertConfiguration();
 			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
-			_presenter.Save(instance);
+			IoCContainer.AlertConfigurationManager.Update(instance);
 		}
 
 		public object DataSource
