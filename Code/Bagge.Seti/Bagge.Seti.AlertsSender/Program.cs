@@ -96,7 +96,7 @@ namespace Bagge.Seti.AlertsSender
             msg.Subject = subjectEmail;
 
             msg.Body =  "<b><h2><u>" + bodyEmail + "</u></h2></b> <br />";
-            msg.Body += "<b><h3>Id: " + ticket.Id.ToString() + "</h3>";
+            msg.Body += "<b><h3>Id: " + ticket.Id.ToString() + "</h3></b>";
             msg.Body += "<b><h3>CustomerName: " + ticket.Customer.Name.ToString() + "</h3></b>";
             msg.Body += "<b><h3>Description " + ticket.Description.ToString() + "</h3></b>";
             msg.Body += "<b><h3>CreationDate: " + ticket.CreationDate.ToString() + "</h3></b>";
