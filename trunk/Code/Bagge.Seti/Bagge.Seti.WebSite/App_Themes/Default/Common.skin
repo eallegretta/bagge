@@ -6,6 +6,7 @@
 <seti:SecureDetailsView 
 	Width="100%" CssClass="details" 
 	CellSpacing="2" HeaderStyle-CssClass="detailsHeader" 
+	FieldHeaderStyle-CssClass="detailsHeader"
 	RowStyle-CssClass="detailsRow" GridLines="None" 
 	runat="server">
 </seti:SecureDetailsView>

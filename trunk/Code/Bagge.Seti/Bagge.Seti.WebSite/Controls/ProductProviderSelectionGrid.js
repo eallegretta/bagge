@@ -25,7 +25,7 @@ function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIco
 	}
 	
 	this.isValidPrice = function(price) {
-		var regex = /\d+(?:\.\d*)?$/;
+		var regex = /^\d+(?:\.\d*)?$/;
 		return regex.test(price);
 	}
 
@@ -71,6 +71,18 @@ function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIco
 		return { "Id": id, "Name": text, "Price": price };
 	}
 
+	this.updatePrice = function(item) {
+		var hdnValue = this.getHiddenValue();
+		var items = JSON.parse(hdnValue);
+		for (var index = 0; index < items.length; index++) {
+			if (items[index]["Id"] == item["Id"]) {
+				items[index]["Price"] = item["Price"];
+				break;
+			}
+		}
+		this.hdn.val(JSON.stringify(items));
+	}
+	
 	this.appendItem = function(item) {
 		var hdnValue = this.getHiddenValue();
 		var items = JSON.parse(hdnValue);
@@ -93,12 +105,39 @@ function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIco
 	this.appendRow = function(item) {
 		var img = document.createElement("img");
 		img.src = this.deleteIconUrl;
-		var row = $("<tr></tr>").append(
+
+		var cssClass = ($("tr", this.table).length % 2 == 1) ? "gridRow" : "gridRowAlternate";
+
+		var priceBox = (this.isReadOnly) ? document.createElement("span") : document.createElement("input");
+		if (this.isReadOnly)
+			$(priceBox).text(item.Price);
+		else {
+			priceBox.behaviour = this;
+
+			$(priceBox)
+				.focus(function() {
+					this.lastValue = this.value;
+				})
+				.val(item.Price)
+				.change(function() {
+					if (this.behaviour.isValidPrice(this.value)) {
+						var item = $(this).parent().parent().data("item");
+						item.Price = this.value;
+						this.behaviour.updatePrice(item);
+					}
+					else
+						this.value = this.lastValue;
+				}
+			);
+		}
+		$(priceBox).css("text-align", "right");
+
+		var row = $("<tr class='" + cssClass + "'></tr>").append(
 						$("<td></td>").text(item.Name)
 					).append(
-						$("<td style='text-align:right'></td>").text(item.Price)
+						$("<td style='text-align:right'></td>").append(priceBox)
 				);
-		if(!this.isReadOnly)		
+		if (!this.isReadOnly)
 			row.append($("<td style='text-align:center'></td>").append(img));
 		row.data("item", item);
 		img.behaviour = this;
@@ -115,4 +154,6 @@ function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIco
 		}
 		return hdnValue;
 	}
+	
+	
 }

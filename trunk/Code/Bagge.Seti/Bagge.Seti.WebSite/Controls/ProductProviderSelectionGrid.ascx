@@ -31,7 +31,7 @@
 	</table>
 </asp:PlaceHolder>
 <table id="_items" width="100%" runat="server">
-	<tr>
+	<tr class="gridHeader">
 		<th>
 			<asp:Literal ID="_itemNameHeaderTitle" runat="server" meta:resourcekey="ItemNameHeaderLiteral"></asp:Literal>
 		</th>
