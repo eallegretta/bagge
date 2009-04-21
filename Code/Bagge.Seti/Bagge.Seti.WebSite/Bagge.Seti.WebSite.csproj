@@ -101,6 +101,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertConfiguration.aspx.cs">
+      <DependentUpon>AlertConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlertConfiguration.aspx.designer.cs">
+      <DependentUpon>AlertConfiguration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\WebSite.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,9 +218,6 @@
     </Compile>
     <Compile Include="Page.cs">
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presenters\AlertConfigurationPresenter.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Presenters\ProductEditorPresenter.cs" />
     <Compile Include="Presenters\ProductListPresenter.cs" />
@@ -440,12 +444,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AlertConfiguration.aspx" />
     <Content Include="App_LocalResources\ProductEditor.aspx.resx">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Controls\ProductProviderSelectionGrid.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\Site.Master.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AlertConfiguration.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

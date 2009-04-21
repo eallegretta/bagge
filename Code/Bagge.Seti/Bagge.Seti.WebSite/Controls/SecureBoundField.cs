@@ -22,6 +22,11 @@ namespace Bagge.Seti.WebSite.Controls
 			private set;
 		}
 
+		public string DefaultValue
+		{
+			get { return ViewState["DefaultValue"] as string; }
+			set { ViewState["DefaultValue"] = value; }
+		}
 
 		public int MaxLength
 		{
@@ -49,6 +54,7 @@ namespace Bagge.Seti.WebSite.Controls
 						textBox.ID = DataField + "_txt";
 					if (textBox != null)
 					{
+						textBox.Text = DefaultValue;
 						SetupMaxLength(textBox);
 						AddPropertyProxyValidator();
 						SetupValidators(cell, textBox);
