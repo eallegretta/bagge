@@ -77,7 +77,7 @@ namespace Bagge.Seti.AlertsSender
         public static void SendMail(bool toAll, bool isSendEmailToCreator, bool isSendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
         {
             MailMessage msg = new MailMessage();
-            
+          
             if (isSendEmailToCreator == true)
             {
                 msg.To.Add(new MailAddress(ticket.Creator.Email.ToString()));
@@ -95,15 +95,17 @@ namespace Bagge.Seti.AlertsSender
 
             msg.Subject = subjectEmail;
 
-            msg.Body = bodyEmail + "\n\n";
-            msg.Body += "Id: " + ticket.Id.ToString() + "\n";
-            msg.Body += "CustomerName: " + ticket.Customer.Name.ToString() + "\n";
-            msg.Body += "Description " + ticket.Description.ToString() + "\n";
-            msg.Body += "CreationDate: " + ticket.CreationDate.ToString() + "\n";
-            msg.Body += "ExecutionDate: " + ticket.ExecutionDate.ToString() + "\n";
-            msg.Body += "EstimatedDuration: " + ticket.EstimatedDuration.ToString() + "\n";
-            msg.Body += "Status: " + ticket.Status.Description.ToString();
-
+            msg.Body =  "<b><h2><u>" + bodyEmail + "</u></h2></b> <br />";
+            msg.Body += "<b><h3>Id: " + ticket.Id.ToString() + "</h3>";
+            msg.Body += "<b><h3>CustomerName: " + ticket.Customer.Name.ToString() + "</h3></b>";
+            msg.Body += "<b><h3>Description " + ticket.Description.ToString() + "</h3></b>";
+            msg.Body += "<b><h3>CreationDate: " + ticket.CreationDate.ToString() + "</h3></b>";
+            msg.Body += "<b><h3>ExecutionDate: " + ticket.ExecutionDate.ToString() + "</h3></b>";
+            msg.Body += "<b><h3>EstimatedDuration: " + ticket.EstimatedDuration.ToString() + "</h3></b>";
+            msg.Body += "<b><h3>Status: " + ticket.Status.Description.ToString() + "</h3></b>";
+            
+            msg.IsBodyHtml = true;
+            
             SmtpClient clienteSmtp = new SmtpClient();
 
             try
