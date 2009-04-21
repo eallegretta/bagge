@@ -74,7 +74,7 @@ table.details
 	empty-cells:show;
 }
 
-tr.detailsRow td:first-child
+tr.detailsRow td.detailsHeader
 {
 	font-weight:bold;
 	background-color:#cccccc;
@@ -86,18 +86,6 @@ tr.detailsRow td:first-child
 	background-repeat:repeat-x;
 	height:24px;
 }
-
-tr.detailsRow table tr td:first-child
-{
-	font-weight:normal;
-	width:auto;
-	white-space:nowrap;
-	border:0px;
-	background-color:white;
-	background-image:none;
-	height:auto;
-}
-
 
 tr.detailsRow td
 {
@@ -138,25 +126,26 @@ tr.gridHeader th a:hover
 
 tr.gridRow
 {
-	background-color:White;
+	background-color:white;
 }
+
 
 tr.gridRow td
 {
-	border:1px solid #EDEDED;
+	border:1px solid #cccccc;
 	padding:3px;
 }
 
 tr.gridRowAlternate
 {
-	background-color:#FAFAFA;
+	background-color:#efefef;
 	
 }
 
 
 tr.gridRowAlternate td
 {
-	border:1px solid #EDEDED;
+	border:1px solid #cccccc;
 	padding:3px;
 }
 
