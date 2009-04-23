@@ -95,15 +95,21 @@ namespace Bagge.Seti.AlertsSender
 
             msg.Subject = subjectEmail;
 
-            msg.Body =  "<b><h2><u>" + bodyEmail + "</u></h2></b> <br />";
-            msg.Body += "<b><h3>Id: " + ticket.Id.ToString() + "</h3></b>";
-            msg.Body += "<b><h3>CustomerName: " + ticket.Customer.Name.ToString() + "</h3></b>";
-            msg.Body += "<b><h3>Description " + ticket.Description.ToString() + "</h3></b>";
-            msg.Body += "<b><h3>CreationDate: " + ticket.CreationDate.ToString() + "</h3></b>";
-            msg.Body += "<b><h3>ExecutionDate: " + ticket.ExecutionDate.ToString() + "</h3></b>";
-            msg.Body += "<b><h3>EstimatedDuration: " + ticket.EstimatedDuration.ToString() + "</h3></b>";
-            msg.Body += "<b><h3>Status: " + ticket.Status.Description.ToString() + "</h3></b>";
-            
+            string mailTemplatePath = (string)System.Configuration.ConfigurationSettings.AppSettings["mailTemplatePath"];
+            string[] strsMailTemplate = System.IO.File.ReadAllLines(mailTemplatePath + @"\mailTemplate.htm"); 
+            string strMailTemplate = strsMailTemplate.ToString();
+
+            strMailTemplate.Replace("{BODY_MAIL_SUBJECT}", bodyEmail);
+            strMailTemplate.Replace("{ID}", ticket.Id.ToString());
+            strMailTemplate.Replace("{CUSTOMER_NAME}", ticket.Customer.Name.ToString());
+            strMailTemplate.Replace("{DESCRIPTION}", ticket.Description.ToString());
+            strMailTemplate.Replace("{CREATION_DATE}", ticket.CreationDate.ToString());
+            strMailTemplate.Replace("{EXECUTION_DATE}", ticket.ExecutionDate.ToString());
+            strMailTemplate.Replace("{ESTIMATED_DURATION}", ticket.EstimatedDuration.ToString());
+            strMailTemplate.Replace("{STATUS}", ticket.Status.Description.ToString());
+
+            msg.Body = strMailTemplate;
+
             msg.IsBodyHtml = true;
             
             SmtpClient clienteSmtp = new SmtpClient();
