@@ -28,17 +28,5 @@ namespace Bagge.Seti.WebSite.Presenters
 			if(!View.IsPostBack)
 				GetView<IProviderListView>().Products = _productManager.FindAllOrdered("Name");
 		}
-
-		public override void Select(int pageIndex, int pageSize, string orderBy, IList<FilterPropertyValue> filters)
-		{
-			var filter = (from fil in filters
-						  where fil.Property == "Products"
-						  select fil).FirstOrDefault();
-
-			if (filter != null)
-				filter.Value = _productManager.Get(filter.Value.ToString().ToInt32());
-
-			base.Select(pageIndex, pageSize, orderBy, filters);
-		}
 	}
 }

@@ -5,6 +5,7 @@ using System.Text;
 using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.BusinessEntities;
 using Castle.ActiveRecord;
+using NHibernate.Expression;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
@@ -14,12 +15,12 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public AlertConfiguration Get()
 		{
-			return null;
+			return ActiveRecordMediator<AlertConfiguration>.FindByPrimaryKey(new AlertConfiguration().Id);
 		}
 
 		public void Update(AlertConfiguration alertConfiguration)
 		{
-
+			ActiveRecordMediator<AlertConfiguration>.Update(alertConfiguration);
 		}
 
 		#endregion

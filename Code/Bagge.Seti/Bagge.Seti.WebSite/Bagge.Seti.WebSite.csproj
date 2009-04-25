@@ -267,6 +267,13 @@
     <Compile Include="ProviderList.aspx.designer.cs">
       <DependentUpon>ProviderList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RecoverPassword.aspx.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecoverPassword.aspx.designer.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Security\AuthenticationManager.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -456,6 +463,11 @@
     <Content Include="App_LocalResources\AlertConfiguration.aspx.resx">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="RecoverPassword.aspx" />
+    <Content Include="Scripts\jquery.numeric.pack.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\RecoverPassword.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

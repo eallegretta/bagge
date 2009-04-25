@@ -10,5 +10,8 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 	{
 		bool Authenticate(string username, string password);
 		Employee GetByUsername(string username);
+		Employee GetByEmail(string email);
+		void RecoverPassword(string email, string baseLinkPath);
+		void RegeneratePassword(string encodedKey);
 	}
 }

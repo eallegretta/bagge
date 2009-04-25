@@ -11,69 +11,60 @@
 namespace Bagge.Seti.WebSite {
     
     
-    public partial class AlertConfigurationEditor {
+    public partial class RecoverPassword {
         
         /// <summary>
-        /// _details control.
+        /// _recoverPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Bagge.Seti.WebSite.Controls.SecureDetailsView _details;
+        protected global::System.Web.UI.WebControls.MultiView _recoverPassword;
         
         /// <summary>
-        /// _daysRequired control.
+        /// _emailAddressText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator _daysRequired;
+        protected global::System.Web.UI.WebControls.Label _emailAddressText;
         
         /// <summary>
-        /// _daysNumeric control.
+        /// _emailAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator _daysNumeric;
+        protected global::System.Web.UI.WebControls.TextBox _emailAddress;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// _send control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.Button _send;
         
         /// <summary>
-        /// RegularExpressionValidator1 control.
+        /// _passwordSent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.Label _passwordSent;
         
         /// <summary>
-        /// _commands control.
+        /// _passwordRegenerated control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Bagge.Seti.WebSite.Controls.EditorCommands _commands;
-        
-        /// <summary>
-        /// _dataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSource _dataSource;
+        protected global::System.Web.UI.WebControls.Label _passwordRegenerated;
     }
 }

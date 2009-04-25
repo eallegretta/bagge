@@ -42,11 +42,11 @@ namespace Bagge.Seti.BusinessLogic
 			filter.Type = FilterPropertyValueType.Like;
 			filter.Value = productName;
 
-			return Dao.SlicedFindAllByPropertiesOrdered(
+			return Dao.SlicedFindAllByProperties(
 				0,
 				maxRecords,
 				new List<FilterPropertyValue> { filter },
-				"Name");
+				"Name", null);
 		}
 
 		public Provider[] FindAllByName(string productName)
@@ -58,16 +58,16 @@ namespace Bagge.Seti.BusinessLogic
 			filter.Type = FilterPropertyValueType.Like;
 			filter.Value = productName;
 
-			return Dao.FindAllByPropertiesOrdered(
+			return Dao.FindAllByProperties(
 				new List<FilterPropertyValue> { filter }, 
-				"Name");
+				"Name", null);
 		}
 
 		public Provider GetByName(string name)
 		{
 			Check.Require(!string.IsNullOrEmpty(name));
 
-			var products = Dao.FindAllByProperty("Name", name);
+			var products = Dao.FindAllByProperty("Name", name, null, null);
 			if (products.Length > 1)
 				throw new BusinessRuleException(Resources.MultipleNamesErrorMessage);
 
@@ -124,5 +124,29 @@ namespace Bagge.Seti.BusinessLogic
 
 			base.Update(instance);
 		}
+
+		protected override Provider[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		{
+			ReplaceProductsFilter(filter);
+
+			return base.FindAllByProperties(filter, orderBy, ascending);
+		}
+
+		private void ReplaceProductsFilter(IList<FilterPropertyValue> filter)
+		{
+			var productsFilter = (from fil in filter
+								  where fil.Property == "Products"
+								  select fil).FirstOrDefault();
+			if(productsFilter != null)
+				productsFilter.Value = _productProviderDao.FindAllByProduct((int)productsFilter.Value);
+		}
+
+		protected override Provider[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
+		{
+			ReplaceProductsFilter(filter);
+
+			return base.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
+		}
+
 	}
 }

@@ -8,15 +8,12 @@ namespace Bagge.Seti.DataAccess.Contracts
 {
 	public interface ISlicedFindDao<T, PK> where T : PrimaryKeyDomainObject<T, PK>
 	{
-		T[] SlicedFindAll(int startIndex, int pageSize);
-		T[] SlicedFindAllOrdered(int startIndex, int pageSize, string orderBy);
-		T[] SlicedFindAllOrdered(int startIndex, int pageSize, string orderBy, bool ascending);
-		T[] SlicedFindAllByProperty(int startIndex, int pageSize, string property, object value);
-		T[] SlicedFindAllByPropertyOrdered(int startIndex, int pageSize, string property, object value, string orderBy);
-		T[] SlicedFindAllByPropertyOrdered(int startIndex, int pageSize, string property, object value, string orderBy, bool ascending);
-		T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter);
-		T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy);
-		T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool ascending);
+		T[] SlicedFindAll(int startIndex, int pageSize, string orderBy, bool? ascending);
+		T[] SlicedFindAllByProperty(
+			int startIndex, int pageSize, string property, object value
+			, string orderBy, bool? ascending);
+		T[] SlicedFindAllByProperties(int startIndex, int pageSize, 
+			IList<FilterPropertyValue> filter, string orderBy, bool? ascending);
 		int Count();
 		int CountByProperty(string property, object value);
 		int CountByProperties(IList<FilterPropertyValue> filter);

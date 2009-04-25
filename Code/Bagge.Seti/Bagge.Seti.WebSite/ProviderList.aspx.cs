@@ -39,7 +39,7 @@ namespace Bagge.Seti.WebSite
 			AddDeletedFilterValue(filters);
 
 			if(!_products.SelectedValue.IsNullOrEmpty())
-				filters.Add(new FilterPropertyValue { Property = "Products", Value = _products.SelectedValue, Type = FilterPropertyValueType.In });
+				filters.Add(new FilterPropertyValue { Property = "Products", Value = _products.SelectedValue.ToInt32(), Type = FilterPropertyValueType.In });
 			
 
 			return filters;
