@@ -77,64 +77,86 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 
-		public virtual T[] FindAll()
+		public T[] FindAll()
 		{
-			return Dao.FindAll();
+			return FindAll(null, null);
 		}
 
-		public virtual T[] FindAllOrdered(string orderBy)
+		public T[] FindAllOrdered(string orderBy)
 		{
-			return Dao.FindAllOrdered(orderBy);
+			return FindAll(orderBy, null);
 		}
 
-		public virtual T[] FindAllOrdered(string orderBy, bool ascending)
+		public T[] FindAllOrdered(string orderBy, bool ascending)
 		{
-			return Dao.FindAllOrdered(orderBy, ascending);
+			return FindAll(orderBy, ascending);
 		}
 
-		public virtual T[] FindAllByProperty(string property, object value)
+		protected virtual T[] FindAll(string orderBy, bool? ascending)
 		{
-			return Dao.FindAllByProperty(property, value);
+			return Dao.FindAll(orderBy, ascending);
 		}
 
-		public virtual T[] FindAllByPropertyOrdered(string property, object value, string orderBy)
+
+		public T[] FindAllByProperty(string property, object value)
 		{
-			return Dao.FindAllByPropertyOrdered(property, value, orderBy);
+			return FindAllByProperty(property, value, null, null);
 		}
 
-		public virtual T[] FindAllByPropertyOrdered(string property, object value, string orderBy, bool ascending)
+		public T[] FindAllByPropertyOrdered(string property, object value, string orderBy)
 		{
-			return Dao.FindAllByPropertyOrdered(property, value, orderBy, ascending);
+			return FindAllByProperty(property, value, orderBy, null);
 		}
 
-		public virtual T[] SlicedFindAll(int pageIndex, int pageSize)
+		public T[] FindAllByPropertyOrdered(string property, object value, string orderBy, bool ascending)
 		{
-			return Dao.SlicedFindAll(pageIndex, pageSize);
+			return FindAllByProperty(property, value, orderBy, ascending);
 		}
 
-		public virtual T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy)
+		protected virtual T[] FindAllByProperty(string property, object value, string orderBy, bool? ascending)
 		{
-			return Dao.SlicedFindAllOrdered(pageIndex, pageSize, orderBy);
+			return Dao.FindAllByProperty(property, value, orderBy, ascending);
 		}
 
-		public virtual T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy, bool ascending)
+		public T[] SlicedFindAll(int pageIndex, int pageSize)
 		{
-			return Dao.SlicedFindAllOrdered(pageIndex, pageSize, orderBy, ascending);
+			return SlicedFindAll(pageIndex, pageSize, null, null);
 		}
 
-		public virtual T[] SlicedFindAllByProperty(int pageIndex, int pageSize, string property, object value)
+		public T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy)
 		{
-			return Dao.SlicedFindAllByProperty(pageIndex, pageSize, property, value);
+			return SlicedFindAll(pageIndex, pageSize, orderBy, null);
 		}
 
-		public virtual T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy)
+		public T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy, bool ascending)
 		{
-			return Dao.SlicedFindAllByPropertyOrdered(pageIndex, pageSize, property, value, orderBy);
+			return SlicedFindAll(pageIndex, pageSize, orderBy, ascending);
 		}
 
-		public virtual T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy, bool ascending)
+		protected virtual T[] SlicedFindAll(int pageIndex, int pageSize, string orderBy, bool? ascending)
 		{
-			return Dao.SlicedFindAllByPropertyOrdered(pageIndex, pageSize, property, value, orderBy, ascending);
+			return Dao.SlicedFindAll(pageIndex, pageSize, orderBy, ascending);
+		}
+
+
+		public T[] SlicedFindAllByProperty(int pageIndex, int pageSize, string property, object value)
+		{
+			return SlicedFindAllByProperty(pageIndex, pageSize, property, value, null, null);
+		}
+
+		public T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy)
+		{
+			return SlicedFindAllByProperty(pageIndex, pageSize, property, value, orderBy, null);
+		}
+
+		public T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy, bool ascending)
+		{
+			return SlicedFindAllByProperty(pageIndex, pageSize, property, value, orderBy, ascending);
+		}
+
+		protected virtual T[] SlicedFindAllByProperty(int pageIndex, int pageSize, string property, object value, string orderBy, bool? ascending)
+		{
+			return Dao.SlicedFindAllByProperty(pageIndex, pageSize, property, value, orderBy, ascending);
 		}
 
 		public virtual int Count()
@@ -152,19 +174,24 @@ namespace Bagge.Seti.BusinessLogic
 		#region IFindManager<T,PK> Members
 
 
-		public virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter)
+		public T[] FindAllByProperties(IList<FilterPropertyValue> filter)
 		{
-			return Dao.FindAllByProperties(filter);
+			return FindAllByProperties(filter);
 		}
 
-		public virtual T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy)
+		public T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy)
 		{
-			return Dao.FindAllByPropertiesOrdered(filter, orderBy);
+			return FindAllByPropertiesOrdered(filter, orderBy);
 		}
 
-		public virtual T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		public T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
 		{
-			return Dao.FindAllByPropertiesOrdered(filter, orderBy, ascending);
+			return FindAllByPropertiesOrdered(filter, orderBy, ascending);
+		}
+
+		protected virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		{
+			return Dao.FindAllByProperties(filter, orderBy, ascending);
 		}
 
 		#endregion
@@ -172,19 +199,24 @@ namespace Bagge.Seti.BusinessLogic
 		#region ISlicedFindManager<T,PK> Members
 
 
-		public virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter)
+		public T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter)
 		{
-			return Dao.SlicedFindAllByProperties(startIndex, pageSize, filter);
+			return SlicedFindAllByProperties(startIndex, pageSize, filter, null, null);
 		}
 
-		public virtual T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy)
+		public T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy)
 		{
-			return Dao.SlicedFindAllByPropertiesOrdered(startIndex, pageSize, filter, orderBy);
+			return SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, null);
 		}
 
-		public virtual T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		public T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool ascending)
 		{
-			return Dao.SlicedFindAllByPropertiesOrdered(startIndex, pageSize, filter, orderBy, ascending);
+			return SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
+		}
+
+		protected virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
+		{
+			return Dao.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
 		}
 
 		public virtual int CountByProperties(IList<FilterPropertyValue> filter)

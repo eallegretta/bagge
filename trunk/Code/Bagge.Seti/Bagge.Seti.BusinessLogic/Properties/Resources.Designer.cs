@@ -70,11 +70,29 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El empleado cuyo e-mail es {0} no pudo ser encontrado.
+        /// </summary>
+        internal static string EmployeeByEmailNotFoundErrorMessage {
+            get {
+                return ResourceManager.GetString("EmployeeByEmailNotFoundErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El empleado cuyo nombre de usuario es {0} no pudo ser encontrado.
         /// </summary>
         internal static string EmployeeByUsernameNotFoundErrorMessage {
             get {
                 return ResourceManager.GetString("EmployeeByUsernameNotFoundErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El link de generación de contraseña es inválido.
+        /// </summary>
+        internal static string EmployeeRecoverPasswordKeyNotMatch {
+            get {
+                return ResourceManager.GetString("EmployeeRecoverPasswordKeyNotMatch", resourceCulture);
             }
         }
         
@@ -129,6 +147,33 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         internal static string MultipleUsernamesErrorMessage {
             get {
                 return ResourceManager.GetString("MultipleUsernamesErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0},\n\tSu nueva contraseña es {1}.
+        /// </summary>
+        internal static string RecoverPasswordEmailBodyNewPassword {
+            get {
+                return ResourceManager.GetString("RecoverPasswordEmailBodyNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0},\n\tPara iniciar el proceso de recuperación de contraseña, por favor siga el siguiente link:\n\n{1}.
+        /// </summary>
+        internal static string RecoverPasswordEmailBodyRegenerate {
+            get {
+                return ResourceManager.GetString("RecoverPasswordEmailBodyRegenerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SETI - Recuperación de Contraseña.
+        /// </summary>
+        internal static string RecoverPasswordEmailSubject {
+            get {
+                return ResourceManager.GetString("RecoverPasswordEmailSubject", resourceCulture);
             }
         }
     }

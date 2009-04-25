@@ -28,11 +28,11 @@ namespace Bagge.Seti.DataAccess.Tests
 			ICustomerDao dao = mocks.StrictMock<ICustomerDao>();
 			using (mocks.Record())
 			{
-				Expect.Call(dao.FindAll()).Return(new Customer[] { new Customer(), new Customer() });
+				Expect.Call(dao.FindAll(null, null)).Return(new Customer[] { new Customer(), new Customer() });
 			}
 			using (mocks.Playback())
 			{
-				var customers = dao.FindAll();
+				var customers = dao.FindAll(null, null);
 				Assert.IsNotNull(customers);
 				Assert.IsTrue(customers.Length > 0);
 			}

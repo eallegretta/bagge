@@ -16,14 +16,14 @@
 			$(".collapsible table").toggle("fast");
 			$(this).toggleClass("collapsed");
 		});
+		
+		$(".numeric").numeric();
 
 
 		Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(beginRequestHandler);
 		Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
 	});
 }
-
-
 
 function beginRequestHandler() {
 	showLoadingAnimation();

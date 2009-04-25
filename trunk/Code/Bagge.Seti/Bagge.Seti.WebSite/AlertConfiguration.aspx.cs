@@ -13,7 +13,7 @@ using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class AlertConfigurationEditor : Page
+	public partial class AlertConfigurationEditor : Page, IEditorView
 	{
 
 		public AlertConfigurationEditor()
@@ -25,6 +25,10 @@ namespace Bagge.Seti.WebSite
 			_dataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(_dataSource_Selecting);
 			_dataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(_dataSource_Updating);
 			_dataSource.DataObjectTypeName = typeof(AlertConfiguration).FullName;
+
+			_details.SecureTypeName = typeof(AlertConfiguration).AssemblyQualifiedName;
+			_details.ChangeMode(DetailsViewMode.Edit);
+
 			base.OnInit(e);
 		}
 
@@ -47,5 +51,20 @@ namespace Bagge.Seti.WebSite
 				_dataSource.DataSource = value;
 			}
 		}
+
+		#region IEditorView Members
+
+		public EditorAction Mode
+		{
+			get { return EditorAction.Update; }
+		}
+
+		public event EventHandler DataBound
+		{
+			add { _details.DataBound += value; }
+			remove { _details.DataBound -= value; }
+		}
+
+		#endregion
 	}
 }

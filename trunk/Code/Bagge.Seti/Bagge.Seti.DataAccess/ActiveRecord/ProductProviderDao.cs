@@ -23,6 +23,23 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			ActiveRecordMediator<ProductProvider>.DeleteAll("ProviderId = " + providerId);
 		}
 
+
+		public ProductProvider[] FindAllByProduct(int productId)
+		{
+			string hql = "from ProductProvider p where p.Product.Id = ?";
+			var query = new SimpleQuery<ProductProvider>(hql, productId);
+
+			return query.Execute();
+		}
+
+		public ProductProvider[] FindAllByProvider(int providerId)
+		{
+			string hql = "from ProductProvider p where p.Provider.Id = ?";
+			var query = new SimpleQuery<ProductProvider>(hql, providerId);
+
+			return query.Execute();
+		}
+
 		#endregion
 	}
 }

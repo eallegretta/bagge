@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AcceptButton.OnClientClick" xml:space="preserve">
-    <value>return confirm('¿Esta seguro que desea confirmar los cambios?')</value>
+    <value>if(!confirm('¿Esta seguro que desea confirmar los cambios?')) return false;</value>
   </data>
   <data name="AcceptButton.Text" xml:space="preserve">
     <value>Aceptar</value>

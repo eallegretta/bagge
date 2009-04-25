@@ -6,9 +6,8 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.DataAccess.Contracts
 {
-	public interface IAlertConfigurationDao
+	public interface IAlertConfigurationDao: IUpdateDao<AlertConfiguration, int>
 	{
 		AlertConfiguration Get();
-		void Update(AlertConfiguration alertConfiguration);
 	}
 }

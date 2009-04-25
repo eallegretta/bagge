@@ -15,37 +15,24 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 	{
 		#region IDao<T,PK> Members
 
-		public virtual T[] FindAll()
+		public virtual T[] FindAll(string orderBy, bool? ascending)
 		{
+			if (!string.IsNullOrEmpty(orderBy))
+				return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, (ascending.HasValue) ? ascending.Value : true) });
+	
 			return ActiveRecordMediator<T>.FindAll();
 		}
 
-		public virtual T[] FindAllOrdered(string orderBy)
-		{
-			return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, true) });
-		}
 
-		public virtual T[] FindAllOrdered(string orderBy, bool ascending)
+		public virtual T[] FindAllByProperty(string property, object value, string orderBy, bool? ascending)
 		{
-			return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, ascending) });
-		}
+			if (!string.IsNullOrEmpty(orderBy))
+				return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, ascending.HasValue ? ascending.Value : true) },
+				Expression.Eq(property, value));
 
-
-		public virtual T[] FindAllByProperty(string property, object value)
-		{
 			return ActiveRecordMediator<T>.FindAll(Expression.Eq(property, value));
 		}
-		public virtual T[] FindAllByPropertyOrdered(string property, object value, string orderBy)
-		{
-			return FindAllByPropertyOrdered(property, value, orderBy, true);
-		}
-
-		public virtual T[] FindAllByPropertyOrdered(string property, object value, string orderBy, bool ascending)
-		{
-			return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, ascending) },
-				Expression.Eq(property, value));
-		}
-
+	
 		public virtual T Get(PK id)
 		{
 			try
@@ -74,39 +61,29 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			ActiveRecordMediator<T>.Delete(Get(id));	
 		}
 
-		public virtual T[] SlicedFindAll(int pageIndex, int pageSize)
+		public virtual T[] SlicedFindAll(int pageIndex, int pageSize, string orderBy, bool? ascending)
 		{
+			if (!string.IsNullOrEmpty(orderBy))
+				return ActiveRecordMediator<T>.SlicedFindAll(pageIndex, pageSize,
+					new Order[] { new Order(orderBy, ascending.HasValue ? ascending.Value : true) });
+			
 			return ActiveRecordMediator<T>.SlicedFindAll(pageIndex, pageSize,
 				new Order[] { });
 		}
 
-		public virtual T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy)
+
+		public virtual T[] SlicedFindAllByProperty(int pageIndex, int pageSize, string property, 
+			object value, string orderBy, bool? ascending)
 		{
-			return SlicedFindAllOrdered(pageIndex, pageSize, orderBy, true);
-		}
-		public virtual T[] SlicedFindAllOrdered(int pageIndex, int pageSize, string orderBy, bool ascending)
-		{
+			if (!string.IsNullOrEmpty(orderBy))
+				return ActiveRecordMediator<T>.SlicedFindAll(pageIndex, pageSize,
+					new Order[] { new Order(orderBy, ascending.HasValue ? ascending.Value : true) },
+					Expression.Eq(property, value));
+
 			return ActiveRecordMediator<T>.SlicedFindAll(pageIndex, pageSize,
-				new Order[] { new Order(orderBy, ascending) });
+					Expression.Eq(property, value));
 		}
 
-
-		public virtual T[] SlicedFindAllByProperty(int pageIndex, int pageSize, string property, object value)
-		{
-			return ActiveRecordMediator<T>.SlicedFindAll(pageIndex, pageSize,
-				Expression.Eq(property, value));
-		}
-
-		public virtual T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy)
-		{
-			return SlicedFindAllByPropertyOrdered(pageIndex, pageSize, property, value, orderBy, true);
-		}
-		public virtual T[] SlicedFindAllByPropertyOrdered(int pageIndex, int pageSize, string property, object value, string orderBy, bool ascending)
-		{
-			return ActiveRecordMediator<T>.SlicedFindAll(pageIndex, pageSize,
-				new Order[] { new Order(orderBy, ascending) },
-				Expression.Eq(property, value));
-		}
 
 		public virtual int Count()
 		{
@@ -120,8 +97,6 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 
 		#endregion
-
-		#region IFindDao<T,PK> Members
 
 		protected ICriterion[] BuildCriteriaFromFilters(IList<FilterPropertyValue> filters)
 		{
@@ -161,67 +136,26 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			return list.ToArray();
 		}
 
-		public virtual T[] FindAllByProperties(System.Collections.Generic.IList<FilterPropertyValue> filter)
+		public virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
+			if(!string.IsNullOrEmpty(orderBy))
+				return ActiveRecordMediator<T>.FindAll(new Order[] { 
+					new Order(orderBy, ascending.HasValue ? ascending.Value : true) }, BuildCriteriaFromFilters(filter));
+
 			return ActiveRecordMediator<T>.FindAll(BuildCriteriaFromFilters(filter));
 		}
 
-		public virtual T[] FindAllByPropertiesOrdered(System.Collections.Generic.IList<FilterPropertyValue> filter, string orderBy)
+		public virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, 
+			string orderBy, bool? ascending)
 		{
-			return FindAllByPropertiesOrdered(filter, orderBy, true);
+
+			return GetFilteredRecords(startIndex, pageSize, orderBy, (ascending.HasValue) ? ascending.Value : true, filter);
 		}
 
-		public virtual T[] FindAllByPropertiesOrdered(System.Collections.Generic.IList<FilterPropertyValue> filter, string orderBy, bool ascending)
-		{
-			return ActiveRecordMediator<T>.FindAll(new Order[] { new Order(orderBy, ascending) }, BuildCriteriaFromFilters(filter));
-		}
-
-		#endregion
-
-		#region ISlicedFindDao<T,PK> Members
-
-
-		public virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, System.Collections.Generic.IList<FilterPropertyValue> filter)
-		{
-			return GetFilteredRecords(startIndex, pageSize, filter);
-
-			//return ActiveRecordMediator<T>.SlicedFindAll(startIndex, pageSize, BuildCriteriaFromFilters(filter));
-		}
-
-		public virtual T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, System.Collections.Generic.IList<FilterPropertyValue> filter, string orderBy)
-		{
-			return SlicedFindAllByPropertiesOrdered(startIndex, pageSize, filter, orderBy, true);
-		}
-
-		public virtual T[] SlicedFindAllByPropertiesOrdered(int startIndex, int pageSize, System.Collections.Generic.IList<FilterPropertyValue> filter, string orderBy, bool ascending)
-		{
-			return ActiveRecordMediator<T>.SlicedFindAll(startIndex, pageSize, new Order[] { new Order(orderBy, ascending) }, BuildCriteriaFromFilters(filter));
-		}
 
 		public virtual int CountByProperties(System.Collections.Generic.IList<FilterPropertyValue> filter)
 		{
 			return ActiveRecordMediator<T>.Count(BuildCriteriaFromFilters(filter));
-		}
-
-
-		protected T[] GetFilteredRecords(IList<FilterPropertyValue> filters)
-		{
-			return GetFilteredRecords(null, null, string.Empty, true, filters);
-		}
-
-		protected T[] GetFilteredRecords(int firstResult, int maxResults, IList<FilterPropertyValue> filters)
-		{
-			return GetFilteredRecords(firstResult, maxResults, string.Empty, true, filters);
-		}
-
-		protected T[] GetFilteredRecords(string orderBy, IList<FilterPropertyValue> filters)
-		{
-			return GetFilteredRecords(null, null, orderBy, true, filters);
-		}
-
-		protected T[] GetFilteredRecords(string orderBy, bool ascending, IList<FilterPropertyValue> filters)
-		{
-			return GetFilteredRecords(null, null, orderBy, ascending, filters);
 		}
 
 		protected T[] GetFilteredRecords(int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
@@ -301,6 +235,5 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			return string.Empty;
 		}
 
-		#endregion
 	}
 }

@@ -37,6 +37,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -86,6 +87,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ProviderManager.cs" />
+    <Compile Include="RandomPassword.cs" />
     <Compile Include="RoleManager.cs" />
     <Compile Include="TicketManager.cs" />
     <Compile Include="TicketStatusManager.cs" />

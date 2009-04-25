@@ -8,8 +8,21 @@ using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
-	public class AlertConfiguration
+	public class AlertConfiguration: PrimaryKeyDomainObject<AlertConfiguration, int> 
 	{
+		[PrimaryKey]
+		public override int Id
+		{
+			get
+			{
+				return 1;
+			}
+			set
+			{
+				
+			}
+		}
+
 		[Property]
 		[RangeValidator(0, RangeBoundaryType.Inclusive, 
 			100, RangeBoundaryType.Ignore, 

@@ -99,7 +99,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		IList<Function> _functions; 
+		IList<Function> _functions;
 
 		public IList<Function> Functions
 		{
@@ -124,6 +124,13 @@ namespace Bagge.Seti.BusinessEntities
 			return functions;
 		}
 
+		[Property]
+		public virtual string RecoverPasswordKey
+		{
+			get;
+			set;
+		}
+
 		#region IIdentity Members
 
 		public string AuthenticationType
@@ -139,7 +146,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		public string Name
 		{
-			get 
+			get
 			{
 				if (IsAuthenticated)
 					return Username;
