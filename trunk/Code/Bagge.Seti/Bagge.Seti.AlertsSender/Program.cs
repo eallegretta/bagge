@@ -11,6 +11,7 @@ using Bagge.Seti.Common;
 using System.Threading;
 using System.Net;
 using System.Net.Mail;
+using System.IO;
 
 namespace Bagge.Seti.AlertsSender
 {
@@ -94,9 +95,10 @@ namespace Bagge.Seti.AlertsSender
             }
 
             msg.Subject = subjectEmail;
-
-            string mailTemplatePath = (string)System.Configuration.ConfigurationSettings.AppSettings["mailTemplatePath"];
-            string[] strsMailTemplate = System.IO.File.ReadAllLines(mailTemplatePath + @"\mailTemplate.htm"); 
+            
+            string ApplicationPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            string[] strsMailTemplate = File.ReadAllLines(ApplicationPath + @"\mailTemplate.htm");
+            
             string strMailTemplate = strsMailTemplate.ToString();
 
             strMailTemplate.Replace("{BODY_MAIL_SUBJECT}", bodyEmail);

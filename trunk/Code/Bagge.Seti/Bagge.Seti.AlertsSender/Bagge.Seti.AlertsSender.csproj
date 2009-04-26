@@ -102,6 +102,9 @@
     <None Include="Config\Objects.config" />
     <None Include="Config\TypeAliases.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="mailTemplate.htm" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -111,6 +114,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(ProjectDir)Config $(TargetDir)Config\ /S /Q /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy $(ProjectDir)Config $(TargetDir)Config\ /S /Q /Y
+Copy $(ProjectDir)mailTemplate.htm $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
 </Project>
