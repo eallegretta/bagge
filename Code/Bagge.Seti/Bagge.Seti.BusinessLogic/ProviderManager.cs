@@ -32,37 +32,6 @@ namespace Bagge.Seti.BusinessLogic
 			return null;
 		}
 
-
-		public Provider[] FindAllByName(string productName, int maxRecords)
-		{
-			Check.Require(!string.IsNullOrEmpty(productName));
-
-			FilterPropertyValue filter = new FilterPropertyValue();
-			filter.Property = "Name";
-			filter.Type = FilterPropertyValueType.Like;
-			filter.Value = productName;
-
-			return Dao.SlicedFindAllByProperties(
-				0,
-				maxRecords,
-				new List<FilterPropertyValue> { filter },
-				"Name", null);
-		}
-
-		public Provider[] FindAllByName(string productName)
-		{
-			Check.Require(!string.IsNullOrEmpty(productName));
-
-			FilterPropertyValue filter = new FilterPropertyValue();
-			filter.Property = "Name";
-			filter.Type = FilterPropertyValueType.Like;
-			filter.Value = productName;
-
-			return Dao.FindAllByProperties(
-				new List<FilterPropertyValue> { filter }, 
-				"Name", null);
-		}
-
 		public Provider GetByName(string name)
 		{
 			Check.Require(!string.IsNullOrEmpty(name));
@@ -125,7 +94,7 @@ namespace Bagge.Seti.BusinessLogic
 			base.Update(instance);
 		}
 
-		protected override Provider[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		protected override Provider[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
 			ReplaceProductsFilter(filter);
 

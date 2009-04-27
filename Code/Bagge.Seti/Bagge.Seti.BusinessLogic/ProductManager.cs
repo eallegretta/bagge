@@ -23,41 +23,11 @@ namespace Bagge.Seti.BusinessLogic
 		}
         
 
-		public Product[] FindAllByName(string productName, int maxRecords)
-		{
-			Check.Require(!string.IsNullOrEmpty(productName));
-            
-			FilterPropertyValue filter = new FilterPropertyValue();
-			filter.Property = "Name";
-			filter.Type = FilterPropertyValueType.Like;
-			filter.Value = productName;
-
-			return Dao.SlicedFindAllByProperties(
-				0,
-				maxRecords,
-				new List<FilterPropertyValue> { filter },
-				"Name", null);
-		}
-		
-		public Product[] FindAllByName(string productName)
-		{
-			Check.Require(!string.IsNullOrEmpty(productName));
-
-			FilterPropertyValue filter = new FilterPropertyValue();
-			filter.Property = "Name";
-			filter.Type = FilterPropertyValueType.Like;
-			filter.Value = productName;
-
-			return Dao.FindAllByProperties(
-				new List<FilterPropertyValue> { filter }, 
-				"Name", null);
-		}
-
 		public Product GetByName(string name)
 		{   
 			Check.Require(!string.IsNullOrEmpty(name));
 
-			var products = Dao.FindAllByProperty("Name", name, null, null);
+			var products = FindAllActiveByProperty("Name", name);
 			if (products.Length > 1)
 				throw new BusinessRuleException(Resources.MultipleNamesErrorMessage);
 
@@ -96,7 +66,7 @@ namespace Bagge.Seti.BusinessLogic
 			base.Update(instance);
 		}
 
-		protected override Product[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		protected override Product[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
 			Check.Require(filter != null);
 
