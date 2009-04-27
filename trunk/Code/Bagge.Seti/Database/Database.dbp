@@ -8,6 +8,7 @@ Begin DataProject = "Database"
       Script = "003 - Alter table AlertConfiguration.sql"
       Script = "004 - Alter table AlertConfiguration.sql"
       Script = "005 - Alter table Employee.sql"
+      Script = "006 - Alter table Provider.sql"
    End
    Begin Folder = "Create Scripts"
       Script = "000 - Tables Initial Setup.sql"

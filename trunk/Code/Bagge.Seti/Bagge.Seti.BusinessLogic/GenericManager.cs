@@ -176,20 +176,20 @@ namespace Bagge.Seti.BusinessLogic
 
 		public T[] FindAllByProperties(IList<FilterPropertyValue> filter)
 		{
-			return FindAllByProperties(filter);
+			return FindAllByProperties(filter, null, null);
 		}
 
 		public T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy)
 		{
-			return FindAllByPropertiesOrdered(filter, orderBy);
+			return FindAllByProperties(filter, orderBy, null);
 		}
 
 		public T[] FindAllByPropertiesOrdered(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
 		{
-			return FindAllByPropertiesOrdered(filter, orderBy, ascending);
+			return FindAllByProperties(filter, orderBy, ascending);
 		}
 
-		protected virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool ascending)
+		protected virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
 			return Dao.FindAllByProperties(filter, orderBy, ascending);
 		}

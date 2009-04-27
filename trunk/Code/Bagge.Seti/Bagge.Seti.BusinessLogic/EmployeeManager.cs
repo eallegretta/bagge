@@ -80,15 +80,9 @@ namespace Bagge.Seti.BusinessLogic
 			msg.Subject = subject;
 			msg.Body = body;
 
-			SetEnableSsl(client);
+			client.EnableSsl = Settings.Default.EnableMailSsl;
 
 			client.Send(msg);
-		}
-
-		private static void SetEnableSsl(SmtpClient client)
-		{
-			if (ConfigurationManager.AppSettings.AllKeys.Contains("EnableSSLForMails"))
-				client.EnableSsl = ConfigurationManager.AppSettings["EnableSSLForMails"].ToBoolean();
 		}
 
 		public void RegeneratePassword(string encodedKey)

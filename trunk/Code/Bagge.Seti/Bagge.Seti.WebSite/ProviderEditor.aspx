@@ -40,7 +40,7 @@
 			</seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="Calification" meta:resourcekey="CalificationField">
 				<InsertItemTemplate>
-					<asp:DropDownList ID="_calification" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
+					<asp:DropDownList ID="_calification" DataTextField="Name" DataValueField="Id"
 						runat="server" meta:resourcekey="CalificationDropDown">
 					</asp:DropDownList>
 				</InsertItemTemplate>

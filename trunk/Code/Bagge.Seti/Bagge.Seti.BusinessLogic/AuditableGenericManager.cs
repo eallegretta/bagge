@@ -12,6 +12,20 @@ namespace Bagge.Seti.BusinessLogic
 {
 	public class AuditableGenericManager<T, PK>: GenericManager<T, PK>, IAuditableManager<T, PK> where T: PrimaryKeyDomainObject<T, PK>
 	{
+		protected static readonly FilterPropertyValue DeletedFilter = new FilterPropertyValue
+		{
+			Property = "Deleted",
+			Type = FilterPropertyValueType.Equals,
+			Value = true
+		};
+
+		protected static readonly FilterPropertyValue NotDeletedFilter = new FilterPropertyValue
+		{
+			Property = "Deleted",
+			Type = FilterPropertyValueType.Equals,
+			Value = false
+		};
+
 		public AuditableGenericManager(IDao<T, PK> dao)
 			: base(dao)
 		{

@@ -13,7 +13,11 @@ namespace Bagge.Seti.WebSite
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			if (Request.QueryString["Logout"] != null)
+			{
+				FormsAuthentication.SignOut();
+				Response.Redirect("~/Default.aspx");
+			}
 		}
 
 		protected void _login_Authenticate(object sender, AuthenticateEventArgs e)
