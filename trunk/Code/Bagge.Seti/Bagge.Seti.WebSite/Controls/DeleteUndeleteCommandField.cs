@@ -9,7 +9,7 @@ using System.Web.UI;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class DeleteUndeleteCommandField: DeleteCommandField
+	public class DeleteUndeleteCommandField: DeleteCommandField, IMethodSecureControl
 	{
 		public string DeleteDataField
 		{
@@ -120,5 +120,14 @@ namespace Bagge.Seti.WebSite.Controls
 			base.ExtractValuesFromCell(dictionary, cell, rowState, includeReadOnly);
 		}
 
+
+		#region IMethodSecureControl Members
+
+		public string MethodName
+		{
+			get; set;
+		}
+
+		#endregion
 	}
 }

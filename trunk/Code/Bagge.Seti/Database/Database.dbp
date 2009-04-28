@@ -25,6 +25,7 @@ Begin DataProject = "Database"
          Script = "AccessibilityType.sql"
          Script = "AlertConfiguration.sql"
          Script = "ProviderCalification.sql"
+         Script = "Role.sql"
          Script = "TicketStatus.sql"
       End
    End

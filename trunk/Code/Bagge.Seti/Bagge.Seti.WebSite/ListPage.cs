@@ -24,8 +24,8 @@ namespace Bagge.Seti.WebSite
 			ObjectDataSource.UsingServerPaging = true;
 
 			Grid.RowCommand += new GridViewCommandEventHandler(Grid_RowCommand);
-			if (Grid is SecureGridView)
-				((SecureGridView)Grid).SecureTypeName = typeof(T).AssemblyQualifiedName;
+
+			AssignTypeNameToSecureContainers(typeof(T).AssemblyQualifiedName);
 
 			base.OnInit(e);
 		}

@@ -3,20 +3,31 @@
 <asp:Content ID="_filters" runat="server" ContentPlaceHolderID="_filters">
 	<table cellpadding="0" cellspacing="0">
 		<tr>
-			<th><asp:Literal ID="_nameLiteral" runat="server" meta:resourcekey="FilterNameLiteral"></asp:Literal></th>
-			<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
+			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Name">
+				<th><asp:Literal ID="_nameLiteral" runat="server" meta:resourcekey="FilterNameLiteral"></asp:Literal></th>
+				<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
+			</seti:SecurePropertyPlaceHolder>
+			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="CUIT">
 			<th><asp:Literal ID="_cuitLiteral" runat="server" meta:resourcekey="FilterCuitLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_cuit" runat="server"></asp:TextBox></td>
+			</seti:SecurePropertyPlaceHolder>
+			
+			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Deleted">
 			<th><asp:Literal ID="_deletedLiteral" runat="server" meta:resourcekey="FilterDeletedLiteral"></asp:Literal></th>
 			<td><asp:DropDownList ID="_isDeleted" runat="server">
 				<asp:ListItem></asp:ListItem>
 			</asp:DropDownList></td>
+			</seti:SecurePropertyPlaceHolder>
 		</tr>
 		<tr>
+			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Address">
 			<th><asp:Literal ID="_addressLiteral" runat="server" meta:resourcekey="FilterAddressLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_address" runat="server"></asp:TextBox></td>
+			</seti:SecurePropertyPlaceHolder>
+			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Phone">
 			<th><asp:Literal ID="_phoneLiteral" runat="server" meta:resourcekey="FilterPhoneLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_phone" runat="server"></asp:TextBox></td>
+			</seti:SecurePropertyPlaceHolder>
 			<td colspan="2"><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
 			</td>
 		</tr>
@@ -28,34 +39,36 @@
 		DataSourceID="_dataSource"
 		meta:resourcekey="Grid">
 		<Columns>
-			<asp:BoundField NullDisplayText="" DataField="Name" 
+			<seti:SecureBoundField NullDisplayText="" DataField="Name" 
 				meta:resourcekey="NameField" />
-			<asp:BoundField NullDisplayText="" DataField="CUIT" 
+			<seti:SecureBoundField NullDisplayText="" DataField="CUIT" 
 				meta:resourcekey="CUITField" />
-			<asp:BoundField NullDisplayText="" DataField="FullAddress" meta:resourcekey="AddressField" />
-			<asp:BoundField NullDisplayText="" DataField="District" meta:resourcekey="DistrictField" />
-			<asp:TemplateField meta:resourcekey="CountryStateField" >
+			<seti:SecureBoundField NullDisplayText="" DataField="FullAddress" meta:resourcekey="AddressField" />
+			<seti:SecureBoundField NullDisplayText="" DataField="District" meta:resourcekey="DistrictField" />
+			<seti:SecureTemplateField meta:resourcekey="CountryStateField" >
 				<ItemTemplate>
 					<%#((Bagge.Seti.BusinessEntities.Customer)(Container.DataItem)).District.CountryState%>
 				</ItemTemplate>
-			</asp:TemplateField>
-			<asp:BoundField NullDisplayText="" DataField="Phone" meta:resourcekey="PhoneField" />
-			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+			</seti:SecureTemplateField>
+			<seti:SecureBoundField NullDisplayText="" DataField="Phone" meta:resourcekey="PhoneField" />
+			<seti:SecureHyperLinkField MethodName="Get" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=View"
 				Text="<%$ Resources:WebSite, IconViewImageTag %>"
 				meta:resourcekey="ViewField" />
-			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+			<seti:SecureHyperLinkField MethodName="Update" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="CustomerEditor.aspx?Id={0}&Action=Edit"
 				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" />
-			<seti:DeleteUndeleteCommandField DeleteDataField="Deleted" ItemStyle-Width="20px" 
+			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" 
 				ItemStyle-HorizontalAlign="Center" 
 				UndeleteImageUrl="<%$ Resources:WebSite, IconRecycleImagePath%>"
 				ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
 				meta:resourcekey="DeleteField"></seti:DeleteUndeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
-	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/CustomerEditor.aspx" />
+	<seti:SecureMethodPlaceHolder runat="server" MethodName="Create">
+		<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/CustomerEditor.aspx" />
+	</seti:SecureMethodPlaceHolder>
 	<asp:ObjectContainerDataSource id="_dataSource" runat="server" 
 		DataObjectTypeName=""></asp:ObjectContainerDataSource>
 </asp:Content>
