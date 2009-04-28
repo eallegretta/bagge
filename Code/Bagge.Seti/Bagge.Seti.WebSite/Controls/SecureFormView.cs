@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -34,36 +36,49 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void ApplySecurityRestrictionsForMethod(IList<Bagge.Seti.Security.BusinessEntities.Function> functions, Control ctrl)
 		{
+			IUser user = Page.User.Identity as IUser;
 			var secureControl = (IMethodSecureControl)ctrl;
-			switch (AccessibilityType.GetAccessibilityForMethod(Type.GetType(SecureTypeName), secureControl.MethodName, functions))
+			if (user != null)
 			{
-				case AccessibilityTypes.None:
-					secureControl.Visible = false;
-					break;
-				case AccessibilityTypes.Execute:
-					secureControl.Visible = true;
-					break;
+				switch (IoCContainer.AccessibilityTypeManager.GetUserAccessibilityForMethod(
+					user, Type.GetType(SecureTypeName), secureControl.MethodName))
+				{
+					case AccessibilityTypes.None:
+						secureControl.Visible = false;
+						break;
+					case AccessibilityTypes.Execute:
+						secureControl.Visible = true;
+						break;
+				}
 			}
+			else
+				secureControl.Visible = false;
 		}
 
 		private void ApplySecurityRestrictionsForProperty(IList<Bagge.Seti.Security.BusinessEntities.Function> functions, Control ctrl)
 		{
+			IUser user = Page.User.Identity as IUser;
 			var secureControl = (IPropertySecureControl)ctrl;
-
-			switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), secureControl.PropertyName, functions))
+			if (user != null)
 			{
-				case AccessibilityTypes.View:
-					secureControl.ReadOnly = false;
-					secureControl.Visible = true;
-					break;
-				case AccessibilityTypes.Edit:
-					secureControl.ReadOnly = false;
-					secureControl.Visible = true;
-					break;
-				case AccessibilityTypes.None:
-					secureControl.Visible = false;
-					break;
+				switch (IoCContainer.AccessibilityTypeManager.GetUserAccessibilityForProperty(
+					user, Type.GetType(SecureTypeName), secureControl.PropertyName))
+				{
+					case AccessibilityTypes.View:
+						secureControl.ReadOnly = true;
+						secureControl.Visible = true;
+						break;
+					case AccessibilityTypes.Edit:
+						secureControl.ReadOnly = false;
+						secureControl.Visible = true;
+						break;
+					case AccessibilityTypes.None:
+						secureControl.Visible = false;
+						break;
+				}
 			}
+			else
+				secureControl.Visible = false;
 		}
 
 		#endregion

@@ -8,16 +8,18 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Globalization;
 using System.Reflection;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite.Controls
 {
 
 
-	public class SecureGridView: GridView, ISecureControlContainer
+	public class SecureGridView : GridView, ISecureControlContainer
 	{
 		public SecureGridView()
 		{
-			
+
 		}
 
 		private class PagerLinkButton : LinkButton
@@ -65,14 +67,14 @@ namespace Bagge.Seti.WebSite.Controls
 			private string _callbackArgument;
 
 			#endregion
-		}	
+		}
 
 		protected override void InitializePager(GridViewRow row, int columnSpan, PagedDataSource pagedDataSource)
 		{
 			base.InitializePager(row, columnSpan, pagedDataSource);
-			
+
 			Table table = (Table)row.Cells[0].Controls[0];
-			
+
 			TableCell firstCell = new TableCell();
 			table.Rows[0].Cells.AddAt(0, firstCell);
 			firstCell.CssClass = "firstCell";
@@ -82,12 +84,12 @@ namespace Bagge.Seti.WebSite.Controls
 			lastCell.CssClass = "lastCell";
 
 			int startRecord = pagedDataSource.CurrentPageIndex * pagedDataSource.PageSize + 1;
-			int endRecord = (startRecord + pagedDataSource.PageSize - 1 < pagedDataSource.DataSourceCount) ? startRecord + pagedDataSource.PageSize - 1: pagedDataSource.DataSourceCount;
+			int endRecord = (startRecord + pagedDataSource.PageSize - 1 < pagedDataSource.DataSourceCount) ? startRecord + pagedDataSource.PageSize - 1 : pagedDataSource.DataSourceCount;
 
 			lastCell.Text = string.Format(Resources.WebSite.Controls_Pager_ItemsCount, startRecord, endRecord, pagedDataSource.DataSourceCount);
 
 			table.Rows[0].Cells.Add(lastCell);
-			
+
 		}
 
 		protected virtual void CreateCustomPager(GridViewRow row, int columnSpan, PagedDataSource pagedDataSource)
@@ -175,25 +177,34 @@ namespace Bagge.Seti.WebSite.Controls
 			return span;
 		}
 
-		
+
 
 
 		#region ISecureControl Members
 
 		public string SecureTypeName
 		{
-			get; set;
+			get;
+			set;
 		}
 
 		public void ApplySecurityRestrictions(IList<Function> functions)
 		{
+			IUser user = Page.User.Identity as IUser;
 			foreach (DataControlField field in Columns)
 			{
 				if (field is IPropertySecureControl)
 				{
 					var secureField = (IPropertySecureControl)field;
 
-					switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), secureField.PropertyName, functions))
+					if (user == null)
+					{
+						secureField.Visible = false;
+						continue;
+					}
+					
+					switch (IoCContainer.AccessibilityTypeManager.GetUserAccessibilityForProperty(
+						user, Type.GetType(SecureTypeName), secureField.PropertyName))
 					{
 						case AccessibilityTypes.View:
 							secureField.ReadOnly = false;
@@ -208,10 +219,18 @@ namespace Bagge.Seti.WebSite.Controls
 							break;
 					}
 				}
-				else if (field is IMethodSecureControl)
+				if (field is IMethodSecureControl)
 				{
 					var secureField = (IMethodSecureControl)field;
-					switch (AccessibilityType.GetAccessibilityForMethod(Type.GetType(SecureTypeName), secureField.MethodName, functions))
+
+					if (user == null)
+					{
+						secureField.Visible = false;
+						continue;
+					}
+
+					switch (IoCContainer.AccessibilityTypeManager.GetUserAccessibilityForMethod(
+						user, Type.GetType(SecureTypeName), secureField.MethodName))
 					{
 						case AccessibilityTypes.None:
 							secureField.Visible = false;

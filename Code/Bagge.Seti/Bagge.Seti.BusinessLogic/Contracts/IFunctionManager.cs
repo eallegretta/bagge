@@ -8,7 +8,5 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface IFunctionManager: IAuditableManager<Function, int>
 	{
-		AccessibilityType[] ListMethodAccessibilities();
-		AccessibilityType[] ListPropertyAccessibilities(); 
 	}
 }

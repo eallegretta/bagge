@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -34,36 +36,50 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void ApplySecurityRestrictionsForMethod(IList<Bagge.Seti.Security.BusinessEntities.Function> functions, DataControlField field)
 		{
+			IUser user = Page.User.Identity as IUser;
 			var secureField = (IMethodSecureControl)field;
-			switch (AccessibilityType.GetAccessibilityForMethod(Type.GetType(SecureTypeName), secureField.MethodName, functions))
+			if (user != null)
 			{
-				case AccessibilityTypes.None:
-					secureField.Visible = false;
-					break;
-				case AccessibilityTypes.Execute:
-					secureField.Visible = true;
-					break;
+				switch (IoCContainer.AccessibilityTypeManager.GetUserAccessibilityForMethod(
+					user, Type.GetType(SecureTypeName), secureField.MethodName))
+				{
+					case AccessibilityTypes.None:
+						secureField.Visible = false;
+						break;
+					case AccessibilityTypes.Execute:
+						secureField.Visible = true;
+						break;
+				}
 			}
+			else
+				secureField.Visible = false;
 		}
 
 		private void ApplySecurityRestrictionsForProperty(IList<Bagge.Seti.Security.BusinessEntities.Function> functions, DataControlField field)
 		{
+			IUser user = Page.User.Identity as IUser;
 			var secureField = (IPropertySecureControl)field;
 
-			switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), secureField.PropertyName, functions))
+			if (user != null)
 			{
-				case AccessibilityTypes.View:
-					secureField.ReadOnly = false;
-					secureField.Visible = true;
-					break;
-				case AccessibilityTypes.Edit:
-					secureField.ReadOnly = false;
-					secureField.Visible = true;
-					break;
-				case AccessibilityTypes.None:
-					secureField.Visible = false;
-					break;
+				switch (IoCContainer.AccessibilityTypeManager.GetUserAccessibilityForProperty(
+					user, Type.GetType(SecureTypeName), secureField.PropertyName))
+				{
+					case AccessibilityTypes.View:
+						secureField.ReadOnly = true;
+						secureField.Visible = true;
+						break;
+					case AccessibilityTypes.Edit:
+						secureField.ReadOnly = false;
+						secureField.Visible = true;
+						break;
+					case AccessibilityTypes.None:
+						secureField.Visible = false;
+						break;
+				}
 			}
+			else
+				secureField.Visible = false;
 		}
 
 		#endregion

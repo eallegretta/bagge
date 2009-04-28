@@ -18,18 +18,6 @@ namespace Bagge.Seti.BusinessLogic
 			_accessibilityDao = accessibilityDao;
 		}
 
-		#region IFunctionManager Members
-
-		public AccessibilityType[] ListMethodAccessibilities()
-		{
-			throw new NotImplementedException();
-		}
-
-		public AccessibilityType[] ListPropertyAccessibilities()
-		{
-			throw new NotImplementedException();
-		}
-
-		#endregion
+		
 	}
 }

@@ -70,43 +70,64 @@ namespace Bagge.Seti.WebSite
 
 		public CountryState[] CountryStates
 		{
-			set 
+			set
 			{
 				var countryState = ((DropDownList)Details.FindControl("_countryState"));
-				countryState.DataSource = value;
-				countryState.DataBind();
+				if (countryState != null)
+				{
+					countryState.DataSource = value;
+					countryState.DataBind();
+				}
 			}
 		}
 
 		public District[] Districts
 		{
-			set 
+			set
 			{
-				var countryState = ((DropDownList)Details.FindControl("_district"));
-				countryState.DataSource = value;
-				countryState.DataBind();
+				var district = Details.FindControl("_district");
+				if (district is DropDownList)
+				{
+					((DropDownList)district).DataSource = value;
+					district.DataBind();
+				}
 			}
 		}
 
 		public int SelectedCountryId
 		{
-			set { ((DropDownList)Details.FindControl("_countryState")).SelectedValue = value.ToString(); }
+			set
+			{
+				var countryState = ((DropDownList)Details.FindControl("_countryState"));
+				if (countryState != null)
+					countryState.SelectedValue = value.ToString();
+			}
 		}
 
 		public int? SelectedDistrictId
 		{
 			get
 			{
-				var districts = ((DropDownList)Details.FindControl("_district"));
-				if (districts.SelectedValue.IsNullOrEmpty())
+				var districts = Details.FindControl("_district");
+				string value = string.Empty;
+				if (districts is DropDownList)
+					value = ((DropDownList)districts).SelectedValue;
+				else
+					value = ((HiddenField)districts).Value;
+				if (string.IsNullOrEmpty(value))
 					return null;
-
-				return districts.SelectedValue.ToInt32();
+				return value.ToInt32();
 			}
 			set
 			{
-				if(value.HasValue)
-					((DropDownList)Details.FindControl("_district")).SelectedValue = value.ToString();
+				if (value.HasValue)
+				{
+					var district = Details.FindControl("_district");
+					if (district is DropDownList)
+						((DropDownList)district).SelectedValue = value.ToString();
+					else
+						((HiddenField)district).Value = value.ToString();
+				}
 			}
 		}
 
@@ -114,7 +135,9 @@ namespace Bagge.Seti.WebSite
 		{
 			set
 			{
-				((TextBox)Details.FindControl("_zipCode")).Text = value;
+				var zipCode = ((TextBox)Details.FindControl("_zipCode"));
+				if (zipCode != null)
+					zipCode.Text = value;
 			}
 		}
 
@@ -122,11 +145,16 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				return ((ProductProviderSelectionGrid)Details.FindControl("_products")).SelectedItems.ToArray();
+				var products = ((ProductProviderSelectionGrid)Details.FindControl("_products"));
+				if (products != null)
+					return products.SelectedItems.ToArray();
+				return null;
 			}
 			set
 			{
-				((ProductProviderSelectionGrid)Details.FindControl("_products")).SelectedItems = value.ToList();
+				var products = ((ProductProviderSelectionGrid)Details.FindControl("_products"));
+				if (products != null)
+					products.SelectedItems = value.ToList();
 			}
 		}
 
@@ -138,9 +166,12 @@ namespace Bagge.Seti.WebSite
 		{
 			set
 			{
-				var calification = ((DropDownList)Details.FindControl("_calification"));
-				calification.DataSource = value;
-				calification.DataBind();
+				var calification = Details.FindControl("_calification");
+				if (calification is DropDownList)
+				{
+					((DropDownList)calification).DataSource = value;
+					calification.DataBind();
+				}
 			}
 		}
 
@@ -148,11 +179,19 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				return ((DropDownList)Details.FindControl("_calification")).SelectedValue.ToInt32();
+				var calification = Details.FindControl("_calification");
+				if (calification is DropDownList)
+					return ((DropDownList)calification).SelectedValue.ToInt32();
+				else
+					return ((HiddenField)calification).Value.ToInt32();
 			}
 			set
 			{
-				((DropDownList)Details.FindControl("_calification")).SelectedValue = value.ToString();
+				var calification = Details.FindControl("_calification");
+				if (calification is DropDownList)
+					((DropDownList)calification).SelectedValue = value.ToString();
+				else
+					((HiddenField)calification).Value = value.ToString();
 			}
 		}
 

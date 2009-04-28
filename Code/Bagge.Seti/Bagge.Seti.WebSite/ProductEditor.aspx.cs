@@ -48,11 +48,16 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				return ((ProductProviderSelectionGrid)Details.FindControl("_providers")).SelectedItems.ToArray();
+				var providers = ((ProductProviderSelectionGrid)Details.FindControl("_providers"));
+				if(providers != null)
+					return providers.SelectedItems.ToArray();
+				return null;
 			}
 			set
 			{
-				((ProductProviderSelectionGrid)Details.FindControl("_providers")).SelectedItems = value.ToList();
+				var providers = ((ProductProviderSelectionGrid)Details.FindControl("_providers"));
+				if(providers != null)
+					providers.SelectedItems = value.ToList();
 			}
 		}
 

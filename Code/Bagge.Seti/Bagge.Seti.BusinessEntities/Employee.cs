@@ -101,6 +101,20 @@ namespace Bagge.Seti.BusinessEntities
 
 		IList<Function> _functions;
 
+		public bool IsSuperAdministrator
+		{
+			get
+			{
+				var roles = Roles;
+				if (roles == null || roles.Count == 0)
+					return false;
+
+				return (from role in roles
+						where role.Id == Role.SuperAdministratorId
+						select true).FirstOrDefault();
+			}
+		}
+
 		public IList<Function> Functions
 		{
 			get

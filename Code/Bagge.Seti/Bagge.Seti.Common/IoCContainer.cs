@@ -40,6 +40,11 @@ namespace Bagge.Seti.Common
 			get { return GetObject<IAlertConfigurationManager>("AlertConfigurationManager"); }
 		}
 
+		public static IAccessibilityTypeManager AccessibilityTypeManager
+		{
+			get { return GetObject<IAccessibilityTypeManager>("AccessibilityTypeManager"); }
+		}
+
 		public static IManager<CountryState, int> CountryStateManager
 		{
 			get { return GetObject<IManager<CountryState, int>>("CountryStateManager"); }

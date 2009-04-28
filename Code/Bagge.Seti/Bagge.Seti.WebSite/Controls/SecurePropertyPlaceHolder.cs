@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.Helpers;
+using Bagge.Seti.Common;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -11,21 +13,27 @@ namespace Bagge.Seti.WebSite.Controls
 	{
 		public override void ApplySecurityRestrictions(IList<Bagge.Seti.Security.BusinessEntities.Function> functions)
 		{
-			switch (AccessibilityType.GetAccessibilityForProperty(Type.GetType(SecureTypeName), PropertyName, functions))
+			IUser user = Page.User.Identity as IUser;
+			if (user != null)
 			{
-				case AccessibilityTypes.None:
-					Visible = false;
-					return;
-				case AccessibilityTypes.View:
-					Visible = true;
-					ControlHelper.DisableControlHierarchy(Controls);
-					return;
-				case AccessibilityTypes.Edit:
-					Visible = true;
-					ControlHelper.EnableControlHierarchy(Controls);
-					return;
+				switch (IoCContainer.AccessibilityTypeManager.GetUserAccessibilityForProperty(
+					user, Type.GetType(SecureTypeName), PropertyName))
+				{
+					case AccessibilityTypes.None:
+						Visible = false;
+						return;
+					case AccessibilityTypes.View:
+						Visible = true;
+						ControlHelper.DisableControlHierarchy(Controls);
+						return;
+					case AccessibilityTypes.Edit:
+						Visible = true;
+						ControlHelper.EnableControlHierarchy(Controls);
+						return;
+				}
 			}
-
+			else
+				Visible = false;
 		}
 
 

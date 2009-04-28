@@ -14,5 +14,6 @@ namespace Bagge.Seti.BusinessEntities.Security
 		IList<Role> Roles { get; set; }
 		IList<Function> Functions { get; }
 		new bool IsAuthenticated { get; set; }
+		bool IsSuperAdministrator { get; }
 	}
 }

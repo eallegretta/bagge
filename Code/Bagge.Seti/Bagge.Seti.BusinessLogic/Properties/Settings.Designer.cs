@@ -31,5 +31,23 @@ namespace Bagge.Seti.BusinessLogic.Properties {
                 return ((bool)(this["EnableMailSsl"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public global::Bagge.Seti.Security.BusinessEntities.AccessibilityTypes DefaultPropertyAccessibilityType {
+            get {
+                return ((global::Bagge.Seti.Security.BusinessEntities.AccessibilityTypes)(this["DefaultPropertyAccessibilityType"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public global::Bagge.Seti.Security.BusinessEntities.AccessibilityTypes DefaultMethodAccessibilityType {
+            get {
+                return ((global::Bagge.Seti.Security.BusinessEntities.AccessibilityTypes)(this["DefaultMethodAccessibilityType"]));
+            }
+        }
     }
 }

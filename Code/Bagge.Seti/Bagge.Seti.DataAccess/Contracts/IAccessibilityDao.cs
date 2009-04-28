@@ -6,8 +6,8 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.DataAccess.Contracts
 {
-	public interface IAccessibilityDao: IGetDao<AccessibilityType, byte> 
+	public interface IAccessibilityDao: IGetDao<AccessibilityType, byte>, IFindDao<AccessibilityType, byte>
 	{
-		AccessibilityType[] FindByType(AccessibilityTypeType type);
+		AccessibilityType[] FindAllByType(AccessibilityTypeType type);
 	}
 }

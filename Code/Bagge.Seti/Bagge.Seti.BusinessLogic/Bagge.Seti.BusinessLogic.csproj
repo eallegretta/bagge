@@ -53,9 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessibilityTypeManager.cs" />
     <Compile Include="AlertConfigurationManager.cs" />
     <Compile Include="Contracts\Core\IByNameSelectableManager.cs" />
     <Compile Include="Contracts\Core\IFindActiveManager.cs" />
+    <Compile Include="Contracts\IAccessibilityTypeManager.cs" />
     <Compile Include="Contracts\IAlertConfigurationManager.cs" />
     <Compile Include="Contracts\Core\IAuditableManager.cs" />
     <Compile Include="Contracts\Core\ICreateManager.cs" />

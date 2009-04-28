@@ -9,22 +9,30 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 {
 	public class AccessibilityDao: IAccessibilityDao
 	{
-		#region IAccessibilityDao Members
-
-		public AccessibilityType[] FindByType(AccessibilityTypeType type)
+		public AccessibilityType[] FindAllByType(AccessibilityTypeType type)
 		{
-			throw new NotImplementedException();
+			return FindAllByProperty("Id", (byte)type, null, null);
 		}
-
-		#endregion
-
-		#region IGetDao<AccessibilityType,int> Members
 
 		public AccessibilityType Get(byte id)
 		{
-			throw new NotImplementedException();
+			return new GenericDao<AccessibilityType, byte>().Get(id);
 		}
 
-		#endregion
+		public AccessibilityType[] FindAll(string orderBy, bool? ascending)
+		{
+			return new GenericDao<AccessibilityType, byte>().FindAll(orderBy, ascending);
+		}
+
+		public AccessibilityType[] FindAllByProperty(string property, object value, string orderBy, bool? ascending)
+		{
+			return new GenericDao<AccessibilityType, byte>().FindAllByProperty(property, value, orderBy, ascending);
+		}
+
+		public AccessibilityType[] FindAllByProperties(IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> filter, string orderBy, bool? ascending)
+		{
+			return new GenericDao<AccessibilityType, byte>().FindAllByProperties(filter, orderBy, ascending);
+		}
+
 	}
 }

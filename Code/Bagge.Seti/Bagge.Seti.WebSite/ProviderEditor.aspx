@@ -50,6 +50,7 @@
 					</asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
+					<asp:HiddenField ID="_calification" runat="server" />
 					<%#Eval("Calification")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
@@ -80,6 +81,7 @@
 					</asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
+					<asp:HiddenField ID="_district" runat="server" />
 					<%#Eval("District")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>

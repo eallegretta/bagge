@@ -30,9 +30,7 @@ namespace Bagge.Seti.WebSite
 
 			((Editor)Master).RequiredInformation.Visible = ShowRequiredInformationLabel;
 
-			ISecureControlContainer details = Details as ISecureControlContainer;
-			if (details != null)
-				details.SecureTypeName = typeof(T).AssemblyQualifiedName;
+			AssignTypeNameToSecureContainers(typeof(T).AssemblyQualifiedName);
 
 			base.OnInit(e);
 		}
