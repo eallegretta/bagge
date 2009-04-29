@@ -1,4 +1,6 @@
-﻿insert into AccessibilityType (Id, Name)
+﻿delete AccessibilityType
+
+insert into AccessibilityType (Id, Name)
 select 1, 'None'
 union
 select 2, 'Edit'

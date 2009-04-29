@@ -1,4 +1,6 @@
-﻿ set identity_insert TicketStatus on
+﻿delete TicketStatus
+
+ set identity_insert TicketStatus on
  
  insert into TicketStatus (Id, Name)
  select 1, 'Inicial'
