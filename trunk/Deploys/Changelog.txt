@@ -1,0 +1,14 @@
+== v0.1 - 20090429 - Gargamel ==
+
+= Features =
+.Login al Sistema
+.ABM Clientes
+.ABM Proveedores
+.ABM Productos
+.Recuperación de Contraseña
+
+= Known Bugs =
+.Al enviar el mail de contraseñas en modo texto dependiendo del cliente se puede ver erroneamente (gmail por ejemplo)
+.Al enviar la url para regenerar la contraseña falta toda la url base, solo se esta enviado RecoverPassword.aspx?k=HashGenerado
+.El filtro por producto en el abm de proveedores no funciona
+.El filtro por proveedor en el abm de productos no funciona
