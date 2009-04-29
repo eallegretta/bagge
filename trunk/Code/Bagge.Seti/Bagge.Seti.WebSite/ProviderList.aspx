@@ -33,27 +33,27 @@
 		DataSourceID="_dataSource"
 		meta:resourcekey="Grid">
 		<Columns>
-			<asp:BoundField DataField="Name" 
+			<seti:SecureBoundField DataField="Name" 
 				meta:resourcekey="NameField" />
-			<asp:BoundField DataField="CUIT" 
+			<seti:SecureBoundField DataField="CUIT" 
 				meta:resourcekey="CUITField" />
-			<asp:BoundField DataField="FullAddress" meta:resourcekey="AddressField" />
-			<asp:BoundField DataField="District" meta:resourcekey="DistrictField" />
-			<asp:TemplateField meta:resourcekey="CountryStateField" >
+			<seti:SecureBoundField DataField="FullAddress" meta:resourcekey="AddressField" />
+			<seti:SecureBoundField DataField="District" meta:resourcekey="DistrictField" />
+			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="CountryStateField" >
 				<ItemTemplate>
 					<%#((Bagge.Seti.BusinessEntities.Provider)(Container.DataItem)).District.CountryState%>
 				</ItemTemplate>
-			</asp:TemplateField>
-			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+			</seti:SecureTemplateField>
+			<seti:SecureHyperLinkField MethodName="Get" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="ProviderEditor.aspx?Id={0}&Action=View"
 				Text="<%$ Resources:WebSite, IconViewImageTag %>"
 				meta:resourcekey="ViewField" />
-			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+			<seti:SecureHyperLinkField MethodName="Update" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="ProviderEditor.aspx?Id={0}&Action=Edit"
 				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" />
-			<eaa:DeleteCommandField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
-				meta:resourcekey="DeleteField"></eaa:DeleteCommandField>
+			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
+				meta:resourcekey="DeleteField"></seti:DeleteUndeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
 	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/ProviderEditor.aspx" />

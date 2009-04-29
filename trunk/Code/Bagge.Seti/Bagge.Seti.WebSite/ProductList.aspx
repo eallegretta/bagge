@@ -28,24 +28,24 @@
 		DataSourceID="_dataSource"
 		meta:resourcekey="Grid">
 		<Columns>
-			<asp:BoundField DataField="Name" meta:resourcekey="NameField" />
-			<asp:BoundField DataField="Description" meta:resourcekey="DescriptionField" />
-			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+			<seti:SecureBoundField DataField="Name" meta:resourcekey="NameField" />
+			<seti:SecureBoundField DataField="Description" meta:resourcekey="DescriptionField" />
+			<seti:SecureHyperLinkField MethodName="Get" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="ProductEditor.aspx?Id={0}&Action=View"
 				Text="<%$ Resources:WebSite, IconViewImageTag %>"
 				meta:resourcekey="ViewField" >
-<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
-			</asp:HyperLinkField>
-			<asp:HyperLinkField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
+			</seti:SecureHyperLinkField>
+			<seti:SecureHyperLinkField MethodName="Update" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="ProductEditor.aspx?Id={0}&Action=Edit"
 				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" >
-<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
-			</asp:HyperLinkField>
-			<eaa:DeleteCommandField ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
+				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
+			</seti:SecureHyperLinkField>
+			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
 				meta:resourcekey="DeleteField">
-<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
-			</eaa:DeleteCommandField>
+				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
+			</seti:DeleteUndeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
 	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/ProductEditor.aspx" />

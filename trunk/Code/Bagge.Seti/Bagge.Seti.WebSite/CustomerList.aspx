@@ -45,7 +45,7 @@
 				meta:resourcekey="CUITField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="FullAddress" meta:resourcekey="AddressField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="District" meta:resourcekey="DistrictField" />
-			<seti:SecureTemplateField meta:resourcekey="CountryStateField" >
+			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="CountryStateField" >
 				<ItemTemplate>
 					<%#((Bagge.Seti.BusinessEntities.Customer)(Container.DataItem)).District.CountryState%>
 				</ItemTemplate>
