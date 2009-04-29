@@ -1,4 +1,6 @@
-﻿ insert into ProviderCalification (Name)
+﻿delete ProviderCalification
+
+ insert into ProviderCalification (Name)
  select 'Malo'
  union
  select 'Regular'
