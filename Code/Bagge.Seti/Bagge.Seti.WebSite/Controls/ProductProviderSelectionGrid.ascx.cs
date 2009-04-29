@@ -217,12 +217,12 @@ namespace Bagge.Seti.WebSite.Controls
 			get
 			{
 				return ProductProviderBindItem.ToProductProviderItems(
-						JavaScriptConvert.DeserializeObject<List<ProductProviderBindItem>>(_selectedItems.Value), 
+					JsonConvert.DeserializeObject<List<ProductProviderBindItem>>(_selectedItems.Value), 
 						SourceType);
 			}
 			set
 			{
-				_selectedItems.Value = JavaScriptConvert.SerializeObject(
+				_selectedItems.Value = JsonConvert.SerializeObject(
 						ProductProviderBindItem.ToProductProviderBindItems(value,
 						SourceType));
 				RemoveDropDownItems(value);
