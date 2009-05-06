@@ -23,4 +23,5 @@
 		CancelPostBackUrl="~/Default.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource id="_dataSource" runat="server" ></asp:ObjectContainerDataSource>
+	<asp:CheckBox ID="_chk" runat="server" AutoPostBack="true" />
 </asp:Content>

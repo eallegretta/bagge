@@ -52,6 +52,7 @@ namespace Bagge.Seti.WebSite.Presenters
 		}
 		protected virtual void OnLoad(object sender, EventArgs e)
 		{
+			View.DataBind();
 		}
 
 		protected T SelectedEntity
@@ -62,12 +63,15 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		public virtual void Select()
 		{
-			SelectedEntity = _manager.Get(_view.PrimaryKey);
-			_view.DataSource = SelectedEntity.ToSingleItemArray<T>();
-
-			if (SelectedEntity is IAuditable)
+			if (View.Mode == EditorAction.Update || View.Mode == EditorAction.View)
 			{
-				_view.Timestamp = ((IAuditable)SelectedEntity).AuditTimeStamp;
+				SelectedEntity = _manager.Get(_view.PrimaryKey);
+				_view.DataSource = SelectedEntity.ToSingleItemArray<T>();
+
+				if (SelectedEntity is IAuditable)
+				{
+					_view.Timestamp = ((IAuditable)SelectedEntity).AuditTimeStamp;
+				}
 			}
 		}
 
