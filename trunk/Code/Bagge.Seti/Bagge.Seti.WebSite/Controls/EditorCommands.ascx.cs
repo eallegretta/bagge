@@ -74,7 +74,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		private DetailsView _detailsView;
@@ -83,7 +83,7 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			get
 			{
-				if(_detailsView == null)
+				if (_detailsView == null)
 					_detailsView = ControlHelper.FindControlRecursive(Page, DetailsViewID) as DetailsView;
 				return _detailsView;
 			}
@@ -130,5 +130,5 @@ namespace Bagge.Seti.WebSite.Controls
 				Response.Redirect(AcceptPostBackUrl);
 			}
 		}
-	} 
+	}
 }

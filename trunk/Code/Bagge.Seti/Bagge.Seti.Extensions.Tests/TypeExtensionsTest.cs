@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
+using System.Diagnostics;
 
 namespace Bagge.Seti.Extensions.Tests
 {
@@ -14,6 +15,11 @@ namespace Bagge.Seti.Extensions.Tests
 
 		private class Child: Parent
 		{
+
+			public void t()
+			{
+				Debug.Write("test".ToMD5());
+			}
 		}
 
 

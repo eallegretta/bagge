@@ -15,5 +15,6 @@ namespace Bagge.Seti.WebSite.Views
 		bool IsValid { get; }
 
 		object DataSource { set; }
+		void DataBind();
 	}
 }

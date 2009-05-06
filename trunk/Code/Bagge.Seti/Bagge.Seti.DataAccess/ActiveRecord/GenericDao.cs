@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Bagge.Seti.BusinessEntities;
 using Castle.ActiveRecord;
 using Castle.ActiveRecord.Framework.Scopes;
@@ -158,6 +159,22 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			return ActiveRecordMediator<T>.Count(BuildCriteriaFromFilters(filter));
 		}
 
+		private class FilterCriteria: FilterPropertyValue 
+		{
+			public string VariableName { get; set; }
+			public string Condition { get; set; }
+		}
+
+		private IList<FilterCriteria> GetFilterCriterias(IList<FilterPropertyValue> filters)
+		{
+			List<FilterCriteria> criterias = new List<GenericDao<T, PK>.FilterCriteria>();
+			foreach (var filter in filters)
+			{
+			}
+
+			return null;
+		}
+
 		protected T[] GetFilteredRecords(int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
 		{
 			StringBuilder hql = new StringBuilder();
@@ -167,9 +184,9 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			for (int index = 0; index < filters.Count; index++)
 			{
 				if (index < filters.Count - 1)
-					where.Append(GetWhereClauseBasedOnFilter(filters[index], true));
+					where.Append(GetWhereClauseBasedOnFilter(filters[index], "and"));
 				else
-					where.Append(GetWhereClauseBasedOnFilter(filters[index], false));
+					where.Append(GetWhereClauseBasedOnFilter(filters[index], string.Empty));
 			}
 
 			if (where.Length > 0)
@@ -203,34 +220,37 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			return query.Execute();
 		}
 
-		private string GetWhereClauseBasedOnFilter(FilterPropertyValue filter, bool appendAnd)
+		private string GetWhereClauseBasedOnFilter(FilterPropertyValue filter, string condition)
 		{
+			if (!string.IsNullOrEmpty(condition))
+				condition = " " + condition + " ";
+
 			switch (filter.Type)
 			{
 				case FilterPropertyValueType.Equals:
-					return string.Format("el.{0} = :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format("el.{0} = :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 				case FilterPropertyValueType.NotEquals:
-					return string.Format("el.{0} <> :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format("el.{0} <> :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 				case FilterPropertyValueType.Like:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
-						return string.Format("el.{0} like :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+						return string.Format("el.{0} like :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 					return string.Empty;
 				case FilterPropertyValueType.NotLike:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
-						return string.Format("el.{0} not like :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+						return string.Format("el.{0} not like :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 					return string.Empty;
 				case FilterPropertyValueType.Greater:
-					return string.Format("el.{0} > :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format("el.{0} > :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 				case FilterPropertyValueType.GreaterEquals:
-					return string.Format("el.{0} >= :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format("el.{0} >= :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 				case FilterPropertyValueType.Lower:
-					return string.Format("el.{0} < :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format("el.{0} < :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 				case FilterPropertyValueType.LowerEquals:
-					return string.Format("el.{0} <= :{1}{2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format("el.{0} <= :{1}{2}", filter.Property, filter.Property.ToLower(), condition);
 				case FilterPropertyValueType.In:
-					return string.Format(":{1} in elements(el.{0}){2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format(":{1} in elements(el.{0}){2}", filter.Property, filter.Property.ToLower(), condition);
 				case FilterPropertyValueType.NotIn:
-					return string.Format(":{1} not in elements(el.{0}){2}", filter.Property, filter.Property.ToLower(), (appendAnd) ? " and " : "");
+					return string.Format(":{1} not in elements(el.{0}){2}", filter.Property, filter.Property.ToLower(), condition);
 			}
 			return string.Empty;
 		}

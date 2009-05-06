@@ -22,6 +22,8 @@ namespace Bagge.Seti.WebSite
 
 		protected override void OnInit(EventArgs e)
 		{
+			ObjectDataSource.DataBinding += new EventHandler(ObjectDataSource_DataBinding);
+
 			ObjectDataSource.Selecting += new EventHandler<ObjectContainerDataSourceSelectingEventArgs>(ObjectDataSource_Selecting);
 			ObjectDataSource.Inserting += new EventHandler<ObjectContainerDataSourceInsertingEventArgs>(ObjectDataSource_Inserting);
 			ObjectDataSource.Updating += new EventHandler<ObjectContainerDataSourceUpdatingEventArgs>(ObjectDataSource_Updating);
@@ -33,6 +35,10 @@ namespace Bagge.Seti.WebSite
 			AssignTypeNameToSecureContainers(typeof(T).AssemblyQualifiedName);
 
 			base.OnInit(e);
+		}
+
+		void ObjectDataSource_DataBinding(object sender, EventArgs e)
+		{
 		}
 
 		void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)
