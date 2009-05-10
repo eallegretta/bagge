@@ -52,7 +52,10 @@
 				DataNavigateUrlFormatString="ProviderEditor.aspx?Id={0}&Action=Edit"
 				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" />
-			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
+			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" 
+				ItemStyle-HorizontalAlign="Center" 
+				UndeleteImageUrl="<%$ Resources:WebSite, IconRecycleImagePath%>"
+				ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
 				meta:resourcekey="DeleteField"></seti:DeleteUndeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>

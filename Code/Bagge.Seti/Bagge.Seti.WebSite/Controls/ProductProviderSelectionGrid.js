@@ -5,9 +5,15 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
-function ProductProviderSelectionGrid(tableId, hdnId, itemId, priceId, deleteIconUrl, isReadOnly) {
+function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, deleteIconUrl, isReadOnly) {
 
 	this.table = $("#" + tableId);
+	this.addButton = $("#" + btnId);
+	this.addButton[0].behavior = this;
+	this.addButton.click(function() {
+		this.behavior.addSelectedItem();
+	});
+	
 	this.hdn = $("#" + hdnId);
 	this.items = $("#" + itemId);
 	this.price = $("#" + priceId);

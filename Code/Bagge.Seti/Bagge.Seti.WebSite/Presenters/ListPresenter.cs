@@ -50,7 +50,8 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		protected virtual void OnLoad(object sender, EventArgs e)
 		{
-			
+			if (View.IsPostBack)
+				View.DataBind();
 		}
 
 		public virtual void Select(int pageIndex, int pageSize, string orderBy, IList<FilterPropertyValue> filters)

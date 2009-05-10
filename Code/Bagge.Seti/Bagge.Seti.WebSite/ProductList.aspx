@@ -42,10 +42,11 @@
 				meta:resourcekey="EditField" >
 				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
 			</seti:SecureHyperLinkField>
-			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
-				meta:resourcekey="DeleteField">
-				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
-			</seti:DeleteUndeleteCommandField>
+			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" 
+				ItemStyle-HorizontalAlign="Center" 
+				UndeleteImageUrl="<%$ Resources:WebSite, IconRecycleImagePath%>"
+				ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
+				meta:resourcekey="DeleteField"></seti:DeleteUndeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
 	<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/ProductEditor.aspx" />

@@ -21,7 +21,8 @@ namespace Bagge.Seti.BusinessLogic
 
 		public virtual Customer GetByCuit(string cuit)
 		{
-			Check.Require(!string.IsNullOrEmpty(cuit));
+			if (cuit == string.Empty)
+				return null;
 
 			Customer[] customers = this.FindAllActiveByProperty("CUIT", cuit);
 			if (customers.Length > 0)
@@ -40,6 +41,9 @@ namespace Bagge.Seti.BusinessLogic
 			else
 			{
 				Customer customerInDb = GetByCuit(customer.CUIT);
+				if (customerInDb == null)
+					return true;
+
 				return customerInDb.Equals(customer);
 			}
 		}

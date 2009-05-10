@@ -41,6 +41,7 @@ namespace Bagge.Seti.WebSite
 		{
 			OnDeleting((PK)e.Keys["Id"]);
 			e.Cancel = true;
+			DataBind();
 		}
 
 		private void ObjectDataSource_Selecting(object sender, ObjectContainerDataSourceSelectingEventArgs e)

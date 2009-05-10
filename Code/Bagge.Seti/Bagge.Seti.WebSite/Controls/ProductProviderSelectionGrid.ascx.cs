@@ -125,8 +125,16 @@ namespace Bagge.Seti.WebSite.Controls
 			else
 				DataBind();
 
-			RegisterJavascripts();
+			EnsureRegisterJavascripts();
 
+		}
+
+		private bool _isJavascriptRendered = false;
+
+		private void EnsureRegisterJavascripts()
+		{
+			if (!_isJavascriptRendered)
+				RegisterJavascripts();
 		}
 
 		private void RegisterJavascripts()
@@ -137,25 +145,24 @@ namespace Bagge.Seti.WebSite.Controls
 				{
 					Page.ClientScript.RegisterClientScriptInclude("ProductProviderSelectionGrid", ResolveUrl("ProductProviderSelectionGrid.js"));
 					Page.ClientScript.RegisterStartupScript(typeof(string), "ProductProviderSelectionGridObject",
-						string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', {6});",
-							ClientID, _items.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
+						string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7});",
+							ClientID, _items.ClientID, _add.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
 							GetDeleteImagePath(), ReadOnly.ToString().ToLower()),
 							true);
-					_add.OnClientClick = string.Format("{0}_instance.addSelectedItem();return false;", ClientID);
 				}
 			}
 			else
 			{
-				string script = string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', {6});",
-							ClientID, _items.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
+				string script = string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7});",
+							ClientID, _items.ClientID, _add.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
 							GetDeleteImagePath(), ReadOnly.ToString().ToLower());
 				ScriptManager.RegisterStartupScript(this,
 					typeof(string),
 					"ProductProviderSelectionGridObject",
 					script,
 					true);
-				_add.OnClientClick = string.Format("{0}_instance.addSelectedItem();return false;", ClientID);
 			}
+			_isJavascriptRendered = true;
 		}
 
 		private string GetDeleteImagePath()
@@ -313,10 +320,10 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			if (SelectedItems.Count > 0)
 			{
+				EnsureRegisterJavascripts();
 				string script = string.Format("{0}_instance.refresh();", ClientID);
 				if (ScriptManager.GetCurrent(Page).IsInAsyncPostBack)
 				{
-					RegisterJavascripts();
 					ScriptManager.RegisterStartupScript(this, typeof(string), Guid.NewGuid().ToString(), script, true);
 				}
 				else

@@ -12,8 +12,7 @@
 				<asp:Literal ID="_priceTitle" runat="server" meta:resourcekey="PriceTitleLiteral"></asp:Literal>
 			</th>
 			<td rowspan="2" valign="bottom" style="padding-bottom: 4px">
-				<asp:Button  ID="_add" runat="server" UseSubmitBehavior="false" meta:resourcekey="AddButton"
-					CausesValidation="true" ValidationGroup="ProductProviderSelectionGrid" />
+				<input id="_add" class="button" type="button" runat="server" meta:resourcekey="AddButton" />
 			</td>
 		</tr>
 		<tr>
@@ -24,8 +23,6 @@
 			</td>
 			<td>
 				<asp:TextBox ID="_price" runat="server" meta:resourcekey="PriceTextBox"></asp:TextBox>
-				<asp:RegularExpressionValidator ID="_priceValidator" runat="server" ControlToValidate="_price"
-					ValidationExpression="^\d+(?:\.\d*)?$"></asp:RegularExpressionValidator>
 			</td>
 		</tr>
 	</table>

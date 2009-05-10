@@ -24,11 +24,13 @@ namespace Bagge.Seti.BusinessLogic
 
 		public virtual Provider GetByCuit(string cuit)
 		{
-			Check.Require(!string.IsNullOrEmpty(cuit));
+			if (cuit == string.Empty)
+				return null;
 
 			Provider[] providers = this.FindAllActiveByProperty("CUIT", cuit);
 			if (providers.Length > 0)
 				return providers[0];
+
 			return null;
 		}
 
@@ -55,6 +57,9 @@ namespace Bagge.Seti.BusinessLogic
 			else
 			{
 				Provider providerInDb = GetByCuit(provider.CUIT);
+				if (providerInDb == null)
+					return true;
+
 				return providerInDb.Equals(provider);
 			}
 		}
@@ -87,9 +92,11 @@ namespace Bagge.Seti.BusinessLogic
 			if (!IsCuitUnique(instance))
 				throw new BusinessRuleException(Resources.CUITNotUniqueErrorMessage);
 
-			SessionScopeUtils.FlushSessionScope();
-
-			_productProviderDao.DeleteByProvider(instance.Id);
+			if (!IsDeleteOrUndelete)
+			{
+				SessionScopeUtils.FlushSessionScope();
+				_productProviderDao.DeleteByProvider(instance.Id);
+			}
 
 			base.Update(instance);
 		}
@@ -106,8 +113,15 @@ namespace Bagge.Seti.BusinessLogic
 			var productsFilter = (from fil in filter
 								  where fil.Property == "Products"
 								  select fil).FirstOrDefault();
-			if(productsFilter != null)
-				productsFilter.Value = _productProviderDao.FindAllByProduct((int)productsFilter.Value);
+
+			filter.Remove(productsFilter);
+
+			if (productsFilter != null)
+			{
+				foreach(var productProvider in _productProviderDao.FindAllByProduct((int)productsFilter.Value))
+					filter.Add(new FilterPropertyValue { Property = productsFilter.Property, Type = productsFilter.Type, Value = productProvider }); 
+			}
+				
 		}
 
 		protected override Provider[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)

@@ -65,7 +65,7 @@ namespace Bagge.Seti.WebSite.Controls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _add;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton _add;
         
         /// <summary>
         /// _name control.
@@ -84,15 +84,6 @@ namespace Bagge.Seti.WebSite.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox _price;
-        
-        /// <summary>
-        /// _priceValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator _priceValidator;
         
         /// <summary>
         /// _items control.
