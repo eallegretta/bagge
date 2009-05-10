@@ -59,9 +59,11 @@ namespace Bagge.Seti.BusinessLogic
 				provider.Product = instance;
 			}
 
-			SessionScopeUtils.FlushSessionScope();
-
-			_productProviderDao.DeleteByProduct(instance.Id);
+			if (!IsDeleteOrUndelete)
+			{
+				SessionScopeUtils.FlushSessionScope();
+				_productProviderDao.DeleteByProduct(instance.Id);
+			}
 
 			base.Update(instance);
 		}
@@ -77,11 +79,17 @@ namespace Bagge.Seti.BusinessLogic
 
 		private void ReplaceProvidersFilter(IList<FilterPropertyValue> filter)
 		{
-			var productsFilter = (from fil in filter
+			var providersFilter = (from fil in filter
 								  where fil.Property == "Providers"
 								  select fil).FirstOrDefault();
-			if(productsFilter != null)
-				productsFilter.Value = _productProviderDao.FindAllByProduct((int)productsFilter.Value);
+
+			filter.Remove(providersFilter);
+
+			if (providersFilter != null)
+			{
+				foreach (var product in _productProviderDao.FindAllByProvider((int)providersFilter.Value))
+					filter.Add(new FilterPropertyValue { Property = providersFilter.Property, Type = providersFilter.Type, Value = product });
+			}
 		}
 
 		protected override Product[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)

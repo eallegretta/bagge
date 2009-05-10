@@ -52,7 +52,8 @@ namespace Bagge.Seti.WebSite.Presenters
 		}
 		protected virtual void OnLoad(object sender, EventArgs e)
 		{
-			View.DataBind();
+			if(View.IsPostBack)
+				View.DataBind();
 		}
 
 		protected T SelectedEntity

@@ -85,10 +85,12 @@ namespace Bagge.Seti.WebSite
 		{
 			set
 			{
-				var district = Details.FindControl("_district");
-				if (district is DropDownList)
+				var district = Details.FindControl("_district") as DropDownList;
+				if (district != null)
 				{
-					((DropDownList)district).DataSource = value;
+					if (value != null && value.Length > 0)
+						district.SelectedValue = value[0].Id.ToString();
+					district.DataSource = value;
 					district.DataBind();
 				}
 			}
