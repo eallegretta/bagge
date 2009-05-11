@@ -69,6 +69,7 @@
     <Compile Include="ActiveRecord\ProductProviderDao.cs" />
     <Compile Include="ActiveRecord\ProviderDao.cs" />
     <Compile Include="ActiveRecord\RoleDao.cs" />
+    <Compile Include="ActiveRecord\SimpleFindGetDao.cs" />
     <Compile Include="ActiveRecord\TicketDao.cs" />
     <Compile Include="ActiveRecord\TicketStatusDao.cs" />
     <Compile Include="Contracts\IAccessibilityDao.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Contracts\IProductProviderDao.cs" />
     <Compile Include="Contracts\IProviderDao.cs" />
     <Compile Include="Contracts\IRoleDao.cs" />
+    <Compile Include="Contracts\ISimpleFindGetDao.cs" />
     <Compile Include="Contracts\ISlicedFindDao.cs" />
     <Compile Include="Contracts\ITicketDao.cs" />
     <Compile Include="Contracts\ITicketStatusDao.cs" />
@@ -97,6 +99,10 @@
       <Project>{32F8F81B-0F4D-4ABA-9CBE-1613FDA7B328}</Project>
       <Name>Bagge.Seti.BusinessEntities</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.Extensions\Bagge.Seti.Extensions.csproj">
+      <Project>{108362FC-4C87-4D0D-8EBF-523F4235DAC0}</Project>
+      <Name>Bagge.Seti.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
