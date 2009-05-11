@@ -11,11 +11,14 @@ namespace Bagge.Seti.WebSite.Presenters
 	public class ProviderEditorPresenter : EditorPresenter<Provider, int>
 	{
 
-		IManager<CountryState, int> _countryStateManager;
-		IManager<District, int> _districtManager;
-		IManager<ProviderCalification, int> _providerCalificationManager;
+		ISimpleFindGetManager<CountryState, int> _countryStateManager;
+		ISimpleFindGetManager<District, int> _districtManager;
+		ISimpleFindGetManager<ProviderCalification, int> _providerCalificationManager;
 
-		public ProviderEditorPresenter(IProviderEditorView view, IProviderManager manager, IManager<ProviderCalification, int> providerCalificationManager, IManager<CountryState, int> countryStateManager, IManager<District, int> districtManager)
+		public ProviderEditorPresenter(IProviderEditorView view, IProviderManager manager, 
+			ISimpleFindGetManager<ProviderCalification, int> providerCalificationManager,
+			ISimpleFindGetManager<CountryState, int> countryStateManager, 
+			ISimpleFindGetManager<District, int> districtManager)
 			: base(view, manager)
 		{
 			_countryStateManager = countryStateManager;
@@ -47,8 +50,8 @@ namespace Bagge.Seti.WebSite.Presenters
 			switch (mode)
 			{
 				case EditorAction.Insert:
-					View.Califications = _providerCalificationManager.FindAllOrdered("Name").ToArray();
-					CountryState[] states = _countryStateManager.FindAllOrdered("Name");
+					View.Califications = _providerCalificationManager.FindAll().ToArray();
+					CountryState[] states = _countryStateManager.FindAll();
 
 					View.CountryStates = states;
 					if (states.Length > 1)
@@ -60,8 +63,8 @@ namespace Bagge.Seti.WebSite.Presenters
 					}
 					break;
 				case EditorAction.Update:
-					View.Califications = _providerCalificationManager.FindAllOrdered("Name").ToArray();
-					View.CountryStates = _countryStateManager.FindAllOrdered("Name");
+					View.Califications = _providerCalificationManager.FindAll().ToArray();
+					View.CountryStates = _countryStateManager.FindAll();
 
 					CountryState state = SelectedEntity.District.CountryState;
 					View.SelectedCountryId = state.Id;

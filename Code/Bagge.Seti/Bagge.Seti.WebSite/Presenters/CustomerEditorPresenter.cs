@@ -11,10 +11,11 @@ namespace Bagge.Seti.WebSite.Presenters
 	public class CustomerEditorPresenter : EditorPresenter<Customer, int>
 	{
 
-		IManager<CountryState, int> _countryStateManager;
-		IManager<District, int> _districtManager;
+		ISimpleFindGetManager<CountryState, int> _countryStateManager;
+		ISimpleFindGetManager<District, int> _districtManager;
 
-		public CustomerEditorPresenter(ICustomerEditorView view, ICustomerManager manager, IManager<CountryState, int> countryStateManager, IManager<District, int> districtManager)
+		public CustomerEditorPresenter(ICustomerEditorView view, ICustomerManager manager, 
+			ISimpleFindGetManager<CountryState, int> countryStateManager, ISimpleFindGetManager<District, int> districtManager)
 			: base(view, manager)
 		{
 			_countryStateManager = countryStateManager;
@@ -53,7 +54,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			switch (mode)
 			{
 				case EditorAction.Insert:
-					CountryState[] states = _countryStateManager.FindAllOrdered("Name");
+					CountryState[] states = _countryStateManager.FindAll();
 
 					View.CountryStates = states;
 					if (states.Length > 1)
@@ -65,7 +66,7 @@ namespace Bagge.Seti.WebSite.Presenters
 					}
 					break;
 				case EditorAction.Update:
-					View.CountryStates = _countryStateManager.FindAllOrdered("Name");
+					View.CountryStates = _countryStateManager.FindAll();
 
 					CountryState state = SelectedEntity.District.CountryState;
 					View.SelectedCountryId = state.Id;

@@ -183,6 +183,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditorAction.cs" />
+    <Compile Include="EmployeeList.aspx.cs">
+      <DependentUpon>EmployeeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeList.aspx.designer.cs">
+      <DependentUpon>EmployeeList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -220,6 +227,8 @@
     <Compile Include="Page.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Presenters\EmployeeEditorPresenter.cs" />
+    <Compile Include="Presenters\EmployeeListPresenter.cs" />
     <Compile Include="Presenters\ProductEditorPresenter.cs" />
     <Compile Include="Presenters\ProductListPresenter.cs" />
     <Compile Include="Presenters\ProviderEditorPresenter.cs" />
@@ -289,6 +298,8 @@
     <Compile Include="Views\IEditorView.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\IEmployeeEditorView.cs" />
+    <Compile Include="Views\IEmployeeListView.cs" />
     <Compile Include="Views\IFilteredListView.cs" />
     <Compile Include="Views\IFunctionEditorView.cs">
       <SubType>Code</SubType>
@@ -471,6 +482,10 @@
     <Content Include="App_LocalResources\RecoverPassword.aspx.resx">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="EmployeeList.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\EmployeeList.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

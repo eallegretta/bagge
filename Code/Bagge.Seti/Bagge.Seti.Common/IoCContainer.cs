@@ -45,9 +45,9 @@ namespace Bagge.Seti.Common
 			get { return GetObject<IAccessibilityTypeManager>("AccessibilityTypeManager"); }
 		}
 
-		public static IManager<CountryState, int> CountryStateManager
+		public static ISimpleFindGetManager<CountryState, int> CountryStateManager
 		{
-			get { return GetObject<IManager<CountryState, int>>("CountryStateManager"); }
+			get { return GetObject<ISimpleFindGetManager<CountryState, int>>("CountryStateManager"); }
 		}
 
 		public static ICustomerManager CustomerManager
@@ -55,14 +55,19 @@ namespace Bagge.Seti.Common
 			get { return GetObject<ICustomerManager>("CustomerManager"); }
 		}
 
-		public static IManager<District, int> DistrictManager
+		public static ISimpleFindGetManager<District, int> DistrictManager
 		{
-			get { return GetObject<IManager<District, int>>("DistrictManager"); }
+			get { return GetObject<ISimpleFindGetManager<District, int>>("DistrictManager"); }
 		}
 
 		public static IEmployeeManager EmployeeManager
 		{
 			get { return GetObject<IEmployeeManager>("EmployeeManager"); }
+		}
+
+		public static ISimpleFindGetManager<EmployeeCategory, int> EmployeeCategoryManager
+		{
+			get { return GetObject<ISimpleFindGetManager<EmployeeCategory, int>>("EmployeeCategoryManager"); }
 		}
 
 		public static IFunctionManager FunctionManager
@@ -82,9 +87,9 @@ namespace Bagge.Seti.Common
 		}
 
 
-		public static IManager<ProviderCalification, int> ProviderCalificationManager
+		public static ISimpleFindGetManager<ProviderCalification, int> ProviderCalificationManager
 		{
-			get { return GetObject<IManager<ProviderCalification, int>>("ProviderCalificationManager"); }
+			get { return GetObject<ISimpleFindGetManager<ProviderCalification, int>>("ProviderCalificationManager"); }
 		}
 
 		public static IRoleManager RoleManager
