@@ -10,11 +10,39 @@ namespace Bagge.Seti.WebSite
 {
 	public abstract class FilteredListPage<T, PK>: ListPage<T, PK>, IFilteredListView where T: PrimaryKeyDomainObject<T, PK>
 	{
+		private void AddFilterValue<T>(object value, string property, 
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+		{
+			filters.Add(
+					new FilterPropertyValue
+					{
+						Property = property,
+						Value = Convert.ChangeType(value, typeof(T)),
+						Type = type
+					});
+		}
+
+		protected virtual void AddTextBoxFilterValue<T>(TextBox control, string property, 
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+		{
+			if (!string.IsNullOrEmpty(control.Text))
+			{
+				AddFilterValue<T>(control.Text, property, type, filters);
+			}
+		}
+
+		protected virtual void AddDropDownFilterValue<T>(DropDownList control, string property,
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+		{
+			if (!string.IsNullOrEmpty(control.SelectedValue))
+			{
+				AddFilterValue<T>(control.SelectedValue, property, type, filters);
+			}
+		}
 
 		protected virtual void AddDeletedFilterValue(IList<FilterPropertyValue> filters)
 		{
-			if (!string.IsNullOrEmpty(DeletedDropDownList.SelectedValue))
-				filters.Add(new FilterPropertyValue { Property = "Deleted", Value = DeletedDropDownList.SelectedValue.ToBoolean(), Type = FilterPropertyValueType.Equals });
+			AddDropDownFilterValue<bool>(DeletedDropDownList, "Deleted", FilterPropertyValueType.Equals, filters);
 		}
 
 		protected virtual void AddDeletedFilterItems(DropDownList deleted)

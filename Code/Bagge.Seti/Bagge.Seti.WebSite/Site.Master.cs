@@ -5,11 +5,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Bagge.Seti.WebSite.Views;
+using Bagge.Seti.BusinessEntities;
+using Bagge.Seti.Common;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.WebSite
 {
 	public partial class Site : System.Web.UI.MasterPage
 	{
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+			SetLoggedInFullName();
+		}
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (Page is IEditorView)
@@ -27,6 +36,19 @@ namespace Bagge.Seti.WebSite
 
 				if (!string.IsNullOrEmpty(title))
 					((Literal)this._siteMapPath.Controls[_siteMapPath.Controls.Count - 1].Controls[0]).Text = title;
+			}
+
+			
+		}
+
+
+		private void SetLoggedInFullName()
+		{
+			if (Page.User is SetiPrincipal && Page.User.Identity is Employee)
+			{
+				var fullName = _loginFullnameView.FindControl("_loginFullname") as Literal;
+				if(fullName != null)
+					fullName.Text = ((Employee)Page.User.Identity).Fullname;
 			}
 		}
 

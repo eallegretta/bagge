@@ -117,10 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LoadingAnimation.Text" xml:space="preserve">
-    <value>Cargando</value>
+  <data name="CategoryField.HeaderText" xml:space="preserve">
+    <value>Categoría</value>
   </data>
-  <data name="LogoutLink.Text" xml:space="preserve">
-    <value>Desconectarse</value>
+  <data name="DeleteField.ConfirmationMessage" xml:space="preserve">
+    <value>¿Esta seguro que desea borrar el empleado?</value>
+  </data>
+  <data name="DeleteField.HeaderText" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="DeleteField.UndeleteConfirmationMessage" xml:space="preserve">
+    <value>¿Esta seguro que desea reciclar el empleado?</value>
+  </data>
+  <data name="EditField.HeaderText" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="FileNumberField.HeaderText" xml:space="preserve">
+    <value>Legajo</value>
+  </data>
+  <data name="FilterButton.Text" xml:space="preserve">
+    <value>Filtrar Empleados</value>
+  </data>
+  <data name="FilterCategoryLiteral.Text" xml:space="preserve">
+    <value>Categor&amp;iacute;a:</value>
+  </data>
+  <data name="FilterDeletedLiteral.Text" xml:space="preserve">
+    <value>Borrado:</value>
+  </data>
+  <data name="FilterFileNumberLiteral.Text" xml:space="preserve">
+    <value>Legajo:</value>
+  </data>
+  <data name="FilterFirstnameLiteral.Text" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="FilterLastnameLiteral.Text" xml:space="preserve">
+    <value>Apellido:</value>
+  </data>
+  <data name="FilteUsernameLiteral.Text" xml:space="preserve">
+    <value>Usuario:</value>
+  </data>
+  <data name="FirstnameField.HeaderText" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Grid.EmptyDataText" xml:space="preserve">
+    <value>No se han encontrado empleados</value>
+  </data>
+  <data name="LastnameField.HeaderText" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="ListCommands.NewText" xml:space="preserve">
+    <value>Nuevo Empleado</value>
+  </data>
+  <data name="Page.Title" xml:space="preserve">
+    <value>Seti &gt; Listado de Empleados</value>
+  </data>
+  <data name="UsernameField.HeaderText" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="ViewField.HeaderText" xml:space="preserve">
+    <value>Ver</value>
   </data>
 </root>

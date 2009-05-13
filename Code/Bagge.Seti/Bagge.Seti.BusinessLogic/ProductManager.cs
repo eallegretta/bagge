@@ -68,6 +68,15 @@ namespace Bagge.Seti.BusinessLogic
 			base.Update(instance);
 		}
 
+		public override int CountByProperties(IList<FilterPropertyValue> filter)
+		{
+			Check.Require(filter != null);
+
+			ReplaceProvidersFilter(filter);
+
+			return base.CountByProperties(filter);
+		}
+
 		protected override Product[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
 			Check.Require(filter != null);
@@ -80,7 +89,7 @@ namespace Bagge.Seti.BusinessLogic
 		private void ReplaceProvidersFilter(IList<FilterPropertyValue> filter)
 		{
 			var providersFilter = (from fil in filter
-								  where fil.Property == "Providers"
+								  where fil.Property == "Providers" && fil.Value is int
 								  select fil).FirstOrDefault();
 
 			filter.Remove(providersFilter);

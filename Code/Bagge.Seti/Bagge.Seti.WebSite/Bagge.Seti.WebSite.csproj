@@ -183,6 +183,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditorAction.cs" />
+    <Compile Include="EmployeeEditor.aspx.cs">
+      <DependentUpon>EmployeeEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeEditor.aspx.designer.cs">
+      <DependentUpon>EmployeeEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeList.aspx.cs">
       <DependentUpon>EmployeeList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -223,6 +230,9 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.ashx.cs">
+      <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
     <Compile Include="Page.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -387,6 +397,7 @@
     <Content Include="App_Themes\Default\Images.skin" />
     <None Include="Config\Objects.config" />
     <None Include="Config\TypeAliases.config" />
+    <Content Include="Logout.ashx" />
     <Content Include="List.Master" />
     <Content Include="Editor.Master" />
     <Content Include="Login.aspx" />
@@ -486,6 +497,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\EmployeeList.aspx.resx" />
+    <Content Include="EmployeeEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\EmployeeEditor.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

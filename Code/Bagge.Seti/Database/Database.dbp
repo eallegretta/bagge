@@ -30,6 +30,7 @@ Begin DataProject = "Database"
          Script = "Employees.sql"
          Script = "ProviderCalification.sql"
          Script = "Role.sql"
+         Script = "RoleEmployee.sql"
          Script = "TicketStatus.sql"
       End
    End

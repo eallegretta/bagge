@@ -20,6 +20,12 @@
 	<asp:SiteMapDataSource ID="_siteMapDataSource" runat="server"  />
 	<div id="site">
 		<div id="header">
+			<asp:LoginView ID="_loginFullnameView" runat="server">
+				<LoggedInTemplate>
+					<div id="loginFullname">Bienvenido <b><asp:Literal ID="_loginFullname" runat="server"></asp:Literal></b> |
+					<asp:HyperLink ID="_logout" runat="server" NavigateUrl="~/Logout.ashx" meta:resourcekey="LogoutLink"></asp:HyperLink></div>
+				</LoggedInTemplate>
+			</asp:LoginView>
 		</div>
 		<div id="menu">
 			<asp:LoginView ID="_menuLoginView" runat="server">

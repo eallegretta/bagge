@@ -141,6 +141,12 @@
   <data name="Validators_Customer_Email" xml:space="preserve">
     <value>El e-mail es inválido</value>
   </data>
+  <data name="Validators_Employee_Email" xml:space="preserve">
+    <value>El e-mail es inválido</value>
+  </data>
+  <data name="Validators_Employee_Username" xml:space="preserve">
+    <value>El nombre de usuario es requerido</value>
+  </data>
   <data name="Validators_PrimaryKeyDomainObject_Name_Length" xml:space="preserve">
     <value>El nombre debe tener una longitud entre 1 y 50 caracteres.</value>
   </data>
