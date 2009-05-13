@@ -101,8 +101,19 @@ namespace Bagge.Seti.BusinessLogic
 			base.Update(instance);
 		}
 
+		public override int CountByProperties(IList<FilterPropertyValue> filter)
+		{
+			Check.Require(filter != null);
+
+			ReplaceProductsFilter(filter);
+
+			return base.CountByProperties(filter);
+		}
+
 		protected override Provider[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
+			Check.Require(filter != null);
+
 			ReplaceProductsFilter(filter);
 
 			return base.FindAllByProperties(filter, orderBy, ascending);
@@ -111,7 +122,7 @@ namespace Bagge.Seti.BusinessLogic
 		private void ReplaceProductsFilter(IList<FilterPropertyValue> filter)
 		{
 			var productsFilter = (from fil in filter
-								  where fil.Property == "Products"
+								  where fil.Property == "Products" && fil.Value is int
 								  select fil).FirstOrDefault();
 
 			filter.Remove(productsFilter);
@@ -126,6 +137,8 @@ namespace Bagge.Seti.BusinessLogic
 
 		protected override Provider[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
+			Check.Require(filter != null);
+
 			ReplaceProductsFilter(filter);
 
 			return base.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);

@@ -6,6 +6,7 @@ using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
 using Castle.ActiveRecord;
 using System;
+using Bagge.Seti.BusinessEntities.Validators;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -14,6 +15,7 @@ namespace Bagge.Seti.BusinessEntities
 	public class Employee : AuditablePrimaryKeyDomainObject<Employee, int>, IUser
 	{
 		[Property]
+		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Employee_Username", MessageTemplateResourceType = typeof(Employee))]
 		public string Username
 		{
 			get;
@@ -71,6 +73,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[EmailValidator(MessageTemplateResourceName = "Validators_Employee_Email", MessageTemplateResourceType = typeof(Employee), Required = false)]
 		public string Email
 		{
 			get;
@@ -92,7 +95,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 
-		[HasAndBelongsToMany(Table = "RoleEmployee", ColumnKey = "EmployeeId", ColumnRef = "RoleId", Lazy = true, Inverse = true)]
+		[HasAndBelongsToMany(Table = "RoleEmployee", ColumnKey = "EmployeeId", ColumnRef = "RoleId", Lazy = true, Inverse = false)]
 		public virtual IList<Role> Roles
 		{
 			get;

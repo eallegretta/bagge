@@ -20,6 +20,18 @@
 {
 	background-image:url(Images/siteHeader.jpg);
 	height:110px;
+	position:relative;
+}
+
+#loginFullname
+{
+	background-color:White;
+	bottom:0px;
+	right:0px;
+	position:absolute;
+	padding:5px;
+	border-top:1px solid #2f8eb4;
+	border-left:1px solid #2f8eb4;
 }
 
 

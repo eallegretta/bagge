@@ -72,10 +72,10 @@
 			<seti:SecureBoundField DataField="Apartment" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="ApartmentField" />
 			<seti:SecureTemplateField PropertyName="ZipCode" meta:resourcekey="ZipCodeField">
 				<InsertItemTemplate>
-					<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>'></asp:TextBox>
+					<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>' Width="80px" SkinID="customWidth"></asp:TextBox>
 				</InsertItemTemplate>
 				<EditItemTemplate>
-					<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>'></asp:TextBox>
+					<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>' Width="80px" SkinID="customWidth"></asp:TextBox>
 				</EditItemTemplate>
 				<ItemTemplate>
 				<%#Eval("ZipCode")%>

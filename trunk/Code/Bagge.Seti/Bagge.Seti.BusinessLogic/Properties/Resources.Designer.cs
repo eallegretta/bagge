@@ -88,6 +88,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La contraseña es requerida.
+        /// </summary>
+        internal static string EmployeePasswordRequiredErrorMessage {
+            get {
+                return ResourceManager.GetString("EmployeePasswordRequiredErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El link de generación de contraseña es inválido.
         /// </summary>
         internal static string EmployeeRecoverPasswordKeyNotMatch {

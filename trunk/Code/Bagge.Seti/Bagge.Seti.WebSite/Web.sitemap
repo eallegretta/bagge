@@ -12,7 +12,9 @@
 			<siteMapNode title="Alta Insumo" url="~/ProductEditor.aspx" editTitle="Editar Insumo" viewTitle="Ver Insumo"></siteMapNode>
 		</siteMapNode>
 		<siteMapNode url="" title="Tickets"></siteMapNode>
-		<siteMapNode url="" title="Empleados"></siteMapNode>
+		<siteMapNode url="~/EmployeeList.aspx" title="Empleados">
+			<siteMapNode title="Alta Empleado" url="~/EmployeeEditor.aspx" editTitle="Editar Empleado" viewTitle="Ver Empleado"></siteMapNode>
+		</siteMapNode>
 		<siteMapNode url="" title="Reportes"></siteMapNode>
 		<siteMapNode url="~/AlertConfiguration.aspx" title="Alertas" editTitle="Editar Configuración de Alertas" viewTitle="Ver Configuración de Alertas"></siteMapNode>
 		<siteMapNode url="" title="Seguridad">

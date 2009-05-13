@@ -50,6 +50,15 @@ namespace Bagge.Seti.WebSite {
         protected global::System.Web.UI.WebControls.SiteMapDataSource _siteMapDataSource;
         
         /// <summary>
+        /// _loginFullnameView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginView _loginFullnameView;
+        
+        /// <summary>
         /// _menuLoginView control.
         /// </summary>
         /// <remarks>

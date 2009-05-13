@@ -126,6 +126,9 @@
   <data name="EmployeeByUsernameNotFoundErrorMessage" xml:space="preserve">
     <value>El empleado cuyo nombre de usuario es {0} no pudo ser encontrado</value>
   </data>
+  <data name="EmployeePasswordRequiredErrorMessage" xml:space="preserve">
+    <value>La contraseña es requerida</value>
+  </data>
   <data name="EmployeeRecoverPasswordKeyNotMatch" xml:space="preserve">
     <value>El link de generación de contraseña es inválido</value>
   </data>

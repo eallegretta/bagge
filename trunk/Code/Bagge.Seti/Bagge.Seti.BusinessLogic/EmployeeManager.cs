@@ -12,14 +12,18 @@ using System.Diagnostics;
 using Castle.Components.Validator;
 using System.Net.Mail;
 using System.Configuration;
+using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
 	public class EmployeeManager: AuditableGenericManager<Employee, int>, IEmployeeManager
 	{
-		public EmployeeManager(IEmployeeDao dao)
+		ISimpleFindGetDao<EmployeeCategory, int> _employeeCategoryDao;
+
+		public EmployeeManager(IEmployeeDao dao, ISimpleFindGetDao<EmployeeCategory, int> employeeCategoryDao)
 			: base(dao)
 		{
+			_employeeCategoryDao = employeeCategoryDao;
 		}
 
 		#region IEmployeeManager Members
@@ -122,6 +126,73 @@ namespace Bagge.Seti.BusinessLogic
 				return employees[0];
 			else
 				throw new ObjectNotFoundException(string.Format(errorMessage, propertyValue));
+		}
+
+
+		public override int CountByProperties(IList<FilterPropertyValue> filter)
+		{
+			Check.Require(filter != null);
+
+			ReplaceEmployeeCategoryFilter(filter);
+
+			return base.CountByProperties(filter);
+		}
+
+		protected override Employee[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
+		{
+			Check.Require(filter != null);
+
+			ReplaceEmployeeCategoryFilter(filter);
+
+			return base.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
+		}
+
+		protected override Employee[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
+		{
+			Check.Require(filter != null);
+
+			ReplaceEmployeeCategoryFilter(filter);
+
+			return base.FindAllByProperties(filter, orderBy, ascending);
+		}
+
+		private void ReplaceEmployeeCategoryFilter(IList<FilterPropertyValue> filters)
+		{
+			var employeeCategoryFilter = (from filter in filters
+										 where filter.Property == "Category" && filter.Value is int
+										 select filter).FirstOrDefault();
+
+			if (employeeCategoryFilter != null)
+				employeeCategoryFilter.Value = _employeeCategoryDao.Get(employeeCategoryFilter.Value.ToString().ToInt32());
+		}
+
+		public override int Create(Employee instance)
+		{
+			Check.Require(instance != null);
+
+			if (string.IsNullOrEmpty(instance.Password))
+				throw new BusinessRuleException(Resources.EmployeePasswordRequiredErrorMessage);
+
+			instance.Password = instance.Password.ToMD5();
+
+			return base.Create(instance);
+		}
+
+		public override void Update(Employee instance)
+		{
+			Check.Require(instance != null);
+
+			SessionScopeUtils.FlushSessionScope();
+
+			if (!string.IsNullOrEmpty(instance.Password))
+				instance.Password = instance.Password.ToMD5();
+			else
+			{
+				Employee userFromDb = Get(instance.Id);
+				instance.Password = userFromDb.Password;
+			}
+
+			base.Update(instance);
 		}
 
 		#endregion
