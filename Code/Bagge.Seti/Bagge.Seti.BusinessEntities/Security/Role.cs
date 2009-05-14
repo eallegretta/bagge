@@ -10,7 +10,7 @@ namespace Bagge.Seti.Security.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
-	public class Role : AuditablePrimaryKeyWithNameDomainObject<Role, int>
+	public class Role : AuditablePrimaryKeyWithNameAndDescriptionDomainObject<Role, int>
 	{
 		public static int SuperAdministratorId
 		{

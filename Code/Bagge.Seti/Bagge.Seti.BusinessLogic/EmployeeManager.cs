@@ -129,34 +129,7 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 
-		public override int CountByProperties(IList<FilterPropertyValue> filter)
-		{
-			Check.Require(filter != null);
-
-			ReplaceEmployeeCategoryFilter(filter);
-
-			return base.CountByProperties(filter);
-		}
-
-		protected override Employee[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
-		{
-			Check.Require(filter != null);
-
-			ReplaceEmployeeCategoryFilter(filter);
-
-			return base.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
-		}
-
-		protected override Employee[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
-		{
-			Check.Require(filter != null);
-
-			ReplaceEmployeeCategoryFilter(filter);
-
-			return base.FindAllByProperties(filter, orderBy, ascending);
-		}
-
-		private void ReplaceEmployeeCategoryFilter(IList<FilterPropertyValue> filters)
+		protected override void ReplaceFilters(IList<FilterPropertyValue> filters)
 		{
 			var employeeCategoryFilter = (from filter in filters
 										 where filter.Property == "Category" && filter.Value is int
