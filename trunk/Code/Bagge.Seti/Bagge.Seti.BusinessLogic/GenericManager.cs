@@ -166,10 +166,13 @@ namespace Bagge.Seti.BusinessLogic
 
 		public virtual int CountByProperty(string property, object value)
 		{
+
 			return Dao.CountByProperty(property, value);
 		}
 
 		#endregion
+
+		protected virtual void ReplaceFilters(IList<FilterPropertyValue> filters) { }
 
 		#region IFindManager<T,PK> Members
 
@@ -191,8 +194,12 @@ namespace Bagge.Seti.BusinessLogic
 
 		protected virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
+			ReplaceFilters(filter);
+
 			return Dao.FindAllByProperties(filter, orderBy, ascending);
 		}
+
+		
 
 		#endregion
 
@@ -216,11 +223,15 @@ namespace Bagge.Seti.BusinessLogic
 
 		protected virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
+			ReplaceFilters(filter);
+
 			return Dao.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
 		}
 
 		public virtual int CountByProperties(IList<FilterPropertyValue> filter)
 		{
+			ReplaceFilters(filter);
+
 			return Dao.CountByProperties(filter);
 		}
 

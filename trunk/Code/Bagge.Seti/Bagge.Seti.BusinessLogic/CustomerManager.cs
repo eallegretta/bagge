@@ -9,6 +9,7 @@ using Bagge.Seti.DataAccess.ActiveRecord;
 using Bagge.Seti.BusinessEntities.Exceptions;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DesignByContract;
+using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -58,8 +59,13 @@ namespace Bagge.Seti.BusinessLogic
 
 		public override void Update(Customer instance)
 		{
-			if (!IsCuitUnique(instance))
-				throw new BusinessRuleException(Resources.CUITNotUniqueErrorMessage);
+			if (!IsDelete)
+			{
+				if (!IsCuitUnique(instance))
+					throw new BusinessRuleException(Resources.CUITNotUniqueErrorMessage);
+			}
+			if (!IsDeleteOrUndelete)
+				SessionScopeUtils.FlushSessionScope();
 
 			base.Update(instance);
 		}
