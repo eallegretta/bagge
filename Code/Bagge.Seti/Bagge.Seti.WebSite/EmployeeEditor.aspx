@@ -42,7 +42,7 @@
 					<asp:DropDownList ID="_categories" runat="server" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<%#Eval("Category")%>
+					<%#Server.HtmlEncode(Eval("Category").ToString())%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="Roles" meta:resourcekey="RolesField">
