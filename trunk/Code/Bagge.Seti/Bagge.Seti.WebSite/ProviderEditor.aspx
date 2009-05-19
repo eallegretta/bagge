@@ -51,7 +51,7 @@
 				</EditItemTemplate>
 				<ItemTemplate>
 					<asp:HiddenField ID="_calification" runat="server" />
-					<%#Eval("Calification")%>
+					<%#Server.HtmlEncode(Eval("Calification").ToString())%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="CountryStateField">
@@ -66,7 +66,7 @@
 					</asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<%#((Bagge.Seti.BusinessEntities.Provider)Container.DataItem).District.CountryState.Name%>
+					<%#Server.HtmlEncode(((Bagge.Seti.BusinessEntities.Provider)Container.DataItem).District.CountryState.Name)%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="DistrictField">
@@ -82,7 +82,7 @@
 				</EditItemTemplate>
 				<ItemTemplate>
 					<asp:HiddenField ID="_district" runat="server" />
-					<%#Eval("District")%>
+					<%#Server.HtmlEncode(Eval("District").ToString())%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureBoundField DataField="Company" ControlStyle-Width="300px" MaxLength="50" meta:resourcekey="CompanyField"></seti:SecureBoundField>
@@ -99,7 +99,7 @@
 					<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>'></asp:TextBox>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<%#Eval("ZipCode")%>
+					<%#Server.HtmlEncode(Eval("ZipCode").ToString())%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="PrimaryPhone"

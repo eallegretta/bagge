@@ -5,6 +5,7 @@ using System.Web;
 using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.WebSite.Views;
+using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
@@ -20,6 +21,7 @@ namespace Bagge.Seti.WebSite.Presenters
 		{
 			_employeeManager = employeeManager;
 			_functionManager = functionManager;
+
 		}
 
 		protected override void OnInit(object sender, EventArgs e)
@@ -31,6 +33,13 @@ namespace Bagge.Seti.WebSite.Presenters
 				view.Functions = _functionManager.FindAllActiveOrdered("Name");
 			}
 			base.OnInit(sender, e);
+		}
+
+		public bool CanDeleteRole(Role role)
+		{
+			Check.Require(role != null);
+
+			return !role.IsSuperAdministratorRole;
 		}
 
 	}

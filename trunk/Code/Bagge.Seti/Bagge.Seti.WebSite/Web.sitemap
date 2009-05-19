@@ -18,7 +18,9 @@
 		<siteMapNode url="" title="Reportes"></siteMapNode>
 		<siteMapNode url="~/AlertConfiguration.aspx" title="Alertas" editTitle="Editar Configuración de Alertas" viewTitle="Ver Configuración de Alertas"></siteMapNode>
 		<siteMapNode url="" title="Seguridad">
-			<siteMapNode url="" title="Roles"></siteMapNode>
+			<siteMapNode url="~/RoleList.aspx" title="Roles">
+				<siteMapNode url="~/RoleEditor.aspx" title="Alta Rol" editTitle="Editar Rol" viewTitle="Ver Rol"></siteMapNode>
+			</siteMapNode>
 			<siteMapNode url="" title="Funciones"></siteMapNode>
 		</siteMapNode>
 	</siteMapNode>

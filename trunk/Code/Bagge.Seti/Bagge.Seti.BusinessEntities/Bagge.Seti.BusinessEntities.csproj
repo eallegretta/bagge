@@ -92,6 +92,13 @@
     </Compile>
     <Compile Include="Provider.cs" />
     <Compile Include="ProviderCalification.cs" />
+    <Compile Include="Reports\BaseReport.cs" />
+    <Compile Include="Reports\CustomersByTicketReport.cs" />
+    <Compile Include="Reports\CustomersBySubscriptionReport.cs" />
+    <Compile Include="Reports\CustomersWithPendingPaymentReport.cs" />
+    <Compile Include="Reports\ProductsByProviderReport.cs" />
+    <Compile Include="Reports\ProductsConsumedReport.cs" />
+    <Compile Include="Reports\TechniciansByTicketReport.cs" />
     <Compile Include="Security\AccessibilityType.cs" />
     <Compile Include="Security\AuditablePrimaryKeyDomainObject.cs" />
     <Compile Include="Security\AuditablePrimaryKeyWithNameAndDescriptionDomainObject.cs" />

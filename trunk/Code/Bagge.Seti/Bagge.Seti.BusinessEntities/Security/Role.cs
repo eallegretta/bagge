@@ -20,6 +20,11 @@ namespace Bagge.Seti.Security.BusinessEntities
 			}
 		}
 
+		public bool IsSuperAdministratorRole
+		{
+			get { return Id == SuperAdministratorId; }
+		}
+
 		[HasAndBelongsToMany(Table= "RoleEmployee", ColumnKey="RoleId", ColumnRef="EmployeeId", Lazy=true)]
 		public virtual IList<Employee> Employees
 		{

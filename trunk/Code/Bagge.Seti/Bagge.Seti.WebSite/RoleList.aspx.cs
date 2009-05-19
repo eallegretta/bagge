@@ -23,6 +23,31 @@ namespace Bagge.Seti.WebSite
 				IoCContainer.EmployeeManager, IoCContainer.FunctionManager);
 		}
 
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+
+			Grid.RowDataBound += new GridViewRowEventHandler(Grid_RowDataBound);
+		}
+
+		private void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
+		{
+			if (e.Row.RowType == DataControlRowType.DataRow)
+			{
+				if (!_presenter.CanDeleteRole(e.Row.DataItem as Role))
+				{
+					int count = e.Row.Cells.Count;
+					if (count > 0)
+					{
+						TableCell cell = e.Row.Cells[count - 1];
+						if (Grid.Columns[count - 1].HeaderText == this.GetLocalResourceObject("DeleteField.HeaderText").ToString())
+							cell.Visible = false;
+					}
+				}
+				
+			}
+		}
+
 
 		public override IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
 		{
