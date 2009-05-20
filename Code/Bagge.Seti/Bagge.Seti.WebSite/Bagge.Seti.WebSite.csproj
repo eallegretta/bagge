@@ -295,6 +295,13 @@
     <Compile Include="RecoverPassword.aspx.designer.cs">
       <DependentUpon>RecoverPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RoleEditor.aspx.cs">
+      <DependentUpon>RoleEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoleEditor.aspx.designer.cs">
+      <DependentUpon>RoleEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RoleList.aspx.cs">
       <DependentUpon>RoleList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -518,6 +525,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\RoleList.aspx.resx" />
+    <Content Include="RoleEditor.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

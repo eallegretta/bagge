@@ -230,5 +230,14 @@ namespace Bagge.Seti.BusinessEntities.Properties {
                 return ResourceManager.GetString("Validators_Provider_Website", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La descripción es requerida.
+        /// </summary>
+        internal static string Validators_Role_Description {
+            get {
+                return ResourceManager.GetString("Validators_Role_Description", resourceCulture);
+            }
+        }
     }
 }
