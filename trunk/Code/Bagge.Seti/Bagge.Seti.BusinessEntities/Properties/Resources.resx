@@ -174,4 +174,7 @@
   <data name="Validators_Provider_Website" xml:space="preserve">
     <value>El website es inválido</value>
   </data>
+  <data name="Validators_Role_Description" xml:space="preserve">
+    <value>La descripción es requerida</value>
+  </data>
 </root>
