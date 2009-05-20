@@ -34,14 +34,21 @@ namespace Bagge.Seti.WebSite
 		{
 			if (e.Row.RowType == DataControlRowType.DataRow)
 			{
-				if (!_presenter.CanDeleteRole(e.Row.DataItem as Role))
+				if (!_presenter.CanAdministerRole(e.Row.DataItem as Role))
 				{
 					int count = e.Row.Cells.Count;
 					if (count > 0)
 					{
-						TableCell cell = e.Row.Cells[count - 1];
-						if (Grid.Columns[count - 1].HeaderText == this.GetLocalResourceObject("DeleteField.HeaderText").ToString())
-							cell.Visible = false;
+						for (int index = 0; index < count; index++)
+						{
+							TableCell cell = e.Row.Cells[index];
+							if(Grid.Columns[index].HeaderText.In(
+								this.GetLocalResourceObject("ViewField.HeaderText").ToString(),
+								this.GetLocalResourceObject("EditField.HeaderText").ToString(),
+								this.GetLocalResourceObject("DeleteField.HeaderText").ToString()))
+								cell.Visible = false;
+
+						}
 					}
 				}
 				
