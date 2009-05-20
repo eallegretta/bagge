@@ -12,8 +12,6 @@ namespace Bagge.Seti.BusinessLogic
 {
 	public class ReportManager: IReportManager
 	{
-		HybridDictionary d;
-
 		IDictionary<string, IReportDao> _reportDaos;
 
 		public ReportManager(IDictionary<string, IReportDao> reportDaos)

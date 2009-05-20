@@ -255,6 +255,7 @@
     <Compile Include="Presenters\ListPresenter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Presenters\RoleEditorPresenter.cs" />
     <Compile Include="Presenters\RoleListPresenter.cs" />
     <Compile Include="Presenters\TicketEditorPresenter.cs">
       <SubType>Code</SubType>
@@ -336,6 +337,7 @@
     <Compile Include="Views\IProductListView.cs" />
     <Compile Include="Views\IProviderEditorView.cs" />
     <Compile Include="Views\IProviderListView.cs" />
+    <Compile Include="Views\IRoleEditorView.cs" />
     <Compile Include="Views\IRoleListView.cs" />
     <Compile Include="Views\ITicketEditorView.cs">
       <SubType>Code</SubType>
@@ -526,6 +528,9 @@
   <ItemGroup>
     <Content Include="App_LocalResources\RoleList.aspx.resx" />
     <Content Include="RoleEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\RoleEditor.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -35,7 +35,10 @@ namespace Bagge.Seti.WebSite.Presenters
 			base.OnInit(sender, e);
 		}
 
-		public bool CanDeleteRole(Role role)
+
+
+
+		public bool CanAdministerRole(Role role)
 		{
 			Check.Require(role != null);
 

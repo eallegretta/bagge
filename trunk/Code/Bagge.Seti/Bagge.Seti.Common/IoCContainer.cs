@@ -92,6 +92,11 @@ namespace Bagge.Seti.Common
 			get { return GetObject<ISimpleFindGetManager<ProviderCalification, int>>("ProviderCalificationManager"); }
 		}
 
+		public static IReportManager ReportManager
+		{
+			get { return GetObject<IReportManager>("ReportManager"); }
+		}
+
 		public static IRoleManager RoleManager
 		{
 			get { return GetObject<IRoleManager>("RoleManager"); }
