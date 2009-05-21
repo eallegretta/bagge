@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bagge.Seti.BusinessEntities.Reports
 {
-	public class CustomersWithPendingPaymentReport: BaseReport
+	public class CustomersWithPendingPaymentReport: BaseCustomerTicketReport
 	{
 	}
 }

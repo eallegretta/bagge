@@ -7,6 +7,7 @@ using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DesignByContract;
+using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -37,6 +38,14 @@ namespace Bagge.Seti.BusinessLogic
 
 			if (functionFilter != null)
 				functionFilter.Value = _functionDao.Get((int)functionFilter.Value);
+		}
+
+		public override void Update(Role instance)
+		{
+			if (!IsDeleteOrUndelete)
+				SessionScopeUtils.FlushSessionScope();
+
+			base.Update(instance);
 		}
 
 	}

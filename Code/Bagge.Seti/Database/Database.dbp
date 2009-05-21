@@ -35,4 +35,12 @@ Begin DataProject = "Database"
          Script = "TicketStatus.sql"
       End
    End
+   Begin Folder = "Stored Procedures"
+      Script = "CustomersBySubscriptionReport.sql"
+      Script = "CustomersByTicketReport.sql"
+      Script = "CustomersWithPendingPaymentReport.sql"
+      Script = "ProductsByProviderReport.sql"
+      Script = "ProductsConsumedReport.sql"
+      Script = "TechniciansByTicketReport.sql"
+   End
 End
