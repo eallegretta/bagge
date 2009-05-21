@@ -72,7 +72,7 @@
 		</Columns>
 	</seti:SecureGridView>
 	<seti:SecureMethodPlaceHolder runat="server" MethodName="Create">
-		<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/EmployeeEditor.aspx" />
+		<seti:ListCommands ID="_new" runat="server" meta:resourceKey="ListCommands" PostBackUrl="~/RoleEditor.aspx" />
 	</seti:SecureMethodPlaceHolder>
 	<asp:ObjectContainerDataSource id="_dataSource" runat="server" 
 		DataObjectTypeName=""></asp:ObjectContainerDataSource>

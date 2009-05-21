@@ -71,6 +71,7 @@
     <Compile Include="Exceptions\MethodAccessDeniedException.cs" />
     <Compile Include="Exceptions\ObjectNotFoundException.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FilterPropertyValue.cs" />
     <Compile Include="FilterPropertyValueType.cs" />
     <Compile Include="PrimaryKeyDomainObject.cs" />
@@ -92,6 +93,7 @@
     </Compile>
     <Compile Include="Provider.cs" />
     <Compile Include="ProviderCalification.cs" />
+    <Compile Include="Reports\BaseCustomerTicketReport.cs" />
     <Compile Include="Reports\BaseReport.cs" />
     <Compile Include="Reports\CustomersByTicketReport.cs" />
     <Compile Include="Reports\CustomersBySubscriptionReport.cs" />

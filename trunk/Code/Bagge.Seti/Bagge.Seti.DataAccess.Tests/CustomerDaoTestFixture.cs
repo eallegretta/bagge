@@ -17,8 +17,6 @@ namespace Bagge.Seti.DataAccess.Tests
 		[Test]
 		public void TestShouldCreateAndDeleteACustomer()
 		{
-			
-			
 		}
 
 		[Test]

@@ -155,16 +155,18 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(instance != null);
 
-			SessionScopeUtils.FlushSessionScope();
-
-			if (!string.IsNullOrEmpty(instance.Password))
-				instance.Password = instance.Password.ToMD5();
-			else
+			if (!IsDeleteOrUndelete)
 			{
-				Employee userFromDb = Get(instance.Id);
-				instance.Password = userFromDb.Password;
-			}
+				SessionScopeUtils.FlushSessionScope();
 
+				if (!string.IsNullOrEmpty(instance.Password))
+					instance.Password = instance.Password.ToMD5();
+				else
+				{
+					Employee userFromDb = Get(instance.Id);
+					instance.Password = userFromDb.Password;
+				}
+			}
 			base.Update(instance);
 		}
 

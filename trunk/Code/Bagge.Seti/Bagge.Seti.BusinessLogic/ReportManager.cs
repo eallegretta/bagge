@@ -7,22 +7,26 @@ using Bagge.Seti.BusinessEntities.Reports;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess.Contracts.Reports;
 using System.Collections.Specialized;
+using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.BusinessLogic
 {
 	public class ReportManager: IReportManager
 	{
-		IDictionary<string, IReportDao> _reportDaos;
+		IDictionary<Type, IReportDao> _reportDaos;
 
-		public ReportManager(IDictionary<string, IReportDao> reportDaos)
+		public ReportManager(IDictionary<Type, IReportDao> reportDaos)
 		{
 			_reportDaos = reportDaos;
 		}
 
-		public IList<BaseReport> GetReport(string reportName, IList<FilterPropertyValue> filters)
+		public IList<BaseReport> GetReport<T>(IList<FilterPropertyValue> filters)
 		{
-			if (_reportDaos.ContainsKey(reportName))
-				return _reportDaos[reportName].GetReport(filters);
+			Check.Require(typeof(BaseReport).IsAssignableFrom(typeof(T)));
+
+			Type type = typeof(T);
+			if (_reportDaos.ContainsKey(type))
+				return _reportDaos[type].GetReport(filters);
 			return null;
 		}
 
