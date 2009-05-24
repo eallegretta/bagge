@@ -1,3 +1,8 @@
+== v0.2 - 20090513 - Glorfindel ==
+= Features =
+.ABM Empleados
+.Bugfixing general
+
 == v0.1 - 20090429 - Gargamel ==
 
 = Features =
