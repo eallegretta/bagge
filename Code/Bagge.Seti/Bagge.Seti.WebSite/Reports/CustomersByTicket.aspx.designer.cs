@@ -11,69 +11,69 @@
 namespace Bagge.Seti.WebSite.Reports {
     
     
-    public partial class ReportMaster {
+    public partial class CustomersByTicket {
         
         /// <summary>
-        /// _filtersPanel control.
+        /// _dateFromLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel _filtersPanel;
+        protected global::System.Web.UI.WebControls.Literal _dateFromLiteral;
         
         /// <summary>
-        /// _filters control.
+        /// _dateFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder _filters;
+        protected global::System.Web.UI.WebControls.TextBox _dateFrom;
         
         /// <summary>
-        /// _report control.
+        /// _dateFromCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView _report;
+        protected global::AjaxControlToolkit.CalendarExtender _dateFromCalendar;
         
         /// <summary>
-        /// _exportPanel control.
+        /// _dateToLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel _exportPanel;
+        protected global::System.Web.UI.WebControls.Literal _dateToLiteral;
         
         /// <summary>
-        /// _export control.
+        /// _dateTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton _export;
+        protected global::System.Web.UI.WebControls.TextBox _dateTo;
         
         /// <summary>
-        /// Image1 control.
+        /// _dateToCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::AjaxControlToolkit.CalendarExtender _dateToCalendar;
         
         /// <summary>
-        /// _exportLiteral control.
+        /// _filter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal _exportLiteral;
+        protected global::System.Web.UI.WebControls.Button _filter;
     }
 }

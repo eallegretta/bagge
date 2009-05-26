@@ -1,3 +1,4 @@
 ﻿<asp:Image SkinId="IconAdd" runat="server" ImageUrl="Images/iconAdd.gif"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
 <asp:Image SkinId="IconFilter" runat="server" ImageUrl="Images/iconFilter.gif"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
+<asp:Image SkinId="IconExcel" runat="server" ImageUrl="Images/iconExcel.gif"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
 <asp:Image SkinId="loading" runat="server" ImageUrl="Images/ajaxLoader.gif" ImageAlign="AbsMiddle"  />

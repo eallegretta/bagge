@@ -7,11 +7,5 @@ namespace Bagge.Seti.BusinessEntities.Reports
 {
 	public class ProductsConsumedReport: BaseReport
 	{
-
-		public string Name { get; set; }
-
-		public string Description { get; set; }
-
-		public int EstimatedQuantity { get; set; }
 	}
 }

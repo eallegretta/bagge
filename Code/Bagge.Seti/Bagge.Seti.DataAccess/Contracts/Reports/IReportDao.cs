@@ -9,6 +9,6 @@ namespace Bagge.Seti.DataAccess.Contracts.Reports
 {
 	public interface IReportDao
 	{
-		IList<BaseReport> GetReport(IList<FilterPropertyValue> filters);
+		BaseReport GetReport(IList<FilterPropertyValue> filters);
 	}
 }

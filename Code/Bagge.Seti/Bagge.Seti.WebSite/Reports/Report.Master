@@ -1,26 +1,29 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Report.master.cs" Inherits="Bagge.Seti.WebSite.Reports.ReportMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Report.master.cs" Inherits="Bagge.Seti.WebSite.Reports.ReportMaster"
+	MasterPageFile="~/Site.Master" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ContentPlaceHolderID="_content" ID="_content" runat="server">
+	<asp:Panel ID="_filtersPanel" SkinID="filters" runat="server" 
+	meta:resourcekey="_filtersPanelResource1">
+	<h3><%=Resources.WebSite.FilterPanelTitle%></h3>
+	<div>
+		<asp:ContentPlaceHolder ID="_filters" runat="server">
+		</asp:ContentPlaceHolder>
+	</div>
+</asp:Panel>
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="_mainForm" runat="server">
-    <div>
-       <asp:Panel ID="_filtersPanel" SkinId="filters" runat="server">
-		<h3><%=Resources.WebSite.FilterPanelTitle%></h3>
-		<div>
-			<asp:ContentPlaceHolder ID="_filters" runat="server"></asp:ContentPlaceHolder>
+<asp:GridView ID="_report" SkinID="Report" runat="server" meta:resourcekey="Grid">
+</asp:GridView>
+
+<asp:UpdatePanel ID="_exportPanel" runat="server">
+	<ContentTemplate>
+		<div style="text-align:right;margin-top:15px;">
+			<button id="_export" runat="server" onserverclick="_export_Click"><asp:Image ID="Image1" SkinID="IconExcel" runat="server" /><asp:Literal ID="_exportLiteral" runat="server" meta:resourcekey="ExportLiteral"></asp:Literal></button>
 		</div>
-		</asp:Panel>
-		<asp:GridView AutoGenerateColumns="true" ID="_customers" runat="server" DataKeyNames="Id" DataSourceID="_dataSource" meta:resourcekey="Grid">
-		</asp:GridView>
-		<asp:ObjectContainerDataSource id="_dataSource" runat="server" 
-			DataObjectTypeName=""></asp:ObjectContainerDataSource>
-        
-    </div>
-    </form>
-</body>
-</html>
+	</ContentTemplate>
+	<Triggers>
+		<asp:PostBackTrigger ControlID="_export" />
+	</Triggers>
+</asp:UpdatePanel>
+
+</asp:Content>
+

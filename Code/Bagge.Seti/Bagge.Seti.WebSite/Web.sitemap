@@ -15,7 +15,14 @@
 		<siteMapNode url="~/EmployeeList.aspx" title="Empleados">
 			<siteMapNode title="Alta Empleado" url="~/EmployeeEditor.aspx" editTitle="Editar Empleado" viewTitle="Ver Empleado"></siteMapNode>
 		</siteMapNode>
-		<siteMapNode url="" title="Reportes"></siteMapNode>
+		<siteMapNode url="" title="Reportes">
+			<siteMapNode url="~/Reports/CustomersBySubscription.aspx" title="Clientes por Abono"></siteMapNode>
+			<siteMapNode url="~/Reports/CustomersByTicket.aspx" title="Clientes por Ticket"></siteMapNode>
+			<siteMapNode url="~/Reports/CustomersWithPendingPayment.aspx" title="Clientes Pendientes de Pago"></siteMapNode>
+			<siteMapNode url="~/Reports/ProductsByProvider.aspx" title="Productos por Proveedor"></siteMapNode>
+			<siteMapNode url="~/Reports/ProductsConsumed.aspx" title="Productos Consumidos"></siteMapNode>
+			<siteMapNode url="~/Reports/TechniciansByTicket.aspx" title="Técnicos por Ticket"></siteMapNode>
+		</siteMapNode>
 		<siteMapNode url="~/AlertConfiguration.aspx" title="Alertas" editTitle="Editar Configuración de Alertas" viewTitle="Ver Configuración de Alertas"></siteMapNode>
 		<siteMapNode url="" title="Seguridad">
 			<siteMapNode url="~/RoleList.aspx" title="Roles">

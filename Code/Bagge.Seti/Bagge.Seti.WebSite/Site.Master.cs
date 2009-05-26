@@ -8,6 +8,7 @@ using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Security;
+using System.Text;
 
 namespace Bagge.Seti.WebSite
 {
@@ -15,6 +16,14 @@ namespace Bagge.Seti.WebSite
 	{
 		protected override void OnInit(EventArgs e)
 		{
+			StringBuilder script = new StringBuilder();
+			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/jquery-1.3.2.min.js"));
+			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/jquery.numeric.pack.js"));
+			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/json2.js"));
+			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/Site.Master.js"));
+
+			Page.Header.Controls.Add(new LiteralControl(script.ToString()));
+
 			base.OnInit(e);
 			SetLoggedInFullName();
 		}

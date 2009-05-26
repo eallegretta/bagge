@@ -12,19 +12,19 @@ namespace Bagge.Seti.WebSite
 	public abstract class FilteredListPage<T, PK>: ListPage<T, PK>, IFilteredListView where T: PrimaryKeyDomainObject<T, PK>
 	{
 		protected virtual void AddTextBoxFilterValue<TValue>(TextBox control, string property, 
-			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue: IConvertible
 		{
 			FilterHelper.AddTextBoxFilterValue<TValue>(control, property, type, filters);
 		}
 
 		protected virtual void AddDropDownFilterValue<TValue>(DropDownList control, string property,
-			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue : IConvertible
 		{
 			FilterHelper.AddDropDownFilterValue<TValue>(control, property, type, filters);
 		}
 
 		protected virtual void AddCheckBoxListFilterValue<TValue>(CheckBoxList control, string property,
-			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue : IConvertible
 		{
 			FilterHelper.AddCheckBoxListFilterValue<TValue>(control, property, type, filters);
 		}

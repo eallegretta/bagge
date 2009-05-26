@@ -5,28 +5,27 @@ using System.Text;
 using Bagge.Seti.BusinessEntities.Reports;
 using Bagge.Seti.DataAccess.Contracts.Reports;
 using Bagge.Seti.BusinessEntities;
-using Eaa.Framework.Data;
+using System.Data.SqlTypes;
 
 namespace Bagge.Seti.DataAccess.Reports
 {
-	public class CustomersByTicketReportDao: DBRepository<CustomersByTicketReport>, IReportDao
+	public class CustomersByTicketReportDao: BaseReportDao<CustomersByTicketReport>, IReportDao
 	{
-		public CustomersByTicketReportDao(): base(Constants.DEFAULT_CONNECTION_STRING_NAME)
-		{
-		}
 
-		#region IReportDao<CustomerByTicketsReport> Members
 
-		public IList<BaseReport> GetReport(IList<FilterPropertyValue> filters)
+		#region IReportDao Members
+
+		public BaseReport GetReport(IList<FilterPropertyValue> filters)
 		{
-			return null;
+			var filterDateFrom = filters.GetFilter("DateFrom");
+			var filterDateTo = filters.GetFilter("DateTo");
+
+			SqlDateTime dateFrom = filterDateFrom == null ? SqlDateTime.MinValue : GetSqlDateTime(filterDateFrom.Value as DateTime?, SqlDateTime.MinValue);
+			SqlDateTime dateTo = filterDateTo == null ? SqlDateTime.MaxValue : GetSqlDateTime(filterDateTo.Value as DateTime?, SqlDateTime.MaxValue);
+
+			return GetReport("CustomersByTicketReport", dateFrom, dateTo);
 		}
 
 		#endregion
-
-		protected override Eaa.Framework.Collections.Adapters.PropertyMappingCollection Mappings
-		{
-			get { throw new NotImplementedException(); }
-		}
 	}
 }

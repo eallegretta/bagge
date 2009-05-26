@@ -305,6 +305,16 @@
     <Compile Include="Reports\CustomersBySubscription.aspx.designer.cs">
       <DependentUpon>CustomersBySubscription.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CustomersByTicket.aspx.cs">
+      <DependentUpon>CustomersByTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CustomersByTicket.aspx.designer.cs">
+      <DependentUpon>CustomersByTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FilteredReportPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Reports\Report.Master.cs">
       <DependentUpon>Report.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -553,6 +563,17 @@
   <ItemGroup>
     <Content Include="App_LocalResources\RoleEditor.aspx.resx" />
     <Content Include="Reports\CustomersBySubscription.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\App_LocalResources\Report.Master.resx" />
+    <Content Include="Reports\CustomersByTicket.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\App_LocalResources\CustomersByTicket.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Images\iconExcel.gif" />
+    <Content Include="Reports\App_LocalResources\CustomersBySubscription.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
