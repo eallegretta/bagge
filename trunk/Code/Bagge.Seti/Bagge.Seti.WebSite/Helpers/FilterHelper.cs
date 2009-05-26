@@ -10,7 +10,7 @@ namespace Bagge.Seti.WebSite.Helpers
 	public static class FilterHelper
 	{
 		private static void AddFilterValue<TValue>(object value, string property,
-			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue: IConvertible
 		{
 			filters.Add(
 					new FilterPropertyValue
@@ -22,7 +22,7 @@ namespace Bagge.Seti.WebSite.Helpers
 		}
 
 		public static void AddTextBoxFilterValue<TValue>(TextBox control, string property,
-			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue : IConvertible
 		{
 			if (!string.IsNullOrEmpty(control.Text))
 			{
@@ -31,7 +31,7 @@ namespace Bagge.Seti.WebSite.Helpers
 		}
 
 		public static void AddDropDownFilterValue<TValue>(DropDownList control, string property,
-			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue : IConvertible
 		{
 			if (!string.IsNullOrEmpty(control.SelectedValue))
 			{
@@ -40,7 +40,7 @@ namespace Bagge.Seti.WebSite.Helpers
 		}
 
 		public static void AddCheckBoxListFilterValue<TValue>(CheckBoxList control, string property,
-			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue : IConvertible
 		{
 			foreach (ListItem item in control.Items)
 			{

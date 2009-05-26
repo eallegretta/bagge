@@ -25,5 +25,14 @@ namespace Bagge.Seti.BusinessEntities
 				data.Add(report);
 			return data;
 		}
+
+		public static void Add(this IList<FilterPropertyValue> filters, string propertyName, object value)
+		{
+			Add(filters, propertyName, FilterPropertyValueType.Equals, value);
+		}
+		public static void Add(this IList<FilterPropertyValue> filters, string propertyName, FilterPropertyValueType type, object value)
+		{
+			filters.Add(new FilterPropertyValue { Property = propertyName, Type = type, Value = value });
+		}
 	}
 }

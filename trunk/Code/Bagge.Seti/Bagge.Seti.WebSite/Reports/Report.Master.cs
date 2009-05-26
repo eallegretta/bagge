@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Practices.Web.UI.WebControls;
+using Bagge.Seti.Helpers;
 
 namespace Bagge.Seti.WebSite.Reports
 {
@@ -15,19 +16,28 @@ namespace Bagge.Seti.WebSite.Reports
 
 		}
 
-		public string ReportTypeName
+		protected void _export_Click(object sender, EventArgs e)
+		{
+			HttpContext.Current.Response.Clear();
+			HttpContext.Current.Response.AddHeader(
+				"content-disposition", string.Format("attachment; filename={0}.xls", ReportFileName ));
+			HttpContext.Current.Response.ContentType = "application/ms-excel";
+			HttpContext.Current.Response.Write(ControlHelper.GetControlAsHtml(_report));
+			HttpContext.Current.Response.End();
+		}
+
+
+		public string ReportFileName
+		{
+			set { ViewState["ReportFileName"] = value; }
+			get { return ViewState["ReportFileName"] as string; }
+		}
+
+		public bool ShowFilters
 		{
 			set
 			{
-				_dataSource.DataObjectTypeName = value;
-			}
-		}
-
-		public ObjectContainerDataSource ObjectDataSource
-		{
-			get
-			{
-				return _dataSource;
+				_filtersPanel.Visible = value;
 			}
 		}
 
@@ -35,8 +45,10 @@ namespace Bagge.Seti.WebSite.Reports
 		{
 			set
 			{
-				_dataSource.DataSource = value;
-				_dataSource.DataBind();
+				_report.DataSource = value;
+				_report.DataBind();
+
+				_export.Visible = _report.Rows.Count > 0;
 			}
 		}
 	}

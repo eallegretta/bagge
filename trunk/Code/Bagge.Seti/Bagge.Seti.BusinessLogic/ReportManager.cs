@@ -20,7 +20,7 @@ namespace Bagge.Seti.BusinessLogic
 			_reportDaos = reportDaos;
 		}
 
-		public IList<BaseReport> GetReport<T>(IList<FilterPropertyValue> filters)
+		public BaseReport GetReport<T>(IList<FilterPropertyValue> filters)
 		{
 			Check.Require(typeof(BaseReport).IsAssignableFrom(typeof(T)));
 

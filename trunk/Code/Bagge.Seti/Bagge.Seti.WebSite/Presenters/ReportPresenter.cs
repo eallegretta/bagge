@@ -39,7 +39,10 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		public virtual void Select()
 		{
-			_view.DataSource = _manager.GetReport<T>(_view.Filters);
+			var report = _manager.GetReport<T>(_view.Filters);
+
+			if(report != null)
+				_view.DataSource = report.ReportData;
 		}
 
 	}

@@ -36,14 +36,6 @@
       <HintPath>..\Dlls\Castle.ActiveRecord.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Eaa.Framework.Collections, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fdf31fd6083ad399, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Eaa.Framework.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="Eaa.Framework.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fdf31fd6083ad399, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\Eaa.Framework.Data.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -110,6 +102,7 @@
     <Compile Include="Contracts\ITicketStatusDao.cs" />
     <Compile Include="Contracts\IUpdateDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BaseReportDao.cs" />
     <Compile Include="Reports\CustomersByTicketReportDao.cs" />
     <Compile Include="Reports\CustomersBySubscriptionReportDao.cs" />
     <Compile Include="Reports\CustomersWithPendingPaymentReportDao.cs" />

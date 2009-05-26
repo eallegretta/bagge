@@ -24,15 +24,17 @@ namespace Bagge.Seti.WebSite.Reports
 
 			ReportMaster master = Master as ReportMaster;
 			if (master != null)
-			{
-				master.ReportTypeName = typeof(T).FullName;
-				master.ObjectDataSource.Selecting += new EventHandler<Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSourceSelectingEventArgs>(ObjectDataSource_Selecting);
-			}
+				master.ReportFileName = typeof(T).Name;
+
 			AssignTypeNameToSecureContainers(typeof(T).AssemblyQualifiedName);
 		}
 
-		void ObjectDataSource_Selecting(object sender, Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSourceSelectingEventArgs e)
+		protected override void OnLoad(EventArgs e)
 		{
+			ReportMaster master = Master as ReportMaster;
+			if (master != null)
+				master.ShowFilters = false;
+
 			Presenter.Select();
 		}
 
@@ -41,6 +43,7 @@ namespace Bagge.Seti.WebSite.Reports
 			get { return _presenter; }
 		}
 
+		
 		#region IReportView Members
 
 		public abstract IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters

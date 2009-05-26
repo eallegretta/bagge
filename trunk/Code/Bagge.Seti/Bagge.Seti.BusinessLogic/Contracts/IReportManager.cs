@@ -14,7 +14,7 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 		/// </summary>
 		/// <typeparam name="T">T should be of type BaseReport</typeparam>
 		/// <param name="filters">The filters to apply</param>
-		/// <returns>Returns a list of BaseReport items</returns>
-		IList<BaseReport> GetReport<T>(IList<FilterPropertyValue> filters);
+		/// <returns>Returns a BaseReport</returns>
+		BaseReport GetReport<T>(IList<FilterPropertyValue> filters);
 	}
 }
