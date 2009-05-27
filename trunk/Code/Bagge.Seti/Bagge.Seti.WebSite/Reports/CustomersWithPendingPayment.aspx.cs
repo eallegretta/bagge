@@ -17,10 +17,6 @@ namespace Bagge.Seti.WebSite.Reports
 {
     public partial class CustomersWithPendingPayment : ReportPage<CustomersWithPendingPaymentReport>
     {
-        public override IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
-        {
-            get { return null; }
-        }
     }
 }
 	

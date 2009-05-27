@@ -17,9 +17,5 @@ namespace Bagge.Seti.WebSite.Reports
 {
     public partial class ProductsByProvider : ReportPage<ProductsByProviderReport>
     {
-        public override IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
-        {
-            get { return null; }
-        }
     }
 }
