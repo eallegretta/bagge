@@ -10,5 +10,6 @@ namespace Bagge.Seti.WebSite.Reports
 {
 	public partial class CustomersBySubscription : ReportPage<CustomersBySubscriptionReport>
 	{
+
 	}
 }

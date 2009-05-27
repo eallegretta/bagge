@@ -10,11 +10,15 @@ namespace Bagge.Seti.DataAccess.Reports
 {
 	public class ProductsByProviderReportDao: BaseReportDao<ProductsByProviderReport>, IReportDao
 	{
+        public ProductsByProviderReportDao()
+		{
+		}
+
 		#region IReportDao Members
 
 		public BaseReport GetReport(IList<FilterPropertyValue> filters)
-		{
-			throw new NotImplementedException();
+        {
+            return GetReport("ProductsByProviderReport");
 		}
 
 		#endregion
