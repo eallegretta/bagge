@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using Bagge.Seti.BusinessEntities.Reports;
 using System.Web.UI.WebControls;
+using Bagge.Seti.WebSite.Views;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	public abstract class FilteredReportPage<T> : ReportPage<T> where T : BaseReport
+	public abstract class FilteredReportPage<T> : ReportPage<T>, IFilteredReportView where T : BaseReport
 	{
 		protected override void OnInit(EventArgs e)
 		{
@@ -29,5 +30,15 @@ namespace Bagge.Seti.WebSite.Reports
 		}
 
 		protected abstract Button FilterButton { get; }
+
+		#region IFilteredReportView Members
+
+		public abstract IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
+		{
+			get;
+		}
+
+
+		#endregion
 	}
 }

@@ -101,47 +101,20 @@ namespace Bagge.Seti.BusinessLogic
 			base.Update(instance);
 		}
 
-		public override int CountByProperties(IList<FilterPropertyValue> filter)
+		protected override void ReplaceFilters(IList<FilterPropertyValue> filters)
 		{
-			Check.Require(filter != null);
-
-			ReplaceProductsFilter(filter);
-
-			return base.CountByProperties(filter);
-		}
-
-		protected override Provider[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
-		{
-			Check.Require(filter != null);
-
-			ReplaceProductsFilter(filter);
-
-			return base.FindAllByProperties(filter, orderBy, ascending);
-		}
-
-		private void ReplaceProductsFilter(IList<FilterPropertyValue> filter)
-		{
-			var productsFilter = (from fil in filter
+			var productsFilter = (from fil in filters
 								  where fil.Property == "Products" && fil.Value is int
 								  select fil).FirstOrDefault();
 
-			filter.Remove(productsFilter);
+			filters.Remove(productsFilter);
 
 			if (productsFilter != null)
 			{
 				foreach(var productProvider in _productProviderDao.FindAllByProduct((int)productsFilter.Value))
-					filter.Add(new FilterPropertyValue { Property = productsFilter.Property, Type = productsFilter.Type, Value = productProvider }); 
+					filters.Add(new FilterPropertyValue { Property = productsFilter.Property, Type = productsFilter.Type, Value = productProvider }); 
 			}
 				
-		}
-
-		protected override Provider[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
-		{
-			Check.Require(filter != null);
-
-			ReplaceProductsFilter(filter);
-
-			return base.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
 		}
 
 	}

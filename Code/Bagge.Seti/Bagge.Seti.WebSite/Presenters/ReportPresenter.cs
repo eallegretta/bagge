@@ -39,7 +39,11 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		public virtual void Select()
 		{
-			var report = _manager.GetReport<T>(_view.Filters);
+			BaseReport report;
+			if (_view is IFilteredReportView)
+				report = _manager.GetReport<T>(((IFilteredReportView)_view).Filters);
+			else
+				report = _manager.GetReport<T>(null);
 
 			if(report != null)
 				_view.DataSource = report.ReportData;

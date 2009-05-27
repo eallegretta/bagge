@@ -30,7 +30,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[Property]
+		[Property("CustomerETA")]
 		public DateTime CustomerArrival
 		{
 			get;
