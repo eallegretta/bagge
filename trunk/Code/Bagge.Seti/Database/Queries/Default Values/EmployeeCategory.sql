@@ -1,4 +1,6 @@
-﻿insert into EmployeeCategory (Name, Description) 
+﻿delete EmployeeCategory
+
+insert into EmployeeCategory (Name, Description) 
 select 'Administrativo', ''
 union
 select 'Secretaria',''
