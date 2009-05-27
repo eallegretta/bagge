@@ -10,11 +10,15 @@ namespace Bagge.Seti.DataAccess.Reports
 {
 	public class CustomersWithPendingPaymentReportDao: BaseReportDao<CustomersWithPendingPaymentReport>, IReportDao
 	{
+        public CustomersWithPendingPaymentReportDao()
+		{
+		}
+
 		#region IReportDao Members
 
 		public BaseReport GetReport(IList<FilterPropertyValue> filters)
-		{
-			throw new NotImplementedException();
+        {
+            return GetReport("CustomersWithPendingPaymentReport");
 		}
 
 		#endregion
