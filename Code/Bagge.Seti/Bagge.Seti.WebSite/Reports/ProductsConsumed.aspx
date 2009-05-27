@@ -8,5 +8,5 @@
 	<asp:TextBox ID="_dateTo" runat="server"></asp:TextBox>
 	<ajax:CalendarExtender ID="_dateToCalendar" runat="server" TargetControlID="_dateTo"></ajax:CalendarExtender>
 	&nbsp;&nbsp;&nbsp;
-	<asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton2" />
+	<asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
 </asp:Content>
