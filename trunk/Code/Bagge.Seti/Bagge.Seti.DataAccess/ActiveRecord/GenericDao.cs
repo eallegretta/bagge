@@ -271,8 +271,10 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			{
 				if (query.Query.Contains(":" + filter.VariableName))
 				{
-					if (filter.Type == FilterPropertyValueType.Like || filter.Type == FilterPropertyValueType.NotLike)
+					if (filter.Type.In(FilterPropertyValueType.Like, FilterPropertyValueType.NotLike))
 						query.SetParameter(filter.VariableName, filter.Value + "%");
+					else if (filter.Type.In(FilterPropertyValueType.Contains, FilterPropertyValueType.NotContains))
+						query.SetParameter(filter.VariableName, "%" + filter.Value + "%");
 					else
 						query.SetParameter(filter.VariableName, filter.Value);
 				}
@@ -344,10 +346,12 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 				case FilterPropertyValueType.NotEquals:
 					return string.Format("el.{0} <> :{1}{2}", filter.Property, filter.VariableName, condition);
 				case FilterPropertyValueType.Like:
+				case FilterPropertyValueType.Contains:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
 						return string.Format("el.{0} like :{1}{2}", filter.Property, filter.VariableName, condition);
 					return string.Empty;
 				case FilterPropertyValueType.NotLike:
+				case FilterPropertyValueType.NotContains:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
 						return string.Format("el.{0} not like :{1}{2}", filter.Property, filter.VariableName, condition);
 					return string.Empty;

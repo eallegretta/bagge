@@ -170,6 +170,14 @@ namespace Bagge.Seti.BusinessLogic
 			base.Update(instance);
 		}
 
+		public Employee[] FindAllActiveTechnicians()
+		{
+			var category = _employeeCategoryDao.Get(EmployeeCategory.TechnicianId);
+			return FindAllActiveByProperty("Category", category);
+		}
+
 		#endregion
+
+		
 	}
 }

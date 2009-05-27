@@ -79,6 +79,7 @@
     <Compile Include="ActiveRecord\RoleDao.cs" />
     <Compile Include="ActiveRecord\SimpleFindGetDao.cs" />
     <Compile Include="ActiveRecord\TicketDao.cs" />
+    <Compile Include="ActiveRecord\TicketEmployeeDao.cs" />
     <Compile Include="ActiveRecord\TicketStatusDao.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Contracts\IAccessibilityDao.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Contracts\IProductDao.cs" />
     <Compile Include="Contracts\IProductProviderDao.cs" />
     <Compile Include="Contracts\IProviderDao.cs" />
+    <Compile Include="Contracts\ITicketEmployeeDao.cs" />
     <Compile Include="Contracts\Reports\IReportDao.cs" />
     <Compile Include="Contracts\IRoleDao.cs" />
     <Compile Include="Contracts\ISimpleFindGetDao.cs" />

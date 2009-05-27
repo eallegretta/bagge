@@ -6,8 +6,10 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Views
 {
-	public interface IReportView: IView
+	public interface ITicketListView: IFilteredListView
 	{
-
+		TicketStatus[] Status { set; }
+		Employee[] Technicians { set; }
+		Customer[] Customers { set; }
 	}
 }

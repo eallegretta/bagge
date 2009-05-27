@@ -26,6 +26,12 @@ namespace Bagge.Seti.BusinessEntities
 			return data;
 		}
 
+		public static void AddBetween(this IList<FilterPropertyValue> filters, string propertyName, object valueFrom, object valueTo)
+		{
+			Add(filters, propertyName, FilterPropertyValueType.GreaterEquals, valueFrom);
+			Add(filters, propertyName, FilterPropertyValueType.LowerEquals, valueTo);
+		}
+
 		public static void Add(this IList<FilterPropertyValue> filters, string propertyName, object value)
 		{
 			Add(filters, propertyName, FilterPropertyValueType.Equals, value);

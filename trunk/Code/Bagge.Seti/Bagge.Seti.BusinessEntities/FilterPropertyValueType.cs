@@ -11,6 +11,8 @@ namespace Bagge.Seti.BusinessEntities
 		NotEquals,
 		Like,
 		NotLike,
+		Contains,
+		NotContains,
 		Greater,
 		GreaterEquals,
 		Lower,

@@ -44,14 +44,7 @@ namespace Bagge.Seti.WebSite.Reports
 		}
 
 		
-		#region IReportView Members
-
-		public abstract IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
-		{
-			get;
-		}
-
-		#endregion
+		
 
 
 		#region IView Members

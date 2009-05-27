@@ -45,7 +45,8 @@ namespace Bagge.Seti.WebSite
 		{
 			if (!IsPostBack)
 			{
-				AddDeletedFilterItems(DeletedDropDownList);
+				if(DeletedDropDownList != null)
+					AddDeletedFilterItems(DeletedDropDownList);
 			}
 
 			base.OnLoad(e);
