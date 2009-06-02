@@ -11,7 +11,9 @@
 		<siteMapNode url="~/ProductList.aspx" title="Insumos">
 			<siteMapNode title="Alta Insumo" url="~/ProductEditor.aspx" editTitle="Editar Insumo" viewTitle="Ver Insumo"></siteMapNode>
 		</siteMapNode>
-		<siteMapNode url="" title="Tickets"></siteMapNode>
+		<siteMapNode url="~/TicketList.aspx" title="Tickets">
+			<siteMapNode title="Alta Ticket" url="~/TicketEditor.aspx" editTitle="Editar Ticket" viewTitle="Ver Ticket"></siteMapNode>
+		</siteMapNode>
 		<siteMapNode url="~/EmployeeList.aspx" title="Empleados">
 			<siteMapNode title="Alta Empleado" url="~/EmployeeEditor.aspx" editTitle="Editar Empleado" viewTitle="Ver Empleado"></siteMapNode>
 		</siteMapNode>

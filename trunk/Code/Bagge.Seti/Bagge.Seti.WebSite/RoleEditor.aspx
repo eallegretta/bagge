@@ -11,12 +11,8 @@
 				<ControlStyle CssClass="textBox longData"></ControlStyle>
 			</seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="Functions" meta:resourcekey="FunctionsField">
-				<ItemTemplate>
-					<asp:CheckBoxList ID="_functions" runat="server" DataTextField="Name" DataValueField="Id"></asp:CheckBoxList>
-				</ItemTemplate>
 				<EditItemTemplate>
-					<asp:CheckBoxList ID="_functions" runat="server" DataTextField="Name" 
-						DataValueField="Id"></asp:CheckBoxList>
+					<asp:CheckBoxList ID="_functions" runat="server" DataTextField="Name" DataValueField="Id"></asp:CheckBoxList>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<asp:BulletedList ID="_functions" runat="server" DataTextField="Name"></asp:BulletedList>

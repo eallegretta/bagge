@@ -352,13 +352,15 @@ namespace System
 			return null;
 		}
 
-		public static void SetPropertyValue(this object source, string propertyName, object value)
+		public static bool SetPropertyValue(this object source, string propertyName, object value)
 		{
 			var targetProperty = GetTargetProperty(source, propertyName);
 			if(targetProperty.IsValid)
 			{
 				targetProperty.Property.SetValue(targetProperty.Target, value, null);
+				return true;
 			}
+			return false;
 		}
 
 		//public static string ToJSON(this object source)

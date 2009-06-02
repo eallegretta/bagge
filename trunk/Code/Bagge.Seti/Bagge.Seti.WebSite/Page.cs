@@ -11,6 +11,35 @@ namespace Bagge.Seti.WebSite
 {
 	public class Page: System.Web.UI.Page
 	{
+		protected T GetControlPropertyValue<T>(Control control, T defaultValue, params string[] propertiesToSearch) where T: IConvertible
+		{
+			foreach (string propertyName in propertiesToSearch)
+			{
+				object value = control.GetPropertyValue(propertyName);
+				if (!string.IsNullOrEmpty(value.ToString()))
+				{
+					try
+					{
+						return (T)Convert.ChangeType(value, typeof(T));
+					}
+					catch
+					{
+						return defaultValue;
+					}
+				}
+			}
+			return defaultValue;
+		}
+
+		protected void SetControlPropertyValue(Control control, object value, params string[] propertiesToSearch)
+		{
+			foreach (string propertyName in propertiesToSearch)
+			{
+				if (control.SetPropertyValue(propertyName, value))
+					return;
+			}
+		}
+
 
 		protected override void OnPreRender(EventArgs e)
 		{

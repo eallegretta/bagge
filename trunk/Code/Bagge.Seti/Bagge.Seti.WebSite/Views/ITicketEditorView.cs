@@ -8,44 +8,20 @@ namespace Bagge.Seti.WebSite.Views
 {
 	public interface ITicketEditorView: IEditorView<int>
 	{
-		Employee[] Employees
-		{
-			set;
-		}
+		Employee[] Employees { set; }
 
-		int SelectedEmployeeId
-		{
-			get;
-		}
+		int[] AssignedEmployeeIds { get; }
+		
+		Customer[] Customers { set; }
+		
+		int SelectedCustomerId { get; set; }
 
-		Customer[] Customers
-		{
-			set;
-		}
+		TicketStatus[] TicketStatus { set; }
 
-		int SelectedCustomerId
-		{
-			get;
-		}
+		TicketStatusEnum SelectedTicketStatus { get; set;  }
 
-		TicketStatus[] TicketStatus
-		{
-			set;
-		}
+		ProductTicket[] Products { set; }
 
-		int SelectedTicketStatus
-		{
-			get;
-		}
-
-		Product[] Products
-		{
-			set;
-		}
-
-		int SelectedProductId
-		{
-			get;
-		}
+		int[] AssignedProductIds { get; }
 	}
 }
