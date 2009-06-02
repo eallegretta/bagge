@@ -499,8 +499,8 @@
     <Content Include="App_Themes\Default\Forms.skin" />
     <Content Include="App_Themes\Default\Login.skin" />
     <Content Include="App_Themes\Default\Images.skin" />
-    <None Include="Config\Objects.config" />
-    <None Include="Config\TypeAliases.config" />
+    <Content Include="Config\Objects.config" />
+    <Content Include="Config\TypeAliases.config" />
     <Content Include="Reports\Report.Master" />
     <Content Include="Logout.ashx" />
     <Content Include="List.Master" />
