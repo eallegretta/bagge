@@ -8,6 +8,7 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
+using Microsoft.Practices.Web.UI.WebControls;
 
 namespace Bagge.Seti.WebSite
 {
@@ -24,19 +25,19 @@ namespace Bagge.Seti.WebSite
 		}
 
 
-		protected override Bagge.Seti.WebSite.Presenters.EditorPresenter<Ticket, int> Presenter
+		protected override EditorPresenter<Ticket, int> Presenter
 		{
 			get { return _presenter; }
 		}
 
 		protected override CompositeDataBoundControl Details
 		{
-			get { throw new NotImplementedException(); }
+			get { return _details; }
 		}
 
-		protected override Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSource ObjectDataSource
+		protected override ObjectContainerDataSource ObjectDataSource
 		{
-			get { throw new NotImplementedException(); }
+			get { return _dataSource; }
 		}
 
 
@@ -54,32 +55,79 @@ namespace Bagge.Seti.WebSite
 
 		public Customer[] Customers
 		{
-			set { throw new NotImplementedException(); }
+			set 
+			{
+				var customers = Details.FindControl("_customers") as DropDownList;
+				if (customers != null)
+				{
+					customers.DataSource = value;
+					customers.DataBind();
+				}
+			}
+		}
+
+		
+		#endregion
+
+
+		protected override bool ShowRequiredInformationLabel
+		{
+			get { return true; }
+		}
+
+		#region ITicketEditorView Members
+
+
+		public int[] AssignedEmployeeIds
+		{
+			get { return null; }
 		}
 
 		public int SelectedCustomerId
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				return GetControlPropertyValue(Details.FindControl("_customers"), 0, "Value", "SelectedValue"); 
+			}
+			set
+			{
+				SetControlPropertyValue(Details.FindControl("_customers"), value, "Value", "SelectedValue");
+			}
 		}
 
 		public TicketStatus[] TicketStatus
 		{
-			set { throw new NotImplementedException(); }
+			set
+			{
+				var status = Details.FindControl("_status") as DropDownList;
+				if (status != null)
+				{
+					status.DataSource = value;
+					status.DataBind();
+				}
+			}
 		}
 
-		public int SelectedTicketStatus
+		public TicketStatusEnum SelectedTicketStatus
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				return GetControlPropertyValue<TicketStatusEnum>(Details.FindControl("_status"), TicketStatusEnum.Initial, "Value", "SelectedValue");
+			}
+			set
+			{
+				SetControlPropertyValue(Details.FindControl("_status"), (int)value, "Value", "SelectedValue");
+			}
 		}
 
-		public Product[] Products
+		public ProductTicket[] Products
 		{
-			set { throw new NotImplementedException(); }
+			set { }
 		}
 
-		public int SelectedProductId
+		public int[] AssignedProductIds
 		{
-			get { throw new NotImplementedException(); }
+			get { return null; }
 		}
 
 		#endregion

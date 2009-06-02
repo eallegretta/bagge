@@ -35,9 +35,6 @@
 			<seti:SecureBoundField DataField="EmergencyPhone"  meta:resourcekey="EmergencyPhoneField" ControlStyle-CssClass="textBox mediumData"></seti:SecureBoundField>
 			<seti:SecureBoundField DataField="Email"  meta:resourcekey="EmailField" ControlStyle-CssClass="textBox longData"></seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="Category" meta:resourcekey="CategoryField">
-				<InsertItemTemplate>
-					<asp:DropDownList ID="_categories" runat="server" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
-				</InsertItemTemplate>
 				<EditItemTemplate>
 					<asp:DropDownList ID="_categories" runat="server" DataTextField="Name" DataValueField="Id"></asp:DropDownList>
 				</EditItemTemplate>
@@ -46,9 +43,6 @@
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="Roles" meta:resourcekey="RolesField">
-				<ItemTemplate>
-					<asp:CheckBoxList ID="_roles" runat="server" DataTextField="Name" DataValueField="Id"></asp:CheckBoxList>
-				</ItemTemplate>
 				<EditItemTemplate>
 					<asp:CheckBoxList ID="_roles" runat="server" DataTextField="Name" DataValueField="Id"></asp:CheckBoxList>
 				</EditItemTemplate>

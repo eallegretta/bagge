@@ -11,9 +11,6 @@
 			<seti:SecureBoundField DataField="Description" meta:resourcekey="DescriptionField">
 			</seti:SecureBoundField>
 			<seti:SecureTemplateField PropertyName="Providers" meta:resourcekey="ProvidersField">
-				<InsertItemTemplate>
-					<controls:ProductProviderGrid id="_providers" runat="server" SourceType="Provider" SelectedItems='<%#Bind("Providers")%>' />					
-				</InsertItemTemplate>
 				<EditItemTemplate>
 					<controls:ProductProviderGrid id="_providers" runat="server" SourceType="Provider" SelectedItems='<%#Bind("Providers")%>' />					
 				</EditItemTemplate>

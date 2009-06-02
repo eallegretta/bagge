@@ -37,13 +37,11 @@ namespace Bagge.Seti.BusinessLogic
 
 		protected override void ReplaceFilters(IList<FilterPropertyValue> filter)
 		{
-
 			ReplaceStatusFilter(filter);
 
 			ReplaceCustomerFilter(filter);
 
 			ReplaceEmployeesFilter(filter);
-
 		}
 
 		private void ReplaceStatusFilter(IList<FilterPropertyValue> filter)

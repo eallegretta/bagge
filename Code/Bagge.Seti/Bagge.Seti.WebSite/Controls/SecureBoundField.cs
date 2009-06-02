@@ -10,6 +10,18 @@ namespace Bagge.Seti.WebSite.Controls
 	public class SecureBoundField: System.Web.UI.WebControls.BoundField, IPropertySecureControl
 	{
 
+		public string Mask
+		{
+			get { return ViewState["Mask"] as string; }
+			set { ViewState["Mask"] = value; }
+		}
+
+		public string MaskPlaceHolder
+		{
+			get { return ViewState["MaskPlaceHolder"] as string; }
+			set { ViewState["MaskPlaceHolder"] = value; }
+		}
+
 		public SecureBoundField()
 		{
 			Validators = new List<BaseValidator>();
@@ -42,6 +54,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 		protected override void InitializeDataCell(DataControlFieldCell cell, DataControlRowState rowState)
 		{
+
 			base.InitializeDataCell(cell, rowState);
 
 			if ((rowState & DataControlRowState.Insert) == DataControlRowState.Insert || 
@@ -55,12 +68,31 @@ namespace Bagge.Seti.WebSite.Controls
 					if (textBox != null)
 					{
 						textBox.Text = DefaultValue;
+						if (!string.IsNullOrEmpty(Mask))
+							RegisterMask(cell, textBox);
+
 						SetupMaxLength(textBox);
 						AddPropertyProxyValidator();
 						SetupValidators(cell, textBox);
 					}
 				}
 			}
+		}
+
+		private void RegisterMask(DataControlFieldCell cell, TextBox textBox)
+		{
+			if (!Control.Page.ClientScript.IsClientScriptIncludeRegistered("SecureBoundFieldMask"))
+				Control.Page.ClientScript.RegisterClientScriptInclude("SecureBoundFieldMask", Control.Page.ResolveUrl("~/Scripts/jquery.maskedinput-1.2.2.min.js"));
+
+
+			string placeHolder = string.Empty;
+			if(!string.IsNullOrEmpty(MaskPlaceHolder))
+				placeHolder = string.Format(", {{ placeholder: '{0}' }}", MaskPlaceHolder);
+
+			string clientId = Control.ClientID + "_" + textBox.ClientID;
+			string mask = string.Format("<script type='text/javascript'>$('#{0}').mask('{1}'{2});</script>", clientId, Mask, placeHolder);
+
+			cell.Controls.Add(new LiteralControl(mask));
 		}
 
 		private void AddPropertyProxyValidator()
