@@ -674,6 +674,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\TicketEditor.aspx.resx" />
+    <Content Include="Controls\ProductTicketSelectionGrid.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
