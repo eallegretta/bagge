@@ -39,7 +39,7 @@ namespace Bagge.Seti.WebSite.Presenters
 		public bool CanAdministerTicket(Ticket ticket)
 		{
 			return !ticket.Customer.Deleted ||
-				ticket.Employees.FirstOrDefault(te => te.Employee.Deleted == true) == null;
+				ticket.Employees.FirstOrDefault(e => e.Deleted == true) == null;
 		}
 	}
 }

@@ -9,6 +9,8 @@ using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Microsoft.Practices.Web.UI.WebControls;
+using System.Threading;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.WebSite
 {
@@ -18,9 +20,11 @@ namespace Bagge.Seti.WebSite
 
 		public TicketEditor()
 		{
-			_presenter = new TicketEditorPresenter(this, IoCContainer.TicketManager, 
-				IoCContainer.EmployeeManager, IoCContainer.CustomerManager, 
-				IoCContainer.TicketStatusManager, IoCContainer.ProductManager);
+			_presenter = new TicketEditorPresenter(this, IoCContainer.TicketManager,
+				IoCContainer.EmployeeManager, IoCContainer.CustomerManager,
+				IoCContainer.TicketStatusManager, IoCContainer.ProductManager, IoCContainer.User.Identity as IUser);
+
+			
 
 		}
 
@@ -43,21 +47,24 @@ namespace Bagge.Seti.WebSite
 
 		#region ITicketEditorView Members
 
-		public Employee[] Employees
+		public Employee[] Technicians
 		{
-			set { throw new NotImplementedException(); }
-		}
-
-		public int SelectedEmployeeId
-		{
-			get { throw new NotImplementedException(); }
+			set
+			{
+				var employees = Details.FindControl("_employees") as BaseDataBoundControl;
+				if (employees != null)
+				{
+					employees.DataSource = value;
+					employees.DataBind();
+				}
+			}
 		}
 
 		public Customer[] Customers
 		{
-			set 
+			set
 			{
-				var customers = Details.FindControl("_customers") as DropDownList;
+				var customers = Details.FindControl("_customer") as DropDownList;
 				if (customers != null)
 				{
 					customers.DataSource = value;
@@ -66,7 +73,7 @@ namespace Bagge.Seti.WebSite
 			}
 		}
 
-		
+
 		#endregion
 
 
@@ -78,20 +85,35 @@ namespace Bagge.Seti.WebSite
 		#region ITicketEditorView Members
 
 
-		public int[] AssignedEmployeeIds
+		public int[] AssignedTechniciansIds
 		{
-			get { return null; }
+			get 
+			{
+				var employees = Details.FindControl("_employees") as BaseDataBoundControl;
+				if (employees is CheckBoxList)
+				{
+					var ids = (from item in ((CheckBoxList)employees).Items.Cast<ListItem>()
+							   where item.Selected == true
+							   select item.Value.ToInt32());
+					return ids.ToArray();
+				}
+				else if(employees is  BulletedList)
+				{
+				}
+
+				return null; 
+			}
 		}
 
 		public int SelectedCustomerId
 		{
 			get
 			{
-				return GetControlPropertyValue(Details.FindControl("_customers"), 0, "Value", "SelectedValue"); 
+				return GetControlPropertyValue(Details.FindControl("_customer"), 0, "Value", "SelectedValue");
 			}
 			set
 			{
-				SetControlPropertyValue(Details.FindControl("_customers"), value, "Value", "SelectedValue");
+				SetControlPropertyValue(Details.FindControl("_customer"), value, "Value", "SelectedValue");
 			}
 		}
 
@@ -123,10 +145,6 @@ namespace Bagge.Seti.WebSite
 		public ProductTicket[] Products
 		{
 			set { }
-		}
-
-		public int[] AssignedProductIds
-		{
 			get { return null; }
 		}
 

@@ -4,16 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.UI;
+using System.Threading;
 
 namespace Bagge.Seti.WebSite.Controls
 {
-	public class SecureBoundField: System.Web.UI.WebControls.BoundField, IPropertySecureControl
+	public class SecureBoundField : System.Web.UI.WebControls.BoundField, IPropertySecureControl
 	{
 
 		public string Mask
 		{
 			get { return ViewState["Mask"] as string; }
-			set { ViewState["Mask"] = value; }
+			set
+			{
+				value = value.Replace("{NumberSeparator}", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+				ViewState["Mask"] = value;
+			}
 		}
 
 		public string MaskPlaceHolder
@@ -37,7 +42,11 @@ namespace Bagge.Seti.WebSite.Controls
 		public string DefaultValue
 		{
 			get { return ViewState["DefaultValue"] as string; }
-			set { ViewState["DefaultValue"] = value; }
+			set
+			{
+				value = value.Replace("{NumberSeparator}", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+				ViewState["DefaultValue"] = value;
+			}
 		}
 
 		public int MaxLength
@@ -57,7 +66,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 			base.InitializeDataCell(cell, rowState);
 
-			if ((rowState & DataControlRowState.Insert) == DataControlRowState.Insert || 
+			if ((rowState & DataControlRowState.Insert) == DataControlRowState.Insert ||
 				(rowState & DataControlRowState.Edit) == DataControlRowState.Edit)
 			{
 				if (cell.Controls.Count == 1)
@@ -86,7 +95,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 
 			string placeHolder = string.Empty;
-			if(!string.IsNullOrEmpty(MaskPlaceHolder))
+			if (!string.IsNullOrEmpty(MaskPlaceHolder))
 				placeHolder = string.Format(", {{ placeholder: '{0}' }}", MaskPlaceHolder);
 
 			string clientId = Control.ClientID + "_" + textBox.ClientID;
@@ -124,7 +133,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 		public string PropertyName
 		{
-			get{ return DataField; }
+			get { return DataField; }
 			set { DataField = value; }
 		}
 

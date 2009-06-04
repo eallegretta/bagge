@@ -59,8 +59,6 @@
 		<Columns>
 			<seti:SecureBoundField NullDisplayText="" DataField="Customer" 
 				meta:resourcekey="CustomerField" />
-			<seti:SecureBoundField NullDisplayText="" DataField="CreationDate" 
-				meta:resourcekey="CreationDateField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="ExecutionDate" 
 				meta:resourcekey="ExecutionDateField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="CustomerArrival" 
@@ -71,10 +69,6 @@
 				meta:resourcekey="RealDurationField" />	
 			<seti:SecureBoundField NullDisplayText="" DataField="Description" 
 				meta:resourcekey="DescriptionField" />	
-			<seti:SecureBoundField NullDisplayText="" DataField="Budget" 
-				meta:resourcekey="BudgetField" />
-			<seti:SecureBoundField NullDisplayText="" DataField="Creator" 
-				meta:resourcekey="CreatorField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="Status" 
 				meta:resourcekey="StatusField" />
 			
