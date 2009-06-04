@@ -117,80 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BudgetField.HeaderText" xml:space="preserve">
-    <value>Presupuesto</value>
-  </data>
-  <data name="CreationDateField.HeaderText" xml:space="preserve">
-    <value>Fecha de Creación</value>
-  </data>
-  <data name="CreatorField.HeaderText" xml:space="preserve">
-    <value>Creador</value>
-  </data>
-  <data name="CustomerArrivalField.DataFormatString" xml:space="preserve">
-    <value>{0:dd/MM/yyyy HH:mm}</value>
-  </data>
   <data name="CustomerArrivalField.HeaderText" xml:space="preserve">
     <value>Fecha de Arrivo al Cliente</value>
   </data>
   <data name="CustomerField.HeaderText" xml:space="preserve">
     <value>Cliente</value>
   </data>
-  <data name="DeleteField.ConfirmationMessage" xml:space="preserve">
-    <value>¿Esta seguro que desea borrar el ticket?</value>
-  </data>
-  <data name="DeleteField.HeaderText" xml:space="preserve">
-    <value>Borrar</value>
-  </data>
-  <data name="DeleteField.UndeleteConfirmationMessage" xml:space="preserve">
-    <value>¿Esta seguro que desea reciclar el ticket?</value>
-  </data>
   <data name="DescriptionField.HeaderText" xml:space="preserve">
-    <value>Descripción</value>
+    <value>Descripción del Trabajo *</value>
   </data>
-  <data name="EditField.HeaderText" xml:space="preserve">
-    <value>Editar</value>
+  <data name="Details.EmptyDataText" xml:space="preserve">
+    <value>No se encontró el ticket</value>
+  </data>
+  <data name="EmployeesField.HeaderText" xml:space="preserve">
+    <value>Técnicos Asignados</value>
   </data>
   <data name="EstimatedDurationField.HeaderText" xml:space="preserve">
-    <value>Duración Estimada</value>
-  </data>
-  <data name="ExecutionDateField.DataFormatString" xml:space="preserve">
-    <value>{0:dd/MM/yyyy}</value>
+    <value>Duración Estimada *</value>
   </data>
   <data name="ExecutionDateField.HeaderText" xml:space="preserve">
-    <value>Fecha de Ejecución</value>
-  </data>
-  <data name="FilterButton.Text" xml:space="preserve">
-    <value>Filtrar Tickets</value>
-  </data>
-  <data name="FilterCreationDateLiteral.Text" xml:space="preserve">
-    <value>Fecha de Creación:</value>
-  </data>
-  <data name="FilterCustomerLiteral.Text" xml:space="preserve">
-    <value>Cliente:</value>
-  </data>
-  <data name="FilterDescriptionLiteral.Text" xml:space="preserve">
-    <value>Detalle:</value>
-  </data>
-  <data name="FilterEmployeesLiteral.Text" xml:space="preserve">
-    <value>Técnico Asignado:</value>
-  </data>
-  <data name="FilterExecutionDateLiteral.Text" xml:space="preserve">
-    <value>Fecha de Ejecución:</value>
-  </data>
-  <data name="FilterIdLiteral.Text" xml:space="preserve">
-    <value>Id:</value>
-  </data>
-  <data name="FilterStatusLiteral.Text" xml:space="preserve">
-    <value>Estado:</value>
-  </data>
-  <data name="Grid.EmptyDataText" xml:space="preserve">
-    <value>No se han encontrado tickets</value>
-  </data>
-  <data name="ListCommands.NewText" xml:space="preserve">
-    <value>Nuevo Ticket</value>
+    <value>Fecha de Ejecución *</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
-    <value>SETI &gt; Listado de Tickets</value>
+    <value>SETI &gt; Editor de Tickets</value>
   </data>
   <data name="RealDurationField.HeaderText" xml:space="preserve">
     <value>Duración Real</value>
@@ -198,7 +147,7 @@
   <data name="StatusField.HeaderText" xml:space="preserve">
     <value>Estado</value>
   </data>
-  <data name="ViewField.HeaderText" xml:space="preserve">
-    <value>Ver</value>
+  <data name="DescriptionValidator.ErrorMessage" xml:space="preserve">
+    <value>La descripción es requerida</value>
   </data>
 </root>

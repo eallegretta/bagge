@@ -74,5 +74,12 @@ namespace Bagge.Seti.BusinessLogic
 					filter.Add(new FilterPropertyValue { Property = employeesFilter.Property, Type = employeesFilter.Type, Value = productProvider });
 			}
 		}
+
+		public override int Create(Ticket instance)
+		{
+			instance.CreationDate = DateTime.Now;
+
+			return base.Create(instance);
+		}
 	}
 }

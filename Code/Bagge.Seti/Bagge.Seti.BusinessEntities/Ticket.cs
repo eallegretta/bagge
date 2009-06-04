@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+using Bagge.Seti.BusinessEntities.Validators;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -9,6 +11,7 @@ namespace Bagge.Seti.BusinessEntities
 	[Serializable]
 	public class Ticket : AuditablePrimaryKeyDomainObject<Ticket, int>
 	{
+		[NotNullValidator(MessageTemplateResourceName = "Validators_Ticket_Customer", MessageTemplateResourceType = typeof(Ticket))]
 		[BelongsTo("CustomerId")]
 		public Customer Customer
 		{
@@ -51,6 +54,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Ticket_Description", MessageTemplateResourceType = typeof(Ticket))]
 		[Property]
 		public string Description
 		{
@@ -66,8 +70,8 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 
-		[HasAndBelongsToMany(typeof(TicketEmployee), Table = "TicketEmployee", ColumnKey = "TicketId", ColumnRef = "EmployeeId", Lazy = true)]
-		public virtual IList<TicketEmployee> Employees
+		[HasAndBelongsToMany(Table = "TicketEmployee", ColumnKey = "TicketId", ColumnRef = "EmployeeId", Lazy = true)]
+		public virtual IList<Employee> Employees
 		{
 			get;
 			set;
@@ -80,6 +84,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[NotNullValidator(MessageTemplateResourceName = "Validators_Ticket_Creator", MessageTemplateResourceType = typeof(Ticket))]
 		[BelongsTo("EmployeeCreatorId")]
 		public Employee Creator
 		{
@@ -87,6 +92,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[NotNullValidator(MessageTemplateResourceName = "Validators_Ticket_Status", MessageTemplateResourceType = typeof(Ticket))]
 		[BelongsTo("TicketStatusId")]
 		public TicketStatus Status
 		{

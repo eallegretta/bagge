@@ -1,0 +1,1 @@
+﻿alter table Ticket alter column TicketStatusId int not null 

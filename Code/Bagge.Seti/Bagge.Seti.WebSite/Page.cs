@@ -6,6 +6,7 @@ using System.Web.UI;
 using Bagge.Seti.WebSite.Controls;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Helpers;
+using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.WebSite
 {
@@ -13,10 +14,12 @@ namespace Bagge.Seti.WebSite
 	{
 		protected T GetControlPropertyValue<T>(Control control, T defaultValue, params string[] propertiesToSearch) where T: IConvertible
 		{
+			Check.Require(control != null);
+
 			foreach (string propertyName in propertiesToSearch)
 			{
 				object value = control.GetPropertyValue(propertyName);
-				if (!string.IsNullOrEmpty(value.ToString()))
+				if (value != null && !string.IsNullOrEmpty(value.ToString()))
 				{
 					try
 					{
@@ -33,6 +36,9 @@ namespace Bagge.Seti.WebSite
 
 		protected void SetControlPropertyValue(Control control, object value, params string[] propertiesToSearch)
 		{
+			Check.Require(control != null);
+			Check.Require(value != null);
+
 			foreach (string propertyName in propertiesToSearch)
 			{
 				if (control.SetPropertyValue(propertyName, value))

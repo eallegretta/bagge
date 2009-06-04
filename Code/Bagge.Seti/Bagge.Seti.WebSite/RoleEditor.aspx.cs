@@ -44,7 +44,7 @@ namespace Bagge.Seti.WebSite
 
 		public Function[] AvailableFunctions
 		{
-			set 
+			set
 			{
 				var functions = Details.FindControl("_functions") as BaseDataBoundControl;
 				if (functions != null)
@@ -63,6 +63,7 @@ namespace Bagge.Seti.WebSite
 				if (functions != null)
 				{
 					var ids = from function in functions.Items.Cast<ListItem>()
+							  where function.Selected == true
 							  select function.Value.ToInt32();
 					return ids.ToArray();
 				}

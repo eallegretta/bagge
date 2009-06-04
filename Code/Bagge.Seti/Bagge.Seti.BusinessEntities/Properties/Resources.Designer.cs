@@ -239,5 +239,41 @@ namespace Bagge.Seti.BusinessEntities.Properties {
                 return ResourceManager.GetString("Validators_Role_Description", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El creador es requerido.
+        /// </summary>
+        internal static string Validators_Ticket_Creator {
+            get {
+                return ResourceManager.GetString("Validators_Ticket_Creator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El cliente es requerido.
+        /// </summary>
+        internal static string Validators_Ticket_Customer {
+            get {
+                return ResourceManager.GetString("Validators_Ticket_Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La descripción del trabajo a realizar es requerida.
+        /// </summary>
+        internal static string Validators_Ticket_Description {
+            get {
+                return ResourceManager.GetString("Validators_Ticket_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El estado es requerido.
+        /// </summary>
+        internal static string Validators_Ticket_Status {
+            get {
+                return ResourceManager.GetString("Validators_Ticket_Status", resourceCulture);
+            }
+        }
     }
 }

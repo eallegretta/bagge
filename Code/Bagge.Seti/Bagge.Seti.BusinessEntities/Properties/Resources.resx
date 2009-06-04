@@ -177,4 +177,16 @@
   <data name="Validators_Role_Description" xml:space="preserve">
     <value>La descripción es requerida</value>
   </data>
+  <data name="Validators_Ticket_Creator" xml:space="preserve">
+    <value>El creador es requerido</value>
+  </data>
+  <data name="Validators_Ticket_Customer" xml:space="preserve">
+    <value>El cliente es requerido</value>
+  </data>
+  <data name="Validators_Ticket_Description" xml:space="preserve">
+    <value>La descripción del trabajo a realizar es requerida</value>
+  </data>
+  <data name="Validators_Ticket_Status" xml:space="preserve">
+    <value>El estado es requerido</value>
+  </data>
 </root>
