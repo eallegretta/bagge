@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Editor.Master" AutoEventWireup="true" CodeBehind="TicketEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.TicketEditor" meta:resourcekey="Page"%>
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <%@ Register Src="~/Controls/Calendar.ascx" TagPrefix="seti" TagName="Calendar"  %>
+<%@ Register TagPrefix="seti" TagName="ProductTicketSelectionGrid" Src="~/Controls/ProductTicketSelectionGrid.ascx" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
@@ -65,6 +66,14 @@
 					<asp:BulletedList ID="_employees" runat="server" DataValueField="Id" 
 						DataTextField="Fullname">
 					</asp:BulletedList>
+				</ItemTemplate>
+			</seti:SecureTemplateField>
+			<seti:SecureTemplateField PropertyName="Products" meta:resourcekey="ProductsField">
+				<EditItemTemplate>
+					<seti:ProductTicketSelectionGrid id="_products" runat="server"></seti:ProductTicketSelectionGrid>
+				</EditItemTemplate>
+				<ItemTemplate>
+					<seti:ProductTicketSelectionGrid id="_products" runat="server" ReadOnly="true"></seti:ProductTicketSelectionGrid>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 		</Fields>
