@@ -8,6 +8,7 @@ namespace Bagge.Seti.DataAccess.Contracts
 {
 	public interface IProductProviderDao: IDao<ProductProvider, int>
 	{
+		ProductProvider[] FindProductsInIdsByAggregation(int[] ids, string aggregation);
 		ProductProvider[] FindAllByProduct(int productId);
 		ProductProvider[] FindAllByProvider(int providerId);
 		void DeleteByProduct(int productId);

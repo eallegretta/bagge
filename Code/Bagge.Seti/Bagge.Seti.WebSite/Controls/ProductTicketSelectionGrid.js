@@ -5,7 +5,7 @@ Array.prototype.remove = function(from, to) {
 	return this.push.apply(this, rest);
 };
 
-function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, deleteIconUrl, isReadOnly) {
+function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, deleteIconUrl, isReadOnly, totalQuantityId, totalPriceId) {
 
 	this.table = $("#" + tableId);
 	this.addButton = $("#" + btnId);
@@ -20,6 +20,9 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, d
 	this.deleteIconUrl = deleteIconUrl;
 	this.isReadOnly = isReadOnly;
 
+	this.hdnTotalQuantity = $("#" + totalQuantityId);
+
+	this.hdnTotalPrice = $("#" + totalPriceId);
 
 	this.getSelectedOption = function() {
 		return $("option:selected", this.items);
@@ -31,13 +34,13 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, d
 	}
 
 	this.isValidQuantity = function(quantity) {
-		var regex = /\d+/;
+		var regex = /^\d+$/;
 		return regex.test(quantity);
 	}
 
 	this.addSelectedItem = function() {
 		var item = this.getSelecteItem();
-		if (item.Name.length > 0 && this.isValidPrice(item.Quantity)) {
+		if (item.Name.length > 0 && this.isValidQuantity(item.Quantity)) {
 			this.getSelectedOption().remove();
 			this.addItem(item.Id, item.Name, item.Quantity);
 			this.quantity.val("");
@@ -47,6 +50,7 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, d
 		var item = this.createItem(id, text, quantity);
 		this.appendItem(item);
 		this.appendRow(item);
+		this.calculateTotalQuantities();
 	}
 
 	this.refresh = function() {
@@ -71,13 +75,14 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, d
 		this.removeItem(item);
 		row.remove();
 		this.items.append("<option value='" + itemId + "'>" + itemName + "</option>");
+		this.calculateTotalQuantities();
 	}
 
 	this.createItem = function(id, text, quantity) {
 		return { "Id": id, "Name": text, "Quantity": quantity };
 	}
 
-	this.updatePrice = function(item) {
+	this.updateQuantity = function(item) {
 		var hdnValue = this.getHiddenValue();
 		var items = JSON.parse(hdnValue);
 		for (var index = 0; index < items.length; index++) {
@@ -87,6 +92,16 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, d
 			}
 		}
 		this.hdn.val(JSON.stringify(items));
+		this.calculateTotalQuantities();
+	}
+
+	this.calculateTotalQuantities = function() {
+		var total = 0;
+		$(".quantity", this.table).each(function() {
+			total += parseInt(this.value);
+		});
+		this.hdnTotalQuantity.value = total;
+		$("#totalQuantity", this.table).text(total);
 	}
 
 	this.appendItem = function(item) {
@@ -112,37 +127,39 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, d
 		var img = document.createElement("img");
 		img.src = this.deleteIconUrl;
 
-		var cssClass = ($("tr", this.table).length % 2 == 1) ? "gridRow" : "gridRowAlternate";
+		var cssClass = ($("tr", this.table).length % 2 == 0) ? "gridRow" : "gridRowAlternate";
 
-		var priceBox = (this.isReadOnly) ? document.createElement("span") : document.createElement("input");
+		var quantityBox = (this.isReadOnly) ? document.createElement("span") : document.createElement("input");
 		if (this.isReadOnly)
-			$(priceBox).text(item.Quantity);
+			$(quantityBox).text(item.Quantity);
 		else {
-			priceBox.behaviour = this;
+			quantityBox.behaviour = this;
 
-			$(priceBox)
+			$(quantityBox)
+				.addClass("quantity")
 				.focus(function() {
 					this.lastValue = this.value;
 				})
 				.val(item.Quantity)
 				.change(function() {
-					if (this.behaviour.isValidPrice(this.value)) {
+					if (this.behaviour.isValidQuantity(this.value)) {
 						var item = $(this).parent().parent().data("item");
 						item.Quantity = this.value;
-						this.behaviour.updatePrice(item);
+						this.behaviour.updateQuantity(item);
+						$("#price_" + item.Id, this.behaviour.table).html("$0");
 					}
 					else
 						this.value = this.lastValue;
 				}
 			);
 		}
-		$(priceBox).css("text-align", "right");
+		$(quantityBox).css("text-align", "right");
 
-		var row = $("<tr class='" + cssClass + "'></tr>").append(
-						$("<td></td>").text(item.Name)
-					).append(
-						$("<td style='text-align:right'></td>").append(priceBox)
-				);
+		var row = $("<tr class='" + cssClass + "'></tr>")
+					.append($("<td></td>").text(item.Name))
+					.append($("<td style='text-align:right'></td>").append(quantityBox))
+					.append("<td style='text-align:right' class='price' id='price_" + item.Id + "' >$0</td>")
+		;
 		if (!this.isReadOnly)
 			row.append($("<td style='text-align:center'></td>").append(img));
 		row.data("item", item);
@@ -150,7 +167,7 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, itemId, quantityId, d
 		$(img).click(function() {
 			this.behaviour.removeSelectedItem(this);
 		});
-		$("tbody", this.table).append(row);
+		$(".gridFooter", this.table).before(row);
 	}
 
 	this.getHiddenValue = function() {
