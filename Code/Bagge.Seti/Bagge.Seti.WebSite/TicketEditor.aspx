@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Editor.Master" AutoEventWireup="true" CodeBehind="TicketEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.TicketEditor" meta:resourcekey="Page"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Editor.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="TicketEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.TicketEditor" meta:resourcekey="Page"%>
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <%@ Register Src="~/Controls/Calendar.ascx" TagPrefix="seti" TagName="Calendar"  %>
 <%@ Register TagPrefix="seti" TagName="ProductTicketSelectionGrid" Src="~/Controls/ProductTicketSelectionGrid.ascx" %>

@@ -135,14 +135,23 @@
   <data name="DeleteHeaderLiteral.Text" xml:space="preserve">
     <value>Borrar</value>
   </data>
-  <data name="ItemNameHeaderLiteral.Text" xml:space="preserve">
-    <value>Producto</value>
-  </data>
-  <data name="NameTitleLiteral.Text" xml:space="preserve">
-    <value>Producto</value>
-  </data>
   <data name="PriceHeaderLiteral.Text" xml:space="preserve">
     <value>Precio</value>
+  </data>
+  <data name="ProductDropDownListFirstItem.Text" xml:space="preserve">
+    <value>-- Seleccione --</value>
+  </data>
+  <data name="ProductHeaderLiteral.Text" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="ProductTitleLiteral.Text" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="ProviderHeaderLiteral.Text" xml:space="preserve">
+    <value>Proveedor</value>
+  </data>
+  <data name="ProviderTitleLiteral.Text" xml:space="preserve">
+    <value>Proveedor</value>
   </data>
   <data name="QuantityHeaderLiteral.Text" xml:space="preserve">
     <value>Cantidad</value>
