@@ -23,13 +23,22 @@ namespace Bagge.Seti.WebSite.Controls {
         protected global::System.Web.UI.WebControls.PlaceHolder _addControls;
         
         /// <summary>
-        /// _nameTitle control.
+        /// _productTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal _nameTitle;
+        protected global::System.Web.UI.WebControls.Literal _productTitle;
+        
+        /// <summary>
+        /// _providerTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _providerTitle;
         
         /// <summary>
         /// _quantityTitle control.
@@ -50,13 +59,31 @@ namespace Bagge.Seti.WebSite.Controls {
         protected global::System.Web.UI.HtmlControls.HtmlInputButton _add;
         
         /// <summary>
-        /// _name control.
+        /// _product control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList _name;
+        protected global::System.Web.UI.WebControls.DropDownList _product;
+        
+        /// <summary>
+        /// _providerUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel _providerUpdatePanel;
+        
+        /// <summary>
+        /// _provider control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList _provider;
         
         /// <summary>
         /// _quantity control.
@@ -77,13 +104,22 @@ namespace Bagge.Seti.WebSite.Controls {
         protected global::System.Web.UI.HtmlControls.HtmlTable _items;
         
         /// <summary>
-        /// _itemNameHeaderTitle control.
+        /// _productHeaderTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal _itemNameHeaderTitle;
+        protected global::System.Web.UI.WebControls.Literal _productHeaderTitle;
+        
+        /// <summary>
+        /// _providerHeaderTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _providerHeaderTitle;
         
         /// <summary>
         /// _quantityHeaderTitle control.
@@ -122,22 +158,13 @@ namespace Bagge.Seti.WebSite.Controls {
         protected global::System.Web.UI.WebControls.Literal _totalText;
         
         /// <summary>
-        /// _calculateOptions control.
+        /// _totalPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList _calculateOptions;
-        
-        /// <summary>
-        /// _calculate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton _calculate;
+        protected global::System.Web.UI.WebControls.TextBox _totalPrice;
         
         /// <summary>
         /// _totalQuantity control.
@@ -147,15 +174,6 @@ namespace Bagge.Seti.WebSite.Controls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField _totalQuantity;
-        
-        /// <summary>
-        /// _totalPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField _totalPrice;
         
         /// <summary>
         /// _selectedItems control.

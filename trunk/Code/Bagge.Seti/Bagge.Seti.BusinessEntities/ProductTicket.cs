@@ -7,8 +7,8 @@ namespace Bagge.Seti.BusinessEntities
 	[Serializable]
 	public class ProductTicket : PrimaryKeyDomainObject<ProductTicket, int>
 	{
-		[BelongsTo("ProductId")]
-		public Product Product
+		[BelongsTo("ProductProviderId")]
+		public ProductProvider ProductProvider
 		{
 			get;
 			set;

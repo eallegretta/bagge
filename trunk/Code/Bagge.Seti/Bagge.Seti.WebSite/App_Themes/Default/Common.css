@@ -136,6 +136,12 @@ tr.gridHeader th a:hover
 	text-decoration:underline;
 }
 
+tr.gridFooter td
+{
+	border-top:1px solid black;
+	font-weight:bold;
+}
+
 tr.gridRow
 {
 	background-color:white;

@@ -3,7 +3,10 @@
 	<table>
 		<tr>
 			<th>
-				<asp:Literal ID="_nameTitle" runat="server" meta:resourcekey="NameTitleLiteral"></asp:Literal>
+				<asp:Literal ID="_productTitle" runat="server" meta:resourcekey="ProductTitleLiteral"></asp:Literal>
+			</th>
+			<th>
+				<asp:Literal ID="_providerTitle" runat="server" meta:resourcekey="ProviderTitleLiteral"></asp:Literal>
 			</th>
 			<th>
 				<asp:Literal ID="_quantityTitle" runat="server" meta:resourcekey="QuantityTitleLiteral"></asp:Literal>
@@ -14,9 +17,20 @@
 		</tr>
 		<tr>
 			<td>
-				<asp:DropDownList ID="_name" runat="server" AppendDataBoundItems="true" Width="250px" meta:resourcekey="NameDropDownList">
-					<asp:ListItem></asp:ListItem>
+				<asp:DropDownList ID="_product" runat="server" AutoPostBack="true" AppendDataBoundItems="true" Width="250px" meta:resourcekey="ProductDropDownList" OnSelectedIndexChanged="_product_SelectedIndexChanged">
+					<asp:ListItem meta:resourcekey="ProductDropDownListFirstItem"></asp:ListItem>
 				</asp:DropDownList>
+			</td>
+			<td>
+				<asp:UpdatePanel ID="_providerUpdatePanel" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+					<ContentTemplate>
+						<asp:DropDownList ID="_provider" runat="server" Width="250px" meta:resourcekey="ProviderDropDownList">
+						</asp:DropDownList>
+					</ContentTemplate>
+					<Triggers>
+						<asp:AsyncPostBackTrigger ControlID="_product" EventName="SelectedIndexChanged" />
+					</Triggers>
+				</asp:UpdatePanel>
 			</td>
 			<td>
 				<asp:TextBox ID="_quantity" runat="server" meta:resourcekey="QuantityTextBox"></asp:TextBox>
@@ -27,7 +41,10 @@
 <table id="_items" width="100%" runat="server">
 	<tr class="gridHeader">
 		<th>
-			<asp:Literal ID="_itemNameHeaderTitle" runat="server" meta:resourcekey="ItemNameHeaderLiteral"></asp:Literal>
+			<asp:Literal ID="_productHeaderTitle" runat="server" meta:resourcekey="ProductHeaderLiteral"></asp:Literal>
+		</th>
+		<th>
+			<asp:Literal ID="_providerHeaderTitle" runat="server" meta:resourcekey="ProviderHeaderLiteral"></asp:Literal>
 		</th>
 		<th style="width:200px">
 			<asp:Literal ID="_quantityHeaderTitle" runat="server" meta:resourcekey="QuantityHeaderLiteral"></asp:Literal>
@@ -40,19 +57,13 @@
 		</th>
 	</tr>
 	<tr class="gridFooter">
-		<td><asp:Literal ID="_totalText" runat="server" meta:resourcekey="TotalTextLiteral"></asp:Literal></td>
+	
+		<td colspan="2"><asp:Literal ID="_totalText" runat="server" meta:resourcekey="TotalTextLiteral"></asp:Literal></td>
 		<td style="text-align:right"><span id="totalQuantity">0</span></td>
-		<td style="text-align:right"><span id="totalValue">$0</span></td>
+		<td style="text-align:right">$<asp:TextBox id="_totalPrice" EnableTheming="false" CssClass="textBox smallData" Style="text-align:right" runat="server" Text="0" /></td>
 		<td></td>
-	</tr>	
+	</tr>
 </table>
 
-<asp:DropDownList ID="_calculateOptions" runat="server" meta:resourcekey="CalculateOptionsDropDownList">
-	<asp:ListItem Value="max" meta:resourcekey="CalculateOptionsMaxListItem"></asp:ListItem>
-	<asp:ListItem Value="min" meta:resourcekey="CalculateOptionsMinListItem"></asp:ListItem>
-	<asp:ListItem Value="avg" meta:resourcekey="CalculateOptionsAvgListItem"></asp:ListItem>
-</asp:DropDownList>
-<input type="button" id="_calculate" class="button" runat="server" meta:resourcekey="CalculateButton" />
 <asp:HiddenField ID="_totalQuantity" runat="server" />
-<asp:HiddenField ID="_totalPrice" runat="server" />
 <asp:HiddenField ID="_selectedItems" runat="server" Value="[]" />
