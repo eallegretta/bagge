@@ -158,15 +158,6 @@ namespace Bagge.Seti.WebSite.Controls {
         protected global::System.Web.UI.WebControls.Literal _totalText;
         
         /// <summary>
-        /// _totalPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _totalPrice;
-        
-        /// <summary>
         /// _totalQuantity control.
         /// </summary>
         /// <remarks>

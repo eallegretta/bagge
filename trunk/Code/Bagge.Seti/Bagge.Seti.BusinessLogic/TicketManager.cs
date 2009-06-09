@@ -79,7 +79,24 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			instance.CreationDate = DateTime.Now;
 
+			AssignTicketToProducts(instance);
+
 			return base.Create(instance);
 		}
+
+		public override void Update(Ticket instance)
+		{
+			AssignTicketToProducts(instance);
+
+			base.Update(instance);
+		}
+
+		private static void AssignTicketToProducts(Ticket instance)
+		{
+			foreach (var product in instance.Products)
+				product.Ticket = instance;
+		}
+
+
 	}
 }

@@ -9,5 +9,11 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 {
 	public class TicketDao : GenericDao<Ticket, int>, ITicketDao
 	{
+		public override void Update(Ticket instance)
+		{
+			SessionScopeUtils.FlushSessionScope();
+
+			base.Update(instance);
+		}
 	}
 }

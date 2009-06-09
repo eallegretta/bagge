@@ -77,7 +77,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[HasAndBelongsToMany(typeof(ProductTicket), Table = "ProductTicket", ColumnKey = "TicketId", ColumnRef = "ProductId", Lazy = true)]
+		[HasMany(typeof(ProductTicket), Table = "ProductTicket", ColumnKey = "TicketId", Lazy = true, Inverse = false, Cascade = ManyRelationCascadeEnum.All)]
 		public virtual IList<ProductTicket> Products
 		{
 			get;
@@ -85,7 +85,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[NotNullValidator(MessageTemplateResourceName = "Validators_Ticket_Creator", MessageTemplateResourceType = typeof(Ticket))]
-		[BelongsTo("EmployeeCreatorId")]
+		[BelongsTo("EmployeeCreatorId", Update = false)]
 		public Employee Creator
 		{
 			get;

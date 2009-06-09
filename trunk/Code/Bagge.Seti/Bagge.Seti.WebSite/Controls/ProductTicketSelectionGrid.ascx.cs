@@ -21,7 +21,7 @@ namespace Bagge.Seti.WebSite.Controls
 			public string Product { get; set; }
 			public string Provider { get; set; }
 			public decimal? Quantity { get; set; }
-			public decimal? Price { get; set; }
+			public decimal? UnitaryPrice { get; set; }
 			public bool Deleted { get; set; }
 
 			public ProductTicketBindItem()
@@ -36,7 +36,7 @@ namespace Bagge.Seti.WebSite.Controls
 				ProviderId = productTicket.ProductProvider.Provider.Id;
 				Product = productTicket.ProductProvider.Product.NameAndDescription;
 				Provider = productTicket.ProductProvider.Provider.NameAndCUIT;
-				Price = productTicket.ProductProvider.Price;
+				UnitaryPrice = productTicket.ProductProvider.Price;
 				Quantity = productTicket.EstimatedQuantity;
 				Deleted = productTicket.ProductProvider.Product.Deleted || productTicket.ProductProvider.Provider.Deleted;
 			}
@@ -67,6 +67,16 @@ namespace Bagge.Seti.WebSite.Controls
 				}
 				return items;
 			}
+		}
+
+		protected void Page_Init(object sender, EventArgs e)
+		{
+			string value = Request.Form[_selectedItems.UniqueID];
+
+			if (string.IsNullOrEmpty(value))
+				value = "[]";
+
+			_selectedItems.Value = value;
 		}
 
 
@@ -104,19 +114,19 @@ namespace Bagge.Seti.WebSite.Controls
 				{
 					Page.ClientScript.RegisterClientScriptInclude("ProductTicketSelectionGrid", ResolveUrl("ProductTicketSelectionGrid.js"));
 					Page.ClientScript.RegisterStartupScript(typeof(string), "ProductTicketSelectionGridObject",
-						string.Format("var {0}_instance = new ProductTicketSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, '{9}', '{10}');",
+						string.Format("var {0}_instance = new ProductTicketSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, '{9}');",
 							ClientID, _items.ClientID, _add.ClientID, _selectedItems.ClientID, 
 							_product.ClientID, _provider.ClientID, _quantity.ClientID, 
-							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), _totalQuantity.ClientID, _totalPrice.ClientID),
+							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), _totalQuantity.ClientID),
 							true);
 				}
 			}
 			else
 			{
-				string script = string.Format("var {0}_instance = new ProductTicketSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, '{9}', '{10}');",
+				string script = string.Format("var {0}_instance = new ProductTicketSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, '{9}');",
 							ClientID, _items.ClientID, _add.ClientID, _selectedItems.ClientID,
 							_product.ClientID, _provider.ClientID, _quantity.ClientID,
-							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), _totalQuantity.ClientID, _totalPrice.ClientID);
+							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), _totalQuantity.ClientID);
 				ScriptManager.RegisterStartupScript(this,
 					typeof(string),
 					"ProductTicketSelectionGridObject",
@@ -160,11 +170,17 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void LoadProducts()
 		{
+			var selectedItems = SelectedItems;
+			var selectedItemsCount = selectedItems.Count;
+
+			ListItem firstItem = _product.Items[0];
+			_product.Items.Clear();
+			_product.Items.Add(firstItem);
 			var products = IoCContainer.ProductManager.FindAllActiveOrdered("Name");
 			foreach (var product in products)
 			{
 				// If is postback and the product was selected, do not put it into the drop down
-				if (IsPostBack && SelectedItems.FirstOrDefault(pt => pt.ProductProvider.Product.Id == product.Id) != null)
+				if (selectedItemsCount > 0 && selectedItems.FirstOrDefault(pt => pt.ProductProvider.Product.Id == product.Id) != null)
 					continue;
 
 				ListItem item = new ListItem();
@@ -186,18 +202,14 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			get
 			{
-				string value = Request.Form[_selectedItems.UniqueID] ;
-
-				if (string.IsNullOrEmpty(value))
-					value = "[]";
-
 				return ProductTicketBindItem.ToProductTicketItems(
-					JsonConvert.DeserializeObject<List<ProductTicketBindItem>>(value));
+					JsonConvert.DeserializeObject<List<ProductTicketBindItem>>(_selectedItems.Value));
 			}
 			set
 			{
 				_selectedItems.Value = JsonConvert.SerializeObject(
 						ProductTicketBindItem.ToProductTicketBindItems(value));
+				LoadProducts();
 				DataBind();
 			}
 		}
