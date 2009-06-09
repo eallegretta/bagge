@@ -74,25 +74,18 @@
 			
 			<seti:SecureHyperLinkField MethodName="Get" ItemStyle-Width="20px" 
 				ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
-				DataNavigateUrlFormatString="RoleEditor.aspx?Id={0}&Action=View"
+				DataNavigateUrlFormatString="TicketEditor.aspx?Id={0}&Action=View"
 				Text="<%$ Resources:WebSite, IconViewImageTag %>"
 				meta:resourcekey="ViewField" >
 				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
 			</seti:SecureHyperLinkField>
 			<seti:SecureHyperLinkField MethodName="Update" ItemStyle-Width="20px" 
 				ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
-				DataNavigateUrlFormatString="RoleEditor.aspx?Id={0}&Action=Edit"
+				DataNavigateUrlFormatString="TicketEditor.aspx?Id={0}&Action=Edit"
 				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" >
 				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
 			</seti:SecureHyperLinkField>
-			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" 
-				ItemStyle-HorizontalAlign="Center" 
-				UndeleteImageUrl="<%$ Resources:WebSite, IconRecycleImagePath%>"
-				ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
-				meta:resourcekey="DeleteField">
-				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
-			</seti:DeleteUndeleteCommandField>
 		</Columns>
 	</seti:SecureGridView>
 	<seti:SecureMethodPlaceHolder runat="server" MethodName="Create">

@@ -58,6 +58,8 @@ namespace Bagge.Seti.WebSite.Presenters
 					View.Technicians = SelectedEntity.Employees.ToArray();
 					break;
 			}
+			if (View.Mode.In(EditorAction.Update, EditorAction.View))
+				View.Products = SelectedEntity.Products.ToArray();
 		}
 
 
@@ -68,10 +70,12 @@ namespace Bagge.Seti.WebSite.Presenters
 			foreach (var technicianId in View.AssignedTechniciansIds)
 				entity.Employees.Add(_employeeManager.Get(technicianId));
 			entity.Status = _ticketStatusManager.Get(View.SelectedTicketStatus);
+			entity.Products = View.Products;
 
 			if (View.Mode == EditorAction.Insert)
 				entity.Creator = _employeeManager.GetByUsername(_loggedUser.Username);
-				
+			else
+				entity.Creator = new Employee();
 			
 			base.Save(entity);
 		}

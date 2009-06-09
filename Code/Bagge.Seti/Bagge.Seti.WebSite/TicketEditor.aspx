@@ -70,12 +70,13 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="Products" meta:resourcekey="ProductsField">
 				<EditItemTemplate>
-					<seti:ProductTicketSelectionGrid id="_products" runat="server"></seti:ProductTicketSelectionGrid>
+					<seti:ProductTicketSelectionGrid id="_products" runat="server" SelectedItems='<%#Eval("Products")%>'></seti:ProductTicketSelectionGrid>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<seti:ProductTicketSelectionGrid id="_products" runat="server" ReadOnly="true"></seti:ProductTicketSelectionGrid>
+					<seti:ProductTicketSelectionGrid id="_products" runat="server" SelectedItems='<%#Eval("Products")%>' ReadOnly="true"></seti:ProductTicketSelectionGrid>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
+			<seti:SecureBoundField ControlStyle-CssClass="budget smallData" DataField="Budget" meta:resourcekey="BudgetField"></seti:SecureBoundField>
 		</Fields>
 	</seti:SecureDetailsView>
 	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/TicketList.aspx"
@@ -83,21 +84,4 @@
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server" 
 		DataObjectTypeName=""></asp:ObjectContainerDataSource>
-		<!--
-		[Property]
-		decimal? Budget
-
-
-		[HasAndBelongsToMany(typeof(TicketEmployee), Table = "TicketEmployee", ColumnKey = "TicketId", ColumnRef = "EmployeeId", Lazy = true)]
-		public virtual IList<TicketEmployee> Employees
-
-		[HasAndBelongsToMany(typeof(ProductTicket), Table = "ProductTicket", ColumnKey = "TicketId", ColumnRef = "ProductId", Lazy = true)]
-		Products
-
-		[BelongsTo("EmployeeCreatorId")]
-		Creator
-
-		[BelongsTo("TicketStatusId")]
-		Status
-		-->
 </asp:Content>

@@ -11,6 +11,7 @@ using Bagge.Seti.Common;
 using Microsoft.Practices.Web.UI.WebControls;
 using System.Threading;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.WebSite.Controls;
 
 namespace Bagge.Seti.WebSite
 {
@@ -24,7 +25,7 @@ namespace Bagge.Seti.WebSite
 				IoCContainer.EmployeeManager, IoCContainer.CustomerManager,
 				IoCContainer.TicketStatusManager, IoCContainer.ProductManager, IoCContainer.User.Identity as IUser);
 
-			
+
 
 		}
 
@@ -87,7 +88,7 @@ namespace Bagge.Seti.WebSite
 
 		public int[] AssignedTechniciansIds
 		{
-			get 
+			get
 			{
 				var employees = Details.FindControl("_employees") as BaseDataBoundControl;
 				if (employees is CheckBoxList)
@@ -97,11 +98,11 @@ namespace Bagge.Seti.WebSite
 							   select item.Value.ToInt32());
 					return ids.ToArray();
 				}
-				else if(employees is  BulletedList)
+				else if (employees is BulletedList)
 				{
 				}
 
-				return null; 
+				return null;
 			}
 		}
 
@@ -144,8 +145,23 @@ namespace Bagge.Seti.WebSite
 
 		public ProductTicket[] Products
 		{
-			set { }
-			get { return null; }
+			set
+			{
+				var products = Details.FindControl("_products") as ProductTicketSelectionGrid;
+				if (products != null)
+				{
+					products.SelectedItems = value;
+				}
+			}
+			get
+			{
+				var products = Details.FindControl("_products") as ProductTicketSelectionGrid;
+				if (products != null)
+				{
+					return products.SelectedItems.ToArray();
+				}
+				return null;
+			}
 		}
 
 		#endregion

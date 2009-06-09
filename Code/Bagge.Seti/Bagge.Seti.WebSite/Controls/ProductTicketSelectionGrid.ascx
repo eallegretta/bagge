@@ -60,7 +60,7 @@
 	
 		<td colspan="2"><asp:Literal ID="_totalText" runat="server" meta:resourcekey="TotalTextLiteral"></asp:Literal></td>
 		<td style="text-align:right"><span id="totalQuantity">0</span></td>
-		<td style="text-align:right">$<asp:TextBox id="_totalPrice" EnableTheming="false" CssClass="textBox smallData" Style="text-align:right" runat="server" Text="0" /></td>
+		<td style="text-align:right">$<span id="totalPrice">0</td>
 		<td></td>
 	</tr>
 </table>

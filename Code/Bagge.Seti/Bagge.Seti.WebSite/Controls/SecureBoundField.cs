@@ -10,7 +10,6 @@ namespace Bagge.Seti.WebSite.Controls
 {
 	public class SecureBoundField : System.Web.UI.WebControls.BoundField, IPropertySecureControl
 	{
-
 		public string Mask
 		{
 			get { return ViewState["Mask"] as string; }
