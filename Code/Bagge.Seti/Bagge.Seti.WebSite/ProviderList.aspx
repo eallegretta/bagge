@@ -54,6 +54,7 @@
 				meta:resourcekey="EditField" />
 			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" 
 				ItemStyle-HorizontalAlign="Center" 
+				ShowUndelete="false"
 				UndeleteImageUrl="<%$ Resources:WebSite, IconRecycleImagePath%>"
 				ImageUrl="<%$ Resources:WebSite, IconDeleteImagePath %>" ButtonType="Image" 
 				meta:resourcekey="DeleteField"></seti:DeleteUndeleteCommandField>
