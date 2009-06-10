@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="ProviderDaoTestFixture.cs" />
     <Compile Include="ReportsTestFixture.cs" />
+    <Compile Include="TicketDaoTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bagge.Seti.BusinessEntities\Bagge.Seti.BusinessEntities.csproj">

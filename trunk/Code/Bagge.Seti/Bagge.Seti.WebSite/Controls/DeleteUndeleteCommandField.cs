@@ -35,6 +35,11 @@ namespace Bagge.Seti.WebSite.Controls
 			set { ViewState["UndeleteText"] = value; }
 		}
 
+		public bool ShowUndelete
+		{
+			get { return (bool)(ViewState["ShowUndelete"] ?? true); }
+			set { ViewState["ShowUndelete"] = value; }
+		}
 
 		protected override System.Web.UI.WebControls.DataControlField CreateField()
 		{
@@ -60,6 +65,12 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 			else
 			{
+				if (!ShowUndelete)
+				{
+					((WebControl)_control).Visible = false;
+					return;
+				}
+
 				if (!string.IsNullOrEmpty(this.UndeleteConfirmationMessage))
 				{
 					((WebControl)_control).Attributes.Add("onclick", "if(!confirm('" + this.UndeleteConfirmationMessage + "')) return false;");

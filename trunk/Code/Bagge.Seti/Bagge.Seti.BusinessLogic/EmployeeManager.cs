@@ -19,11 +19,13 @@ namespace Bagge.Seti.BusinessLogic
 	public class EmployeeManager: AuditableGenericManager<Employee, int>, IEmployeeManager
 	{
 		ISimpleFindGetDao<EmployeeCategory, int> _employeeCategoryDao;
+		ITicketManager _ticketManager;
 
-		public EmployeeManager(IEmployeeDao dao, ISimpleFindGetDao<EmployeeCategory, int> employeeCategoryDao)
+		public EmployeeManager(IEmployeeDao dao, ISimpleFindGetDao<EmployeeCategory, int> employeeCategoryDao, ITicketManager ticketManager)
 			: base(dao)
 		{
 			_employeeCategoryDao = employeeCategoryDao;
+			_ticketManager = ticketManager;
 		}
 
 		#region IEmployeeManager Members
@@ -167,7 +169,31 @@ namespace Bagge.Seti.BusinessLogic
 					instance.Password = userFromDb.Password;
 				}
 			}
+			else
+			{
+				CheckTicketRelationship(instance);
+			}
 			base.Update(instance);
+		}
+
+		private void CheckTicketRelationship(Employee instance)
+		{
+			IList<FilterPropertyValue> filters = new List<FilterPropertyValue>();
+			filters.Add("Creator", instance);
+
+			if (_ticketManager.FindAllByProperties(filters).Length > 0)
+			{
+				instance.Deleted = false;
+				throw new CantDeleteException(Resources.EmployeeTicketRelatedErrorMessage);
+			}
+			filters.Clear();
+			filters.Add("Employees", FilterPropertyValueType.In, instance);
+
+			if (_ticketManager.FindAllByProperties(filters).Length > 0)
+			{
+				instance.Deleted = false;
+				throw new CantDeleteException(Resources.EmployeeTicketRelatedErrorMessage);
+			}
 		}
 
 		public Employee[] FindAllActiveTechnicians()

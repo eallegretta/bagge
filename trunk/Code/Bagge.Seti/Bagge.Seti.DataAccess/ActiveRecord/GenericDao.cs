@@ -139,11 +139,13 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
-			if (!string.IsNullOrEmpty(orderBy))
+			/*if (!string.IsNullOrEmpty(orderBy))
 				return ActiveRecordMediator<T>.FindAll(new Order[] { 
 					new Order(orderBy, ascending.HasValue ? ascending.Value : true) }, BuildCriteriaFromFilters(filter));
 
-			return ActiveRecordMediator<T>.FindAll(BuildCriteriaFromFilters(filter));
+			return ActiveRecordMediator<T>.FindAll(BuildCriteriaFromFilters(filter));*/
+
+			return GetFilteredRecords(null, null, orderBy, ascending.HasValue ? ascending.Value : true, filter);
 		}
 
 		public virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter,

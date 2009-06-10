@@ -68,6 +68,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeCategory.cs" />
     <Compile Include="Exceptions\BusinessRuleException.cs" />
+    <Compile Include="Exceptions\CantDeleteException.cs" />
     <Compile Include="Exceptions\MethodAccessDeniedException.cs" />
     <Compile Include="Exceptions\ObjectNotFoundException.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />

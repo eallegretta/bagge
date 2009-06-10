@@ -104,6 +104,30 @@ namespace Bagge.Seti.BusinessLogic
 				product.Ticket = instance;
 		}
 
+		public override void Delete(int id)
+		{
+		}
 
+		public override void Undelete(int id)
+		{
+			
+		}
+
+
+
+		#region ITicketManager Members
+
+
+		public Ticket[] FindAllByProduct(int productId)
+		{
+			return GetDao<ITicketDao>().FindAllByProduct(productId);
+		}
+
+		public Ticket[] FindAllByProvider(int providerId)
+		{
+			return GetDao<ITicketDao>().FindAllByProvider(providerId);
+		}
+
+		#endregion
 	}
 }

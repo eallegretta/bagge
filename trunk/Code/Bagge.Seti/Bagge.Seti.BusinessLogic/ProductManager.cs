@@ -15,11 +15,13 @@ namespace Bagge.Seti.BusinessLogic
 	public class ProductManager : AuditableGenericManager<Product, int>, IProductManager
 	{
 		IProductProviderDao _productProviderDao;
+		ITicketManager _ticketManager;
 
-		public ProductManager(IProductDao dao, IProductProviderDao productProviderDao)
+		public ProductManager(IProductDao dao, IProductProviderDao productProviderDao, ITicketManager ticketManager)
 			: base(dao)
 		{
 			_productProviderDao = productProviderDao;
+			_ticketManager = ticketManager;
 		}
         
 
@@ -81,6 +83,15 @@ namespace Bagge.Seti.BusinessLogic
 			{
 				foreach (var product in _productProviderDao.FindAllByProvider((int)providersFilter.Value))
 					filters.Add(new FilterPropertyValue { Property = providersFilter.Property, Type = providersFilter.Type, Value = product });
+			}
+		}
+
+		private void CheckTicketRelationship(Product instance)
+		{
+			if (_ticketManager.FindAllByProduct(instance.Id).Length > 0)
+			{
+				instance.Deleted = false;
+				throw new CantDeleteException(Resources.ProductTicketRelatedErrorMessage);
 			}
 		}
 	}

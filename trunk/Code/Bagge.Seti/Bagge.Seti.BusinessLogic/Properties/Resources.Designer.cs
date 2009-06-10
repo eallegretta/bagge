@@ -70,6 +70,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede elminar el cliente ya que esta asociado a un ticket no cerrado o no cancelado.
+        /// </summary>
+        internal static string CustomerTicketRelatedErrorMessage {
+            get {
+                return ResourceManager.GetString("CustomerTicketRelatedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El empleado cuyo e-mail es {0} no pudo ser encontrado.
         /// </summary>
         internal static string EmployeeByEmailNotFoundErrorMessage {
@@ -102,6 +111,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         internal static string EmployeeRecoverPasswordKeyNotMatch {
             get {
                 return ResourceManager.GetString("EmployeeRecoverPasswordKeyNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede elminar el empleado ya que esta asociado a un ticket no cerrado o no cancelado.
+        /// </summary>
+        internal static string EmployeeTicketRelatedErrorMessage {
+            get {
+                return ResourceManager.GetString("EmployeeTicketRelatedErrorMessage", resourceCulture);
             }
         }
         
@@ -156,6 +174,24 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         internal static string MultipleUsernamesErrorMessage {
             get {
                 return ResourceManager.GetString("MultipleUsernamesErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede elminar el producto ya que esta asociado a un ticket no cerrado o no cancelado.
+        /// </summary>
+        internal static string ProductTicketRelatedErrorMessage {
+            get {
+                return ResourceManager.GetString("ProductTicketRelatedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede elminar el proveedor ya que esta asociado a un ticket no cerrado o no cancelado.
+        /// </summary>
+        internal static string ProviderTicketRelatedErrorMessage {
+            get {
+                return ResourceManager.GetString("ProviderTicketRelatedErrorMessage", resourceCulture);
             }
         }
         
