@@ -62,6 +62,9 @@ namespace Bagge.Seti.BusinessLogic
 
 		public override void Update(Customer instance)
 		{
+			if (IsDeleteOrUndelete)
+				CheckTicketRelationship(instance);
+
 			if (!IsDelete)
 			{
 				if (!IsCuitUnique(instance))
@@ -70,8 +73,7 @@ namespace Bagge.Seti.BusinessLogic
 			if (!IsDeleteOrUndelete)
 				SessionScopeUtils.FlushSessionScope();
 
-			if (IsDeleteOrUndelete)
-				CheckTicketRelationship(instance);
+			
 
 			base.Update(instance);
 		}
@@ -81,7 +83,7 @@ namespace Bagge.Seti.BusinessLogic
 			IList<FilterPropertyValue> filters = new List<FilterPropertyValue>();
 			filters.Add("Customer", instance);
 
-			if (_ticketManager.FindAllByProperties(filters).Length > 0)
+			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProperties(filters)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.CustomerTicketRelatedErrorMessage);

@@ -162,10 +162,13 @@ namespace Bagge.Seti.WebSite.Controls
 
 			foreach (var provider in product.Providers)
 			{
-				ListItem item = new ListItem();
-				item.Value = JsonConvert.SerializeObject(new { Id = provider.Id, ProviderId = provider.Provider.Id, Name = provider.Provider.NameAndCUIT, Price = provider.Price });
-				item.Text = string.Format("{0}\t{1:C}", provider.Provider.NameAndCUIT, provider.Price);
-				_provider.Items.Add(item);
+				if (!provider.Provider.Deleted)
+				{
+					ListItem item = new ListItem();
+					item.Value = JsonConvert.SerializeObject(new { Id = provider.Id, ProviderId = provider.Provider.Id, Name = provider.Provider.NameAndCUIT, Price = provider.Price });
+					item.Text = string.Format("{0}\t{1:C}", provider.Provider.NameAndCUIT, provider.Price);
+					_provider.Items.Add(item);
+				}
 			}
 		}
 
