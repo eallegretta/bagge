@@ -99,5 +99,26 @@ namespace Bagge.Seti.BusinessEntities
 			get;
 			set;
 		}
+
+		public bool IsClosed
+		{
+			get
+			{
+				if (Status == null)
+					return false;
+
+				return Status.Equals(TicketStatusEnum.Closed) || Status.Equals(TicketStatusEnum.Canceled);
+			}
+		}
+
+		public static bool CheckTicketsAllClosed(IList<Ticket> tickets)
+		{
+			foreach (var ticket in tickets)
+			{
+				if (!ticket.IsClosed)
+					return false;
+			}
+			return true;
+		}
 	}
 }

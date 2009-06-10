@@ -173,15 +173,19 @@ namespace Bagge.Seti.BusinessLogic
 			{
 				CheckTicketRelationship(instance);
 			}
+
+
 			base.Update(instance);
 		}
+
+		
 
 		private void CheckTicketRelationship(Employee instance)
 		{
 			IList<FilterPropertyValue> filters = new List<FilterPropertyValue>();
 			filters.Add("Creator", instance);
 
-			if (_ticketManager.FindAllByProperties(filters).Length > 0)
+			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProperties(filters)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.EmployeeTicketRelatedErrorMessage);
@@ -189,7 +193,7 @@ namespace Bagge.Seti.BusinessLogic
 			filters.Clear();
 			filters.Add("Employees", FilterPropertyValueType.In, instance);
 
-			if (_ticketManager.FindAllByProperties(filters).Length > 0)
+			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProperties(filters)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.EmployeeTicketRelatedErrorMessage);

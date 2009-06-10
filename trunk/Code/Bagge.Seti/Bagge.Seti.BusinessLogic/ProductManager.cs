@@ -56,6 +56,9 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(instance != null);
 
+			if (IsDeleteOrUndelete)
+				CheckTicketRelationship(instance);
+
 			foreach (ProductProvider provider in instance.Providers)
 			{
 				provider.Product = instance;
@@ -88,7 +91,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		private void CheckTicketRelationship(Product instance)
 		{
-			if (_ticketManager.FindAllByProduct(instance.Id).Length > 0)
+			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProduct(instance.Id)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.ProductTicketRelatedErrorMessage);

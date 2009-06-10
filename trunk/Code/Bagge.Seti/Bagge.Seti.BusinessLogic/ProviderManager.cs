@@ -85,6 +85,9 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(instance != null);
 
+			if (IsDeleteOrUndelete)
+				CheckTicketRelationship(instance);
+
 
 			foreach (ProductProvider product in instance.Products)
 			{
@@ -99,6 +102,7 @@ namespace Bagge.Seti.BusinessLogic
 				SessionScopeUtils.FlushSessionScope();
 				_productProviderDao.DeleteByProvider(instance.Id);
 			}
+				
 
 			base.Update(instance);
 		}
@@ -120,9 +124,9 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 
-		private void CheckTicketRelationship(Product instance)
+		private void CheckTicketRelationship(Provider instance)
 		{
-			if (_ticketManager.FindAllByProvider(instance.Id).Length > 0)
+			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProvider(instance.Id)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.ProviderTicketRelatedErrorMessage);
