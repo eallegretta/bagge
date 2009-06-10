@@ -31,7 +31,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 			public ProductTicketBindItem(ProductTicket productTicket)
 			{
-				Id = productTicket.Id;
+				Id = productTicket.ProductProvider.Id;
 				ProductId = productTicket.ProductProvider.Product.Id;
 				ProviderId = productTicket.ProductProvider.Provider.Id;
 				Product = productTicket.ProductProvider.Product.NameAndDescription;
@@ -69,16 +69,17 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 		}
 
-		protected void Page_Init(object sender, EventArgs e)
+		protected override void OnInit(EventArgs e)
 		{
-			string value = Request.Form[_selectedItems.UniqueID];
+			base.OnInit(e);
 
-			if (string.IsNullOrEmpty(value))
-				value = "[]";
-
-			_selectedItems.Value = value;
+			if (IsPostBack)
+			{
+				string value = Request.Form[_selectedItems.UniqueID];
+				if (!string.IsNullOrEmpty(value))
+					_selectedItems.Value = value;
+			}
 		}
-
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -88,7 +89,7 @@ namespace Bagge.Seti.WebSite.Controls
 				if (ReadOnly)
 				{
 					_addControls.Visible = false;
-					_items.Rows[0].Cells.RemoveAt(2);
+					_items.Rows[0].Cells.RemoveAt(_items.Rows[0].Cells.Count - 1);
 				}
 			}
 			else

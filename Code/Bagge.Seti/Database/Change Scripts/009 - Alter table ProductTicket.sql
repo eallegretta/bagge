@@ -8,3 +8,4 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo
 ALTER TABLE [dbo].[ProductTicket]  WITH CHECK ADD  CONSTRAINT [FK_ProductTicket_ProductProvider] FOREIGN KEY([ProductProviderId])
 REFERENCES [dbo].[ProductProvider] ([Id])
 GO
+alter table ProductTicket alter column TicketId int null

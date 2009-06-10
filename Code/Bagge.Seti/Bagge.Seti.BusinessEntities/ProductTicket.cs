@@ -7,7 +7,7 @@ namespace Bagge.Seti.BusinessEntities
 	[Serializable]
 	public class ProductTicket : PrimaryKeyDomainObject<ProductTicket, int>
 	{
-		[BelongsTo("ProductProviderId")]
+		[BelongsTo("ProductProviderId", Cascade = CascadeEnum.None)]
 		public ProductProvider ProductProvider
 		{
 			get;

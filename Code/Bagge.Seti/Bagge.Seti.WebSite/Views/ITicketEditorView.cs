@@ -10,7 +10,7 @@ namespace Bagge.Seti.WebSite.Views
 	{
 		Employee[] Technicians { set; }
 
-		int[] AssignedTechniciansIds { get; }
+		int[] AssignedTechniciansIds { get; set;  }
 		
 		Customer[] Customers { set; }
 		

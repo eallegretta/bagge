@@ -24,6 +24,7 @@
 					</asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
+					<asp:HiddenField ID="_status" runat="server" />
 					<%#Eval("Status")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
@@ -76,7 +77,7 @@
 					<seti:ProductTicketSelectionGrid id="_products" runat="server" SelectedItems='<%#Eval("Products")%>' ReadOnly="true"></seti:ProductTicketSelectionGrid>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:SecureBoundField ControlStyle-CssClass="budget smallData" DataField="Budget" meta:resourcekey="BudgetField"></seti:SecureBoundField>
+			<seti:SecureBoundField ControlStyle-CssClass="budget mediumData" DataField="Budget" meta:resourcekey="BudgetField"></seti:SecureBoundField>
 		</Fields>
 	</seti:SecureDetailsView>
 	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/TicketList.aspx"

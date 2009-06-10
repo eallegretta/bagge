@@ -77,7 +77,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
-		[HasMany(typeof(ProductTicket), Table = "ProductTicket", ColumnKey = "TicketId", Lazy = true, Inverse = false, Cascade = ManyRelationCascadeEnum.All)]
+		[HasMany(typeof(ProductTicket), Table = "ProductTicket", ColumnKey = "TicketId", Lazy = true, Inverse = false,  Cascade = ManyRelationCascadeEnum.SaveUpdate)]
 		public virtual IList<ProductTicket> Products
 		{
 			get;

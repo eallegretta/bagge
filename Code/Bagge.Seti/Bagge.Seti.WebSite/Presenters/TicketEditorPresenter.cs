@@ -53,13 +53,24 @@ namespace Bagge.Seti.WebSite.Presenters
 					View.Customers = _customerManager.FindAllActiveOrdered("Name");
 					View.Technicians = _employeeManager.FindAllActiveTechnicians();
 					View.TicketStatus = _ticketStatusManager.FindAll();
+
+					if (View.Mode == EditorAction.Update)
+					{
+						if (SelectedEntity.Employees != null)
+							View.AssignedTechniciansIds = SelectedEntity.Employees.Select(emp => emp.Id).ToArray();
+					}
 					break;
 				case EditorAction.View:
 					View.Technicians = SelectedEntity.Employees.ToArray();
 					break;
 			}
-			if (View.Mode.In(EditorAction.Update, EditorAction.View))
+			if (!View.IsPostBack && View.Mode.In(EditorAction.Update, EditorAction.View))
+			{
 				View.Products = SelectedEntity.Products.ToArray();
+				View.SelectedCustomerId = SelectedEntity.Customer.Id;
+				
+				View.SelectedTicketStatus = (TicketStatusEnum)SelectedEntity.Status.Id;
+			}
 		}
 
 
@@ -76,7 +87,8 @@ namespace Bagge.Seti.WebSite.Presenters
 				entity.Creator = _employeeManager.GetByUsername(_loggedUser.Username);
 			else
 				entity.Creator = new Employee();
-			
+
+
 			base.Save(entity);
 		}
 

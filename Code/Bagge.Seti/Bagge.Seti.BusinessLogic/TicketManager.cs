@@ -86,6 +86,13 @@ namespace Bagge.Seti.BusinessLogic
 
 		public override void Update(Ticket instance)
 		{
+			Ticket instanceFromDb = Get(instance.Id);
+
+			GetDao<ITicketDao>().DeleteProducts(instance.Id);
+
+			instance.CreationDate = instanceFromDb.CreationDate;
+			instance.Creator = instanceFromDb.Creator;
+
 			AssignTicketToProducts(instance);
 
 			base.Update(instance);

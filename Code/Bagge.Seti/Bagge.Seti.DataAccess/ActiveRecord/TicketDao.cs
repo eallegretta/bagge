@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess.Contracts;
+using Castle.ActiveRecord;
 
 namespace Bagge.Seti.DataAccess.ActiveRecord
 {
@@ -15,5 +16,14 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 			base.Update(instance);
 		}
+
+		#region ITicketDao Members
+
+		public void DeleteProducts(int ticketId)
+		{
+			ActiveRecordMediator<ProductTicket>.DeleteAll("TicketId = " + ticketId);
+		}
+
+		#endregion
 	}
 }
