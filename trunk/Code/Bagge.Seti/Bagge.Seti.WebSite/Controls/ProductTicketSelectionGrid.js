@@ -9,10 +9,12 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, productId, providerId
 
 	this.table = $("#" + tableId);
 	this.addButton = $("#" + btnId);
-	this.addButton[0].behavior = this;
-	this.addButton.click(function() {
-		this.behavior.addSelectedItem();
-	});
+	if (this.addButton.length > 0) {
+		this.addButton[0].behavior = this;
+		this.addButton.click(function() {
+			this.behavior.addSelectedItem();
+		});
+	}
 
 	this.hdn = $("#" + hdnId);
 
@@ -45,12 +47,14 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, productId, providerId
 		this.totalPrice = {};
 
 	this.totalPrice.setValue = function(value) {
-	if (this instanceof jQuery) {
-			if (this[0].tagName.toLowerCase() == "input")
-				this.val(value);
-			else
-				this.text(value);
-		}
+		/*if (this instanceof jQuery) {
+			if (this.length > 0) {
+				if (this[0].tagName.toLowerCase() == "input")
+					this.val(value);
+				else
+					this.text(value);
+			}
+		}*/
 		$("#totalPrice").text(value);
 	};
 
@@ -160,7 +164,10 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, productId, providerId
 	this.calculateTotalQuantity = function() {
 		var total = 0;
 		$(".quantity", this.table).each(function() {
-			total += parseInt(this.value);
+			if (this.value)
+				total += parseInt(this.value);
+			else
+				total += parseInt(this.innerText);
 		});
 		this.hdnTotalQuantity.value = total;
 		$("#totalQuantity", this.table).text(total);
@@ -193,7 +200,7 @@ function ProductTicketSelectionGrid(tableId, btnId, hdnId, productId, providerId
 
 		var quantityBox = (this.isReadOnly) ? document.createElement("span") : document.createElement("input");
 		if (this.isReadOnly)
-			$(quantityBox).text(item.Quantity);
+			$(quantityBox).text(item.Quantity).addClass("quantity");
 		else {
 			quantityBox.behaviour = this;
 

@@ -104,6 +104,17 @@ namespace Bagge.Seti.WebSite
 
 				return null;
 			}
+			set
+			{
+				var employees = Details.FindControl("_employees") as CheckBoxList;
+				if (employees != null)
+				{
+					var items = employees.Items.Cast<ListItem>().Where(item => value.Contains(item.Value.ToInt32())).Select(item => item).ToArray();
+
+					foreach (var item in items)
+						item.Selected = true;
+				}
+			}
 		}
 
 		public int SelectedCustomerId
@@ -114,7 +125,7 @@ namespace Bagge.Seti.WebSite
 			}
 			set
 			{
-				SetControlPropertyValue(Details.FindControl("_customer"), value, "Value", "SelectedValue");
+				SetControlPropertyValue(Details.FindControl("_customer"), value.ToString(), "Value", "SelectedValue");
 			}
 		}
 
@@ -135,11 +146,11 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				return GetControlPropertyValue<TicketStatusEnum>(Details.FindControl("_status"), TicketStatusEnum.Initial, "Value", "SelectedValue");
+				return (TicketStatusEnum)GetControlPropertyValue<int>(Details.FindControl("_status"), (int)TicketStatusEnum.Initial, "Value", "SelectedValue");
 			}
 			set
 			{
-				SetControlPropertyValue(Details.FindControl("_status"), (int)value, "Value", "SelectedValue");
+				SetControlPropertyValue(Details.FindControl("_status"), ((int)value).ToString(), "Value", "SelectedValue");
 			}
 		}
 

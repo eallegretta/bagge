@@ -150,4 +150,10 @@
   <data name="DescriptionValidator.ErrorMessage" xml:space="preserve">
     <value>La descripción es requerida</value>
   </data>
+  <data name="BudgetField.HeaderText" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
+  <data name="ProductsField.HeaderText" xml:space="preserve">
+    <value>Productos</value>
+  </data>
 </root>

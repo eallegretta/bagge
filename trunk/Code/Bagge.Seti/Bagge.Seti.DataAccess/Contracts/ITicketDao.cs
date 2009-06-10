@@ -8,5 +8,6 @@ namespace Bagge.Seti.DataAccess.Contracts
 {
 	public interface ITicketDao: IDao<Ticket, int>
 	{
+		void DeleteProducts(int ticketId);
 	}
 }
