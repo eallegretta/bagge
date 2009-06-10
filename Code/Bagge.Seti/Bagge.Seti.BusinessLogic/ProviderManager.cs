@@ -15,11 +15,13 @@ namespace Bagge.Seti.BusinessLogic
 	public class ProviderManager : AuditableGenericManager<Provider, int>, IProviderManager
 	{
 		IProductProviderDao _productProviderDao;
+		ITicketManager _ticketManager;
 
-		public ProviderManager(IProviderDao dao, IProductProviderDao productProviderDao)
+		public ProviderManager(IProviderDao dao, IProductProviderDao productProviderDao, ITicketManager ticketManager)
 			: base(dao)
 		{
 			_productProviderDao = productProviderDao;
+			_ticketManager = ticketManager;
 		}
 
 		public virtual Provider GetByCuit(string cuit)
@@ -117,5 +119,14 @@ namespace Bagge.Seti.BusinessLogic
 				
 		}
 
+
+		private void CheckTicketRelationship(Product instance)
+		{
+			if (_ticketManager.FindAllByProvider(instance.Id).Length > 0)
+			{
+				instance.Deleted = false;
+				throw new CantDeleteException(Resources.ProviderTicketRelatedErrorMessage);
+			}
+		}
 	}
 }
