@@ -505,11 +505,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SETI.mdf">
-    </Content>
-    <Content Include="App_Data\SETI_log.ldf">
-      <DependentUpon>SETI.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Themes\Default\Forms.skin" />
     <Content Include="App_Themes\Default\Login.skin" />
     <Content Include="App_Themes\Default\Images.skin" />
@@ -703,6 +698,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Reports\RolesByUser.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
