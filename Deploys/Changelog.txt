@@ -1,3 +1,13 @@
+== v0.4 - 20090614 - Racing3Boca0 ==
+.Editor de Ticket
+.Fixes de la ultima minuta
+
+== v0.3 - 20090601 - Guybrush ==
+= Features =
+.Reportes
+.Listado de Ticket
+.ABM de Ticket en progreso
+
 == v0.2 - 20090513 - Glorfindel ==
 = Features =
 .ABM Empleados
