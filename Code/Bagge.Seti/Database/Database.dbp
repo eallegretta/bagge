@@ -43,6 +43,7 @@ Begin DataProject = "Database"
       Script = "CustomersWithPendingPaymentReport.sql"
       Script = "ProductsByProviderReport.sql"
       Script = "ProductsConsumedReport.sql"
+      Script = "RolesByUserReport.sql"
       Script = "TechniciansByTicketReport.sql"
    End
 End
