@@ -49,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bagge.Seti.DataAccess.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bagge.Seti.AlertsSender", "Bagge.Seti.AlertsSender\Bagge.Seti.AlertsSender.csproj", "{3B8BC9F6-F869-4FE3-B3D7-92CB54B91C49}"
 EndProject
-Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "Database", "Database\Database.dbp", "{8F154DD2-8F31-4F72-BDE3-4490FD4FE9E3}"
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "Database", "Database\Database.dbp", "{7136DCB3-E26A-4021-8496-21ADD6DB52A9}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
