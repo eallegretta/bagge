@@ -24,7 +24,7 @@
 			<siteMapNode url="~/Reports/ProductsByProvider.aspx" title="Productos por Proveedor"></siteMapNode>
 			<siteMapNode url="~/Reports/ProductsConsumed.aspx" title="Productos Consumidos"></siteMapNode>
 			<siteMapNode url="~/Reports/TechniciansByTicket.aspx" title="Técnicos por Ticket"></siteMapNode>
-      <siteMapNode url="~/Reports/RolesByUser.aspx" title="Roles por Usuario"></siteMapNode>
+			<siteMapNode url="~/Reports/RolesByUser.aspx" title="Roles por Usuario"></siteMapNode>
 		</siteMapNode>
 		<siteMapNode url="~/AlertConfiguration.aspx" title="Alertas" editTitle="Editar Configuración de Alertas" viewTitle="Ver Configuración de Alertas"></siteMapNode>
 		<siteMapNode url="" title="Seguridad">

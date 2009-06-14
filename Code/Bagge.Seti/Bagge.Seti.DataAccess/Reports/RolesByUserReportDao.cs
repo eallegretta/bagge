@@ -15,12 +15,8 @@ namespace Bagge.Seti.DataAccess.Reports
 
         public BaseReport GetReport(IList<FilterPropertyValue> filters)
         {
-            var filterName = filters.GetFilter("Name");
-            var filterDescription = filters.GetFilter("Description");
-
-            SqlString name = filterName.ToString();
-            SqlString description = filterDescription.ToString();
-
+            var name = filters.GetFilter("Name");
+            var description = filters.GetFilter("Description");
 
             return GetReport("RolesByUserReport", name, description);
         }
