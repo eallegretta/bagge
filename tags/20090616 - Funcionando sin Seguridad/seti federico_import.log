@@ -1,0 +1,25 @@
+
+Importing Model from XMI
+***** Root Package: 03 - contraseñas *****
+Add Classifier: usuario
+Add Classifier Role: list.aspx
+Add Classifier Role: datos(usuario)
+Add Classifier Role: Editor presenter
+Add Classifier Role: list.aspx
+Add Classifier Role: correo
+Add Classifier Role: manager
+Add Classifier Role: Editor presenter
+Add Classifier Role: manager
+Add Classifier Role: datos(usuario)
+***** Resolving Classifiers *****
+***** Resolving Ownerss *****
+***** Resolve Package Links *****
+***** Add Extensions ******
+***** Add Diagrams *****
+***** Resolving DiagramIDs *****
+***** Resolving Association Classes *****
+***** Resolving Parameter Types *****
+***** Resolving Attribute Types *****
+***** Resolving Note links *****
+***** Fixup external references *****
+Import Complete!

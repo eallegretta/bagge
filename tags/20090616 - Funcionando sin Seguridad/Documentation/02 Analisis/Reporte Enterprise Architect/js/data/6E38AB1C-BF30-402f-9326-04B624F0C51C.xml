@@ -1,0 +1,4 @@
+tocTab[tocTab.length] = new Array("2.2:1", "", "Otros", "EARoot/EA2/EA2/EA24.htm", "188.png", "28", "0", "", "Custom diagram0","{B2654BDD-0233-49ba-99ED-C89AF05F947F}");
+tocTab[tocTab.length] = new Array("2.2:2", "", "«Functional» Asignación del técnico responsable.", "EARoot/EA2/EA2/EA26.htm", "19.png", "85", "0", "", "Requirement0","{B27D0A89-C0DE-4558-B270-6AF2463CF16D}");
+tocTab[tocTab.length] = new Array("2.2:3", "", "«Functional» Calificación de los proveedores", "EARoot/EA2/EA2/EA27.htm", "19.png", "91", "0", "", "Requirement0","{473CE637-B26C-4bb8-8A81-15B04EA0ECD9}");
+tocTab[tocTab.length] = new Array("2.2:4", "", "«Functional» Cargar las tareas solicitadas por el cliente", "EARoot/EA2/EA2/EA28.htm", "19.png", "82", "0", "", "Requirement0","{316C2635-BC26-4e0b-93F6-327D69944991}");

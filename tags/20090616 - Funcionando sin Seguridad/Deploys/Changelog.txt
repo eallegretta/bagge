@@ -1,0 +1,29 @@
+== v0.4 - 20090614 - Racing3Boca0 ==
+.Editor de Ticket
+.Fixes de la ultima minuta
+
+== v0.3 - 20090601 - Guybrush ==
+= Features =
+.Reportes
+.Listado de Ticket
+.ABM de Ticket en progreso
+
+== v0.2 - 20090513 - Glorfindel ==
+= Features =
+.ABM Empleados
+.Bugfixing general
+
+== v0.1 - 20090429 - Gargamel ==
+
+= Features =
+.Login al Sistema
+.ABM Clientes
+.ABM Proveedores
+.ABM Productos
+.Recuperación de Contraseña
+
+= Known Bugs =
+.Al enviar el mail de contraseñas en modo texto dependiendo del cliente se puede ver erroneamente (gmail por ejemplo)
+.Al enviar la url para regenerar la contraseña falta toda la url base, solo se esta enviado RecoverPassword.aspx?k=HashGenerado
+.El filtro por producto en el abm de proveedores no funciona
+.El filtro por proveedor en el abm de productos no funciona

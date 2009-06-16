@@ -1,0 +1,2 @@
+tocTab[tocTab.length] = new Array("1.5:1", "", "«Functional» R010 - Calificación de los proveedores", "EARoot/EA1/EA5/EA25.htm", "19.png", "91", "0", "", "Requirement0","{473CE637-B26C-4bb8-8A81-15B04EA0ECD9}");
+tocTab[tocTab.length] = new Array("1.5:2", "", "«Functional» R016 - Administración del maestro de proveedores", "EARoot/EA1/EA5/EA26.htm", "19.png", "100", "0", "", "Requirement0","{9D57E8D8-2F2F-4af5-BD97-5ECFFA05AB74}");

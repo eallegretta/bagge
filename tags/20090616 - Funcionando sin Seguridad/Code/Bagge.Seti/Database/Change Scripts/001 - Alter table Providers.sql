@@ -1,0 +1,1 @@
+﻿alter table Provider add Name varchar(50) 

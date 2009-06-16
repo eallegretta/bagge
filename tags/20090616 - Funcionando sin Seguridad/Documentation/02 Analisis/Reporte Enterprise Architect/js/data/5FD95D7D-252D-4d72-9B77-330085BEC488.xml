@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("1:1", "", "Requerimientos", "EARoot/EA1/EA3.htm", "188.png", "23", "0", "", "Custom diagram0","{48E001CE-A470-4dcb-9D45-412B0546056C}");
+tocTab[tocTab.length] = new Array("1.1", "1", "Clientes", "EARoot/EA1/EA5.htm", "4.png", "", "", "{AD9EFD62-BC22-4058-873A-DF28A267C0F2}", "Package");
+tocTab[tocTab.length] = new Array("1.2", "1", "Empleados", "EARoot/EA1/EA6.htm", "4.png", "", "", "{428DF191-D3E0-4436-98AB-394CE13C20C7}", "Package");
+tocTab[tocTab.length] = new Array("1.3", "1", "Insumos", "EARoot/EA1/EA7.htm", "4.png", "", "", "{44749CB0-9FC2-474a-95FC-55302D7805F1}", "Package");
+tocTab[tocTab.length] = new Array("1.4", "1", "Presupuestos y Tickets", "EARoot/EA1/EA8.htm", "4.png", "", "", "{57B0DA7F-9303-4954-A217-BFAB943B9775}", "Package");
+tocTab[tocTab.length] = new Array("1.5", "1", "Proveedores", "EARoot/EA1/EA9.htm", "4.png", "", "", "{507C82F9-7717-4099-9153-107B70B69CEB}", "Package");
+tocTab[tocTab.length] = new Array("1.6", "1", "Seguridad", "EARoot/EA1/EA10.htm", "4.png", "", "", "{1F6B74DD-C298-44c0-ADA7-B22BE5886871}", "Package");

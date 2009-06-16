@@ -1,0 +1,49 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "Database"
+   MSDTVersion = "80"
+   DefDBRef = "SETI.mdf"
+   Begin Folder = "Change Scripts"
+      Script = "001 - Alter table Providers.sql"
+      Script = "002 - Alter table AlertConfiguration.sql"
+      Script = "003 - Alter table AlertConfiguration.sql"
+      Script = "004 - Alter table AlertConfiguration.sql"
+      Script = "005 - Alter table Employee.sql"
+      Script = "006 - Alter table Provider.sql"
+      Script = "007 - Alter table Role.sql"
+      Script = "008 - Alter table Ticket.sql"
+      Script = "009 - Alter table ProductTicket.sql"
+   End
+   Begin Folder = "Create Scripts"
+      Script = "000 - Tables Initial Setup.sql"
+   End
+   Begin DBRefFolder = "Database References"
+      Begin DBRefNode = "SETI.mdf"
+         ConnectStr = "Data Source=.\SQLEXPRESS;AttachDbFilename=C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\App_Data\SETI.mdf;Integrated Security=True;User Instance=True"
+         Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
+         Colorizer = 6
+      End
+   End
+   Begin Folder = "Queries"
+      Begin Folder = "Default Values"
+         Script = "AccessibilityType.sql"
+         Script = "AlertConfiguration.sql"
+         Script = "CountryStates.sql"
+         Script = "District.sql"
+         Script = "EmployeeCategory.sql"
+         Script = "Employees.sql"
+         Script = "ProviderCalification.sql"
+         Script = "Role.sql"
+         Script = "RoleEmployee.sql"
+         Script = "TicketStatus.sql"
+      End
+   End
+   Begin Folder = "Stored Procedures"
+      Script = "CustomersBySubscriptionReport.sql"
+      Script = "CustomersByTicketReport.sql"
+      Script = "CustomersWithPendingPaymentReport.sql"
+      Script = "ProductsByProviderReport.sql"
+      Script = "ProductsConsumedReport.sql"
+      Script = "RolesByUserReport.sql"
+      Script = "TechniciansByTicketReport.sql"
+   End
+End

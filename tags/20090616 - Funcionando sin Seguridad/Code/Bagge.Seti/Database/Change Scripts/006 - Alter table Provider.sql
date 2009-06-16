@@ -1,0 +1,1 @@
+﻿alter table Provider alter column Company varchar(50) null 
