@@ -35,7 +35,6 @@ namespace Bagge.Seti.Common.Interceptors
 		}
 		private void ApplySecurityRestrictions(ISecurizable securizable)
 		{
-			
 		}
 
 		#endregion
