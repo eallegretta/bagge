@@ -133,10 +133,10 @@
     <value>La dirección debe tener una longitud igual o menor a 50 caracteres.</value>
   </data>
   <data name="Validators_Customer_CUIT" xml:space="preserve">
-    <value>El campo CUIT debe tener el formato 00-000000000-0.</value>
+    <value>El campo CUIT debe tener el formato 00-00000000-0.</value>
   </data>
   <data name="Validators_Customer_CUIT_Pattern" xml:space="preserve">
-    <value>\d{2}-\d{9}-\d{1}</value>
+    <value>\d{2}-\d{8}-\d{1}</value>
   </data>
   <data name="Validators_Customer_Email" xml:space="preserve">
     <value>El e-mail es inválido</value>

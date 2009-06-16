@@ -696,7 +696,7 @@
   <ItemGroup>
     <Content Include="App_Data\SETI.mdf">
     </Content>
-    <Content Include="App_Data\SETI_log.LDF">
+    <Content Include="App_Data\SETI_log.ldf">
       <DependentUpon>SETI.mdf</DependentUpon>
     </Content>
     <Content Include="Reports\App_LocalResources\RolesByUser.aspx.resx">
