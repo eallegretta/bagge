@@ -9,7 +9,7 @@
 		<Fields>
 			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Name" meta:resourcekey="NameField">
 			</seti:SecureBoundField>
-			<seti:SecureBoundField DataField="CUIT" Mask="99-999999999-9" meta:resourcekey="CUITField">
+			<seti:SecureBoundField DataField="CUIT" Mask="99-99999999-9" meta:resourcekey="CUITField">
 				<Validators>
 					<asp:CustomValidator id="_cuitUniqueVal" runat="server" OnServerValidate="_cuitUniqueVal_ServerValidate" meta:resourcekey="CUITUniqueValidator"></asp:CustomValidator>
 				</Validators>

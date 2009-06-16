@@ -18,7 +18,7 @@ Begin DataProject = "Database"
    End
    Begin DBRefFolder = "Database References"
       Begin DBRefNode = "SETI.mdf"
-         ConnectStr = "Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Code\Bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\App_Data\SETI.mdf;Integrated Security=True;User Instance=True"
+         ConnectStr = "Data Source=.\SQLEXPRESS;AttachDbFilename=C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\App_Data\SETI.mdf;Integrated Security=True;User Instance=True"
          Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
          Colorizer = 6
       End

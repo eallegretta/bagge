@@ -127,10 +127,13 @@
     <value>La cantidad de días es requerida</value>
   </data>
   <data name="EmailToCreatorField.HeaderText" xml:space="preserve">
-    <value>Enviar recordatorio al creador del ticket</value>
+    <value>Envío de recordatorio por e-mail activo para el creador del ticket</value>
   </data>
   <data name="EmailToEmployeesField.HeaderText" xml:space="preserve">
-    <value>Enviar recordatorio a los empleados</value>
+    <value>Envío de recordatorio por e-mail activo para el empleado</value>
+  </data>
+  <data name="MaxDaysPendingAprovalField.HeaderText" xml:space="preserve">
+    <value>Máxima cant. de días como pendiente de aprobación:*</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
     <value>SETI &gt; Configuración de Alertas</value>
