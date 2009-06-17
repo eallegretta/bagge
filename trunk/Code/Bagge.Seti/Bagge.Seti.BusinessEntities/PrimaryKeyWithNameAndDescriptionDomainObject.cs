@@ -1,5 +1,7 @@
 ﻿using System;
 using Castle.ActiveRecord;
+using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -17,6 +19,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_PrimaryKeyWithNameAndDescriptionDomainObject_Description", typeof(ISecurizable))]
 		public virtual string Description { get; set;  }
 	}
 }

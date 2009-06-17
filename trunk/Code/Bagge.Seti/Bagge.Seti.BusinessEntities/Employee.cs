@@ -12,9 +12,11 @@ namespace Bagge.Seti.BusinessEntities
 {
 	[Serializable]
 	[ActiveRecord]
-	public class Employee : AuditablePrimaryKeyDomainObject<Employee, int>, IUser
+	[Securizable("Securizable_Employee", typeof(Employee))]
+	public partial class Employee : AuditablePrimaryKeyDomainObject<Employee, int>, IUser
 	{
 		[Property]
+		[Securizable("Securizable_Employee_Username", typeof(Employee))]
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Employee_Username", MessageTemplateResourceType = typeof(Employee))]
 		public string Username
 		{
@@ -23,6 +25,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Employee_Password", typeof(Employee))]
 		public string Password
 		{
 			get;
@@ -30,6 +33,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Employee_FileNumber", typeof(Employee))]
 		public string FileNumber
 		{
 			get;
@@ -37,6 +41,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Employee_Firstname", typeof(Employee))]
 		public string Firstname
 		{
 			get;
@@ -44,12 +49,14 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Employee_Lastname", typeof(Employee))]
 		public string Lastname
 		{
 			get;
 			set;
 		}
 
+		[Securizable("Securizable_Employee_Fullname", typeof(Employee))]
 		public string Fullname
 		{
 			get
@@ -59,6 +66,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Employee_Phone", typeof(Employee))]
 		public string Phone
 		{
 			get;
@@ -66,6 +74,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Employee_EmergencyPhone", typeof(Employee))]
 		public string EmergencyPhone
 		{
 			get;
@@ -73,6 +82,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Employee_Email", typeof(Employee))]
 		[EmailValidator(MessageTemplateResourceName = "Validators_Employee_Email", MessageTemplateResourceType = typeof(Employee), Required = false)]
 		public string Email
 		{
@@ -80,13 +90,16 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+
 		[BelongsTo("CategoryId")]
+		[Securizable("Securizable_Employee_Category", typeof(Employee))]
 		public EmployeeCategory Category
 		{
 			get;
 			set;
 		}
 
+		[Securizable("Securizable_Employee_Tickets", typeof(Employee))]
 		[HasAndBelongsToMany(typeof(TicketEmployee), Table = "TicketEmployee", ColumnKey = "EmployeeId", ColumnRef = "TicketId", Lazy = true)]
 		public IList<TicketEmployee> Tickets
 		{
@@ -95,6 +108,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 
+		[Securizable("Securizable_Employee_Roles", typeof(Employee))]
 		[HasAndBelongsToMany(Table = "RoleEmployee", ColumnKey = "EmployeeId", ColumnRef = "RoleId", Lazy = true, Inverse = false)]
 		public virtual IList<Role> Roles
 		{

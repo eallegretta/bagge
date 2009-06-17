@@ -11,7 +11,7 @@ namespace Bagge.Seti.Security.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
-	public class Role : AuditablePrimaryKeyWithNameAndDescriptionDomainObject<Role, int>
+	public partial class Role : AuditablePrimaryKeyWithNameAndDescriptionDomainObject<Role, int>
 	{
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Role_Description", MessageTemplateResourceType = typeof(Role))]
 		public override string Description

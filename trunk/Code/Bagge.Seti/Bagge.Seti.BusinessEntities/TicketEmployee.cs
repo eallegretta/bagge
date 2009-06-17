@@ -5,7 +5,7 @@ namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
-	public class TicketEmployee : PrimaryKeyDomainObject<TicketEmployee, int>
+	public partial class TicketEmployee : PrimaryKeyDomainObject<TicketEmployee, int>
 	{
 		[BelongsTo("TicketId")]
 		public Ticket Ticket

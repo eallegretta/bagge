@@ -11,7 +11,7 @@ using Bagge.Seti.BusinessLogic.Properties;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class AccessibilityTypeManager: IAccessibilityTypeManager 
+	public partial class AccessibilityTypeManager : IAccessibilityTypeManager 
 	{
 		#region IAccessibilityTypeManager Members
 
