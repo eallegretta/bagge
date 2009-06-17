@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using Castle.ActiveRecord;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
-	public class District : PrimaryKeyWithNameDomainObject<District, int>, IComparable, IComparable<District>
+	[Securizable("Securizable_District", typeof(District))]
+	public partial class District : PrimaryKeyWithNameDomainObject<District, int>, IComparable, IComparable<District>
 	{
+		[Securizable("Securizable_District_CountryState", typeof(District))]
 		[BelongsTo("CountryStateId")]
 		public CountryState CountryState
 		{
@@ -16,6 +19,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_District_ZipCode", typeof(District))]
 		[Property]
 		public string ZipCode
 		{

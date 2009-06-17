@@ -9,7 +9,7 @@ using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class TicketManager : AuditableGenericManager<Ticket, int>, ITicketManager
+	public partial class TicketManager : AuditableGenericManager<Ticket, int>, ITicketManager
 	{
 		ITicketStatusManager _ticketStatusManager;
 		ITicketEmployeeDao _ticketEmployeeDao;

@@ -5,14 +5,17 @@ using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
 using System.Text.RegularExpressions;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
 using System;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
-	public class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
+	[Securizable("Securizable_Customer", typeof(Customer))]
+	public partial class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
 	{
 		[Property]
+		[Securizable("Securizable_Customer_CUIT", typeof(Customer))]
 		[ValidatorComposition(CompositionType.Or)]
 		[RequiredStringValidator(Negated = true)]
 		[RegexValidator("Validators_Customer_CUIT_Pattern", typeof(Customer), MessageTemplateResourceName = "Validators_Customer_CUIT", MessageTemplateResourceType = typeof(Customer))]
@@ -22,7 +25,7 @@ namespace Bagge.Seti.BusinessEntities
 			set; 
 		}
 
-
+		[Securizable("Securizable_Customer_District", typeof(Customer))]
 		[BelongsTo("DistrictId")]
 		public District District
 		{
@@ -30,6 +33,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_FullAddress", typeof(Customer))]
 		public string FullAddress
 		{
 			get
@@ -45,7 +49,8 @@ namespace Bagge.Seti.BusinessEntities
 				return address;
 			}
 		}
-		
+
+		[Securizable("Securizable_Customer_Address", typeof(Customer))]
 		[Property]
 		public string Address
 		{
@@ -53,6 +58,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_Floor", typeof(Customer))]
 		[Property]
 		public char? Floor
 		{
@@ -60,6 +66,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_Apartment", typeof(Customer))]
 		[Property("Departament")]
 		public char? Apartment
 		{
@@ -67,6 +74,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_ZipCode", typeof(Customer))]
 		[Property]
 		public string ZipCode
 		{
@@ -74,6 +82,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_City", typeof(Customer))]
 		[Property]
 		public string City
 		{
@@ -81,6 +90,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_Phone", typeof(Customer))]
 		[Property]
 		public string Phone
 		{
@@ -88,6 +98,8 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+
+		[Securizable("Securizable_Customer_MobilePhone", typeof(Customer))]
 		[Property]
 		public string MobilePhone
 		{
@@ -95,6 +107,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_Email", typeof(Customer))]
 		[Property]
 		[ValidatorComposition(CompositionType.Or)]
 		[EmailValidator(Required = false, MessageTemplateResourceName = "Validators_Customer_Email", MessageTemplateResourceType = typeof(Customer))]
@@ -104,6 +117,7 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		[Securizable("Securizable_Customer_Subscription", typeof(Customer))]
 		[Property]
 		public bool Subscription
 		{

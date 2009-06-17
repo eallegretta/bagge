@@ -1,11 +1,13 @@
 ﻿
 using Castle.ActiveRecord;
 using System;
+using Bagge.Seti.BusinessEntities.Security;
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
-	public class TicketStatus : PrimaryKeyWithNameAndDescriptionDomainObject<TicketStatus, int>, IEquatable<TicketStatusEnum>
+	[Securizable("Securizable_TicketStatus", typeof(TicketStatus))]
+	public partial class TicketStatus : PrimaryKeyWithNameAndDescriptionDomainObject<TicketStatus, int>, IEquatable<TicketStatusEnum>
 	{
 		#region IEquatable<TicketStatusEnum> Members
 

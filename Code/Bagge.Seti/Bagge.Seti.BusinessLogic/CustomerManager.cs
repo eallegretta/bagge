@@ -13,7 +13,7 @@ using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class CustomerManager: AuditableGenericManager<Customer, int>, ICustomerManager
+	public partial class CustomerManager : AuditableGenericManager<Customer, int>, ICustomerManager
 	{
 		ITicketManager _ticketManager;
 

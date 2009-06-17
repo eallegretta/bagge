@@ -123,6 +123,78 @@
   <data name="ObjectNotFoundErrorMessage" xml:space="preserve">
     <value>El registro especificado no existe.</value>
   </data>
+  <data name="Securizable_AlertConfiguration" xml:space="preserve">
+    <value>Configuración de Alertas</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_Days" xml:space="preserve">
+    <value>Días</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_LastSentDate" xml:space="preserve">
+    <value>Ultima Fecha de Envío</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_MaxDaysPendingAproval" xml:space="preserve">
+    <value>Máxima Cantidad de Días Pendiente de Aprobación</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_SendEmailToCreator" xml:space="preserve">
+    <value>Enviar Email a Creador</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_SendEmailToEmployees" xml:space="preserve">
+    <value>Enviar Email a Empleados</value>
+  </data>
+  <data name="Securizable_CountryState" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Securizable_CountryState_Districts" xml:space="preserve">
+    <value>Localidades</value>
+  </data>
+  <data name="Securizable_CountryState_ShortName" xml:space="preserve">
+    <value>Nombre Corto</value>
+  </data>
+  <data name="Securizable_Customer" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="Securizable_Customer_Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Securizable_Customer_Apartment" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="Securizable_Customer_City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="Securizable_Customer_CUIT" xml:space="preserve">
+    <value>CUIT</value>
+  </data>
+  <data name="Securizable_Customer_District" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Securizable_Customer_Email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="Securizable_Customer_Floor" xml:space="preserve">
+    <value>Piso</value>
+  </data>
+  <data name="Securizable_Customer_FullAddress" xml:space="preserve">
+    <value>Dirección Completa</value>
+  </data>
+  <data name="Securizable_Customer_MobilePhone" xml:space="preserve">
+    <value>Celular</value>
+  </data>
+  <data name="Securizable_Customer_Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="Securizable_Customer_Subscription" xml:space="preserve">
+    <value>Abono</value>
+  </data>
+  <data name="Securizable_Customer_ZipCode" xml:space="preserve">
+    <value>Código Postal</value>
+  </data>
+  <data name="Securizable_PrimaryKeyWithNameAndDescriptionDomainObject_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Securizable_PrimaryKeyWithNameDomainObject_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="Validators_AlertConfiguration_Days" xml:space="preserve">
     <value>La cantidad de días debe ser mayor o igual a 0</value>
   </data>
@@ -188,5 +260,116 @@
   </data>
   <data name="Validators_Ticket_Status" xml:space="preserve">
     <value>El estado es requerido</value>
+  </data>
+  <data name="Securizable_District" xml:space="preserve">
+    <value>Localidad</value>
+  </data>
+  <data name="Securizable_District_CountryState" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Securizable_District_ZipCode" xml:space="preserve">
+    <value>Código Postal</value>
+  </data>
+  <data name="Securizable_Employee" xml:space="preserve">
+    <value>Empleado</value>
+  </data>
+  <data name="Securizable_EmployeeCategory" xml:space="preserve">
+    <value>Categoría de Empleado</value>
+  </data>
+  <data name="Securizable_Employee_Category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="Securizable_Employee_Email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="Securizable_Employee_EmergencyPhone" xml:space="preserve">
+    <value>Teléfono de Emergencia</value>
+  </data>
+  <data name="Securizable_Employee_FileNumber" xml:space="preserve">
+    <value>Legajo</value>
+  </data>
+  <data name="Securizable_Employee_Firstname" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Securizable_Employee_Fullname" xml:space="preserve">
+    <value>Nombre Completo</value>
+  </data>
+  <data name="Securizable_Employee_Lastname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Securizable_Employee_Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Securizable_Employee_Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="Securizable_Employee_Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Securizable_Employee_Tickets" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Securizable_Employee_Username" xml:space="preserve">
+    <value>Nombre de Usuario</value>
+  </data>
+  <data name="Securizable_Product" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="Securizable_Product_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Securizable_Product_NameAndDescription" xml:space="preserve">
+    <value>Nombre y Descripción</value>
+  </data>
+  <data name="Securizable_Product_Providers" xml:space="preserve">
+    <value>Proveedores</value>
+  </data>
+  <data name="Securizable_Product_Tickets" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Securizable_ProviderCalification" xml:space="preserve">
+    <value>Calificación de Proveedor</value>
+  </data>
+  <data name="Securizable_Ticket" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="Securizable_TicketStatus" xml:space="preserve">
+    <value>Estado del Ticket</value>
+  </data>
+  <data name="Securizable_Ticket_Budget" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
+  <data name="Securizable_Ticket_CreationDate" xml:space="preserve">
+    <value>Fecha de Creación</value>
+  </data>
+  <data name="Securizable_Ticket_Creator" xml:space="preserve">
+    <value>Creador</value>
+  </data>
+  <data name="Securizable_Ticket_Customer" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="Securizable_Ticket_CustomerArrival" xml:space="preserve">
+    <value>Fecha de Arrivo al Cliente</value>
+  </data>
+  <data name="Securizable_Ticket_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Securizable_Ticket_Employees" xml:space="preserve">
+    <value>Técnicos Asignados</value>
+  </data>
+  <data name="Securizable_Ticket_EstimatedDuration" xml:space="preserve">
+    <value>Duración Estimada</value>
+  </data>
+  <data name="Securizable_Ticket_ExecutionDate" xml:space="preserve">
+    <value>Fecha de Ejecución</value>
+  </data>
+  <data name="Securizable_Ticket_Products" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="Securizable_Ticket_RealDuration" xml:space="preserve">
+    <value>Duración Real</value>
+  </data>
+  <data name="Securizable_Ticket_Status" xml:space="preserve">
+    <value>Estado</value>
   </data>
 </root>

@@ -11,7 +11,7 @@ using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class ReportManager: IReportManager
+	public partial class ReportManager : IReportManager
 	{
 		IDictionary<Type, IReportDao> _reportDaos;
 

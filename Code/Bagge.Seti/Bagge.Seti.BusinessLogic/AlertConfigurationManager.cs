@@ -12,7 +12,7 @@ using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class AlertConfigurationManager: IAlertConfigurationManager
+	public partial class AlertConfigurationManager : IAlertConfigurationManager
 	{
         IAlertConfigurationDao _dao;
 

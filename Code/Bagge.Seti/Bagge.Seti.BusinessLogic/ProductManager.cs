@@ -12,7 +12,7 @@ using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class ProductManager : AuditableGenericManager<Product, int>, IProductManager
+	public partial class ProductManager : AuditableGenericManager<Product, int>, IProductManager
 	{
 		IProductProviderDao _productProviderDao;
 		ITicketManager _ticketManager;

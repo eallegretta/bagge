@@ -4,6 +4,7 @@ using Castle.Components.Validator;
 using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.BusinessEntities.Validators;
 using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -22,6 +23,7 @@ namespace Bagge.Seti.BusinessEntities
 		[Property]
 		[StringLengthValidator(1, 50, MessageTemplateResourceName = "Validators_PrimaryKeyDomainObject_Name_Length", MessageTemplateResourceType = typeof(ISecurizable))]
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_PrimaryKeyDomainObject_Name_Required", MessageTemplateResourceType = typeof(ISecurizable))]
+		[Securizable("Securizable_PrimaryKeyWithNameDomainObject_Name", typeof(ISecurizable))]
 		public virtual string Name { get ; set; }
 
 		public override string ToString()

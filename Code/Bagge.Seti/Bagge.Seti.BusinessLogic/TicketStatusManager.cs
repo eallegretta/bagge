@@ -8,7 +8,7 @@ using Bagge.Seti.DataAccess.Contracts;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class TicketStatusManager: ITicketStatusManager
+	public partial class TicketStatusManager : ITicketStatusManager
 	{
 
 		private ITicketStatusDao _dao;

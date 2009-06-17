@@ -16,7 +16,7 @@ using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class EmployeeManager: AuditableGenericManager<Employee, int>, IEmployeeManager
+	public partial class EmployeeManager : AuditableGenericManager<Employee, int>, IEmployeeManager
 	{
 		ISimpleFindGetDao<EmployeeCategory, int> _employeeCategoryDao;
 		ITicketManager _ticketManager;

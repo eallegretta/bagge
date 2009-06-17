@@ -11,7 +11,7 @@ using Bagge.Seti.DataAccess;
 
 namespace Bagge.Seti.BusinessLogic
 {
-	public class RoleManager : AuditableGenericManager<Role, int>, IRoleManager
+	public partial class RoleManager : AuditableGenericManager<Role, int>, IRoleManager
 	{
 		IEmployeeDao _employeeDao;
 		IFunctionDao _functionDao;
