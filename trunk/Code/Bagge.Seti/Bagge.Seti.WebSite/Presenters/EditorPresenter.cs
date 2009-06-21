@@ -55,7 +55,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			if(View.IsPostBack)
 				View.DataBind();
 		}
-
+        
 		protected T SelectedEntity
 		{
 			get;

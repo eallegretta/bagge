@@ -31,7 +31,8 @@ namespace Bagge.Seti.WebSite.Presenters
 		{
 			base.OnInit(sender, e);
 
-			View.DataBound += new EventHandler(View_DataBound);
+            View.DataBound += new EventHandler(View_DataBound);
+            
 		}
 
 		void View_DataBound(object sender, EventArgs e)
@@ -42,11 +43,6 @@ namespace Bagge.Seti.WebSite.Presenters
 		protected override void OnLoad(object sender, EventArgs e)
 		{
 			base.OnLoad(sender, e);
-/*
-			if (!View.IsPostBack && View.Mode == EditorAction.Insert)
-			{
-				LoadView(View.Mode);
-			}*/
 		}
 
 		private void LoadView(EditorAction mode)

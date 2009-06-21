@@ -5,11 +5,13 @@
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id, AuditTimeStamp" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
 		<Fields>
-			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Name"
+			<seti:SecureBoundField MaxLength="50" DataField="Name"
 				meta:resourcekey="NameField">
 			</seti:SecureBoundField>
-			<seti:SecureBoundField DataField="Description" meta:resourcekey="DescriptionField">
+			
+			<seti:SecureBoundField ControlStyle-Width="320px" DataField="Description" meta:resourcekey="DescriptionField">
 			</seti:SecureBoundField>
+			
 			<seti:SecureTemplateField PropertyName="Providers" meta:resourcekey="ProvidersField">
 				<EditItemTemplate>
 					<controls:ProductProviderGrid id="_providers" runat="server" SourceType="Provider" SelectedItems='<%#Bind("Providers")%>' />					
