@@ -58,10 +58,11 @@ namespace Bagge.Seti.WebSite
 			_presenter.SelectZipCode();
 		}
 
-		protected void _district_SelectedIndexChanged(object sender, EventArgs e)
+        protected void _district_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			_presenter.SelectZipCode();
 		}
+        
 
 		#region ICustomerEditorView Members
 
