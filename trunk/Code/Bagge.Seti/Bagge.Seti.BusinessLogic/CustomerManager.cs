@@ -25,7 +25,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		public virtual Customer GetByCuit(string cuit)
 		{
-			if (cuit == string.Empty)
+			if (string.IsNullOrEmpty(cuit))
 				return null;
 
 			Customer[] customers = this.FindAllActiveByProperty("CUIT", cuit);

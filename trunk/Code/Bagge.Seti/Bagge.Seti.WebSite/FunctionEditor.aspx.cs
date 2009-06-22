@@ -11,9 +11,9 @@ using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class FunctionEditor : EditorPage<Function, int> , IFunctionEditorView
+	public partial class FunctionEditor //: EditorPage<Function, int> , IFunctionEditorView
 	{
-		FunctionEditorPresenter _presenter;
+		/*FunctionEditorPresenter _presenter;
 
 		public FunctionEditor()
 		{
@@ -104,6 +104,6 @@ namespace Bagge.Seti.WebSite
 		protected override Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSource ObjectDataSource
 		{
 			get { throw new NotImplementedException(); }
-		}
+		}*/
 	}
 }

@@ -66,29 +66,31 @@ namespace Bagge.Seti.WebSite
 		}
 		protected override void OnLoad(EventArgs e)
 		{
-			if (Details is DetailsView)
+			if (!IsPostBack)
 			{
-				DetailsViewMode mode;
-				switch (Mode)
+				if (Details is DetailsView)
 				{
-					case EditorAction.Insert: mode = DetailsViewMode.Insert; break;
-					case EditorAction.Update: mode = DetailsViewMode.Edit; break;
-					default: mode = DetailsViewMode.ReadOnly; break;
+					DetailsViewMode mode;
+					switch (Mode)
+					{
+						case EditorAction.Insert: mode = DetailsViewMode.Insert; break;
+						case EditorAction.Update: mode = DetailsViewMode.Edit; break;
+						default: mode = DetailsViewMode.ReadOnly; break;
+					}
+					((DetailsView)Details).DefaultMode = mode;
 				}
-				((DetailsView)Details).ChangeMode(mode);
-			}
-			else if (Details is FormView)
-			{
-				FormViewMode mode;
-				switch (Mode)
+				else if (Details is FormView)
 				{
-					case EditorAction.Insert: mode = FormViewMode.Insert; break;
-					case EditorAction.Update: mode = FormViewMode.Edit; break;
-					default: mode = FormViewMode.ReadOnly; break;
+					FormViewMode mode;
+					switch (Mode)
+					{
+						case EditorAction.Insert: mode = FormViewMode.Insert; break;
+						case EditorAction.Update: mode = FormViewMode.Edit; break;
+						default: mode = FormViewMode.ReadOnly; break;
+					}
+					((FormView)Details).DefaultMode = mode;
 				}
-				((FormView)Details).ChangeMode(mode);
 			}
-
 			base.OnLoad(e);
 			
 		}
@@ -128,6 +130,11 @@ namespace Bagge.Seti.WebSite
 		{
 			get;
 		}
+
+		/*public override void DataBind()
+		{
+			Details.DataBind();
+		}*/
 
 
 

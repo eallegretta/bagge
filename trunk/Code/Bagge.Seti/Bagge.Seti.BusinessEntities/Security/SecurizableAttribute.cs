@@ -14,20 +14,13 @@ namespace Bagge.Seti.BusinessEntities.Security
 			Name = name;
 		}
 
-		public SecurizableAttribute(bool isSecurizable)
-		{
-			IsSecurizable = isSecurizable;
-		}
-
 		public SecurizableAttribute(string nameResourceName, Type nameResourceType)
 		{
 			NameResourceName = nameResourceName;
 			NameResourceType = nameResourceType;
 		}
 
-		private bool _isSecurizable = true;
 
-		public bool IsSecurizable { get { return _isSecurizable; } set { _isSecurizable = value; } }
 		public string Name { get; set; }
 		public Type NameResourceType { get; set; }
 		public string NameResourceName { get; set; }

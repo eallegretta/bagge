@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Web.UI.HtmlControls;
 using System.IO;
 using System.Text;
+using Bagge.Seti.BusinessLogic.Contracts;
 
 
 namespace Bagge.Seti.WebSite.Controls
@@ -100,10 +101,23 @@ namespace Bagge.Seti.WebSite.Controls
 			set;
 		}
 
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+
+			if (IsPostBack)
+			{
+				string value = Request.Form[_selectedItems.UniqueID];
+				if (!string.IsNullOrEmpty(value))
+					_selectedItems.Value = value;
+			}
+		}
+
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!IsPostBack)
-			{
+			/*if (!IsPostBack)
+			{*/
 				_legendProvider.Visible = _legendProduct.Visible = false;
 				if (SourceType == ProductProviderSelectionGridSourceType.Product)
 				{
@@ -121,8 +135,9 @@ namespace Bagge.Seti.WebSite.Controls
 					_addControls.Visible = false;
 					_items.Rows[0].Cells.RemoveAt(2);
 				}
-			}
-			else
+			/*}
+			else*/
+			if(IsPostBack)
 				DataBind();
 
 			EnsureRegisterJavascripts();
@@ -176,11 +191,41 @@ namespace Bagge.Seti.WebSite.Controls
 			//BindItems();
 		}
 
+		/*private void LoadItemsToSelect<T>(T itemsToSelect)
+		{
+			var selectedItems = SelectedItems;
+			var selectedItemsCount = selectedItems.Count;
+			ListItem firstItem = _name.Items[0];
+			_name.Items.Clear();
+			_name.Items.Add(firstItem);
+			var providers = IoCContainer.ProviderManager.FindAllActiveOrdered("Name");
+			foreach (var item in itemsToSelect)
+			{
+				if(item is Provider)
+				if (selectedItemsCount > 0 && selectedItems.FirstOrDefault(pp => pp.Provider.Id == provider.Id) != null)
+					continue;
+
+				ListItem item = new ListItem();
+				item.Value = provider.Id.ToString();
+				item.Text = provider.NameAndCUIT;
+				_name.Items.Add(item);
+			}
+
+		}*/
+
 		private void LoadProviders()
 		{
+			var selectedItems = SelectedItems;
+			var selectedItemsCount = selectedItems.Count;
+			ListItem firstItem = _name.Items[0];
+			_name.Items.Clear();
+			_name.Items.Add(firstItem);
 			var providers = IoCContainer.ProviderManager.FindAllActiveOrdered("Name");
 			foreach (var provider in providers)
 			{
+				if (selectedItemsCount > 0 && selectedItems.FirstOrDefault(pp => pp.Provider.Id == provider.Id) != null)
+					continue;
+	
 				ListItem item = new ListItem();
 				item.Value = provider.Id.ToString();
 				item.Text = provider.NameAndCUIT;
