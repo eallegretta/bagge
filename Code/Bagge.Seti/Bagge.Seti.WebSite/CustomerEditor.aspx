@@ -5,7 +5,7 @@
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
-		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
+		runat="server" AutoGenerateRows="false" meta:resourcekey="Details">
 		<Fields>
 			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="Name" meta:resourcekey="NameField">
 			</seti:SecureBoundField>
@@ -17,7 +17,7 @@
 			<seti:SecureTemplateField PropertyName="District" meta:resourcekey="CountryStateField">
 				<EditItemTemplate>
 					<asp:DropDownList ID="_countryState" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
-						runat="server" meta:resourcekey="CountryStateDropDown" OnSelectedIndexChanged="_countryState_SelectedIndexChanged">
+						runat="server" meta:resourcekey="CountryStateDropDown">
 					</asp:DropDownList>
 				</EditItemTemplate>
 				<ItemTemplate>
@@ -27,8 +27,8 @@
 			<seti:SecureTemplateField meta:resourcekey="DistrictField">
 				<EditItemTemplate>
 					<asp:DropDownList ID="_district" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
-						runat="server" meta:resourcekey="DistrictDropDown" OnSelectedIndexChanged="_district_SelectedIndexChanged">
-					</asp:DropDownList>
+						runat="server" meta:resourcekey="DistrictDropDown">
+					</asp:DropDownList>	
 				</EditItemTemplate>
 				<ItemTemplate>
 					<asp:HiddenField ID="_district" runat="server" />
@@ -56,5 +56,6 @@
 	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/CustomerList.aspx"
 		CancelPostBackUrl="~/CustomerList.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
 	</seti:EditorControls>
+	<asp:ObjectDataSource ID="_ds" runat="server" DataObjectTypeName="Bagge.Seti.BusinessEntities.Customer" TypeName="Bagge.Seti.BusinessLogic.CustomerManager, Bagge.Seti.BusinessLogic"></asp:ObjectDataSource>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server"></asp:ObjectContainerDataSource>
 </asp:Content>

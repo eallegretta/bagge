@@ -26,7 +26,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		public virtual Provider GetByCuit(string cuit)
 		{
-			if (cuit == string.Empty)
+			if (string.IsNullOrEmpty(cuit))
 				return null;
 
 			Provider[] providers = this.FindAllActiveByProperty("CUIT", cuit);

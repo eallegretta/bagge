@@ -11,51 +11,42 @@
 namespace Bagge.Seti.WebSite {
     
     
-    public partial class CustomerEditor {
+    public partial class UpgradeSql {
         
         /// <summary>
-        /// _details control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Bagge.Seti.WebSite.Controls.SecureDetailsView _details;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// _cuitUniqueVal control.
+        /// _file control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator _cuitUniqueVal;
+        protected global::System.Web.UI.WebControls.FileUpload _file;
         
         /// <summary>
-        /// _commands control.
+        /// _upload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Bagge.Seti.WebSite.Controls.EditorCommands _commands;
+        protected global::System.Web.UI.WebControls.Button _upload;
         
         /// <summary>
-        /// _ds control.
+        /// _message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource _ds;
-        
-        /// <summary>
-        /// _dataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSource _dataSource;
+        protected global::System.Web.UI.WebControls.Label _message;
     }
 }
