@@ -23,6 +23,23 @@ namespace Bagge.Seti.WebSite
 
 		}
 
+		protected override void OnInit(EventArgs e)
+		{
+			Details.DataBound += new EventHandler(Details_DataBound);
+
+			base.OnInit(e);
+		}
+
+		void Details_DataBound(object sender, EventArgs e)
+		{
+			var countryState = Details.FindControl("_countryState") as DropDownList;
+			if (countryState != null)
+				countryState.SelectedIndexChanged += new EventHandler(_countryState_SelectedIndexChanged);
+			var district = Details.FindControl("_district") as DropDownList;
+			if (district != null)
+				district.SelectedIndexChanged += new EventHandler(_district_SelectedIndexChanged);
+		}
+
 		protected void _cuitUniqueVal_ServerValidate(object source, ServerValidateEventArgs args)
 		{
 			args.IsValid = _presenter.IsCuitValid(args.Value);
@@ -52,11 +69,16 @@ namespace Bagge.Seti.WebSite
 
 		protected void _countryState_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			
-
 			int countryStateId = ((DropDownList)sender).SelectedValue.ToInt32();
-			_presenter.SelectDistricts(countryStateId);
+
+			var districts = Details.FindControl("_district") as DropDownList;
+			string districtId = null;
+			if (districts != null)
+				districtId = Request.Form[districts.UniqueID];
+
+			_presenter.SelectDistricts(countryStateId, districtId != null ? (int?)districtId.ToInt32() : null);
 			_presenter.SelectZipCode();
+
 		}
 
 		protected void _district_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,7 +148,12 @@ namespace Bagge.Seti.WebSite
 				{
 					var district = Details.FindControl("_district");
 					if (district is DropDownList)
-						((DropDownList)district).SelectedValue = value.ToString();
+					{
+						((DropDownList)district).ClearSelection();
+						var item = ((DropDownList)district).Items.FindByValue(value.ToString());
+						if (item != null)
+							item.Selected = true;
+					}
 					else
 						((HiddenField)district).Value = value.ToString();
 				}

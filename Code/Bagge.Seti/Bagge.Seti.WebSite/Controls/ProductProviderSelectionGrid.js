@@ -9,10 +9,12 @@ function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, de
 
 	this.table = $("#" + tableId);
 	this.addButton = $("#" + btnId);
-	this.addButton[0].behavior = this;
-	this.addButton.click(function() {
-		this.behavior.addSelectedItem();
-	});
+	if (this.addButton.length > 0) {
+		this.addButton[0].behavior = this;
+		this.addButton.click(function() {
+			this.behavior.addSelectedItem();
+		});
+	}
 	
 	this.hdn = $("#" + hdnId);
 	this.items = $("#" + itemId);

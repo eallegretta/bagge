@@ -36,7 +36,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 			public ProductProviderBindItem()
 			{
-				
+
 			}
 
 			public ProductProviderBindItem(ProductProvider productProvider,
@@ -118,26 +118,26 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 			/*if (!IsPostBack)
 			{*/
-				_legendProvider.Visible = _legendProduct.Visible = false;
-				if (SourceType == ProductProviderSelectionGridSourceType.Product)
-				{
-					LoadProducts();
-					_legendProduct.Visible = true;
-				}
-				else
-				{
-					LoadProviders();
-					_legendProvider.Visible = true;
-				}
+			_legendProvider.Visible = _legendProduct.Visible = false;
+			if (SourceType == ProductProviderSelectionGridSourceType.Product)
+			{
+				LoadProducts();
+				_legendProduct.Visible = true;
+			}
+			else
+			{
+				LoadProviders();
+				_legendProvider.Visible = true;
+			}
 
-				if (ReadOnly)
-				{
-					_addControls.Visible = false;
-					_items.Rows[0].Cells.RemoveAt(2);
-				}
+			if (ReadOnly)
+			{
+				_addControls.Visible = false;
+				_items.Rows[0].Cells.RemoveAt(2);
+			}
 			/*}
 			else*/
-			if(IsPostBack)
+			if (IsPostBack)
 				DataBind();
 
 			EnsureRegisterJavascripts();
@@ -191,28 +191,6 @@ namespace Bagge.Seti.WebSite.Controls
 			//BindItems();
 		}
 
-		/*private void LoadItemsToSelect<T>(T itemsToSelect)
-		{
-			var selectedItems = SelectedItems;
-			var selectedItemsCount = selectedItems.Count;
-			ListItem firstItem = _name.Items[0];
-			_name.Items.Clear();
-			_name.Items.Add(firstItem);
-			var providers = IoCContainer.ProviderManager.FindAllActiveOrdered("Name");
-			foreach (var item in itemsToSelect)
-			{
-				if(item is Provider)
-				if (selectedItemsCount > 0 && selectedItems.FirstOrDefault(pp => pp.Provider.Id == provider.Id) != null)
-					continue;
-
-				ListItem item = new ListItem();
-				item.Value = provider.Id.ToString();
-				item.Text = provider.NameAndCUIT;
-				_name.Items.Add(item);
-			}
-
-		}*/
-
 		private void LoadProviders()
 		{
 			var selectedItems = SelectedItems;
@@ -225,7 +203,7 @@ namespace Bagge.Seti.WebSite.Controls
 			{
 				if (selectedItemsCount > 0 && selectedItems.FirstOrDefault(pp => pp.Provider.Id == provider.Id) != null)
 					continue;
-	
+
 				ListItem item = new ListItem();
 				item.Value = provider.Id.ToString();
 				item.Text = provider.NameAndCUIT;
@@ -235,26 +213,23 @@ namespace Bagge.Seti.WebSite.Controls
 
 		private void LoadProducts()
 		{
+			var selectedItems = SelectedItems;
+			var selectedItemsCount = selectedItems.Count;
+			ListItem firstItem = _name.Items[0];
+			_name.Items.Clear();
+			_name.Items.Add(firstItem);
 			var products = IoCContainer.ProductManager.FindAllActiveOrdered("Name");
 			foreach (var product in products)
 			{
+				if (selectedItemsCount > 0 && selectedItems.FirstOrDefault(pp => pp.Product.Id == product.Id) != null)
+					continue;
+
 				ListItem item = new ListItem();
 				item.Value = product.Id.ToString();
 				item.Text = product.NameAndDescription;
 				_name.Items.Add(item);
 			}
 		}
-
-		//protected void _items_DataBound(object sender, EventArgs e)
-		//{
-		//    if (SourceType == ProductProviderSelectionGridSourceType.Product)
-		//        _items.Columns[0].Visible = false;
-		//    else
-		//        _items.Columns[1].Visible = false;
-		//    if (ReadOnly)
-		//        _items.Columns[3].Visible = false;
-		//}
-
 
 		public bool ReadOnly
 		{
@@ -269,7 +244,7 @@ namespace Bagge.Seti.WebSite.Controls
 			get
 			{
 				return ProductProviderBindItem.ToProductProviderItems(
-					JsonConvert.DeserializeObject<List<ProductProviderBindItem>>(_selectedItems.Value), 
+					JsonConvert.DeserializeObject<List<ProductProviderBindItem>>(_selectedItems.Value),
 						SourceType);
 			}
 			set

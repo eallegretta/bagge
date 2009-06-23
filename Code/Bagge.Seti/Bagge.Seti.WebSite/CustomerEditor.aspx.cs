@@ -68,8 +68,6 @@ namespace Bagge.Seti.WebSite
 
 		protected void _countryState_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			
-
 			int countryStateId = ((DropDownList)sender).SelectedValue.ToInt32();
 
 			var districts = Details.FindControl("_district") as DropDownList;
