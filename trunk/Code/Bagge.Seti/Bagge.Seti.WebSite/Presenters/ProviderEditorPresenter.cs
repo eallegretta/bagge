@@ -103,11 +103,13 @@ namespace Bagge.Seti.WebSite.Presenters
 			base.Save(entity);
 		}
 
-		public void SelectDistricts(int countryStateId)
+		public void SelectDistricts(int countryStateId, int? selectedDistrictId)
 		{
 			CountryState state = _countryStateManager.Get(countryStateId);
 			View.Districts = state.Districts.ToArray();
+			View.SelectedDistrictId = selectedDistrictId;
 		}
+
 
 		public void SelectZipCode()
 		{

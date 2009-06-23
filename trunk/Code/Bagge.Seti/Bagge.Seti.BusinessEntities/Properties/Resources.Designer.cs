@@ -718,6 +718,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La descripción es requerida.
+        /// </summary>
+        internal static string Validators_Product_Description_Required {
+            get {
+                return ResourceManager.GetString("Validators_Product_Description_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El código debe tener una longitud entre 1 y 50 caracteres..
         /// </summary>
         internal static string Validators_Product_Name_Length {

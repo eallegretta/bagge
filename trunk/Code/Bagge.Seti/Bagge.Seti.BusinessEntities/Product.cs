@@ -28,6 +28,19 @@ namespace Bagge.Seti.BusinessEntities
 			}
 		}
 
+		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Product_Description_Required", MessageTemplateResourceType = typeof(Product))]
+		public override string Description
+		{
+			get
+			{
+				return base.Description;
+			}
+			set
+			{
+				base.Description = value;
+			}
+		}
+
 		[Securizable("Securizable_Product_NameAndDescription", typeof(Product))]
 		public string NameAndDescription
 		{

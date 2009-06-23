@@ -372,4 +372,7 @@
   <data name="Securizable_Ticket_Status" xml:space="preserve">
     <value>Estado</value>
   </data>
+  <data name="Validators_Product_Description_Required" xml:space="preserve">
+    <value>La descripción es requerida</value>
+  </data>
 </root>
