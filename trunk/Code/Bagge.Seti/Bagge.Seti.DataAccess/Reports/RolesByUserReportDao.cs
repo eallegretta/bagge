@@ -6,6 +6,7 @@ using Bagge.Seti.BusinessEntities.Reports;
 using Bagge.Seti.DataAccess.Contracts.Reports;
 using Bagge.Seti.BusinessEntities;
 using System.Data.SqlTypes;
+using System.Data.SqlClient;
 
 namespace Bagge.Seti.DataAccess.Reports
 {   
@@ -15,8 +16,21 @@ namespace Bagge.Seti.DataAccess.Reports
 
         public BaseReport GetReport(IList<FilterPropertyValue> filters)
         {
-            var name = filters.GetFilter("Name");
-            var description = filters.GetFilter("Description");
+            var FilterName = filters.GetFilter("Name");
+            var FilterDescription = filters.GetFilter("Description");
+
+            string name = null;
+            string description = null;
+
+            if (FilterName != null)
+            {
+                name = FilterName.Value.ToString();
+            }
+
+            if (FilterDescription != null)
+            {
+                description = FilterDescription.Value.ToString();
+            }
 
             return GetReport("RolesByUserReport", name, description);
         }
