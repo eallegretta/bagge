@@ -30,7 +30,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			{
 				var view = GetView<IRoleListView>();
 				view.Employees = _employeeManager.FindAllActiveOrdered("Lastname");
-				view.Functions = _functionManager.FindAllActiveOrdered("Name");
+				view.Functions = _functionManager.FindAll();
 			}
 			base.OnInit(sender, e);
 		}

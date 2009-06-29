@@ -8,8 +8,9 @@ using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
-	public interface IFunctionManager: IAuditableManager<Function, int>
+	public interface IFunctionManager: IGetManager<Function, int>
 	{
+		Function[] FindAll();
 		bool UserHasAccessToFunction(IUser user, Function function);
 	}
 }

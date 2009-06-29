@@ -11,6 +11,7 @@ namespace Bagge.Seti.WebSite.Views
 	{
 		int TotalRows { set; }
 		string DefaultSortExpression { get; }
+		bool IsDelete { get; }
 
 		
 	}

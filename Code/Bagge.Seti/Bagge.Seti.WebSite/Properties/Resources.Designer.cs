@@ -97,6 +97,33 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reporte Clientes por Abono.
+        /// </summary>
+        internal static string Securizable_CustomersBySubscription {
+            get {
+                return ResourceManager.GetString("Securizable_CustomersBySubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporte Clientes por Ticket.
+        /// </summary>
+        internal static string Securizable_CustomersByTicket {
+            get {
+                return ResourceManager.GetString("Securizable_CustomersByTicket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporte Clientes Pendientes de Pago.
+        /// </summary>
+        internal static string Securizable_CustomersWithPendingPayment {
+            get {
+                return ResourceManager.GetString("Securizable_CustomersWithPendingPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         internal static string Securizable_Default {
@@ -151,6 +178,24 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reporte Productos por Proveedor.
+        /// </summary>
+        internal static string Securizable_ProductsByProvider {
+            get {
+                return ResourceManager.GetString("Securizable_ProductsByProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporte Productos Consumidos.
+        /// </summary>
+        internal static string Securizable_ProductsConsumed {
+            get {
+                return ResourceManager.GetString("Securizable_ProductsConsumed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editor de Proveedores.
         /// </summary>
         internal static string Securizable_ProviderEditor {
@@ -183,6 +228,24 @@ namespace Bagge.Seti.WebSite.Properties {
         internal static string Securizable_RoleList {
             get {
                 return ResourceManager.GetString("Securizable_RoleList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporte Roles por Usuario.
+        /// </summary>
+        internal static string Securizable_RolesByUser {
+            get {
+                return ResourceManager.GetString("Securizable_RolesByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporte Técnicos por Ticket.
+        /// </summary>
+        internal static string Securizable_TechniciansByTicket {
+            get {
+                return ResourceManager.GetString("Securizable_TechniciansByTicket", resourceCulture);
             }
         }
         

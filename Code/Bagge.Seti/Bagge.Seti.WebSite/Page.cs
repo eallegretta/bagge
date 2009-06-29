@@ -12,6 +12,7 @@ using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Exceptions;
 using Spring.Globalization;
+using Bagge.Seti.WebSite.Security;
 
 namespace Bagge.Seti.WebSite
 {
@@ -19,61 +20,11 @@ namespace Bagge.Seti.WebSite
 	{
 		protected override void OnInit(EventArgs e)
 		{
-			UserHasAccess();
-
-
+			if (!AuthorizationManager.UserHasAccess(this))
+				throw new BusinessRuleException(Bagge.Seti.WebSite.Properties.Resources.UserHasNoAccessErrorMessage);
 
 			base.OnInit(e);
 		}
-
-		private void UserHasAccess()
-		{
-			var type = this.GetType().BaseType;
-			var user = User.Identity as IUser;
-
-			if (user == null)
-				return;
-
-			if (type.IsDefined(typeof(SecurizableWebAttribute), true))
-			{
-				var attr = type.GetCustomAttributes(typeof(SecurizableWebAttribute), true);
-
-
-				FunctionAction action = FunctionAction.NotSet;
-				if(this is IListView)
-				{
-					action = FunctionAction.Retrieve;
-					//add delete
-				}
-				else if(this is IEditorView)
-				{
-					var view = this as IEditorView;
-					if(view.Mode == EditorAction.Insert)
-						action = FunctionAction.Create;
-					else if(view.Mode == EditorAction.Update)
-						action = FunctionAction.Update;
-					else
-						action = FunctionAction.Retrieve;
-				}
-				else if (this is IReportView)
-				{
-					action = FunctionAction.Retrieve;
-				}
-
-				if (action != FunctionAction.NotSet)
-				{
-					var function = new Function { FullQualifiedName = type.FullName, Action = Function.ActionToChar(action) };
-
-					if (!IoCContainer.FunctionManager.UserHasAccessToFunction(user, function))
-					{
-						throw new BusinessRuleException(Bagge.Seti.WebSite.Properties.Resources.UserHasNoAccessErrorMessage);
-					}
-				}
-			}
-			
-		}
-
-		
 
 		protected T GetControlPropertyValue<T>(Control control, T defaultValue, params string[] propertiesToSearch) where T: IConvertible
 		{

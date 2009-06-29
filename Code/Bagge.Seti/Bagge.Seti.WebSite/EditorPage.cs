@@ -171,9 +171,9 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				if (Request.QueryString["Id"] == null)
+				if (HttpContext.Current.Request.QueryString["Id"] == null)
 					return default(PK);
-				return (PK)Convert.ChangeType(Request.QueryString["Id"], typeof(PK));
+				return (PK)Convert.ChangeType(HttpContext.Current.Request.QueryString["Id"], typeof(PK));
 			}
 		}
 
@@ -187,9 +187,9 @@ namespace Bagge.Seti.WebSite
 		{
 			get 
 			{
-				if (Request.QueryString["Id"] == null)
+				if (HttpContext.Current.Request.QueryString["Id"] == null)
 					return EditorAction.Insert;
-				else if (Request.QueryString["Action"] == null || Request.QueryString["Action"].ToUpperInvariant() == "EDIT")
+				else if (HttpContext.Current.Request.QueryString["Action"] == null || HttpContext.Current.Request.QueryString["Action"].ToUpperInvariant() == "EDIT")
 					return EditorAction.Update;
 				else
 					return EditorAction.View;
