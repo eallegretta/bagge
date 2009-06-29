@@ -10,16 +10,17 @@ namespace Bagge.Seti.WebSite.Views
 	{
 		Role[] Roles { set; }
 		int SelectedRoleId { get; }
-		string[] Classnames { set; }
-		string SelectedClassname { get; }
+		string[] ClassFullQualifiedNames { set; }
+		string SelectedClassFullQualifiedName { get; set; }
 		AccessibilityType[] Accessibilities { set; }
-		byte SelectedAccessibilityTypeId { get; }
+		byte SelectedAccessibilityTypeId { get; set;  }
 		string[] Members { set; }
-		string SelectedMember { get; }
+		string SelectedMember { get; set;  }
 		string[] ConstraintTypes { set; }
-		string SelectedConstraintType { get; }
+		string SelectedConstraintType { get; set; }
 		bool ConstraintTypesVisible { set; }
 		bool ConstraintValueVisible { set; }
-		string SelectedConstraintValue { get; }
+		string SelectedConstraintValue { get; set; }
+
 	}
 }

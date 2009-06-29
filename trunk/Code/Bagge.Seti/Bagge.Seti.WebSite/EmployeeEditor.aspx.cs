@@ -8,9 +8,12 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_EmployeeEditor", typeof(EmployeeEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
 	public partial class EmployeeEditor : EditorPage<Employee, int>, IEmployeeEditorView
 	{
 		EmployeeEditorPresenter _presenter;
@@ -94,6 +97,7 @@ namespace Bagge.Seti.WebSite
 				if (roles != null)
 				{
 					var ids = from role in roles.Items.Cast<ListItem>()
+						  where role.Selected == true
 						select role.Value.ToInt32();
 					return ids.ToArray();
 				}

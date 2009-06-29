@@ -9,9 +9,11 @@ using Bagge.Seti.BusinessEntities.Exceptions;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.DataAccess;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_ProductManager", typeof(ProductManager))]
 	public partial class ProductManager : AuditableGenericManager<Product, int>, IProductManager
 	{
 		IProductProviderDao _productProviderDao;
@@ -23,8 +25,9 @@ namespace Bagge.Seti.BusinessLogic
 			_productProviderDao = productProviderDao;
 			_ticketManager = ticketManager;
 		}
-        
 
+
+		[Securizable("Securizable_ProductManager_GetByName", typeof(ProductManager))]
 		public Product GetByName(string name)
 		{   
 			Check.Require(!string.IsNullOrEmpty(name));

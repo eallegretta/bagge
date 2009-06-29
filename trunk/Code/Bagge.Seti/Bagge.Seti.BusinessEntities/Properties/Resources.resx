@@ -375,4 +375,7 @@
   <data name="Validators_Product_Description_Required" xml:space="preserve">
     <value>La descripción es requerida</value>
   </data>
+  <data name="Securizable_Assembly" xml:space="preserve">
+    <value>Entidades</value>
+  </data>
 </root>

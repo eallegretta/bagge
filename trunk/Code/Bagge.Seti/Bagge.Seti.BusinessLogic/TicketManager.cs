@@ -6,9 +6,11 @@ using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.DesignByContract;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_TicketManager", typeof(TicketManager))]
 	public partial class TicketManager : AuditableGenericManager<Ticket, int>, ITicketManager
 	{
 		ITicketStatusManager _ticketStatusManager;
@@ -26,6 +28,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ITicketManager Members
 
+		[Securizable("Securizable_TicketManager_FindAllByStatus", typeof(TicketManager))]
 		public Ticket[] FindAllByStatus(TicketStatusEnum status)
 		{
 			return FindAllActiveByProperty("Status",
@@ -117,12 +120,13 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ITicketManager Members
 
-
+		[Securizable("Securizable_TicketManager_FindAllByProduct", typeof(TicketManager))]
 		public Ticket[] FindAllByProduct(int productId)
 		{
 			return GetDao<ITicketDao>().FindAllByProduct(productId);
 		}
 
+		[Securizable("Securizable_TicketManager_FindAllByProvider", typeof(TicketManager))]
 		public Ticket[] FindAllByProvider(int providerId)
 		{
 			return GetDao<ITicketDao>().FindAllByProvider(providerId);

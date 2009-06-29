@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using Bagge.Seti.Security.BusinessEntities;
 using System.Reflection;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface IFunctionManager: IAuditableManager<Function, int>
 	{
-		IList<Assembly> GetSecuredAssemblies();
-		IList<Type> GetSecuredTypes(Assembly assembly);
-		IList<MemberInfo> GetSecuredMembers(Type type);
+		bool UserHasAccessToFunction(IUser user, Function function);
 	}
 }

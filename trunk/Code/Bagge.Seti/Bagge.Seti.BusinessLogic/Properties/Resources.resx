@@ -171,4 +171,160 @@
   <data name="RecoverPasswordEmailSubject" xml:space="preserve">
     <value>SETI - Recuperación de Contraseña</value>
   </data>
+  <data name="Securizable_AccessibilityTypeManager" xml:space="preserve">
+    <value>Tipos de Accesibilidad</value>
+  </data>
+  <data name="Securizable_AccessibilityTypeManager_FindAll" xml:space="preserve">
+    <value>Buscar Todas</value>
+  </data>
+  <data name="Securizable_AccessibilityTypeManager_FindAllByProperties" xml:space="preserve">
+    <value>Buscar Todas por Propiedades</value>
+  </data>
+  <data name="Securizable_AccessibilityTypeManager_FindAllByProperty" xml:space="preserve">
+    <value>Buscar Todas por Propiedad</value>
+  </data>
+  <data name="Securizable_AccessibilityTypeManager_FindAllByType" xml:space="preserve">
+    <value>Buscar Todas por Tipo</value>
+  </data>
+  <data name="Securizable_AccessibilityTypeManager_Get" xml:space="preserve">
+    <value>Cargar</value>
+  </data>
+  <data name="Securizable_AlertConfigurationManager" xml:space="preserve">
+    <value>Configuración de Alertas</value>
+  </data>
+  <data name="Securizable_AlertConfigurationManager_Get" xml:space="preserve">
+    <value>Cargar</value>
+  </data>
+  <data name="Securizable_AlertConfigurationManager_Update" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="Securizable_Assembly" xml:space="preserve">
+    <value>Lógica de Negocios</value>
+  </data>
+  <data name="Securizable_CustomerManager" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="Securizable_CustomerManager_GetByCuit" xml:space="preserve">
+    <value>Cargar por CUIT</value>
+  </data>
+  <data name="Securizable_EmployeeManager" xml:space="preserve">
+    <value>Empleados</value>
+  </data>
+  <data name="Securizable_EmployeeManager_Authenticate" xml:space="preserve">
+    <value>Autenticar</value>
+  </data>
+  <data name="Securizable_EmployeeManager_FindAllActiveTechnicians" xml:space="preserve">
+    <value>Buscar Todos los Técnicos Activos</value>
+  </data>
+  <data name="Securizable_EmployeeManager_GetByEmail" xml:space="preserve">
+    <value>Cargar por Email</value>
+  </data>
+  <data name="Securizable_EmployeeManager_GetByUsername" xml:space="preserve">
+    <value>Cargar por Nombre de Usuario</value>
+  </data>
+  <data name="Securizable_EmployeeManager_RecoverPassword" xml:space="preserve">
+    <value>Recuperar Contraseña</value>
+  </data>
+  <data name="Securizable_EmployeeManager_RegeneratePassword" xml:space="preserve">
+    <value>Regenerar Contraseña</value>
+  </data>
+  <data name="Securizable_FunctionManager" xml:space="preserve">
+    <value>Funciones</value>
+  </data>
+  <data name="Securizable_FunctionManager_GetSecuredAssemblies" xml:space="preserve">
+    <value>Obtener Assemblies a Securizar</value>
+  </data>
+  <data name="Securizable_FunctionManager_GetSecuredMembers" xml:space="preserve">
+    <value>Obtener Propiedades y Metodos a Securizar</value>
+  </data>
+  <data name="Securizable_FunctionManager_GetSecuredTypes" xml:space="preserve">
+    <value>Obtener Tipos a Securizar</value>
+  </data>
+  <data name="Securizable_GenericManager_Count" xml:space="preserve">
+    <value>Contar Registros</value>
+  </data>
+  <data name="Securizable_GenericManager_CountByProperties" xml:space="preserve">
+    <value>Contar Registros por Propiedades</value>
+  </data>
+  <data name="Securizable_GenericManager_CountByProperty" xml:space="preserve">
+    <value>Contar Registros por Propiedad</value>
+  </data>
+  <data name="Securizable_GenericManager_Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="Securizable_GenericManager_Delete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="Securizable_GenericManager_FindAll" xml:space="preserve">
+    <value>Buscar Todos</value>
+  </data>
+  <data name="Securizable_GenericManager_FindAllByProperties" xml:space="preserve">
+    <value>Buscar Todos por Propiedades</value>
+  </data>
+  <data name="Securizable_GenericManager_FindAllByProperty" xml:space="preserve">
+    <value>Buscar Todos por Propiedad</value>
+  </data>
+  <data name="Securizable_GenericManager_Get" xml:space="preserve">
+    <value>Cargar</value>
+  </data>
+  <data name="Securizable_GenericManager_SlicedFindAll" xml:space="preserve">
+    <value>Buscar Todos Paginado</value>
+  </data>
+  <data name="Securizable_GenericManager_SlicedFindAllByProperties" xml:space="preserve">
+    <value>Buscar Todos por Propiedades Paginado</value>
+  </data>
+  <data name="Securizable_GenericManager_SlicedFindAllByProperty" xml:space="preserve">
+    <value>Buscar Todos por Propiedad Paginado</value>
+  </data>
+  <data name="Securizable_GenericManager_Update" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="Securizable_ProductManager" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="Securizable_ProductManager_GetByName" xml:space="preserve">
+    <value>Cargar por Nombre</value>
+  </data>
+  <data name="Securizable_ProviderManager" xml:space="preserve">
+    <value>Proveedores</value>
+  </data>
+  <data name="Securizable_ProviderManager_GetByCuit" xml:space="preserve">
+    <value>Cargar por CUIT</value>
+  </data>
+  <data name="Securizable_ProviderManager_GetByName" xml:space="preserve">
+    <value>Cargar por Nombre</value>
+  </data>
+  <data name="Securizable_ReportManager" xml:space="preserve">
+    <value>Reportes</value>
+  </data>
+  <data name="Securizable_ReportManager_GetReport" xml:space="preserve">
+    <value>Cargar</value>
+  </data>
+  <data name="Securizable_RoleManager" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Securizable_SimpleFindGetManager" xml:space="preserve">
+    <value>Manager Simple Generico (Provincias, Localidades, etc)</value>
+  </data>
+  <data name="Securizable_TicketManager" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Securizable_TicketManager_FindAllByProduct" xml:space="preserve">
+    <value>Buscar Todos por Producto</value>
+  </data>
+  <data name="Securizable_TicketManager_FindAllByProvider" xml:space="preserve">
+    <value>Buscar Todos por Proveedor</value>
+  </data>
+  <data name="Securizable_TicketManager_FindAllByStatus" xml:space="preserve">
+    <value>Buscar Todos por Status</value>
+  </data>
+  <data name="Securizable_TicketStatusManager" xml:space="preserve">
+    <value>Estado de los Tickets</value>
+  </data>
+  <data name="Securizable_TicketStatusManager_FindAll" xml:space="preserve">
+    <value>Buscar Todos</value>
+  </data>
+  <data name="Securizable_TicketStatusManager_Get" xml:space="preserve">
+    <value>Cargar</value>
+  </data>
 </root>

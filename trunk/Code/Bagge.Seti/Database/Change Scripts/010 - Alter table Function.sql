@@ -1,0 +1,1 @@
+﻿alter table [Function] alter column ConstraintType varchar(10)

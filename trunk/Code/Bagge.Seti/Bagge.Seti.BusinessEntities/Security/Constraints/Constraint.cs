@@ -3,11 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using Bagge.Seti.BusinessEntities.Security.Constraints;
 
 namespace Bagge.Seti.Security.Constraints
 {
 	public abstract class Constraint
 	{
+		public Constraint Parse(string constraint, object source, string propertyName, object value)
+		{
+			switch (constraint)
+			{
+				case "==":
+					return new EqualsConstraint(source, propertyName, value);
+				case "!=":
+					return new NotEqualsConstraint(source, propertyName, value);
+				case "<":
+					return new LowerThanConstraint(source, propertyName, value);
+				case ">":
+					return new GreaterThanConstraint(source, propertyName, value);
+				default:
+					throw new ArgumentOutOfRangeException("constraint");
+			}
+		}
+
 		public Constraint(object source, string propertyName, object value)
 		{
 			if (source == null)

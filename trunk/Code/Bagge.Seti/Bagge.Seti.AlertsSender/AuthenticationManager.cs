@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Bagge.Seti.Common;
 using System.Threading;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.AlertsSender
 {

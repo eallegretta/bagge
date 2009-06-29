@@ -8,9 +8,13 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+
+	[SecurizableWeb("Securizable_TicketList", typeof(TicketList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class TicketList : FilteredListPage<Ticket, int>, ITicketListView
 	{
 

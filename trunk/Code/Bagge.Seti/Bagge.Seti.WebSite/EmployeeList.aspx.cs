@@ -8,9 +8,12 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Bagge.Seti.WebSite.Views;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_EmployeeList", typeof(EmployeeList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class EmployeeList : FilteredListPage<Employee, int>, IEmployeeListView
 	{
 		EmployeeListPresenter _presenter;

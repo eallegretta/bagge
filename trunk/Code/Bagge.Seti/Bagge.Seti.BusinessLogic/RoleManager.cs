@@ -8,9 +8,11 @@ using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.DataAccess;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_RoleManager", typeof(RoleManager))]
 	public partial class RoleManager : AuditableGenericManager<Role, int>, IRoleManager
 	{
 		IEmployeeDao _employeeDao;

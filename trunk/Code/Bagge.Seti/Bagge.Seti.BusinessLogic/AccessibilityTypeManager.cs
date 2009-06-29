@@ -11,6 +11,7 @@ using Bagge.Seti.BusinessLogic.Properties;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_AccessibilityTypeManager", typeof(AccessibilityTypeManager))]
 	public partial class AccessibilityTypeManager : IAccessibilityTypeManager 
 	{
 		#region IAccessibilityTypeManager Members
@@ -32,26 +33,27 @@ namespace Bagge.Seti.BusinessLogic
 			if(user.IsSuperAdministrator)
 				return AccessibilityTypes.Edit;
 
-			var filteredFunctions = (from function in user.Functions
-									 where function.MemberType == 'P' &&
-											function.MemberName == propertyName &&
-											function.TargetType.Equals(targetObject)
-									 select function).ToArray();
+
+			var filteredExceptions = (from exception in user.CurrentFunction.SecurityExceptions
+									 where exception.MemberType == 'P' &&
+											exception.MemberName == propertyName &&
+											exception.TargetType.Equals(targetObject)
+									 select exception).ToArray();
 
 			//If no functions, return default behavior
-			if (filteredFunctions.Length == 0)
+			if (filteredExceptions.Length == 0)
 				return Settings.Default.DefaultPropertyAccessibilityType;
 
 
-			bool canEdit = (from function in filteredFunctions
-							where function.Accessibility.Equals(AccessibilityTypes.Edit)
-							select function).Count() > 0;
+			bool canEdit = (from exception in filteredExceptions
+							where exception.Accessibility.Equals(AccessibilityTypes.Edit)
+							select exception).Count() > 0;
 			if (canEdit)
 				return AccessibilityTypes.Edit;
 
-			bool canView = (from function in filteredFunctions
-							where function.Accessibility.Equals(AccessibilityTypes.View)
-							select function).Count() > 0;
+			bool canView = (from exception in filteredExceptions
+							where exception.Accessibility.Equals(AccessibilityTypes.View)
+							select exception).Count() > 0;
 
 			if (canView)
 				return AccessibilityTypes.View;
@@ -64,19 +66,19 @@ namespace Bagge.Seti.BusinessLogic
 			if (user.IsSuperAdministrator)
 				return AccessibilityTypes.Execute;
 
-			var filteredFunctions = (from function in user.Functions
-									 where function.MemberType == 'M' &&
-											function.MemberName == methodName &&
-											function.TargetType.Equals(targetObject)
-									 select function).ToArray();
+			var filteredExceptions = (from exception in user.CurrentFunction.SecurityExceptions
+									 where exception.MemberType == 'M' &&
+											exception.MemberName == methodName &&
+											exception.TargetType.Equals(targetObject)
+									 select exception).ToArray();
 
 			//If no functions, return default behavior
-			if (filteredFunctions.Length == 0)
+			if (filteredExceptions.Length == 0)
 				return Settings.Default.DefaultMethodAccessibilityType;
 
-			bool canExecute = (from function in filteredFunctions
-							   where function.Accessibility.Equals(AccessibilityTypes.Execute)
-							   select function).Count() > 0;
+			bool canExecute = (from exception in filteredExceptions
+							   where exception.Accessibility.Equals(AccessibilityTypes.Execute)
+							   select exception).Count() > 0;
 			if (canExecute)
 				return AccessibilityTypes.Execute;
 
@@ -85,6 +87,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#endregion
 
+		[Securizable("Securizable_AccessibilityTypeManager_FindAllByType", typeof(AccessibilityTypeManager))]
 		public AccessibilityType[] FindAllByType(AccessibilityTypeType type)
 		{
 			return Dao.FindAllByType(type);
@@ -107,6 +110,7 @@ namespace Bagge.Seti.BusinessLogic
 			return FindAll(orderBy, ascending);
 		}
 
+		[Securizable("Securizable_AccessibilityTypeManager_FindAll", typeof(AccessibilityTypeManager))]
 		protected virtual AccessibilityType[] FindAll(string orderBy, bool? ascending)
 		{
 			return Dao.FindAll(orderBy, ascending);
@@ -127,6 +131,7 @@ namespace Bagge.Seti.BusinessLogic
 			return FindAllByProperty(property, value, orderBy, ascending);
 		}
 
+		[Securizable("Securizable_AccessibilityTypeManager_FindAllByProperty", typeof(AccessibilityTypeManager))]
 		protected virtual AccessibilityType[] FindAllByProperty(string property, object value, string orderBy, bool? ascending)
 		{
 			return Dao.FindAllByProperty(property, value, orderBy, ascending);
@@ -147,6 +152,7 @@ namespace Bagge.Seti.BusinessLogic
 			return FindAllByProperties(filter, orderBy, ascending);
 		}
 
+		[Securizable("Securizable_AccessibilityTypeManager_FindAllByProperties", typeof(AccessibilityTypeManager))]
 		protected virtual AccessibilityType[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
 			return Dao.FindAllByProperties(filter, orderBy, ascending);
@@ -156,6 +162,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region IGetManager<AccessibilityType,byte> Members
 
+		[Securizable("Securizable_AccessibilityTypeManager_Get", typeof(AccessibilityTypeManager))]
 		public Bagge.Seti.Security.BusinessEntities.AccessibilityType Get(byte id)
 		{
 			return Dao.Get(id);

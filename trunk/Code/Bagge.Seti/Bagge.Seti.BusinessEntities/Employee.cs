@@ -7,6 +7,7 @@ using Bagge.Seti.Security.BusinessEntities;
 using Castle.ActiveRecord;
 using System;
 using Bagge.Seti.BusinessEntities.Validators;
+using System.Collections;
 
 namespace Bagge.Seti.BusinessEntities
 {
@@ -183,6 +184,12 @@ namespace Bagge.Seti.BusinessEntities
 					return Username;
 				return string.Empty;
 			}
+		}
+
+		public Function CurrentFunction
+		{
+			get;
+			set;
 		}
 
 		#endregion

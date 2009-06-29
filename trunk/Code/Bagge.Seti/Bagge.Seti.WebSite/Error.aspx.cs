@@ -20,10 +20,8 @@ namespace Bagge.Seti.WebSite
 
 			if (ex != null)
 			{
-				if (ex is BusinessRuleException)
-					ShowBusinessRuleErrorMessage(ex);
-				else if (ex.InnerException != null && ex.InnerException is BusinessRuleException)
-					ShowBusinessRuleErrorMessage(ex.InnerException);
+				if (ex.GetBaseException() is BusinessRuleException)
+					ShowBusinessRuleErrorMessage(ex.GetBaseException());
 				else
 					ShowErrorMessage(ex);
 			}

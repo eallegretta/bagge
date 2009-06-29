@@ -41,6 +41,10 @@
       <HintPath>..\Dlls\Castle.Components.Validator.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
@@ -112,12 +116,15 @@
     <Compile Include="Security\Constraints\GreaterThanConstraint.cs" />
     <Compile Include="Security\Constraints\InequalityConstraint.cs" />
     <Compile Include="Security\Constraints\LowerThanConstraint.cs" />
+    <Compile Include="Security\Constraints\NotEqualsConstraint.cs" />
+    <Compile Include="Security\SecurityException.cs" />
     <Compile Include="Security\Function.cs" />
     <Compile Include="Security\IAuditable.cs" />
     <Compile Include="Security\ISecurizable.cs" />
     <Compile Include="Security\IUser.cs" />
     <Compile Include="Security\Role.cs" />
     <Compile Include="Security\SecurizableAttribute.cs" />
+    <Compile Include="Security\SecurizableWebAttribute.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketEmployee.cs" />
     <Compile Include="TicketStatus.cs" />

@@ -10,9 +10,11 @@ using Bagge.Seti.BusinessEntities.Exceptions;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.DataAccess;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_CustomerManager", typeof(CustomerManager))]
 	public partial class CustomerManager : AuditableGenericManager<Customer, int>, ICustomerManager
 	{
 		ITicketManager _ticketManager;
@@ -23,6 +25,7 @@ namespace Bagge.Seti.BusinessLogic
 			_ticketManager = ticketManager;
 		}
 
+		[Securizable("Securizable_CustomerManager_GetByCuit", typeof(CustomerManager))]
 		public virtual Customer GetByCuit(string cuit)
 		{
 			if (string.IsNullOrEmpty(cuit))

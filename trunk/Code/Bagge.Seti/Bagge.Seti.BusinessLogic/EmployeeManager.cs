@@ -13,9 +13,11 @@ using Castle.Components.Validator;
 using System.Net.Mail;
 using System.Configuration;
 using Bagge.Seti.DataAccess;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_EmployeeManager", typeof(EmployeeManager))]
 	public partial class EmployeeManager : AuditableGenericManager<Employee, int>, IEmployeeManager
 	{
 		ISimpleFindGetDao<EmployeeCategory, int> _employeeCategoryDao;
@@ -30,6 +32,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region IEmployeeManager Members
 
+		[Securizable("Securizable_EmployeeManager_Authenticate", typeof(EmployeeManager))]
 		public bool Authenticate(string username, string password)
 		{
 
@@ -52,6 +55,7 @@ namespace Bagge.Seti.BusinessLogic
 			
 		}
 
+		[Securizable("Securizable_EmployeeManager_GetByUsername", typeof(EmployeeManager))]
 		public Employee GetByUsername(string username)
 		{
 			return GetByStringProperty("Username", username, Resources.EmployeeByUsernameNotFoundErrorMessage);
@@ -61,7 +65,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region IEmployeeManager Members
 
-
+		[Securizable("Securizable_EmployeeManager_RecoverPassword", typeof(EmployeeManager))]
 		public void RecoverPassword(string email, string baseLinkPath)
 		{
 			Check.Require(!string.IsNullOrEmpty(email));
@@ -91,6 +95,7 @@ namespace Bagge.Seti.BusinessLogic
 			client.Send(msg);
 		}
 
+		[Securizable("Securizable_EmployeeManager_RegeneratePassword", typeof(EmployeeManager))]
 		public void RegeneratePassword(string encodedKey)
 		{
 			Check.Require(!string.IsNullOrEmpty(encodedKey));
@@ -111,6 +116,7 @@ namespace Bagge.Seti.BusinessLogic
 				string.Format(Resources.RecoverPasswordEmailBodyNewPassword, employee.Fullname, password));
 		}
 
+		[Securizable("Securizable_EmployeeManager_GetByEmail", typeof(EmployeeManager))]
 		public Employee GetByEmail(string email)
 		{
 			return GetByStringProperty("Email", email, string.Empty);
@@ -200,6 +206,7 @@ namespace Bagge.Seti.BusinessLogic
 			}
 		}
 
+		[Securizable("Securizable_EmployeeManager_FindAllActiveTechnicians", typeof(EmployeeManager))]
 		public Employee[] FindAllActiveTechnicians()
 		{
 			var category = _employeeCategoryDao.Get(EmployeeCategory.TechnicianId);

@@ -10,9 +10,12 @@ using Microsoft.Practices.Web.UI.WebControls.Utility;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.Common;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_AlertConfigurationEditor", typeof(AlertConfigurationEditor), FunctionAction.Update)]
 	public partial class AlertConfigurationEditor : Page, IEditorView
 	{
 

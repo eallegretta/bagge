@@ -133,6 +133,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entidades.
+        /// </summary>
+        internal static string Securizable_Assembly {
+            get {
+                return ResourceManager.GetString("Securizable_Assembly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provincia.
         /// </summary>
         internal static string Securizable_CountryState {
