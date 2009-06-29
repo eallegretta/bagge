@@ -27,7 +27,7 @@ namespace Bagge.Seti.WebSite.Reports
 			{
 				var filters = new List<FilterPropertyValue>();
 				FilterHelper.AddTextBoxFilterValue<DateTime>(_dateFrom, "DateFrom", FilterPropertyValueType.Equals, filters);
-				FilterHelper.AddTextBoxFilterValue<DateTime>(_dateFrom, "DateTo", FilterPropertyValueType.Equals, filters);
+				FilterHelper.AddTextBoxFilterValue<DateTime>(_dateTo, "DateTo", FilterPropertyValueType.Equals, filters);
 
 				return filters;
 			}
