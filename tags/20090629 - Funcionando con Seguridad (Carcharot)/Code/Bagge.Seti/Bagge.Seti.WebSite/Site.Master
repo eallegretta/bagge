@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Bagge.Seti.WebSite.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title></title>
+
+	
+
+	<asp:ContentPlaceHolder ID="_head" runat="server">
+	</asp:ContentPlaceHolder>
+</head>
+<body>
+	<form id="_mainForm" runat="server">
+	<asp:ScriptManager ID="_scriptManager" runat="server" EnablePageMethods="true" EnablePartialRendering="true" EnableScriptGlobalization="true" EnableScriptLocalization="true"  OnAsyncPostBackError="_scriptManager_AsyncPostBackError">
+	</asp:ScriptManager>
+	<asp:SiteMapDataSource ID="_siteMapDataSource" runat="server"  />
+	<div id="site">
+		<div id="header">
+			<asp:LoginView ID="_loginFullnameView" runat="server">
+				<LoggedInTemplate>
+					<div id="loginFullname">Bienvenido <b><asp:Literal ID="_loginFullname" runat="server"></asp:Literal></b> |
+					<asp:HyperLink ID="_logout" runat="server" NavigateUrl="~/Logout.ashx" meta:resourcekey="LogoutLink"></asp:HyperLink></div>
+				</LoggedInTemplate>
+			</asp:LoginView>
+		</div>
+		<div id="menu">
+			<asp:LoginView ID="_menuLoginView" runat="server">
+				<LoggedInTemplate>
+					<asp:Menu ID="_menu" runat="server" DataSourceID="_siteMapDataSource">
+					</asp:Menu>
+				</LoggedInTemplate>
+			</asp:LoginView>
+		</div>
+		<div id="content">
+			<asp:SiteMapPath ID="_siteMapPath" runat="server"></asp:SiteMapPath>
+			<asp:UpdatePanel ID="_contentUpdatePanel" runat="server" UpdateMode="Conditional">
+				<ContentTemplate>
+					<asp:ContentPlaceHolder ID="_content" runat="server">
+					</asp:ContentPlaceHolder>
+				</ContentTemplate>
+			</asp:UpdatePanel>
+			<%--<ajax:UpdatePanelAnimationExtender ID="_contentUpdatePanelAnimation" runat="server" TargetControlID="_contentUpdatePanel">
+				<Animations>
+					<OnUpdating>
+						<EnableAction enabled="true"></EnableAction>
+					</OnUpdating>
+					<OnUpdated>
+						<EnableAction enabled="true"></EnableAction>
+					</OnUpdated>
+				</Animations>
+			</ajax:UpdatePanelAnimationExtender>--%>
+		</div>
+		<div id="footer">
+			SETI - &copy; - 2009 - Bagge Consulting - Todos los derechos reservados
+		</div>
+	</div>
+	</form>
+	
+	<div id="loadingAnimation" style="position:absolute;display:none">
+		<asp:Image ID="_loadingAnimationImage" runat="server" SkinID="loading" /><asp:Literal ID="_loadingAnimationText" runat="server" meta:resourcekey="LoadingAnimation"></asp:Literal>
+	</div>
+</body>
+</html>
