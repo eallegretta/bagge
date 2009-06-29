@@ -1,3 +1,10 @@
+== v0.6 - 20090629 - Carcharot ==
+.Seguridad por Funciones
+.Bugfixes
+
+== v0.5 - 20090622 - Fingolfin ==
+.Varios bugfixes
+
 == v0.4 - 20090614 - Racing3Boca0 ==
 .Editor de Ticket
 .Fixes de la ultima minuta
