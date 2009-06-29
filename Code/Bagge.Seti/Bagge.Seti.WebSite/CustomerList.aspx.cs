@@ -11,9 +11,12 @@ using Bagge.Seti.BusinessLogic;
 using Spring.Context.Support;
 using Bagge.Seti.Common;
 using Microsoft.Practices.Web.UI.WebControls;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_CustomerList", typeof(CustomerList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class CustomerList : FilteredListPage<Customer, int>
 	{
 		ListPresenter<Customer, int> _presenter;

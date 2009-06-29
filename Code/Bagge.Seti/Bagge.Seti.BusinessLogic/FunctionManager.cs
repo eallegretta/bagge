@@ -8,49 +8,39 @@ using Bagge.Seti.DataAccess.Contracts;
 using System.Reflection;
 using System.IO;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.DesignByContract;
+using Bagge.Seti.BusinessLogic.Properties;
+using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_FunctionManager", typeof(FunctionManager))]
 	public class FunctionManager : AuditableGenericManager<Function, int>, IFunctionManager
 	{
-		private IAccessibilityDao _accessibilityDao;
-
-		public FunctionManager(IFunctionDao dao, IAccessibilityDao accessibilityDao)
+		public FunctionManager(IFunctionDao dao)
 			: base(dao)
 		{
-			_accessibilityDao = accessibilityDao;
 		}
 
-
-		public IList<System.Reflection.Assembly> GetSecuredAssemblies()
+		public bool UserHasAccessToFunction(IUser user, Function function)
 		{
-			List<Assembly> securedAssemblies = new List<Assembly>();
-			foreach (string file in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "*.dll"))
+			Check.Require(user != null, Resources.InstanceCannotBeNull);
+
+			if(user.IsSuperAdministrator)
+				return true;
+
+			var filters = new List<FilterPropertyValue>();
+			filters.Add("FullQualifiedName", function.FullQualifiedName);
+			filters.Add("Action", function.Action);
+
+			function = Dao.FindAllByProperties(filters, null, null)[0];
+
+			if(user.Functions.Contains(function))
 			{
-				var assembly = Assembly.LoadFile(file);
-				if (assembly.IsDefined(typeof(SecurizableAttribute), false))
-					securedAssemblies.Add(assembly);
+				user.CurrentFunction = function;
+				return true;	
 			}
-
-			return securedAssemblies;
-		}
-
-		public IList<Type> GetSecuredTypes(Assembly assembly)
-		{
-			var securedTypes = from type in assembly.GetTypes()
-							   where type.IsDefined(typeof(SecurizableAttribute), true)
-							   select type;
-
-			return securedTypes.ToList();
-		}
-
-		public IList<MemberInfo> GetSecuredMembers(Type type)
-		{
-			var securedMembers = from member in type.GetMembers()
-								 where member.IsDefined(typeof(SecurizableAttribute), true)
-								 select member;
-
-			return securedMembers.ToList();
+			return false;
 		}
 	}
 }

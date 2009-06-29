@@ -9,9 +9,11 @@ using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_RoleList", typeof(RoleList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class RoleList : FilteredListPage<Role, int>, IRoleListView
 	{
 

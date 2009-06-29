@@ -8,21 +8,22 @@ using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class FunctionEditor //: EditorPage<Function, int> , IFunctionEditorView
+	[SecurizableWeb("Securizable_FunctionEditor", typeof(FunctionEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
+	public partial class FunctionEditor: EditorPage<Function, int> , IFunctionEditorView
 	{
-		/*FunctionEditorPresenter _presenter;
+		FunctionEditorPresenter _presenter;
 
 		public FunctionEditor()
 		{
 			_presenter = new FunctionEditorPresenter(this, IoCContainer.FunctionManager, IoCContainer.RoleManager);
 		}
-		
+
+
 		#region IFunctionEditorView Members
-
-
 
 		public Role[] Roles
 		{
@@ -34,14 +35,21 @@ namespace Bagge.Seti.WebSite
 			get { throw new NotImplementedException(); }
 		}
 
-		public string[] Classnames
+		public string[] ClassFullQualifiedNames
 		{
 			set { throw new NotImplementedException(); }
 		}
 
-		public string SelectedClassname
+		public string SelectedClassFullQualifiedName
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
 		}
 
 		public AccessibilityType[] Accessibilities
@@ -51,7 +59,14 @@ namespace Bagge.Seti.WebSite
 
 		public byte SelectedAccessibilityTypeId
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
 		}
 
 		public string[] Members
@@ -61,7 +76,14 @@ namespace Bagge.Seti.WebSite
 
 		public string SelectedMember
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
 		}
 
 		public string[] ConstraintTypes
@@ -71,7 +93,14 @@ namespace Bagge.Seti.WebSite
 
 		public string SelectedConstraintType
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
 		}
 
 		public bool ConstraintTypesVisible
@@ -86,14 +115,21 @@ namespace Bagge.Seti.WebSite
 
 		public string SelectedConstraintValue
 		{
-			get { throw new NotImplementedException(); }
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
 		}
 
 		#endregion
 
-		protected override Bagge.Seti.WebSite.Presenters.EditorPresenter<Function, int> Presenter
+		protected override EditorPresenter<Function, int> Presenter
 		{
-			get { return _presenter; }
+			get { throw new NotImplementedException(); }
 		}
 
 		protected override CompositeDataBoundControl Details
@@ -104,6 +140,11 @@ namespace Bagge.Seti.WebSite
 		protected override Microsoft.Practices.Web.UI.WebControls.ObjectContainerDataSource ObjectDataSource
 		{
 			get { throw new NotImplementedException(); }
-		}*/
+		}
+
+		protected override bool ShowRequiredInformationLabel
+		{
+			get { throw new NotImplementedException(); }
+		}
 	}
 }

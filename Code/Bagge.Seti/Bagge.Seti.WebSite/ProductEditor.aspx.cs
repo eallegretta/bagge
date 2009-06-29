@@ -10,9 +10,12 @@ using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Microsoft.Practices.Web.UI.WebControls;
 using Bagge.Seti.WebSite.Controls;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_ProductEditor", typeof(ProductEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
 	public partial class ProductEditor : EditorPage<Product, int>, IProductEditorView 
 	{
 		ProductEditorPresenter _presenter;

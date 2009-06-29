@@ -20,6 +20,7 @@ namespace Bagge.Seti.WebSite.HttpModules
 			context.AuthenticateRequest += new EventHandler(context_AuthenticateRequest);
 		}
 
+
 		void context_AuthenticateRequest(object sender, EventArgs e)
 		{
 			HttpApplication app = (HttpApplication)sender;

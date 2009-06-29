@@ -9,9 +9,11 @@ using Bagge.Seti.DesignByContract;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.BusinessEntities.Exceptions;
 using Bagge.Seti.DataAccess;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic
 {
+	[Securizable("Securizable_ProviderManager", typeof(ProviderManager))]
 	public partial class ProviderManager : AuditableGenericManager<Provider, int>, IProviderManager
 	{
 		IProductProviderDao _productProviderDao;
@@ -24,6 +26,7 @@ namespace Bagge.Seti.BusinessLogic
 			_ticketManager = ticketManager;
 		}
 
+		[Securizable("Securizable_ProviderManager_GetByCuit", typeof(ProviderManager))]
 		public virtual Provider GetByCuit(string cuit)
 		{
 			if (string.IsNullOrEmpty(cuit))
@@ -36,6 +39,7 @@ namespace Bagge.Seti.BusinessLogic
 			return null;
 		}
 
+		[Securizable("Securizable_ProviderManager_GetByName", typeof(ProviderManager))]
 		public Provider GetByName(string name)
 		{
 			Check.Require(!string.IsNullOrEmpty(name));

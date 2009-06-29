@@ -221,5 +221,473 @@ namespace Bagge.Seti.BusinessLogic.Properties {
                 return ResourceManager.GetString("RecoverPasswordEmailSubject", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tipos de Accesibilidad.
+        /// </summary>
+        internal static string Securizable_AccessibilityTypeManager {
+            get {
+                return ResourceManager.GetString("Securizable_AccessibilityTypeManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todas.
+        /// </summary>
+        internal static string Securizable_AccessibilityTypeManager_FindAll {
+            get {
+                return ResourceManager.GetString("Securizable_AccessibilityTypeManager_FindAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todas por Propiedades.
+        /// </summary>
+        internal static string Securizable_AccessibilityTypeManager_FindAllByProperties {
+            get {
+                return ResourceManager.GetString("Securizable_AccessibilityTypeManager_FindAllByProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todas por Propiedad.
+        /// </summary>
+        internal static string Securizable_AccessibilityTypeManager_FindAllByProperty {
+            get {
+                return ResourceManager.GetString("Securizable_AccessibilityTypeManager_FindAllByProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todas por Tipo.
+        /// </summary>
+        internal static string Securizable_AccessibilityTypeManager_FindAllByType {
+            get {
+                return ResourceManager.GetString("Securizable_AccessibilityTypeManager_FindAllByType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar.
+        /// </summary>
+        internal static string Securizable_AccessibilityTypeManager_Get {
+            get {
+                return ResourceManager.GetString("Securizable_AccessibilityTypeManager_Get", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuración de Alertas.
+        /// </summary>
+        internal static string Securizable_AlertConfigurationManager {
+            get {
+                return ResourceManager.GetString("Securizable_AlertConfigurationManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar.
+        /// </summary>
+        internal static string Securizable_AlertConfigurationManager_Get {
+            get {
+                return ResourceManager.GetString("Securizable_AlertConfigurationManager_Get", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actualizar.
+        /// </summary>
+        internal static string Securizable_AlertConfigurationManager_Update {
+            get {
+                return ResourceManager.GetString("Securizable_AlertConfigurationManager_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lógica de Negocios.
+        /// </summary>
+        internal static string Securizable_Assembly {
+            get {
+                return ResourceManager.GetString("Securizable_Assembly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes.
+        /// </summary>
+        internal static string Securizable_CustomerManager {
+            get {
+                return ResourceManager.GetString("Securizable_CustomerManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar por CUIT.
+        /// </summary>
+        internal static string Securizable_CustomerManager_GetByCuit {
+            get {
+                return ResourceManager.GetString("Securizable_CustomerManager_GetByCuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empleados.
+        /// </summary>
+        internal static string Securizable_EmployeeManager {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autenticar.
+        /// </summary>
+        internal static string Securizable_EmployeeManager_Authenticate {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager_Authenticate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos los Técnicos Activos.
+        /// </summary>
+        internal static string Securizable_EmployeeManager_FindAllActiveTechnicians {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager_FindAllActiveTechnicians", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar por Email.
+        /// </summary>
+        internal static string Securizable_EmployeeManager_GetByEmail {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager_GetByEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar por Nombre de Usuario.
+        /// </summary>
+        internal static string Securizable_EmployeeManager_GetByUsername {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager_GetByUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recuperar Contraseña.
+        /// </summary>
+        internal static string Securizable_EmployeeManager_RecoverPassword {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager_RecoverPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regenerar Contraseña.
+        /// </summary>
+        internal static string Securizable_EmployeeManager_RegeneratePassword {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager_RegeneratePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Funciones.
+        /// </summary>
+        internal static string Securizable_FunctionManager {
+            get {
+                return ResourceManager.GetString("Securizable_FunctionManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obtener Assemblies a Securizar.
+        /// </summary>
+        internal static string Securizable_FunctionManager_GetSecuredAssemblies {
+            get {
+                return ResourceManager.GetString("Securizable_FunctionManager_GetSecuredAssemblies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obtener Propiedades y Metodos a Securizar.
+        /// </summary>
+        internal static string Securizable_FunctionManager_GetSecuredMembers {
+            get {
+                return ResourceManager.GetString("Securizable_FunctionManager_GetSecuredMembers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obtener Tipos a Securizar.
+        /// </summary>
+        internal static string Securizable_FunctionManager_GetSecuredTypes {
+            get {
+                return ResourceManager.GetString("Securizable_FunctionManager_GetSecuredTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contar Registros.
+        /// </summary>
+        internal static string Securizable_GenericManager_Count {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contar Registros por Propiedades.
+        /// </summary>
+        internal static string Securizable_GenericManager_CountByProperties {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_CountByProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contar Registros por Propiedad.
+        /// </summary>
+        internal static string Securizable_GenericManager_CountByProperty {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_CountByProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crear.
+        /// </summary>
+        internal static string Securizable_GenericManager_Create {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Borrar.
+        /// </summary>
+        internal static string Securizable_GenericManager_Delete {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos.
+        /// </summary>
+        internal static string Securizable_GenericManager_FindAll {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_FindAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos por Propiedades.
+        /// </summary>
+        internal static string Securizable_GenericManager_FindAllByProperties {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_FindAllByProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos por Propiedad.
+        /// </summary>
+        internal static string Securizable_GenericManager_FindAllByProperty {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_FindAllByProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar.
+        /// </summary>
+        internal static string Securizable_GenericManager_Get {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_Get", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos Paginado.
+        /// </summary>
+        internal static string Securizable_GenericManager_SlicedFindAll {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_SlicedFindAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos por Propiedades Paginado.
+        /// </summary>
+        internal static string Securizable_GenericManager_SlicedFindAllByProperties {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_SlicedFindAllByProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos por Propiedad Paginado.
+        /// </summary>
+        internal static string Securizable_GenericManager_SlicedFindAllByProperty {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_SlicedFindAllByProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actualizar.
+        /// </summary>
+        internal static string Securizable_GenericManager_Update {
+            get {
+                return ResourceManager.GetString("Securizable_GenericManager_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Productos.
+        /// </summary>
+        internal static string Securizable_ProductManager {
+            get {
+                return ResourceManager.GetString("Securizable_ProductManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar por Nombre.
+        /// </summary>
+        internal static string Securizable_ProductManager_GetByName {
+            get {
+                return ResourceManager.GetString("Securizable_ProductManager_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proveedores.
+        /// </summary>
+        internal static string Securizable_ProviderManager {
+            get {
+                return ResourceManager.GetString("Securizable_ProviderManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar por CUIT.
+        /// </summary>
+        internal static string Securizable_ProviderManager_GetByCuit {
+            get {
+                return ResourceManager.GetString("Securizable_ProviderManager_GetByCuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar por Nombre.
+        /// </summary>
+        internal static string Securizable_ProviderManager_GetByName {
+            get {
+                return ResourceManager.GetString("Securizable_ProviderManager_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reportes.
+        /// </summary>
+        internal static string Securizable_ReportManager {
+            get {
+                return ResourceManager.GetString("Securizable_ReportManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar.
+        /// </summary>
+        internal static string Securizable_ReportManager_GetReport {
+            get {
+                return ResourceManager.GetString("Securizable_ReportManager_GetReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles.
+        /// </summary>
+        internal static string Securizable_RoleManager {
+            get {
+                return ResourceManager.GetString("Securizable_RoleManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manager Simple Generico (Provincias, Localidades, etc).
+        /// </summary>
+        internal static string Securizable_SimpleFindGetManager {
+            get {
+                return ResourceManager.GetString("Securizable_SimpleFindGetManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tickets.
+        /// </summary>
+        internal static string Securizable_TicketManager {
+            get {
+                return ResourceManager.GetString("Securizable_TicketManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos por Producto.
+        /// </summary>
+        internal static string Securizable_TicketManager_FindAllByProduct {
+            get {
+                return ResourceManager.GetString("Securizable_TicketManager_FindAllByProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos por Proveedor.
+        /// </summary>
+        internal static string Securizable_TicketManager_FindAllByProvider {
+            get {
+                return ResourceManager.GetString("Securizable_TicketManager_FindAllByProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos por Status.
+        /// </summary>
+        internal static string Securizable_TicketManager_FindAllByStatus {
+            get {
+                return ResourceManager.GetString("Securizable_TicketManager_FindAllByStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado de los Tickets.
+        /// </summary>
+        internal static string Securizable_TicketStatusManager {
+            get {
+                return ResourceManager.GetString("Securizable_TicketStatusManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buscar Todos.
+        /// </summary>
+        internal static string Securizable_TicketStatusManager_FindAll {
+            get {
+                return ResourceManager.GetString("Securizable_TicketStatusManager_FindAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar.
+        /// </summary>
+        internal static string Securizable_TicketStatusManager_Get {
+            get {
+                return ResourceManager.GetString("Securizable_TicketStatusManager_Get", resourceCulture);
+            }
+        }
     }
 }

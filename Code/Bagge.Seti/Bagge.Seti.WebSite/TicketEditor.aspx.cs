@@ -12,9 +12,11 @@ using Microsoft.Practices.Web.UI.WebControls;
 using System.Threading;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.WebSite.Controls;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_TicketEditor", typeof(TicketEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
 	public partial class TicketEditor : EditorPage<Ticket, int>, ITicketEditorView
 	{
 		TicketEditorPresenter _presenter;
