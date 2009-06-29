@@ -226,13 +226,6 @@
     <Compile Include="FilteredListPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FunctionEditor.aspx.cs">
-      <DependentUpon>FunctionEditor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FunctionEditor.aspx.designer.cs">
-      <DependentUpon>FunctionEditor.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -274,9 +267,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Presenters\EditorPresenter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Presenters\FunctionEditorPresenter.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Presenters\ListPresenter.cs">
@@ -407,6 +397,7 @@
       <DependentUpon>RoleList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Security\AuthenticationManager.cs" />
+    <Compile Include="Security\AuthorizationManager.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -723,7 +714,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Pages.config" />
-    <Content Include="FunctionEditor.aspx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

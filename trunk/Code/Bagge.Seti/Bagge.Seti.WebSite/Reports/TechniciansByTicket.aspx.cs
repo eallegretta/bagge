@@ -7,11 +7,14 @@ using System.Web.UI.WebControls;
 using Bagge.Seti.BusinessEntities.Reports;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Helpers;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 
 
 namespace Bagge.Seti.WebSite.Reports
 {
+	[SecurizableWeb("Securizable_TechniciansByTicket", typeof(TechniciansByTicket), FunctionAction.Retrieve)]
     public partial class TechniciansByTicket : FilteredReportPage<TechniciansByTicketReport>
     {
         protected override Button FilterButton

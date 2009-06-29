@@ -129,6 +129,15 @@
   <data name="Securizable_CustomerList" xml:space="preserve">
     <value>Listado de Clientes</value>
   </data>
+  <data name="Securizable_CustomersBySubscription" xml:space="preserve">
+    <value>Reporte Clientes por Abono</value>
+  </data>
+  <data name="Securizable_CustomersByTicket" xml:space="preserve">
+    <value>Reporte Clientes por Ticket</value>
+  </data>
+  <data name="Securizable_CustomersWithPendingPayment" xml:space="preserve">
+    <value>Reporte Clientes Pendientes de Pago</value>
+  </data>
   <data name="Securizable_Default" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -147,6 +156,12 @@
   <data name="Securizable_ProductList" xml:space="preserve">
     <value>Listado de Productos</value>
   </data>
+  <data name="Securizable_ProductsByProvider" xml:space="preserve">
+    <value>Reporte Productos por Proveedor</value>
+  </data>
+  <data name="Securizable_ProductsConsumed" xml:space="preserve">
+    <value>Reporte Productos Consumidos</value>
+  </data>
   <data name="Securizable_ProviderEditor" xml:space="preserve">
     <value>Editor de Proveedores</value>
   </data>
@@ -158,6 +173,12 @@
   </data>
   <data name="Securizable_RoleList" xml:space="preserve">
     <value>Listado de Roles</value>
+  </data>
+  <data name="Securizable_RolesByUser" xml:space="preserve">
+    <value>Reporte Roles por Usuario</value>
+  </data>
+  <data name="Securizable_TechniciansByTicket" xml:space="preserve">
+    <value>Reporte Técnicos por Ticket</value>
   </data>
   <data name="Securizable_TicketEditor" xml:space="preserve">
     <value>Editor de Tickets</value>

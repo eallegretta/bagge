@@ -37,7 +37,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			{
 				case EditorAction.Insert:
 				case EditorAction.Update:
-					View.AvailableFunctions = _functionManager.FindAllOrdered("Name");
+					View.AvailableFunctions = _functionManager.FindAll();
 					if (!View.IsPostBack && View.Mode == EditorAction.Update)
 					{
 						var functionIds = (from function in SelectedEntity.Functions

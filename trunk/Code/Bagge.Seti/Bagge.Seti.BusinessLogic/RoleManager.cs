@@ -44,6 +44,10 @@ namespace Bagge.Seti.BusinessLogic
 
 		public override void Update(Role instance)
 		{
+			Role roleFromDb = Get(instance.Id);
+
+			instance.Employees = roleFromDb.Employees;
+
 			if (!IsDeleteOrUndelete)
 				SessionScopeUtils.FlushSessionScope();
 

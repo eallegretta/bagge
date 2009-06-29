@@ -12,9 +12,12 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
+	[SecurizableWeb("Securizable_CustomersWithPendingPayment", typeof(CustomersWithPendingPayment), FunctionAction.Retrieve)]
     public partial class CustomersWithPendingPayment : ReportPage<CustomersWithPendingPaymentReport>
     {
     }

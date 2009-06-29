@@ -7,9 +7,12 @@ using System.Web.UI.WebControls;
 using Bagge.Seti.BusinessEntities.Reports;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Helpers;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
+	[SecurizableWeb("Securizable_RolesByUser", typeof(RolesByUser), FunctionAction.Retrieve)]
     public partial class RolesByUser : FilteredReportPage<RolesByUserReport>
     {
         protected override Button FilterButton

@@ -62,6 +62,8 @@ namespace Bagge.Seti.WebSite.Controls
 				{
 					((WebControl)_control).Attributes.Add("onclick", "if(!confirm('" + this.ConfirmationMessage + "')) return false;");
 				}
+
+				((WebControl)_control).ID = "delete";
 			}
 			else
 			{
@@ -75,6 +77,8 @@ namespace Bagge.Seti.WebSite.Controls
 				{
 					((WebControl)_control).Attributes.Add("onclick", "if(!confirm('" + this.UndeleteConfirmationMessage + "')) return false;");
 				}
+
+				((WebControl)_control).ID = "undelete";
 			}
 		}
 

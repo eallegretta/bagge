@@ -25,7 +25,7 @@ namespace Bagge.Seti.WebSite.HttpModules
 		{
 			HttpApplication app = (HttpApplication)sender;
 			
-			if (!app.Context.Request.Url.ToString().ToUpperInvariant().Contains("ERROR.ASPX") && app.Context.User != null && app.Context.User.Identity.IsAuthenticated)
+			if (app.Context.User != null && app.Context.User.Identity.IsAuthenticated)
 			{
 				IUser user = IoCContainer.EmployeeManager.GetByUsername(app.Context.User.Identity.Name);
 				user.IsAuthenticated = true;
