@@ -8,9 +8,12 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.Common;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
+	[SecurizableWeb("Securizable_ProviderList", typeof(ProviderList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class ProviderList : FilteredListPage<Provider, int>, IProviderListView
 	{
 		ProviderListPresenter _presenter;
@@ -34,7 +37,7 @@ namespace Bagge.Seti.WebSite
 			filters.Add(new FilterPropertyValue { Property = "Name", Value = _name.Text, Type = FilterPropertyValueType.Like });
 			filters.Add(new FilterPropertyValue { Property = "CUIT", Value = _cuit.Text, Type = FilterPropertyValueType.Like });
 			filters.Add(new FilterPropertyValue { Property = "Address", Value = _address.Text, Type = FilterPropertyValueType.Like });
-			filters.Add(new FilterPropertyValue { Property = "Phone", Value = _phone.Text, Type = FilterPropertyValueType.Like });
+			filters.Add(new FilterPropertyValue { Property = "PrimaryPhone", Value = _phone.Text, Type = FilterPropertyValueType.Like });
 
 			AddDeletedFilterValue(filters);
 
