@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using Bagge.Seti.Security.BusinessEntities;
-using Bagge.Seti.Helpers;
 
 namespace Bagge.Seti.WebSite.Controls
 {

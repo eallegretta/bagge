@@ -11,6 +11,7 @@ using System.Web.UI.HtmlControls;
 using System.Text;
 using System.Threading;
 using System.ComponentModel;
+using Bagge.Seti.WebSite.Helpers;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -23,11 +24,48 @@ namespace Bagge.Seti.WebSite.Controls
 			set { _calendarReqVal.ValidationGroup = value; }
 		}
 
-		public bool RequiresValidation
+		public string RequiredErrorMessage
 		{
-			get { return _calendarReqVal.Enabled; }
-			set { _calendarReqVal.Enabled = value; }
+			get { return _calendarReqVal.ErrorMessage; }
+			set { _calendarReqVal.ErrorMessage = value; }
 		}
+
+		public string CompareErrorMessage
+		{
+			get { return _calendarCompare.ErrorMessage; }
+			set { _calendarCompare.ErrorMessage = value; }
+		}
+
+		public bool IsRequired
+		{
+			get { return _calendarReqVal.Visible; }
+			set { _calendarReqVal.Visible = value; }
+		}
+
+		public string CompareToCalendarId
+		{
+			get
+			{
+				return ViewState["CompareToCalendarId"] as string;
+			}
+			set
+			{
+				ViewState["CompareToCalendarId"] = value;
+			}
+		}
+
+		public ValidationCompareOperator CompareOperator
+		{
+			get { return _calendarCompare.Operator; }
+			set
+			{
+				if (value == ValidationCompareOperator.DataTypeCheck)
+					throw new ArgumentOutOfRangeException();
+				_calendarCompare.Operator = value;
+			}
+		}
+
+
 
 		public bool ShowTime
 		{
@@ -38,11 +76,12 @@ namespace Bagge.Seti.WebSite.Controls
 		protected override void OnInit(EventArgs e)
 		{
 			base.OnInit(e);
-			if (!IsPostBack)
-				_calendar.Text = DateTime.Now.ToShortDateString();
+			//if (!IsPostBack)
+			//	_calendar.Text = DateTime.Now.ToShortDateString();
 		}
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			//SetCalendarComparesTo();
 			RegisterJavascript();
 			_calendarExt.Format = Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern;
 			if (IsPostBack)
@@ -61,6 +100,17 @@ namespace Bagge.Seti.WebSite.Controls
 			//else
 			//	_calendarExt.Format = Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern;
 
+		}
+
+		private void SetCalendarComparesTo()
+		{
+			if (!string.IsNullOrEmpty(CompareToCalendarId))
+			{
+				_calendarCompare.Visible = true;
+				_calendarCompare.ControlToCompare = CompareToCalendarId;
+			}
+			else
+				_calendarCompare.Visible = false;
 		}
 
 		private void RegisterJavascript()

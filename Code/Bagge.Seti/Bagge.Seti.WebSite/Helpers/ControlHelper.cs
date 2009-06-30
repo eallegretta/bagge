@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 
-namespace Bagge.Seti.Helpers
+namespace Bagge.Seti.WebSite.Helpers
 {
 	public static class ControlHelper
 	{

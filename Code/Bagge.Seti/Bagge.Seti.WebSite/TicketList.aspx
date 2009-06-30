@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/List.Master" AutoEventWireup="true" CodeBehind="TicketList.aspx.cs" Inherits="Bagge.Seti.WebSite.TicketList" meta:resourcekey="Page" %>
+<%@ Register Src="~/Controls/Calendar.ascx" TagPrefix="seti" TagName="Calendar"  %>
 <%@ Register TagPrefix="seti" TagName="ListCommands" Src="~/Controls/ListCommands.ascx" %>
 <asp:Content ID="_filters" runat="server" ContentPlaceHolderID="_filters">
 	<table cellpadding="0" cellspacing="0">
@@ -28,15 +29,11 @@
 		<tr>
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="CreationDate">
 				<th><asp:Literal ID="_creationDateLiteral" runat="server" meta:resourcekey="FilterCreationDateLiteral"></asp:Literal></th>
-				<td><asp:TextBox ID="_creationDate" runat="server"></asp:TextBox>
-				<ajax:CalendarExtender ID="_creationDateCalendar" runat="server" TargetControlID="_creationDate" runat="server"></ajax:CalendarExtender>
-				</td>
+				<td><seti:Calendar  id="_creationDate" runat="server" /></td>
 			</seti:SecurePropertyPlaceHolder>
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="ExecutionDate">
 				<th><asp:Literal ID="_executionDateLiteral" runat="server" meta:resourcekey="FilterExecutionDateLiteral"></asp:Literal></th>
-				<td><asp:TextBox ID="_executionDate" runat="server"></asp:TextBox>
-					<ajax:CalendarExtender ID="_executaionDateCalendar" runat="server" TargetControlID="_executionDate" runat="server"></ajax:CalendarExtender>
-				</td>
+				<td><seti:Calendar  id="_executionDate" runat="server" /></td>
 			</seti:SecurePropertyPlaceHolder>
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Customer">
 				<th><asp:Literal ID="_customerLiteral" runat="server" meta:resourcekey="FilterCustomerLiteral"></asp:Literal></th>

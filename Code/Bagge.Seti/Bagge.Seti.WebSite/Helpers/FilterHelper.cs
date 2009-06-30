@@ -21,6 +21,15 @@ namespace Bagge.Seti.WebSite.Helpers
 					});
 		}
 
+		public static void AddCalendarFilterValue(Controls.Calendar calendar, string property,
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters) 
+		{
+			if (calendar.Date.HasValue)
+			{
+				filters.Add(new FilterPropertyValue { Property = property, Value = calendar.Date, Type = type });
+			}
+		}
+
 		public static void AddTextBoxFilterValue<TValue>(TextBox control, string property,
 			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue : IConvertible
 		{

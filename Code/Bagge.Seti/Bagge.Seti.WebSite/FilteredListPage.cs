@@ -11,6 +11,12 @@ namespace Bagge.Seti.WebSite
 {
 	public abstract class FilteredListPage<T, PK>: ListPage<T, PK>, IFilteredListView where T: PrimaryKeyDomainObject<T, PK>
 	{
+		protected virtual void AddCalendarFilterValue(Controls.Calendar calendar, string property,
+			FilterPropertyValueType type, IList<FilterPropertyValue> filters)
+		{
+			FilterHelper.AddCalendarFilterValue(calendar, property, type, filters);
+		}
+
 		protected virtual void AddTextBoxFilterValue<TValue>(TextBox control, string property, 
 			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue: IConvertible
 		{

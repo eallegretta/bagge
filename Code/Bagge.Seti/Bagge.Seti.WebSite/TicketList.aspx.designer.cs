@@ -101,16 +101,7 @@ namespace Bagge.Seti.WebSite {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _creationDate;
-        
-        /// <summary>
-        /// _creationDateCalendar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender _creationDateCalendar;
+        protected global::Bagge.Seti.WebSite.Controls.Calendar _creationDate;
         
         /// <summary>
         /// _executionDateLiteral control.
@@ -128,16 +119,7 @@ namespace Bagge.Seti.WebSite {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _executionDate;
-        
-        /// <summary>
-        /// _executaionDateCalendar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender _executaionDateCalendar;
+        protected global::Bagge.Seti.WebSite.Controls.Calendar _executionDate;
         
         /// <summary>
         /// _customerLiteral control.

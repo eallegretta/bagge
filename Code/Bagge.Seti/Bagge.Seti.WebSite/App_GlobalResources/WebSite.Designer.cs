@@ -124,6 +124,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La fecha desde debe ser menor o igual a la fecha hasta.
+        /// </summary>
+        internal static string DateFromMustBeLowerThanOrEqualToDateToErrorMessage {
+            get {
+                return ResourceManager.GetString("DateFromMustBeLowerThanOrEqualToDateToErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La fecha hasta debe ser mayor o igual a la fecha desde.
+        /// </summary>
+        internal static string DateToMustBeGreaterThanOrEqualToDateFromErrorMessage {
+            get {
+                return ResourceManager.GetString("DateToMustBeGreaterThanOrEqualToDateFromErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filtros.
         /// </summary>
         internal static string FilterPanelTitle {
@@ -169,11 +187,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La fecha es inv&amp;aacute;lida.
+        /// </summary>
+        internal static string InvalidDateErrorMessage {
+            get {
+                return ResourceManager.GetString("InvalidDateErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string NoText {
             get {
                 return ResourceManager.GetString("NoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La fecha es requerida.
+        /// </summary>
+        internal static string RequiredDateErrorMessage {
+            get {
+                return ResourceManager.GetString("RequiredDateErrorMessage", resourceCulture);
             }
         }
         

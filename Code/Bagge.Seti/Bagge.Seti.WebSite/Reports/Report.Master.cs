@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Practices.Web.UI.WebControls;
-using Bagge.Seti.Helpers;
+using Bagge.Seti.WebSite.Helpers;
 
 namespace Bagge.Seti.WebSite.Reports
 {
