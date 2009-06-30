@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Bagge.Seti.Security.BusinessEntities;
-using Bagge.Seti.Helpers;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.WebSite.Helpers;
 
 namespace Bagge.Seti.WebSite.Controls
 {

@@ -138,6 +138,12 @@
   <data name="Controls_Pager_PreviousLink" xml:space="preserve">
     <value>anterior</value>
   </data>
+  <data name="DateFromMustBeLowerThanOrEqualToDateToErrorMessage" xml:space="preserve">
+    <value>La fecha desde debe ser menor o igual a la fecha hasta</value>
+  </data>
+  <data name="DateToMustBeGreaterThanOrEqualToDateFromErrorMessage" xml:space="preserve">
+    <value>La fecha hasta debe ser mayor o igual a la fecha desde</value>
+  </data>
   <data name="FilterPanelTitle" xml:space="preserve">
     <value>Filtros</value>
   </data>
@@ -153,8 +159,14 @@
   <data name="IconViewImageTag" xml:space="preserve">
     <value>&lt;img src='App_Themes/Default/Images/iconView.gif' /&gt;</value>
   </data>
+  <data name="InvalidDateErrorMessage" xml:space="preserve">
+    <value>La fecha es inv&amp;aacute;lida</value>
+  </data>
   <data name="NoText" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="RequiredDateErrorMessage" xml:space="preserve">
+    <value>La fecha es requerida</value>
   </data>
   <data name="RequiredInformationText" xml:space="preserve">
     <value>Los campos marcados con * son requeridos</value>

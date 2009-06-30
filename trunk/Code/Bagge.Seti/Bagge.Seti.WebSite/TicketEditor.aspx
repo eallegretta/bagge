@@ -38,7 +38,7 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="CustomerArrival" meta:resourcekey="CustomerArrivalField">
 				<EditItemTemplate>
-					<seti:Calendar id="_customerArrival" runat="server" RequiresValidation="true" 
+					<seti:Calendar id="_customerArrival" runat="server" IsRequired="true" 
 						ShowTime="true"  NonNullableDate='<%#Bind("CustomerArrival")%>'></seti:Calendar>
 				</EditItemTemplate>
 				<ItemTemplate>

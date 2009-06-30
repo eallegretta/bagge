@@ -68,8 +68,8 @@ namespace Bagge.Seti.WebSite
 				AddDropDownFilterValue<int>(_status, "Status", FilterPropertyValueType.Equals, filters);
 				AddTextBoxFilterValue<string>(_description, "Description", FilterPropertyValueType.Contains, filters);
 				AddDropDownFilterValue<int>(_employees, "Employees", FilterPropertyValueType.In, filters);
-				AddTextBoxFilterValue<DateTime>(_creationDate, "CreationDate", FilterPropertyValueType.Equals, filters);
-				AddTextBoxFilterValue<DateTime>(_executionDate, "ExecutionDate", FilterPropertyValueType.Equals, filters);
+				AddCalendarFilterValue(_creationDate, "CreationDate", FilterPropertyValueType.Equals, filters);
+				AddCalendarFilterValue(_executionDate, "ExecutionDate", FilterPropertyValueType.Equals, filters);
 				AddDropDownFilterValue<int>(_customer, "Customer", FilterPropertyValueType.Equals, filters);
 
 				return filters;
