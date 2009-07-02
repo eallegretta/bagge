@@ -30,6 +30,18 @@ namespace Bagge.Seti.WebSite.Controls
 			set { _calendarReqVal.ErrorMessage = value; }
 		}
 
+		public string TextBoxClientID
+		{
+			get { return _calendar.ClientID; }
+		}
+
+		public string InvalidDateErrorMessage
+		{
+			get { return _invalidDateVal.ErrorMessage; }
+			set { _invalidDateVal.ErrorMessage = value; }
+		}
+
+
 		public string CompareErrorMessage
 		{
 			get { return _calendarCompare.ErrorMessage; }
@@ -56,12 +68,18 @@ namespace Bagge.Seti.WebSite.Controls
 
 		public ValidationCompareOperator CompareOperator
 		{
-			get { return _calendarCompare.Operator; }
+			get 
+			{ 
+				var op = ViewState["CompareOperator"];
+				if (op == null)
+					return ValidationCompareOperator.Equal;
+				return (ValidationCompareOperator)op;
+			}
 			set
 			{
 				if (value == ValidationCompareOperator.DataTypeCheck)
 					throw new ArgumentOutOfRangeException();
-				_calendarCompare.Operator = value;
+				ViewState["CompareOperator"] = value;
 			}
 		}
 
@@ -102,7 +120,7 @@ namespace Bagge.Seti.WebSite.Controls
 
 		}
 
-		private void SetCalendarComparesTo()
+		/*private void SetCalendarComparesTo()
 		{
 			if (!string.IsNullOrEmpty(CompareToCalendarId))
 			{
@@ -111,19 +129,37 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 			else
 				_calendarCompare.Visible = false;
-		}
+		}*/
 
 		private void RegisterJavascript()
 		{
-			string script = string.Format("var {0} = new Controls_Calendar('{1}','{2}','{3}');{4}", ID, _calendar.ClientID, _calendarImage.ClientID, _calendarImageDisabled.ClientID, Environment.NewLine);
-			if (!Page.ClientScript.IsClientScriptIncludeRegistered("Calendar"))
+			string compareToId = string.Empty;
+			if (!string.IsNullOrEmpty(CompareToCalendarId))
 			{
-				string appPath = Request.ApplicationPath;
-				if (!appPath.EndsWith("/"))
-					appPath += "/";
-				Page.ClientScript.RegisterClientScriptInclude("Calendar", appPath + "Controls/Calendar.js");
+				var cal = (Calendar)ControlHelper.FindControlRecursive(Page, CompareToCalendarId);
+				compareToId = cal.TextBoxClientID;
 			}
-			Page.ClientScript.RegisterStartupScript(typeof(string), "Calendar_" + ID, script, true);
+
+			string script = string.Format("var {0} = new Controls_Calendar('{0}', '{1}','{2}','{3}','{4}','{5}');{6}", 
+				ClientID, _calendar.ClientID, _calendarImage.ClientID,
+				_calendarImageDisabled.ClientID, compareToId, CompareOperator,
+				Environment.NewLine);
+
+			if (ScriptManager.GetCurrent(this.Page).IsInAsyncPostBack)
+			{
+				ScriptManager.RegisterStartupScript(this, typeof(string), "Calendar_" + ClientID, script.Remove(0, 4), true);
+			}
+			else
+			{
+				if (!Page.ClientScript.IsClientScriptIncludeRegistered("Calendar"))
+				{
+					string appPath = Request.ApplicationPath;
+					if (!appPath.EndsWith("/"))
+						appPath += "/";
+					Page.ClientScript.RegisterClientScriptInclude("Calendar", appPath + "Controls/Calendar.js");
+				}
+				Page.ClientScript.RegisterStartupScript(typeof(string), "Calendar_" + ClientID, script, true);
+			}
 		}
 		protected void OnDateChanged(object sender, EventArgs e)
 		{

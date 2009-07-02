@@ -28,7 +28,7 @@ namespace Bagge.Seti.WebSite.Reports
             {
                 var filters = new List<FilterPropertyValue>();
                 FilterHelper.AddCalendarFilterValue(_dateFrom, "DateFrom", FilterPropertyValueType.Equals, filters);
-                FilterHelper.AddCalendarFilterValue(_dateFrom, "DateTo", FilterPropertyValueType.Equals, filters);
+                FilterHelper.AddCalendarFilterValue(_dateTo, "DateTo", FilterPropertyValueType.Equals, filters);
 
                 return filters;
             }
