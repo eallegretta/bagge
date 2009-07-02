@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FBC1245A-FB38-4D92-83B7-B86DACB8A2A7}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -127,6 +127,7 @@
     </Compile>
     <Compile Include="Controls\DeleteUndeleteCommandField.cs" />
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\MaskedTextBox.cs" />
     <Compile Include="Controls\ProductProviderSelectionGrid.ascx.cs">
       <DependentUpon>ProductProviderSelectionGrid.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -742,6 +743,9 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

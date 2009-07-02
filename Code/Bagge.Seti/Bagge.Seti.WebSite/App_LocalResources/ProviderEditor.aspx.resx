@@ -154,7 +154,7 @@
     <value>Teléfono 2 *</value>
   </data>
   <data name="NameField.HeaderText" xml:space="preserve">
-    <value>Nombre *</value>
+    <value>C&amp;oacute;digo *</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
     <value>Seti &gt; Editor de Proveedores</value>

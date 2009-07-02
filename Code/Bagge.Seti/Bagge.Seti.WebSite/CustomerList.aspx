@@ -9,7 +9,7 @@
 			</seti:SecurePropertyPlaceHolder>
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="CUIT">
 			<th><asp:Literal ID="_cuitLiteral" runat="server" meta:resourcekey="FilterCuitLiteral"></asp:Literal></th>
-			<td><asp:TextBox ID="_cuit" runat="server"></asp:TextBox></td>
+			<td><seti:MaskedTextBox ID="_cuit" Mask="99-99999999-9" runat="server"></seti:MaskedTextBox></td>
 			</seti:SecurePropertyPlaceHolder>
 			
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Deleted">
