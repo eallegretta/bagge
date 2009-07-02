@@ -6,7 +6,7 @@
 			<th><asp:Literal ID="_nameLiteral" runat="server" meta:resourcekey="FilterNameLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
 			<th><asp:Literal ID="_cuitLiteral" runat="server" meta:resourcekey="FilterCuitLiteral"></asp:Literal></th>
-			<td><asp:TextBox ID="_cuit" runat="server"></asp:TextBox></td>
+			<td><seti:MaskedTextBox ID="_cuit" Mask="99-99999999-9" runat="server"></seti:MaskedTextBox></td>
 			<th><asp:Literal ID="_productLiteral" runat="server" meta:resourcekey="FilterProductLiteral"></asp:Literal></th>
 			<td><asp:DropDownList ID="_products" runat="server" DataValueField="Id" DataTextField="Name" AppendDataBoundItems="true">
 			<asp:ListItem></asp:ListItem>

@@ -47,7 +47,7 @@ namespace Bagge.Seti.WebSite {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _cuit;
+        protected global::Bagge.Seti.WebSite.Controls.MaskedTextBox _cuit;
         
         /// <summary>
         /// _deletedLiteral control.
