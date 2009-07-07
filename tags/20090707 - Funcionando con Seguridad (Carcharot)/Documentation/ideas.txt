@@ -1,0 +1,2 @@
+- inserción bulk de productos mediante un archivo de excel (subir el archivo via web o usar DTS de Sql Server?)
+- proceso batch con reminder de emails

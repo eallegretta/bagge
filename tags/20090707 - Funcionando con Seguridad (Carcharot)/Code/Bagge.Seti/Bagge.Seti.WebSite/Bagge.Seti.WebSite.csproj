@@ -1,0 +1,751 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBC1245A-FB38-4D92-83B7-B86DACB8A2A7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bagge.Seti.WebSite</RootNamespace>
+    <AssemblyName>Bagge.Seti.WebSite</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.20820.16598, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Eaa.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fdf31fd6083ad399, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Eaa.Framework.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Web.UI.WebControls, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.Web.UI.WebControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Extensions, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Web.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlertConfiguration.aspx.cs">
+      <DependentUpon>AlertConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlertConfiguration.aspx.designer.cs">
+      <DependentUpon>AlertConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\WebSite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSite.resx</DependentUpon>
+    </Compile>
+    <Content Include="App_Themes\Default\Pager.css" />
+    <Compile Include="Controls\Calendar.ascx.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Calendar.ascx.designer.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DeleteUndeleteCommandField.cs" />
+    <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\MaskedTextBox.cs" />
+    <Compile Include="Controls\ProductProviderSelectionGrid.ascx.cs">
+      <DependentUpon>ProductProviderSelectionGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ProductProviderSelectionGrid.ascx.designer.cs">
+      <DependentUpon>ProductProviderSelectionGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductTicketSelectionGrid.ascx.cs">
+      <DependentUpon>ProductTicketSelectionGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ProductTicketSelectionGrid.ascx.designer.cs">
+      <DependentUpon>ProductTicketSelectionGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PropertyProxyValidator.cs" />
+    <Compile Include="Controls\SecureBoundField.cs" />
+    <Compile Include="Controls\EditorCommands.ascx.cs">
+      <DependentUpon>EditorCommands.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\EditorCommands.ascx.designer.cs">
+      <DependentUpon>EditorCommands.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IMethodSecureControl.cs" />
+    <Compile Include="Controls\IPropertySecureControl.cs" />
+    <Compile Include="Controls\ISecureControlContainer.cs" />
+    <Compile Include="Controls\ListCommands.ascx.cs">
+      <DependentUpon>ListCommands.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ListCommands.ascx.designer.cs">
+      <DependentUpon>ListCommands.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SecureCheckBoxField.cs" />
+    <Compile Include="Controls\SecureDetailsView.cs" />
+    <Compile Include="Controls\SecureFormView.cs" />
+    <Compile Include="Controls\SecureGridView.cs" />
+    <Compile Include="Controls\SecureHyperLinkField.cs" />
+    <Compile Include="Controls\SecureMethodPlaceHolder.cs" />
+    <Compile Include="Controls\SecurePlaceHolder.cs" />
+    <Compile Include="Controls\SecurePropertyPlaceHolder.cs" />
+    <Compile Include="Controls\SecureTemplateField.cs" />
+    <Compile Include="Controls\SiteMapProvider.cs" />
+    <Compile Include="Editor.Master.cs">
+      <DependentUpon>Editor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editor.Master.designer.cs">
+      <DependentUpon>Editor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="EditorPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerEditor.aspx.cs">
+      <DependentUpon>CustomerEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerEditor.aspx.designer.cs">
+      <DependentUpon>CustomerEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerList.aspx.cs">
+      <DependentUpon>CustomerList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerList.aspx.designer.cs">
+      <DependentUpon>CustomerList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditorAction.cs" />
+    <Compile Include="EmployeeEditor.aspx.cs">
+      <DependentUpon>EmployeeEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeEditor.aspx.designer.cs">
+      <DependentUpon>EmployeeEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeList.aspx.cs">
+      <DependentUpon>EmployeeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeList.aspx.designer.cs">
+      <DependentUpon>EmployeeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FilteredListPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="Helpers\FilterHelper.cs" />
+    <Compile Include="Helpers\ObjectBuilder.cs" />
+    <Compile Include="HttpModules\AuthenticationModule.cs" />
+    <Compile Include="HttpModules\SessionScopeWebModule.cs" />
+    <Compile Include="List.Master.cs">
+      <DependentUpon>List.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="List.Master.designer.cs">
+      <DependentUpon>List.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ListPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.ashx.cs">
+      <DependentUpon>Logout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presenters\EmployeeEditorPresenter.cs" />
+    <Compile Include="Presenters\EmployeeListPresenter.cs" />
+    <Compile Include="Presenters\ProductEditorPresenter.cs" />
+    <Compile Include="Presenters\ProductListPresenter.cs" />
+    <Compile Include="Presenters\ProviderEditorPresenter.cs" />
+    <Compile Include="Presenters\ProviderListPresenter.cs" />
+    <Compile Include="Presenters\CustomerEditorPresenter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presenters\EditorPresenter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presenters\ListPresenter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presenters\ReportPresenter.cs" />
+    <Compile Include="Presenters\RoleEditorPresenter.cs" />
+    <Compile Include="Presenters\RoleListPresenter.cs" />
+    <Compile Include="Presenters\TicketEditorPresenter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presenters\TicketListPresenter.cs" />
+    <Compile Include="ProductEditor.aspx.cs">
+      <DependentUpon>ProductEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductEditor.aspx.designer.cs">
+      <DependentUpon>ProductEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductList.aspx.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductList.aspx.designer.cs">
+      <DependentUpon>ProductList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderEditor.aspx.cs">
+      <DependentUpon>ProviderEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProviderEditor.aspx.designer.cs">
+      <DependentUpon>ProviderEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderList.aspx.cs">
+      <DependentUpon>ProviderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProviderList.aspx.designer.cs">
+      <DependentUpon>ProviderList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecoverPassword.aspx.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecoverPassword.aspx.designer.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CustomersBySubscription.aspx.cs">
+      <DependentUpon>CustomersBySubscription.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CustomersBySubscription.aspx.designer.cs">
+      <DependentUpon>CustomersBySubscription.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CustomersByTicket.aspx.cs">
+      <DependentUpon>CustomersByTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CustomersByTicket.aspx.designer.cs">
+      <DependentUpon>CustomersByTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CustomersWithPendingPayment.aspx.cs">
+      <DependentUpon>CustomersWithPendingPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CustomersWithPendingPayment.aspx.designer.cs">
+      <DependentUpon>CustomersWithPendingPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FilteredReportPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ProductsByProvider.aspx.cs">
+      <DependentUpon>ProductsByProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ProductsByProvider.aspx.designer.cs">
+      <DependentUpon>ProductsByProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProductsConsumed.aspx.cs">
+      <DependentUpon>ProductsConsumed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ProductsConsumed.aspx.designer.cs">
+      <DependentUpon>ProductsConsumed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report.Master.cs">
+      <DependentUpon>Report.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Report.Master.designer.cs">
+      <DependentUpon>Report.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\RolesByUser.aspx.cs">
+      <DependentUpon>RolesByUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\RolesByUser.aspx.designer.cs">
+      <DependentUpon>RolesByUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TechniciansByTicket.aspx.cs">
+      <DependentUpon>TechniciansByTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TechniciansByTicket.aspx.designer.cs">
+      <DependentUpon>TechniciansByTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RoleEditor.aspx.cs">
+      <DependentUpon>RoleEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoleEditor.aspx.designer.cs">
+      <DependentUpon>RoleEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RoleList.aspx.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoleList.aspx.designer.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\AuthenticationManager.cs" />
+    <Compile Include="Security\AuthorizationManager.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TicketEditor.aspx.cs">
+      <DependentUpon>TicketEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketEditor.aspx.designer.cs">
+      <DependentUpon>TicketEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TicketList.aspx.cs">
+      <DependentUpon>TicketList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketList.aspx.designer.cs">
+      <DependentUpon>TicketList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ICustomerEditorView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\IEditorView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\IEmployeeEditorView.cs" />
+    <Compile Include="Views\IEmployeeListView.cs" />
+    <Compile Include="Views\IFilteredListView.cs" />
+    <Compile Include="Views\IFilteredReportView.cs" />
+    <Compile Include="Views\IFunctionEditorView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\IListView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\IProductEditorView.cs" />
+    <Compile Include="Views\IProductListView.cs" />
+    <Compile Include="Views\IProviderEditorView.cs" />
+    <Compile Include="Views\IProviderListView.cs" />
+    <Compile Include="Views\IReportView.cs" />
+    <Compile Include="Views\IRoleEditorView.cs" />
+    <Compile Include="Views\IRoleListView.cs" />
+    <Compile Include="Views\ITicketEditorView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ITicketListView.cs" />
+    <Compile Include="Views\IView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bagge.Seti.BusinessEntities\Bagge.Seti.BusinessEntities.csproj">
+      <Project>{32F8F81B-0F4D-4ABA-9CBE-1613FDA7B328}</Project>
+      <Name>Bagge.Seti.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.BusinessLogic\Bagge.Seti.BusinessLogic.csproj">
+      <Project>{2A4DB60F-1B1C-49FC-B1AA-C18C595F1B1D}</Project>
+      <Name>Bagge.Seti.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.Common\Bagge.Seti.Common.csproj">
+      <Project>{F6D1CEE2-50AC-4415-B6C5-0C16F9C5155F}</Project>
+      <Name>Bagge.Seti.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.DesignByContract\Bagge.Seti.DesignByContract.csproj">
+      <Project>{FDDE6DF6-90E1-40B5-AAD9-5245CE22062E}</Project>
+      <Name>Bagge.Seti.DesignByContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.Extensions\Bagge.Seti.Extensions.csproj">
+      <Project>{108362FC-4C87-4D0D-8EBF-523F4235DAC0}</Project>
+      <Name>Bagge.Seti.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\EditorCommands.ascx" />
+    <Content Include="Controls\ListCommands.ascx" />
+    <Content Include="CustomerEditor.aspx" />
+    <Content Include="CustomerList.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Common.skin" />
+    <Content Include="App_Themes\Default\Common.css" />
+    <Content Include="App_Themes\Default\Images\backgroundMenuBar.gif" />
+    <Content Include="App_Themes\Default\Images\menuBarEndLeft.gif" />
+    <Content Include="App_Themes\Default\Images\menuBarEndRight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Images\contentBackground.gif" />
+    <Content Include="App_Themes\Default\Images\footerBackground.gif" />
+    <Content Include="App_Themes\Default\Images\menuItemBackground.gif" />
+    <Content Include="App_Themes\Default\Images\menuItemBackgroundHover.gif" />
+    <Content Include="App_Themes\Default\Images\menuItemSeparator.gif" />
+    <Content Include="App_Themes\Default\Navigation.css" />
+    <Content Include="App_Themes\Default\Navigation.skin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\CustomerList.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\CustomerEditor.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Error.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Forms.skin" />
+    <Content Include="App_Themes\Default\Login.skin" />
+    <Content Include="App_Themes\Default\Images.skin" />
+    <Content Include="Config\Objects.config" />
+    <Content Include="Config\TypeAliases.config" />
+    <Content Include="Reports\Report.Master" />
+    <Content Include="Logout.ashx" />
+    <Content Include="List.Master" />
+    <Content Include="Editor.Master" />
+    <Content Include="Login.aspx" />
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Login.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Forms.css" />
+    <Content Include="Scripts\jquery-1.3.2.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\App_LocalResources\EditorCommands.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Images\buttonBackground.gif" />
+    <Content Include="App_Themes\Default\Images\iconAdd.gif" />
+    <Content Include="App_Themes\Default\Images\iconDelete.gif" />
+    <Content Include="App_Themes\Default\Images\iconEdit.gif" />
+    <Content Include="App_Themes\Default\Images\iconView.gif" />
+    <Content Include="App_Themes\Default\Images\inputBackground.gif" />
+    <Content Include="Controls\App_LocalResources\ListCommands.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery.maskedinput-1.2.2.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\WebSite.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>WebSite.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Themes\Default\Images\ajaxLoader.gif" />
+    <Content Include="App_Themes\Default\Images\gridHeaderBackground.gif" />
+    <Content Include="App_Themes\Default\Images\siteHeader.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Site.Master.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ProviderList.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ProviderList.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Themes\Default\Images\iconCollapse.gif" />
+    <Content Include="App_Themes\Default\Images\iconExpand.gif" />
+    <Content Include="App_Themes\Default\Images\iconFilter.gif" />
+    <Content Include="App_Themes\Default\Images\iconRecycle.gif" />
+    <Content Include="Controls\ProductProviderSelectionGrid.ascx" />
+    <Content Include="ProductList.aspx" />
+    <Content Include="ProviderEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ProviderEditor.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\App_LocalResources\ProductProviderSelectionGrid.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ProductEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ProductList.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AlertConfiguration.aspx" />
+    <Content Include="App_LocalResources\ProductEditor.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Controls\ProductProviderSelectionGrid.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\Site.Master.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AlertConfiguration.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="RecoverPassword.aspx" />
+    <Content Include="Scripts\jquery.numeric.pack.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\RecoverPassword.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="EmployeeList.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\EmployeeList.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="EmployeeEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\EmployeeEditor.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="RoleList.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\RoleList.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="RoleEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\RoleEditor.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Reports\CustomersBySubscription.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\App_LocalResources\Report.Master.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Reports\CustomersByTicket.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\App_LocalResources\CustomersByTicket.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Images\iconExcel.gif" />
+    <Content Include="Reports\App_LocalResources\CustomersBySubscription.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="TicketList.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\TicketList.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\App_LocalResources\CustomersWithPendingPayment.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Reports\App_LocalResources\ProductsByProvider.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Reports\App_LocalResources\ProductsConsumed.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\Images\iconCalendar.png" />
+    <Content Include="App_Themes\Default\Images\iconCalendarDisabled.png" />
+    <Content Include="Controls\Calendar.ascx" />
+    <Content Include="Controls\Calendar.js" />
+    <Content Include="Reports\App_LocalResources\TechniciansByTicket.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Reports\CustomersWithPendingPayment.aspx" />
+    <Content Include="Reports\ProductsByProvider.aspx" />
+    <Content Include="Reports\ProductsConsumed.aspx" />
+    <Content Include="Reports\TechniciansByTicket.aspx" />
+    <Content Include="TicketEditor.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\TicketEditor.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Controls\ProductTicketSelectionGrid.ascx" />
+    <Content Include="Controls\ProductTicketSelectionGrid.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\App_LocalResources\ProductTicketSelectionGrid.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\App_LocalResources\RolesByUser.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Reports\RolesByUser.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\SETI.mdf">
+    </Content>
+    <Content Include="App_Data\SETI_log.LDF">
+      <DependentUpon>SETI.mdf</DependentUpon>
+    </Content>
+    <Content Include="Config\Pages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>2297</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
