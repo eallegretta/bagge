@@ -86,7 +86,7 @@ namespace Bagge.Seti.BusinessLogic
 			IList<FilterPropertyValue> filters = new List<FilterPropertyValue>();
 			filters.Add("Customer", instance);
 
-			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProperties(filters)))
+			if (!Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProperties(filters)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.CustomerTicketRelatedErrorMessage);

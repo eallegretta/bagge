@@ -94,7 +94,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		private void CheckTicketRelationship(Product instance)
 		{
-			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProduct(instance.Id)))
+			if (!Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProduct(instance.Id)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.ProductTicketRelatedErrorMessage);

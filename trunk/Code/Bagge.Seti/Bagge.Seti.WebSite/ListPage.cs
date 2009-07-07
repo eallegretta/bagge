@@ -58,11 +58,12 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				var keys = from key in HttpContext.Current.Request.Form.AllKeys
-						   where key.Contains("$delete.x") || key.Contains("$delete.y")
-						   select key;
+				var keys = (from key in HttpContext.Current.Request.Form.AllKeys
+						   where key != null && (key.Contains("$delete.x") || key.Contains("$delete.y"))
+						   select key);
 
-				if (keys.ToArray().Length == 2)
+				
+				if (keys != null && keys.ToArray().Length == 2)
 					return true;
 
 				return false;

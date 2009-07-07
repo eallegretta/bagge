@@ -37,8 +37,9 @@ input.selected, textarea.selected
 input.button, button
 {
 	border: 1px solid;
-	padding:0px;
 	height:24px;
+	padding-left:4px;
+	padding-right:4px;
 	border-color: #999999;
 	background-color: #f5f5f5;
 	background-image:url(Images/buttonBackground.gif);
