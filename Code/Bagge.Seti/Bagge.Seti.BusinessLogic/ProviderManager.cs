@@ -130,7 +130,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		private void CheckTicketRelationship(Provider instance)
 		{
-			if (Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProvider(instance.Id)))
+			if (!Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProvider(instance.Id)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.ProviderTicketRelatedErrorMessage);
