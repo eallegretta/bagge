@@ -40,11 +40,11 @@
 	this.isValidCompare = function() {
 		if ($.trim(this._txt.value).length == 0)
 			return true;
-			
+
 		if (this.getSelectedDate() == null)
 			return false;
 
-		if ($.trim(this._compareToControl.value).length == 0)
+		if (this._compareToControl == null || $.trim(this._compareToControl.value).length == 0)
 			return true;
 
 		var date = Date.parseLocale(this._compareToControl.value);

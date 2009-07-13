@@ -12,17 +12,26 @@
 	margin:1px;
 }
 
-input.smallData, textarea.smallData
+td.smallData > input, input.smallData, textarea.smallData
 {
 	width:40px;
 }
 
-input.mediumData, textarea.mediumData
+td.mediumData > input, input.mediumData, textarea.mediumData
 {
 	width:160px;
 }
 
-input.longData, textarea.longData
+
+
+
+td.numeric > input, input.numeric
+{
+	text-align:right;
+}
+
+
+td.longData input, input.longData, textarea.longData
 {
 	width:320px;
 }

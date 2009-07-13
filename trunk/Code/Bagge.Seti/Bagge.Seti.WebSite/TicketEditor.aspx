@@ -2,6 +2,11 @@
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <%@ Register Src="~/Controls/Calendar.ascx" TagPrefix="seti" TagName="Calendar"  %>
 <%@ Register TagPrefix="seti" TagName="ProductTicketSelectionGrid" Src="~/Controls/ProductTicketSelectionGrid.ascx" %>
+<asp:Content ID="_head" ContentPlaceHolderID="_head" runat="server">
+	<script type="text/javascript">
+		//$.mask.deinitions['~'] = '[9 ]';
+	</script>
+</asp:Content>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
@@ -45,8 +50,8 @@
 					<%#Eval("CustomerArrival")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:SecureBoundField DataField="EstimatedDuration" DefaultValue="00{NumberSeparator}00" Mask="99{NumberSeparator}99" MaskPlaceHolder="0" meta:resourcekey="EstimatedDurationField" />
-			<seti:SecureBoundField DataField="RealDuration" Mask="99{NumberSeparator}99" MaskPlaceHolder="0" meta:resourcekey="RealDurationField" />
+			<seti:SecureBoundField DataField="EstimatedDuration" DefaultValue="00{NumberSeparator}00" Mask="99{NumberSeparator}99" MaskPlaceHolder="0" ItemStyle-CssClass="smallData numeric" meta:resourcekey="EstimatedDurationField" />
+			<seti:SecureBoundField DataField="RealDuration" DefaultValue="00{NumberSeparator}00" Mask="99{NumberSeparator}99" MaskPlaceHolder="0" ItemStyle-CssClass="smallData numeric" meta:resourcekey="RealDurationField" />
 			<seti:SecureTemplateField PropertyName="Description" meta:resourcekey="DescriptionField">
 				<EditItemTemplate>
 					<asp:TextBox id="_description" runat="server" Text='<%# Bind("Description") %>' 

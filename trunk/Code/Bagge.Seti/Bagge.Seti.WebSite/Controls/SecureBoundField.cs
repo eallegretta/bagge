@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 using System.Threading;
+using System.Text;
 
 namespace Bagge.Seti.WebSite.Controls
 {
@@ -48,6 +49,7 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 		}
 
+
 		public int MaxLength
 		{
 			get
@@ -71,6 +73,7 @@ namespace Bagge.Seti.WebSite.Controls
 				if (cell.Controls.Count == 1)
 				{
 					TextBox textBox = cell.Controls[0] as TextBox;
+
 					if (string.IsNullOrEmpty(textBox.ID))
 						textBox.ID = DataField + "_txt";
 					if (textBox != null)
@@ -98,6 +101,7 @@ namespace Bagge.Seti.WebSite.Controls
 				placeHolder = string.Format(", {{ placeholder: '{0}' }}", MaskPlaceHolder);
 
 			string clientId = Control.ClientID + "_" + textBox.ClientID;
+			
 			string mask = string.Format("<script type='text/javascript'>$('#{0}').mask('{1}'{2});</script>", clientId, Mask, placeHolder);
 
 			cell.Controls.Add(new LiteralControl(mask));

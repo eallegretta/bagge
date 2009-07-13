@@ -22,7 +22,7 @@ namespace Bagge.Seti.WebSite
 			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/json2.js"));
 			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/Site.Master.js"));
 
-			Page.Header.Controls.Add(new LiteralControl(script.ToString()));
+			Page.Header.Controls.AddAt(0, new LiteralControl(script.ToString()));
 
 			base.OnInit(e);
 			SetLoggedInFullName();
