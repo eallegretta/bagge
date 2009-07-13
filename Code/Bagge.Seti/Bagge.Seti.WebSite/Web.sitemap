@@ -31,7 +31,10 @@
 			<siteMapNode url="~/RoleList.aspx" title="Roles">
 				<siteMapNode url="~/RoleEditor.aspx" title="Alta Rol" editTitle="Editar Rol" viewTitle="Ver Rol"></siteMapNode>
 			</siteMapNode>
-			<siteMapNode url="" title="Funciones"></siteMapNode>
+			<siteMapNode url="~/SecurityExceptionsList.aspx" title="Listado Excepciones de Seguridad">
+				<siteMapNode url="~/SecurityExceptionsEditor.aspx" title="Alta Excepción de Seguridad">
+				</siteMapNode>
+			</siteMapNode>
 		</siteMapNode>
 	</siteMapNode>
 </siteMap>
