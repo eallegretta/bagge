@@ -71,6 +71,10 @@ namespace Bagge.Seti.BusinessLogic
 			Check.Require(!string.IsNullOrEmpty(email));
 
 			var employee = GetByEmail(email);
+
+			if (employee == null)
+				throw new BusinessRuleException(Resources.EmployeeByEmailNotFoundErrorMessage);
+
 			employee.RecoverPasswordKey = Guid.NewGuid().ToString();
 
 			Update(employee);

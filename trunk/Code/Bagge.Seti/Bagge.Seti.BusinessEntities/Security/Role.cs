@@ -6,6 +6,7 @@ using Bagge.Seti.BusinessEntities;
 using Castle.ActiveRecord;
 using Bagge.Seti.BusinessEntities.Properties;
 using Bagge.Seti.BusinessEntities.Validators;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.Security.BusinessEntities
 {
@@ -48,6 +49,13 @@ namespace Bagge.Seti.Security.BusinessEntities
 
 		[HasAndBelongsToMany(Table = "RoleFunction", ColumnKey = "RoleId", ColumnRef = "FunctionId", Lazy = true)]
 		public virtual IList<Function> Functions
+		{
+			get;
+			set;
+		}
+
+		[HasMany(typeof(SecurityException))]
+		public virtual IList<SecurityException> SecurityExceptions
 		{
 			get;
 			set;

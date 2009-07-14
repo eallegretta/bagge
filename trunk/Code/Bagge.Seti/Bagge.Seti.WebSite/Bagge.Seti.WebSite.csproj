@@ -255,7 +255,7 @@
     <Compile Include="Logout.ashx.cs">
       <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Model\SecurityExceptionModel.cs" />
+    <Compile Include="Models\SecurityExceptionModel.cs" />
     <Compile Include="Page.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

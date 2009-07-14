@@ -68,8 +68,8 @@ namespace Bagge.Seti.BusinessEntities.Security
 			set;
 		}
 
-		[BelongsTo("FunctionId")]
-		public Function Function
+		[BelongsTo("RoleId")]
+		public Role Role
 		{
 			get;
 			set;
