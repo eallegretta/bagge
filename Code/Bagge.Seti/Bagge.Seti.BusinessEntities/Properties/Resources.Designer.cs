@@ -61,6 +61,51 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contiene.
+        /// </summary>
+        internal static string Constraint_Contains {
+            get {
+                return ResourceManager.GetString("Constraint_Contains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Igual a.
+        /// </summary>
+        internal static string Constraint_Equal {
+            get {
+                return ResourceManager.GetString("Constraint_Equal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mayor que.
+        /// </summary>
+        internal static string Constraint_GreaterThan {
+            get {
+                return ResourceManager.GetString("Constraint_GreaterThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menor que.
+        /// </summary>
+        internal static string Constraint_LowerThan {
+            get {
+                return ResourceManager.GetString("Constraint_LowerThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distinto a.
+        /// </summary>
+        internal static string Constraint_NotEqual {
+            get {
+                return ResourceManager.GetString("Constraint_NotEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usted no posee permisos para ejecutar la acción que desea realizar..
         /// </summary>
         internal static string MethodAccessDeniedErrorMessage {

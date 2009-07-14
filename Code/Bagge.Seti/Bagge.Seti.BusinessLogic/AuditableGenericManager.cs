@@ -48,6 +48,7 @@ namespace Bagge.Seti.BusinessLogic
 				auditable.Deleted = true;
 				IsDelete = true;
 				Update((T)auditable);
+				IsDelete = false;
 			}
 		}
 
@@ -59,6 +60,7 @@ namespace Bagge.Seti.BusinessLogic
 			instance.Deleted = false;
 			IsUndelete = true;
 			Update((T)instance);
+			IsUndelete = false;
 		}
 
 		#region IFindActiveManager<T,PK> Members

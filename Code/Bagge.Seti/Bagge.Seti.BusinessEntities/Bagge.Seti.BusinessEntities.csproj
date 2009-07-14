@@ -150,6 +150,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bagge.Seti.DesignByContract\Bagge.Seti.DesignByContract.csproj">
+      <Project>{FDDE6DF6-90E1-40B5-AAD9-5245CE22062E}</Project>
+      <Name>Bagge.Seti.DesignByContract</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

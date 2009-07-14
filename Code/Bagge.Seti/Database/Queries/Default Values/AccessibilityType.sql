@@ -1,10 +1,8 @@
 ﻿delete AccessibilityType
 
 insert into AccessibilityType (Id, Name)
-select 1, 'None'
+select 1, 'Sin Acceso'
 union
-select 2, 'Edit'
+select 2, 'Editar'
 union
-select 3, 'View'
-union
-select 4, 'Execute' 
+select 3, 'Ver'

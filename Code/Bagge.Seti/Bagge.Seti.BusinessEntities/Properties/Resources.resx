@@ -378,4 +378,19 @@
   <data name="Securizable_Assembly" xml:space="preserve">
     <value>Entidades</value>
   </data>
+  <data name="Constraint_Contains" xml:space="preserve">
+    <value>Contiene</value>
+  </data>
+  <data name="Constraint_Equal" xml:space="preserve">
+    <value>Igual a</value>
+  </data>
+  <data name="Constraint_GreaterThan" xml:space="preserve">
+    <value>Mayor que</value>
+  </data>
+  <data name="Constraint_LowerThan" xml:space="preserve">
+    <value>Menor que</value>
+  </data>
+  <data name="Constraint_NotEqual" xml:space="preserve">
+    <value>Distinto a</value>
+  </data>
 </root>
