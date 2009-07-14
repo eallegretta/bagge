@@ -4,11 +4,17 @@ using System.Linq;
 using System.Text;
 using Bagge.Seti.Security.Constraints;
 using System.Reflection;
+using Bagge.Seti.BusinessEntities.Properties;
 
 namespace Bagge.Seti.BusinessEntities.Security.Constraints
 {
 	public class NotEqualsConstraint : InequalityConstraint
 	{
+		public NotEqualsConstraint()
+			: base()
+		{
+		}
+
 		public NotEqualsConstraint(object source, string propertyName, object value)
 			: base(source, propertyName, value)
 		{
@@ -26,6 +32,11 @@ namespace Bagge.Seti.BusinessEntities.Security.Constraints
 			if (value != null)
 				return ((IComparable)value).CompareTo((IComparable)Value) != 0;
 			return false;
+		}
+
+		public override string ToString()
+		{
+			return Resources.Constraint_NotEqual;
 		}
 	}
 }

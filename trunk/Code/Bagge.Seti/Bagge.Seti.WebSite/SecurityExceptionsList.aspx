@@ -5,9 +5,29 @@
 		DataSourceID="_dataSource"
 		meta:resourcekey="Grid">
 		<Columns>
-			<asp:BoundField DataField="Role" meta:resourcekey="RoleField" />
+			<asp:TemplateField meta:resourcekey="RoleField">
+				<ItemTemplate>
+					<%#((Bagge.Seti.WebSite.Model.SecurityExceptionModel)Container.DataItem).SecurityException.Role%>
+				</ItemTemplate>
+			</asp:TemplateField>
 			<asp:BoundField DataField="HumanReadableClassName" meta:resourcekey="ClassField" />
 			<asp:BoundField DataField="HumanReadableMemberName" meta:resourcekey="MemberField" />
+			<asp:TemplateField meta:resourcekey="AccessibilityField">
+				<ItemTemplate>
+					<%#((Bagge.Seti.WebSite.Model.SecurityExceptionModel)Container.DataItem).SecurityException.Accessibility%>
+				</ItemTemplate>
+			</asp:TemplateField>
+			<asp:TemplateField meta:resourcekey="ConstraintTypeField">
+				<ItemTemplate>
+					<%#Bagge.Seti.BusinessEntities.Security.Constraints.Constraint.GetConstraintName(((Bagge.Seti.WebSite.Model.SecurityExceptionModel)Container.DataItem).SecurityException.ConstraintType)%>
+				</ItemTemplate>
+			</asp:TemplateField>
+			<asp:TemplateField meta:resourcekey="ConstraintValueField">
+				<ItemTemplate>
+					<%#((Bagge.Seti.WebSite.Model.SecurityExceptionModel)Container.DataItem).SecurityException.Value%>
+				</ItemTemplate>
+			</asp:TemplateField>
+			
 			<seti:DeleteUndeleteCommandField MethodName="Delete" DeleteDataField="Deleted" ItemStyle-Width="20px" 
 				ItemStyle-HorizontalAlign="Center" 
 				ShowUndelete="false"
