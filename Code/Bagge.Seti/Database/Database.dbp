@@ -15,6 +15,7 @@ Begin DataProject = "Database"
       Script = "010 - Alter table Function.sql"
       Script = "011 - Alter table Function.sql"
       Script = "012 - Create table EntitySecurity.sql"
+      Script = "013 - Alter table SecurityException.sql"
    End
    Begin Folder = "Create Scripts"
       Script = "000 - Tables Initial Setup.sql"
