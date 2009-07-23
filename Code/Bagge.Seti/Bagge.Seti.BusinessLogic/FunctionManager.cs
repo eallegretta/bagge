@@ -52,7 +52,6 @@ namespace Bagge.Seti.BusinessLogic
 
 				if (user.Functions.Contains(function))
 				{
-					user.CurrentFunction = function;
 					return true;
 				}
 				return false;

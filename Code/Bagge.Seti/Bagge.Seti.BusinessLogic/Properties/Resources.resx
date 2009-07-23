@@ -163,10 +163,10 @@
     <value>No se puede elminar el proveedor ya que esta asociado a un ticket no cerrado o no cancelado</value>
   </data>
   <data name="RecoverPasswordEmailBodyNewPassword" xml:space="preserve">
-    <value>{0},\n\tSu nueva contraseña es {1}</value>
+    <value>{0}&lt;br /&gt;&lt;br /&gt;Su nueva contraseña es {1}</value>
   </data>
   <data name="RecoverPasswordEmailBodyRegenerate" xml:space="preserve">
-    <value>{0},\n\tPara iniciar el proceso de recuperación de contraseña, por favor siga el siguiente link:\n\n{1}</value>
+    <value>{0}&lt;br /&gt;&lt;br /&gt;Para iniciar el proceso de recuperación de contraseña, por favor siga el siguiente link:&lt;br /&gt;&lt;br /&gt; &lt;a href="{1}"&gt;{1}&lt;/a&gt;</value>
   </data>
   <data name="RecoverPasswordEmailSubject" xml:space="preserve">
     <value>SETI - Recuperación de Contraseña</value>

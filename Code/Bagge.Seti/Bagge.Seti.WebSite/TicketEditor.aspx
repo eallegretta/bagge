@@ -3,9 +3,6 @@
 <%@ Register Src="~/Controls/Calendar.ascx" TagPrefix="seti" TagName="Calendar"  %>
 <%@ Register TagPrefix="seti" TagName="ProductTicketSelectionGrid" Src="~/Controls/ProductTicketSelectionGrid.ascx" %>
 <asp:Content ID="_head" ContentPlaceHolderID="_head" runat="server">
-	<script type="text/javascript">
-		//$.mask.deinitions['~'] = '[9 ]';
-	</script>
 </asp:Content>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"

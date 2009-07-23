@@ -93,6 +93,8 @@ namespace Bagge.Seti.BusinessLogic
 
 			msg.Subject = subject;
 			msg.Body = body;
+			msg.IsBodyHtml = true;
+
 
 			client.EnableSsl = Settings.Default.EnableMailSsl;
 
@@ -123,7 +125,7 @@ namespace Bagge.Seti.BusinessLogic
 		[Securizable("Securizable_EmployeeManager_GetByEmail", typeof(EmployeeManager))]
 		public Employee GetByEmail(string email)
 		{
-			return GetByStringProperty("Email", email, string.Empty);
+			return GetByStringProperty("Email", email, Resources.EmployeeByEmailNotFoundErrorMessage);
 		}
 
 

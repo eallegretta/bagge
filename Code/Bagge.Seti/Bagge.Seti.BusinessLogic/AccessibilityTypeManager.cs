@@ -34,7 +34,7 @@ namespace Bagge.Seti.BusinessLogic
 				return AccessibilityTypes.Edit;
 
 
-			var filteredExceptions = (from exception in user.CurrentFunction.SecurityExceptions
+			var filteredExceptions = (from exception in user.SecurityExceptions
 									 where exception.MemberType == 'P' &&
 											exception.MemberName == propertyName &&
 											exception.TargetType.Equals(targetObject)
@@ -66,7 +66,7 @@ namespace Bagge.Seti.BusinessLogic
 			if (user.IsSuperAdministrator)
 				return AccessibilityTypes.Execute;
 
-			var filteredExceptions = (from exception in user.CurrentFunction.SecurityExceptions
+			var filteredExceptions = (from exception in user.SecurityExceptions
 									 where exception.MemberType == 'M' &&
 											exception.MemberName == methodName &&
 											exception.TargetType.Equals(targetObject)

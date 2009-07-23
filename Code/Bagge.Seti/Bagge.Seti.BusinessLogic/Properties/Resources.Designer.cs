@@ -196,7 +196,7 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0},\n\tSu nueva contraseña es {1}.
+        ///   Looks up a localized string similar to {0}&lt;br /&gt;&lt;br /&gt;Su nueva contraseña es {1}.
         /// </summary>
         internal static string RecoverPasswordEmailBodyNewPassword {
             get {
@@ -205,7 +205,7 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0},\n\tPara iniciar el proceso de recuperación de contraseña, por favor siga el siguiente link:\n\n{1}.
+        ///   Looks up a localized string similar to {0}&lt;br /&gt;&lt;br /&gt;Para iniciar el proceso de recuperación de contraseña, por favor siga el siguiente link:&lt;br /&gt;&lt;br /&gt; &lt;a href=&quot;{1}&quot;&gt;{1}&lt;/a&gt;.
         /// </summary>
         internal static string RecoverPasswordEmailBodyRegenerate {
             get {

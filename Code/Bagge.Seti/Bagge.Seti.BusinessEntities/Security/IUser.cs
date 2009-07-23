@@ -13,8 +13,8 @@ namespace Bagge.Seti.BusinessEntities.Security
 		string Password { get; set; }
 		IList<Role> Roles { get; set; }
 		IList<Function> Functions { get; }
+		IList<SecurityException> SecurityExceptions { get; }
 		new bool IsAuthenticated { get; set; }
 		bool IsSuperAdministrator { get; }
-		Function CurrentFunction { get; set; }
 	}
 }

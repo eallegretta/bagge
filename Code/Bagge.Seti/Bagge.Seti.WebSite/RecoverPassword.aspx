@@ -4,7 +4,7 @@ Inherits="Bagge.Seti.WebSite.RecoverPassword" meta:resourcekey="Page"%>
 	<asp:MultiView ID="_recoverPassword" runat="server" ActiveViewIndex="0">
 		<asp:View runat="server">
 			<asp:Label ID="_emailAddressText" Font-Bold="true" runat="server" meta:resourcekey="EmailAddressTextLabel"></asp:Label>
-			<asp:TextBox ID="_emailAddress" runat="server" meta:resourcekey="EmailAddressTextBox"></asp:TextBox>
+			<asp:TextBox ID="_emailAddress" runat="server" EnableTheming="false" CssClass="textBox longData" meta:resourcekey="EmailAddressTextBox"></asp:TextBox>
 			<asp:Button ID="_send" runat="server" meta:resourcekey="SendButton" onclick="_send_Click" />	
 		</asp:View>
 		<asp:View runat="server">
