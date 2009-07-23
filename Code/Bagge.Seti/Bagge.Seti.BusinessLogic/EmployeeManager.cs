@@ -77,12 +77,22 @@ namespace Bagge.Seti.BusinessLogic
 
 			employee.RecoverPasswordKey = Guid.NewGuid().ToString();
 
-			Update(employee);
+			
 
 			string link = string.Format("{0},{1}", email, employee.RecoverPasswordKey).ToBase64();
 
-			SendEmail(email, Resources.RecoverPasswordEmailSubject,
-				string.Format(Resources.RecoverPasswordEmailBodyRegenerate, employee.Fullname, baseLinkPath + link));
+			try
+			{
+
+				SendEmail(email, Resources.RecoverPasswordEmailSubject,
+					string.Format(Resources.RecoverPasswordEmailBodyRegenerate, employee.Fullname, baseLinkPath + link));
+
+			}
+			catch (Exception ex)
+			{
+				throw new BusinessRuleException(Resources.EmailSendFailErrorMessage, ex);
+			}
+			Update(employee);
 		}
 
 		private static void SendEmail(string to, string subject, string body)

@@ -10,6 +10,17 @@ namespace Bagge.Seti.WebSite
 {
 	public partial class Error : System.Web.UI.Page
 	{
+		private Exception GetBusinessRuleException(Exception ex)
+		{
+			if (ex is BusinessRuleException)
+				return ex;
+			else if (ex.InnerException != null)
+				return GetBusinessRuleException(ex.InnerException);
+
+			return null;
+			
+		}
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Exception ex = null;
@@ -20,8 +31,9 @@ namespace Bagge.Seti.WebSite
 
 			if (ex != null)
 			{
-				if (ex.GetBaseException() is BusinessRuleException)
-					ShowBusinessRuleErrorMessage(ex.GetBaseException());
+				var newEx = GetBusinessRuleException(ex);
+				if (newEx != null)
+					ShowBusinessRuleErrorMessage(newEx);
 				else
 					ShowErrorMessage(ex);
 			}
