@@ -24,7 +24,7 @@ namespace Bagge.Seti.WebSite
 
 		protected void _send_Click(object sender, EventArgs e)
 		{
-			IoCContainer.EmployeeManager.RecoverPassword(_emailAddress.Text, Page.Request.Url.AbsolutePath + "?k=");
+			IoCContainer.EmployeeManager.RecoverPassword(_emailAddress.Text, Page.Request.Url.AbsoluteUri + "?k=");
 			_recoverPassword.ActiveViewIndex = 1;
 		}
 	}

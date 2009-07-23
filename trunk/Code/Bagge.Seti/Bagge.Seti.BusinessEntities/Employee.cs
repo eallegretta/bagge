@@ -156,6 +156,19 @@ namespace Bagge.Seti.BusinessEntities
 			return functions;
 		}
 
+		private IList<SecurityException> GetDistinctSecurityExceptions()
+		{
+			List<SecurityException> exceptions = new List<SecurityException>();
+			foreach (var role in Roles)
+			{
+				var distinctExceptions = from exception in role.SecurityExceptions
+										 where !exceptions.Contains(exception)
+										 select exception;
+				exceptions.AddRange(distinctExceptions.ToArray());
+			}
+			return exceptions;
+		}
+
 		[Property]
 		public virtual string RecoverPasswordKey
 		{
@@ -186,10 +199,22 @@ namespace Bagge.Seti.BusinessEntities
 			}
 		}
 
-		public Function CurrentFunction
+
+		#endregion
+
+		#region IUser Members
+
+
+		IList<SecurityException> _securityExceptions;
+
+		public IList<SecurityException> SecurityExceptions
 		{
-			get;
-			set;
+			get
+			{
+				if (_securityExceptions == null)
+					_securityExceptions = GetDistinctSecurityExceptions();
+				return _securityExceptions;
+			}
 		}
 
 		#endregion

@@ -75,10 +75,5 @@ namespace Bagge.Seti.Security.BusinessEntities
 			get; set;
 		}
 
-		[HasMany(typeof(SecurityException))]
-		public virtual IList<SecurityException> SecurityExceptions
-		{
-			get; set;
-		}
 	}
 }
