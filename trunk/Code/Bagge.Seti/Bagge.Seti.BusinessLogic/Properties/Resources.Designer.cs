@@ -79,6 +79,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El envio del e-mail de contraseña ha fallado, por favor contacte al administrador del sistema..
+        /// </summary>
+        internal static string EmailSendFailErrorMessage {
+            get {
+                return ResourceManager.GetString("EmailSendFailErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El empleado cuyo e-mail es {0} no pudo ser encontrado.
         /// </summary>
         internal static string EmployeeByEmailNotFoundErrorMessage {

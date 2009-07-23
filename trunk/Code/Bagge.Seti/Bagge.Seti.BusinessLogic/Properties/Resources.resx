@@ -123,6 +123,9 @@
   <data name="CustomerTicketRelatedErrorMessage" xml:space="preserve">
     <value>No se puede elminar el cliente ya que esta asociado a un ticket no cerrado o no cancelado</value>
   </data>
+  <data name="EmailSendFailErrorMessage" xml:space="preserve">
+    <value>El envio del e-mail de contraseña ha fallado, por favor contacte al administrador del sistema.</value>
+  </data>
   <data name="EmployeeByEmailNotFoundErrorMessage" xml:space="preserve">
     <value>El empleado cuyo e-mail es {0} no pudo ser encontrado</value>
   </data>
