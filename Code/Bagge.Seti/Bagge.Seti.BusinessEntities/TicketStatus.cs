@@ -17,6 +17,22 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		#endregion
+
+		public static bool operator ==(TicketStatus status, TicketStatusEnum statusEnum)
+		{
+			if (status == null)
+				return false;
+
+			return status.Equals(statusEnum);
+		}
+
+		public static bool operator !=(TicketStatus status, TicketStatusEnum statusEnum)
+		{
+			if (status == null)
+				return true;
+
+			return !status.Equals(statusEnum);
+		}
 	}
 
 	public enum TicketStatusEnum

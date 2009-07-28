@@ -156,4 +156,13 @@
   <data name="ProductsField.HeaderText" xml:space="preserve">
     <value>Productos</value>
   </data>
+  <data name="ApproveButton.OnClientClick" xml:space="preserve">
+    <value>return confirm("¿Esta seguro que desea aprobar el ticket?");</value>
+  </data>
+  <data name="ApproveButton.Text" xml:space="preserve">
+    <value>Aprobar</value>
+  </data>
+  <data name="EmployeesValidator.ErrorMessage" xml:space="preserve">
+    <value>Debe elegir al menos un técnico</value>
+  </data>
 </root>

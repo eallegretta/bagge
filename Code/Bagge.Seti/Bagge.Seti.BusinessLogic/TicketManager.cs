@@ -78,17 +78,38 @@ namespace Bagge.Seti.BusinessLogic
 			}
 		}
 
+		public int CreateApproved(Ticket instance)
+		{
+			instance.Status = _ticketStatusManager.Get(TicketStatusEnum.Open);
+
+			return Create(instance);
+		}
+
 		public override int Create(Ticket instance)
 		{
+			CheckRequirements(instance);
+
 			instance.CreationDate = DateTime.Now;
+			if (instance.Status != TicketStatusEnum.Open)
+				instance.Status = _ticketStatusManager.Get(TicketStatusEnum.PendingAproval);
 
 			AssignTicketToProducts(instance);
 
 			return base.Create(instance);
 		}
 
+		private void CheckRequirements(Ticket instance)
+		{
+			Check.Require(instance.Status != null);
+			Check.Require(instance.Creator != null);
+			Check.Require(instance.Customer != null);
+			Check.Require(instance.Budget.HasValue && instance.Budget.Value >= 0);
+		}
+
 		public override void Update(Ticket instance)
 		{
+			CheckRequirements(instance);
+
 			Ticket instanceFromDb = Get(instance.Id);
 
 			GetDao<ITicketDao>().DeleteProducts(instance.Id);

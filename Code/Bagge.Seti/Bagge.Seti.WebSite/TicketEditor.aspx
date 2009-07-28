@@ -3,6 +3,14 @@
 <%@ Register Src="~/Controls/Calendar.ascx" TagPrefix="seti" TagName="Calendar"  %>
 <%@ Register TagPrefix="seti" TagName="ProductTicketSelectionGrid" Src="~/Controls/ProductTicketSelectionGrid.ascx" %>
 <asp:Content ID="_head" ContentPlaceHolderID="_head" runat="server">
+	<script type="text/javascript">
+		function ValidateEmployees(sender, args) {
+			alert(args.IsValid);
+			var id = '<%=_details.FindControl("_employees").ClientID%>';
+			var employeeSelected = false;
+			args.IsValid = $("#" + id + " input:checkbox:checked").length > 0;
+		}
+	</script>
 </asp:Content>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
@@ -64,6 +72,9 @@
 					<asp:CheckBoxList ID="_employees" runat="server" DataValueField="Id" 
 						DataTextField="Fullname">
 					</asp:CheckBoxList>
+					<asp:TextBox id="_validationTarget" runat="server" />
+					<asp:CustomValidator ID="_employeesValidator" ValidateEmptyText="true" ControlToValidate="_validationTarget" runat="server" ValidationGroup="Approve" EnableClientScript="true" meta:resourcekey="EmployeesValidator" ClientValidationFunction="ValidateEmployees">
+					</asp:CustomValidator>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<asp:BulletedList ID="_employees" runat="server" DataValueField="Id" 
@@ -84,6 +95,9 @@
 	</seti:SecureDetailsView>
 	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/TicketList.aspx"
 		CancelPostBackUrl="~/TicketList.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
+		<ExtraButtons>
+			<asp:Button ID="_approve" runat="server" ValidationGroup="Approve" meta:resourcekey="ApproveButton" />
+		</ExtraButtons>
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server" 
 		DataObjectTypeName=""></asp:ObjectContainerDataSource>

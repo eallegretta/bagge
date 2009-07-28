@@ -11,5 +11,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 		Ticket[] FindAllByStatus(TicketStatusEnum status);
 		Ticket[] FindAllByProduct(int productId);
 		Ticket[] FindAllByProvider(int providerId);
+		int CreateApproved(Ticket ticket);
 	}
 }
