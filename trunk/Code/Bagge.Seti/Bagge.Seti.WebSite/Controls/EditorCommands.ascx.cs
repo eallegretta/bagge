@@ -15,6 +15,17 @@ namespace Bagge.Seti.WebSite.Controls
 {
 	public partial class EditorCommands : System.Web.UI.UserControl
 	{
+		public EditorCommands()
+		{
+		}
+
+
+		[PersistenceMode(PersistenceMode.InnerProperty)]
+		public ControlCollection ExtraButtons
+		{
+			get { return _extraButtons.Controls; }
+		}
+
 		public string DetailsViewID
 		{
 			get { return ViewState["DetailsViewID"] as string; }

@@ -7,6 +7,7 @@ using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
@@ -52,13 +53,18 @@ namespace Bagge.Seti.WebSite.Presenters
 				case EditorAction.Update:
 					View.Customers = _customerManager.FindAllActiveOrdered("Name");
 					View.Technicians = _employeeManager.FindAllActiveTechnicians();
-					View.TicketStatus = _ticketStatusManager.FindAll();
+
+					if (View.Mode == EditorAction.Insert)
+						View.TicketStatus = _ticketStatusManager.Get(TicketStatusEnum.PendingAproval).ToSingleItemArray();
+					else
+						View.TicketStatus = _ticketStatusManager.FindAll();
 
 					if (View.Mode == EditorAction.Update)
 					{
 						if (SelectedEntity.Employees != null)
 							View.AssignedTechniciansIds = SelectedEntity.Employees.Select(emp => emp.Id).ToArray();
 					}
+
 					break;
 				case EditorAction.View:
 					View.Technicians = SelectedEntity.Employees.ToArray();
@@ -73,6 +79,22 @@ namespace Bagge.Seti.WebSite.Presenters
 			}
 		}
 
+		public void Approve(Ticket entity)
+		{
+			Check.Require(View.Mode == EditorAction.Insert);
+
+			entity.Customer = _customerManager.Get(View.SelectedCustomerId);
+			entity.Employees = new List<Employee>();
+			
+			foreach (var technicianId in View.AssignedTechniciansIds)
+				entity.Employees.Add(_employeeManager.Get(technicianId));
+
+			entity.Products = View.Products;
+
+			entity.Creator = _employeeManager.GetByUsername(_loggedUser.Username);
+
+			GetManager<ITicketManager>().CreateApproved(entity);
+		}
 
 		public override void Save(Ticket entity)
 		{
