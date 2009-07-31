@@ -16,26 +16,27 @@
 			
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Deleted">
 			<th><asp:Literal ID="_deletedLiteral" runat="server" meta:resourcekey="FilterDeletedLiteral"></asp:Literal></th>
-			<td colspan="2"><asp:DropDownList ID="_isDeleted" runat="server">
+			<td><asp:DropDownList ID="_isDeleted" runat="server">
 				<asp:ListItem></asp:ListItem>
 			</asp:DropDownList></td>
 			</seti:SecurePropertyPlaceHolder>
 		</tr>
 		<tr>
-			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="FileNumber">
-			<th><asp:Literal ID="_fileNumberLiteral" runat="server" meta:resourcekey="FilterFileNumberLiteral"></asp:Literal></th>
-			<td><asp:TextBox ID="_fileNumber" runat="server"></asp:TextBox></td>
-			</seti:SecurePropertyPlaceHolder>
+			
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Firstname">
 			<th><asp:Literal ID="_firstnameLiteral" runat="server" meta:resourcekey="FilterFirstnameLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_firstname" runat="server"></asp:TextBox></td>
 			</seti:SecurePropertyPlaceHolder>
+
 			<seti:SecurePropertyPlaceHolder runat="server" PropertyName="Lastname">
 			<th><asp:Literal ID="_lastnameLiteral" runat="server" meta:resourcekey="FilterLastnameLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_lastname" runat="server"></asp:TextBox></td>
 			</seti:SecurePropertyPlaceHolder>
-			<td><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
+			<td colspan="2"><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" />
 			</td>
+			<th></th>
+            <td></td>
+
 		</tr>
 	</table>
 </asp:Content>
@@ -47,12 +48,16 @@
 		<Columns>
 			<seti:SecureBoundField NullDisplayText="" DataField="Firstname" 
 				meta:resourcekey="FirstnameField" />
-			<seti:SecureBoundField NullDisplayText="" DataField="Lastname" 
-				meta:resourcekey="LastnameField" />
+				
+            <seti:SecureBoundField NullDisplayText="" DataField="Lastname" 
+				meta:resourcekey="LastnameField" />	
+			
 			<seti:SecureBoundField NullDisplayText="" DataField="Username" 
 				meta:resourcekey="UsernameField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="Category" meta:resourcekey="CategoryField" />
-			<seti:SecureBoundField NullDisplayText="" DataField="FileNumber" meta:resourcekey="FileNumberField" />
+			
+			
+			
 			<seti:SecureHyperLinkField MethodName="Get" ItemStyle-Width="20px" ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
 				DataNavigateUrlFormatString="EmployeeEditor.aspx?Id={0}&Action=View"
 				Text="<%$ Resources:WebSite, IconViewImageTag %>"
