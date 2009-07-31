@@ -29,16 +29,7 @@ namespace Bagge.Seti.WebSite.Reports {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _dateFrom;
-        
-        /// <summary>
-        /// _dateFromCalendar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender _dateFromCalendar;
+        protected global::Bagge.Seti.WebSite.Controls.Calendar _dateFrom;
         
         /// <summary>
         /// _dateToLiteral control.
@@ -56,16 +47,7 @@ namespace Bagge.Seti.WebSite.Reports {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _dateTo;
-        
-        /// <summary>
-        /// _dateToCalendar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender _dateToCalendar;
+        protected global::Bagge.Seti.WebSite.Controls.Calendar _dateTo;
         
         /// <summary>
         /// _filter control.
