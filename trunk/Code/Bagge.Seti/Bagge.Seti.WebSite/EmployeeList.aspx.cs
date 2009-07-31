@@ -59,8 +59,10 @@ namespace Bagge.Seti.WebSite
 			get
 			{
 				List<FilterPropertyValue> filters = new List<FilterPropertyValue>();
-				AddTextBoxFilterValue<string>(_fileNumber, "FileNumber", FilterPropertyValueType.Like, filters);
-				AddTextBoxFilterValue<string>(_username, "Username", FilterPropertyValueType.Like, filters);
+				
+                //AddTextBoxFilterValue<string>(_fileNumber, "FileNumber", FilterPropertyValueType.Like, filters);
+				
+                AddTextBoxFilterValue<string>(_username, "Username", FilterPropertyValueType.Like, filters);
 				AddTextBoxFilterValue<string>(_firstname, "Firstname", FilterPropertyValueType.Like, filters);
 				AddTextBoxFilterValue<string>(_lastname, "Lastname", FilterPropertyValueType.Like, filters);
 				AddDropDownFilterValue<int>(_category, "Category", FilterPropertyValueType.Equals, filters);
