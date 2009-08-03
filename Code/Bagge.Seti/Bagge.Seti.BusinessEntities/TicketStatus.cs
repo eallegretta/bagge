@@ -9,6 +9,19 @@ namespace Bagge.Seti.BusinessEntities
 	[Securizable("Securizable_TicketStatus", typeof(TicketStatus))]
 	public partial class TicketStatus : PrimaryKeyWithNameAndDescriptionDomainObject<TicketStatus, int>, IEquatable<TicketStatusEnum>
 	{
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj is TicketStatusEnum)
+				return Equals((TicketStatusEnum)obj);
+
+			return base.Equals(obj);
+		}
+
 		#region IEquatable<TicketStatusEnum> Members
 
 		public bool Equals(TicketStatusEnum other)

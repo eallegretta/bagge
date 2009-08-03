@@ -10,6 +10,7 @@ using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.WebSite.Controls;
 
 namespace Bagge.Seti.WebSite
 {
@@ -23,37 +24,77 @@ namespace Bagge.Seti.WebSite
 		public TicketList()
 		{
 			_presenter = new TicketListPresenter(this, IoCContainer.TicketManager,
-				IoCContainer.TicketStatusManager, IoCContainer.EmployeeManager, IoCContainer.CustomerManager);
+				IoCContainer.TicketStatusManager, IoCContainer.EmployeeManager, IoCContainer.CustomerManager,
+				IoCContainer.User.Identity as IUser);
 		}
+
+
+		int? _editFieldIndex;
+		int? _updateProgressFieldIndex;
+
 
 		protected override void OnInit(EventArgs e)
 		{
+			SetFieldIndices();
+
+			if (_editFieldIndex.HasValue)
+			{
+				Grid.RowDataBound += new GridViewRowEventHandler(Grid_RowDataBound);
+				Grid.PreRender += new EventHandler(Grid_PreRender);
+			}
 			base.OnInit(e);
 
-			Grid.RowDataBound += new GridViewRowEventHandler(Grid_RowDataBound);
+			
 		}
+
+		void Grid_PreRender(object sender, EventArgs e)
+		{
+			if ((_editFieldIndex.HasValue && IsTechnicianView) || _allEditRowsHidden)
+				Grid.Columns[_editFieldIndex.Value].Visible = false;
+
+			if (_updateProgressFieldIndex.HasValue && _allUpdateProgressRowsHidden)
+				Grid.Columns[_updateProgressFieldIndex.Value].Visible = false;
+		}
+
+		public bool IsTechnicianView
+		{
+			set;
+			private get;
+		}
+
+
+		private void SetFieldIndices()
+		{
+			for (int index = 0; index < Grid.Columns.Count; index++)
+			{
+				var field = Grid.Columns[index] as IMethodSecureControl;
+				if (field != null)
+				{
+					if (field.MethodName == "Update")
+						_editFieldIndex = index;
+					else if (field.MethodName == "UpdateProgress")
+						_updateProgressFieldIndex = index;
+				}
+			}
+		}
+
+
+		bool _allEditRowsHidden = true;
+		bool _allUpdateProgressRowsHidden = true;
 
 		private void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
 		{
 			if (e.Row.RowType == DataControlRowType.DataRow)
 			{
-				if (!_presenter.CanAdministerTicket(e.Row.DataItem as Ticket))
-				{
-					int count = e.Row.Cells.Count;
-					if (count > 0)
-					{
-						for (int index = 0; index < count; index++)
-						{
-							TableCell cell = e.Row.Cells[index];
-							if (Grid.Columns[index].HeaderText.In(
-								this.GetLocalResourceObject("EditField.HeaderText").ToString(),
-								this.GetLocalResourceObject("DeleteField.HeaderText").ToString()))
-								cell.Visible = false;
+				if (_editFieldIndex.HasValue && !_presenter.CanAdministerTicket(e.Row.DataItem as Ticket))
+					e.Row.Cells[_editFieldIndex.Value].Visible = false;
+				else
+					_allEditRowsHidden = false;
 
-						}
-					}
-				}
-
+				if (_updateProgressFieldIndex.HasValue && !_presenter.CanUpdateProgress(e.Row.DataItem as Ticket))
+					e.Row.Cells[_updateProgressFieldIndex.Value].Visible = false;
+				else
+					_allUpdateProgressRowsHidden = false;
 			}
 		}
 

@@ -32,20 +32,12 @@ namespace Bagge.Seti.BusinessEntities
 
 		[Property]
 		[Securizable("Securizable_Ticket_ExecutionDate", typeof(Ticket))]
-		public DateTime? ExecutionDate
+		public DateTime? ExecutionDateTime
 		{
 			get;
 			set;
 		}
 
-
-		[Property("CustomerETA")]
-		[Securizable("Securizable_Ticket_CustomerArrival", typeof(Ticket))]
-		public DateTime CustomerArrival
-		{
-			get;
-			set;
-		}
 
 		[Property]
 		[Securizable("Securizable_Ticket_EstimatedDuration", typeof(Ticket))]
@@ -109,6 +101,14 @@ namespace Bagge.Seti.BusinessEntities
 		[NotNullValidator(MessageTemplateResourceName = "Validators_Ticket_Status", MessageTemplateResourceType = typeof(Ticket))]
 		[BelongsTo("TicketStatusId")]
 		public TicketStatus Status
+		{
+			get;
+			set;
+		}
+
+		[Securizable("Securizable_Ticket_Notes", typeof(Ticket))]
+		[Property]
+		public string Notes
 		{
 			get;
 			set;

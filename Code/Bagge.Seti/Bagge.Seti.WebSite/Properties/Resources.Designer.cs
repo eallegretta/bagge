@@ -61,6 +61,15 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede actualizar el avance de un ticket cuyo estado es cerrado.
+        /// </summary>
+        internal static string CannotUpdateStatusClosedTicketErrorMessage {
+            get {
+                return ResourceManager.GetString("CannotUpdateStatusClosedTicketErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuración de Alertas.
         /// </summary>
         internal static string Securizable_AlertConfigurationEditor {

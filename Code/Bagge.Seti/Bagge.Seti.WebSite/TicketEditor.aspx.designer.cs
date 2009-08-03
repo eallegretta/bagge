@@ -41,6 +41,15 @@ namespace Bagge.Seti.WebSite {
         protected global::System.Web.UI.WebControls.Button _approve;
         
         /// <summary>
+        /// _close control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button _close;
+        
+        /// <summary>
         /// _dataSource control.
         /// </summary>
         /// <remarks>

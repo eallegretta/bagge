@@ -252,7 +252,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 				hql.AppendFormat(" where {0}", where);
 
 			if (!string.IsNullOrEmpty(orderBy))
-				hql.AppendFormat(" orderby {0} {1}", orderBy, (ascending) ? "asc" : "desc");
+				hql.AppendFormat(" order by {0} {1}", orderBy, (ascending) ? "asc" : "desc");
 
 
 

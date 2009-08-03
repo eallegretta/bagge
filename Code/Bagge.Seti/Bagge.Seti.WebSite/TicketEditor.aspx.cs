@@ -31,6 +31,142 @@ namespace Bagge.Seti.WebSite
 
 		}
 
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+
+			if(IsUpdateProgress)
+				_commands.AcceptClick += new EventHandler(_commands_AcceptClick);
+		}
+
+		public bool IsUpdateProgress
+		{
+			get
+			{
+				if (Mode != EditorAction.Update)
+					return false;
+
+				return Request.QueryString["UpdateProgress"].ToBoolean(false) || ((Employee)IoCContainer.User.Identity).IsTechnician;
+			}
+		}
+
+		public string EmailUrl
+		{
+			get
+			{
+				return Request.Url.Scheme + "://" + Request.Url.Authority + "/TicketEditor.aspx?Id=" + PrimaryKey + "&Action=View";
+			}
+		}
+
+		public bool ShowApproveButton
+		{
+			set
+			{
+				_approve.Visible = value;
+				
+			}
+		}
+
+		public bool ShowCloseButton
+		{
+			set
+			{
+				_close.Visible = value;
+			}
+		}
+
+		void _commands_AcceptClick(object sender, EventArgs e)
+		{
+			UpdateTicketProgress();
+			Response.Redirect(_commands.AcceptPostBackUrl);
+		}
+
+		private void UpdateTicketProgress()
+		{
+			var durationTextBox = Details.FindControl("_realDuration") as TextBox;
+			var notes = Details.FindControl("Notes_txt") as TextBox;
+
+			if (durationTextBox != null && notes != null)
+			{
+				decimal duration;
+
+				if (decimal.TryParse(durationTextBox.Text, out duration))
+				{
+					decimal? durationNullable = duration;
+					_presenter.UpdateProgress(durationNullable, notes.Text);
+				}
+				else
+					_presenter.UpdateProgress(null, notes.Text);
+			}
+		}
+
+		protected override void OnPreRender(EventArgs e)
+		{
+			base.OnPreRender(e);
+
+
+			if (IsUpdateProgress)
+				SetUpdateProgessView();
+		}
+
+		private void SetUpdateProgessView()
+		{
+
+			foreach (DataControlField field in ((DetailsView)Details).Fields)
+			{
+				if (field is IPropertySecureControl)
+				{
+					string propertyName = ((IPropertySecureControl)field).PropertyName;
+					if (propertyName != "RealDuration" && propertyName != "Notes")
+						((IPropertySecureControl)field).ReadOnly = true;
+				}
+			}
+		}
+
+
+		bool _isApprove = false;
+
+		protected override void OnInserting(Ticket instance)
+		{
+			SetCustomerArrivalTime(instance);
+			if (!_isApprove)
+				_presenter.Save(instance);
+			else
+				_presenter.ApproveTicket(instance);
+		}
+
+		private void SetCustomerArrivalTime(Ticket instance)
+		{
+			if (instance == null)
+				return;
+
+			var customerArrival = Details.FindControl("_customerArrival") as TextBox;
+			if (customerArrival != null)
+			{
+				if (instance.ExecutionDateTime != null)
+				{
+					var time = TimeSpan.Parse(customerArrival.Text);
+
+					instance.ExecutionDateTime = new DateTime(instance.ExecutionDateTime.Value.Year,
+						instance.ExecutionDateTime.Value.Month,
+						instance.ExecutionDateTime.Value.Day,
+						time.Hours,
+						time.Minutes,
+						0);
+				}
+
+			}
+		}
+
+		protected override void OnUpdating(Ticket instance)
+		{
+			SetCustomerArrivalTime(instance);
+			if (!_isApprove)
+				_presenter.Save(instance);
+			else
+				_presenter.ApproveTicket(instance);
+		}
+
 
 		protected override EditorPresenter<Ticket, int> Presenter
 		{
@@ -102,6 +238,9 @@ namespace Bagge.Seti.WebSite
 				}
 				else if (employees is BulletedList)
 				{
+					var ids = (from item in ((BulletedList)employees).Items.Cast<ListItem>()
+							   select item.Value.ToInt32());
+					return ids.ToArray();
 				}
 
 				return null;
@@ -178,5 +317,45 @@ namespace Bagge.Seti.WebSite
 		}
 
 		#endregion
+
+		protected void _employeesValidator_ServerValidate(object sender, ServerValidateEventArgs e)
+		{
+			//Only validate when Approve is clicked
+			if (!string.IsNullOrEmpty(Request.Form[_approve.UniqueID]))
+				e.IsValid = _presenter.CanApprove();
+			else if (Mode == EditorAction.Update && SelectedTicketStatus == TicketStatusEnum.Open)
+				e.IsValid = _presenter.CanApprove();
+			else
+				e.IsValid = true;
+		}
+
+		protected void _customerArrivalVal_ServerValidate(object sender, ServerValidateEventArgs e)
+		{
+			DateTime date;
+			e.IsValid = DateTime.TryParse(e.Value, out date);
+		}
+
+		protected void _approve_Click(object sender, EventArgs e)
+		{
+			Page.Validate();
+			if (Page.IsValid)
+			{
+				_isApprove = true;
+				if (Mode == EditorAction.Insert)
+					((DetailsView)Details).InsertItem(true);
+				else if (Mode == EditorAction.Update)
+					((DetailsView)Details).UpdateItem(true);
+				
+				Response.Redirect(_commands.AcceptPostBackUrl);
+			}
+		}
+
+		protected void _close_Click(object sender, EventArgs e)
+		{
+			UpdateTicketProgress();
+			_presenter.CloseTicket();
+			Response.Redirect(_commands.AcceptPostBackUrl);
+		}
+
 	}
 }

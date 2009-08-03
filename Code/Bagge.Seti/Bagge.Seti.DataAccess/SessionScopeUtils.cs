@@ -9,6 +9,11 @@ namespace Bagge.Seti.DataAccess
 {
 	public static class SessionScopeUtils
 	{
+		public static IDisposable NewSessionScope()
+		{
+			return new SessionScope();
+		}
+
 		public static void FlushSessionScope()
 		{
 			try

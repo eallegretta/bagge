@@ -121,22 +121,20 @@ namespace Bagge.Seti.WebSite.Controls
 		}
 		protected void _accept_Click(object sender, EventArgs e)
 		{
+			if (_onAccept != null)
+			{
+				OnAcceptClick(sender, e);
+				return;
+			}
 			Page.Validate();
 			if (Page.IsValid)
 			{
-				if (string.IsNullOrEmpty(DetailsViewID) && _onAccept != null)
-					OnAcceptClick(sender, e);
-				else
+				if (DetailsView != null)
 				{
-					if (DetailsView != null)
-					{
-						if (DetailsView.CurrentMode == DetailsViewMode.Insert)
-							DetailsView.InsertItem(true);
-						else if (DetailsView.CurrentMode == DetailsViewMode.Edit)
-							DetailsView.UpdateItem(true);
-					}
-					else if (_onAccept != null)
-						OnAcceptClick(sender, e);
+					if (DetailsView.CurrentMode == DetailsViewMode.Insert)
+						DetailsView.InsertItem(true);
+					else if (DetailsView.CurrentMode == DetailsViewMode.Edit)
+						DetailsView.UpdateItem(true);
 				}
 				Response.Redirect(AcceptPostBackUrl);
 			}

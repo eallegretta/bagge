@@ -393,4 +393,7 @@
   <data name="Constraint_NotEqual" xml:space="preserve">
     <value>Distinto a</value>
   </data>
+  <data name="Securizable_Ticket_Notes" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
 </root>

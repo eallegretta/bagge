@@ -133,6 +133,14 @@ namespace Bagge.Seti.BusinessEntities
 			}
 		}
 
+		public bool IsTechnician
+		{
+			get
+			{
+				return Category.Id == EmployeeCategory.TechnicianId;
+			}
+		}
+
 		public IList<Function> Functions
 		{
 			get

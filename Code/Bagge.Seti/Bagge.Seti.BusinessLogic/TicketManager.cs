@@ -7,6 +7,10 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.BusinessEntities.Security;
+using System.Net.Mail;
+using Bagge.Seti.BusinessLogic.Properties;
+using Bagge.Seti.DataAccess;
+using Bagge.Seti.BusinessEntities.Exceptions;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -28,6 +32,41 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ITicketManager Members
 
+		public string EmailUrl
+		{
+			get;
+			set;
+		}
+
+		private static void SendUpdatedTicketEmail(Ticket ticket, string url)
+		{
+
+			using (SessionScopeUtils.NewSessionScope())
+			{
+				SmtpClient client = new SmtpClient();
+				MailMessage msg = new MailMessage();
+
+
+				if (!string.IsNullOrEmpty(ticket.Creator.Email))
+					msg.To.Add(ticket.Creator.Email);
+				foreach (var employee in ticket.Employees)
+				{
+					if (!string.IsNullOrEmpty(employee.Email))
+						msg.To.Add(employee.Email);
+				}
+
+				msg.Subject = Resources.UpdateTicketEmailSubject;
+				msg.Body = string.Format(Resources.UpdateTicketEmailBody, ticket.Id, url);
+				msg.IsBodyHtml = true;
+
+
+				client.EnableSsl = Settings.Default.EnableMailSsl;
+
+				client.Send(msg);
+			}
+		}
+
+
 		[Securizable("Securizable_TicketManager_FindAllByStatus", typeof(TicketManager))]
 		public Ticket[] FindAllByStatus(TicketStatusEnum status)
 		{
@@ -36,6 +75,7 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 		#endregion
+
 
 
 		protected override void ReplaceFilters(IList<FilterPropertyValue> filter)
@@ -85,6 +125,18 @@ namespace Bagge.Seti.BusinessLogic
 			return Create(instance);
 		}
 
+		public void Close(int ticketId)
+		{
+			var ticket = Get(ticketId);
+
+			if (ticket.Customer.Subscription)
+				ticket.Status = _ticketStatusManager.Get(TicketStatusEnum.Closed);
+			else
+				ticket.Status = _ticketStatusManager.Get(TicketStatusEnum.PendingPayment);
+
+			base.Update(ticket);
+		}
+
 		public override int Create(Ticket instance)
 		{
 			CheckRequirements(instance);
@@ -120,6 +172,8 @@ namespace Bagge.Seti.BusinessLogic
 			AssignTicketToProducts(instance);
 
 			base.Update(instance);
+
+			SendUpdatedTicketEmail(instance, EmailUrl);
 		}
 
 		private static void AssignTicketToProducts(Ticket instance)
@@ -151,6 +205,27 @@ namespace Bagge.Seti.BusinessLogic
 		public Ticket[] FindAllByProvider(int providerId)
 		{
 			return GetDao<ITicketDao>().FindAllByProvider(providerId);
+		}
+
+		#endregion
+
+		#region ITicketManager Members
+
+
+		public void UpdateProgress(int ticketId, decimal realDuration, string notes)
+		{
+			var ticket = Get(ticketId);
+
+			if (ticket.Status == TicketStatusEnum.Closed)
+				throw new BusinessRuleException(Resources.CannotUpdateStatusClosedTicketErrorMessage);
+
+			if(realDuration > decimal.MinValue)
+				ticket.RealDuration = realDuration;
+			ticket.Notes = notes;
+
+			base.Update(ticket);
+
+			SendUpdatedTicketEmail(ticket, EmailUrl);
 		}
 
 		#endregion

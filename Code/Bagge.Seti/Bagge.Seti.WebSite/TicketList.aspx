@@ -56,9 +56,9 @@
 		<Columns>
 			<seti:SecureBoundField NullDisplayText="" DataField="Customer" 
 				meta:resourcekey="CustomerField" />
-			<seti:SecureBoundField NullDisplayText="" DataField="ExecutionDate" 
+			<seti:SecureBoundField NullDisplayText="" DataField="ExecutionDateTime" 
 				meta:resourcekey="ExecutionDateField" />
-			<seti:SecureBoundField NullDisplayText="" DataField="CustomerArrival" 
+			<seti:SecureBoundField NullDisplayText="" DataField="ExecutionDateTime" 
 				meta:resourcekey="CustomerArrivalField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="EstimatedDuration" 
 				meta:resourcekey="EstimatedDurationField" />
@@ -81,6 +81,13 @@
 				DataNavigateUrlFormatString="TicketEditor.aspx?Id={0}&Action=Edit"
 				Text="<%$ Resources:WebSite, IconEditImageTag %>"
 				meta:resourcekey="EditField" >
+				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
+			</seti:SecureHyperLinkField>
+			<seti:SecureHyperLinkField MethodName="UpdateProgress" ItemStyle-Width="20px" 
+				ItemStyle-HorizontalAlign="Center" DataNavigateUrlFields="Id" 
+				DataNavigateUrlFormatString="TicketEditor.aspx?Id={0}&Action=Edit&UpdateProgress=true"
+				Text="<%$ Resources:WebSite, IconUpdateProgressImageTag %>"
+				meta:resourcekey="UpdateProgressField" >
 				<ItemStyle HorizontalAlign="Center" Width="20px"></ItemStyle>
 			</seti:SecureHyperLinkField>
 		</Columns>

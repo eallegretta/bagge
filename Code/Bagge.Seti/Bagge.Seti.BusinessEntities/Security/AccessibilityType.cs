@@ -10,6 +10,20 @@ namespace Bagge.Seti.Security.BusinessEntities
 	[Serializable]
 	public class AccessibilityType : PrimaryKeyWithNameDomainObject<AccessibilityType, byte>, IEquatable<AccessibilityTypes>
 	{
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj is AccessibilityTypes)
+				return Equals((AccessibilityTypes)obj);
+	
+			return base.Equals(obj);
+		}
+
+
 		public bool Equals(AccessibilityTypes other)
 		{
 			return ((AccessibilityTypes)Id) == other;

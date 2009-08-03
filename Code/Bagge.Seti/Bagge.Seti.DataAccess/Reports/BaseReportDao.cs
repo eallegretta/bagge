@@ -25,6 +25,11 @@ namespace Bagge.Seti.DataAccess.Reports
 			return report;
 		}
 
+		protected static DateTime GetDateToWithMaxTime(DateTime dateTo)
+		{
+			return new DateTime(dateTo.Year, dateTo.Month, dateTo.Day, 23, 59, 59);
+		}
+
 		protected static SqlDateTime GetSqlDateTime(DateTime? dateTime, SqlDateTime defaultValue)
 		{
 			try

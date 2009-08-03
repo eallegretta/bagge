@@ -1,10 +1,21 @@
-﻿-- primero pasar todos los empleados desde 
--- la aplicacion que esten como Administrador o Secretaria --> a categoria Tecnico o Administrativo
--- sino va a dar Err el script
+﻿begin tran
 
-delete from dbo.EmployeeCategory
-where Name = 'Administrador'
+declare @administratorId int, @secretaryId int, @technicianId int, @administrativeId int
 
-delete from dbo.EmployeeCategory
-where Name = 'Secretaria'
+set @administratorId = (select Id from EmployeeCategory where Name = 'Administrador')
+set @secretaryId = (select Id from EmployeeCategory where Name = 'Secretaria')
+set @administrativeId = (select Id from EmployeeCategory where Name = 'Administrativo')
+set @technicianId = (select Id from EmployeeCategory where Name = 'Técnico')
 
+
+update	Employee 
+set		CategoryId = @administrativeId 
+where	CategoryId in (@administratorId, @secretaryId)
+
+
+delete from EmployeeCategory where Id in (@administratorId, @secretaryId)
+
+if @@error <> 0
+	rollback tran
+else
+	commit tran

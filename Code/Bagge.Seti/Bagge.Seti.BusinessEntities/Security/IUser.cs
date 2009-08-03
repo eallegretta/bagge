@@ -9,6 +9,7 @@ namespace Bagge.Seti.BusinessEntities.Security
 {
 	public interface IUser: IIdentity
 	{
+		int Id { get; set; }
 		string Username { get; set; }
 		string Password { get; set; }
 		IList<Role> Roles { get; set; }

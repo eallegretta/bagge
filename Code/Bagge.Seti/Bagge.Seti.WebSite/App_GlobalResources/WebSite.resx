@@ -156,6 +156,9 @@
   <data name="IconRecycleImagePath" xml:space="preserve">
     <value>~/App_Themes/Default/Images/iconRecycle.gif</value>
   </data>
+  <data name="IconUpdateProgressImageTag" xml:space="preserve">
+    <value>&lt;img src='App_Themes/Default/Images/iconFollowUp.gif' /&gt;</value>
+  </data>
   <data name="IconViewImageTag" xml:space="preserve">
     <value>&lt;img src='App_Themes/Default/Images/iconView.gif' /&gt;</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="RequiredInformationText" xml:space="preserve">
     <value>Los campos marcados con * son requeridos</value>
+  </data>
+  <data name="UpdateProgressField.Text" xml:space="preserve">
+    <value>Actualizar Avance</value>
   </data>
   <data name="YesText" xml:space="preserve">
     <value>Si</value>

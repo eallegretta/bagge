@@ -61,6 +61,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede actualizar el avance de un ticket cuyo estado es cerrado.
+        /// </summary>
+        internal static string CannotUpdateStatusClosedTicketErrorMessage {
+            get {
+                return ResourceManager.GetString("CannotUpdateStatusClosedTicketErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El CUIT ingresado ya existe..
         /// </summary>
         internal static string CUITNotUniqueErrorMessage {
@@ -696,6 +705,24 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         internal static string Securizable_TicketStatusManager_Get {
             get {
                 return ResourceManager.GetString("Securizable_TicketStatusManager_Get", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha actualizado un ticket al cual usted esta relacionado. Presione el siguiente link para ver mas información: &lt;br /&gt;&lt;br /&gt;&lt;a href=&quot;{1}&quot;&gt;{1}&lt;/a&gt;.
+        /// </summary>
+        internal static string UpdateTicketEmailBody {
+            get {
+                return ResourceManager.GetString("UpdateTicketEmailBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ticket Actualizado.
+        /// </summary>
+        internal static string UpdateTicketEmailSubject {
+            get {
+                return ResourceManager.GetString("UpdateTicketEmailSubject", resourceCulture);
             }
         }
     }

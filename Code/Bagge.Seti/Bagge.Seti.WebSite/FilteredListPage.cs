@@ -44,6 +44,8 @@ namespace Bagge.Seti.WebSite
 		{
 			deleted.Items.Add(new ListItem(Resources.WebSite.YesText, "true"));
 			deleted.Items.Add(new ListItem(Resources.WebSite.NoText, "false"));
+			// Select No by default
+			deleted.Items.FindByValue("false").Selected = true;
 		}
 
 

@@ -178,6 +178,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;img src=&apos;App_Themes/Default/Images/iconFollowUp.gif&apos; /&gt;.
+        /// </summary>
+        internal static string IconUpdateProgressImageTag {
+            get {
+                return ResourceManager.GetString("IconUpdateProgressImageTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;img src=&apos;App_Themes/Default/Images/iconView.gif&apos; /&gt;.
         /// </summary>
         internal static string IconViewImageTag {
@@ -219,6 +228,15 @@ namespace Resources {
         internal static string RequiredInformationText {
             get {
                 return ResourceManager.GetString("RequiredInformationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actualizar Avance.
+        /// </summary>
+        internal static string UpdateProgressField_Text {
+            get {
+                return ResourceManager.GetString("UpdateProgressField.Text", resourceCulture);
             }
         }
         

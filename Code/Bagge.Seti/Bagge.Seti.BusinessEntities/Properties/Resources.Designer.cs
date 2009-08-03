@@ -646,6 +646,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Observaciones.
+        /// </summary>
+        internal static string Securizable_Ticket_Notes {
+            get {
+                return ResourceManager.GetString("Securizable_Ticket_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Productos.
         /// </summary>
         internal static string Securizable_Ticket_Products {
