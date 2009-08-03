@@ -21,5 +21,12 @@ namespace Bagge.Seti.WebSite.Views
 		TicketStatusEnum SelectedTicketStatus { get; set;  }
 
 		ProductTicket[] Products { set; get; }
+
+		bool ShowApproveButton { set; }
+		bool ShowCloseButton { set; }
+
+		bool IsUpdateProgress { get; }
+
+		string EmailUrl { get; }
 	}
 }

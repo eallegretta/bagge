@@ -49,9 +49,12 @@ namespace Bagge.Seti.WebSite
 			if (!IsPostBack)
 				OnSelecting(e.Arguments.StartRowIndex, e.Arguments.MaximumRows, DefaultSortExpression);
 			else
-				OnSelecting(e.Arguments.StartRowIndex, e.Arguments.MaximumRows, e.Arguments.SortExpression);
-
-			
+			{
+				if(string.IsNullOrEmpty(e.Arguments.SortExpression))
+					OnSelecting(e.Arguments.StartRowIndex, e.Arguments.MaximumRows, DefaultSortExpression);
+				else
+					OnSelecting(e.Arguments.StartRowIndex, e.Arguments.MaximumRows, e.Arguments.SortExpression);
+			}
 		}
 
 		public bool IsDelete
@@ -110,7 +113,7 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				if (typeof(T).BaseType.Equals(typeof(PrimaryKeyWithNameDomainObject<T, PK>)))
+				if(typeof(PrimaryKeyWithNameDomainObject<T, PK>).IsAssignableFrom(typeof(T)))
 					return "Name";
 				return string.Empty;
 			}

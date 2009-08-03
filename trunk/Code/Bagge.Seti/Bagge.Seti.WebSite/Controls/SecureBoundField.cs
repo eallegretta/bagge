@@ -27,6 +27,19 @@ namespace Bagge.Seti.WebSite.Controls
 			set { ViewState["MaskPlaceHolder"] = value; }
 		}
 
+		public TextBoxMode TextMode
+		{
+			get
+			{
+				object mode = ViewState["TextMode"];
+				if (mode == null)
+					return TextBoxMode.SingleLine;
+				return (TextBoxMode)mode;
+			}
+			set { ViewState["TextMode"] = value; }
+
+		}
+
 		public SecureBoundField()
 		{
 			Validators = new List<BaseValidator>();
@@ -49,6 +62,37 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 		}
 
+		public int Rows
+		{
+			get
+			{
+				object rows = ViewState["Rows"];
+				if (rows == null)
+					return 4;
+				return (int)rows;
+			}
+			set
+			{
+				ViewState["Rows"] = value;
+			}
+
+		}
+
+		public int Columns
+		{
+			get
+			{
+				object columns = ViewState["Columns"];
+				if (columns == null)
+					return 80;
+				return (int)columns;
+			}
+			set
+			{
+				ViewState["Columns"] = value;
+			}
+
+		}
 
 		public int MaxLength
 		{
@@ -82,6 +126,12 @@ namespace Bagge.Seti.WebSite.Controls
 						if (!string.IsNullOrEmpty(Mask))
 							RegisterMask(cell, textBox);
 
+						textBox.TextMode = TextMode;
+						if (TextMode == TextBoxMode.MultiLine)
+						{
+							textBox.Rows = Rows;
+							textBox.Columns = Columns;
+						}
 						SetupMaxLength(textBox);
 						AddPropertyProxyValidator();
 						SetupValidators(cell, textBox);

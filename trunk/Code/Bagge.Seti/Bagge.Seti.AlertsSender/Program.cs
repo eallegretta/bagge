@@ -40,7 +40,7 @@ namespace Bagge.Seti.AlertsSender
 
             for (int index=0; index<tickets.Length; index++)
             {
-                if (tickets[index].ExecutionDate < DateTime.Now)
+                if (tickets[index].ExecutionDateTime < DateTime.Now)
                 {
                     Ticket ticket = new Ticket();
                     ticket = IoCContainer.TicketManager.Get(tickets[index].Id);
@@ -106,7 +106,7 @@ namespace Bagge.Seti.AlertsSender
             strMailTemplate.Replace("{CUSTOMER_NAME}", ticket.Customer.Name.ToString());
             strMailTemplate.Replace("{DESCRIPTION}", ticket.Description.ToString());
             strMailTemplate.Replace("{CREATION_DATE}", ticket.CreationDate.ToString());
-            strMailTemplate.Replace("{EXECUTION_DATE}", ticket.ExecutionDate.ToString());
+            strMailTemplate.Replace("{EXECUTION_DATE}", ticket.ExecutionDateTime.ToString());
             strMailTemplate.Replace("{ESTIMATED_DURATION}", ticket.EstimatedDuration.ToString());
             strMailTemplate.Replace("{STATUS}", ticket.Status.Description.ToString());
 

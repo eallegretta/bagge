@@ -11,5 +11,7 @@ namespace Bagge.Seti.WebSite.Views
 		TicketStatus[] Status { set; }
 		Employee[] Technicians { set; }
 		Customer[] Customers { set; }
+
+		bool IsTechnicianView { set; }
 	}
 }

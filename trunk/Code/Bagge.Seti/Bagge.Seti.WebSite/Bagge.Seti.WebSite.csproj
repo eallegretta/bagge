@@ -42,6 +42,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Eaa.Framework.Web.dll</HintPath>
     </Reference>
+    <Reference Include="ManagedFusion.Rewriter, Version=3.0.4.36189, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\ManagedFusion.Rewriter.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
@@ -112,6 +116,11 @@
     <Compile Include="AlertConfiguration.aspx.designer.cs">
       <DependentUpon>AlertConfiguration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Web.sitemap.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Web.sitemap.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\WebSite.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +135,7 @@
       <DependentUpon>Calendar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\DeleteUndeleteCommandField.cs" />
+    <Compile Include="Controls\FormUrlRewriteControlAdapter.cs" />
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Controls\MaskedTextBox.cs" />
     <Compile Include="Controls\ProductProviderSelectionGrid.ascx.cs">
@@ -235,6 +245,8 @@
     <Compile Include="Helpers\ObjectBuilder.cs" />
     <Compile Include="HttpModules\AuthenticationModule.cs" />
     <Compile Include="HttpModules\SessionScopeWebModule.cs" />
+    <Compile Include="HttpModules\UrlRewriteModule.cs" />
+    <Compile Include="LinkHelper.cs" />
     <Compile Include="List.Master.cs">
       <DependentUpon>List.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -734,6 +746,15 @@
     <Content Include="SecurityExceptionsList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\Web.sitemap.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Web.sitemap.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_Browsers\FormActionRewriter.browser" />
+    <EmbeddedResource Include="ManagedFusion.Rewriter.rules">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

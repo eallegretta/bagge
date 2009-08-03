@@ -43,5 +43,19 @@ namespace Bagge.Seti.DataAccess.Tests
 			Assert.IsNotNull(data.ReportData);
 			Assert.IsTrue(data.ReportData.Rows.Count >= 0);
 		}
+
+		[Test]
+		public void Test_should_get_products_consumed_report_with_dates()
+		{
+			var dao = new ProductsConsumedReportDao();
+			var filters = new List<FilterPropertyValue>();
+			filters.Add("DateFrom", new DateTime());
+			filters.Add("DateTo", new DateTime());
+			var data = dao.GetReport(filters);
+			Assert.AreEqual(new TimeSpan(23, 59, 59), ((DateTime)filters.GetFilter("DateTo").Value).TimeOfDay);
+			Assert.IsNotNull(data);
+			Assert.IsNotNull(data.ReportData);
+			Assert.IsTrue(data.ReportData.Rows.Count >= 0);
+		}
 	}
 }

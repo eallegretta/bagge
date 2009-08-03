@@ -12,5 +12,9 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 		Ticket[] FindAllByProduct(int productId);
 		Ticket[] FindAllByProvider(int providerId);
 		int CreateApproved(Ticket ticket);
+		void UpdateProgress(int ticketId, decimal realDuration, string notes);
+		void Close(int ticketId);
+
+		string EmailUrl { set; get; }
 	}
 }

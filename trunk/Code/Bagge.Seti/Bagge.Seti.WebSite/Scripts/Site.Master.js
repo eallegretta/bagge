@@ -34,10 +34,14 @@ function endRequestHandler() {
 
 
 function showLoadingAnimation() {
-	var content = $("#content");
+//	var content = $("body");
 	var loading = $("#loadingAnimation");
-	var top = (content.position().top + content.height() / 2) - (loading.height() / 2);
-	var left = (content.position().left + content.width() / 2) - (loading.width() / 2);
+//	var top = (content.position().top + content.height() / 2) - (loading.height() / 2);
+//	var left = (content.position().left + content.width() / 2) - (loading.width() / 2);
+
+	var dimensions = getWindowDimensions();
+	var top = (dimensions.height / 2) - (loading.height() / 2) + dimensions.scrollY;
+	var left = (dimensions.width / 2) - (loading.width() / 2) + dimensions.scrollX;
 
 	loading.css("left", left + "px");
 	loading.css("top", top + "px");
@@ -47,4 +51,39 @@ function showLoadingAnimation() {
 function hideLoadingAnimation() {
 	var loading = $("#loadingAnimation");
 	loading.css("display", "none");
+}
+
+
+function getWindowDimensions() {
+	var myWidth = 0, myHeight = 0;
+	if (typeof (window.innerWidth) == 'number') {
+		//Non-IE
+		myWidth = window.innerWidth;
+		myHeight = window.innerHeight;
+	} else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+		//IE 6+ in 'standards compliant mode'
+		myWidth = document.documentElement.clientWidth;
+		myHeight = document.documentElement.clientHeight;
+	} else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+		//IE 4 compatible
+		myWidth = document.body.clientWidth;
+		myHeight = document.body.clientHeight;
+	}
+
+	var scrOfX = 0, scrOfY = 0;
+	if (typeof (window.pageYOffset) == 'number') {
+		//Netscape compliant
+		scrOfY = window.pageYOffset;
+		scrOfX = window.pageXOffset;
+	} else if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
+		//DOM compliant
+		scrOfY = document.body.scrollTop;
+		scrOfX = document.body.scrollLeft;
+	} else if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
+		//IE6 standards compliant mode
+		scrOfY = document.documentElement.scrollTop;
+		scrOfX = document.documentElement.scrollLeft;
+	}
+
+	return { width: myWidth, height: myHeight, scrollX: scrOfX, scrollY: scrOfY };
 }

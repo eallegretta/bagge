@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{35261AD9-48F9-4405-8295-493C5EF8541D}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -83,6 +83,7 @@
     <Compile Include="ActiveRecord\TicketDao.cs" />
     <Compile Include="ActiveRecord\TicketEmployeeDao.cs" />
     <Compile Include="ActiveRecord\TicketStatusDao.cs" />
+    <Compile Include="ActiveRecord\Transaction.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Contracts\IAccessibilityDao.cs" />
     <Compile Include="Contracts\IAlertConfigurationDao.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Contracts\ITicketDao.cs" />
     <Compile Include="Contracts\ITicketStatusDao.cs" />
     <Compile Include="Contracts\IUpdateDao.cs" />
+    <Compile Include="ITransaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\BaseReportDao.cs" />
     <Compile Include="Reports\CustomersByTicketReportDao.cs" />

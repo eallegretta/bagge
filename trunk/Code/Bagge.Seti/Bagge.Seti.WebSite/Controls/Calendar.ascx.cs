@@ -51,7 +51,7 @@ namespace Bagge.Seti.WebSite.Controls
 		public bool IsRequired
 		{
 			get { return _calendarReqVal.Visible; }
-			set { _calendarReqVal.Visible = value; }
+			set { _calendarReqVal.Visible = _calendarReqVal.Enabled = value; }
 		}
 
 		public string CompareToCalendarId
@@ -62,6 +62,7 @@ namespace Bagge.Seti.WebSite.Controls
 			}
 			set
 			{
+				_calendarCompare.Visible = _calendarCompare.Enabled = !string.IsNullOrEmpty(value);
 				ViewState["CompareToCalendarId"] = value;
 			}
 		}

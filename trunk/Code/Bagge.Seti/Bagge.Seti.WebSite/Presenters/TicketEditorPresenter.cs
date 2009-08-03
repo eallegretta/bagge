@@ -8,6 +8,7 @@ using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.DesignByContract;
+using Bagge.Seti.BusinessEntities.Exceptions;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
@@ -39,9 +40,12 @@ namespace Bagge.Seti.WebSite.Presenters
 			get { return GetView<ITicketEditorView>(); }
 		}
 
+
+
 		protected override void OnInit(object sender, EventArgs e)
 		{
 			base.OnInit(sender, e);
+			GetManager<ITicketManager>().EmailUrl = View.EmailUrl;
 			View.DataBound += new EventHandler(View_DataBound);
 		}
 
@@ -63,7 +67,25 @@ namespace Bagge.Seti.WebSite.Presenters
 					{
 						if (SelectedEntity.Employees != null)
 							View.AssignedTechniciansIds = SelectedEntity.Employees.Select(emp => emp.Id).ToArray();
+
+						if (View.IsUpdateProgress)
+						{
+							if (SelectedEntity.Status == TicketStatusEnum.Closed)
+								throw new BusinessRuleException(Properties.Resources.CannotUpdateStatusClosedTicketErrorMessage);
+
+							View.ShowCloseButton = true;
+						}
+						else
+							View.ShowCloseButton = false;
+						View.ShowApproveButton = false;
+						
 					}
+					else
+					{
+						View.ShowApproveButton = true;
+						View.ShowCloseButton = false;
+					}
+
 
 					break;
 				case EditorAction.View:
@@ -79,7 +101,25 @@ namespace Bagge.Seti.WebSite.Presenters
 			}
 		}
 
-		public void Approve(Ticket entity)
+		public void CloseTicket()
+		{
+			GetManager<ITicketManager>().Close(View.PrimaryKey);
+		}
+
+		public bool CanApprove()
+		{
+			if (View.AssignedTechniciansIds == null)
+				return false;
+
+			return View.AssignedTechniciansIds.Length > 0;
+		}
+
+		public void UpdateProgress(decimal? duration, string notes)
+		{
+			GetManager<ITicketManager>().UpdateProgress(View.PrimaryKey, duration == null ? decimal.MinValue : duration.Value, notes);
+		}
+
+		public void ApproveTicket(Ticket entity)
 		{
 			Check.Require(View.Mode == EditorAction.Insert);
 
@@ -90,6 +130,8 @@ namespace Bagge.Seti.WebSite.Presenters
 				entity.Employees.Add(_employeeManager.Get(technicianId));
 
 			entity.Products = View.Products;
+
+			entity.Status = _ticketStatusManager.Get(TicketStatusEnum.Open);
 
 			entity.Creator = _employeeManager.GetByUsername(_loggedUser.Username);
 
