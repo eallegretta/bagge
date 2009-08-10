@@ -6,6 +6,7 @@ using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -21,7 +22,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ISimpleFindGetManager<T,PK> Members
 
-		[Securizable("Securizable_SimpleFindGetManager_FindAll", typeof(RandomPassword))]
+		[SecurizableCrud("Securizable_SimpleFindGetManager_FindAll", typeof(RandomPassword), FunctionAction.Retrieve)]
 		public T[] FindAll()
 		{
 			return _dao.FindAll();
@@ -31,7 +32,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region IGetManager<T,PK> Members
 
-		[Securizable("Securizable_SimpleFindGetManager_Get", typeof(RandomPassword))]
+		[SecurizableCrud("Securizable_SimpleFindGetManager_Get", typeof(RandomPassword), FunctionAction.Retrieve)]
 		public T Get(PK id)
 		{
 			return _dao.Get(id);

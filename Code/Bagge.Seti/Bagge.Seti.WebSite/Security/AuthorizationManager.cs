@@ -21,9 +21,9 @@ namespace Bagge.Seti.WebSite.Security
 			if (user == null)
 				return false;
 
-			if (type.IsDefined(typeof(SecurizableWebAttribute), true))
+			if (type.IsDefined(typeof(SecurizableCrudAttribute), true))
 			{
-				var attr = type.GetCustomAttributes(typeof(SecurizableWebAttribute), true);
+				var attr = type.GetCustomAttributes(typeof(SecurizableCrudAttribute), true);
 
 
 				FunctionAction action = FunctionAction.NotSet;
@@ -52,7 +52,9 @@ namespace Bagge.Seti.WebSite.Security
 
 				if (action != FunctionAction.NotSet)
 				{
-					var function = new Function { FullQualifiedName = type.FullName, Action = Function.ActionToChar(action) };
+					var function = IoCContainer.FunctionManager.Get(type.FullName, action);
+
+					IoCContainer.Storage.SetData(typeof(Function), function);
 
 					return IoCContainer.FunctionManager.UserHasAccessToFunction(user, function);
 				}

@@ -20,9 +20,9 @@ namespace Bagge.Seti.BusinessLogic.Tests
 			var assembly = Assembly.LoadFile(Environment.CurrentDirectory + "\\Bagge.Seti.WebSite.dll");
 			foreach (var type in assembly.GetTypes())
 			{
-				if (type.IsDefined(typeof(SecurizableWebAttribute), true))
+				if (type.IsDefined(typeof(SecurizableCrudAttribute), true))
 				{
-					var attr = type.GetCustomAttributes(typeof(SecurizableWebAttribute), true)[0] as SecurizableWebAttribute;
+					var attr = type.GetCustomAttributes(typeof(SecurizableCrudAttribute), true)[0] as SecurizableCrudAttribute;
 					Debug.WriteLine(string.Format("{0} - {1} - {2}",
 						type.FullName, attr.Name, attr.Action));
 				}

@@ -15,7 +15,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableWeb("Securizable_AlertConfigurationEditor", typeof(AlertConfigurationEditor), FunctionAction.Update)]
+	[SecurizableCrud("Securizable_AlertConfigurationEditor", typeof(AlertConfigurationEditor), FunctionAction.Update)]
 	public partial class AlertConfigurationEditor : Page, IEditorView
 	{
 

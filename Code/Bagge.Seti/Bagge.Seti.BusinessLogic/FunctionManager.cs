@@ -37,29 +37,35 @@ namespace Bagge.Seti.BusinessLogic
 
 		public bool UserHasAccessToFunction(IUser user, Function function)
 		{
-			try
-			{
-				Check.Require(user != null, Resources.InstanceCannotBeNull);
+			Check.Require(user != null, Resources.InstanceCannotBeNull);
 
-				if (user.IsSuperAdministrator)
-					return true;
+			if (user.IsSuperAdministrator)
+				return true;
 
-				var filters = new List<FilterPropertyValue>();
-				filters.Add("FullQualifiedName", function.FullQualifiedName);
-				filters.Add("Action", function.Action);
 
-				function = _dao.FindAllByProperties(filters, null, null)[0];
+			function = Get(function.FullQualifiedName, Function.CharToAction(function.Action));
 
-				if (user.Functions.Contains(function))
-				{
-					return true;
-				}
+			if (function == null)
 				return false;
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-			}
+
+			if (user.Functions.Contains(function))
+				return true;
+
+			return false;
+		}
+
+		public Function Get(string fullQualifiedName, FunctionAction action)
+		{
+			var filters = new List<FilterPropertyValue>();
+			filters.Add("FullQualifiedName", fullQualifiedName);
+			filters.Add("Action", Function.ActionToChar(action));
+
+			var functions = _dao.FindAllByProperties(filters, null, null);
+
+			if (functions.Length == 1)
+				return functions[0];
+
+			return null;
 		}
 	}
 }

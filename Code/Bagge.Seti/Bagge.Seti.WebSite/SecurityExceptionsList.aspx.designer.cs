@@ -14,6 +14,51 @@ namespace Bagge.Seti.WebSite {
     public partial class SecurityExceptionsList {
         
         /// <summary>
+        /// _roleLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _roleLiteral;
+        
+        /// <summary>
+        /// _role control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList _role;
+        
+        /// <summary>
+        /// _functionHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder _functionHolder;
+        
+        /// <summary>
+        /// _functionLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _functionLiteral;
+        
+        /// <summary>
+        /// _function control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList _function;
+        
+        /// <summary>
         /// _securityExceptions control.
         /// </summary>
         /// <remarks>

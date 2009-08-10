@@ -11,6 +11,7 @@ using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.DataAccess;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -25,7 +26,7 @@ namespace Bagge.Seti.BusinessLogic
 			_ticketManager = ticketManager;
 		}
 
-		[Securizable("Securizable_CustomerManager_GetByCuit", typeof(CustomerManager))]
+		[SecurizableCrud("Securizable_CustomerManager_GetByCuit", typeof(CustomerManager), FunctionAction.Retrieve)]
 		public virtual Customer GetByCuit(string cuit)
 		{
 			if (string.IsNullOrEmpty(cuit))

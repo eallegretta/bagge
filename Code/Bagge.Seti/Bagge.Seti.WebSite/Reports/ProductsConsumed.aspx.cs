@@ -12,7 +12,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableWeb("Securizable_ProductsConsumed", typeof(ProductsConsumed), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_ProductsConsumed", typeof(ProductsConsumed), FunctionAction.Retrieve)]
     public partial class ProductsConsumed : FilteredReportPage<ProductsConsumedReport>
     {
 

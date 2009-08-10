@@ -9,7 +9,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableWeb("Securizable_Default", typeof(_Default), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_Default", typeof(_Default), FunctionAction.Retrieve)]
 	public partial class _Default : Page
 	{
 		protected void Page_Load(object sender, EventArgs e)

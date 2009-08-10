@@ -17,7 +17,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableWeb("Securizable_CustomersWithPendingPayment", typeof(CustomersWithPendingPayment), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_CustomersWithPendingPayment", typeof(CustomersWithPendingPayment), FunctionAction.Retrieve)]
     public partial class CustomersWithPendingPayment : ReportPage<CustomersWithPendingPaymentReport>
     {
     }

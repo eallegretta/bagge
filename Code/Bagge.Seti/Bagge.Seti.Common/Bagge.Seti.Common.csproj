@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F6D1CEE2-50AC-4415-B6C5-0C16F9C5155F}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAuthenticator.cs" />
+    <Compile Include="IStorage.cs" />
     <Compile Include="Interceptors\AuditInterceptor.cs" />
     <Compile Include="Interceptors\SecurityInterceptor.cs" />
     <Compile Include="Interceptors\ValidationInterceptor.cs" />

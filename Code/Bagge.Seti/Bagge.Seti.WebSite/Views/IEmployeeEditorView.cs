@@ -7,10 +7,8 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Views
 {
-	public interface IEmployeeEditorView: IEditorView<int>
+	public interface IEmployeeEditorView: IEditProfileView
 	{
-		string Password { get; }
-		string ConfirmPassword { get; }
 		EmployeeCategory[] Categories { set; }
 		int SelectedCategoryId { get; set; }
 		Role[] AvailableRoles { set; }

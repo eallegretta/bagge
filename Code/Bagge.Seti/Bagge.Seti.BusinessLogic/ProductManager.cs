@@ -10,6 +10,7 @@ using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.DataAccess;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -27,7 +28,7 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 
-		[Securizable("Securizable_ProductManager_GetByName", typeof(ProductManager))]
+		[SecurizableCrud("Securizable_ProductManager_GetByName", typeof(ProductManager), FunctionAction.Retrieve)]
 		public Product GetByName(string name)
 		{   
 			Check.Require(!string.IsNullOrEmpty(name));

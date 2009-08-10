@@ -116,6 +116,11 @@ namespace Bagge.Seti.Common
 		{
 			get { return GetObject<IValidationEngine>("ValidationEngine"); }
 		}
+
+		public static IStorage Storage
+		{
+			get { return GetObject<IStorage>("Storage"); }
+		}
 		
 	}
 }
