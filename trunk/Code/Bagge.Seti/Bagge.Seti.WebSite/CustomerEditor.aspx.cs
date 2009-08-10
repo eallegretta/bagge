@@ -14,7 +14,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableWeb("Securizable_CustomerEditor", typeof(CustomerEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
+	[SecurizableCrud("Securizable_CustomerEditor", typeof(CustomerEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
 	public partial class CustomerEditor : EditorPage<Customer, int>, ICustomerEditorView 
 	{
 		CustomerEditorPresenter _presenter;

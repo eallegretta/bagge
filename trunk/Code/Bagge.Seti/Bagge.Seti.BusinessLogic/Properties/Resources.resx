@@ -339,4 +339,16 @@
   <data name="UpdateTicketEmailSubject" xml:space="preserve">
     <value>Ticket Actualizado</value>
   </data>
+  <data name="Securizable_EmployeeManager_UpdateProfile" xml:space="preserve">
+    <value>Actualizar Perfil</value>
+  </data>
+  <data name="Securizable_TicketManager_Close" xml:space="preserve">
+    <value>Cerrar Ticket</value>
+  </data>
+  <data name="Securizable_TicketManager_CreateApproved" xml:space="preserve">
+    <value>Crear Ticket Aprobado</value>
+  </data>
+  <data name="Securizable_TicketManager_UpdateProgress" xml:space="preserve">
+    <value>Actualizar Progreso de Ticket</value>
+  </data>
 </root>

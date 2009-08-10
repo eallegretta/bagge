@@ -13,7 +13,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableWeb("Securizable_EmployeeEditor", typeof(EmployeeEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
+	[SecurizableCrud("Securizable_EmployeeEditor", typeof(EmployeeEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
 	public partial class EmployeeEditor : EditorPage<Employee, int>, IEmployeeEditorView
 	{
 		EmployeeEditorPresenter _presenter;

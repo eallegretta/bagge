@@ -12,7 +12,7 @@ using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableWeb("Securizable_RoleEditor", typeof(RoleEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
+	[SecurizableCrud("Securizable_RoleEditor", typeof(RoleEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
 	public partial class RoleEditor : EditorPage<Role, int>, IRoleEditorView
 	{
 		RoleEditorPresenter _presenter;

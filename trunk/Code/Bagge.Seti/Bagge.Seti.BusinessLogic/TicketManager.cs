@@ -11,6 +11,7 @@ using System.Net.Mail;
 using Bagge.Seti.BusinessLogic.Properties;
 using Bagge.Seti.DataAccess;
 using Bagge.Seti.BusinessEntities.Exceptions;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -67,7 +68,7 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 
-		[Securizable("Securizable_TicketManager_FindAllByStatus", typeof(TicketManager))]
+		[SecurizableCrud("Securizable_TicketManager_FindAllByStatus", typeof(TicketManager), FunctionAction.Retrieve)]
 		public Ticket[] FindAllByStatus(TicketStatusEnum status)
 		{
 			return FindAllActiveByProperty("Status",
@@ -118,6 +119,7 @@ namespace Bagge.Seti.BusinessLogic
 			}
 		}
 
+		[SecurizableCrud("Securizable_TicketManager_CreateApproved", typeof(TicketManager), FunctionAction.Create)]
 		public int CreateApproved(Ticket instance)
 		{
 			instance.Status = _ticketStatusManager.Get(TicketStatusEnum.Open);
@@ -125,6 +127,7 @@ namespace Bagge.Seti.BusinessLogic
 			return Create(instance);
 		}
 
+		[SecurizableCrud("Securizable_TicketManager_Close", typeof(TicketManager), FunctionAction.Update)]
 		public void Close(int ticketId)
 		{
 			var ticket = Get(ticketId);
@@ -211,7 +214,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ITicketManager Members
 
-
+		[SecurizableCrud("Securizable_TicketManager_UpdateProgress", typeof(TicketManager), FunctionAction.Update)]
 		public void UpdateProgress(int ticketId, decimal realDuration, string notes)
 		{
 			var ticket = Get(ticketId);

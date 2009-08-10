@@ -17,7 +17,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableWeb("Securizable_ProductsByProvider", typeof(ProductsByProvider), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_ProductsByProvider", typeof(ProductsByProvider), FunctionAction.Retrieve)]
     public partial class ProductsByProvider : ReportPage<ProductsByProviderReport>
     {
     }

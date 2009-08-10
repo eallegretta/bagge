@@ -1,9 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/List.Master" AutoEventWireup="true" CodeBehind="SecurityExceptionsList.aspx.cs" Inherits="Bagge.Seti.WebSite.SecurityExceptionsList" %>
 <%@ Register TagPrefix="seti" TagName="ListCommands" Src="~/Controls/ListCommands.ascx" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
-	<seti:SecureGridView ID="_securityExceptions" runat="server" DataKeyNames="Id" 
-		DataSourceID="_dataSource"
-		meta:resourcekey="Grid">
+	<asp:Literal ID="_roleLiteral" runat="server" meta:resourcekey="RoleLiteral"></asp:Literal>
+	<asp:DropDownList ID="_role" runat="server" DataValueField="Id" DataTextField="Name" AppendDataBoundItems="true" AutoPostBack="true">
+		<asp:ListItem Value="" meta:resourcekey="SelectRoleListItem"></asp:ListItem>
+	</asp:DropDownList>
+	<asp:PlaceHolder ID="_functionHolder" runat="server" Visible="false">
+		<asp:Literal ID="_functionLiteral" runat="server" meta:resourcekey="FunctionLiteral"></asp:Literal>
+		<asp:DropDownList ID="_function" runat="server" DataValueField="Id" DataTextField="Name" AppendDataBoundItems="true" AutoPostBack="true"></asp:DropDownList>
+	</asp:PlaceHolder>
+
+	<seti:SecureGridView ID="_securityExceptions" runat="server" DataKeyNames="Id" DataSourceID="_dataSource" meta:resourcekey="Grid">
 		<Columns>
 			<asp:TemplateField meta:resourcekey="RoleField">
 				<ItemTemplate>

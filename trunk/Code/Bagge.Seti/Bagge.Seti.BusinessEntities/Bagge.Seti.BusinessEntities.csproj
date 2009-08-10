@@ -117,6 +117,7 @@
     <Compile Include="Security\Constraints\InequalityConstraint.cs" />
     <Compile Include="Security\Constraints\LowerThanConstraint.cs" />
     <Compile Include="Security\Constraints\NotEqualsConstraint.cs" />
+    <Compile Include="Security\SecureEntity.cs" />
     <Compile Include="Security\SecurityException.cs" />
     <Compile Include="Security\Function.cs" />
     <Compile Include="Security\IAuditable.cs" />
@@ -124,7 +125,7 @@
     <Compile Include="Security\IUser.cs" />
     <Compile Include="Security\Role.cs" />
     <Compile Include="Security\SecurizableAttribute.cs" />
-    <Compile Include="Security\SecurizableWebAttribute.cs" />
+    <Compile Include="Security\SecurizableCrudAttribute.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketEmployee.cs" />
     <Compile Include="TicketStatus.cs" />

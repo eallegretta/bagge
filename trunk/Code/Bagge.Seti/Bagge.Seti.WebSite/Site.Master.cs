@@ -33,21 +33,34 @@ namespace Bagge.Seti.WebSite
 			if (Page is IEditorView)
 			{
 				string title = string.Empty;
-				switch (((IEditorView)Page).Mode)
+				if (this._siteMapDataSource.Provider.CurrentNode != null)
 				{
-					case EditorAction.Update:
-						title = this._siteMapDataSource.Provider.CurrentNode["editTitle"];
-						break;
-					case EditorAction.View:
-						title = this._siteMapDataSource.Provider.CurrentNode["viewTitle"];
-						break;
+					switch (((IEditorView)Page).Mode)
+					{
+						case EditorAction.Update:
+							title = this._siteMapDataSource.Provider.CurrentNode["editTitle"];
+							break;
+						case EditorAction.View:
+							title = this._siteMapDataSource.Provider.CurrentNode["viewTitle"];
+							break;
+					}
 				}
+				else
+					title = Page.Title;
 
 				if (!string.IsNullOrEmpty(title))
-					((Literal)this._siteMapPath.Controls[_siteMapPath.Controls.Count - 1].Controls[0]).Text = title;
+				{
+					if (_siteMapPath.Controls.Count == 0)
+					{
+						var label = new Label();
+						label.Text = title;
+						_siteMapPath.CurrentNodeStyle.CopyTo(label.ControlStyle);
+						_siteMapPath.Controls.Add(label);
+					}
+					else
+						((Literal)this._siteMapPath.Controls[_siteMapPath.Controls.Count - 1].Controls[0]).Text = title;
+				}
 			}
-
-			
 		}
 
 

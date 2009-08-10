@@ -14,6 +14,7 @@ using System.Net.Mail;
 using System.Configuration;
 using Bagge.Seti.DataAccess;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -55,7 +56,7 @@ namespace Bagge.Seti.BusinessLogic
 			
 		}
 
-		[Securizable("Securizable_EmployeeManager_GetByUsername", typeof(EmployeeManager))]
+		[SecurizableCrud("Securizable_EmployeeManager_GetByUsername", typeof(EmployeeManager), FunctionAction.Retrieve)]
 		public Employee GetByUsername(string username)
 		{
 			return GetByStringProperty("Username", username, Resources.EmployeeByUsernameNotFoundErrorMessage);
@@ -132,7 +133,7 @@ namespace Bagge.Seti.BusinessLogic
 				string.Format(Resources.RecoverPasswordEmailBodyNewPassword, employee.Fullname, password));
 		}
 
-		[Securizable("Securizable_EmployeeManager_GetByEmail", typeof(EmployeeManager))]
+		[SecurizableCrud("Securizable_EmployeeManager_GetByEmail", typeof(EmployeeManager), FunctionAction.Retrieve)]
 		public Employee GetByEmail(string email)
 		{
 			return GetByStringProperty("Email", email, Resources.EmployeeByEmailNotFoundErrorMessage);
@@ -173,6 +174,23 @@ namespace Bagge.Seti.BusinessLogic
 			instance.Password = instance.Password.ToMD5();
 
 			return base.Create(instance);
+		}
+
+		[SecurizableCrud("Securizable_EmployeeManager_UpdateProfile", typeof(EmployeeManager), FunctionAction.Update)]
+		public virtual void UpdateProfile(Employee instance)
+		{
+			Check.Require(instance != null);
+
+			var employeeFromDb = Get(instance.Id);
+			employeeFromDb.Firstname = instance.Firstname;
+			employeeFromDb.Lastname = instance.Lastname;
+			employeeFromDb.Email = instance.Email;
+			employeeFromDb.Phone = instance.Phone;
+			employeeFromDb.EmergencyPhone = instance.EmergencyPhone;
+			if(!string.IsNullOrEmpty(instance.Password))
+				employeeFromDb.Password = instance.Password.ToMD5();
+
+			base.Update(employeeFromDb);
 		}
 
 		public override void Update(Employee instance)
@@ -222,7 +240,7 @@ namespace Bagge.Seti.BusinessLogic
 			}
 		}
 
-		[Securizable("Securizable_EmployeeManager_FindAllActiveTechnicians", typeof(EmployeeManager))]
+		[SecurizableCrud("Securizable_EmployeeManager_FindAllActiveTechnicians", typeof(EmployeeManager), FunctionAction.Retrieve)]
 		public Employee[] FindAllActiveTechnicians()
 		{
 			var category = _employeeCategoryDao.Get(EmployeeCategory.TechnicianId);

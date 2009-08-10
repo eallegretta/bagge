@@ -12,7 +12,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableWeb("Securizable_CustomersByTicket", typeof(CustomersByTicket), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_CustomersByTicket", typeof(CustomersByTicket), FunctionAction.Retrieve)]
 	public partial class CustomersByTicket : FilteredReportPage<CustomersByTicketReport>
 	{
 

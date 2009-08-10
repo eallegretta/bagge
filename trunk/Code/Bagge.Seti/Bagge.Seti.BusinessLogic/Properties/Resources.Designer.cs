@@ -412,6 +412,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Actualizar Perfil.
+        /// </summary>
+        internal static string Securizable_EmployeeManager_UpdateProfile {
+            get {
+                return ResourceManager.GetString("Securizable_EmployeeManager_UpdateProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Funciones.
         /// </summary>
         internal static string Securizable_FunctionManager {
@@ -655,6 +664,24 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cerrar Ticket.
+        /// </summary>
+        internal static string Securizable_TicketManager_Close {
+            get {
+                return ResourceManager.GetString("Securizable_TicketManager_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crear Ticket Aprobado.
+        /// </summary>
+        internal static string Securizable_TicketManager_CreateApproved {
+            get {
+                return ResourceManager.GetString("Securizable_TicketManager_CreateApproved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Buscar Todos por Producto.
         /// </summary>
         internal static string Securizable_TicketManager_FindAllByProduct {
@@ -678,6 +705,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         internal static string Securizable_TicketManager_FindAllByStatus {
             get {
                 return ResourceManager.GetString("Securizable_TicketManager_FindAllByStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actualizar Progreso de Ticket.
+        /// </summary>
+        internal static string Securizable_TicketManager_UpdateProgress {
+            get {
+                return ResourceManager.GetString("Securizable_TicketManager_UpdateProgress", resourceCulture);
             }
         }
         

@@ -117,13 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EditProfileLink.Text" xml:space="preserve">
-    <value>Editar Perfil</value>
+  <data name="ConfirmPasswordCompareValidator.ErrorMessage" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
   </data>
-  <data name="LoadingAnimation.Text" xml:space="preserve">
-    <value>Cargando</value>
+  <data name="ConfirmPasswordField.HeaderText" xml:space="preserve">
+    <value>Validar Contraseña</value>
   </data>
-  <data name="LogoutLink.Text" xml:space="preserve">
-    <value>Desconectarse</value>
+  <data name="ConfirmPasswordRequiredValidator.ErrorMessage" xml:space="preserve">
+    <value>La confirmación de la contraseña es requerida</value>
+  </data>
+  <data name="EmailField.HeaderText" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="EmergencyPhoneField.HeaderText" xml:space="preserve">
+    <value>Teléfono de Emergencia</value>
+  </data>
+  <data name="EmptyPasswordLabel.Text" xml:space="preserve">
+    <value>Deje la contraseña en blanco si no desea modificarla</value>
+  </data>
+  <data name="FirstnameField.HeaderText" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="LastnameField.HeaderText" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Page.Title" xml:space="preserve">
+    <value>Seti &gt; Editar Perfile</value>
+  </data>
+  <data name="PasswordField.HeaderText" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="PasswordRequiredValidator.ErrorMessage" xml:space="preserve">
+    <value>La contraseña es requerida</value>
+  </data>
+  <data name="PhoneField.HeaderText" xml:space="preserve">
+    <value>Teléfono</value>
   </data>
 </root>

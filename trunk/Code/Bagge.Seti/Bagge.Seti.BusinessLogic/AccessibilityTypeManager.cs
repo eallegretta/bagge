@@ -30,7 +30,9 @@ namespace Bagge.Seti.BusinessLogic
 
 		public AccessibilityTypes GetUserAccessibilityForProperty(IUser user, Type targetObject, string propertyName)
 		{
-			if(user.IsSuperAdministrator)
+			return AccessibilityTypes.Edit;
+
+			/*if(user.IsSuperAdministrator)
 				return AccessibilityTypes.Edit;
 
 
@@ -58,31 +60,33 @@ namespace Bagge.Seti.BusinessLogic
 			if (canView)
 				return AccessibilityTypes.View;
 
-			return AccessibilityTypes.None;
+			return AccessibilityTypes.None;*/
 		}
 
 		public AccessibilityTypes GetUserAccessibilityForMethod(IUser user, Type targetObject, string methodName)
 		{
-			if (user.IsSuperAdministrator)
-				return AccessibilityTypes.Execute;
+			return AccessibilityTypes.Execute;
 
-			var filteredExceptions = (from exception in user.SecurityExceptions
-									 where exception.MemberType == 'M' &&
-											exception.MemberName == methodName &&
-											exception.TargetType.Equals(targetObject)
-									 select exception).ToArray();
+			//if (user.IsSuperAdministrator)
+			//    return AccessibilityTypes.Execute;
 
-			//If no functions, return default behavior
-			if (filteredExceptions.Length == 0)
-				return Settings.Default.DefaultMethodAccessibilityType;
+			//var filteredExceptions = (from exception in user.SecurityExceptions
+			//                         where exception.MemberType == 'M' &&
+			//                                exception.MemberName == methodName &&
+			//                                exception.TargetType.Equals(targetObject)
+			//                         select exception).ToArray();
 
-			bool canExecute = (from exception in filteredExceptions
-							   where exception.Accessibility.Equals(AccessibilityTypes.Execute)
-							   select exception).Count() > 0;
-			if (canExecute)
-				return AccessibilityTypes.Execute;
+			////If no functions, return default behavior
+			//if (filteredExceptions.Length == 0)
+			//    return Settings.Default.DefaultMethodAccessibilityType;
 
-			return AccessibilityTypes.None;
+			//bool canExecute = (from exception in filteredExceptions
+			//                   where exception.Accessibility.Equals(AccessibilityTypes.Execute)
+			//                   select exception).Count() > 0;
+			//if (canExecute)
+			//    return AccessibilityTypes.Execute;
+
+			//return AccessibilityTypes.None;
 		}
 
 		#endregion

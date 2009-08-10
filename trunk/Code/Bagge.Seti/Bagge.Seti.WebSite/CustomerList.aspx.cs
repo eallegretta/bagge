@@ -16,7 +16,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableWeb("Securizable_CustomerList", typeof(CustomerList), FunctionAction.Retrieve | FunctionAction.Delete)]
+	[SecurizableCrud("Securizable_CustomerList", typeof(CustomerList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class CustomerList : FilteredListPage<Customer, int>
 	{
 		ListPresenter<Customer, int> _presenter;

@@ -10,32 +10,32 @@ namespace Bagge.Seti.WebSite.Model
 	{
 		
 
-		public SecurityExceptionModel(SecurityException securityException)
-		{
-			SecurityException = securityException;
+		//public SecurityExceptionModel(SecurityException securityException)
+		//{
+		//    SecurityException = securityException;
 
-			HumanReadableClassName = SecurizableAttribute.GetName(SecurityException.TargetType);
-			HumanReadableMemberName = SecurizableAttribute.GetName(SecurityException.TargetType.GetMember(SecurityException.MemberName));
-		}
+		//    HumanReadableClassName = SecurizableAttribute.GetName(SecurityException.TargetType);
+		//    HumanReadableMemberName = SecurizableAttribute.GetName(SecurityException.TargetType.GetMember(SecurityException.MemberName));
+		//}
 
-		public SecurityException SecurityException
-		{ 
-			get; 
-			private set; 
-		}
+		//public SecurityException SecurityException
+		//{ 
+		//    get; 
+		//    private set; 
+		//}
 
-		public string HumanReadableClassName
-		{
-			get;
-			private set;
+		//public string HumanReadableClassName
+		//{
+		//    get;
+		//    private set;
 			
-		}
+		//}
 
-		public string HumanReadableMemberName
-		{
-			get;
-			private set;
-		}
+		//public string HumanReadableMemberName
+		//{
+		//    get;
+		//    private set;
+		//}
 
 	}
 }

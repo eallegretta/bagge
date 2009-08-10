@@ -17,10 +17,10 @@ Begin DataProject = "Database"
       Script = "012 - Create table EntitySecurity.sql"
       Script = "013 - Alter table SecurityException.sql"
       Script = "014 - Alter table Ticket.sql"
+      Script = "015 - Security Framework.sql"
    End
    Begin Folder = "Create Scripts"
       Script = "000 - Tables Initial Setup.sql"
-      Script = "C__CODE_BAGGE_CODE_BAGGE.SETI_BAGGE.SETI.WEBSITE_APP_DATA_SETI.MDF.dbo.Function.SQL"
    End
    Begin DBRefFolder = "Database References"
       Begin DBRefNode = "SETI.mdf"

@@ -14,7 +14,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableWeb("Securizable_TechniciansByTicket", typeof(TechniciansByTicket), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_TechniciansByTicket", typeof(TechniciansByTicket), FunctionAction.Retrieve)]
     public partial class TechniciansByTicket : FilteredReportPage<TechniciansByTicketReport>
     {
         protected override Button FilterButton

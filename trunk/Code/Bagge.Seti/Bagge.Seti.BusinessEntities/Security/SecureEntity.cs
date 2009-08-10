@@ -9,43 +9,35 @@ using System.Reflection;
 namespace Bagge.Seti.BusinessEntities.Security
 {
 	[ActiveRecord]
-	public class SecurityException: PrimaryKeyDomainObject<SecurityException, int>
+	public class SecureEntity: PrimaryKeyDomainObject<SecureEntity, int>
 	{
-		
-		[Property]
-		public char ConstraintType
+		[BelongsTo("FunctionId")]
+		public Function Function
 		{
 			get;
 			set;
 		}
 
 		[Property]
-		public string Value
-		{
-			get;
-			set;
-		}
-
-		[BelongsTo("RoleId")]
-		public Role Role
-		{
-			get;
-			set;
-		}
-
-		[BelongsTo("SecureEntityId")]
-		public SecureEntity SecureEntity
+		public string AssemblyName
 		{
 			get;
 			set;
 		}
 
 		[Property]
-		public string PropertyName
+		public string ClassFullQualifiedName
 		{
 			get;
 			set;
 		}
 
+		public Type TargetType
+		{
+			get
+			{
+				return Type.GetType(Assembly.CreateQualifiedName(AssemblyName, ClassFullQualifiedName));
+			}
+		}
 	}
 }

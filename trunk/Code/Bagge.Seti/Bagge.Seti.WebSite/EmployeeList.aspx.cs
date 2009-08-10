@@ -13,7 +13,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableWeb("Securizable_EmployeeList", typeof(EmployeeList), FunctionAction.Retrieve | FunctionAction.Delete)]
+	[SecurizableCrud("Securizable_EmployeeList", typeof(EmployeeList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class EmployeeList : FilteredListPage<Employee, int>, IEmployeeListView
 	{
 		EmployeeListPresenter _presenter;

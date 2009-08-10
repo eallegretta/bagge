@@ -9,6 +9,7 @@ using Bagge.Seti.DataAccess.Contracts.Reports;
 using System.Collections.Specialized;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -22,7 +23,7 @@ namespace Bagge.Seti.BusinessLogic
 			_reportDaos = reportDaos;
 		}
 
-		[Securizable("Securizable_ReportManager_GetReport", typeof(ReportManager))]
+		[SecurizableCrud("Securizable_ReportManager_GetReport", typeof(ReportManager), FunctionAction.Retrieve)]
 		public BaseReport GetReport<T>(IList<FilterPropertyValue> filters)
 		{
 			Check.Require(typeof(BaseReport).IsAssignableFrom(typeof(T)));

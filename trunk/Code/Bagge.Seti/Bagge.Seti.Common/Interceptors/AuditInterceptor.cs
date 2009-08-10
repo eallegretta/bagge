@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Spring.Aop;
 using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.Common.Interceptors
 {
@@ -13,7 +14,7 @@ namespace Bagge.Seti.Common.Interceptors
 
 		public void Before(System.Reflection.MethodInfo method, object[] args, object target)
 		{
-			if (args != null && method.Name.ToUpper().In<string>("CREATE", "UPDATE", "DELETE"))
+			if (args != null && IsCreateUpdateOrDelete(method))
 			{
 				foreach (object obj in args)
 				{
@@ -28,6 +29,16 @@ namespace Bagge.Seti.Common.Interceptors
 					}
 				}
 			}
+		}
+
+		private bool IsCreateUpdateOrDelete(System.Reflection.MethodInfo method)
+		{
+			if(!method.IsDefined(typeof(SecurizableCrudAttribute), true))
+				return false;
+
+			var attr = (SecurizableCrudAttribute)method.GetCustomAttributes(typeof(SecurizableCrudAttribute), true)[0];
+
+			return attr.Action.In(FunctionAction.Create, FunctionAction.Update, FunctionAction.Delete);
 		}
 
 		#endregion

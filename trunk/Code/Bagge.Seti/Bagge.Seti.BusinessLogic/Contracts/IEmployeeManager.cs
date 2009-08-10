@@ -14,5 +14,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 		void RecoverPassword(string email, string baseLinkPath);
 		void RegeneratePassword(string encodedKey);
 		Employee[] FindAllActiveTechnicians();
+		void UpdateProfile(Employee instance);
 	}
 }

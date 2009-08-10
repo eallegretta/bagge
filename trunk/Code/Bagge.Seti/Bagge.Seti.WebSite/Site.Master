@@ -20,6 +20,7 @@
 			<asp:LoginView ID="_loginFullnameView" runat="server">
 				<LoggedInTemplate>
 					<div id="loginFullname">Bienvenido <b><asp:Literal ID="_loginFullname" runat="server"></asp:Literal></b> |
+					<asp:HyperLink ID="_editProfile" runat="server" NavigateUrl="~/EditProfile.aspx" meta:resourcekey="EditProfileLink"></asp:HyperLink> | 
 					<asp:HyperLink ID="_logout" runat="server" NavigateUrl="~/Logout.ashx" meta:resourcekey="LogoutLink"></asp:HyperLink></div>
 				</LoggedInTemplate>
 			</asp:LoginView>

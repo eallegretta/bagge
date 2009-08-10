@@ -167,7 +167,7 @@ namespace Bagge.Seti.WebSite
 
 		#region IEditorView<PK> Members
 
-		public PK PrimaryKey
+		public virtual PK PrimaryKey
 		{
 			get
 			{
@@ -177,13 +177,13 @@ namespace Bagge.Seti.WebSite
 			}
 		}
 
-		public byte[] Timestamp
+		public virtual byte[] Timestamp
 		{
 			get { return ViewState["Timestamp"] as byte[]; }
 			set { ViewState["Timestamp"] = value; }
 		}
 
-		public EditorAction Mode
+		public virtual EditorAction Mode
 		{
 			get 
 			{
@@ -202,7 +202,7 @@ namespace Bagge.Seti.WebSite
 		#region IEditorView<PK> Members
 
 
-		public event EventHandler DataBound
+		public virtual event EventHandler DataBound
 		{
 			add
 			{
