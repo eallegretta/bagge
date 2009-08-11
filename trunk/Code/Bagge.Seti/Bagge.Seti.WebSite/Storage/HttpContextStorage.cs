@@ -13,7 +13,7 @@ namespace Bagge.Seti.WebSite.Storage
 
 		public void SetData(object key, object value)
 		{
-			HttpContext.Current.Items.Add(key, value);
+			HttpContext.Current.Items[key] = value;
 		}
 
 		public object GetData(object key)

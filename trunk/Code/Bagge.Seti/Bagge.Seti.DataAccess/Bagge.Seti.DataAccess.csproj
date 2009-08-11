@@ -98,6 +98,7 @@
     <Compile Include="Contracts\IProductDao.cs" />
     <Compile Include="Contracts\IProductProviderDao.cs" />
     <Compile Include="Contracts\IProviderDao.cs" />
+    <Compile Include="Contracts\ISecurityDao.cs" />
     <Compile Include="Contracts\ITicketEmployeeDao.cs" />
     <Compile Include="Contracts\Reports\IReportDao.cs" />
     <Compile Include="Contracts\IRoleDao.cs" />

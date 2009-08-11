@@ -158,6 +158,12 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public virtual int CountByProperties(System.Collections.Generic.IList<FilterPropertyValue> filter)
 		{
+			/*var scalarQuery = new ScalarQuery<decimal>(typeof(T), null);
+
+			CreateFilterQuery(scalarQuery, null, null, null, true, filter);
+
+			return (int)scalarQuery.Execute();*/
+
 			return ActiveRecordMediator<T>.Count(BuildCriteriaFromFilters(filter));
 		}
 
@@ -231,10 +237,14 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			return criterias;
 		}
 
-		protected T[] GetFilteredRecords(int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
+
+		protected void CreateFilterQuery(HqlBasedQuery query, int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
 		{
 			StringBuilder hql = new StringBuilder();
-			hql.AppendFormat("from {0} el", typeof(T).Name);
+			if(query.ToString().Contains("SimpleQuery"))
+				hql.AppendFormat("from {0} el", typeof(T).Name);
+			else
+				hql.AppendFormat("select count(*) from {0} el", typeof(T).Name);
 
 			StringBuilder where = new StringBuilder();
 
@@ -248,26 +258,32 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 			GetFilteredRecordsAppendOrCondition(where, orFilterCriterias, countOr);
 
-			if(where.Length > 0)
+			if (where.Length > 0)
 				hql.AppendFormat(" where {0}", where);
 
 			if (!string.IsNullOrEmpty(orderBy))
 				hql.AppendFormat(" order by {0} {1}", orderBy, (ascending) ? "asc" : "desc");
 
 
-
-			SimpleQuery<T> query = new SimpleQuery<T>(hql.ToString());
+			query.Query = hql.ToString();
 
 			GetFilteredRecordsSetQueryValues(andFilterCriterias, query);
 			GetFilteredRecordsSetQueryValues(orFilterCriterias, query);
 
 			if (firstResult.HasValue && maxResults.HasValue)
 				query.SetQueryRange(firstResult.Value, maxResults.Value);
+		}
+
+		protected T[] GetFilteredRecords(int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
+		{
+			SimpleQuery<T> query = new SimpleQuery<T>(null);
+
+			CreateFilterQuery(query, firstResult, maxResults, orderBy, ascending, filters);
 
 			return query.Execute();
 		}
 
-		private static void GetFilteredRecordsSetQueryValues(IList<FilterCriteria> filters, SimpleQuery<T> query)
+		private static void GetFilteredRecordsSetQueryValues(IList<FilterCriteria> filters, HqlBasedQuery query)
 		{
 			foreach (var filter in filters)
 			{

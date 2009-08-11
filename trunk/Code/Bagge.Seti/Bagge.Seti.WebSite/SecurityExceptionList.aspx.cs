@@ -13,7 +13,6 @@ namespace Bagge.Seti.WebSite
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
 		}
 
 		protected override GridView Grid

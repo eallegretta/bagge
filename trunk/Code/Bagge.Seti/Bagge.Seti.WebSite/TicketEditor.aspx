@@ -52,7 +52,7 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="ExecutionDateTime" meta:resourcekey="CustomerArrivalField">
 				<EditItemTemplate>
-					<seti:MaskedTextBox ID="_customerArrival" runat="server" Mask="99:99" EnableTheming="false" CssClass="textBox smallData"></seti:MaskedTextBox>
+					<seti:MaskedTextBox ID="_customerArrival" runat="server" Mask="99:99" EnableTheming="false" Text='<%#Eval("ExecutionDateTime", "{0:HH:mm}")%>' CssClass="textBox smallData"></seti:MaskedTextBox>
 					<asp:CustomValidator ID="_customerArrivalVal" ControlToValidate="_customerArrival" runat="server" ValidateEmptyText="true"
 						ClientValidationFunction="ValidateCustomerArrival" EnableClientScript="true"
 						OnServerValidate="_customerArrivalVal_ServerValidate" meta:resourcekey="CustomerArrivalValidator">

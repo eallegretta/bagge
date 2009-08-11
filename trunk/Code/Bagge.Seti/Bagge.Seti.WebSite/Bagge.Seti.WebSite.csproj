@@ -297,6 +297,7 @@
     <Compile Include="Presenters\ReportPresenter.cs" />
     <Compile Include="Presenters\RoleEditorPresenter.cs" />
     <Compile Include="Presenters\RoleListPresenter.cs" />
+    <Compile Include="Presenters\SecurityExceptionListPresenter.cs" />
     <Compile Include="Presenters\TicketEditorPresenter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -418,19 +419,19 @@
     <Compile Include="RoleList.aspx.designer.cs">
       <DependentUpon>RoleList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SecurityExceptionsEditor.aspx.cs">
-      <DependentUpon>SecurityExceptionsEditor.aspx</DependentUpon>
+    <Compile Include="SecurityExceptionEditor.aspx.cs">
+      <DependentUpon>SecurityExceptionEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SecurityExceptionsEditor.aspx.designer.cs">
-      <DependentUpon>SecurityExceptionsEditor.aspx</DependentUpon>
+    <Compile Include="SecurityExceptionEditor.aspx.designer.cs">
+      <DependentUpon>SecurityExceptionEditor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SecurityExceptionsList.aspx.cs">
-      <DependentUpon>SecurityExceptionsList.aspx</DependentUpon>
+    <Compile Include="SecurityExceptionList.aspx.cs">
+      <DependentUpon>SecurityExceptionList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SecurityExceptionsList.aspx.designer.cs">
-      <DependentUpon>SecurityExceptionsList.aspx</DependentUpon>
+    <Compile Include="SecurityExceptionList.aspx.designer.cs">
+      <DependentUpon>SecurityExceptionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Security\AuthenticationManager.cs" />
     <Compile Include="Security\AuthorizationManager.cs" />
@@ -480,6 +481,7 @@
     <Compile Include="Views\IReportView.cs" />
     <Compile Include="Views\IRoleEditorView.cs" />
     <Compile Include="Views\IRoleListView.cs" />
+    <Compile Include="Views\ISecurityExceptionListView.cs" />
     <Compile Include="Views\ITicketEditorView.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -752,8 +754,8 @@
       <DependentUpon>SETI.mdf</DependentUpon>
     </Content>
     <Content Include="Config\Pages.config" />
-    <Content Include="SecurityExceptionsEditor.aspx" />
-    <Content Include="SecurityExceptionsList.aspx" />
+    <Content Include="SecurityExceptionEditor.aspx" />
+    <Content Include="SecurityExceptionList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Web.sitemap.resx">
