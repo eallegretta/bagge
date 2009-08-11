@@ -18,14 +18,26 @@ namespace Bagge.Seti.WebSite
 	[SecurizableCrud("Securizable_TicketList", typeof(TicketList), FunctionAction.Retrieve | FunctionAction.Delete)]
 	public partial class TicketList : FilteredListPage<Ticket, int>, ITicketListView
 	{
+		public override string DefaultSortExpression
+		{
+			get
+			{
+				return "ExecutionDateTime DESC";
+			}
+		}
+
 
 		TicketListPresenter _presenter;
+		IUser _user;
+
 
 		public TicketList()
 		{
+			_user = IoCContainer.User.Identity as IUser;
+
 			_presenter = new TicketListPresenter(this, IoCContainer.TicketManager,
 				IoCContainer.TicketStatusManager, IoCContainer.EmployeeManager, IoCContainer.CustomerManager,
-				IoCContainer.User.Identity as IUser);
+				_user);
 		}
 
 
@@ -35,14 +47,22 @@ namespace Bagge.Seti.WebSite
 
 		protected override void OnInit(EventArgs e)
 		{
+			base.OnInit(e);
+
 			SetFieldIndices();
+
+			if (IsTechnicianView)
+			{
+				_employeesLiteral.Visible = _employees.Visible = false;
+				_new.Visible = false;
+			}
 
 			if (_editFieldIndex.HasValue)
 			{
 				Grid.RowDataBound += new GridViewRowEventHandler(Grid_RowDataBound);
 				Grid.PreRender += new EventHandler(Grid_PreRender);
 			}
-			base.OnInit(e);
+			
 
 			
 		}
@@ -108,7 +128,10 @@ namespace Bagge.Seti.WebSite
 				AddTextBoxFilterValue<int>(_id, "Id", FilterPropertyValueType.Equals, filters);
 				AddDropDownFilterValue<int>(_status, "Status", FilterPropertyValueType.Equals, filters);
 				AddTextBoxFilterValue<string>(_description, "Description", FilterPropertyValueType.Contains, filters);
-				AddDropDownFilterValue<int>(_employees, "Employees", FilterPropertyValueType.In, filters);
+				if (!IsTechnicianView)
+					AddDropDownFilterValue<int>(_employees, "Employees", FilterPropertyValueType.In, filters);
+				else
+					filters.Add("Employees", FilterPropertyValueType.In, _user.Id);
 				AddCalendarFilterValue(_creationDate, "CreationDate", FilterPropertyValueType.Equals, filters);
 				AddCalendarFilterValue(_executionDate, "ExecutionDate", FilterPropertyValueType.Equals, filters);
 				AddDropDownFilterValue<int>(_customer, "Customer", FilterPropertyValueType.Equals, filters);

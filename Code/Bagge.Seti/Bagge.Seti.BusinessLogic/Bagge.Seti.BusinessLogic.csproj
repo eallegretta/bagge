@@ -72,6 +72,7 @@
     <Compile Include="Contracts\IReportManager.cs" />
     <Compile Include="Contracts\IRoleManager.cs" />
     <Compile Include="Contracts\Core\ISlicedFindManager.cs" />
+    <Compile Include="Contracts\ISecurityManager.cs" />
     <Compile Include="Contracts\ISimpleFindGetManager.cs" />
     <Compile Include="Contracts\ITicketManager.cs" />
     <Compile Include="Contracts\ITicketStatusManager.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="RandomPassword.cs" />
     <Compile Include="ReportManager.cs" />
     <Compile Include="RoleManager.cs" />
+    <Compile Include="SecurityManager.cs" />
     <Compile Include="SimpleFindGetManager.cs" />
     <Compile Include="TicketManager.cs" />
     <Compile Include="TicketStatusManager.cs" />

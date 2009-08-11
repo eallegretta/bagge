@@ -7,12 +7,27 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Specialized;
+using System.Linq.Expressions;
+using Bagge.Seti.Extensions;
 //using Newtonsoft.Json;
 
 namespace System
 {
 	public static class ObjectExtensions
 	{
+		public static T GetAttribute<T>(this object obj, string propertyName) where T : Attribute
+		{
+			if(!obj.HasProperty(propertyName))
+				return null;
+
+			var property = obj.GetType().GetProperty(propertyName);
+
+			if (!property.IsDefined(typeof(T), true))
+				return null;
+
+			return (T)property.GetCustomAttributes(typeof(T), true)[0];
+		}
+
 		public static bool In(this object obj, params object[] values)
 		{
 			return In<object>(obj, values);
