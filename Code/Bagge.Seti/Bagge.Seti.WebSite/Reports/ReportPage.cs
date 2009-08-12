@@ -6,6 +6,7 @@ using Bagge.Seti.BusinessEntities.Reports;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Bagge.Seti.WebSite.Views;
+using System.Web.UI.WebControls;
 
 namespace Bagge.Seti.WebSite.Reports
 {
@@ -18,15 +19,37 @@ namespace Bagge.Seti.WebSite.Reports
 			_presenter = new ReportPresenter<T>(this, IoCContainer.ReportManager);
 		}
 
+		public virtual string GetFormattedColumnValue(int columnIndex, string value)
+		{
+			return null;
+		}
+
 		protected override void OnInit(EventArgs e)
 		{
 			base.OnInit(e);
 
 			ReportMaster master = Master as ReportMaster;
 			if (master != null)
+			{
 				master.ReportFileName = typeof(T).Name;
-
+				master.DataBound += new EventHandler(master_DataBound);
+			}
 			AssignTypeNameToSecureContainers(typeof(T).AssemblyQualifiedName);
+		}
+
+		void master_DataBound(object sender, EventArgs e)
+		{
+			var grid = (GridView)sender;
+			int colCount = grid.HeaderRow.Cells.Count;
+			foreach (GridViewRow row in grid.Rows)
+			{
+				for (int cellIndex = 0; cellIndex < colCount; cellIndex++)
+				{
+					string value = GetFormattedColumnValue(cellIndex, row.Cells[cellIndex].Text);
+					if (value != null)
+						row.Cells[cellIndex].Text = value;
+				}
+			}
 		}
 
 		protected override void OnLoad(EventArgs e)

@@ -90,6 +90,7 @@ namespace Bagge.Seti.WebSite.Presenters
 					break;
 				case EditorAction.View:
 					View.Technicians = SelectedEntity.Employees.ToArray();
+					View.ShowApproveButton = View.ShowCloseButton = false;
 					break;
 			}
 			if (!View.IsPostBack && View.Mode.In(EditorAction.Update, EditorAction.View))

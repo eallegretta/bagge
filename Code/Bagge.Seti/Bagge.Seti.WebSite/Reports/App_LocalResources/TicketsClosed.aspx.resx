@@ -117,118 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Default.title" xml:space="preserve">
-    <value>Home</value>
+  <data name="FilterButton.Text" xml:space="preserve">
+    <value>Filtrar</value>
   </data>
-  <data name="CustomerList.title" xml:space="preserve">
-    <value>Clientes</value>
+  <data name="FilterDateFromLiteral.Text" xml:space="preserve">
+    <value>Desde:</value>
   </data>
-  <data name="CustomerEditor.editTitle" xml:space="preserve">
-    <value>Editar Cliente</value>
+  <data name="FilterDateToLiteral.Text" xml:space="preserve">
+    <value>Hasta:</value>
   </data>
-  <data name="CustomerEditor.viewTitle" xml:space="preserve">
-    <value>Ver Cliente</value>
+  <data name="GroupByAdministrativeListItem.Text" xml:space="preserve">
+    <value>Administrativo</value>
   </data>
-  <data name="CustomerEditor.title" xml:space="preserve">
-    <value>Alta Cliente</value>
+  <data name="GroupByLiteral.Text" xml:space="preserve">
+    <value>Agrupar Por:</value>
   </data>
-  <data name="ProviderList.title" xml:space="preserve">
-    <value>Proveedores</value>
+  <data name="GroupByTechnicianListItem.Text" xml:space="preserve">
+    <value>Técnico</value>
   </data>
-  <data name="ProviderEditor.editTitle" xml:space="preserve">
-    <value>Editar Proveedor</value>
-  </data>
-  <data name="ProviderEditor.viewTitle" xml:space="preserve">
-    <value>Ver Proveedor</value>
-  </data>
-  <data name="ProviderEditor.title" xml:space="preserve">
-    <value>Alta Proveedor</value>
-  </data>
-  <data name="ProductList.title" xml:space="preserve">
-    <value>Insumos</value>
-  </data>
-  <data name="ProductEditor.editTitle" xml:space="preserve">
-    <value>Editar Insumo</value>
-  </data>
-  <data name="ProductEditor.viewTitle" xml:space="preserve">
-    <value>Ver Insumo</value>
-  </data>
-  <data name="ProductEditor.title" xml:space="preserve">
-    <value>Alta Insumo</value>
-  </data>
-  <data name="TicketList.title" xml:space="preserve">
-    <value>Tickets</value>
-  </data>
-  <data name="TicketEditor.editTitle" xml:space="preserve">
-    <value>Editar Ticket</value>
-  </data>
-  <data name="TicketEditor.viewTitle" xml:space="preserve">
-    <value>Ver Ticket</value>
-  </data>
-  <data name="TicketEditor.title" xml:space="preserve">
-    <value>Alta Ticket</value>
-  </data>
-  <data name="EmployeeList.title" xml:space="preserve">
-    <value>Empleados</value>
-  </data>
-  <data name="EmployeeEditor.editTitle" xml:space="preserve">
-    <value>Editar Empleado</value>
-  </data>
-  <data name="EmployeeEditor.viewTitle" xml:space="preserve">
-    <value>Ver Empleado</value>
-  </data>
-  <data name="EmployeeEditor.title" xml:space="preserve">
-    <value>Alta Empleado</value>
-  </data>
-  <data name="ReportCustomersBySubscription.title" xml:space="preserve">
-    <value>Clientes por Abono</value>
-  </data>
-  <data name="ReportCustomersByTicket.title" xml:space="preserve">
-    <value>Clientes por Ticket</value>
-  </data>
-  <data name="ReportCustomersWithPendingPayment.title" xml:space="preserve">
-    <value>Clientes Pendientes de Pago</value>
-  </data>
-  <data name="ReportProductsByProvider.title" xml:space="preserve">
-    <value>Productos por Proveedor</value>
-  </data>
-  <data name="ReportProductsConsumed.title" xml:space="preserve">
-    <value>Productos Consumidos</value>
-  </data>
-  <data name="ReportTechniciansByTicket.title" xml:space="preserve">
-    <value>Técnicos por Tickets</value>
-  </data>
-  <data name="ReportRolesByUser.title" xml:space="preserve">
-    <value>Roles por Usuario</value>
-  </data>
-  <data name="Reports.title" xml:space="preserve">
-    <value>Reportes</value>
-  </data>
-  <data name="AlertConfiguration.editTitle" xml:space="preserve">
-    <value>Editar Configuración de Alertas</value>
-  </data>
-  <data name="AlertConfiguration.viewTitle" xml:space="preserve">
-    <value>Ver Configuración de Alertas</value>
-  </data>
-  <data name="AlertConfiguration.title" xml:space="preserve">
-    <value>Alertas</value>
-  </data>
-  <data name="Security.title" xml:space="preserve">
-    <value>Seguridad</value>
-  </data>
-  <data name="RoleList.title" xml:space="preserve">
-    <value>Roles</value>
-  </data>
-  <data name="RoleEditor.editTitle" xml:space="preserve">
-    <value>Editar Rol</value>
-  </data>
-  <data name="RoleEditor.viewTitle" xml:space="preserve">
-    <value>Ver Rol</value>
-  </data>
-  <data name="RoleEditor.title" xml:space="preserve">
-    <value>Alta Rol</value>
-  </data>
-  <data name="ReportTicketsClosed.title" xml:space="preserve">
-    <value>Tickets Cerrados</value>
+  <data name="Page.Title" xml:space="preserve">
+    <value>SETI &gt; Reportes &gt; Tickets Cerrados</value>
   </data>
 </root>
