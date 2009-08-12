@@ -158,13 +158,13 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public virtual int CountByProperties(System.Collections.Generic.IList<FilterPropertyValue> filter)
 		{
-			/*var scalarQuery = new ScalarQuery<decimal>(typeof(T), null);
+			var scalarQuery = new ScalarQuery<long>(typeof(T), null);
 
 			CreateFilterQuery(scalarQuery, null, null, null, true, filter);
 
-			return (int)scalarQuery.Execute();*/
+			return (int)scalarQuery.Execute();
 
-			return ActiveRecordMediator<T>.Count(BuildCriteriaFromFilters(filter));
+			//return ActiveRecordMediator<T>.Count(BuildCriteriaFromFilters(filter));
 		}
 
 		private class FilterCriteria : FilterPropertyValue

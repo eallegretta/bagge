@@ -106,6 +106,7 @@
     <Compile Include="Reports\ProductsConsumedReport.cs" />
     <Compile Include="Reports\RolesByUserReport.cs" />
     <Compile Include="Reports\TechniciansByTicketReport.cs" />
+    <Compile Include="Reports\TicketsClosedReport.cs" />
     <Compile Include="Security\AccessibilityType.cs" />
     <Compile Include="Security\AuditablePrimaryKeyDomainObject.cs" />
     <Compile Include="Security\AuditablePrimaryKeyWithNameAndDescriptionDomainObject.cs" />

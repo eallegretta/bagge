@@ -117,6 +117,7 @@
     <Compile Include="Reports\ProductsConsumedReportDao.cs" />
     <Compile Include="Reports\RolesByUserReportDao.cs" />
     <Compile Include="Reports\TechniciansByTicketReportDao.cs" />
+    <Compile Include="Reports\TicketsClosedReportDao.cs" />
     <Compile Include="SessionScopeUtils.cs" />
   </ItemGroup>
   <ItemGroup>

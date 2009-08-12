@@ -405,6 +405,13 @@
     <Compile Include="Reports\TechniciansByTicket.aspx.designer.cs">
       <DependentUpon>TechniciansByTicket.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\TicketsClosed.aspx.cs">
+      <DependentUpon>TicketsClosed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TicketsClosed.aspx.designer.cs">
+      <DependentUpon>TicketsClosed.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RoleEditor.aspx.cs">
       <DependentUpon>RoleEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -767,6 +774,7 @@
     <Content Include="EditProfile.aspx" />
     <Content Include="App_LocalResources\EditProfile.aspx.resx">
     </Content>
+    <Content Include="Reports\TicketsClosed.aspx" />
     <EmbeddedResource Include="ManagedFusion.Rewriter.rules">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -775,6 +783,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Reports\App_LocalResources\TicketsClosed.aspx.resx">
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

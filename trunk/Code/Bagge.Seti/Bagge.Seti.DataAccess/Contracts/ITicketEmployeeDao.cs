@@ -10,7 +10,7 @@ namespace Bagge.Seti.DataAccess.Contracts
 	{
 		TicketEmployee[] FindAllByEmployee(int employeeId);
 		TicketEmployee[] FindAllByTicket(int ticketId);
-		void DeleteByEmpoloyee(int employeeId);
+		void DeleteByEmployee(int employeeId);
 		void DeleteByTicket(int ticketId);
 	}
 }

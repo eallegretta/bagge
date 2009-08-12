@@ -11,6 +11,7 @@ namespace Bagge.Seti.WebSite.Reports
 {
 	public partial class ReportMaster : System.Web.UI.MasterPage
 	{
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 
@@ -24,6 +25,12 @@ namespace Bagge.Seti.WebSite.Reports
 			HttpContext.Current.Response.ContentType = "application/ms-excel";
 			HttpContext.Current.Response.Write(ControlHelper.GetControlAsHtml(_report));
 			HttpContext.Current.Response.End();
+		}
+
+		public event EventHandler DataBound
+		{
+			add { _report.DataBound += value; }
+			remove { _report.DataBound -= value; }
 		}
 
 

@@ -29,7 +29,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			return query.Execute();
 		}
 
-		public void DeleteByEmpoloyee(int employeeId)
+		public void DeleteByEmployee(int employeeId)
 		{
 			ActiveRecordMediator<TicketEmployee>.DeleteAll("EmployeeId = " + employeeId);
 		}

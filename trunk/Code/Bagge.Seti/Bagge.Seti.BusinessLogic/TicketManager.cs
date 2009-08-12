@@ -19,15 +19,17 @@ namespace Bagge.Seti.BusinessLogic
 	public partial class TicketManager : AuditableGenericManager<Ticket, int>, ITicketManager
 	{
 		ITicketStatusManager _ticketStatusManager;
-		ITicketEmployeeDao _ticketEmployeeDao;
+		//ITicketEmployeeDao _ticketEmployeeDao;
+		IEmployeeDao _employeeDao;
 		ICustomerDao _customerDao;
 
 		public TicketManager(ITicketDao dao, ITicketStatusManager ticketStatusManager, 
-			ITicketEmployeeDao ticketEmployeeDao, ICustomerDao customerDao)
+			/*ITicketEmployeeDao ticketEmployeeDao*/ IEmployeeDao employeeDao, ICustomerDao customerDao)
 			: base(dao)
 		{
 			_ticketStatusManager = ticketStatusManager;
-			_ticketEmployeeDao = ticketEmployeeDao;
+			//_ticketEmployeeDao = ticketEmployeeDao;
+			_employeeDao = employeeDao;
 			_customerDao = customerDao;
 		}
 
@@ -114,8 +116,15 @@ namespace Bagge.Seti.BusinessLogic
 
 			if (employeesFilter != null)
 			{
-				foreach (var productProvider in _ticketEmployeeDao.FindAllByEmployee((int)employeesFilter.Value))
-					filter.Add(new FilterPropertyValue { Property = employeesFilter.Property, Type = employeesFilter.Type, Value = productProvider });
+				/*foreach (var ticketEmployee in _ticketEmployeeDao.FindAllByEmployee((int)employeesFilter.Value))
+					filter.Add(new FilterPropertyValue { Property = employeesFilter.Property, Type = employeesFilter.Type, Value = ticketEmployee });*/
+				filter.Add(
+					new FilterPropertyValue
+					{
+						Property = employeesFilter.Property,
+						Type = employeesFilter.Type,
+						Value = _employeeDao.Get((int)employeesFilter.Value)
+					});
 			}
 		}
 
