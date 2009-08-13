@@ -4,9 +4,9 @@
 	<div style="text-align:center">
 		<asp:Label ID="_noRecordMessage" runat="server" meta:resourcekey="NoRecordsMessageLabel"></asp:Label></div>
 </asp:PlaceHolder>
-<div class="commands">
+<asp:Panel id="_commands" runat="server" CssClass="commands">
 	<asp:PlaceHolder ID="_extraButtons" runat="server"></asp:PlaceHolder>
 	<asp:Button ID="_accept" runat="server" OnClick="_accept_Click" meta:resourcekey="AcceptButton" />
 	<asp:Button ID="_cancel" runat="server" CausesValidation="False" meta:resourcekey="CancelButton" />
 	<asp:Button ID="_back" runat="server" CausesValidation="False" meta:resourcekey="BackButton" />
-</div>
+</asp:Panel>

@@ -183,8 +183,8 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 									 select gr.Key).ToArray();
 
 			var andFilters = (from filter in filters
-							 where andProperties.Contains(filter.Property)
-							 select filter).ToArray();
+							  where andProperties.Contains(filter.Property)
+							  select filter).ToArray();
 
 			foreach (var filter in andFilters)
 			{
@@ -192,7 +192,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 				criteria.Property = filter.Property;
 				criteria.Type = filter.Type;
 				criteria.Value = filter.Value;
-				criteria.VariableName = filter.Property.ToLower();
+				criteria.VariableName = filter.Property.ToLower().Replace("(", "_").Replace(")", "_");
 				criterias.Add(criteria);
 			}
 
@@ -204,10 +204,10 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			List<FilterCriteria> criterias = new List<FilterCriteria>();
 
 			var orProperties = (from filter in filters
-								 group filter by filter.Property
-									 into gr
-									 where gr.Count() > 1
-									 select gr.Key).ToArray();
+								group filter by filter.Property
+									into gr
+									where gr.Count() > 1
+									select gr.Key).ToArray();
 
 			var orFilters = (from filter in filters
 							 where orProperties.Contains(filter.Property)
@@ -229,8 +229,8 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 					index = 0;
 					lastProperty = filter.Property;
 				}
-				criteria.VariableName = filter.Property.ToLower() + new String('_', index++);
-				
+				criteria.VariableName = filter.Property.ToLower().Replace("(", "_").Replace(")", "_") + new String('_', index++);
+
 				criterias.Add(criteria);
 			}
 
@@ -241,7 +241,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 		protected void CreateFilterQuery(HqlBasedQuery query, int? firstResult, int? maxResults, string orderBy, bool ascending, IList<FilterPropertyValue> filters)
 		{
 			StringBuilder hql = new StringBuilder();
-			if(query.ToString().Contains("SimpleQuery"))
+			if (query.ToString().Contains("SimpleQuery"))
 				hql.AppendFormat("from {0} el", typeof(T).Name);
 			else
 				hql.AppendFormat("select count(*) from {0} el", typeof(T).Name);
@@ -324,7 +324,7 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 			if (countOr > 0)
 			{
-				if(where.ToString().EndsWith("or "))
+				if (where.ToString().EndsWith("or "))
 					where.Remove(where.Length - 4, 3);
 				where.Append(")");
 			}
@@ -357,37 +357,56 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			if (!string.IsNullOrEmpty(condition))
 				condition = " " + condition + " ";
 
+			string where = string.Empty;
 			switch (filter.Type)
 			{
 				case FilterPropertyValueType.Equals:
-					return string.Format("el.{0} = :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Format("el.{0} = :{1}{2}", filter.Property, filter.VariableName, condition);
+					break;
 				case FilterPropertyValueType.NotEquals:
-					return string.Format("el.{0} <> :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Format("el.{0} <> :{1}{2}", filter.Property, filter.VariableName, condition);
+					break;
 				case FilterPropertyValueType.Like:
 				case FilterPropertyValueType.Contains:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
-						return string.Format("el.{0} like :{1}{2}", filter.Property, filter.VariableName, condition);
-					return string.Empty;
+						where = string.Format("el.{0} like :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Empty;
+					break;
 				case FilterPropertyValueType.NotLike:
 				case FilterPropertyValueType.NotContains:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
-						return string.Format("el.{0} not like :{1}{2}", filter.Property, filter.VariableName, condition);
-					return string.Empty;
+						where = string.Format("el.{0} not like :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Empty;
+					break;
 				case FilterPropertyValueType.Greater:
-					return string.Format("el.{0} > :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Format("el.{0} > :{1}{2}", filter.Property, filter.VariableName, condition);
+					break;
 				case FilterPropertyValueType.GreaterEquals:
-					return string.Format("el.{0} >= :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Format("el.{0} >= :{1}{2}", filter.Property, filter.VariableName, condition);
+					break;
 				case FilterPropertyValueType.Lower:
-					return string.Format("el.{0} < :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Format("el.{0} < :{1}{2}", filter.Property, filter.VariableName, condition);
+					break;
 				case FilterPropertyValueType.LowerEquals:
-					return string.Format("el.{0} <= :{1}{2}", filter.Property, filter.VariableName, condition);
+					where = string.Format("el.{0} <= :{1}{2}", filter.Property, filter.VariableName, condition);
+					break;
 				case FilterPropertyValueType.In:
-					return string.Format(":{1} in elements(el.{0}){2}", filter.Property, filter.VariableName, condition);
+					where = string.Format(":{1} in elements(el.{0}){2}", filter.Property, filter.VariableName, condition);
+					break;
 				case FilterPropertyValueType.NotIn:
-					return string.Format(":{1} not in elements(el.{0}){2}", filter.Property, filter.VariableName, condition);
+					where = string.Format(":{1} not in elements(el.{0}){2}", filter.Property, filter.VariableName, condition);
+					break;
+				default:
+					where = string.Empty;
+					break;
 			}
-			return string.Empty;
+
+			if (filter.Property.Contains("("))
+				where = where.Replace("el.", string.Empty);
+
+			return where;
 		}
+
 
 	}
 }

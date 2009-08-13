@@ -54,6 +54,7 @@
 		DataSourceID="_dataSource"
 		meta:resourcekey="Grid">
 		<Columns>
+			<seti:SecureBoundField DataField="Id" meta:resourcekey="IdField"></seti:SecureBoundField>
 			<seti:SecureBoundField NullDisplayText="" DataField="Customer" 
 				meta:resourcekey="CustomerField" />
 			<seti:SecureBoundField NullDisplayText="" DataField="ExecutionDateTime" 

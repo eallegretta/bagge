@@ -329,6 +329,20 @@ namespace Bagge.Seti.WebSite
 				e.IsValid = true;
 		}
 
+		protected void _budgetValidator_ServerValidate(object sender, ServerValidateEventArgs e)
+		{
+			if (!string.IsNullOrEmpty(Request.Form[_approve.UniqueID]) ||
+				(Mode == EditorAction.Update && SelectedTicketStatus == TicketStatusEnum.Open))
+			{
+				if (_presenter.BudgetIsRequired())
+					e.IsValid = !string.IsNullOrEmpty(e.Value);
+				else
+					e.IsValid = true;
+			}
+			else
+				e.IsValid = true;
+		}
+
 		protected void _customerArrivalVal_ServerValidate(object sender, ServerValidateEventArgs e)
 		{
 			DateTime date;

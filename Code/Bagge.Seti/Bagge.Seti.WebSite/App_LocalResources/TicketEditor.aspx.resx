@@ -186,4 +186,7 @@
   <data name="CloseButton.OnClientClick" xml:space="preserve">
     <value>return confirm("¿Esta seguro que desea cerrar el ticket?");</value>
   </data>
+  <data name="BudgetValidator.ErrorMessage" xml:space="preserve">
+    <value>El presupuesto es requerido ya que el cliente no posee abono</value>
+  </data>
 </root>

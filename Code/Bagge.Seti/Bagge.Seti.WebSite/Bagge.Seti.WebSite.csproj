@@ -771,6 +771,7 @@
       <LastGenOutput>Web.sitemap.designer.cs</LastGenOutput>
     </Content>
     <Content Include="App_Browsers\FormActionRewriter.browser" />
+    <Content Include="App_Themes\Default\Images\iconFollowUp.gif" />
     <Content Include="EditProfile.aspx" />
     <Content Include="App_LocalResources\EditProfile.aspx.resx">
     </Content>

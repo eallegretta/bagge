@@ -19,6 +19,14 @@ namespace Bagge.Seti.WebSite.Controls
 		{
 		}
 
+		public string DefaultButton
+		{
+			set;
+			get;
+		}
+
+
+
 
 		[PersistenceMode(PersistenceMode.InnerProperty)]
 		public ControlCollection ExtraButtons
@@ -85,7 +93,15 @@ namespace Bagge.Seti.WebSite.Controls
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (DefaultButton != null)
+				SetDefaultButton();
+		}
 
+		private void SetDefaultButton()
+		{
+			var button = ControlHelper.FindControlRecursive(this, DefaultButton);
+			if (button != null)
+				Page.Form.DefaultButton = button.UniqueID;
 		}
 
 		private DetailsView _detailsView;

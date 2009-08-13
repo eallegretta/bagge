@@ -186,6 +186,9 @@
   <data name="Grid.EmptyDataText" xml:space="preserve">
     <value>No se han encontrado tickets</value>
   </data>
+  <data name="IdField.HeaderText" xml:space="preserve">
+    <value>Id</value>
+  </data>
   <data name="ListCommands.NewText" xml:space="preserve">
     <value>Nuevo Ticket</value>
   </data>
