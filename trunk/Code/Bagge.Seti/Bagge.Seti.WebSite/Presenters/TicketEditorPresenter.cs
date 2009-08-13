@@ -115,6 +115,12 @@ namespace Bagge.Seti.WebSite.Presenters
 			return View.AssignedTechniciansIds.Length > 0;
 		}
 
+		public bool BudgetIsRequired()
+		{
+			var customer = _customerManager.Get(View.SelectedCustomerId);
+			return !(customer.Subscription);
+		}
+
 		public void UpdateProgress(decimal? duration, string notes)
 		{
 			GetManager<ITicketManager>().UpdateProgress(View.PrimaryKey, duration == null ? decimal.MinValue : duration.Value, notes);

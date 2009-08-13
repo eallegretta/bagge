@@ -745,6 +745,15 @@ namespace Bagge.Seti.BusinessLogic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to rido ya que el cliente no posee abono..
+        /// </summary>
+        internal static string TicketBudgetRequiredErrorMessage {
+            get {
+                return ResourceManager.GetString("TicketBudgetRequiredErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha actualizado un ticket al cual usted esta relacionado. Presione el siguiente link para ver mas información: &lt;br /&gt;&lt;br /&gt;&lt;a href=&quot;{1}&quot;&gt;{1}&lt;/a&gt;.
         /// </summary>
         internal static string UpdateTicketEmailBody {

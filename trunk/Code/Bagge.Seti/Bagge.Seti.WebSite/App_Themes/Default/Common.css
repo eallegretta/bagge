@@ -262,3 +262,25 @@ div#loadingAnimation
 	text-align:center;
 	background-color:white;
 }
+
+
+div#homePage table#calendar
+{
+	width:100%;
+	border-spacing:5px;
+}
+
+div#homePage table#dates
+{
+	width:100%;
+	border-spacing:5px;
+	border-collapse:collapse;
+	min-height:500px;
+	
+}
+div#homePage table#dates td
+{
+	width:14%;
+	border-left:1px solid black;
+	border-right:1px solid black;
+}

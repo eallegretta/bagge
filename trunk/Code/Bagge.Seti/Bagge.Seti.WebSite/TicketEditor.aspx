@@ -65,7 +65,7 @@
 			<seti:SecureTemplateField PropertyName="EstimatedDuration" meta:resourcekey="EstimatedDurationField">
 				<EditItemTemplate>
 					<asp:TextBox ID="_estimatedDuration" runat="server" Text='<%#Bind("EstimatedDuration")%>' EnableTheming="false" CssClass="textBox smallData numeric"></asp:TextBox>
-					<ajax:MaskedEditExtender ID="_estimatedDurationMask" runat="server" MaskType="Number" Mask="99.99" TargetControlID="_estimatedDuration"></ajax:MaskedEditExtender>
+					<ajax:MaskedEditExtender ID="_estimatedDurationMask" runat="server" MaskType="Number" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_estimatedDuration"></ajax:MaskedEditExtender>
 					<asp:RequiredFieldValidator ID="_estimatedDurationReqVal" ControlToValidate="_estimatedDuration" runat="server" meta:resourcekey="EstimatedDurationValidator"></asp:RequiredFieldValidator>
 				</EditItemTemplate>
 				<ItemTemplate>
@@ -75,7 +75,7 @@
 			<seti:SecureTemplateField PropertyName="RealDuration" meta:resourcekey="RealDurationField">
 				<EditItemTemplate>
 					<asp:TextBox ID="_realDuration" runat="server" Text='<%#Bind("RealDuration")%>' EnableTheming="false" CssClass="textBox smallData numeric"></asp:TextBox>
-					<ajax:MaskedEditExtender ID="_realDurationMask" runat="server" MaskType="Number" Mask="99.99" TargetControlID="_realDuration"></ajax:MaskedEditExtender>
+					<ajax:MaskedEditExtender ID="_realDurationMask" runat="server" MaskType="Number" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_realDuration"></ajax:MaskedEditExtender>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<%#Eval("RealDuration")%>
@@ -117,17 +117,24 @@
 						ReadOnly="true"></seti:ProductTicketSelectionGrid>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
-			<seti:SecureBoundField ControlStyle-CssClass="budget mediumData" DataField="Budget"
-				meta:resourcekey="BudgetField">
-			</seti:SecureBoundField>
+			<seti:SecureTemplateField meta:resourcekey="BudgetField" PropertyName="Budget">
+				<EditItemTemplate>
+					<asp:TextBox ID="_budget" runat="server" Text='<%#Bind("Budget")%>' EnableTheming="false" CssClass="textBox numeric mediumData"></asp:TextBox>
+					<ajax:MaskedEditExtender ID="_budgetMask" runat="server" TargetControlID="_budget" InputDirection="RightToLeft" Mask="999999999.99" MaskType="Number"></ajax:MaskedEditExtender>
+					<asp:CustomValidator ID="_budgetValidator" runat="server" ControlToValidate="_budget" ValidateEmptyText="true" OnServerValidate="_budgetValidator_ServerValidate" meta:resourcekey="BudgetValidator"></asp:CustomValidator>
+				</EditItemTemplate>
+				<ItemTemplate>
+					<%#Eval("Budget")%>				
+				</ItemTemplate>
+			</seti:SecureTemplateField>
 			<seti:SecureBoundField DataField="Notes" meta:resourcekey="NotesField" TextMode="Multiline"></seti:SecureBoundField>
 		</Fields>
 	</seti:SecureDetailsView>
-	<seti:EditorControls ID="_commands" runat="server" AcceptPostBackUrl="~/TicketList.aspx"
+	<seti:EditorControls ID="_commands" runat="server" DefaultButton="_accept" AcceptPostBackUrl="~/TicketList.aspx"
 		CancelPostBackUrl="~/TicketList.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
 		<ExtraButtons>
 			<asp:Button ID="_approve" runat="server" OnClick="_approve_Click" meta:resourcekey="ApproveButton" />
-			<asp:Button ID="_close" runat="server" OnClick="_close_Click" meta:resourcekey="CloseButton" />
+			<asp:Button ID="_close" runat="server"  OnClick="_close_Click" meta:resourcekey="CloseButton" />
 		</ExtraButtons>
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server" DataObjectTypeName="">

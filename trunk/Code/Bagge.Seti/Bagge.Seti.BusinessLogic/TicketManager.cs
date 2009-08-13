@@ -131,6 +131,10 @@ namespace Bagge.Seti.BusinessLogic
 		[SecurizableCrud("Securizable_TicketManager_CreateApproved", typeof(TicketManager), FunctionAction.Create)]
 		public int CreateApproved(Ticket instance)
 		{
+			if (!instance.Customer.Subscription && !instance.Budget.HasValue)
+				throw new BusinessRuleException(Resources.TicketBudgetRequiredErrorMessage);
+
+
 			instance.Status = _ticketStatusManager.Get(TicketStatusEnum.Open);
 
 			return Create(instance);
@@ -239,6 +243,41 @@ namespace Bagge.Seti.BusinessLogic
 
 			SendUpdatedTicketEmail(ticket, EmailUrl);
 		}
+
+		#endregion
+
+		#region ITicketManager Members
+
+		
+		public Ticket[] FindAllByExecutionDate(DateTime date)
+		{
+			var filters = new List<FilterPropertyValue>();
+			SetExecutionDateTimeFilter(date, filters);
+			var query = from ticket in FindAllActiveByProperties(filters)
+						orderby ticket.ExecutionDateTime.Value.TimeOfDay, ticket.Customer.Name
+						select ticket;
+			return query.ToArray();
+		}
+
+		private void SetExecutionDateTimeFilter(DateTime date, IList<FilterPropertyValue> filters)
+		{
+			filters.Add("day(ExecutionDateTime)", date.Day);
+			filters.Add("month(ExecutionDateTime)", date.Month);
+			filters.Add("year(ExecutionDateTime)", date.Year);
+		}
+
+		public Ticket[] FindAllByExecutionDateAndTechnician(DateTime date, int technicianId)
+		{
+			var filters = new List<FilterPropertyValue>();
+			SetExecutionDateTimeFilter(date, filters);
+			var employee = _employeeDao.Get(technicianId);
+			filters.Add("Employees", FilterPropertyValueType.In, employee);
+			var query = from ticket in FindAllActiveByProperties(filters)
+						orderby ticket.ExecutionDateTime.Value.TimeOfDay, ticket.Customer.Name
+						select ticket;
+			return query.ToArray();
+		}
+
 
 		#endregion
 	}

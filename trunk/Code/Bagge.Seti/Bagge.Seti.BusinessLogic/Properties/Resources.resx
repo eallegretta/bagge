@@ -351,4 +351,7 @@
   <data name="Securizable_TicketManager_UpdateProgress" xml:space="preserve">
     <value>Actualizar Progreso de Ticket</value>
   </data>
+  <data name="TicketBudgetRequiredErrorMessage" xml:space="preserve">
+    <value>rido ya que el cliente no posee abono.</value>
+  </data>
 </root>
