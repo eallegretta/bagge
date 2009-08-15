@@ -249,33 +249,24 @@ namespace Bagge.Seti.BusinessLogic
 		#region ITicketManager Members
 
 		
-		public Ticket[] FindAllByExecutionDate(DateTime date)
+		public Ticket[] FindAllByExecutionWeek(DateTime weekStartDate, DateTime weekEndDate)
 		{
-			var filters = new List<FilterPropertyValue>();
-			SetExecutionDateTimeFilter(date, filters);
-			var query = from ticket in FindAllActiveByProperties(filters)
-						orderby ticket.ExecutionDateTime.Value.TimeOfDay, ticket.Customer.Name
-						select ticket;
-			return query.ToArray();
+            var filters = new List<FilterPropertyValue>();
+            weekStartDate = new DateTime(weekStartDate.Year, weekStartDate.Month, weekStartDate.Day, 0, 0, 0);
+            weekEndDate = new DateTime(weekEndDate.Year, weekEndDate.Month, weekEndDate.Day, 23, 59, 59);
+            filters.AddBetween("ExecutionDateTime", weekStartDate, weekEndDate);
+            return FindAllActiveByPropertiesOrdered(filters, "ExecutionDateTime");
 		}
-
-		private void SetExecutionDateTimeFilter(DateTime date, IList<FilterPropertyValue> filters)
+  
+        public Ticket[] FindAllByExecutionWeekAndTechnician(DateTime weekStartDate, DateTime weekEndDate, int technicianId)
 		{
-			filters.Add("day(ExecutionDateTime)", date.Day);
-			filters.Add("month(ExecutionDateTime)", date.Month);
-			filters.Add("year(ExecutionDateTime)", date.Year);
-		}
-
-		public Ticket[] FindAllByExecutionDateAndTechnician(DateTime date, int technicianId)
-		{
-			var filters = new List<FilterPropertyValue>();
-			SetExecutionDateTimeFilter(date, filters);
-			var employee = _employeeDao.Get(technicianId);
-			filters.Add("Employees", FilterPropertyValueType.In, employee);
-			var query = from ticket in FindAllActiveByProperties(filters)
-						orderby ticket.ExecutionDateTime.Value.TimeOfDay, ticket.Customer.Name
-						select ticket;
-			return query.ToArray();
+            var filters = new List<FilterPropertyValue>();
+            weekStartDate = new DateTime(weekStartDate.Year, weekStartDate.Month, weekStartDate.Day, 0, 0, 0);
+            weekEndDate = new DateTime(weekEndDate.Year, weekEndDate.Month, weekEndDate.Day, 23, 59, 59);
+            filters.AddBetween("ExecutionDateTime", weekStartDate, weekEndDate);
+            var employee = _employeeDao.Get(technicianId);
+            filters.Add("Employees", FilterPropertyValueType.In, employee);
+            return FindAllActiveByPropertiesOrdered(filters, "ExecutionDateTime");
 		}
 
 

@@ -11,7 +11,8 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 	public interface IFunctionManager: IGetManager<Function, int>
 	{
 		Function[] FindAll();
-		Function Get(string fullQualifiedName, FunctionAction action);
+		Function Get(Type type, FunctionAction action);
 		bool UserHasAccessToFunction(IUser user, Function function);
+		bool UserHasAccessToFunction(IUser user, Type type, FunctionAction action);
 	}
 }

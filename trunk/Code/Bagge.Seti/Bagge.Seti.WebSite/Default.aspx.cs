@@ -8,78 +8,156 @@ using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
 using System.Globalization;
 using Bagge.Seti.Common;
+using Bagge.Seti.WebSite.Views;
+using Bagge.Seti.WebSite.Presenters;
+using Bagge.Seti.BusinessEntities;
+using System.Web.UI.HtmlControls;
 
 namespace Bagge.Seti.WebSite
 {
 	 
 
 	[SecurizableCrud("Securizable_Default", typeof(_Default), FunctionAction.Retrieve)]
-	public partial class _Default : Page
+	public partial class _Default : Page, IHomeView
 	{
-		protected void Page_Load(object sender, EventArgs e)
+		HomePresenter _presenter;
+		bool _canViewTicket, _canUpdateTicket, _canUpdateProgressTicket;
+		public _Default()
 		{
-			BindDayNames();
-			BindDays();
+
+
+			_presenter = new HomePresenter(this, IoCContainer.TicketManager, IoCContainer.TicketStatusManager,
+				IoCContainer.FunctionManager, IoCContainer.User.Identity as IUser,
+				Resources.WebSite.HomePageWeekDisplayFormat,
+				Resources.WebSite.HomePageMonthDisplayFormat);
+
+
+			_canViewTicket = _presenter.CanViewTicket();
+			_canUpdateTicket = _presenter.CanEditTicket(); 
+			_canUpdateProgressTicket = _presenter.CanUpdateProgressTicket(); ;
 		}
 
-
-		private DateTime? CurrentDayOfWeek
-		{
-			get
-			{
-				var currentDayOfWeek = Request.QueryString["CurrentDayOfWeek"];
-				DateTime date;
-				if (DateTime.TryParse(currentDayOfWeek, out date))
-					return date;
-				return null;
-			}
-		}
-
-		private void BindDays()
-		{
-			DayOfWeek dayOfWeek;
-			DateTime start;
-			if (CurrentDayOfWeek.HasValue)
-			{
-				dayOfWeek = CurrentDayOfWeek.Value.DayOfWeek;
-				start = CurrentDayOfWeek.Value;
-			}
-			else
-			{
-				dayOfWeek = DateTime.Now.DayOfWeek;
-				start = DateTime.Now;
-			}
-			int days = dayOfWeek - DayOfWeek.Sunday;
-			start = start.AddDays(-days);
-			DateTime[] week = new DateTime[7];
-			for(int day = 0; day < 7; day++)
-				week[day] = start.AddDays(day);
-			_details.DataSource = _days.DataSource = week;
-			_days.DataBind();
-			_details.DataBind();
-			_prevWeek.NavigateUrl = "~/Default.aspx?CurrentDayOfWeek=" + start.AddDays(-7).ToShortDateString().Replace("/", "-");
-			_nextWeek.NavigateUrl = "~/Default.aspx?CurrentDayOfWeek=" + start.AddDays(7).ToShortDateString().Replace("/","-");
-		}
-
-		protected void _details_ItemDataBound(object sender, RepeaterItemEventArgs e)
+		protected void _tickets_ItemDataBound(object sender, RepeaterItemEventArgs e)
 		{
 			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
 			{
-				var user = IoCContainer.User.Identity as IUser;
-				var date = (DateTime)e.Item.DataItem;
-				var tickets = (Repeater)e.Item.FindControl("_tickets");
-				if (user.IsSuperAdministrator)
-					tickets.DataSource = IoCContainer.TicketManager.FindAllByExecutionDate(date);
-				else
-					tickets.DataSource = IoCContainer.TicketManager.FindAllByExecutionDateAndTechnician(date, user.Id);
-				tickets.DataBind();
+				HtmlAnchor googleMapsLink = e.Item.FindControl("_googleMapsLink") as HtmlAnchor;
+
+				var ticket = e.Item.DataItem as Ticket;
+				string countryState = ticket.Customer.District.CountryState.Name;
+
+				string address;
+				if(countryState.Equals("Capital Federal", StringComparison.InvariantCultureIgnoreCase))
+					address = ticket.Customer.FullAddress + ", " +ticket.Customer.District.CountryState;
+				else					
+					address = ticket.Customer.FullAddress + ", " + ticket.Customer.District + ", " + ticket.Customer.District.CountryState;
+
+				address += ", Argentina";
+
+				googleMapsLink.HRef = string.Format(googleMapsLink.HRef, address);
+
+				Literal viewImage = e.Item.FindControl("_viewImage") as Literal;
+				Literal editImage = e.Item.FindControl("_editImage") as Literal;
+				Literal updateProgressImage = e.Item.FindControl("_updateProgressImage") as Literal;
+				PlaceHolder viewLink = e.Item.FindControl("_viewLink") as PlaceHolder;
+				PlaceHolder editLink = e.Item.FindControl("_editLink") as PlaceHolder;
+				PlaceHolder updateProgressLink = e.Item.FindControl("_updateProgressLink") as PlaceHolder;
+
+				viewImage.Text = Resources.WebSite.IconViewImageTag;
+				editImage.Text = Resources.WebSite.IconEditImageTag;
+				updateProgressImage.Text = Resources.WebSite.IconUpdateProgressImageTag;
+
+
+				viewLink.Visible = _canViewTicket;
+				editLink.Visible = _canUpdateTicket;
+				updateProgressLink.Visible = _canUpdateProgressTicket;
+
+
+			}
+
+		}
+
+
+		#region IHomeView Members
+
+		public HomeViewDisplayFormat SelectedDisplayFormat
+		{
+			get
+			{
+				return (HomeViewDisplayFormat)Enum.Parse(typeof(HomeViewDisplayFormat), _displayDate.SelectedValue);
+			}
+			set
+			{
+				_displayDate.SelectedValue = value.ToString();
 			}
 		}
 
-		private void BindDayNames()
+		public DateTime CurrentDate
 		{
-			_dayNames.DataSource = CultureInfo.CurrentUICulture.DateTimeFormat.DayNames;
-			_dayNames.DataBind();
+			get
+			{
+				return (DateTime)ViewState["CurrentDate"];
+			}
+			set
+			{
+				ViewState["CurrentDate"] = value;
+			}
 		}
+
+		public string CurrentDateText
+		{
+			set { _currentDate.Text = value; }
+		}
+
+		public event EventHandler PreviewDateSelected
+		{
+			add { _prevDate.Click += value; }
+			remove { _prevDate.Click -= value; }
+		}
+
+		public event EventHandler NextDateSelected
+		{
+			add { _nextDate.Click += value; }
+			remove { _nextDate.Click -= value; }
+		}
+
+		public event EventHandler DisplayFormatChanged
+		{
+			add { _displayDate.SelectedIndexChanged += value; }
+			remove { _displayDate.SelectedIndexChanged -= value; }
+		}
+
+		public TicketStatus[] Legends
+		{
+			set
+			{
+				_legends.DataSource = value;
+				_legends.DataBind();
+			}
+		}
+
+		#endregion
+
+		#region IView Members
+
+
+		public object DataSource
+		{
+			set { 
+				_tickets.DataSource = value;
+			}
+		}
+
+		public override void DataBind()
+		{
+			_tickets.DataBind();
+			_noTicketsMessage.Visible = _tickets.Items.Count == 0;
+			_tickets.Visible = !_noTicketsMessage.Visible;
+		}
+
+
+
+		#endregion
+
 	}
 }

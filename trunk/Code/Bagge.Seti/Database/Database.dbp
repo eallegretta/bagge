@@ -1,7 +1,6 @@
 # Microsoft Developer Studio Project File - Database Project
 Begin DataProject = "Database"
    MSDTVersion = "80"
-   DefDBRef = "SETI.mdf"
    Begin Folder = "Change Scripts"
       Script = "001 - Alter table Providers.sql"
       Script = "002 - Alter table AlertConfiguration.sql"
@@ -24,7 +23,7 @@ Begin DataProject = "Database"
    End
    Begin DBRefFolder = "Database References"
       Begin DBRefNode = "SETI.mdf"
-         ConnectStr = "Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Code\Bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\App_Data\SETI.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True"
+         ConnectStr = "Data Source=.\SQLEXPRESS;AttachDbFilename=G:\Code\Bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\App_Data\SETI.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True"
          Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
          Colorizer = 6
       End
@@ -34,6 +33,7 @@ Begin DataProject = "Database"
          Script = "010 - Function.sql"
          Script = "011 - AccessibilityType Delete.sql"
          Script = "012 - EmployeeCategory.sql"
+         Script = "013 - Function.sql"
          Script = "AccessibilityType.sql"
          Script = "AlertConfiguration.sql"
          Script = "CountryStates.sql"
