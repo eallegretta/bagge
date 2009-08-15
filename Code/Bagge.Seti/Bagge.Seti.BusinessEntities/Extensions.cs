@@ -28,8 +28,8 @@ namespace Bagge.Seti.BusinessEntities
 
 		public static void AddBetween(this IList<FilterPropertyValue> filters, string propertyName, object valueFrom, object valueTo)
 		{
-			Add(filters, propertyName, FilterPropertyValueType.GreaterEquals, valueFrom);
-			Add(filters, propertyName, FilterPropertyValueType.LowerEquals, valueTo);
+			Add(filters, propertyName, FilterPropertyValueType.BetweenLowerBound, valueFrom);
+			Add(filters, propertyName, FilterPropertyValueType.BetweenTopBound, valueTo);
 		}
 
 		public static void Add(this IList<FilterPropertyValue> filters, string propertyName, object value)

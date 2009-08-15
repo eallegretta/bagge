@@ -99,52 +99,8 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		#endregion
 
-		protected ICriterion[] BuildCriteriaFromFilters(IList<FilterPropertyValue> filters)
-		{
-			List<ICriterion> list = new List<ICriterion>(filters.Count);
-			foreach (FilterPropertyValue filter in filters)
-			{
-				switch (filter.Type)
-				{
-					case FilterPropertyValueType.Equals:
-						list.Add(Expression.Eq(filter.Property, filter.Value));
-						break;
-					case FilterPropertyValueType.NotEquals:
-						list.Add(Expression.Not(Expression.Eq(filter.Property, filter.Value)));
-						break;
-					case FilterPropertyValueType.Like:
-						if (!string.IsNullOrEmpty(filter.Value.ToString()))
-							list.Add(Expression.Like(filter.Property, filter.Value + "%"));
-						break;
-					case FilterPropertyValueType.NotLike:
-						if (!string.IsNullOrEmpty(filter.Value.ToString()))
-							list.Add(Expression.Not(Expression.Like(filter.Property, filter.Value + "%")));
-						break;
-					case FilterPropertyValueType.Greater:
-						list.Add(Expression.Gt(filter.Property, filter.Value));
-						break;
-					case FilterPropertyValueType.GreaterEquals:
-						list.Add(Expression.Ge(filter.Property, filter.Value));
-						break;
-					case FilterPropertyValueType.Lower:
-						list.Add(Expression.Lt(filter.Property, filter.Value));
-						break;
-					case FilterPropertyValueType.LowerEquals:
-						list.Add(Expression.Le(filter.Property, filter.Value));
-						break;
-				}
-			}
-			return list.ToArray();
-		}
-
 		public virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
-			/*if (!string.IsNullOrEmpty(orderBy))
-				return ActiveRecordMediator<T>.FindAll(new Order[] { 
-					new Order(orderBy, ascending.HasValue ? ascending.Value : true) }, BuildCriteriaFromFilters(filter));
-
-			return ActiveRecordMediator<T>.FindAll(BuildCriteriaFromFilters(filter));*/
-
 			return GetFilteredRecords(null, null, orderBy, ascending.HasValue ? ascending.Value : true, filter);
 		}
 
@@ -163,8 +119,6 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			CreateFilterQuery(scalarQuery, null, null, null, true, filter);
 
 			return (int)scalarQuery.Execute();
-
-			//return ActiveRecordMediator<T>.Count(BuildCriteriaFromFilters(filter));
 		}
 
 		private class FilterCriteria : FilterPropertyValue
@@ -181,18 +135,37 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 									 into gr
 									 where gr.Count() == 1
 									 select gr.Key).ToArray();
+            var betweenProperties = (from filter in filters
+                                     where filter.Type.In(FilterPropertyValueType.BetweenLowerBound, FilterPropertyValueType.BetweenTopBound)
+                                     select filter.Property).Distinct();
+
 
 			var andFilters = (from filter in filters
-							  where andProperties.Contains(filter.Property)
+							  where andProperties.Contains(filter.Property) ||
+                              betweenProperties.Contains(filter.Property)
 							  select filter).ToArray();
 
 			foreach (var filter in andFilters)
 			{
 				FilterCriteria criteria = new FilterCriteria();
 				criteria.Property = filter.Property;
-				criteria.Type = filter.Type;
+				if (filter.Type == FilterPropertyValueType.BetweenLowerBound)
+				{
+					criteria.Type = FilterPropertyValueType.GreaterEquals;
+					criteria.VariableName = "start_" + filter.Property.ToLower().Replace("(", "_").Replace(")", "_");
+				}
+				else if (filter.Type == FilterPropertyValueType.BetweenTopBound)
+				{
+					criteria.Type = FilterPropertyValueType.LowerEquals;
+					criteria.VariableName = "end_" + filter.Property.ToLower().Replace("(", "_").Replace(")", "_");
+				}
+				else
+				{
+					criteria.Type = filter.Type;
+					criteria.VariableName = filter.Property.ToLower().Replace("(", "_").Replace(")", "_");
+				}
 				criteria.Value = filter.Value;
-				criteria.VariableName = filter.Property.ToLower().Replace("(", "_").Replace(")", "_");
+				
 				criterias.Add(criteria);
 			}
 
@@ -209,8 +182,14 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 									where gr.Count() > 1
 									select gr.Key).ToArray();
 
+            var betweenProperties = (from filter in filters
+                                     where filter.Type.In(FilterPropertyValueType.BetweenLowerBound, FilterPropertyValueType.BetweenTopBound)
+                                     select filter.Property).Distinct();
+
+
 			var orFilters = (from filter in filters
-							 where orProperties.Contains(filter.Property)
+							 where orProperties.Contains(filter.Property) && 
+                             !betweenProperties.Contains(filter.Property)
 							 orderby filter.Property
 							 select filter).ToArray();
 

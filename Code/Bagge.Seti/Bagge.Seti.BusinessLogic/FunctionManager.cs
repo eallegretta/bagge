@@ -34,6 +34,10 @@ namespace Bagge.Seti.BusinessLogic
 			return _dao.Get(id);
 		}
 
+		public bool UserHasAccessToFunction(IUser user, Type type, FunctionAction action)
+		{
+			return UserHasAccessToFunction(user, new Function { FullQualifiedName = type.FullName, Action = Function.ActionToChar(action) });
+		}
 
 		public bool UserHasAccessToFunction(IUser user, Function function)
 		{
@@ -54,7 +58,7 @@ namespace Bagge.Seti.BusinessLogic
 			return false;
 		}
 
-		public Function Get(string fullQualifiedName, FunctionAction action)
+		private Function Get(string fullQualifiedName, FunctionAction action)
 		{
 			var filters = new List<FilterPropertyValue>();
 			filters.Add("FullQualifiedName", fullQualifiedName);
@@ -66,6 +70,11 @@ namespace Bagge.Seti.BusinessLogic
 				return functions[0];
 
 			return null;
+		}
+
+		public Function Get(Type type, FunctionAction action)
+		{
+			return Get(type.FullName, action);	
 		}
 	}
 }

@@ -40,6 +40,9 @@ namespace Bagge.Seti.WebSite.Reports
 		void master_DataBound(object sender, EventArgs e)
 		{
 			var grid = (GridView)sender;
+			if (grid.HeaderRow == null)
+				return;
+
 			int colCount = grid.HeaderRow.Cells.Count;
 			foreach (GridViewRow row in grid.Rows)
 			{

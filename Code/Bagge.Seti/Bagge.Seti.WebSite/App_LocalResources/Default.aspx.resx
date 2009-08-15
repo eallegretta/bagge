@@ -117,73 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Controls_Pager_ItemRangeShow" xml:space="preserve">
-    <value>Mostrar {0} a {1} de {2} registros.</value>
+  <data name="DisplayDateTextLiteral.Text" xml:space="preserve">
+    <value>Modo de Calendario</value>
   </data>
-  <data name="Controls_Pager_ItemRangeShowing" xml:space="preserve">
-    <value>Mostrando {0} a {1} de {2} registros.</value>
+  <data name="LegendTextLiteral.Text" xml:space="preserve">
+    <value>Leyenda</value>
   </data>
-  <data name="Controls_Pager_ItemsCount" xml:space="preserve">
-    <value>Mostrando registros del {0} al {1} de un total de {2}.</value>
+  <data name="MontlyDisplayDateListItem.Text" xml:space="preserve">
+    <value>Vista Mensual</value>
   </data>
-  <data name="Controls_Pager_NextItemRangeShow" xml:space="preserve">
-    <value>Mostrar siguientes {0} de {1} registros.</value>
+  <data name="NoTicketMessageLabel.Text" xml:space="preserve">
+    <value>No se han encontrado tickets para el periodo seleccionado</value>
   </data>
-  <data name="Controls_Pager_NextLink" xml:space="preserve">
-    <value>siguiente</value>
+  <data name="Page.Title" xml:space="preserve">
+    <value>Home</value>
   </data>
-  <data name="Controls_Pager_PageClause" xml:space="preserve">
-    <value>Página:</value>
-  </data>
-  <data name="Controls_Pager_PreviousLink" xml:space="preserve">
-    <value>anterior</value>
-  </data>
-  <data name="DateFromMustBeLowerThanOrEqualToDateToErrorMessage" xml:space="preserve">
-    <value>La fecha desde debe ser menor o igual a la fecha hasta</value>
-  </data>
-  <data name="DateToMustBeGreaterThanOrEqualToDateFromErrorMessage" xml:space="preserve">
-    <value>La fecha hasta debe ser mayor o igual a la fecha desde</value>
-  </data>
-  <data name="FilterPanelTitle" xml:space="preserve">
-    <value>Filtros</value>
-  </data>
-  <data name="HomePageMonthDisplayFormat" xml:space="preserve">
-    <value>{0:MMMM yyyy}</value>
-  </data>
-  <data name="HomePageWeekDisplayFormat" xml:space="preserve">
-    <value>Del {0:d} al  {1:d}</value>
-  </data>
-  <data name="IconDeleteImagePath" xml:space="preserve">
-    <value>~/App_Themes/Default/Images/iconDelete.gif</value>
-  </data>
-  <data name="IconEditImageTag" xml:space="preserve">
-    <value>&lt;img src='App_Themes/Default/Images/iconEdit.gif' alt="Editar" /&gt;</value>
-  </data>
-  <data name="IconRecycleImagePath" xml:space="preserve">
-    <value>~/App_Themes/Default/Images/iconRecycle.gif</value>
-  </data>
-  <data name="IconUpdateProgressImageTag" xml:space="preserve">
-    <value>&lt;img src='App_Themes/Default/Images/iconFollowUp.gif' alt="Actualizar Progreso" /&gt;</value>
-  </data>
-  <data name="IconViewImageTag" xml:space="preserve">
-    <value>&lt;img src='App_Themes/Default/Images/iconView.gif' alt="Ver" /&gt;</value>
-  </data>
-  <data name="InvalidDateErrorMessage" xml:space="preserve">
-    <value>La fecha es inv&amp;aacute;lida</value>
-  </data>
-  <data name="NoText" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="RequiredDateErrorMessage" xml:space="preserve">
-    <value>La fecha es requerida</value>
-  </data>
-  <data name="RequiredInformationText" xml:space="preserve">
-    <value>Los campos marcados con * son requeridos</value>
-  </data>
-  <data name="UpdateProgressField.Text" xml:space="preserve">
-    <value>Actualizar Avance</value>
-  </data>
-  <data name="YesText" xml:space="preserve">
-    <value>Si</value>
+  <data name="WeeklyDisplayDateListItem.Text" xml:space="preserve">
+    <value>Vista Semanal</value>
   </data>
 </root>

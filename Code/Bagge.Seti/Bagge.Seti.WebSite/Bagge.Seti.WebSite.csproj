@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FBC1245A-FB38-4D92-83B7-B86DACB8A2A7}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -41,6 +41,10 @@
     <Reference Include="Eaa.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fdf31fd6083ad399, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Eaa.Framework.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="GMaps, Version=3.2.0.1, Culture=neutral, PublicKeyToken=f43a93ab972291b8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\GMaps.dll</HintPath>
     </Reference>
     <Reference Include="ManagedFusion.Rewriter, Version=3.0.4.36189, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -274,6 +278,13 @@
     <Compile Include="Logout.ashx.cs">
       <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Maps.aspx.cs">
+      <DependentUpon>Maps.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maps.aspx.designer.cs">
+      <DependentUpon>Maps.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\SecurityExceptionModel.cs" />
     <Compile Include="Page.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -281,6 +292,7 @@
     <Compile Include="Presenters\EditProfilePresenter.cs" />
     <Compile Include="Presenters\EmployeeEditorPresenter.cs" />
     <Compile Include="Presenters\EmployeeListPresenter.cs" />
+    <Compile Include="Presenters\HomePresenter.cs" />
     <Compile Include="Presenters\ProductEditorPresenter.cs" />
     <Compile Include="Presenters\ProductListPresenter.cs" />
     <Compile Include="Presenters\ProviderEditorPresenter.cs" />
@@ -478,6 +490,7 @@
     <Compile Include="Views\IFunctionEditorView.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\IHomeView.cs" />
     <Compile Include="Views\IListView.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -771,11 +784,35 @@
       <LastGenOutput>Web.sitemap.designer.cs</LastGenOutput>
     </Content>
     <Content Include="App_Browsers\FormActionRewriter.browser" />
+    <Content Include="App_Themes\Default\Images\arrowLeft.png" />
+    <Content Include="App_Themes\Default\Images\arrowRight.png" />
     <Content Include="App_Themes\Default\Images\iconFollowUp.gif" />
+    <Content Include="App_Themes\Default\Images\ticketShadow\bottom.gif" />
+    <Content Include="App_Themes\Default\Images\ticketShadow\bottomLeft.gif" />
+    <Content Include="App_Themes\Default\Images\ticketShadow\bottomRight.gif" />
+    <Content Include="App_Themes\Default\ticketStatus.css" />
     <Content Include="EditProfile.aspx" />
     <Content Include="App_LocalResources\EditProfile.aspx.resx">
+      <SubType>Designer</SubType>
     </Content>
+    <Content Include="Images\border.png" />
+    <Content Include="Images\controls.png" />
+    <Content Include="Images\internet_explorer\borderBottomCenter.png" />
+    <Content Include="Images\internet_explorer\borderBottomLeft.png" />
+    <Content Include="Images\internet_explorer\borderBottomRight.png" />
+    <Content Include="Images\internet_explorer\borderMiddleLeft.png" />
+    <Content Include="Images\internet_explorer\borderMiddleRight.png" />
+    <Content Include="Images\internet_explorer\borderTopCenter.png" />
+    <Content Include="Images\internet_explorer\borderTopLeft.png" />
+    <Content Include="Images\internet_explorer\borderTopRight.png" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\loading_background.png" />
+    <Content Include="Images\overlay.png" />
+    <Content Include="Maps.aspx" />
     <Content Include="Reports\TicketsClosed.aspx" />
+    <Content Include="App_LocalResources\Default.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
     <EmbeddedResource Include="ManagedFusion.Rewriter.rules">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -785,7 +822,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Reports\App_LocalResources\TicketsClosed.aspx.resx">
+      <SubType>Designer</SubType>
     </Content>
+    <Content Include="Scripts\jquery.colorbox-min.js" />
+    <Content Include="Styles\colorbox-ie.css" />
+    <Content Include="Styles\colorbox.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -807,9 +848,6 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

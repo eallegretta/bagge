@@ -18,6 +18,8 @@ namespace Bagge.Seti.BusinessEntities
 		Lower,
 		LowerEquals,
 		In,
-		NotIn
+		NotIn,
+        BetweenLowerBound,
+        BetweenTopBound
 	}
 }

@@ -52,7 +52,7 @@ namespace Bagge.Seti.WebSite.Security
 
 				if (action != FunctionAction.NotSet)
 				{
-					var function = IoCContainer.FunctionManager.Get(type.FullName, action);
+					var function = IoCContainer.FunctionManager.Get(type, action);
 
 					IoCContainer.Storage.SetData(typeof(Function), function);
 

@@ -15,8 +15,8 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 		void UpdateProgress(int ticketId, decimal realDuration, string notes);
 		void Close(int ticketId);
 
-		Ticket[] FindAllByExecutionDate(DateTime date);
-		Ticket[] FindAllByExecutionDateAndTechnician(DateTime date, int technicianId);
+        Ticket[] FindAllByExecutionWeek(DateTime weekStartDate, DateTime weekEndDate);
+        Ticket[] FindAllByExecutionWeekAndTechnician(DateTime weekStartDate, DateTime weekEndDate, int technicianId);
 		string EmailUrl { set; get; }
 	}
 }
