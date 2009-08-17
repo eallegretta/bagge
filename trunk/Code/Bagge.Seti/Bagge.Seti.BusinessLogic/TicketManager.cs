@@ -23,7 +23,7 @@ namespace Bagge.Seti.BusinessLogic
 		IEmployeeDao _employeeDao;
 		ICustomerDao _customerDao;
 
-		public TicketManager(ITicketDao dao, ITicketStatusManager ticketStatusManager, 
+		public TicketManager(ITicketDao dao, ITicketStatusManager ticketStatusManager,
 			/*ITicketEmployeeDao ticketEmployeeDao*/ IEmployeeDao employeeDao, ICustomerDao customerDao)
 			: base(dao)
 		{
@@ -31,6 +31,7 @@ namespace Bagge.Seti.BusinessLogic
 			//_ticketEmployeeDao = ticketEmployeeDao;
 			_employeeDao = employeeDao;
 			_customerDao = customerDao;
+			SendEmails = true;
 		}
 
 		#region ITicketManager Members
@@ -41,11 +42,21 @@ namespace Bagge.Seti.BusinessLogic
 			set;
 		}
 
-		private static void SendUpdatedTicketEmail(Ticket ticket, string url)
+		public bool SendEmails
 		{
+			get;
+			set;
+		}
 
-			using (SessionScopeUtils.NewSessionScope())
+		private void SendUpdatedTicketEmail(Ticket ticket, string url)
+		{
+			if (SendEmails)
 			{
+				IDisposable session = null;
+
+				if (!SessionScopeUtils.InSessionScope)
+					session = SessionScopeUtils.NewSessionScope();
+
 				SmtpClient client = new SmtpClient();
 				MailMessage msg = new MailMessage();
 
@@ -66,6 +77,9 @@ namespace Bagge.Seti.BusinessLogic
 				client.EnableSsl = Settings.Default.EnableMailSsl;
 
 				client.Send(msg);
+
+				if (session != null)
+					session.Dispose();
 			}
 		}
 
@@ -192,7 +206,7 @@ namespace Bagge.Seti.BusinessLogic
 			SendUpdatedTicketEmail(instance, EmailUrl);
 		}
 
-		private static void AssignTicketToProducts(Ticket instance)
+		private void AssignTicketToProducts(Ticket instance)
 		{
 			foreach (var product in instance.Products)
 				product.Ticket = instance;
@@ -204,7 +218,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		public override void Undelete(int id)
 		{
-			
+
 		}
 
 
@@ -235,7 +249,7 @@ namespace Bagge.Seti.BusinessLogic
 			if (ticket.Status == TicketStatusEnum.Closed)
 				throw new BusinessRuleException(Resources.CannotUpdateStatusClosedTicketErrorMessage);
 
-			if(realDuration > decimal.MinValue)
+			if (realDuration > decimal.MinValue)
 				ticket.RealDuration = realDuration;
 			ticket.Notes = notes;
 
@@ -248,25 +262,25 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ITicketManager Members
 
-		
+
 		public Ticket[] FindAllByExecutionWeek(DateTime weekStartDate, DateTime weekEndDate)
 		{
-            var filters = new List<FilterPropertyValue>();
-            weekStartDate = new DateTime(weekStartDate.Year, weekStartDate.Month, weekStartDate.Day, 0, 0, 0);
-            weekEndDate = new DateTime(weekEndDate.Year, weekEndDate.Month, weekEndDate.Day, 23, 59, 59);
-            filters.AddBetween("ExecutionDateTime", weekStartDate, weekEndDate);
-            return FindAllActiveByPropertiesOrdered(filters, "ExecutionDateTime");
+			var filters = new List<FilterPropertyValue>();
+			weekStartDate = new DateTime(weekStartDate.Year, weekStartDate.Month, weekStartDate.Day, 0, 0, 0);
+			weekEndDate = new DateTime(weekEndDate.Year, weekEndDate.Month, weekEndDate.Day, 23, 59, 59);
+			filters.AddBetween("ExecutionDateTime", weekStartDate, weekEndDate);
+			return FindAllActiveByPropertiesOrdered(filters, "ExecutionDateTime");
 		}
-  
-        public Ticket[] FindAllByExecutionWeekAndTechnician(DateTime weekStartDate, DateTime weekEndDate, int technicianId)
+
+		public Ticket[] FindAllByExecutionWeekAndTechnician(DateTime weekStartDate, DateTime weekEndDate, int technicianId)
 		{
-            var filters = new List<FilterPropertyValue>();
-            weekStartDate = new DateTime(weekStartDate.Year, weekStartDate.Month, weekStartDate.Day, 0, 0, 0);
-            weekEndDate = new DateTime(weekEndDate.Year, weekEndDate.Month, weekEndDate.Day, 23, 59, 59);
-            filters.AddBetween("ExecutionDateTime", weekStartDate, weekEndDate);
-            var employee = _employeeDao.Get(technicianId);
-            filters.Add("Employees", FilterPropertyValueType.In, employee);
-            return FindAllActiveByPropertiesOrdered(filters, "ExecutionDateTime");
+			var filters = new List<FilterPropertyValue>();
+			weekStartDate = new DateTime(weekStartDate.Year, weekStartDate.Month, weekStartDate.Day, 0, 0, 0);
+			weekEndDate = new DateTime(weekEndDate.Year, weekEndDate.Month, weekEndDate.Day, 23, 59, 59);
+			filters.AddBetween("ExecutionDateTime", weekStartDate, weekEndDate);
+			var employee = _employeeDao.Get(technicianId);
+			filters.Add("Employees", FilterPropertyValueType.In, employee);
+			return FindAllActiveByPropertiesOrdered(filters, "ExecutionDateTime");
 		}
 
 

@@ -14,12 +14,20 @@ namespace Bagge.Seti.DataAccess
 			return new SessionScope();
 		}
 
+		public static bool InSessionScope
+		{
+			get
+			{
+				return SessionScope.Current != null || TransactionScope.Current != null;
+			}
+		}
+
 		public static void FlushSessionScope()
 		{
 			try
 			{
 				ISessionScope scope = ThreadScopeAccessor.Instance.GetRegisteredScope();
-				if (scope != null)
+				if (scope != null && scope.FlushAction != FlushAction.Never)
 				{
 					scope.Flush();
 					scope.Dispose();

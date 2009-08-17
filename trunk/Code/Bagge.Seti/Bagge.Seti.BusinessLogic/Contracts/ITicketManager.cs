@@ -18,5 +18,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
         Ticket[] FindAllByExecutionWeek(DateTime weekStartDate, DateTime weekEndDate);
         Ticket[] FindAllByExecutionWeekAndTechnician(DateTime weekStartDate, DateTime weekEndDate, int technicianId);
 		string EmailUrl { set; get; }
+		bool SendEmails { set; get; }
 	}
 }
