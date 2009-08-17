@@ -12,6 +12,7 @@ using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.BusinessEntities;
 using System.Web.UI.HtmlControls;
+using Bagge.Seti.WebSite.Models;
 
 namespace Bagge.Seti.WebSite
 {
@@ -41,21 +42,6 @@ namespace Bagge.Seti.WebSite
 		{
 			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
 			{
-				HtmlAnchor googleMapsLink = e.Item.FindControl("_googleMapsLink") as HtmlAnchor;
-
-				var ticket = e.Item.DataItem as Ticket;
-				string countryState = ticket.Customer.District.CountryState.Name;
-
-				string address;
-				if(countryState.Equals("Capital Federal", StringComparison.InvariantCultureIgnoreCase))
-					address = ticket.Customer.FullAddress + ", " +ticket.Customer.District.CountryState;
-				else					
-					address = ticket.Customer.FullAddress + ", " + ticket.Customer.District + ", " + ticket.Customer.District.CountryState;
-
-				address += ", Argentina";
-
-				googleMapsLink.HRef = string.Format(googleMapsLink.HRef, address);
-
 				Literal viewImage = e.Item.FindControl("_viewImage") as Literal;
 				Literal editImage = e.Item.FindControl("_editImage") as Literal;
 				Literal updateProgressImage = e.Item.FindControl("_updateProgressImage") as Literal;

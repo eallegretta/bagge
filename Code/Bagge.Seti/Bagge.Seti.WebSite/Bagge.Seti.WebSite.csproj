@@ -42,10 +42,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Eaa.Framework.Web.dll</HintPath>
     </Reference>
-    <Reference Include="GMaps, Version=3.2.0.1, Culture=neutral, PublicKeyToken=f43a93ab972291b8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\GMaps.dll</HintPath>
-    </Reference>
     <Reference Include="ManagedFusion.Rewriter, Version=3.0.4.36189, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\ManagedFusion.Rewriter.dll</HintPath>
@@ -278,13 +274,7 @@
     <Compile Include="Logout.ashx.cs">
       <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Maps.aspx.cs">
-      <DependentUpon>Maps.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Maps.aspx.designer.cs">
-      <DependentUpon>Maps.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\SecurityExceptionModel.cs" />
     <Compile Include="Page.cs">
       <SubType>ASPXCodeBehind</SubType>
