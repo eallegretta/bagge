@@ -132,8 +132,9 @@ namespace Bagge.Seti.WebSite
 					AddDropDownFilterValue<int>(_employees, "Employees", FilterPropertyValueType.In, filters);
 				else
 					filters.Add("Employees", FilterPropertyValueType.In, _user.Id);
-				AddCalendarFilterValue(_creationDate, "CreationDate", FilterPropertyValueType.Equals, filters);
-				AddCalendarFilterValue(_executionDate, "ExecutionDate", FilterPropertyValueType.Equals, filters);
+				AddCalendarBetweenFilterValue(_creationDate, "CreationDate", filters);
+
+				AddCalendarBetweenFilterValue(_executionDate, "ExecutionDateTime", filters);
 				AddDropDownFilterValue<int>(_customer, "Customer", FilterPropertyValueType.Equals, filters);
 
 				return filters;
