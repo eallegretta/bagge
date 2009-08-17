@@ -41,11 +41,11 @@
 							<div class="ticketHeader  head_status_<%#Eval("TicketStatus")%>"><%#Eval("TicketExecutionDateTime")%></div>
 							<div class="ticketBody  body_status_<%#Eval("TicketStatus")%>">
 								<%#Eval("CustomerName")%><br />
-								<a target="_blank" class="googleMaps" href="Maps.aspx?Destination=<%#Eval("MapDestination")%>">
+								<a target="_blank" class="googleMaps" title="<%#Eval("MapDestination")%>" href="Maps.aspx?Destination=<%#Eval("MapDestination")%>">
 								<%#Eval("CustomerAddress")%><br />
 								
 								<asp:Panel ID="_actionLinks" runat="server" CssClass="actionLinks">
-									<a target="_blank" class="googleMaps" href="Maps.aspx?Destination=<%#Eval("MapDestination")%>&ShowDirections=true"><asp:Literal ID="_howToGo" runat="server" meta:resourcekey="HowToGoLiteral"></asp:Literal></a>	
+									<a target="_blank" title="<%#System.Configuration.ConfigurationManager.AppSettings["GoogleMaps.From"]%> - <%#Eval("MapDestination")%>" class="googleMaps" href="Maps.aspx?Destination=<%#Eval("MapDestination")%>&ShowDirections=true"><asp:Literal ID="_howToGo" runat="server" meta:resourcekey="HowToGoLiteral"></asp:Literal></a>	
 									<asp:PlaceHolder ID="_viewLink" runat="server"><a id="viewLink" href="TicketEditor.aspx?Id=<%#Eval("TicketId")%>&Action=View"><asp:Literal id="_viewImage" runat="server" /></a></asp:PlaceHolder>
 									<asp:PlaceHolder ID="_editLink" runat="server"><a id="editLink" href="TicketEditor.aspx?Id=<%#Eval("TicketId")%>&Action=Edit"><asp:Literal id="_editImage" runat="server" /></a></asp:PlaceHolder>
 									<asp:PlaceHolder ID="_updateProgressLink" runat="server"><a id="updateProgress" href="TicketEditor.aspx?Id=<%#Eval("TicketId")%>&Action=Edit&UpdateProgress=true"><asp:Literal id="_updateProgressImage" runat="server"  /></a></asp:PlaceHolder>
