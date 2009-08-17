@@ -120,6 +120,9 @@
   <data name="DisplayDateTextLiteral.Text" xml:space="preserve">
     <value>Modo de Calendario</value>
   </data>
+  <data name="HowToGoLiteral.Text" xml:space="preserve">
+    <value>&amp;iquest;C&amp;oacute;mo llego?</value>
+  </data>
   <data name="LegendTextLiteral.Text" xml:space="preserve">
     <value>Leyenda</value>
   </data>

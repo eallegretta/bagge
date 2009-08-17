@@ -328,11 +328,23 @@ div#homePage div.actionLinks
 	text-align:right;
 }
 
-div#homePage div.actionLinks a
+
+
+
+div#homePage div.actionLinks img
 {
 	display:inline-block;
 	width:22px;
 	height:22px;
+	background-color:White;
+	border:1px solid #cccccc;
+	vertical-align:top;
+}
+
+div#homePage div.actionLinks a.googleMaps
+{
+	display:inline-block;
+	padding:2px;
 	background-color:White;
 	border:1px solid #cccccc;
 }

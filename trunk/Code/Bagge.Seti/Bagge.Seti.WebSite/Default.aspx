@@ -14,7 +14,7 @@
 		});
 
 		function setupGoolgeMaps(){
-			$(".googleMaps").colorbox({width:700, height:500, iframe:true});
+			$(".googleMaps").colorbox({width:"1000px", height:"550px", iframe:true});
 		}
 	</script>
 </asp:Content>
@@ -38,17 +38,17 @@
 				<ItemTemplate>
 					<div class="ticket">
 						<div class="ticketContainer">
-							<div class="ticketHeader  head_status_<%#(Bagge.Seti.BusinessEntities.TicketStatusEnum)((Bagge.Seti.BusinessEntities.TicketStatus)Eval("Status")).Id%>"><%#Eval("ExecutionDateTime", "{0:d}")%> <%#Eval("ExecutionDateTime", "{0:HH:mm}")%></div>
-							<div class="ticketBody  body_status_<%#(Bagge.Seti.BusinessEntities.TicketStatusEnum)((Bagge.Seti.BusinessEntities.TicketStatus)Eval("Status")).Id%>">
-								<%#Eval("Customer")%><br />
-								<a target="_blank" id="_googleMapsLink" runat="server" class="googleMaps" href="Maps.aspx?Destination={0}">
-								<%#((Bagge.Seti.BusinessEntities.Customer)Eval("Customer")).FullAddress%>,
-								<%#((Bagge.Seti.BusinessEntities.Customer)Eval("Customer")).District%><br />
-								<%#((Bagge.Seti.BusinessEntities.Customer)Eval("Customer")).District.CountryState%></a><br />
+							<div class="ticketHeader  head_status_<%#Eval("TicketStatus")%>"><%#Eval("TicketExecutionDateTime")%></div>
+							<div class="ticketBody  body_status_<%#Eval("TicketStatus")%>">
+								<%#Eval("CustomerName")%><br />
+								<a target="_blank" class="googleMaps" href="Maps.aspx?Destination=<%#Eval("MapDestination")%>">
+								<%#Eval("CustomerAddress")%><br />
+								
 								<asp:Panel ID="_actionLinks" runat="server" CssClass="actionLinks">
-									<asp:PlaceHolder ID="_viewLink" runat="server"><a id="viewLink" href="TicketEditor.aspx?Id=<%#Eval("Id")%>&Action=View"><asp:Literal id="_viewImage" runat="server" /></a></asp:PlaceHolder>
-									<asp:PlaceHolder ID="_editLink" runat="server"><a id="editLink" href="TicketEditor.aspx?Id=<%#Eval("Id")%>&Action=Edit"><asp:Literal id="_editImage" runat="server" /></a></asp:PlaceHolder>
-									<asp:PlaceHolder ID="_updateProgressLink" runat="server"><a id="updateProgress" href="TicketEditor.aspx?Id=<%#Eval("Id")%>&Action=Edit&UpdateProgress=true"><asp:Literal id="_updateProgressImage" runat="server"  /></a></asp:PlaceHolder>
+									<a target="_blank" class="googleMaps" href="Maps.aspx?Destination=<%#Eval("MapDestination")%>&ShowDirections=true"><asp:Literal ID="_howToGo" runat="server" meta:resourcekey="HowToGoLiteral"></asp:Literal></a>	
+									<asp:PlaceHolder ID="_viewLink" runat="server"><a id="viewLink" href="TicketEditor.aspx?Id=<%#Eval("TicketId")%>&Action=View"><asp:Literal id="_viewImage" runat="server" /></a></asp:PlaceHolder>
+									<asp:PlaceHolder ID="_editLink" runat="server"><a id="editLink" href="TicketEditor.aspx?Id=<%#Eval("TicketId")%>&Action=Edit"><asp:Literal id="_editImage" runat="server" /></a></asp:PlaceHolder>
+									<asp:PlaceHolder ID="_updateProgressLink" runat="server"><a id="updateProgress" href="TicketEditor.aspx?Id=<%#Eval("TicketId")%>&Action=Edit&UpdateProgress=true"><asp:Literal id="_updateProgressImage" runat="server"  /></a></asp:PlaceHolder>
 								</asp:Panel>
 							</div>
 						</div>

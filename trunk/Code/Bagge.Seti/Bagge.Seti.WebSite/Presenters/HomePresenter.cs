@@ -16,6 +16,7 @@ using System.Globalization;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.DesignByContract;
+using Bagge.Seti.WebSite.Models;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
@@ -129,9 +130,9 @@ namespace Bagge.Seti.WebSite.Presenters
 			}
 
 			if (_user.IsSuperAdministrator)
-				_view.DataSource = _ticketManager.FindAllByExecutionWeek(start, end);
+				_view.DataSource = GetViewModelDataSource(_ticketManager.FindAllByExecutionWeek(start, end));
 			else
-				_view.DataSource = _ticketManager.FindAllByExecutionWeekAndTechnician(start, end, _user.Id);
+				_view.DataSource = GetViewModelDataSource(_ticketManager.FindAllByExecutionWeekAndTechnician(start, end, _user.Id));
 			_view.DataBind();
 
 			_view.CurrentDate = start;
@@ -140,6 +141,16 @@ namespace Bagge.Seti.WebSite.Presenters
 				_view.CurrentDateText = string.Format( MonthDisplayFormat, _view.CurrentDate);
 			else
 				_view.CurrentDateText = string.Format(WeekDisplayFormat, start, end);
+		}
+
+		private HomeViewModel[] GetViewModelDataSource(Ticket[] tickets)
+		{
+			HomeViewModel[] models = new HomeViewModel[tickets.Length];
+			for (int index = 0; index < tickets.Length; index++)
+			{
+				models[index] = new HomeViewModel(tickets[index]);
+			}
+			return models;
 		}
 
 		public bool CanViewTicket()
