@@ -130,7 +130,7 @@
     <value>{0:HH:mm}</value>
   </data>
   <data name="CustomerArrivalField.HeaderText" xml:space="preserve">
-    <value>Hora de Arrivo al Cliente</value>
+    <value>Hora de Arribo al Cliente</value>
   </data>
   <data name="CustomerField.HeaderText" xml:space="preserve">
     <value>Cliente</value>

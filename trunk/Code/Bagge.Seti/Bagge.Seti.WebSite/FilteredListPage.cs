@@ -17,6 +17,12 @@ namespace Bagge.Seti.WebSite
 			FilterHelper.AddCalendarFilterValue(calendar, property, type, filters);
 		}
 
+		protected virtual void AddCalendarBetweenFilterValue(Controls.Calendar calendar, string property,
+			IList<FilterPropertyValue> filters)
+		{
+			FilterHelper.AddCalendarBetweenFilterValue(calendar, property, filters);
+		}
+
 		protected virtual void AddTextBoxFilterValue<TValue>(TextBox control, string property, 
 			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue: IConvertible
 		{

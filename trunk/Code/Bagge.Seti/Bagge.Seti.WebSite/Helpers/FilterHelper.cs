@@ -30,6 +30,18 @@ namespace Bagge.Seti.WebSite.Helpers
 			}
 		}
 
+		public static void AddCalendarBetweenFilterValue(Controls.Calendar calendar, string property,
+			IList<FilterPropertyValue> filters)
+		{
+			if (calendar.Date.HasValue)
+			{
+				DateTime from = new DateTime(calendar.Date.Value.Year, calendar.Date.Value.Month, calendar.Date.Value.Day, 0, 0, 0);
+				DateTime to = new DateTime(calendar.Date.Value.Year, calendar.Date.Value.Month, calendar.Date.Value.Day, 23, 59, 59);
+
+				filters.AddBetween(property, from, to);
+			}
+		}
+
 		public static void AddTextBoxFilterValue<TValue>(TextBox control, string property,
 			FilterPropertyValueType type, IList<FilterPropertyValue> filters) where TValue : IConvertible
 		{
