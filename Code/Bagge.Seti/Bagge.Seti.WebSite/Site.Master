@@ -35,22 +35,16 @@
 		</div>
 		<div id="content">
 			<asp:SiteMapPath ID="_siteMapPath" runat="server"></asp:SiteMapPath>
+			<asp:ContentPlaceHolder ID="_preContent" runat="server">
+			</asp:ContentPlaceHolder>
 			<asp:UpdatePanel ID="_contentUpdatePanel" runat="server" UpdateMode="Conditional">
 				<ContentTemplate>
 					<asp:ContentPlaceHolder ID="_content" runat="server">
 					</asp:ContentPlaceHolder>
 				</ContentTemplate>
 			</asp:UpdatePanel>
-			<%--<ajax:UpdatePanelAnimationExtender ID="_contentUpdatePanelAnimation" runat="server" TargetControlID="_contentUpdatePanel">
-				<Animations>
-					<OnUpdating>
-						<EnableAction enabled="true"></EnableAction>
-					</OnUpdating>
-					<OnUpdated>
-						<EnableAction enabled="true"></EnableAction>
-					</OnUpdated>
-				</Animations>
-			</ajax:UpdatePanelAnimationExtender>--%>
+			<asp:ContentPlaceHolder ID="_contentNoUpdatePanel" runat="server">
+			</asp:ContentPlaceHolder>
 		</div>
 		<div id="footer">
 			SETI - &copy; - 2009 - Bagge Consulting - Todos los derechos reservados

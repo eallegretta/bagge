@@ -37,6 +37,8 @@ namespace Bagge.Seti.WebSite
 
 			if(IsUpdateProgress)
 				_commands.AcceptClick += new EventHandler(_commands_AcceptClick);
+
+			ScriptManager.RegisterStartupScript(this, typeof(string), "Initialize", "Initialize()", true);
 		}
 
 		public bool IsUpdateProgress

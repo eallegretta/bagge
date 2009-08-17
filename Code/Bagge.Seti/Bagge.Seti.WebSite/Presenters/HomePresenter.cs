@@ -60,6 +60,7 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		void _view_DisplayFormatChanged(object sender, EventArgs e)
 		{
+			_view.CurrentDate = DateTime.Now;
 			BindData();
 		}
 

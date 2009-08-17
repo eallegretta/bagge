@@ -14,6 +14,10 @@
 			var mins = parseInt(nums[1]);
 			args.IsValid = hours >= 0 && hours <= 23 && mins >= 0 && mins <= 59;
 		}
+		
+		function Initialize(){
+			alert($(".realDuration")[0].MaskedEditBehavior);
+		};
 	</script>
 
 </asp:Content>
@@ -65,7 +69,7 @@
 			<seti:SecureTemplateField PropertyName="EstimatedDuration" meta:resourcekey="EstimatedDurationField">
 				<EditItemTemplate>
 					<asp:TextBox ID="_estimatedDuration" runat="server" Text='<%#Bind("EstimatedDuration")%>' EnableTheming="false" CssClass="textBox smallData numeric"></asp:TextBox>
-					<ajax:MaskedEditExtender ID="_estimatedDurationMask" runat="server" MaskType="Number" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_estimatedDuration"></ajax:MaskedEditExtender>
+					<ajax:MaskedEditExtender ID="_estimatedDurationMask" runat="server" BehaviorID="_estimatedDurationBehavior" MaskType="Number" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_estimatedDuration"></ajax:MaskedEditExtender>
 					<asp:RequiredFieldValidator ID="_estimatedDurationReqVal" ControlToValidate="_estimatedDuration" runat="server" meta:resourcekey="EstimatedDurationValidator"></asp:RequiredFieldValidator>
 				</EditItemTemplate>
 				<ItemTemplate>
@@ -74,8 +78,8 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="RealDuration" meta:resourcekey="RealDurationField">
 				<EditItemTemplate>
-					<asp:TextBox ID="_realDuration" runat="server" Text='<%#Bind("RealDuration")%>' EnableTheming="false" CssClass="textBox smallData numeric"></asp:TextBox>
-					<ajax:MaskedEditExtender ID="_realDurationMask" runat="server" MaskType="Number" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_realDuration"></ajax:MaskedEditExtender>
+					<asp:TextBox ID="_realDuration" runat="server" Text='<%#Bind("RealDuration")%>' EnableTheming="false" CssClass="realDuration textBox smallData numeric"></asp:TextBox>
+					<ajax:MaskedEditExtender ID="_realDurationMask" MaskType="Number" BehaviorID="_realDurationBehavior" runat="server" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_realDuration"></ajax:MaskedEditExtender>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<%#Eval("RealDuration")%>

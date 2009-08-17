@@ -9,9 +9,12 @@ namespace Bagge.Seti.WebSite
 {
 	public partial class Editor : System.Web.UI.MasterPage
 	{
-		public Label RequiredInformation
+		public bool ShowRequiredInformationLabel
 		{
-			get { return _requiredInformationLabel; }
+			set
+			{
+				_requiredInformationLabel.Visible = value;
+			}
 		}
 
 		protected void Page_Load(object sender, EventArgs e)

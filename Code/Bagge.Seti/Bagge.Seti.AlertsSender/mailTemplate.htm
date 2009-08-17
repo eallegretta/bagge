@@ -1,29 +1,73 @@
-<HTML>
-<HEAD>
-
-<TITLE>SETI >> Alerts Module</TITLE> 
-	
-</HEAD>
-
-<BODY>
-	<b><h2><u>{BODY_MAIL_SUBJECT}</u></h2></b> 
-	
+<html>
+<head>
+	<style type="text/css">
+		body { font-family:verdana; }
+		table {  }
+		th { padding:5px; font-size:12px; text-align:left; background-color:#efefef}
+		td { font-size:11px; }
+	</style>
+</head>
+<body>
+	<h4>
+		{BODY_MAIL_SUBJECT}</h4>
 	<br />
-	
-	<b><h3>Id: {ID}</h3></b>
-
-	<b><h3>CustomerName: {CUSTOMER_NAME}</h3></b>
-
-	<b><h3>Description: {DESCRIPTION}</h3></b>
-
-	<b><h3>CreationDate: {CREATION_DATE}</h3></b>
-
-	<b><h3>ExecutionDate: {EXECUTION_DATE}</h3></b>
-
-	<b><h3>EstimatedDuration: {ESTIMATED_DURATION}</h3></b>
-
-	<b><h3>Status: {STATUS}</h3></b>
-
-</BODY>
-</HTML>
-
+	<table>
+		<tr>
+			<th>
+				Ticket #:
+			</th>
+			<td>
+				{ID}
+			</td>
+		</tr>
+	<tr>
+		<th>
+			Cliente:
+		</th>
+		<td>
+			{CUSTOMER_NAME}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Descripci&oacute;n:
+		</th>
+		<td>
+			{DESCRIPTION}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Fecha de Creaci&oacute;n:
+		</th>
+		<td>
+			{CREATION_DATE}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Fecha de Ejecuci&oacute;n:
+		</th>
+		<td>
+			{EXECUTION_DATE}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Duraci&oacute;n Estimada:
+		</th>
+		<td>
+			{ESTIMATED_DURATION}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Estado:
+		</th>
+		<td>
+			{STATUS}
+		</td>
+	</tr>
+	</table>
+</body>
+</html>

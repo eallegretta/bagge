@@ -33,7 +33,8 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 
 		public void Dispose()
 		{
-			_scope.Dispose();
+			if(TransactionScope.Current != null && TransactionScope.Current.Equals(_scope) && _scope != null)
+				_scope.Dispose();
 		}
 
 		#endregion

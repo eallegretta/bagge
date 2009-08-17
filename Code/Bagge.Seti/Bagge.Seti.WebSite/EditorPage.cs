@@ -30,7 +30,7 @@ namespace Bagge.Seti.WebSite
 
 			ObjectDataSource.DataObjectTypeName = typeof(T).FullName;
 
-			((Editor)Master).RequiredInformation.Visible = ShowRequiredInformationLabel;
+			((Editor)Master).ShowRequiredInformationLabel = ShowRequiredInformationLabel;
 
 			AssignTypeNameToSecureContainers(typeof(T).AssemblyQualifiedName);
 

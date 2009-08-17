@@ -3,7 +3,7 @@
 	meta:resourcekey="Page" %>
 
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
-<asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+<asp:Content ID="_content" ContentPlaceHolderID="_contentNoUpdatePanel" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="false" meta:resourcekey="Details">
 		<Fields>
@@ -26,9 +26,16 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField meta:resourcekey="DistrictField">
 				<EditItemTemplate>
-					<asp:DropDownList ID="_district" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
+					<asp:UpdatePanel ID="_districtUpdatePanel" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+					<ContentTemplate>
+						<asp:DropDownList ID="_district" AutoPostBack="true" DataTextField="Name" DataValueField="Id"
 						runat="server" meta:resourcekey="DistrictDropDown">
-					</asp:DropDownList>	
+						</asp:DropDownList>	
+					</ContentTemplate>
+					<Triggers>
+						<asp:AsyncPostBackTrigger ControlID="_countryState" EventName="SelectedIndexChanged" />
+					</Triggers>
+					</asp:UpdatePanel>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<asp:HiddenField ID="_district" runat="server" />
@@ -40,7 +47,15 @@
 			<seti:SecureBoundField DataField="Apartment" MaxLength="1" ControlStyle-Width="10" meta:resourcekey="ApartmentField" />
 			<seti:SecureTemplateField PropertyName="ZipCode" meta:resourcekey="ZipCodeField">
 				<EditItemTemplate>
-					<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>' Width="80px" SkinID="customWidth"></asp:TextBox>
+					<asp:UpdatePanel ID="_zipCodeUpdatePanel" runat="server" UpdateMode="Conditional" RenderMode="Inline">
+					<ContentTemplate>
+						<asp:TextBox ID="_zipCode" runat="server" Text='<%#Bind("ZipCode")%>' Width="80px" SkinID="customWidth"></asp:TextBox>
+					</ContentTemplate>
+						<Triggers>
+							<asp:AsyncPostBackTrigger ControlID="_countryState" EventName="SelectedIndexChanged" />
+							<asp:AsyncPostBackTrigger ControlID="_district" EventName="SelectedIndexChanged" />
+						</Triggers>
+					</asp:UpdatePanel>
 				</EditItemTemplate>
 				<ItemTemplate>
 				<%#Server.HtmlEncode(Eval("ZipCode").ToString())%>
