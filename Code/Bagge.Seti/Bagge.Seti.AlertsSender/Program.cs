@@ -21,7 +21,23 @@ namespace Bagge.Seti.AlertsSender
 {
 	public class Program
 	{
+		private bool IsUserInteractive
+		{
+			get
+			{
+				var args = Environment.GetCommandLineArgs();
+				if (args.Length == 2)
+					return args[1] == "-u";
+				return false;
+			}
+		}
+
 		static void Main(string[] args)
+		{
+			new Program().Run();
+		}
+
+		public void Run()
 		{
 			Console.Clear();
 			try
@@ -38,18 +54,43 @@ namespace Bagge.Seti.AlertsSender
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
-				Console.WriteLine(ex.StackTrace);
-				Console.WriteLine(ex.Source);
+				PrintException(ex);
+			}
+
+			if (IsUserInteractive)
+			{
+				Console.WriteLine(new string('-', 78));
+				Console.WriteLine(new string('-', 78));
+				Console.WriteLine("Presione un tecla para finalizar");
+				Console.ReadKey();
 			}
 		}
 
-		private static void InitializeCulture()
+		protected void PrintException(Exception ex)
+		{
+			while (ex != null)
+			{
+				Console.WriteLine();
+				Console.WriteLine(new string('-', 78));
+				Console.WriteLine(new string('-', 78));
+				Console.WriteLine("Error: ");
+				Console.WriteLine("\t" + ex.Message);
+				Console.WriteLine();
+				Console.WriteLine("Stack Trace: ");
+				Console.WriteLine("\t" + ex.StackTrace);
+				Console.WriteLine();
+				Console.WriteLine("Source: ");
+				Console.WriteLine("\t" + ex.Source);
+				ex = ex.InnerException;
+			}
+		}
+
+		protected void InitializeCulture()
 		{
 			Thread.CurrentThread.CurrentCulture = new CultureInfo(ConfigurationManager.AppSettings["culture"]);
 		}
 
-		private static void Initialize()
+		protected void Initialize()
 		{
 			IConfigurationSource config = ActiveRecordSectionHandler.Instance;
 			Assembly asm = Assembly.Load("Bagge.Seti.BusinessEntities");
@@ -58,7 +99,7 @@ namespace Bagge.Seti.AlertsSender
 			IoCContainer.User = Thread.CurrentPrincipal;
 		}
 
-		public static void SendAlertsByTicketExpired()
+		protected void SendAlertsByTicketExpired()
 		{
 			Console.Write("Buscando todos los tickets abiertos:");
 			Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.Open);
@@ -88,7 +129,7 @@ namespace Bagge.Seti.AlertsSender
 			}
 		}
 
-		public static void SendAlertsByBudgetExpired()
+		protected void SendAlertsByBudgetExpired()
 		{
 			Console.Write("Buscando todos los tickets pendientes de aprobacion:");
 			Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.PendingAproval);
@@ -116,7 +157,7 @@ namespace Bagge.Seti.AlertsSender
 			}
 		}
 
-		public static void SendMail(bool isSendEmailToCreator, bool isSendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
+		protected void SendMail(bool isSendEmailToCreator, bool isSendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
 		{
 			using (var msg = new MailMessage())
 			{
