@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeleteField.ConfirmationMessage" xml:space="preserve">
+    <value>¿Esta seguro que desea borrar el insumo?</value>
+  </data>
   <data name="DeleteField.HeaderText" xml:space="preserve">
     <value>Borrar</value>
+  </data>
+  <data name="DeleteField.UndeleteConfirmationMessage" xml:space="preserve">
+    <value>¿Esta seguro que desea reciclar el insumo?</value>
   </data>
   <data name="DescriptionField.HeaderText" xml:space="preserve">
     <value>Descripción</value>
@@ -127,7 +133,7 @@
     <value>Editar</value>
   </data>
   <data name="FilterButton.Text" xml:space="preserve">
-    <value>Filtrar Productos</value>
+    <value>Filtrar Insumos</value>
   </data>
   <data name="FilterDeletedLiteral.Text" xml:space="preserve">
     <value>Borrado:</value>
@@ -139,19 +145,19 @@
     <value>Código:</value>
   </data>
   <data name="FilterProvidersLiteral.Text" xml:space="preserve">
-    <value>Proveedores:</value>
+    <value>Proveedor:</value>
   </data>
   <data name="Grid.EmptyDataText" xml:space="preserve">
-    <value>No se han encontrado productos</value>
+    <value>No se han encontrado insumos</value>
   </data>
   <data name="ListCommands.NewText" xml:space="preserve">
-    <value>Nuevo Producto</value>
+    <value>Nuevo Insumo</value>
   </data>
   <data name="NameField.HeaderText" xml:space="preserve">
     <value>Código</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
-    <value>Seti &gt; Listado de Productos</value>
+    <value>Seti &gt; Listado de Insumos</value>
   </data>
   <data name="ViewField.HeaderText" xml:space="preserve">
     <value>Ver</value>

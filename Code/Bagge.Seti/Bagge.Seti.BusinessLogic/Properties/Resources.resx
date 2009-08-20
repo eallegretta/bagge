@@ -163,7 +163,7 @@
     <value>Hay multiples empleados con el mismo nombre de usuario</value>
   </data>
   <data name="ProductTicketRelatedErrorMessage" xml:space="preserve">
-    <value>No se puede elminar el producto ya que esta asociado a un ticket no cerrado o no cancelado</value>
+    <value>No se puede elminar el insumo ya que esta asociado a un ticket no cerrado o no cancelado</value>
   </data>
   <data name="ProviderTicketRelatedErrorMessage" xml:space="preserve">
     <value>No se puede elminar el proveedor ya que esta asociado a un ticket no cerrado o no cancelado</value>
@@ -286,7 +286,7 @@
     <value>Actualizar</value>
   </data>
   <data name="Securizable_ProductManager" xml:space="preserve">
-    <value>Productos</value>
+    <value>Insumos</value>
   </data>
   <data name="Securizable_ProductManager_GetByName" xml:space="preserve">
     <value>Cargar por Nombre</value>
@@ -316,7 +316,7 @@
     <value>Tickets</value>
   </data>
   <data name="Securizable_TicketManager_FindAllByProduct" xml:space="preserve">
-    <value>Buscar Todos por Producto</value>
+    <value>Buscar Todos por Insumo</value>
   </data>
   <data name="Securizable_TicketManager_FindAllByProvider" xml:space="preserve">
     <value>Buscar Todos por Proveedor</value>

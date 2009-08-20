@@ -171,6 +171,13 @@ namespace Bagge.Seti.WebSite
 				if (zipCode != null)
 					zipCode.Text = value;
 			}
+			get
+			{
+				var zipCode = ((TextBox)Details.FindControl("_zipCode"));
+				if (zipCode != null)
+					return zipCode.Text;
+				return string.Empty;
+			}
 		}
 
 		public ProductProvider[] Products

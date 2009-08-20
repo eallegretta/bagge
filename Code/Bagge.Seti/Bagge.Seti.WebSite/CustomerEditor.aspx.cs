@@ -69,6 +69,11 @@ namespace Bagge.Seti.WebSite
 		}
 
 
+		protected override void OnInserting(Customer instance)
+		{
+			base.OnInserting(instance);
+		}
+
 		protected void _countryState_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int countryStateId = ((DropDownList)sender).SelectedValue.ToInt32();
@@ -169,6 +174,13 @@ namespace Bagge.Seti.WebSite
 				var zipCode = ((TextBox)Details.FindControl("_zipCode"));
 				if (zipCode != null)
 					zipCode.Text = value;
+			}
+			get
+			{
+				var zipCode = ((TextBox)Details.FindControl("_zipCode"));
+				if (zipCode != null)
+					return zipCode.Text;
+				return string.Empty;
 			}
 		}
 

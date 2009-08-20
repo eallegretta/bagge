@@ -74,7 +74,7 @@
 					</asp:UpdatePanel>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<%#Server.HtmlEncode(Eval("ZipCode").ToString())%>
+					<%#Server.HtmlEncode(Eval("ZipCode") as string)%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureBoundField ControlStyle-Width="320px" MaxLength="50" DataField="PrimaryPhone"

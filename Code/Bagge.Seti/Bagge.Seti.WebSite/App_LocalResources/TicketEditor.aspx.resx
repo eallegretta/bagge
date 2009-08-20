@@ -154,7 +154,7 @@
     <value>Presupuesto</value>
   </data>
   <data name="ProductsField.HeaderText" xml:space="preserve">
-    <value>Productos</value>
+    <value>Insumos</value>
   </data>
   <data name="ApproveButton.OnClientClick" xml:space="preserve">
     <value>return confirm("¿Esta seguro que desea aprobar el ticket?");</value>

@@ -14,12 +14,7 @@
 			var mins = parseInt(nums[1]);
 			args.IsValid = hours >= 0 && hours <= 23 && mins >= 0 && mins <= 59;
 		}
-		
-		function Initialize(){
-			alert($(".realDuration")[0].MaskedEditBehavior);
-		};
 	</script>
-
 </asp:Content>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
@@ -68,7 +63,7 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="EstimatedDuration" meta:resourcekey="EstimatedDurationField">
 				<EditItemTemplate>
-					<asp:TextBox ID="_estimatedDuration" runat="server" Text='<%#Bind("EstimatedDuration")%>' EnableTheming="false" CssClass="textBox smallData numeric"></asp:TextBox>
+					<asp:TextBox ID="_estimatedDuration" runat="server" Text='<%#Bind("EstimatedDuration")%>' EnableTheming="false" CssClass="numericMask textBox smallData numeric"></asp:TextBox>
 					<ajax:MaskedEditExtender ID="_estimatedDurationMask" runat="server" BehaviorID="_estimatedDurationBehavior" MaskType="Number" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_estimatedDuration"></ajax:MaskedEditExtender>
 					<asp:RequiredFieldValidator ID="_estimatedDurationReqVal" ControlToValidate="_estimatedDuration" runat="server" meta:resourcekey="EstimatedDurationValidator"></asp:RequiredFieldValidator>
 				</EditItemTemplate>
@@ -78,7 +73,7 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="RealDuration" meta:resourcekey="RealDurationField">
 				<EditItemTemplate>
-					<asp:TextBox ID="_realDuration" runat="server" Text='<%#Bind("RealDuration")%>' EnableTheming="false" CssClass="realDuration textBox smallData numeric"></asp:TextBox>
+					<asp:TextBox ID="_realDuration" runat="server" Text='<%#Bind("RealDuration")%>' EnableTheming="false" CssClass="numericMask textBox smallData numeric"></asp:TextBox>
 					<ajax:MaskedEditExtender ID="_realDurationMask" MaskType="Number" BehaviorID="_realDurationBehavior" runat="server" InputDirection="RightToLeft" Mask="99.99" TargetControlID="_realDuration"></ajax:MaskedEditExtender>
 				</EditItemTemplate>
 				<ItemTemplate>
@@ -123,7 +118,7 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField meta:resourcekey="BudgetField" PropertyName="Budget">
 				<EditItemTemplate>
-					<asp:TextBox ID="_budget" runat="server" Text='<%#Bind("Budget")%>' EnableTheming="false" CssClass="textBox numeric mediumData"></asp:TextBox>
+					<asp:TextBox ID="_budget" runat="server" Text='<%#Bind("Budget")%>' EnableTheming="false" CssClass="numericMask textBox numeric mediumData"></asp:TextBox>
 					<ajax:MaskedEditExtender ID="_budgetMask" runat="server" TargetControlID="_budget" InputDirection="RightToLeft" Mask="999999999.99" MaskType="Number"></ajax:MaskedEditExtender>
 					<asp:CustomValidator ID="_budgetValidator" runat="server" ControlToValidate="_budget" ValidateEmptyText="true" OnServerValidate="_budgetValidator_ServerValidate" meta:resourcekey="BudgetValidator"></asp:CustomValidator>
 				</EditItemTemplate>

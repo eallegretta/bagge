@@ -35,6 +35,14 @@ namespace Bagge.Seti.WebSite.Presenters
 			}
 		}
 
+		public bool IsNameUnique(string name)
+		{
+			if(View.Mode == EditorAction.Insert)
+				return GetManager<IProductManager>().IsNameUnique(new Product { Name = name });
+			else
+				return GetManager<IProductManager>().IsNameUnique(new Product { Id = SelectedEntity.Id, Name = name });
+		}
+
 
 		public override void Save(Product entity)
 		{

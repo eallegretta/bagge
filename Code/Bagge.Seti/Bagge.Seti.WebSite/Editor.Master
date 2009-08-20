@@ -11,4 +11,7 @@
 <asp:Content ID="_contentNoUpdatePanelContent" runat="server" ContentPlaceHolderID="_contentNoUpdatePanel">
 	<asp:ContentPlaceHolder ID="_contentNoUpdatePanel" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
+<asp:Content ID="_startupScriptContent" runat="server" ContentPlaceHolderID="_startupScript">
+	<asp:ContentPlaceHolder ID="_startupScript" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
 

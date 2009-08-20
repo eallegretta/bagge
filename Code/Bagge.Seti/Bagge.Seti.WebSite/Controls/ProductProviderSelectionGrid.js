@@ -5,7 +5,22 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
-function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, deleteIconUrl, isReadOnly) {
+
+function string4(){
+	return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+}
+
+function newGuid(){
+	return string4() + "-" + string4() + "-" + string4() + "-" + string4();
+}
+
+function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, deleteIconUrl, isReadOnly, decimalSeparator) {
+
+	this.formatNumber = function(number){
+		if(number.toString().indexOf(decimalSeparator) == -1)
+			return number + decimalSeparator + "00";
+		return number;
+	}
 
 	this.table = $("#" + tableId);
 	this.addButton = $("#" + btnId);
@@ -33,8 +48,9 @@ function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, de
 	}
 	
 	this.isValidPrice = function(price) {
+		
 		var regex = /^\d+(?:\.\d*)?$/;
-		return regex.test(price);
+		return regex.test(price.replace(",","."));
 	}
 
 	this.addSelectedItem = function() {
@@ -117,16 +133,25 @@ function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, de
 		var cssClass = ($("tr", this.table).length % 2 == 1) ? "gridRow" : "gridRowAlternate";
 
 		var priceBox = (this.isReadOnly) ? document.createElement("span") : document.createElement("input");
+		var stateField = null;
+		
 		if (this.isReadOnly)
 			$(priceBox).text(item.Price);
 		else {
 			priceBox.behaviour = this;
-
+			
+			
+			
+			if(!this.isReadOnly)
+			{
+				priceBox.id = newGuid();
+				stateField = document.createElement("hidden");
+				stateField.id = priceBox.id + "_StateField";
+			}
 			$(priceBox)
 				.focus(function() {
 					this.lastValue = this.value;
 				})
-				.val(item.Price)
 				.change(function() {
 					if (this.behaviour.isValidPrice(this.value)) {
 						var item = $(this).parent().parent().data("item");
@@ -138,15 +163,27 @@ function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, de
 				}
 			);
 		}
-		$(priceBox).css("text-align", "right");
+		$(priceBox)
+			.addClass("textBox")
+			.addClass("numeric")
+			.css("text-align", "right")
+			.css("width", "70px")
+			.focus(function(){ $(this).addClass("selected"); })
+			.blur(function() { $(this).removeClass("selected"); });
+		
 
 		var row = $("<tr class='" + cssClass + "'></tr>").append(
 						$("<td></td>").text(item.Name)
 					).append(
-						$("<td style='text-align:right'></td>").append(priceBox)
+						$("<td style='text-align:right'></td>").append(priceBox).append(stateField)
 				);
 		if (!this.isReadOnly)
+		{
 			row.append($("<td style='text-align:center'></td>").append(img));
+			registerMask(priceBox.id, stateField.id, priceBox);
+			applyMaskedEditFix(priceBox);
+			$(priceBox).val(this.formatNumber(item.Price))
+		}
 		row.data("item", item);
 		img.behaviour = this;
 		$(img).click(function() {

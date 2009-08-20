@@ -8,6 +8,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface IProductManager: IAuditableManager<Product, int>
 	{
-		
+		bool IsNameUnique(Product product);
 	}
 }

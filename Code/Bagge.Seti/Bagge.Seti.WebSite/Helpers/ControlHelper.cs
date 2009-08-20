@@ -4,11 +4,56 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using AjaxControlToolkit;
 
 namespace Bagge.Seti.WebSite.Helpers
 {
 	public static class ControlHelper
 	{
+		public static string GetMaskedEditFunction(string functionName, MaskedEditInputDirection inputDirection, string mask, 
+			MaskedEditType maskType, ClientScriptManager clientScript)
+		{
+			var culture = System.Globalization.CultureInfo.CurrentUICulture;
+
+			char sep = char.Parse(culture.DateTimeFormat.DateSeparator);
+			string[] arrDate = culture.DateTimeFormat.ShortDatePattern.Split(sep);
+
+			string cultureDateFormat = arrDate[0].Substring(0, 1).ToUpper(culture);
+			cultureDateFormat += arrDate[1].Substring(0, 1).ToUpper(culture);
+			cultureDateFormat += arrDate[2].Substring(0, 1).ToUpper(culture);
+			
+			string ampmPlaceHolder = string.Empty;
+			if (!string.IsNullOrEmpty(culture.DateTimeFormat.AMDesignator + culture.DateTimeFormat.PMDesignator))
+				ampmPlaceHolder = culture.DateTimeFormat.AMDesignator + ";" + culture.DateTimeFormat.PMDesignator;
+			
+
+			string script = string.Format(@"
+			function {0}(id, stateFieldId, textBox){{
+					$create(AjaxControlToolkit.MaskedEditBehavior, 
+					{{
+						""ClientStateFieldID"": stateFieldId,
+						""CultureAMPMPlaceholder"":""{1}"",
+						""CultureCurrencySymbolPlaceholder"":""{2}"",
+						""CultureDateFormat"":""{3}"",
+						""CultureDatePlaceholder"":""{4}"",
+						""CultureDecimalPlaceholder"":""{5}"",
+						""CultureName"":""{6}"",
+						""CultureThousandsPlaceholder"":""{7}"",
+						""CultureTimePlaceholder"":""{8}"",
+						""InputDirection"":{9},
+						""Mask"": ""{10}"",
+						""MaskType"":{11},
+						""id"": id + ""_mask""
+					}}, null, null, 
+					(textBox) ? textBox : $get(id));
+			}}", functionName, ampmPlaceHolder, culture.NumberFormat.CurrencySymbol,
+				cultureDateFormat, culture.DateTimeFormat.DateSeparator, culture.NumberFormat.NumberDecimalSeparator,
+				culture.Name, culture.NumberFormat.NumberGroupSeparator, culture.DateTimeFormat.TimeSeparator,
+				(int)inputDirection, mask, (int)maskType);
+
+			return script;
+		}
+
 		public static string GetControlAsHtml(Control control)
 		{
 			if (control is GridView)

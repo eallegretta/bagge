@@ -349,13 +349,11 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 				case FilterPropertyValueType.Contains:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
 						where = string.Format("el.{0} like :{1}{2}", filter.Property, filter.VariableName, condition);
-					where = string.Empty;
 					break;
 				case FilterPropertyValueType.NotLike:
 				case FilterPropertyValueType.NotContains:
 					if (!string.IsNullOrEmpty(filter.Value.ToString()))
 						where = string.Format("el.{0} not like :{1}{2}", filter.Property, filter.VariableName, condition);
-					where = string.Empty;
 					break;
 				case FilterPropertyValueType.Greater:
 					where = string.Format("el.{0} > :{1}{2}", filter.Property, filter.VariableName, condition);

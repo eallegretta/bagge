@@ -190,10 +190,10 @@
     <value>Clientes Pendientes de Pago</value>
   </data>
   <data name="ReportProductsByProvider.title" xml:space="preserve">
-    <value>Productos por Proveedor</value>
+    <value>Insumos por Proveedor</value>
   </data>
   <data name="ReportProductsConsumed.title" xml:space="preserve">
-    <value>Productos Consumidos</value>
+    <value>Insumos Consumidos</value>
   </data>
   <data name="ReportTechniciansByTicket.title" xml:space="preserve">
     <value>Técnicos por Tickets</value>

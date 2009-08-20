@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{32F8F81B-0F4D-4ABA-9CBE-1613FDA7B328}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -130,6 +130,7 @@
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketEmployee.cs" />
     <Compile Include="TicketStatus.cs" />
+    <Compile Include="Validators\AvoidValidationAttribute.cs" />
     <Compile Include="Validators\EmailValidator.cs" />
     <Compile Include="Validators\EmailValidatorAttribute.cs" />
     <Compile Include="Validators\RequiredStringValidator.cs" />

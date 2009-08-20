@@ -105,11 +105,35 @@ namespace Bagge.Seti.BusinessLogic
 			if (!IsDeleteOrUndelete)
 			{
 				SessionScopeUtils.FlushSessionScope();
-				_productProviderDao.DeleteByProvider(instance.Id);
+				UpdateProductProviders(instance);
 			}
 				
 
 			base.Update(instance);
+		}
+
+		private void UpdateProductProviders(Provider instance)
+		{
+			IList<ProductProvider> products = new List<ProductProvider>(instance.Products);
+
+			var productProvidersFromDb = _productProviderDao.FindAllByProvider(instance.Id);
+			foreach (var productProviderFromDb in productProvidersFromDb)
+			{
+				var query = from pp in products
+							where pp.Product.Id == productProviderFromDb.Product.Id
+							select pp;
+				var productProvider = query.FirstOrDefault();
+				if (productProvider == null)
+					_productProviderDao.Delete(productProviderFromDb.Id);
+				else
+				{
+					productProviderFromDb.Price = productProvider.Price;
+					_productProviderDao.Update(productProviderFromDb);
+					products.Remove(productProvider);
+				}
+			}
+
+			instance.Products = products;
 		}
 
 		protected override void ReplaceFilters(IList<FilterPropertyValue> filters)
@@ -122,8 +146,21 @@ namespace Bagge.Seti.BusinessLogic
 
 			if (productsFilter != null)
 			{
-				foreach(var productProvider in _productProviderDao.FindAllByProduct((int)productsFilter.Value))
-					filters.Add(new FilterPropertyValue { Property = productsFilter.Property, Type = productsFilter.Type, Value = productProvider }); 
+				bool filterReplaced = false;
+				foreach (var productProvider in _productProviderDao.FindAllByProduct((int)productsFilter.Value))
+				{
+					filterReplaced = true;
+					filters.Add(new FilterPropertyValue { Property = productsFilter.Property, Type = productsFilter.Type, Value = productProvider });
+				}
+
+				if(!filterReplaced)
+					filters.Add(
+						new FilterPropertyValue 
+						{ 
+							Property = "Id", 
+							Type = FilterPropertyValueType.Equals,
+							Value = -1
+						});
 			}
 				
 		}
