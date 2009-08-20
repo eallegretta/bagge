@@ -313,13 +313,13 @@
     <value>Nombre de Usuario</value>
   </data>
   <data name="Securizable_Product" xml:space="preserve">
-    <value>Producto</value>
+    <value>Insumo</value>
   </data>
   <data name="Securizable_Product_Name" xml:space="preserve">
-    <value>Nombre</value>
+    <value>Código</value>
   </data>
   <data name="Securizable_Product_NameAndDescription" xml:space="preserve">
-    <value>Nombre y Descripción</value>
+    <value>Código y Descripción</value>
   </data>
   <data name="Securizable_Product_Providers" xml:space="preserve">
     <value>Proveedores</value>
@@ -364,7 +364,7 @@
     <value>Fecha de Ejecución</value>
   </data>
   <data name="Securizable_Ticket_Products" xml:space="preserve">
-    <value>Productos</value>
+    <value>Insumos</value>
   </data>
   <data name="Securizable_Ticket_RealDuration" xml:space="preserve">
     <value>Duración Real</value>

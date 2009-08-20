@@ -163,7 +163,7 @@
     <value>Teléfono *</value>
   </data>
   <data name="ProductsField.HeaderText" xml:space="preserve">
-    <value>Productos</value>
+    <value>Insumos</value>
   </data>
   <data name="SubscriptionField.HeaderText" xml:space="preserve">
     <value>Abono</value>

@@ -21,6 +21,7 @@ namespace Bagge.Seti.WebSite
 			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/jquery.numeric.pack.js"));
 			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/json2.js"));
 			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/Site.Master.js"));
+			script.AppendFormat(@"<script type=""text/javascript"" src=""{0}""></script>", Page.ResolveUrl("~/Scripts/MaskedEditFix.js"));
 
 			Page.Header.Controls.AddAt(0, new LiteralControl(script.ToString()));
 

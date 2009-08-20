@@ -175,7 +175,7 @@
     <value>Teléfono</value>
   </data>
   <data name="FilterProductLiteral.Text" xml:space="preserve">
-    <value>Producto:</value>
+    <value>Insumo:</value>
   </data>
   <data name="FilterDeletedLiteral.Text" xml:space="preserve">
     <value>Borrado:</value>

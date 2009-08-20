@@ -38,7 +38,9 @@
 				<ItemTemplate>
 					<div class="ticket">
 						<div class="ticketContainer">
-							<div class="ticketHeader  head_status_<%#Eval("TicketStatus")%>"><%#Eval("TicketExecutionDateTime")%></div>
+							<div class="ticketHeader  head_status_<%#Eval("TicketStatus")%>">
+							<%#Eval("TicketExecutionDateTimeDayName")%><br />
+							<%#Eval("TicketExecutionDateTime")%></div>
 							<div class="ticketBody  body_status_<%#Eval("TicketStatus")%>">
 								<%#Eval("CustomerName")%><br />
 								<a target="_blank" class="googleMaps" title="<%#Eval("MapDestination")%>" href="Maps.aspx?Destination=<%#Eval("MapDestination")%>">

@@ -154,16 +154,16 @@
     <value>Editor de Funciones</value>
   </data>
   <data name="Securizable_ProductEditor" xml:space="preserve">
-    <value>Editor de Productos</value>
+    <value>Editor de Insumos</value>
   </data>
   <data name="Securizable_ProductList" xml:space="preserve">
-    <value>Listado de Productos</value>
+    <value>Listado de Insumos</value>
   </data>
   <data name="Securizable_ProductsByProvider" xml:space="preserve">
-    <value>Reporte Productos por Proveedor</value>
+    <value>Reporte Insumos por Proveedor</value>
   </data>
   <data name="Securizable_ProductsConsumed" xml:space="preserve">
-    <value>Reporte Productos Consumidos</value>
+    <value>Reporte Insumos Consumidos</value>
   </data>
   <data name="Securizable_ProviderEditor" xml:space="preserve">
     <value>Editor de Proveedores</value>

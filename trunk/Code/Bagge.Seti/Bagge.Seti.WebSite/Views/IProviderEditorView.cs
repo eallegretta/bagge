@@ -16,7 +16,7 @@ namespace Bagge.Seti.WebSite.Views
 		int? SelectedDistrictId { get; set; }
 		int SelectedCalificationId { get;  set; }
 
-		string ZipCode { set; }
+		string ZipCode { set; get;  }
 
 		ProductProvider[] Products { get; set; }
 	}

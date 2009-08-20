@@ -22,7 +22,8 @@
 				</asp:DropDownList>
 			</td>
 			<td>
-				<asp:TextBox ID="_price" runat="server" meta:resourcekey="PriceTextBox"></asp:TextBox>
+				<asp:TextBox ID="_price" runat="server" meta:resourcekey="PriceTextBox" EnableTheming="false" CssClass="numericMask numeric textBox" Width="70px"></asp:TextBox>
+				<ajax:MaskedEditExtender ID="_priceMask" runat="server" TargetControlID="_price" MaskType="Number" Mask="999999.99" InputDirection="RightToLeft"></ajax:MaskedEditExtender>
 			</td>
 		</tr>
 	</table>
@@ -41,3 +42,9 @@
 	</tr>
 </table>
 <asp:HiddenField ID="_selectedItems" runat="server" Value="[]" />
+<script type="text/javascript">
+	<%=Bagge.Seti.WebSite.Helpers.ControlHelper.GetMaskedEditFunction("registerMask", AjaxControlToolkit.MaskedEditInputDirection.RightToLeft, "999999.99", 
+			AjaxControlToolkit.MaskedEditType.Number, Page.ClientScript)%>
+</script>
+
+

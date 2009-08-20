@@ -11,6 +11,7 @@ using Bagge.Seti.DesignByContract;
 using Bagge.Seti.DataAccess;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.BusinessEntities.Validators;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -43,6 +44,28 @@ namespace Bagge.Seti.BusinessLogic
 			throw new ObjectNotFoundException(Resources.InstanceNotFound);
 		}
 
+		[AvoidValidation]
+		public bool IsNameUnique(Product product)
+		{
+			Check.Require(product != null);
+			Check.Require(!string.IsNullOrEmpty(product.Name));
+
+			try
+			{
+				var prodFromDb = GetByName(product.Name);
+				return product.Id == prodFromDb.Id;
+			}
+			catch (ObjectNotFoundException)
+			{
+				return true;
+			}
+			catch (BusinessRuleException)
+			{
+				return false;
+			}
+			
+		}
+
 		public override int Create(Product instance)
 		{
 			Check.Require(instance != null);
@@ -71,10 +94,35 @@ namespace Bagge.Seti.BusinessLogic
 			if (!IsDeleteOrUndelete)
 			{
 				SessionScopeUtils.FlushSessionScope();
-				_productProviderDao.DeleteByProduct(instance.Id);
+
+				UpdateProductProviders(instance);
 			}
 
 			base.Update(instance);
+		}
+
+		private void UpdateProductProviders(Product instance)
+		{
+			IList<ProductProvider> providers = new List<ProductProvider>(instance.Providers);
+
+			var productProvidersFromDb = _productProviderDao.FindAllByProduct(instance.Id);
+			foreach (var productProviderFromDb in productProvidersFromDb)
+			{
+				var query = from pp in providers
+							where pp.Provider.Id == productProviderFromDb.Provider.Id
+							select pp;
+				var productProvider = query.FirstOrDefault();
+				if (productProvider == null)
+					_productProviderDao.Delete(productProviderFromDb.Id);
+				else
+				{
+					productProviderFromDb.Price = productProvider.Price;
+					_productProviderDao.Update(productProviderFromDb);
+					providers.Remove(productProvider);
+				}
+			}
+
+			instance.Providers = providers;
 		}
 
 
@@ -88,8 +136,21 @@ namespace Bagge.Seti.BusinessLogic
 
 			if (providersFilter != null)
 			{
+				bool filterReplaced = false;
 				foreach (var product in _productProviderDao.FindAllByProvider((int)providersFilter.Value))
+				{
+					filterReplaced = true;
 					filters.Add(new FilterPropertyValue { Property = providersFilter.Property, Type = providersFilter.Type, Value = product });
+				}
+
+				if (!filterReplaced)
+					filters.Add(
+						new FilterPropertyValue
+						{
+							Property = "Id",
+							Type = FilterPropertyValueType.Equals,
+							Value = -1
+						});
 			}
 		}
 

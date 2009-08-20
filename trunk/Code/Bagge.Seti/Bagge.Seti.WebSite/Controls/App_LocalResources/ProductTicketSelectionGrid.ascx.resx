@@ -142,10 +142,10 @@
     <value>-- Seleccione --</value>
   </data>
   <data name="ProductHeaderLiteral.Text" xml:space="preserve">
-    <value>Producto</value>
+    <value>Insumo</value>
   </data>
   <data name="ProductTitleLiteral.Text" xml:space="preserve">
-    <value>Producto</value>
+    <value>Insumo</value>
   </data>
   <data name="ProviderHeaderLiteral.Text" xml:space="preserve">
     <value>Proveedor</value>

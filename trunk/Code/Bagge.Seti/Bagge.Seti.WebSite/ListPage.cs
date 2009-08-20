@@ -11,6 +11,7 @@ using Microsoft.Practices.Web.UI.WebControls;
 using Bagge.Seti.WebSite.Controls;
 using System.Web.UI;
 using Bagge.Seti.Extensions;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
@@ -24,10 +25,45 @@ namespace Bagge.Seti.WebSite
 			ObjectDataSource.UsingServerPaging = true;
 
 			Grid.RowCommand += new GridViewCommandEventHandler(Grid_RowCommand);
+			Grid.DataBinding += new EventHandler(Grid_DataBinding);
+			Grid.RowDataBound += new GridViewRowEventHandler(Grid_RowDataBound);
 
 			AssignTypeNameToSecureContainers(typeof(T).AssemblyQualifiedName);
 
 			base.OnInit(e);
+		}
+
+		void Grid_DataBinding(object sender, EventArgs e)
+		{
+			SetEditIndexFieldValue();
+		}
+
+		int? _editFieldIndex = null;
+
+		void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
+		{
+			if (e.Row.RowType == DataControlRowType.DataRow)
+			{
+				var auditable = e.Row.DataItem as IAuditable;
+				if (auditable != null)
+				{
+					if (_editFieldIndex.HasValue && auditable.Deleted)
+						e.Row.Cells[_editFieldIndex.Value].Visible = false;
+				}
+			}
+		}
+
+		private void SetEditIndexFieldValue()
+		{
+			for (int index = 0; index < Grid.Columns.Count && !_editFieldIndex.HasValue; index++)
+			{
+				var field = Grid.Columns[index] as IMethodSecureControl;
+				if (field != null)
+				{
+					if (field.MethodName == "Update")
+						_editFieldIndex = index;
+				}
+			}
 		}
 
 		void Grid_RowCommand(object sender, GridViewCommandEventArgs e)

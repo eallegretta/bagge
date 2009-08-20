@@ -36,6 +36,14 @@ namespace Bagge.Seti.WebSite.Models
 			}
 		}
 
+		public string TicketExecutionDateTimeDayName
+		{
+			get
+			{
+				return string.Format("{0:dddd}", Ticket.ExecutionDateTime);
+			}
+		}
+
 		public string TicketExecutionDateTime
 		{
 			get

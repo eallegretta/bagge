@@ -127,7 +127,7 @@
     <value>Nombre</value>
   </data>
   <data name="LegendProductLabel.Text" xml:space="preserve">
-    <value>Ingrese el nombre del producto, luego ingrese el precio y luego presione en Agregar</value>
+    <value>Ingrese el nombre del insumo, luego ingrese el precio y luego presione en Agregar</value>
   </data>
   <data name="LegendProviderLabel.Text" xml:space="preserve">
     <value>Ingrese el nombre del proveedor, luego ingrese el precio y luego presione en Agregar</value>
@@ -139,7 +139,7 @@
     <value>Precio</value>
   </data>
   <data name="ProductFieldLietral.Text" xml:space="preserve">
-    <value>Producto</value>
+    <value>Insumo</value>
   </data>
   <data name="ProviderAddLegend" xml:space="preserve">
     <value>Ingrese el nombre del proveedor, luego ingrese el precio y luego presione en Agregar</value>

@@ -4,9 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 	<title></title>
-
-	
-
 	<asp:ContentPlaceHolder ID="_head" runat="server">
 	</asp:ContentPlaceHolder>
 </head>
@@ -51,7 +48,15 @@
 		</div>
 	</div>
 	</form>
-	
+	<asp:ContentPlaceHolder ID="_startupScript" runat="server">
+	</asp:ContentPlaceHolder>
+	<script type="text/javascript">
+		Sys.Application.add_init(function(){
+			$(".numericMask").each(function(){
+				applyMaskedEditFix(this);
+			});
+		});
+	</script>
 	<div id="loadingAnimation" style="position:absolute;display:none">
 		<asp:Image ID="_loadingAnimationImage" runat="server" SkinID="loading" /><asp:Literal ID="_loadingAnimationText" runat="server" meta:resourcekey="LoadingAnimation"></asp:Literal>
 	</div>

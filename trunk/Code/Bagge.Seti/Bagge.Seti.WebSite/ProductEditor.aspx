@@ -7,6 +7,9 @@
 		<Fields>
 			<seti:SecureBoundField MaxLength="50" DataField="Name"
 				meta:resourcekey="NameField">
+				<Validators>
+					<asp:CustomValidator ID="_nameUniqueVal" runat="server" OnServerValidate="_nameUniqueVal_ServerValidate" meta:resourcekey="NameUniqueValidator"></asp:CustomValidator>
+				</Validators>
 			</seti:SecureBoundField>
 			
 			<seti:SecureBoundField ControlStyle-Width="320px" DataField="Description" meta:resourcekey="DescriptionField">

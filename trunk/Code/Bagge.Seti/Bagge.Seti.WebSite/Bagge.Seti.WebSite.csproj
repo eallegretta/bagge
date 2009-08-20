@@ -815,6 +815,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Scripts\jquery.colorbox-min.js" />
+    <Content Include="Scripts\MaskedEditFix.js" />
     <Content Include="Styles\colorbox-ie.css" />
     <Content Include="Styles\colorbox.css" />
   </ItemGroup>

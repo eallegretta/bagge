@@ -113,6 +113,15 @@ namespace Bagge.Seti.WebSite {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder _contentNoUpdatePanel;
         
         /// <summary>
+        /// _startupScript control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder _startupScript;
+        
+        /// <summary>
         /// _loadingAnimationImage control.
         /// </summary>
         /// <remarks>

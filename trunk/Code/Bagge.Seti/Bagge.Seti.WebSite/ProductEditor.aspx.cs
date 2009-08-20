@@ -65,5 +65,10 @@ namespace Bagge.Seti.WebSite
 		}
 
 
+		protected void _nameUniqueVal_ServerValidate(object sender, ServerValidateEventArgs e)
+		{
+			e.IsValid = _presenter.IsNameUnique(e.Value);
+		}
+
 	}
 }

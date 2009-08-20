@@ -33,7 +33,8 @@
 				</asp:UpdatePanel>
 			</td>
 			<td>
-				<asp:TextBox ID="_quantity" runat="server" meta:resourcekey="QuantityTextBox"></asp:TextBox>
+				<asp:TextBox ID="_quantity" runat="server" EnableTheming="false" CssClass="numeric textBox" Width="70px" meta:resourcekey="QuantityTextBox"></asp:TextBox>
+				<ajax:MaskedEditExtender ID="_quantityMask" runat="server" TargetControlID="_quantity" MaskType="Number" Mask="9999999999" InputDirection="RightToLeft"></ajax:MaskedEditExtender>
 			</td>
 		</tr>
 	</table>

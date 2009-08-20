@@ -97,6 +97,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			if (View.SelectedDistrictId.HasValue)
 				entity.District = _districtManager.Get(View.SelectedDistrictId.Value);
 
+			entity.ZipCode = View.ZipCode;
 			entity.Calification = _providerCalificationManager.Get(View.SelectedCalificationId);
 			entity.Products = View.Products;
 

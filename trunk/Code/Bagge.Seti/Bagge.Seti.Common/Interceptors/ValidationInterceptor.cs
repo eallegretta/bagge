@@ -6,6 +6,7 @@ using Spring.Aop;
 using Bagge.Seti.Extensions;
 using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.BusinessEntities.Exceptions;
+using Bagge.Seti.BusinessEntities.Validators;
 
 namespace Bagge.Seti.Common.Interceptors
 {
@@ -17,6 +18,9 @@ namespace Bagge.Seti.Common.Interceptors
 		{
 			if (args != null)
 			{
+				if (method.IsDefined(typeof(AvoidValidationAttribute), true))
+					return;
+
 				foreach (object arg in args)
 				{
 					if (arg is IAuditable)
