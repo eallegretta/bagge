@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MethodAccessDeniedErrorMessage" xml:space="preserve">
+    <value>Usted no posee permisos para ejecutar la acción que desea realizar.</value>
+  </data>
+  <data name="ObjectNotFoundErrorMessage" xml:space="preserve">
+    <value>El registro especificado no existe.</value>
+  </data>
+  <data name="Securizable_AlertConfiguration" xml:space="preserve">
+    <value>Configuración de Alertas</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_Days" xml:space="preserve">
+    <value>Días</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_LastSentDate" xml:space="preserve">
+    <value>Ultima Fecha de Envío</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_MaxDaysPendingAproval" xml:space="preserve">
+    <value>Máxima Cantidad de Días Pendiente de Aprobación</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_SendEmailToCreator" xml:space="preserve">
+    <value>Enviar Email a Creador</value>
+  </data>
+  <data name="Securizable_AlertConfiguration_SendEmailToEmployees" xml:space="preserve">
+    <value>Enviar Email a Empleados</value>
+  </data>
+  <data name="Securizable_CountryState" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Securizable_CountryState_Districts" xml:space="preserve">
+    <value>Localidades</value>
+  </data>
+  <data name="Securizable_CountryState_ShortName" xml:space="preserve">
+    <value>Nombre Corto</value>
+  </data>
+  <data name="Securizable_Customer" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="Securizable_Customer_Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Securizable_Customer_Apartment" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="Securizable_Customer_City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="Securizable_Customer_CUIT" xml:space="preserve">
+    <value>CUIT</value>
+  </data>
+  <data name="Securizable_Customer_District" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Securizable_Customer_Email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="Securizable_Customer_Floor" xml:space="preserve">
+    <value>Piso</value>
+  </data>
+  <data name="Securizable_Customer_FullAddress" xml:space="preserve">
+    <value>Dirección Completa</value>
+  </data>
+  <data name="Securizable_Customer_MobilePhone" xml:space="preserve">
+    <value>Celular</value>
+  </data>
+  <data name="Securizable_Customer_Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="Securizable_Customer_Subscription" xml:space="preserve">
+    <value>Abono</value>
+  </data>
+  <data name="Securizable_Customer_ZipCode" xml:space="preserve">
+    <value>Código Postal</value>
+  </data>
+  <data name="Securizable_PrimaryKeyWithNameAndDescriptionDomainObject_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Securizable_PrimaryKeyWithNameDomainObject_Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Validators_AlertConfiguration_Days" xml:space="preserve">
+    <value>La cantidad de días debe ser mayor o igual a 0</value>
+  </data>
+  <data name="Validators_AlertConfiguration_MaxDaysPendingAproval" xml:space="preserve">
+    <value>La máxima cantidad de días como pendiente de aprovación debe ser mayor o igual a 0</value>
+  </data>
+  <data name="Validators_Customer_Address_Length" xml:space="preserve">
+    <value>La dirección debe tener una longitud igual o menor a 50 caracteres.</value>
+  </data>
+  <data name="Validators_Customer_CUIT" xml:space="preserve">
+    <value>El campo CUIT debe tener el formato 00-00000000-0.</value>
+  </data>
+  <data name="Validators_Customer_CUIT_Pattern" xml:space="preserve">
+    <value>\d{2}-\d{8}-\d{1}</value>
+  </data>
+  <data name="Validators_Customer_Email" xml:space="preserve">
+    <value>El e-mail es inválido</value>
+  </data>
+  <data name="Validators_Employee_Email" xml:space="preserve">
+    <value>El e-mail es inválido</value>
+  </data>
+  <data name="Validators_Employee_Username" xml:space="preserve">
+    <value>El nombre de usuario es requerido</value>
+  </data>
+  <data name="Validators_PrimaryKeyDomainObject_Name_Length" xml:space="preserve">
+    <value>El nombre debe tener una longitud entre 1 y 50 caracteres.</value>
+  </data>
+  <data name="Validators_PrimaryKeyDomainObject_Name_Required" xml:space="preserve">
+    <value>El nombre es requerido.</value>
+  </data>
+  <data name="Validators_Product_Name_Length" xml:space="preserve">
+    <value>El código debe tener una longitud entre 1 y 50 caracteres.</value>
+  </data>
+  <data name="Validators_Product_Name_Required" xml:space="preserve">
+    <value>El código es requerido.</value>
+  </data>
+  <data name="Validators_Provider_ContactName_Required" xml:space="preserve">
+    <value>El nombre del contácto es requerido</value>
+  </data>
+  <data name="Validators_Provider_Email" xml:space="preserve">
+    <value>El e-mail es inválido</value>
+  </data>
+  <data name="Validators_Provider_PrimaryPhone_Required" xml:space="preserve">
+    <value>El teléfono primario es requerido</value>
+  </data>
+  <data name="Validators_Provider_SecondaryPhone_Required" xml:space="preserve">
+    <value>El teléfono secundario es requerido</value>
+  </data>
+  <data name="Validators_Provider_Website" xml:space="preserve">
+    <value>El website es inválido</value>
+  </data>
+  <data name="Validators_Role_Description" xml:space="preserve">
+    <value>La descripción es requerida</value>
+  </data>
+  <data name="Validators_Ticket_Creator" xml:space="preserve">
+    <value>El creador es requerido</value>
+  </data>
+  <data name="Validators_Ticket_Customer" xml:space="preserve">
+    <value>El cliente es requerido</value>
+  </data>
+  <data name="Validators_Ticket_Description" xml:space="preserve">
+    <value>La descripción del trabajo a realizar es requerida</value>
+  </data>
+  <data name="Validators_Ticket_Status" xml:space="preserve">
+    <value>El estado es requerido</value>
+  </data>
+  <data name="Securizable_District" xml:space="preserve">
+    <value>Localidad</value>
+  </data>
+  <data name="Securizable_District_CountryState" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="Securizable_District_ZipCode" xml:space="preserve">
+    <value>Código Postal</value>
+  </data>
+  <data name="Securizable_Employee" xml:space="preserve">
+    <value>Empleado</value>
+  </data>
+  <data name="Securizable_EmployeeCategory" xml:space="preserve">
+    <value>Categoría de Empleado</value>
+  </data>
+  <data name="Securizable_Employee_Category" xml:space="preserve">
+    <value>Categoría</value>
+  </data>
+  <data name="Securizable_Employee_Email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="Securizable_Employee_EmergencyPhone" xml:space="preserve">
+    <value>Teléfono de Emergencia</value>
+  </data>
+  <data name="Securizable_Employee_FileNumber" xml:space="preserve">
+    <value>Legajo</value>
+  </data>
+  <data name="Securizable_Employee_Firstname" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Securizable_Employee_Fullname" xml:space="preserve">
+    <value>Nombre Completo</value>
+  </data>
+  <data name="Securizable_Employee_Lastname" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Securizable_Employee_Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Securizable_Employee_Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="Securizable_Employee_Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Securizable_Employee_Tickets" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Securizable_Employee_Username" xml:space="preserve">
+    <value>Nombre de Usuario</value>
+  </data>
+  <data name="Securizable_Product" xml:space="preserve">
+    <value>Insumo</value>
+  </data>
+  <data name="Securizable_Product_Name" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Securizable_Product_NameAndDescription" xml:space="preserve">
+    <value>Código y Descripción</value>
+  </data>
+  <data name="Securizable_Product_Providers" xml:space="preserve">
+    <value>Proveedores</value>
+  </data>
+  <data name="Securizable_Product_Tickets" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Securizable_ProviderCalification" xml:space="preserve">
+    <value>Calificación de Proveedor</value>
+  </data>
+  <data name="Securizable_Ticket" xml:space="preserve">
+    <value>Ticket</value>
+  </data>
+  <data name="Securizable_TicketStatus" xml:space="preserve">
+    <value>Estado del Ticket</value>
+  </data>
+  <data name="Securizable_Ticket_Budget" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
+  <data name="Securizable_Ticket_CreationDate" xml:space="preserve">
+    <value>Fecha de Creación</value>
+  </data>
+  <data name="Securizable_Ticket_Creator" xml:space="preserve">
+    <value>Creador</value>
+  </data>
+  <data name="Securizable_Ticket_Customer" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="Securizable_Ticket_CustomerArrival" xml:space="preserve">
+    <value>Fecha de Arrivo al Cliente</value>
+  </data>
+  <data name="Securizable_Ticket_Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="Securizable_Ticket_Employees" xml:space="preserve">
+    <value>Técnicos Asignados</value>
+  </data>
+  <data name="Securizable_Ticket_EstimatedDuration" xml:space="preserve">
+    <value>Duración Estimada</value>
+  </data>
+  <data name="Securizable_Ticket_ExecutionDate" xml:space="preserve">
+    <value>Fecha de Ejecución</value>
+  </data>
+  <data name="Securizable_Ticket_Products" xml:space="preserve">
+    <value>Insumos</value>
+  </data>
+  <data name="Securizable_Ticket_RealDuration" xml:space="preserve">
+    <value>Duración Real</value>
+  </data>
+  <data name="Securizable_Ticket_Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Validators_Product_Description_Required" xml:space="preserve">
+    <value>La descripción es requerida</value>
+  </data>
+  <data name="Securizable_Assembly" xml:space="preserve">
+    <value>Entidades</value>
+  </data>
+  <data name="Constraint_Contains" xml:space="preserve">
+    <value>Contiene</value>
+  </data>
+  <data name="Constraint_Equal" xml:space="preserve">
+    <value>Igual a</value>
+  </data>
+  <data name="Constraint_GreaterThan" xml:space="preserve">
+    <value>Mayor que</value>
+  </data>
+  <data name="Constraint_LowerThan" xml:space="preserve">
+    <value>Menor que</value>
+  </data>
+  <data name="Constraint_NotEqual" xml:space="preserve">
+    <value>Distinto a</value>
+  </data>
+  <data name="Securizable_Ticket_Notes" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
+</root>

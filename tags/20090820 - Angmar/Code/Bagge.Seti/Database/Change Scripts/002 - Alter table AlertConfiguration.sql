@@ -1,0 +1,1 @@
+﻿alter table AlertConfiguration add LastSentDate datetime null 

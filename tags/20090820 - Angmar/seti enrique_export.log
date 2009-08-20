@@ -1,0 +1,27 @@
+Exporting package to 'C:\Code\Bagge\seti enrique.xml'
+Retrieving data for export: packages
+Retrieving data for export: diagram elements
+Retrieving data for export: links
+Retrieving data for export: constraints
+Retrieving data for export: attribute tagged values
+Retrieving data for export: operation tagged values
+Retrieving data for export: operation parameter tagged values
+Retrieving data for export: connector tagged values
+Completed data retrieval
+Pre-processing export tree...
+Completed pre-processing
+***** Processing package: 03 - Seguridad *****
+Element:0: AccesibilityDataAccess
+Element:1: FunctionEditorPresenter
+Element:2: IFunctionEditorView
+Element:3: FunctionEditor.aspx
+Element:4: FunctionManager
+Element:5: RoleManager
+Element:6: RoleDataAccess
+Element:7: Usuario
+Element:8: Tipo de Miembro de Clase
+Element:9: FunctionList.aspx
+Element:10: FunctionDataAccess
+Diagram: 03 - 01 - Alta Excepciones de Seguridad
+Formatting output XML...please wait
+XMI Document Export Complete!
