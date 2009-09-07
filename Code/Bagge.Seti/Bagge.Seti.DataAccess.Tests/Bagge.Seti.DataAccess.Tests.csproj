@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="ProviderDaoTestFixture.cs" />
     <Compile Include="ReportsTestFixture.cs" />
+    <Compile Include="SecurityTestFixture.cs" />
     <Compile Include="TicketDaoTests.cs" />
   </ItemGroup>
   <ItemGroup>

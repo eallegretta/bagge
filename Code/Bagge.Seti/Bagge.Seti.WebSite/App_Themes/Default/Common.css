@@ -95,7 +95,7 @@ table.details
 	empty-cells:show;
 }
 
-tr.detailsRow td.detailsHeader
+tr.detailsRow td.detailsHeader, tr.detailsRow th
 {
 	font-weight:bold;
 	background-color:#cccccc;

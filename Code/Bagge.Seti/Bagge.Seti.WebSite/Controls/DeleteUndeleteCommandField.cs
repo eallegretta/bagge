@@ -126,7 +126,11 @@ namespace Bagge.Seti.WebSite.Controls
 
 		void cell_DataBinding(object sender, EventArgs e)
 		{
-			bool isDeleted = (bool)DataBinder.GetDataItem(((Control)sender).NamingContainer).GetPropertyValue(DeleteDataField);
+			bool isDeleted;
+			if (ShowUndelete)
+				isDeleted = (bool)DataBinder.GetDataItem(((Control)sender).NamingContainer).GetPropertyValue(DeleteDataField);
+			else
+				isDeleted = false;
 			SetButtonProperties(!isDeleted);
 		}
 

@@ -231,4 +231,7 @@
   <data name="ReportTicketsClosed.title" xml:space="preserve">
     <value>Tickets Cerrados</value>
   </data>
+  <data name="SecurityExceptionList.title" xml:space="preserve">
+    <value>Listado de Excepciones de Seguridad</value>
+  </data>
 </root>

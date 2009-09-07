@@ -6,11 +6,14 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Views
 {
-	public interface ISecurityExceptionListView
+	public interface ISecurityExceptionListView: IView, IDeleteView
 	{
 		Role[] Roles { set; }
-		int SelectedRoleId { get; }
+		bool ShowFunctions { set; }
+		int? SelectedRoleId { get; }
 		Function[] Functions { set; }
-		int SelectedFunctionId { get; }
+		int? SelectedFunctionId { get; }
+		event EventHandler SelectedRoleChanged;
+		event EventHandler SelectedFunctionChanged;
 	}
 }

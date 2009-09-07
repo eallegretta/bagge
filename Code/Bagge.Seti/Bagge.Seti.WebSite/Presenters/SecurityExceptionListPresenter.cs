@@ -2,58 +2,100 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Bagge.Seti.WebSite.Views;
+using Bagge.Seti.BusinessLogic.Contracts;
+using Bagge.Seti.DesignByContract;
+using Bagge.Seti.WebSite.Model;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
-	//public class SecurityExceptionListPresenter: ListPresenter<Ticket, int>
-	//{
-	//    ITicketStatusManager _ticketStatusManager;
-	//    IEmployeeManager _employeeManager;
-	//    ICustomerManager _customerManager;
-	//    IUser _loggedUser;
+	public class SecurityExceptionListPresenter
+	{
+		ISecurityExceptionListView _view;
+		ISecurityManager _manager;
+		IRoleManager _roleManager;
 
-	//    public TicketListPresenter(ITicketListView view, ITicketManager manager,
-	//        ITicketStatusManager ticketStatusManager, IEmployeeManager employeeManager,
-	//        ICustomerManager customerManager, IUser loggedUser): base(view, manager)
-	//    {
-	//        _ticketStatusManager = ticketStatusManager;
-	//        _employeeManager = employeeManager;
-	//        _customerManager = customerManager;
-	//        _loggedUser = loggedUser;
-	//    }
+		public SecurityExceptionListPresenter(ISecurityExceptionListView view,
+			ISecurityManager manager,
+			IRoleManager roleManager)
+	    {
+			Check.Require(view != null);
+			Check.Require(manager != null);
+			Check.Require(roleManager != null);
 
-	//    protected override void OnInit(object sender, EventArgs e)
-	//    {
-	//        if (!View.IsPostBack)
-	//        {
-	//            var view = GetView<ITicketListView>();
-	//            view.Status = _ticketStatusManager.FindAll();
-	//            view.Technicians = _employeeManager.FindAllActiveTechnicians();
-	//            view.Customers = _customerManager.FindAllActive();
+			_view = view;
+			_manager = manager;
+			_roleManager = roleManager;
+			_view.Init += new EventHandler(OnInit);
+			_view.Load += new EventHandler(OnLoad);
+	    }
 
-	//            var loggedUser = _loggedUser as Employee;
-	//            if (loggedUser.IsTechnician && !loggedUser.IsSuperAdministrator)
-	//                view.IsTechnicianView = true;
-	//        }
+		void OnLoad(object sender, EventArgs e)
+		{
+			if (!_view.IsPostBack)
+				_view.Roles = _roleManager.FindAllActiveOrdered("Name").Where(r => r.Id != Role.SuperAdministratorId).ToArray();
+			else
+				Select();
+		}
 
-	//        base.OnInit(sender, e);
-	//    }
-	
-		
-	//    public bool CanAdministerTicket(Ticket ticket)
-	//    {
-	//        return !ticket.Customer.Deleted ||
-	//            ticket.Employees.FirstOrDefault(e => e.Deleted == true) == null;
-	//    }
+		void _view_SelectedFunctionChanged(object sender, EventArgs e)
+		{
+			Select();
+		}
 
-	//    public bool CanUpdateProgress(Ticket ticket)
-	//    {
-	//        return 
-	//            !ticket.Status.In(TicketStatusEnum.Closed, TicketStatusEnum.PendingPayment) && (
-	//            _loggedUser.IsSuperAdministrator ||
-	//            ((Employee)_loggedUser).IsTechnician);
-				
+		public void Select()
+		{
+			if (_view.SelectedRoleId.HasValue &&
+						 _view.SelectedFunctionId.HasValue)
+				_view.DataSource = GetSecurityExceptions();
+			else
+				_view.DataSource = null;
+			_view.DataBind();
+		}
 
-	//    }
-	//}
+		private IList<SecurityExceptionViewModel> GetSecurityExceptions()
+		{
+			var securityExceptions = _manager.FindAllSecurityExceptions(
+							_view.SelectedRoleId.Value,
+							_view.SelectedFunctionId.Value);
+
+			var securityExceptionsViewModel = new List<SecurityExceptionViewModel>();
+			foreach (var securityException in securityExceptions)
+			{
+				securityExceptionsViewModel.Add(
+					new SecurityExceptionViewModel(securityException));
+			}
+			return securityExceptionsViewModel;
+		}
+
+		void _view_SelectedRoleChanged(object sender, EventArgs e)
+		{
+			if (_view.SelectedRoleId.HasValue)
+			{
+				var role = _roleManager.Get(_view.SelectedRoleId.Value);
+				var functions = from f in role.Functions
+								orderby f.Name
+								select f;
+				_view.ShowFunctions = true;
+				_view.Functions = functions.ToArray();
+			}
+			else
+			{
+				_view.ShowFunctions = false;
+			}
+		}
+
+	    protected void OnInit(object sender, EventArgs e)
+	    {
+			_view.SelectedRoleChanged += new EventHandler(_view_SelectedRoleChanged);
+			_view.SelectedFunctionChanged += new EventHandler(_view_SelectedFunctionChanged);
+		}
+
+
+		public void Delete(int id)
+		{
+			_manager.Delete(id);
+		}
+	}
 }

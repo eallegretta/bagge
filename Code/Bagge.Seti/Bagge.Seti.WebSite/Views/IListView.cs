@@ -7,12 +7,9 @@ using Bagge.Seti.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Views
 {
-	public interface IListView: IView
+	public interface IListView: IView, IDeleteView
 	{
 		int TotalRows { set; }
 		string DefaultSortExpression { get; }
-		bool IsDelete { get; }
-
-		
 	}
 }

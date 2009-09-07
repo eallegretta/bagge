@@ -14,28 +14,31 @@ namespace Bagge.Seti.Security.Constraints
 		{
 		}
 
-		public LowerThanConstraint(object source, string propertyName, object value)
-			: base(source, propertyName, value)
+		public LowerThanConstraint(object source, string propertyName, object value, bool negated)
+			: base(source, propertyName, value, negated)
 		{
 
 		}
-		public LowerThanConstraint(object source, PropertyInfo property, object value)
-			: base(source, property, value)
+		public LowerThanConstraint(object source, PropertyInfo property, object value, bool negated)
+			: base(source, property, value, negated)
 		{
 		}
 
 
-		public override bool IsValid()
+		public override bool IsTrue(System.IComparable valueA, System.IComparable valueB)
 		{
-			object value = GetPropertyValue();
-			if (value != null)
-				return ((IComparable)value).CompareTo((IComparable)Value) < 0;
-			return false;
+			return valueA.CompareTo(valueB) < 0;
 		}
+
 
 		public override string ToString()
 		{
 			return Resources.Constraint_LowerThan;		
+		}
+
+		public override string Symbol
+		{
+			get { return Constraint.LowerThan; }
 		}
 	}
 }

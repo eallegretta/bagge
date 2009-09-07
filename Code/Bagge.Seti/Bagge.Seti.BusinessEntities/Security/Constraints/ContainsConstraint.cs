@@ -8,43 +8,36 @@ using Bagge.Seti.DesignByContract;
 
 namespace Bagge.Seti.Security.Constraints
 {
-	public class ContainsConstraint : Constraint
+	public class ContainsConstraint : StringConstraint
 	{
 		public ContainsConstraint()
 			: base()
 		{
 		}
 
-		public ContainsConstraint(object source, string propertyName, object value)
-			: base(source, propertyName, value)
+		public ContainsConstraint(object source, string propertyName, object value, bool negated)
+			: base(source, propertyName, value, negated)
 		{
 
 		}
-		public ContainsConstraint(object source, PropertyInfo property, object value)
-			: base(source, property, value)
+		public ContainsConstraint(object source, PropertyInfo property, object value, bool negated)
+			: base(source, property, value, negated)
 		{
 		}
 
-		protected override bool IsPropertyTypeValid()
+		public override bool IsTrue(string valueA, string valueB)
 		{
-			Check.Require(Property != null);
-
-			if (Property.PropertyType.Equals(typeof(string)))
-				return true;
-			return false;
-		}
-
-		public override bool IsValid()
-		{
-			object value = GetPropertyValue();
-			if (value != null)
-				return value.ToString().Contains(Value.ToString());
-			return false;
+			return valueA.Contains(valueB);
 		}
 
 		public override string ToString()
 		{
 			return Resources.Constraint_Contains;
+		}
+
+		public override string Symbol
+		{
+			get { return Constraint.Contains; }
 		}
 	}
 }

@@ -14,13 +14,13 @@ namespace Bagge.Seti.Security.Constraints
 		{
 		}
 
-		public InequalityConstraint(object source, string propertyName, object value)
-			: base(source, propertyName, value)
+		public InequalityConstraint(object source, string propertyName, object value, bool negated)
+			: base(source, propertyName, value, negated)
 		{
 
 		}
-		public InequalityConstraint(object source, PropertyInfo property, object value)
-			: base(source, property, value)
+		public InequalityConstraint(object source, PropertyInfo property, object value, bool negated)
+			: base(source, property, value, negated)
 		{
 		}
 
@@ -32,5 +32,22 @@ namespace Bagge.Seti.Security.Constraints
 				return true;
 			return false;
 		}
+
+		public abstract bool IsTrue(IComparable valueA, IComparable valueB);
+
+		public override bool IsValid()
+		{
+			var valueA = GetPropertyValue() as IComparable;
+			var valueB = Value as IComparable;
+			if (valueB != null && valueB != null)
+			{
+				bool value = IsTrue(valueA, valueB);
+				return Negated ? !value : value;
+			}
+			return false;
+		}
+	
 	}
+
+
 }

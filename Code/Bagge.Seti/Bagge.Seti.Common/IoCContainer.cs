@@ -86,6 +86,10 @@ namespace Bagge.Seti.Common
 			get { return GetObject<IProviderManager>("ProviderManager"); }
 		}
 
+		public static ISecurityManager SecurityManager
+		{
+			get { return GetObject<ISecurityManager>("SecurityManager"); }
+		}
 
 		public static ISimpleFindGetManager<ProviderCalification, int> ProviderCalificationManager
 		{

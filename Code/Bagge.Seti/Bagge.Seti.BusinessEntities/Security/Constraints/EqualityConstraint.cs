@@ -13,13 +13,13 @@ namespace Bagge.Seti.Security.Constraints
 		{
 		}
 
-		public EqualsConstraint(object source, string propertyName, object value)
-			: base(source, propertyName, value)
+		public EqualsConstraint(object source, string propertyName, object value, bool negated)
+			: base(source, propertyName, value, negated)
 		{
 
 		}
-		public EqualsConstraint(object source, PropertyInfo property, object value)
-			: base(source, property, value)
+		public EqualsConstraint(object source, PropertyInfo property, object value, bool negated)
+			: base(source, property, value, negated)
 		{
 		}
 
@@ -35,6 +35,11 @@ namespace Bagge.Seti.Security.Constraints
 		public override string ToString()
 		{
 			return Resources.Constraint_Equal;
+		}
+
+		public override string Symbol
+		{
+			get { return Constraint.Equal; }
 		}
 	}
 }

@@ -5,6 +5,8 @@ using System.Text;
 using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
 using System.Reflection;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Bagge.Seti.BusinessEntities.Security
 {
@@ -13,14 +15,40 @@ namespace Bagge.Seti.BusinessEntities.Security
 	{
 		
 		[Property]
-		public char ConstraintType
+		public string ConstraintType
 		{
 			get;
 			set;
 		}
 
-		[Property]
-		public string Value
+		public object Value
+		{
+			get
+			{
+				XmlSerializer ser = new XmlSerializer(GetPropertyType());
+				using (var reader = new StringReader(SerializedValue))
+				{
+					return ser.Deserialize(reader);
+				}
+			}
+			set
+			{
+				XmlSerializer ser = new XmlSerializer(value.GetType());
+				using (var writer = new StringWriter())
+				{
+					ser.Serialize(writer, value);
+					SerializedValue = writer.ToString();
+				}
+			}
+		}
+
+		private Type GetPropertyType()
+		{
+			return Type.GetType(SecureEntity.ClassFullQualifiedName).GetProperty(PropertyName).PropertyType;
+		}
+
+		[Property("Value")]
+		private string SerializedValue
 		{
 			get;
 			set;

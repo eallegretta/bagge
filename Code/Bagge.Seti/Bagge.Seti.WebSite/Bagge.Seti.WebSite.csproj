@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FBC1245A-FB38-4D92-83B7-B86DACB8A2A7}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -275,7 +275,7 @@
       <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeViewModel.cs" />
-    <Compile Include="Models\SecurityExceptionModel.cs" />
+    <Compile Include="Models\SecurityExceptionViewModel.cs" />
     <Compile Include="Page.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -299,6 +299,7 @@
     <Compile Include="Presenters\ReportPresenter.cs" />
     <Compile Include="Presenters\RoleEditorPresenter.cs" />
     <Compile Include="Presenters\RoleListPresenter.cs" />
+    <Compile Include="Presenters\SecurityExceptionEditorPresenter.cs" />
     <Compile Include="Presenters\SecurityExceptionListPresenter.cs" />
     <Compile Include="Presenters\TicketEditorPresenter.cs">
       <SubType>Code</SubType>
@@ -469,6 +470,7 @@
     <Compile Include="Views\ICustomerEditorView.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\IDeleteView.cs" />
     <Compile Include="Views\IEditorView.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -491,6 +493,7 @@
     <Compile Include="Views\IReportView.cs" />
     <Compile Include="Views\IRoleEditorView.cs" />
     <Compile Include="Views\IRoleListView.cs" />
+    <Compile Include="Views\ISecurityExceptionEditorView.cs" />
     <Compile Include="Views\ISecurityExceptionListView.cs" />
     <Compile Include="Views\ITicketEditorView.cs">
       <SubType>Code</SubType>
@@ -803,6 +806,10 @@
     <Content Include="App_LocalResources\Default.aspx.resx">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_LocalResources\SecurityExceptionList.aspx.resx">
+    </Content>
+    <Content Include="App_LocalResources\SecurityExceptionEditor.aspx.resx">
+    </Content>
     <EmbeddedResource Include="ManagedFusion.Rewriter.rules">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -839,6 +846,9 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
