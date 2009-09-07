@@ -120,6 +120,18 @@
   <data name="CannotUpdateStatusClosedTicketErrorMessage" xml:space="preserve">
     <value>No se puede actualizar el avance de un ticket cuyo estado es cerrado</value>
   </data>
+  <data name="FunctionNotFoundErrorMessage" xml:space="preserve">
+    <value>La función cuyo id es # {0} no existe</value>
+  </data>
+  <data name="NoRoleAndFunctionSpecifiedErrorMessage" xml:space="preserve">
+    <value>No se ha especificado un rol y una función</value>
+  </data>
+  <data name="ObjectNotFound" xml:space="preserve">
+    <value>No se ha encontrado el {0} cuyo Id es #{1}</value>
+  </data>
+  <data name="RoleNotFoundErrorMessage" xml:space="preserve">
+    <value>El rol cuyo id es # {0} no existe</value>
+  </data>
   <data name="Securizable_AlertConfigurationEditor" xml:space="preserve">
     <value>Configuración de Alertas</value>
   </data>

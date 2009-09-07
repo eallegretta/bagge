@@ -41,7 +41,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			{
 				case EditorAction.Insert:
 				case EditorAction.Update:
-					View.AvailableRoles = _roleManager.FindAllOrdered("Name");
+					View.AvailableRoles = _roleManager.FindAllActiveOrdered("Name");
 					View.Categories = _employeeCategoryManager.FindAll();
 					if (!View.IsPostBack && View.Mode == EditorAction.Update)
 					{

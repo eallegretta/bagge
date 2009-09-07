@@ -56,7 +56,8 @@ namespace Bagge.Seti.WebSite.Presenters
 				case EditorAction.Insert:
 				case EditorAction.Update:
 					View.Customers = _customerManager.FindAllActiveOrdered("Name");
-					View.Technicians = _employeeManager.FindAllActiveTechnicians();
+					if(!View.IsUpdateProgress)
+						View.Technicians = _employeeManager.FindAllActiveTechnicians();
 
 					if (View.Mode == EditorAction.Insert)
 						View.TicketStatus = _ticketStatusManager.Get(TicketStatusEnum.PendingAproval).ToSingleItemArray();
@@ -65,11 +66,12 @@ namespace Bagge.Seti.WebSite.Presenters
 
 					if (View.Mode == EditorAction.Update)
 					{
-						if (SelectedEntity.Employees != null)
+						if (SelectedEntity.Employees != null && !View.IsUpdateProgress)
 							View.AssignedTechniciansIds = SelectedEntity.Employees.Select(emp => emp.Id).ToArray();
 
 						if (View.IsUpdateProgress)
 						{
+							View.Technicians = SelectedEntity.Employees.ToArray();
 							if (SelectedEntity.Status == TicketStatusEnum.Closed)
 								throw new BusinessRuleException(Properties.Resources.CannotUpdateStatusClosedTicketErrorMessage);
 

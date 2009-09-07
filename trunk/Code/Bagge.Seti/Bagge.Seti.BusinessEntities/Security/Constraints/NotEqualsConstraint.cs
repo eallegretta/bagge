@@ -6,7 +6,7 @@ using Bagge.Seti.Security.Constraints;
 using System.Reflection;
 using Bagge.Seti.BusinessEntities.Properties;
 
-namespace Bagge.Seti.BusinessEntities.Security.Constraints
+namespace Bagge.Seti.Security.Constraints
 {
 	public class NotEqualsConstraint : InequalityConstraint
 	{
@@ -15,28 +15,30 @@ namespace Bagge.Seti.BusinessEntities.Security.Constraints
 		{
 		}
 
-		public NotEqualsConstraint(object source, string propertyName, object value)
-			: base(source, propertyName, value)
+		public NotEqualsConstraint(object source, string propertyName, object value, bool negated)
+			: base(source, propertyName, value, negated)
 		{
 
 		}
-		public NotEqualsConstraint(object source, PropertyInfo property, object value)
-			: base(source, property, value)
+		public NotEqualsConstraint(object source, PropertyInfo property, object value, bool negated)
+			: base(source, property, value, negated)
 		{
 		}
 
 
-		public override bool IsValid()
+		public override bool IsTrue(System.IComparable valueA, System.IComparable valueB)
 		{
-			object value = GetPropertyValue();
-			if (value != null)
-				return ((IComparable)value).CompareTo((IComparable)Value) != 0;
-			return false;
+			return valueA.CompareTo(valueB) != 0;
 		}
 
 		public override string ToString()
 		{
 			return Resources.Constraint_NotEqual;
+		}
+
+		public override string Symbol
+		{
+			get { return Constraint.NotEqual; }
 		}
 	}
 }

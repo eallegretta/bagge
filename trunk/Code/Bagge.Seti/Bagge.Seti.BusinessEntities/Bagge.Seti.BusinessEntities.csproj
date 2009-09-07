@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{32F8F81B-0F4D-4ABA-9CBE-1613FDA7B328}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -113,11 +113,16 @@
     <Compile Include="Security\AuditablePrimaryKeyWithNameDomainObject.cs" />
     <Compile Include="Security\Constraints\Constraint.cs" />
     <Compile Include="Security\Constraints\ContainsConstraint.cs" />
+    <Compile Include="Security\Constraints\EndsWithConstraint.cs" />
     <Compile Include="Security\Constraints\EqualityConstraint.cs" />
+    <Compile Include="Security\Constraints\GreaterEqualsThanConstraint.cs" />
     <Compile Include="Security\Constraints\GreaterThanConstraint.cs" />
     <Compile Include="Security\Constraints\InequalityConstraint.cs" />
+    <Compile Include="Security\Constraints\LowerEqualsThanConstraint.cs" />
     <Compile Include="Security\Constraints\LowerThanConstraint.cs" />
     <Compile Include="Security\Constraints\NotEqualsConstraint.cs" />
+    <Compile Include="Security\Constraints\StartsWithConstraint.cs" />
+    <Compile Include="Security\Constraints\StringConstraint.cs" />
     <Compile Include="Security\SecureEntity.cs" />
     <Compile Include="Security\SecurityException.cs" />
     <Compile Include="Security\Function.cs" />
@@ -127,6 +132,7 @@
     <Compile Include="Security\Role.cs" />
     <Compile Include="Security\SecurizableAttribute.cs" />
     <Compile Include="Security\SecurizableCrudAttribute.cs" />
+    <Compile Include="Security\PropertyInfoAndName.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketEmployee.cs" />
     <Compile Include="TicketStatus.cs" />
@@ -157,6 +163,10 @@
     <ProjectReference Include="..\Bagge.Seti.DesignByContract\Bagge.Seti.DesignByContract.csproj">
       <Project>{FDDE6DF6-90E1-40B5-AAD9-5245CE22062E}</Project>
       <Name>Bagge.Seti.DesignByContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bagge.Seti.Extensions\Bagge.Seti.Extensions.csproj">
+      <Project>{108362FC-4C87-4D0D-8EBF-523F4235DAC0}</Project>
+      <Name>Bagge.Seti.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

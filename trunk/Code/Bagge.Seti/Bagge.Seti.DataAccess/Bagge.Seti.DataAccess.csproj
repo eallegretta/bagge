@@ -75,10 +75,12 @@
     <Compile Include="ActiveRecord\EmployeeDao.cs" />
     <Compile Include="ActiveRecord\FunctionDao.cs" />
     <Compile Include="ActiveRecord\GenericDao.cs" />
+    <Compile Include="ActiveRecord\SecureEntityDao.cs" />
     <Compile Include="ActiveRecord\ProductDao.cs" />
     <Compile Include="ActiveRecord\ProductProviderDao.cs" />
     <Compile Include="ActiveRecord\ProviderDao.cs" />
     <Compile Include="ActiveRecord\RoleDao.cs" />
+    <Compile Include="ActiveRecord\SecurityExceptionDao.cs" />
     <Compile Include="ActiveRecord\SimpleFindGetDao.cs" />
     <Compile Include="ActiveRecord\TicketDao.cs" />
     <Compile Include="ActiveRecord\TicketEmployeeDao.cs" />
@@ -98,7 +100,8 @@
     <Compile Include="Contracts\IProductDao.cs" />
     <Compile Include="Contracts\IProductProviderDao.cs" />
     <Compile Include="Contracts\IProviderDao.cs" />
-    <Compile Include="Contracts\ISecurityDao.cs" />
+    <Compile Include="Contracts\ISecureEntityDao.cs" />
+    <Compile Include="Contracts\ISecurityExceptionDao.cs" />
     <Compile Include="Contracts\ITicketEmployeeDao.cs" />
     <Compile Include="Contracts\Reports\IReportDao.cs" />
     <Compile Include="Contracts\IRoleDao.cs" />

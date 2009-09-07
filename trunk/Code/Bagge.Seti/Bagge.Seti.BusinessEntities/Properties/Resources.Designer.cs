@@ -70,6 +70,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Termina con.
+        /// </summary>
+        internal static string Constraint_EndsWith {
+            get {
+                return ResourceManager.GetString("Constraint_EndsWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Igual a.
         /// </summary>
         internal static string Constraint_Equal {
@@ -79,11 +88,29 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mayor o igual que.
+        /// </summary>
+        internal static string Constraint_GreaterEqualsThan {
+            get {
+                return ResourceManager.GetString("Constraint_GreaterEqualsThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mayor que.
         /// </summary>
         internal static string Constraint_GreaterThan {
             get {
                 return ResourceManager.GetString("Constraint_GreaterThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menor o igual que.
+        /// </summary>
+        internal static string Constraint_LowerEqualsThan {
+            get {
+                return ResourceManager.GetString("Constraint_LowerEqualsThan", resourceCulture);
             }
         }
         
@@ -102,6 +129,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         internal static string Constraint_NotEqual {
             get {
                 return ResourceManager.GetString("Constraint_NotEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empieza con.
+        /// </summary>
+        internal static string Constraint_StartsWith {
+            get {
+                return ResourceManager.GetString("Constraint_StartsWith", resourceCulture);
             }
         }
         

@@ -100,19 +100,22 @@ namespace Bagge.Seti.WebSite.Controls
 		}
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//SetCalendarComparesTo();
-			RegisterJavascript();
-			_calendarExt.Format = Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern;
-			if (IsPostBack)
+			if (Visible)
 			{
-
-				string date = Request.Form[_calendar.UniqueID];
-				if (!string.IsNullOrEmpty(date))
+				//SetCalendarComparesTo();
+				RegisterJavascript();
+				_calendarExt.Format = Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern;
+				if (IsPostBack)
 				{
-					if (_calendar.Text != date)
+
+					string date = Request.Form[_calendar.UniqueID];
+					if (!string.IsNullOrEmpty(date))
 					{
-						_calendar.Text = date;
-						OnDateChanged(sender, e);
+						if (_calendar.Text != date)
+						{
+							_calendar.Text = date;
+							OnDateChanged(sender, e);
+						}
 					}
 				}
 			}

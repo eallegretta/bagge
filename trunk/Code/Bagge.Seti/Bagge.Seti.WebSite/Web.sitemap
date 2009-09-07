@@ -31,10 +31,10 @@
 			<siteMapNode url="~/RoleList.aspx" title="Roles" resourceKey="RoleList">
 				<siteMapNode url="~/RoleEditor.aspx" resourceKey="RoleEditor" />
 			</siteMapNode>
-			<!--<siteMapNode url="~/SecurityExceptionList.aspx" title="Listado Excepciones de Seguridad">
-				<siteMapNode url="~/SecurityExceptionEditor.aspx" title="Alta Excepción de Seguridad">
-				</siteMapNode>
-			</siteMapNode>-->
+			<siteMapNode url="~/SecurityExceptionList.aspx" resourceKey="SecurityExceptionList">
+				<!--<siteMapNode url="~/SecurityExceptionEditor.aspx" title="Alta Excepción de Seguridad">
+				</siteMapNode>-->
+			</siteMapNode>
 		</siteMapNode>
 	</siteMapNode>
 </siteMap>

@@ -4,29 +4,58 @@ using System.Linq;
 using System.Text;
 using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.DataAccess.Contracts;
+using Bagge.Seti.BusinessEntities.Security;
 
 namespace Bagge.Seti.BusinessLogic
 {
 	public class SecurityManager: ISecurityManager 
 	{
-		ISecurityDao _dao;
+		ISecurityExceptionDao _securityExceptionDao;
+		ISecureEntityDao _secureEntityDao;
 
-		public SecurityManager(ISecurityDao dao)
+		public SecurityManager(ISecurityExceptionDao securityExceptionDao, ISecureEntityDao secureEntityDao)
 		{
-			_dao = dao;
+			_secureEntityDao = secureEntityDao;
+			_securityExceptionDao = securityExceptionDao;
 		}
 
 		#region ISecurityManager Members
 
-		public Bagge.Seti.BusinessEntities.Security.SecurityException[] FindAll(int roleId, int functionId)
+		public SecurityException GetSecurityException(int id)
 		{
-			throw new NotImplementedException();
+			return _securityExceptionDao.Get(id);
 		}
 
-		public void Save(int roleId, int functionId, Bagge.Seti.BusinessEntities.Security.SecurityException[] exceptions)
+		public SecureEntity GetSecureEntity(int functionId, string classFullQualifiedName)
 		{
+			return _secureEntityDao.Get(functionId, classFullQualifiedName);
+		}
 
-			throw new NotImplementedException();
+		public SecureEntity[] FindAllSecureEntities(int functionId)
+		{
+			return _secureEntityDao.FindAll(functionId);
+		}
+
+		public SecurityException[] FindAllSecurityExceptions(int roleId, int functionId)
+		{
+			return _securityExceptionDao.FindAll(roleId, functionId);
+		}
+
+		public void Save(SecurityException securityException)
+		{
+			_securityExceptionDao.Save(securityException);
+		}
+
+		public void Save(int roleId, int functionId, SecurityException[] exceptions)
+		{
+			_securityExceptionDao.DeleteAll(roleId, functionId);
+			foreach (var exception in exceptions)
+				_securityExceptionDao.Save(exception);
+		}
+
+		public void Delete(int securityExceptionId)
+		{
+			_securityExceptionDao.Delete(securityExceptionId);
 		}
 
 		#endregion

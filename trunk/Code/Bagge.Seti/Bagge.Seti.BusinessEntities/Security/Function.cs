@@ -75,5 +75,13 @@ namespace Bagge.Seti.Security.BusinessEntities
 			get; set;
 		}
 
+
+		[HasMany(typeof(SecureEntity), Lazy = true, Inverse = false, Cascade = ManyRelationCascadeEnum.None)]
+		public virtual IList<SecureEntity> SecureEntities
+		{
+			get;
+			set;
+		}
+
 	}
 }

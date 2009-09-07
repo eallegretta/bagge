@@ -70,6 +70,42 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La función cuyo id es # {0} no existe.
+        /// </summary>
+        internal static string FunctionNotFoundErrorMessage {
+            get {
+                return ResourceManager.GetString("FunctionNotFoundErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se ha especificado un rol y una función.
+        /// </summary>
+        internal static string NoRoleAndFunctionSpecifiedErrorMessage {
+            get {
+                return ResourceManager.GetString("NoRoleAndFunctionSpecifiedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se ha encontrado el {0} cuyo Id es #{1}.
+        /// </summary>
+        internal static string ObjectNotFound {
+            get {
+                return ResourceManager.GetString("ObjectNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El rol cuyo id es # {0} no existe.
+        /// </summary>
+        internal static string RoleNotFoundErrorMessage {
+            get {
+                return ResourceManager.GetString("RoleNotFoundErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuración de Alertas.
         /// </summary>
         internal static string Securizable_AlertConfigurationEditor {

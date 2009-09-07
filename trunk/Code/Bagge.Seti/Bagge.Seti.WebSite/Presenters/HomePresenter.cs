@@ -17,6 +17,7 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.WebSite.Models;
+using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
@@ -130,7 +131,8 @@ namespace Bagge.Seti.WebSite.Presenters
 				end = start.AddMonths(1).AddDays(-1);
 			}
 
-			if (_user.IsSuperAdministrator)
+
+			if (!((Employee)_user).IsTechnician)
 				_view.DataSource = GetViewModelDataSource(_ticketManager.FindAllByExecutionWeek(start, end));
 			else
 				_view.DataSource = GetViewModelDataSource(_ticketManager.FindAllByExecutionWeekAndTechnician(start, end, _user.Id));

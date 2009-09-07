@@ -12,6 +12,7 @@ namespace Bagge.Seti.BusinessEntities
 	[ActiveRecord]
 	[Serializable]
 	[Securizable("Securizable_Customer", typeof(Customer))]
+	
 	public partial class Customer : AuditablePrimaryKeyWithNameDomainObject<Customer, int>
 	{
 		[Property]

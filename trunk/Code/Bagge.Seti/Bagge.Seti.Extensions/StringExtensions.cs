@@ -364,6 +364,38 @@ namespace System
 			return Int32.TryParse(s, out value) ? value : defaultValue;
 		}
 
+		public static int? ToInt32Nullable(this string s)
+		{
+			return ToInt32Nullable(s, null);
+		}
+
+		public static int? ToInt32Nullable(this string s, int? defaultValue)
+		{
+			int value;
+
+			return Int32.TryParse(s, out value) ? value : defaultValue;
+		}
+
+
+		public static float ToFloat(this string s, float defaultValue)
+		{
+			float value;
+
+			return float.TryParse(s, out value) ? value : defaultValue;
+		}
+
+		public static float? ToFloatNullable(this string s)
+		{
+			return ToInt32Nullable(s, null);
+		}
+
+		public static float? ToFloatNullable(this string s, float? defaultValue)
+		{
+			float value;
+
+			return float.TryParse(s, out value) ? value : defaultValue;
+		}
+
 		/// <summary>
 
 		/// Returns a List(string) instance from the current |-separated string.

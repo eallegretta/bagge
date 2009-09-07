@@ -19,13 +19,6 @@ namespace Bagge.Seti.BusinessEntities.Security
 		}
 
 		[Property]
-		public string AssemblyName
-		{
-			get;
-			set;
-		}
-
-		[Property]
 		public string ClassFullQualifiedName
 		{
 			get;
@@ -36,7 +29,7 @@ namespace Bagge.Seti.BusinessEntities.Security
 		{
 			get
 			{
-				return Type.GetType(Assembly.CreateQualifiedName(AssemblyName, ClassFullQualifiedName));
+				return Type.GetType(ClassFullQualifiedName);
 			}
 		}
 	}

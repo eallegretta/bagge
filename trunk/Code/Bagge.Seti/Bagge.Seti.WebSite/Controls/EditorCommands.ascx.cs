@@ -70,7 +70,8 @@ namespace Bagge.Seti.WebSite.Controls
 
 		protected override void OnInit(EventArgs e)
 		{
-			DetailsView.DataBound += new EventHandler(DetailsView_DataBound);
+			if(DetailsView != null)
+				DetailsView.DataBound += new EventHandler(DetailsView_DataBound);
 			base.OnInit(e);
 		}
 
