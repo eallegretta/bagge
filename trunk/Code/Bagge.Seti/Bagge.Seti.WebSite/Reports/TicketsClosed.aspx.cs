@@ -12,7 +12,7 @@ using Bagge.Seti.BusinessEntities.Reports;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableCrud("Securizable_TicketsClosed", typeof(TechniciansByTicket), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_TicketsClosed", typeof(TechniciansByTicket), FunctionAction.List)]
 	public partial class TicketsClosed : FilteredReportPage<TicketsClosedReport>
 	{
 		protected override Button FilterButton

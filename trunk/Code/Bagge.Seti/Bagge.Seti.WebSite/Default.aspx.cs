@@ -18,7 +18,7 @@ namespace Bagge.Seti.WebSite
 {
 	 
 
-	[SecurizableCrud("Securizable_Default", typeof(_Default), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_Default", typeof(_Default), FunctionAction.List)]
 	public partial class _Default : Page, IHomeView
 	{
 		HomePresenter _presenter;

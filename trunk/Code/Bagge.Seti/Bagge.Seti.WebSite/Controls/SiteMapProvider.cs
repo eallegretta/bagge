@@ -25,7 +25,7 @@ namespace Bagge.Seti.WebSite.Controls
 			if (!string.IsNullOrEmpty(node.Url))
 			{
 				var page = PageParser.GetCompiledPageInstance(node.Url, absoluteUrl, context);
-				return AuthorizationManager.UserHasAccess(page);
+				return AuthorizationManager.UserHasAccess(page, false);
 			}
 			else
 				return CheckAccessToChildNodes(context, node);

@@ -15,7 +15,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableCrud("Securizable_ProductEditor", typeof(ProductEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
+	[SecurizableCrud("Securizable_ProductEditor", typeof(ProductEditor), FunctionAction.Get | FunctionAction.Create | FunctionAction.Update)]
 	public partial class ProductEditor : EditorPage<Product, int>, IProductEditorView 
 	{
 		ProductEditorPresenter _presenter;

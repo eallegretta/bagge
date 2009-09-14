@@ -8,6 +8,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface IDeleteManager<T, PK> where T : PrimaryKeyDomainObject<T, PK>
 	{
-		void Delete(PK id);
+		void Delete(T instance);
 	}
 }

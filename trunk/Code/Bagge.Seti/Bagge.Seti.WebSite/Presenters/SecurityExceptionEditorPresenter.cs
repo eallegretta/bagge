@@ -205,6 +205,11 @@ namespace Bagge.Seti.WebSite.Presenters
 		}
 
 
+		public override object GetSelectedEntity()
+		{
+			return _manager.GetSecurityException(View.PrimaryKey);
+		}
+
 		public override void Select()
 		{
 			if (View.Mode == EditorAction.Update || View.Mode == EditorAction.View)

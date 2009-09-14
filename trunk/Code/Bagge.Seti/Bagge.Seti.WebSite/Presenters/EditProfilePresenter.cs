@@ -21,6 +21,11 @@ namespace Bagge.Seti.WebSite.Presenters
 			_loggedUser = loggedUser;
 		}
 
+		public override object GetSelectedEntity()
+		{
+			return GetManager<IEmployeeManager>().Get(_loggedUser.Id);
+		}
+
 		public override void Select()
 		{
 			SelectedEntity = GetManager<IEmployeeManager>().Get(_loggedUser.Id);

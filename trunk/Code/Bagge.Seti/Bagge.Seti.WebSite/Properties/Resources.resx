@@ -192,6 +192,12 @@
   <data name="Securizable_RolesByUser" xml:space="preserve">
     <value>Reporte Roles por Usuario</value>
   </data>
+  <data name="Securizable_SecurityExceptionEditor" xml:space="preserve">
+    <value>Editor de Excepciones de Seguridad</value>
+  </data>
+  <data name="Securizable_SecurityExceptionList" xml:space="preserve">
+    <value>Listado de Excepciones de Seguridad</value>
+  </data>
   <data name="Securizable_TechniciansByTicket" xml:space="preserve">
     <value>Reporte Técnicos por Ticket</value>
   </data>

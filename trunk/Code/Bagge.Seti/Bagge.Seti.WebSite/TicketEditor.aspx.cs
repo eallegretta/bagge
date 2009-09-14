@@ -16,7 +16,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableCrud("Securizable_TicketEditor", typeof(TicketEditor), FunctionAction.Retrieve | FunctionAction.Create | FunctionAction.Update)]
+	[SecurizableCrud("Securizable_TicketEditor", typeof(TicketEditor), FunctionAction.Get | FunctionAction.Create | FunctionAction.Update)]
 	public partial class TicketEditor : EditorPage<Ticket, int>, ITicketEditorView
 	{
 		TicketEditorPresenter _presenter;

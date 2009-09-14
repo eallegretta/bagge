@@ -12,8 +12,10 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 		SecureEntity GetSecureEntity(int functionId, string classFullQualifiedName);
 		SecureEntity[] FindAllSecureEntities(int functionId);
 		SecurityException[] FindAllSecurityExceptions(int roleId, int functionId);
+		SecurityException[] FindAllSecurityExceptions(IUser user, int functionId);
 		//void Save(int roleId, int functionId, SecurityException[] exceptions);
 		void Save(SecurityException exception);
 		void Delete(int id);
+		bool UserHasAccessToInstance(object instance, SecurityException[] exceptions);
 	}
 }

@@ -35,7 +35,7 @@ namespace Bagge.Seti.Security.Constraints
 
 		public abstract bool IsTrue(IComparable valueA, IComparable valueB);
 
-		public override bool IsValid()
+		public override bool IsTrue()
 		{
 			var valueA = GetPropertyValue() as IComparable;
 			var valueB = Value as IComparable;

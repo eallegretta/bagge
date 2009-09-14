@@ -19,7 +19,7 @@ namespace Bagge.Seti.WebSite
 	{
 		protected override void OnInit(EventArgs e)
 		{
-			if (!AuthorizationManager.UserHasAccess(this))
+			if (!AuthorizationManager.UserHasAccess(this, true))
 				throw new BusinessRuleException(Bagge.Seti.WebSite.Properties.Resources.UserHasNoAccessErrorMessage);
 
 			base.OnInit(e);

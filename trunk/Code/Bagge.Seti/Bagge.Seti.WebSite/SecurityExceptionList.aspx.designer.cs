@@ -11,7 +11,7 @@
 namespace Bagge.Seti.WebSite {
     
     
-    public partial class SecurityExceptionsList {
+    public partial class SecurityExceptionList {
         
         /// <summary>
         /// _roleLiteral control.

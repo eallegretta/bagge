@@ -123,7 +123,7 @@ namespace Bagge.Seti.Security.Constraints
 			}
 		}
 
-		public Constraint Parse(string constraint, object source, string propertyName, object value, bool negated)
+		public static Constraint Parse(string constraint, object source, string propertyName, object value, bool negated)
 		{
 			switch (constraint)
 			{
@@ -243,6 +243,6 @@ namespace Bagge.Seti.Security.Constraints
 			set;
 		}
 
-		public abstract bool IsValid();
+		public abstract bool IsTrue();
 	}
 }

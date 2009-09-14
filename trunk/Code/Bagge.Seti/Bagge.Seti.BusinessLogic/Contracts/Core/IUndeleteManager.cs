@@ -9,6 +9,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 {
 	public interface IUndeleteManager<T,PK> where T: PrimaryKeyDomainObject<T, PK>
 	{
-		void Undelete(PK id);
+		void Undelete(T instance);
 	}
 }

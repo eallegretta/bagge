@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/List.Master" AutoEventWireup="true" CodeBehind="SecurityExceptionList.aspx.cs" Inherits="Bagge.Seti.WebSite.SecurityExceptionsList" meta:resourcekey="Page" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/List.Master" AutoEventWireup="true" CodeBehind="SecurityExceptionList.aspx.cs" Inherits="Bagge.Seti.WebSite.SecurityExceptionList" meta:resourcekey="Page" %>
 <%@ Register TagPrefix="seti" TagName="ListCommands" Src="~/Controls/ListCommands.ascx" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<table cellpadding="5" cellspacing="3">

@@ -96,14 +96,14 @@ namespace Bagge.Seti.WebSite.Presenters
 		}
 		public virtual void Delete(PK id)
 		{
-			_manager.Delete(id);
+			_manager.Delete(_manager.Get(id));
 		}
 
 		public virtual void Undelete(PK id)
 		{
 			var manager = GetManager<IAuditableManager<T, PK>>();
 			if(manager != null)
-				manager.Undelete(id);
+				manager.Undelete(manager.Get(id));
 		}
 	}
 }

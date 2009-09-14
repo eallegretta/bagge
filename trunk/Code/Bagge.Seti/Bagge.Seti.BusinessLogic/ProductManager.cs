@@ -29,7 +29,7 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 
-		[SecurizableCrud("Securizable_ProductManager_GetByName", typeof(ProductManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_ProductManager_GetByName", typeof(ProductManager), FunctionAction.List)]
 		public Product GetByName(string name)
 		{   
 			Check.Require(!string.IsNullOrEmpty(name));

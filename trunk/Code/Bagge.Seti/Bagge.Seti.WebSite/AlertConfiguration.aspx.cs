@@ -69,5 +69,15 @@ namespace Bagge.Seti.WebSite
 		}
 
 		#endregion
+
+		#region IEditorView Members
+
+
+		public object SelectedEntity
+		{
+			get { return IoCContainer.AlertConfigurationManager.Get(); }
+		}
+
+		#endregion
 	}
 }

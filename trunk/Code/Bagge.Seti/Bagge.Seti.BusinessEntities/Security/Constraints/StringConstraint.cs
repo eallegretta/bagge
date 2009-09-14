@@ -35,7 +35,7 @@ namespace Bagge.Seti.Security.Constraints
 
 		public abstract bool IsTrue(string valueA, string valueB);
 
-		public override bool IsValid()
+		public override bool IsTrue()
 		{
 			string valueA = GetPropertyValue() as string;
 			string valueB = Value as string;

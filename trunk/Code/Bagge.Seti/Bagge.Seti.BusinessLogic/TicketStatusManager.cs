@@ -29,7 +29,7 @@ namespace Bagge.Seti.BusinessLogic
 			return Get((int)status);
 		}
 
-		[SecurizableCrud("Securizable_TicketStatusManager_FindAll", typeof(TicketStatusManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_TicketStatusManager_FindAll", typeof(TicketStatusManager), FunctionAction.List)]
 		public TicketStatus[] FindAll()
 		{
 			return _dao.FindAll();
@@ -39,7 +39,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region IGetManager<TicketStatus,int> Members
 
-		[SecurizableCrud("Securizable_TicketStatusManager_Get", typeof(TicketStatusManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_TicketStatusManager_Get", typeof(TicketStatusManager), FunctionAction.List)]
 		public TicketStatus Get(int id)
 		{
 			return _dao.Get(id);

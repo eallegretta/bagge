@@ -84,7 +84,7 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 
-		[SecurizableCrud("Securizable_TicketManager_FindAllByStatus", typeof(TicketManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_TicketManager_FindAllByStatus", typeof(TicketManager), FunctionAction.List)]
 		public Ticket[] FindAllByStatus(TicketStatusEnum status)
 		{
 			return FindAllActiveByProperty("Status",
@@ -212,11 +212,11 @@ namespace Bagge.Seti.BusinessLogic
 				product.Ticket = instance;
 		}
 
-		public override void Delete(int id)
+		public override void Delete(Ticket instance)
 		{
 		}
 
-		public override void Undelete(int id)
+		public override void Undelete(Ticket instance)
 		{
 
 		}

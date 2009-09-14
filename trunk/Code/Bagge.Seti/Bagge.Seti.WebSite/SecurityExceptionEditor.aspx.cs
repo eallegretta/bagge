@@ -12,15 +12,17 @@ using AjaxControlToolkit;
 using Bagge.Seti.BusinessEntities;
 using System.Linq.Expressions;
 using Bagge.Seti.WebSite.Model;
+using Bagge.Seti.Security.BusinessEntities;
 
 
 namespace Bagge.Seti.WebSite
 {
-	public partial class SecurityExceptionsEditor : EditorPage<SecurityExceptionViewModel, int>, ISecurityExceptionEditorView
+	[SecurizableCrud("Securizable_SecurityExceptionEditor", typeof(SecurityExceptionEditor), FunctionAction.Get | FunctionAction.Create | FunctionAction.Update)]
+	public partial class SecurityExceptionEditor : EditorPage<SecurityExceptionViewModel, int>, ISecurityExceptionEditorView
 	{
 		SecurityExceptionEditorPresenter _presenter;
 
-		public SecurityExceptionsEditor()
+		public SecurityExceptionEditor()
 		{
 			_presenter = new SecurityExceptionEditorPresenter(this, IoCContainer.SecurityManager,
 				IoCContainer.RoleManager, IoCContainer.FunctionManager);

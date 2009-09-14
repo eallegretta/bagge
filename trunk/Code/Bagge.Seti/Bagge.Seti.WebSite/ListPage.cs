@@ -35,9 +35,10 @@ namespace Bagge.Seti.WebSite
 
 		void Grid_DataBinding(object sender, EventArgs e)
 		{
-			SetEditIndexFieldValue();
+			SetEditAndDeleteIndices();
 		}
 
+		int? _deleteFieldIndex = null;
 		int? _editFieldIndex = null;
 
 		void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -49,19 +50,23 @@ namespace Bagge.Seti.WebSite
 				{
 					if (_editFieldIndex.HasValue && auditable.Deleted)
 						e.Row.Cells[_editFieldIndex.Value].Visible = false;
+					if (_deleteFieldIndex.HasValue && auditable.Deleted)
+						e.Row.Cells[_deleteFieldIndex.Value].Visible = false;
 				}
 			}
 		}
 
-		private void SetEditIndexFieldValue()
+		private void SetEditAndDeleteIndices()
 		{
-			for (int index = 0; index < Grid.Columns.Count && !_editFieldIndex.HasValue; index++)
+			for (int index = 0; index < Grid.Columns.Count; index++)
 			{
 				var field = Grid.Columns[index] as IMethodSecureControl;
 				if (field != null)
 				{
 					if (field.MethodName == "Update")
 						_editFieldIndex = index;
+					if (field.MethodName == "Delete")
+						_deleteFieldIndex = index;
 				}
 			}
 		}

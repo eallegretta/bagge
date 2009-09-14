@@ -22,7 +22,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region ISimpleFindGetManager<T,PK> Members
 
-		[SecurizableCrud("Securizable_SimpleFindGetManager_FindAll", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_SimpleFindGetManager_FindAll", typeof(RandomPassword), FunctionAction.List)]
 		public T[] FindAll()
 		{
 			return _dao.FindAll();
@@ -32,7 +32,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region IGetManager<T,PK> Members
 
-		[SecurizableCrud("Securizable_SimpleFindGetManager_Get", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_SimpleFindGetManager_Get", typeof(RandomPassword), FunctionAction.List)]
 		public T Get(PK id)
 		{
 			return _dao.Get(id);

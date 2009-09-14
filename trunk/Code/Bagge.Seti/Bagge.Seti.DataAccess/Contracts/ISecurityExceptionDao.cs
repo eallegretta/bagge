@@ -10,6 +10,7 @@ namespace Bagge.Seti.DataAccess.Contracts
 	{
 		void DeleteAll(int roleId, int functionId);
 		SecurityException[] FindAll(int roleId, int functionId);
+		SecurityException[] FindAll(int[] roleIds, int functionId);
 		void Save(SecurityException securityException);
 		SecurityException Get(int id);
 		void Delete(int id);

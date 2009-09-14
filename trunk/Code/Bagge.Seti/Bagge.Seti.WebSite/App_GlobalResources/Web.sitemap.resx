@@ -234,4 +234,7 @@
   <data name="SecurityExceptionList.title" xml:space="preserve">
     <value>Listado de Excepciones de Seguridad</value>
   </data>
+  <data name="SecurityExceptionEditor.title" xml:space="preserve">
+    <value>Alta de Excepciones de Seguridad</value>
+  </data>
 </root>

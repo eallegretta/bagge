@@ -11,6 +11,8 @@ namespace Bagge.Seti.WebSite.Views
 	{
 		EditorAction Mode { get; }
 
+		object SelectedEntity { get; }
+
 		event EventHandler DataBound;
 	}
 

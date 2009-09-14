@@ -11,7 +11,7 @@
 namespace Bagge.Seti.WebSite {
     
     
-    public partial class SecurityExceptionsEditor {
+    public partial class SecurityExceptionEditor {
         
         /// <summary>
         /// _details control.
