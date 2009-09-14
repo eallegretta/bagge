@@ -10,7 +10,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableCrud("Securizable_CustomersBySubscription", typeof(CustomersBySubscription), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_CustomersBySubscription", typeof(CustomersBySubscription), FunctionAction.List)]
 	public partial class CustomersBySubscription : ReportPage<CustomersBySubscriptionReport>
 	{
 

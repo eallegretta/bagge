@@ -18,6 +18,15 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 			return new SimpleQuery<SecurityException>(hql, roleId, functionId).Execute();
 		}
 
+		public SecurityException[] FindAll(int[] roleIds, int functionId)
+		{
+			string hql = "from SecurityException e where e.Role.Id in (:roleIds) and e.SecureEntity.Function.Id = :functionId";
+			var query = new SimpleQuery<SecurityException>(hql);
+			query.SetParameter("functionId", functionId);
+			query.SetParameterList("roleIds", roleIds);
+			return query.Execute();
+		}
+
 		public void DeleteAll(int roleId, int functionId)
 		{
 			var query = new ScalarQuery<long>(typeof(long), "delete from SecurityException e where e.Role.Id = ?  and e.SecureEntity.Function.Id = ?");
@@ -43,6 +52,8 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 		{
 			ActiveRecordMediator<SecurityException>.Delete(Get(id));
 		}
+
+		
 
 		#endregion
 	}

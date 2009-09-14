@@ -12,7 +12,7 @@ using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
-	[SecurizableCrud("Securizable_RolesByUser", typeof(RolesByUser), FunctionAction.Retrieve)]
+	[SecurizableCrud("Securizable_RolesByUser", typeof(RolesByUser), FunctionAction.List)]
     public partial class RolesByUser : FilteredReportPage<RolesByUserReport>
     {
         protected override Button FilterButton

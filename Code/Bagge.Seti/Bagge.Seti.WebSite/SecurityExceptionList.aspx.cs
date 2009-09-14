@@ -13,14 +13,14 @@ using Bagge.Seti.Common;
 
 namespace Bagge.Seti.WebSite
 {
-	[SecurizableCrud("Securizable_SecurityExceptionsList", typeof(SecurityExceptionsList), FunctionAction.Retrieve)]
-	public partial class SecurityExceptionsList : Page, ISecurityExceptionListView
+	[SecurizableCrud("Securizable_SecurityExceptionList", typeof(SecurityExceptionList), FunctionAction.List | FunctionAction.Delete)]
+	public partial class SecurityExceptionList : Page, ISecurityExceptionListView, IListView
 	{
 		#region ISecurityExceptionListView Members
 
 		SecurityExceptionListPresenter _presenter;
 
-		public SecurityExceptionsList()
+		public SecurityExceptionList()
 		{
 			_presenter = new SecurityExceptionListPresenter(this,
 				IoCContainer.SecurityManager,
@@ -141,6 +141,16 @@ namespace Bagge.Seti.WebSite
 
 				return false;
 			}
+		}
+
+		public int TotalRows
+		{
+			set { }
+		}
+
+		public string DefaultSortExpression
+		{
+			get { return string.Empty; }
 		}
 
 		#endregion

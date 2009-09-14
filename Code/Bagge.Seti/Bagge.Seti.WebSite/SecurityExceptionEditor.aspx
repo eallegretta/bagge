@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Editor.Master" AutoEventWireup="true" CodeBehind="SecurityExceptionEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.SecurityExceptionsEditor" meta:resourcekey="Page" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Editor.Master" AutoEventWireup="true" CodeBehind="SecurityExceptionEditor.aspx.cs" Inherits="Bagge.Seti.WebSite.SecurityExceptionEditor" meta:resourcekey="Page" %>
 <%@ Register TagPrefix="seti" TagName="Calendar" Src="~/Controls/Calendar.ascx" %>
 <%@ Register TagPrefix="seti" TagName="EditorControls" Src="~/Controls/EditorCommands.ascx"  %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">

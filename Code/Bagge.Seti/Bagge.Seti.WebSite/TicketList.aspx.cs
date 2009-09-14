@@ -15,7 +15,7 @@ using Bagge.Seti.WebSite.Controls;
 namespace Bagge.Seti.WebSite
 {
 
-	[SecurizableCrud("Securizable_TicketList", typeof(TicketList), FunctionAction.Retrieve | FunctionAction.Delete)]
+	[SecurizableCrud("Securizable_TicketList", typeof(TicketList), FunctionAction.List | FunctionAction.Delete)]
 	public partial class TicketList : FilteredListPage<Ticket, int>, ITicketListView
 	{
 		public override string DefaultSortExpression

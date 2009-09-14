@@ -24,7 +24,7 @@ namespace Bagge.Seti.Security.Constraints
 		}
 
 
-		public override bool IsValid()
+		public override bool IsTrue()
 		{
 			object value = GetPropertyValue();
 			if (value != null)

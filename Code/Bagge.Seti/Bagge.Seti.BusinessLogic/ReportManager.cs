@@ -23,7 +23,7 @@ namespace Bagge.Seti.BusinessLogic
 			_reportDaos = reportDaos;
 		}
 
-		[SecurizableCrud("Securizable_ReportManager_GetReport", typeof(ReportManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_ReportManager_GetReport", typeof(ReportManager), FunctionAction.List)]
 		public BaseReport GetReport<T>(IList<FilterPropertyValue> filters)
 		{
 			Check.Require(typeof(BaseReport).IsAssignableFrom(typeof(T)));

@@ -6,6 +6,8 @@ using AopAlliance.Intercept;
 using Bagge.Seti.Security.BusinessEntities;
 using System.Collections;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.BusinessEntities.Exceptions;
+using Bagge.Seti.Security.Constraints;
 
 namespace Bagge.Seti.Common.Interceptors
 {
@@ -13,48 +15,87 @@ namespace Bagge.Seti.Common.Interceptors
 	{
 		#region IMethodInterceptor Members
 
+
+		private Function _currentFunction;
+		private IUser _user;
+
+		private SecurityException[] GetUserSecurityExceptions()
+		{
+			if (_currentFunction != null)
+			{
+				var exceptions = IoCContainer.Storage.GetData(typeof(SecurityException[])) as SecurityException[];
+				if (exceptions == null)
+					IoCContainer.Storage.SetData(typeof(SecurityException[]),
+						IoCContainer.SecurityManager.FindAllSecurityExceptions(_user, _currentFunction.Id));
+
+				return IoCContainer.Storage.GetData(typeof(SecurityException[])) as SecurityException[];
+			}
+			return null;
+		}
+
 		public object Invoke(IMethodInvocation invocation)
 		{
-			IsInvocationAllowed(invocation);
+			_currentFunction = IoCContainer.Storage.GetData(typeof(Function)) as Function;
+			_user = IoCContainer.User.Identity as IUser;
+
+			if (!IsInvocationAllowed(invocation))
+				throw new MethodAccessDeniedException();
 
 			object returnValue = invocation.Proceed();
 
-			if (returnValue is ISecurizable)
-				ApplySecurityRestrictions((ISecurizable)returnValue);
-			else if (returnValue is IEnumerable)
-				ApplySecurityRestrictions((IEnumerable)returnValue);
-
+			/*if (returnValue is IEnumerable)
+				return GetAllowedObjects(returnValue, returnValue.GetType());*/
+	
 			return returnValue;
+		}
+
+		private object GetAllowedObjects(object objects, Type returnValueType)
+		{
+			object list;
+			if (returnValueType.IsArray)
+				list = new ArrayList();
+			else if (objects is IList)
+				list = Activator.CreateInstance(returnValueType);
+			else
+				return objects;
+
+			IEnumerator en = ((IEnumerable)objects).GetEnumerator();
+			while (en.MoveNext())
+			{
+				if (IoCContainer.SecurityManager.UserHasAccessToInstance(en.Current, GetUserSecurityExceptions()))
+					((IList)list).Add(en.Current);
+
+			}
+
+			if (returnValueType.IsArray)
+				return ((ArrayList)list).ToArray(returnValueType.GetElementType());
+			else
+				return list;
 		}
 
 		private bool IsInvocationAllowed(IMethodInvocation invocation)
 		{
+
 			if (!invocation.Method.IsDefined(typeof(SecurizableAttribute), true))
 				return true;
 
-			var function = IoCContainer.Storage.GetData(typeof(Function)) as Function;
-
-			if (function == null)
+			if (_currentFunction == null)
 				return true;
 
-			var user = IoCContainer.User.Identity as IUser;
+			if(!IoCContainer.FunctionManager.UserHasAccessToFunction(_user, _currentFunction))
+				return false;
 
-			return false;
-		}
-
-		private void ApplySecurityRestrictions(IEnumerable securizables)
-		{
-			IEnumerator en = securizables.GetEnumerator();
-			while (en.MoveNext())
+			foreach (object instance in invocation.Arguments)
 			{
-				if(en.Current is ISecurizable)
-					ApplySecurityRestrictions((ISecurizable)en.Current);
+				if (instance is ISecurizable)
+				{
+					if (!IoCContainer.SecurityManager.UserHasAccessToInstance(instance, GetUserSecurityExceptions()))
+						return false;
+				}
 			}
-		}
-		private void ApplySecurityRestrictions(ISecurizable securizable)
-		{
-		}
 
+			return true;
+		}
 		#endregion
 	}
 }

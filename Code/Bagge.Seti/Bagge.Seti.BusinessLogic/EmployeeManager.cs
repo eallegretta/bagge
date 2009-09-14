@@ -56,7 +56,7 @@ namespace Bagge.Seti.BusinessLogic
 			
 		}
 
-		[SecurizableCrud("Securizable_EmployeeManager_GetByUsername", typeof(EmployeeManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_EmployeeManager_GetByUsername", typeof(EmployeeManager), FunctionAction.List)]
 		public Employee GetByUsername(string username)
 		{
 			return GetByStringProperty("Username", username, Resources.EmployeeByUsernameNotFoundErrorMessage);
@@ -133,7 +133,7 @@ namespace Bagge.Seti.BusinessLogic
 				string.Format(Resources.RecoverPasswordEmailBodyNewPassword, employee.Fullname, password));
 		}
 
-		[SecurizableCrud("Securizable_EmployeeManager_GetByEmail", typeof(EmployeeManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_EmployeeManager_GetByEmail", typeof(EmployeeManager), FunctionAction.List)]
 		public Employee GetByEmail(string email)
 		{
 			return GetByStringProperty("Email", email, Resources.EmployeeByEmailNotFoundErrorMessage);
@@ -240,7 +240,7 @@ namespace Bagge.Seti.BusinessLogic
 			}
 		}
 
-		[SecurizableCrud("Securizable_EmployeeManager_FindAllActiveTechnicians", typeof(EmployeeManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_EmployeeManager_FindAllActiveTechnicians", typeof(EmployeeManager), FunctionAction.List)]
 		public Employee[] FindAllActiveTechnicians()
 		{
 			var category = _employeeCategoryDao.Get(EmployeeCategory.TechnicianId);

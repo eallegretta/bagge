@@ -5,6 +5,8 @@ using System.Text;
 using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.DataAccess.Contracts;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.Constraints;
+using System.Reflection;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -41,6 +43,17 @@ namespace Bagge.Seti.BusinessLogic
 			return _securityExceptionDao.FindAll(roleId, functionId);
 		}
 
+		private int[] GetUserRoleIds(IUser user)
+		{
+			return (from role in user.Roles
+					select role.Id).ToArray();
+		}
+
+		public SecurityException[] FindAllSecurityExceptions(IUser user, int functionId)
+		{
+			return _securityExceptionDao.FindAll(GetUserRoleIds(user), functionId);
+		}
+
 		public void Save(SecurityException securityException)
 		{
 			_securityExceptionDao.Save(securityException);
@@ -56,6 +69,30 @@ namespace Bagge.Seti.BusinessLogic
 		public void Delete(int securityExceptionId)
 		{
 			_securityExceptionDao.Delete(securityExceptionId);
+		}
+
+		public bool UserHasAccessToInstance(object instance, SecurityException[] exceptions)
+		{
+			if (exceptions == null)
+				return true;
+
+			string classFullQualifiedName = Assembly.CreateQualifiedName(
+				instance.GetType().Assembly.GetName().Name, instance.GetType().FullName);
+
+			var query = from se in exceptions
+						where se.SecureEntity.ClassFullQualifiedName == classFullQualifiedName
+						select se;
+
+			foreach (var securityException in query.ToArray())
+			{
+				var constraint = Constraint.Parse(securityException.ConstraintType,
+					instance, securityException.PropertyName, securityException.Value, false);
+
+				if (constraint.IsTrue())
+					return false;
+			}
+
+			return true;
 		}
 
 		#endregion

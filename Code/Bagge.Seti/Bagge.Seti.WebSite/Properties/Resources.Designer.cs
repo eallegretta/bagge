@@ -286,6 +286,24 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editor de Excepciones de Seguridad.
+        /// </summary>
+        internal static string Securizable_SecurityExceptionEditor {
+            get {
+                return ResourceManager.GetString("Securizable_SecurityExceptionEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listado de Excepciones de Seguridad.
+        /// </summary>
+        internal static string Securizable_SecurityExceptionList {
+            get {
+                return ResourceManager.GetString("Securizable_SecurityExceptionList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reporte Técnicos por Ticket.
         /// </summary>
         internal static string Securizable_TechniciansByTicket {

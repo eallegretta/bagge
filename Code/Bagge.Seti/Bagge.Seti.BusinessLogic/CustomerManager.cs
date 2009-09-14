@@ -26,7 +26,7 @@ namespace Bagge.Seti.BusinessLogic
 			_ticketManager = ticketManager;
 		}
 
-		[SecurizableCrud("Securizable_CustomerManager_GetByCuit", typeof(CustomerManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_CustomerManager_GetByCuit", typeof(CustomerManager), FunctionAction.List)]
 		public virtual Customer GetByCuit(string cuit)
 		{
 			if (string.IsNullOrEmpty(cuit))

@@ -37,12 +37,11 @@ namespace Bagge.Seti.BusinessLogic
 		protected bool IsDeleteOrUndelete { get { return IsDelete || IsUndelete; } }
 
 
-		public override void Delete(PK id)
+		public override void Delete(T instance)
 		{
-			T instance = Get(id);
 			IAuditable auditable = instance as IAuditable;
 			if (auditable == null)
-				base.Delete(id);
+				base.Delete(instance);
 			else
 			{
 				auditable.Deleted = true;
@@ -52,14 +51,14 @@ namespace Bagge.Seti.BusinessLogic
 			}
 		}
 
-		public virtual void Undelete(PK id)
+		public virtual void Undelete(T instance)
 		{
-			var instance = Get(id) as IAuditable;
-			if (instance == null)
+			var auditable = instance as IAuditable;
+			if (auditable == null)
 				return;
-			instance.Deleted = false;
+			auditable.Deleted = false;
 			IsUndelete = true;
-			Update((T)instance);
+			Update((T)auditable);
 			IsUndelete = false;
 		}
 

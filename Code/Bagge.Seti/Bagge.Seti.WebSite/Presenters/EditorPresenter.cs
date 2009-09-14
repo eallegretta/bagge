@@ -62,6 +62,11 @@ namespace Bagge.Seti.WebSite.Presenters
 			set;
 		}
 
+		public virtual object GetSelectedEntity()
+		{
+			return _manager.Get(_view.PrimaryKey);
+		}
+
 		public virtual void Select()
 		{
 			if (View.Mode == EditorAction.Update || View.Mode == EditorAction.View)

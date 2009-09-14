@@ -161,7 +161,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			if (_user.IsSuperAdministrator)
 				return true;
 
-			return HasAccess(FunctionAction.Retrieve);
+			return HasAccess(FunctionAction.List);
 
 		}
 
@@ -188,7 +188,7 @@ namespace Bagge.Seti.WebSite.Presenters
 
 
 			if (((Employee)_user).IsTechnician 
-				&& HasAccess(FunctionAction.Retrieve) 
+				&& HasAccess(FunctionAction.List) 
 				&& HasAccess(FunctionAction.Update))
 				return true;
 

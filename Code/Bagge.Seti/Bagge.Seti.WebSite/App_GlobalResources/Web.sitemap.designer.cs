@@ -358,6 +358,15 @@ namespace Resources.Web {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alta de Excepciones de Seguridad.
+        /// </summary>
+        internal static string SecurityExceptionEditor_title {
+            get {
+                return ResourceManager.GetString("SecurityExceptionEditor.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Listado de Excepciones de Seguridad.
         /// </summary>
         internal static string SecurityExceptionList_title {

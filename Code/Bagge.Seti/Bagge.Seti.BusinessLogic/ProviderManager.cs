@@ -27,7 +27,7 @@ namespace Bagge.Seti.BusinessLogic
 			_ticketManager = ticketManager;
 		}
 
-		[SecurizableCrud("Securizable_ProviderManager_GetByCuit", typeof(ProviderManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_ProviderManager_GetByCuit", typeof(ProviderManager), FunctionAction.List)]
 		public virtual Provider GetByCuit(string cuit)
 		{
 			if (string.IsNullOrEmpty(cuit))
@@ -40,7 +40,7 @@ namespace Bagge.Seti.BusinessLogic
 			return null;
 		}
 
-		[SecurizableCrud("Securizable_ProviderManager_GetByName", typeof(ProviderManager), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_ProviderManager_GetByName", typeof(ProviderManager), FunctionAction.List)]
 		public Provider GetByName(string name)
 		{
 			Check.Require(!string.IsNullOrEmpty(name));

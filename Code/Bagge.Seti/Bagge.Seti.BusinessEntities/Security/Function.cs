@@ -14,7 +14,8 @@ namespace Bagge.Seti.Security.BusinessEntities
 	public enum FunctionAction
 	{
 		Create,
-		Retrieve,
+		List,
+		Get,
 		Update,
 		Delete,
 		NotSet
@@ -35,10 +36,12 @@ namespace Bagge.Seti.Security.BusinessEntities
 		{
 			switch (action)
 			{
+				case FunctionAction.List:
+					return 'L';
 				case FunctionAction.Create:
 					return 'C';
-				case FunctionAction.Retrieve:
-					return 'R';
+				case FunctionAction.Get:
+					return 'G';
 				case FunctionAction.Update:
 					return 'U';
 				default:
@@ -52,8 +55,10 @@ namespace Bagge.Seti.Security.BusinessEntities
 			{
 				case 'C':
 					return FunctionAction.Create;
-				case 'R':
-					return FunctionAction.Retrieve;
+				case 'G':
+					return FunctionAction.Get;
+				case 'L':
+					return FunctionAction.List;
 				case 'U':
 					return FunctionAction.Update;
 				default:

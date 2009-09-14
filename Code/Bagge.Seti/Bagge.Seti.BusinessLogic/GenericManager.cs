@@ -36,7 +36,7 @@ namespace Bagge.Seti.BusinessLogic
 
 		#region IManager<T> Members
 
-		[SecurizableCrud("Securizable_GenericManager_Get", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_Get", typeof(RandomPassword), FunctionAction.List)]
 		public T Get(PK id)
 		{
 			Check.Require(!id.Equals(default(PK)), string.Format(Resources.IdCannotBeDefault, default(PK)));
@@ -68,6 +68,7 @@ namespace Bagge.Seti.BusinessLogic
 			Dao.Update(instance);
 		}
 
+		[SecurizableCrud("Securizable_GenericManager_Delete", typeof(RandomPassword), FunctionAction.Delete)]
 		public virtual void Delete(T instance)
 		{
 			Check.Require(instance != null, string.Format(Resources.InstanceCannotBeNull, typeof(T)));
@@ -76,8 +77,8 @@ namespace Bagge.Seti.BusinessLogic
 			Delete(instance.Id);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_Delete", typeof(RandomPassword), FunctionAction.Delete)]
-		public virtual void Delete(PK id)
+		
+		private void Delete(PK id)
 		{
 			Check.Require(!id.Equals(default(PK)), string.Format(Resources.IdCannotBeDefault, default(PK)));
 
@@ -100,7 +101,7 @@ namespace Bagge.Seti.BusinessLogic
 			return FindAll(orderBy, ascending);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_FindAll", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_FindAll", typeof(RandomPassword), FunctionAction.List)]
 		protected virtual T[] FindAll(string orderBy, bool? ascending)
 		{
 			return Dao.FindAll(orderBy, ascending);
@@ -122,7 +123,7 @@ namespace Bagge.Seti.BusinessLogic
 			return FindAllByProperty(property, value, orderBy, ascending);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_FindAllByProperty", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_FindAllByProperty", typeof(RandomPassword), FunctionAction.List)]
 		protected virtual T[] FindAllByProperty(string property, object value, string orderBy, bool? ascending)
 		{
 			return Dao.FindAllByProperty(property, value, orderBy, ascending);
@@ -143,7 +144,7 @@ namespace Bagge.Seti.BusinessLogic
 			return SlicedFindAll(pageIndex, pageSize, orderBy, ascending);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_SlicedFindAll", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_SlicedFindAll", typeof(RandomPassword), FunctionAction.List)]
 		protected virtual T[] SlicedFindAll(int pageIndex, int pageSize, string orderBy, bool? ascending)
 		{
 			return Dao.SlicedFindAll(pageIndex, pageSize, orderBy, ascending);
@@ -165,7 +166,7 @@ namespace Bagge.Seti.BusinessLogic
 			return SlicedFindAllByProperty(pageIndex, pageSize, property, value, orderBy, ascending);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_SlicedFindAllByProperty", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_SlicedFindAllByProperty", typeof(RandomPassword), FunctionAction.List)]
 		protected virtual T[] SlicedFindAllByProperty(int pageIndex, int pageSize, string property, object value, string orderBy, bool? ascending)
 		{
 			return Dao.SlicedFindAllByProperty(pageIndex, pageSize, property, value, orderBy, ascending);
@@ -206,7 +207,7 @@ namespace Bagge.Seti.BusinessLogic
 			return FindAllByProperties(filter, orderBy, ascending);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_FindAllByProperties", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_FindAllByProperties", typeof(RandomPassword), FunctionAction.List)]
 		protected virtual T[] FindAllByProperties(IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
 			ReplaceFilters(filter);
@@ -236,7 +237,7 @@ namespace Bagge.Seti.BusinessLogic
 			return SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_SlicedFindAllByProperties", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_SlicedFindAllByProperties", typeof(RandomPassword), FunctionAction.List)]
 		protected virtual T[] SlicedFindAllByProperties(int startIndex, int pageSize, IList<FilterPropertyValue> filter, string orderBy, bool? ascending)
 		{
 			ReplaceFilters(filter);
@@ -244,7 +245,7 @@ namespace Bagge.Seti.BusinessLogic
 			return Dao.SlicedFindAllByProperties(startIndex, pageSize, filter, orderBy, ascending);
 		}
 
-		[SecurizableCrud("Securizable_GenericManager_CountByProperties", typeof(RandomPassword), FunctionAction.Retrieve)]
+		[SecurizableCrud("Securizable_GenericManager_CountByProperties", typeof(RandomPassword), FunctionAction.List)]
 		public virtual int CountByProperties(IList<FilterPropertyValue> filter)
 		{
 			ReplaceFilters(filter);

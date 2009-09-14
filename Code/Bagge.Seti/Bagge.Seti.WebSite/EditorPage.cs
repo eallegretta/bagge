@@ -111,7 +111,13 @@ namespace Bagge.Seti.WebSite
 		}
 
 
-		
+		public object SelectedEntity
+		{
+			get
+			{
+				return Presenter.GetSelectedEntity();
+			}
+		}
 
 		protected abstract EditorPresenter<T, PK> Presenter
 		{
