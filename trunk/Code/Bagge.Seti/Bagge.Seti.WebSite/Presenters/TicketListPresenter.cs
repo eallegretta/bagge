@@ -53,7 +53,8 @@ namespace Bagge.Seti.WebSite.Presenters
 		public bool CanUpdateProgress(Ticket ticket)
 		{
 			return 
-				!ticket.Status.In(TicketStatusEnum.Closed, TicketStatusEnum.PendingPayment) && (
+				!ticket.Status.In(TicketStatusEnum.Closed, TicketStatusEnum.PendingPayment, 
+				TicketStatusEnum.Canceled, TicketStatusEnum.Expired) && (
 				_loggedUser.IsSuperAdministrator ||
 				((Employee)_loggedUser).IsTechnician);
 				

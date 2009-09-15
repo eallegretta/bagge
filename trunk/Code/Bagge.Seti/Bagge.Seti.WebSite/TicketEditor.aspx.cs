@@ -55,7 +55,7 @@ namespace Bagge.Seti.WebSite
 		{
 			get
 			{
-				return Request.Url.Scheme + "://" + Request.Url.Authority + "/TicketEditor.aspx?Id=" + PrimaryKey + "&Action=View";
+				return Request.Url.Scheme + "://" + Request.Url.Authority + Page.ResolveUrl("~/TicketEditor.aspx") + "?Id=" + PrimaryKey + "&Action=View";
 			}
 		}
 
