@@ -120,11 +120,20 @@
   <data name="ConstraintField.HeaderText" xml:space="preserve">
     <value>Restricci&amp;oacute;n *</value>
   </data>
+  <data name="ConstraintValidator.ErrorMessage" xml:space="preserve">
+    <value>La Restricci&amp;oacute;n es requerida</value>
+  </data>
   <data name="EntityField.HeaderText" xml:space="preserve">
     <value>Entidad *</value>
   </data>
+  <data name="EntityValidator.ErrorMessage" xml:space="preserve">
+    <value>La Entidad es requerida</value>
+  </data>
   <data name="FunctionField.HeaderText" xml:space="preserve">
     <value>Funci&amp;oacute;n *</value>
+  </data>
+  <data name="FunctionValidator.ErrorMessage" xml:space="preserve">
+    <value>La Funci&amp;oacute;n es requerida</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
     <value>SETI &gt; Editor de Excepciones de Seguridad</value>
@@ -132,8 +141,14 @@
   <data name="PropertyField.HeaderText" xml:space="preserve">
     <value>Propiedad *</value>
   </data>
+  <data name="PropertyValidator.ErrorMessage" xml:space="preserve">
+    <value>La Propiedad es requerida</value>
+  </data>
   <data name="RoleField.HeaderText" xml:space="preserve">
     <value>Rol *</value>
+  </data>
+  <data name="RoleValidator.ErrorMessage" xml:space="preserve">
+    <value>El Rol es requerido</value>
   </data>
   <data name="SelectEntityLiteral.Text" xml:space="preserve">
     <value>Elija una entidad</value>

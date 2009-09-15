@@ -9,6 +9,7 @@
 				<asp:DropDownList ID="_role" runat="server" AppendDataBoundItems="true" AutoPostBack="true" DataTextField="Name" DataValueField="Id">
 					<asp:ListItem></asp:ListItem>
 				</asp:DropDownList>
+				<asp:RequiredFieldValidator ID="_roleVal" runat="server" ControlToValidate="_role" meta:resourcekey="RoleValidator"></asp:RequiredFieldValidator>
 			</InsertItemTemplate>
 			<EditItemTemplate>
 				<%#Eval("Role")%>
@@ -24,6 +25,7 @@
 				<asp:DropDownList ID="_function" runat="server" AppendDataBoundItems="true" AutoPostBack="true" DataTextField="Name" DataValueField="Id">
 					<asp:ListItem></asp:ListItem>
 				</asp:DropDownList>
+				<asp:RequiredFieldValidator ID="_functionVal" runat="server" ControlToValidate="_function" meta:resourcekey="FunctionValidator"></asp:RequiredFieldValidator>
 				</asp:PlaceHolder>
 				<asp:Literal ID="_selectRoleMessage" runat="server" meta:resourcekey="SelectRoleLiteral"></asp:Literal>
 			</InsertItemTemplate>
@@ -41,6 +43,7 @@
 				<asp:DropDownList ID="_entity" AppendDataBoundItems="true" runat="server" AutoPostBack="true">
 					<asp:ListItem></asp:ListItem>
 				</asp:DropDownList>
+				<asp:RequiredFieldValidator ID="_entityVal" runat="server" ControlToValidate="_entity" meta:resourcekey="EntityValidator"></asp:RequiredFieldValidator>
 				</asp:PlaceHolder>
 				<asp:Literal ID="_selectFunctionMessage" runat="server" meta:resourcekey="SelectFunctionLiteral"></asp:Literal>
 			</InsertItemTemplate>
@@ -58,7 +61,9 @@
 				<asp:DropDownList ID="_property" AppendDataBoundItems="true" runat="server" AutoPostBack="true">
 					<asp:ListItem></asp:ListItem>
 				</asp:DropDownList>
+				<asp:RequiredFieldValidator ID="_propertyVal" runat="server" ControlToValidate="_property" meta:resourcekey="PropertyValidator"></asp:RequiredFieldValidator>
 				</asp:PlaceHolder>
+				
 				<asp:Literal ID="_selectEntityMessage" runat="server" meta:resourcekey="SelectEntityLiteral"></asp:Literal>
 			</InsertItemTemplate>
 			<EditItemTemplate>
@@ -75,7 +80,9 @@
 				<asp:DropDownList ID="_constraint" AppendDataBoundItems="true" runat="server">
 					<asp:ListItem></asp:ListItem>
 				</asp:DropDownList>
+				<asp:RequiredFieldValidator ID="_constraintVal" runat="server" ControlToValidate="_constraint" meta:resourcekey="ConstraintValidator"></asp:RequiredFieldValidator>
 				</asp:PlaceHolder>
+				
 				<asp:Literal ID="_selectPropertyMessage" runat="server" meta:resourcekey="SelectPropertyLiteral"></asp:Literal>
 			</EditItemTemplate>
 			<ItemTemplate>
