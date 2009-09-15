@@ -51,7 +51,9 @@ namespace Bagge.Seti.BusinessLogic
 
 		public SecurityException[] FindAllSecurityExceptions(IUser user, int functionId)
 		{
-			return _securityExceptionDao.FindAll(GetUserRoleIds(user), functionId);
+			return user.SecurityExceptions.Where(se => se.SecureEntity.Function.Id == functionId).ToArray();
+
+			//return _securityExceptionDao.FindAll(GetUserRoleIds(user), functionId);
 		}
 
 		public void Save(SecurityException securityException)

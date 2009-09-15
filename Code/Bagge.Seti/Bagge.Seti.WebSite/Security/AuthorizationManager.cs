@@ -21,6 +21,9 @@ namespace Bagge.Seti.WebSite.Security
 			if (user == null)
 				return false;
 
+			if (user.IsSuperAdministrator)
+				return true;
+
 			if (type.IsDefined(typeof(SecurizableCrudAttribute), true))
 			{
 				FunctionAction action = FunctionAction.NotSet;

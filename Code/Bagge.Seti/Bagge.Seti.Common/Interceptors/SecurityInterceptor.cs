@@ -38,8 +38,11 @@ namespace Bagge.Seti.Common.Interceptors
 			_currentFunction = IoCContainer.Storage.GetData(typeof(Function)) as Function;
 			_user = IoCContainer.User.Identity as IUser;
 
-			if (!IsInvocationAllowed(invocation))
-				throw new MethodAccessDeniedException();
+			if (_user != null && !_user.IsSuperAdministrator)
+			{
+				if (!IsInvocationAllowed(invocation))
+					throw new MethodAccessDeniedException();
+			}
 
 			object returnValue = invocation.Proceed();
 
