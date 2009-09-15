@@ -50,9 +50,11 @@ namespace Bagge.Seti.BusinessLogic
 				instance.Employees = roleFromDb.Employees;
 				SessionScopeUtils.FlushSessionScope();
 			}
-			else //If the role is delete, remove all employees relationships
+			else
+			{	//If the role is delete, remove all employees and functions relationships
 				instance.Employees = new List<Employee>();
-
+				instance.Functions = new List<Function>();
+			}
 			base.Update(instance);
 		}
 
