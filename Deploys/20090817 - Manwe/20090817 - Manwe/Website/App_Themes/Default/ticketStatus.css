@@ -1,0 +1,70 @@
+﻿.body_status_Initial
+{
+	background-color:#FFFFFF;
+}
+
+.head_status_Initial
+{
+	background-color:#EFEFEF;
+}
+
+.body_status_Open
+{
+	background-color:#F8F7B6;
+}
+
+.head_status_Open
+{
+	background-color:#FCFBB5;
+}
+
+.body_status_PendingAproval
+{
+	background-color:#EFBCEF;
+}
+
+.head_status_PendingAproval
+{
+	background-color:#F1C3F1;
+}
+
+.body_status_PendingPayment
+{
+	background-color:#C1E2F6;
+}
+
+.head_status_PendingPayment
+{
+	background-color:#C9ECF8;
+}
+
+.body_status_Expired
+{
+	background-color:#FF4C55;
+}
+
+.head_status_Expired
+{
+	background-color:#FF606B;
+}
+
+.body_status_Closed
+{
+	background-color:#BDF0B9;
+}
+
+.head_status_Closed
+{
+	background-color:#C5F7C1;
+}
+
+
+.body_status_Canceled
+{
+	background-color:#D8D8D8;
+}
+
+.head_status_Canceled
+{
+	background-color:#dfdfdf;
+}

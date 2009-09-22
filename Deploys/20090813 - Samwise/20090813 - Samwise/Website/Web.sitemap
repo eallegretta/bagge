@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true">
+    <siteMapNode url="~/Default.aspx" resourceKey="Default">
+		<siteMapNode url="~/CustomerList.aspx" resourceKey="CustomerList">
+			<siteMapNode url="~/CustomerEditor.aspx" resourceKey="CustomerEditor"></siteMapNode>
+		</siteMapNode>
+		<siteMapNode url="~/ProviderList.aspx" resourceKey="ProviderList">
+			<siteMapNode url="~/ProviderEditor.aspx" resourceKey="ProviderEditor"></siteMapNode>
+		</siteMapNode>
+		<siteMapNode url="~/ProductList.aspx" resourceKey="ProductList">
+			<siteMapNode url="~/ProductEditor.aspx" resourceKey="ProductEditor"></siteMapNode>
+		</siteMapNode>
+		<siteMapNode url="~/TicketList.aspx" resourceKey="TicketList">
+			<siteMapNode url="~/TicketEditor.aspx" resourceKey="TicketEditor"></siteMapNode>
+		</siteMapNode>
+		<siteMapNode url="~/EmployeeList.aspx" resourceKey="EmployeeList">
+			<siteMapNode url="~/EmployeeEditor.aspx" resourceKey="EmployeeEditor"></siteMapNode>
+		</siteMapNode>
+		<siteMapNode url="" resourceKey="Reports">
+			<siteMapNode url="~/Reports/CustomersBySubscription.aspx" resourceKey="ReportCustomersBySubscription" />
+			<siteMapNode url="~/Reports/CustomersByTicket.aspx" resourceKey="ReportCustomersByTicket" />
+			<siteMapNode url="~/Reports/CustomersWithPendingPayment.aspx" resourceKey="ReportCustomersWithPendingPayment" />
+			<siteMapNode url="~/Reports/ProductsByProvider.aspx" resourceKey="ReportProductsByProvider" />
+			<siteMapNode url="~/Reports/ProductsConsumed.aspx" resourceKey="ReportProductsConsumed" />
+			<siteMapNode url="~/Reports/TechniciansByTicket.aspx" resourceKey="ReportTechniciansByTicket" />
+			<siteMapNode url="~/Reports/RolesByUser.aspx" resourceKey="ReportRolesByUser" />
+			<siteMapNode url="~/Reports/TicketsClosed.aspx" resourceKey="ReportTicketsClosed" />
+		</siteMapNode>
+		<siteMapNode url="~/AlertConfiguration.aspx" resourceKey="AlertConfiguration" />
+		<siteMapNode url="" title="Seguridad" resourceKey="Security">
+			<siteMapNode url="~/RoleList.aspx" title="Roles" resourceKey="RoleList">
+				<siteMapNode url="~/RoleEditor.aspx" resourceKey="RoleEditor" />
+			</siteMapNode>
+			<!--<siteMapNode url="~/SecurityExceptionList.aspx" title="Listado Excepciones de Seguridad">
+				<siteMapNode url="~/SecurityExceptionEditor.aspx" title="Alta Excepción de Seguridad">
+				</siteMapNode>
+			</siteMapNode>-->
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>

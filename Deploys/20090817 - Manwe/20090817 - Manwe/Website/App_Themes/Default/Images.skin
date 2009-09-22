@@ -1,0 +1,9 @@
+﻿<asp:Image SkinId="IconAdd" runat="server" ImageUrl="Images/iconAdd.gif"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
+<asp:Image SkinId="IconFilter" runat="server" ImageUrl="Images/iconFilter.gif"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
+<asp:Image SkinId="IconExcel" runat="server" ImageUrl="Images/iconExcel.gif"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
+<asp:Image SkinId="IconCalendar" runat="server" ImageUrl="Images/iconCalendar.png"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
+<asp:Image SkinId="IconCalendarDisabled" runat="server" ImageUrl="Images/iconCalendarDisabled.png"  ImageAlign="AbsMiddle" Style="display:none;margin-right:3px;" />
+<asp:Image SkinId="loading" runat="server" ImageUrl="Images/ajaxLoader.gif" ImageAlign="AbsMiddle"  />
+
+<asp:Image SkinId="IconArrowLeft" runat="server" ImageUrl="Images/arrowLeft.png"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
+<asp:Image SkinId="IconArrowRight" runat="server" ImageUrl="Images/arrowRight.png"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />

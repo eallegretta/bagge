@@ -1,0 +1,73 @@
+﻿input.textBox, textarea
+{
+	
+	padding:5px;
+	border: 1px solid;
+	border-color: #999999;
+	background-color: #ffffff;
+	background-image:url(Images/inputBackground.gif);
+	background-repeat: repeat-x;
+	font-family:Verdana;
+	font-size:10px;
+	margin:1px;
+}
+
+td.smallData > input, input.smallData, textarea.smallData
+{
+	width:40px;
+}
+
+td.mediumData > input, input.mediumData, textarea.mediumData
+{
+	width:160px;
+}
+
+
+
+
+td.numeric > input, input.numeric
+{
+	text-align:right;
+}
+
+
+td.longData input, input.longData, textarea.longData
+{
+	width:320px;
+}
+
+
+input.selected, textarea.selected
+{
+	border:2px solid #73ABC5;
+	margin:0px;
+}
+
+input.button, button
+{
+	border: 1px solid;
+	height:24px;
+	padding-left:4px;
+	padding-right:4px;
+	border-color: #999999;
+	background-color: #f5f5f5;
+	background-image:url(Images/buttonBackground.gif);
+	background-repeat: repeat-x;
+	background-position: left center;
+	font-family:Verdana;
+	font-size:10px;
+	outline:none;
+}
+
+input.buttonHover, button.buttonHover
+{
+	border-color:#73ABC5;
+}
+
+select
+{
+	padding:3px;
+	font-family:Verdana;
+	font-size:10px;
+}
+

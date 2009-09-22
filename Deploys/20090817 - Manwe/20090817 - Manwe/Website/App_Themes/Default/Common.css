@@ -1,0 +1,424 @@
+﻿body
+{
+	font-family:Verdana;
+	font-size:11px;
+	padding:0px;
+	border:0px;
+	margin:0px;
+	background-color:#91cce3;
+}
+
+#site
+{
+	width:990px;
+	margin:0px auto;
+	border:1px solid #2f8eb4;
+	border-top:3px solid white;
+}
+
+#header
+{
+	background-image:url(Images/siteHeader.jpg);
+	height:110px;
+	position:relative;
+}
+
+#loginFullname
+{
+	background-color:White;
+	bottom:0px;
+	right:0px;
+	position:absolute;
+	padding:5px;
+	border-top:1px solid #2f8eb4;
+	border-left:1px solid #2f8eb4;
+}
+
+
+#content
+{
+	border-top:1px solid #ff8400;
+	min-height:600px;
+	background-color:White;
+	/*background-image:url(Images/contentBackground.gif);
+	background-repeat:repeat-x;*/
+	padding:5px;
+	border-bottom:5px solid #567f85;
+}
+
+#menu
+{
+	background-image:url(Images/backgroundMenuBar.gif);
+	background-repeat:repeat-x;
+	border-top:1px solid white;
+	height:40px;
+	border-bottom:5px solid #567f85;
+}
+
+#footer
+{
+	background-image:url(Images/footerBackground.gif);
+	background-repeat:repeat-x;
+	text-align:center;
+	padding:10px;
+}
+
+#loginPage > table
+{
+	margin:0px auto;
+}
+
+
+
+
+
+a
+{
+	color:#0066cc;
+	text-decoration:none;
+	outline:none;
+}
+
+a:hover
+{
+	text-decoration:underline;
+}
+
+img
+{
+	border:0px;
+}
+
+table.details
+{
+	min-width:700px;
+	empty-cells:show;
+}
+
+tr.detailsRow td.detailsHeader
+{
+	font-weight:bold;
+	background-color:#cccccc;
+	width:150px;
+	white-space:nowrap;
+	border:1px solid #D0D0D0;
+	background-color:#EBECEE;
+	background-image:url(Images/gridHeaderBackground.gif);
+	background-repeat:repeat-x;
+	height:24px;
+}
+
+tr.detailsRow td
+{
+	padding:2px;
+}
+
+.commands
+{
+	text-align:right;
+	padding-right:10px;
+}
+
+table.grid
+{
+	width:100%;
+	font-family:Verdana;
+	font-size:11px;
+	border:1px solid #D0D0D0;
+}
+
+tr.gridHeader th
+{
+	border:1px solid #D0D0D0;
+	background-color:#EBECEE;
+	background-image:url(Images/gridHeaderBackground.gif);
+	padding:5px;
+}
+
+tr.gridHeader th a
+{
+	text-decoration:none;
+}
+
+tr.gridHeader th a:hover
+{
+	text-decoration:underline;
+}
+
+tr.gridFooter td
+{
+	border-top:1px solid black;
+	font-weight:bold;
+}
+
+tr.gridRow
+{
+	background-color:white;
+}
+
+
+tr.gridRow td
+{
+	border:1px solid #cccccc;
+	padding:3px;
+}
+
+tr.gridRowAlternate
+{
+	background-color:#efefef;
+	
+}
+
+
+tr.gridRowAlternate td
+{
+	border:1px solid #cccccc;
+	padding:3px;
+}
+
+tr.gridPager
+{
+	width:100%;
+	background-color:#D2E0F1;
+}
+
+tr.gridPager table 
+{
+	width:100%;
+}
+
+tr.gridPager table td a
+{
+	border:1px solid #99BBE8;
+	display:block;
+	padding:5px;
+}
+
+tr.gridPager table td span
+{
+	border:1px solid #99BBE8;
+	background-color:White;
+	display:block;
+	padding:5px;
+}
+
+tr.gridPager table td.lastCell
+{
+	width:90%;
+	text-align:right;
+}
+
+
+div.filters
+{
+	margin-bottom:10px;
+}
+
+div.filters h3
+{
+	font-size:11px;
+	padding:0px;
+	padding-bottom:5px;
+	margin:0px;
+	cursor:pointer;
+	cursor:hand;
+	background-image:url(Images/iconCollapse.gif);
+	background-repeat:no-repeat;
+	padding-left: 20px;
+}
+
+div.filters h3.collapsed
+{
+	background-image:url(Images/iconExpand.gif);
+	background-repeat:no-repeat;
+}
+
+div.filters table th
+{
+	text-align:left;
+	padding: 5px 5px 5px 0px;
+}
+div.filters table td
+{
+	text-align:left;
+	padding: 5px 5px 5px 0px;
+}
+
+#loginPage
+{
+	text-align:center;
+}
+
+.loginLabel
+{
+	font-weight:bold;
+}
+
+div#loadingAnimation
+{
+	border:2px solid black;
+	font-weight:bold;
+	padding:15px;
+	text-align:center;
+	background-color:white;
+}
+
+div#homePage div#options
+{
+	margin-bottom:20px;
+	text-align:center;
+	width:740px;
+}
+
+div#homePage table#calendar
+{
+	width:100%;
+	border-spacing:5px;
+}
+
+div#homePage div#calendarTickets
+{
+	float:left;
+	width:740px;
+}
+
+div#homePage div.ticket
+{
+	float:left;
+	width:225px;
+	font-family:'Comic Sans MS' Arial;
+	margin-right:20px;
+	margin-bottom:20px;
+}
+
+div#homePage div#calendarModeOptions
+{
+	font-family:Arial Verdana;
+	font-size:14px;
+	margin-bottom:20px;
+}
+
+div#homePage div#calendarModeOptions select
+{
+	font-family:Arial Verdana;
+	font-size:14px;
+	padding:5px;
+}
+
+div#homePage .NoTicketMessage
+{
+	font-size:18px;
+	font-family:Arial Verdana;
+	text-align:center;
+	display:block;
+}
+
+div#homePage span#currentDate
+{
+	margin-left:30px;
+	margin-right:30px;
+	text-transform:capitalize;
+	font-size:20px;
+	font-family:Arial Verdana;
+}
+
+div#homePage div.actionLinks
+{
+	margin-top:10px;
+	text-align:right;
+}
+
+
+
+
+div#homePage div.actionLinks img
+{
+	display:inline-block;
+	width:22px;
+	height:22px;
+	background-color:White;
+	border:1px solid #cccccc;
+	vertical-align:top;
+}
+
+div#homePage div.actionLinks a.googleMaps
+{
+	display:inline-block;
+	padding:2px;
+	background-color:White;
+	border:1px solid #cccccc;
+}
+
+div#homePage div.ticketContainer
+{
+	border:1px solid #cccccc;
+}
+
+div#homePage div.ticketHeader
+{
+	padding:5px;
+	font-size:16px;
+	font-weight:bold;
+	text-align:center;
+	/*border-bottom:1px solid #cccccc;*/
+}
+
+div#homePage div.ticketBody
+{
+	padding:5px;
+	font-size:14px;
+}
+div#homePage div.ticket div.ticketShadowBottom
+{
+	background-image:url(Images/ticketShadow/bottom.gif);
+	height:7px;
+	width:100%;
+	margin:auto;
+	background-repeat:repeat-x;
+}
+
+div#homePage div.ticket div.ticketShadowBottomLeft
+{
+	background-image:url(Images/ticketShadow/bottomLeft.gif);
+	width:8px;
+	height:7px;
+	float:left;
+}
+div#homePage div.ticket div.ticketShadowBottomRight
+{
+	background-image:url(Images/ticketShadow/bottomRight.gif);
+	width:8px;
+	height:7px;
+	float:right;
+}
+
+div#homePage div#legends
+{
+	float:right;
+	width:200px;
+}
+
+div#homePage div#legends legend
+{
+	font-size:12px;
+	font-weight:bold;
+	border:1px solid #cccccc;
+	padding:5px;
+	text-align:center;
+}
+
+div#homePage div#legends td
+{
+	white-space:nowrap;
+}
+
+div#homePage div#legends div.legend
+{
+	width:30px;
+	height:30px;
+	border:1px solid #cccccc;
+	display:inline-block;
+}
+
+
+
