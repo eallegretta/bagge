@@ -1,1 +1,0 @@
-﻿insert into [Function] (Name, FullQualifiedName, Action) values ('Reporte - Tickets Cerrados','Bagge.Seti.WebSite.Reports.TicketsClosed', 'R') 

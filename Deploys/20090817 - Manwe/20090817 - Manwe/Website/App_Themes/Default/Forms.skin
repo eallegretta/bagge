@@ -1,4 +1,0 @@
-﻿<asp:TextBox runat="server" CssClass="textBox" />
-<seti:MaskedTextBox runat="server" CssClass="textBox" />
-<asp:Button runat="server" CssClass="button" />
-<seti:IconButton runat="server" SkinId="filter" IconUrl="Images/iconFilter.gif" />
