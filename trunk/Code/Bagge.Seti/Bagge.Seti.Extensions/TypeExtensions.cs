@@ -23,15 +23,13 @@ namespace Bagge.Seti.Extensions
 			if (includeNullables && type.IsNullable())
 				type = Nullable.GetUnderlyingType(type);
 
-			if (type.In<Type>(otherTypes))
-				return true;
-			else
+			foreach (var otherType in otherTypes)
 			{
-				if (type.BaseType.Equals(typeof(Object)))
-					return type.In<Type>(otherTypes);
-				else
-					return IsOfType(type.BaseType, otherTypes);
+				if (type.IsAssignableFrom(otherType))
+					return true;
 			}
+
+			return false;
 		}
 	}
 }

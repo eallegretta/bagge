@@ -16,7 +16,7 @@ namespace Bagge.Seti.WebSite.Views
 		String,
 		Char,
 		DateTime,
-		Boolean
+		Boolean,
 	}
 
 	public interface ISecurityExceptionEditorView : IEditorView<int>

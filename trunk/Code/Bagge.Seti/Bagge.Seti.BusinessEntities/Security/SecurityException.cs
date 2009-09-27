@@ -25,7 +25,11 @@ namespace Bagge.Seti.BusinessEntities.Security
 		{
 			get
 			{
-				XmlSerializer ser = new XmlSerializer(GetPropertyType());
+				var propertyType = GetPropertyType();
+				if (!propertyType.IsValueType)
+					propertyType = typeof(string);
+				
+				XmlSerializer ser = new XmlSerializer(propertyType);
 				using (var reader = new StringReader(SerializedValue))
 				{
 					return ser.Deserialize(reader);
@@ -33,6 +37,9 @@ namespace Bagge.Seti.BusinessEntities.Security
 			}
 			set
 			{
+				if (value == null)
+					return;
+
 				XmlSerializer ser = new XmlSerializer(value.GetType());
 				using (var writer = new StringWriter())
 				{

@@ -27,9 +27,14 @@ namespace Bagge.Seti.Security.Constraints
 		public override bool IsTrue()
 		{
 			object value = GetPropertyValue();
-			if (value != null)
+
+			if (value == null || Value == null)
+				return false;
+
+			if (value.GetType() != Value.GetType())
+				return value.ToString().Equals(Value.ToString(), StringComparison.InvariantCultureIgnoreCase);
+			else			
 				return value.Equals(Value);
-			return false;
 		}
 
 		public override string ToString()

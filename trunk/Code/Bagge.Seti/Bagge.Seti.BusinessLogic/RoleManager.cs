@@ -48,6 +48,7 @@ namespace Bagge.Seti.BusinessLogic
 			{
 				var roleFromDb = Get(instance.Id);
 				instance.Employees = roleFromDb.Employees;
+				instance.SecurityExceptions = roleFromDb.SecurityExceptions;
 				SessionScopeUtils.FlushSessionScope();
 			}
 			else
