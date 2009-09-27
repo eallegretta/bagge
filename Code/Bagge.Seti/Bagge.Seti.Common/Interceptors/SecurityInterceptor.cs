@@ -88,12 +88,15 @@ namespace Bagge.Seti.Common.Interceptors
 			if(!IoCContainer.FunctionManager.UserHasAccessToFunction(_user, _currentFunction))
 				return false;
 
-			foreach (object instance in invocation.Arguments)
+			if (invocation.Arguments != null)
 			{
-				if (instance is ISecurizable)
+				foreach (object instance in invocation.Arguments)
 				{
-					if (!IoCContainer.SecurityManager.UserHasAccessToInstance(instance, GetUserSecurityExceptions()))
-						return false;
+					if (instance is ISecurizable)
+					{
+						if (!IoCContainer.SecurityManager.UserHasAccessToInstance(instance, GetUserSecurityExceptions()))
+							return false;
+					}
 				}
 			}
 

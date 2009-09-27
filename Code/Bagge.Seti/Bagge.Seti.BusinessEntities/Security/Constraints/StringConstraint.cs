@@ -28,9 +28,11 @@ namespace Bagge.Seti.Security.Constraints
 		{
 			Check.Require(Property != null);
 
-			if (Property.PropertyType.Equals(typeof(string)))
-				return true;
-			return false;
+			return true;
+
+			//if (Property.PropertyType.Equals(typeof(string)))
+			//    return true;
+			//return false;
 		}
 
 		public abstract bool IsTrue(string valueA, string valueB);

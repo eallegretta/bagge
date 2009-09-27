@@ -28,17 +28,17 @@ namespace Bagge.Seti.WebSite.Presenters
 
 		protected override void OnInit(object sender, EventArgs e)
 		{
+			var view = GetView<ITicketListView>();
 			if (!View.IsPostBack)
 			{
-				var view = GetView<ITicketListView>();
 				view.Status = _ticketStatusManager.FindAll();
 				view.Technicians = _employeeManager.FindAllActiveTechnicians();
 				view.Customers = _customerManager.FindAllActive();
-
-				var loggedUser = _loggedUser as Employee;
-				if (loggedUser.IsTechnician && !loggedUser.IsSuperAdministrator)
-					view.IsTechnicianView = true;
 			}
+
+			var loggedUser = _loggedUser as Employee;
+			if (loggedUser.IsTechnician && !loggedUser.IsSuperAdministrator)
+				view.IsTechnicianView = true;
 
 			base.OnInit(sender, e);
 		}
@@ -54,7 +54,7 @@ namespace Bagge.Seti.WebSite.Presenters
 		{
 			return 
 				!ticket.Status.In(TicketStatusEnum.Closed, TicketStatusEnum.PendingPayment, 
-				TicketStatusEnum.Canceled, TicketStatusEnum.Expired) && (
+				TicketStatusEnum.Canceled) && (
 				_loggedUser.IsSuperAdministrator ||
 				((Employee)_loggedUser).IsTechnician);
 				

@@ -6,6 +6,7 @@ using System.Reflection;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.BusinessEntities.Properties;
 using Bagge.Seti.Extensions;
+using System.Collections;
 
 namespace Bagge.Seti.Security.Constraints
 {
@@ -22,6 +23,9 @@ namespace Bagge.Seti.Security.Constraints
 		public const string EndsWith = "%S";
 
 
+		public static Constraint[] EnumerableConstraints = {
+			   Parse(Contains)
+		};
 	
 
 		public static Constraint[] AvailableConstraints = { 
@@ -163,6 +167,8 @@ namespace Bagge.Seti.Security.Constraints
 				return StringConstraints;
 			else if (type.IsOfType(true, typeof(bool)))
 				return BooleanConstraints;
+			else if (type.IsOfType(typeof(IEnumerable)))
+				return EnumerableConstraints;
 			else
 				return StringConstraints;
 		}
@@ -212,10 +218,12 @@ namespace Bagge.Seti.Security.Constraints
 		{
 			Check.Require(Property != null);
 
-			if (Property.PropertyType.Equals(Value.GetType()))
-				return true;
+			return true;
 
-			return false;
+			//if (Property.PropertyType.Equals(Value.GetType()))
+			//    return true;
+
+			//return false;
 		}
 
 		public object Source
