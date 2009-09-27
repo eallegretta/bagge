@@ -12,6 +12,7 @@ namespace Bagge.Seti.BusinessEntities
 	{
 		public PrimaryKeyDomainObject():this(default(PK))
 		{
+			IsAccessible = true;
 		}
 		public PrimaryKeyDomainObject(PK id)
 		{
@@ -34,61 +35,10 @@ namespace Bagge.Seti.BusinessEntities
 
 		#region ISecurizable Members
 
-		private Dictionary<string, AccessibilityTypes> _accesibilities;
-		private Dictionary<string, IList<Constraint>> _constraints;
-
-		private Dictionary<string, AccessibilityTypes> Accesibilities
+		public bool IsAccessible
 		{
-			get
-			{
-				if (_accesibilities == null)
-					_accesibilities = new Dictionary<string, AccessibilityTypes>();
-				return _accesibilities;
-			}
-		}
-
-		private Dictionary<string, IList<Constraint>> Constraints
-		{
-			get
-			{
-				if (_constraints == null)
-					_constraints = new Dictionary<string, IList<Constraint>>();
-				return _constraints;
-			}
-		}
-
-		public AccessibilityTypes GetAccesibility(string propertyName)
-		{
-			if (Accesibilities.ContainsKey(propertyName))
-				return Accesibilities[propertyName];
-			return AccessibilityTypes.Edit;
-		}
-
-		public void SetAccesibility(string propertyName, AccessibilityTypes accesibility)
-		{
-			if (!Accesibilities.ContainsKey(propertyName))
-				Accesibilities.Add(propertyName, accesibility);
-			else
-				Accesibilities[propertyName] = accesibility;
-		}
-
-		public void SetConstraint(string propertyName, Constraint constraint)
-		{
-			if (!Constraints.ContainsKey(propertyName))
-			{
-				List<Constraint> constraints = new List<Constraint>();
-				constraints.Add(constraint);
-				Constraints.Add(propertyName, constraints);
-			}
-			else
-				Constraints[propertyName].Add(constraint);
-		}
-
-		public IList<Constraint> GetConstraints(string propertyName)
-		{
-			if (Constraints.ContainsKey(propertyName))
-				return Constraints[propertyName];
-			return null;
+			get;
+			set;
 		}
 
 		#endregion

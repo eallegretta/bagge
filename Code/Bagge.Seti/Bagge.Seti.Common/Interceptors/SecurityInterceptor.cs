@@ -46,34 +46,39 @@ namespace Bagge.Seti.Common.Interceptors
 
 			object returnValue = invocation.Proceed();
 
-			/*if (returnValue is IEnumerable)
-				return GetAllowedObjects(returnValue, returnValue.GetType());*/
+			if (returnValue is IEnumerable)
+				return GetAllowedObjects(returnValue, returnValue.GetType());
 	
 			return returnValue;
 		}
 
 		private object GetAllowedObjects(object objects, Type returnValueType)
 		{
-			object list;
-			if (returnValueType.IsArray)
-				list = new ArrayList();
-			else if (objects is IList)
-				list = Activator.CreateInstance(returnValueType);
-			else
-				return objects;
+			//object list;
+			//if (returnValueType.IsArray)
+			//    list = new ArrayList();
+			//else if (objects is IList)
+			//    list = Activator.CreateInstance(returnValueType);
+			//else
+			//    return objects;
 
 			IEnumerator en = ((IEnumerable)objects).GetEnumerator();
 			while (en.MoveNext())
 			{
-				if (IoCContainer.SecurityManager.UserHasAccessToInstance(en.Current, GetUserSecurityExceptions()))
-					((IList)list).Add(en.Current);
+				bool hasAccess = IoCContainer.SecurityManager.UserHasAccessToInstance(en.Current, GetUserSecurityExceptions());
 
+				if (en.Current is ISecurizable)
+					((ISecurizable)en.Current).IsAccessible = hasAccess;
+				
+				//((IList)list).Add(en.Current);
 			}
 
-			if (returnValueType.IsArray)
-				return ((ArrayList)list).ToArray(returnValueType.GetElementType());
-			else
-				return list;
+			return objects;
+
+			//if (returnValueType.IsArray)
+			//    return ((ArrayList)list).ToArray(returnValueType.GetElementType());
+			//else
+			//    return list;
 		}
 
 		private bool IsInvocationAllowed(IMethodInvocation invocation)
