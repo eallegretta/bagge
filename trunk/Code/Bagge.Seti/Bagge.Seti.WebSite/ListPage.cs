@@ -35,11 +35,12 @@ namespace Bagge.Seti.WebSite
 
 		void Grid_DataBinding(object sender, EventArgs e)
 		{
-			SetEditAndDeleteIndices();
+			SetIndices();
 		}
 
 		int? _deleteFieldIndex = null;
 		int? _editFieldIndex = null;
+		int? _viewFieldIndex = null;
 
 		void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
 		{
@@ -53,16 +54,55 @@ namespace Bagge.Seti.WebSite
 					if (_deleteFieldIndex.HasValue && auditable.Deleted)
 						e.Row.Cells[_deleteFieldIndex.Value].Visible = false;
 				}
+				SetRowAccessibility(e.Row);
 			}
 		}
 
-		private void SetEditAndDeleteIndices()
+		private void SetRowAccessibility(GridViewRow row)
+		{
+			var securizable = row.DataItem as ISecurizable;
+			if(securizable != null && !securizable.IsAccessible)
+			{
+				string message = string.Format(Properties.Resources.CannotSeeRow, row.DataItem);
+				foreach (TableCell cell in row.Cells)
+					cell.Visible = false;
+
+				row.Cells[0].ColumnSpan = row.Cells.Count;
+				row.Cells[0].Text = message;
+				row.Cells[0].Visible = true;
+
+				//int indices = 1;
+				//if (_viewFieldIndex.HasValue)
+				//    indices++;
+				//if (_editFieldIndex.HasValue)
+				//    indices++;
+				//if (_deleteFieldIndex.HasValue)
+				//    indices++;
+				//int colspan = row.Cells.Count - indices;
+
+				//string message = string.Format(Properties.Resources.CannotSeeRow, row.DataItem);
+
+				//row.Cells[0].Text = message;
+				//row.Cells[0].ColumnSpan = colspan;
+				
+				//int cellCount = row.Cells.Count;
+				//for (int index = 1; index < colspan - 1; index++)
+				//{
+				//    if (index < cellCount)
+				//        row.Cells[index].Visible = false;
+				//}
+			}
+		}
+
+		private void SetIndices()
 		{
 			for (int index = 0; index < Grid.Columns.Count; index++)
 			{
 				var field = Grid.Columns[index] as IMethodSecureControl;
 				if (field != null)
 				{
+					if (field.MethodName == "Get")
+						_viewFieldIndex = index;
 					if (field.MethodName == "Update")
 						_editFieldIndex = index;
 					if (field.MethodName == "Delete")

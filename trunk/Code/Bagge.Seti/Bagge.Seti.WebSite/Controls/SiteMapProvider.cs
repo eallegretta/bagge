@@ -10,14 +10,14 @@ namespace Bagge.Seti.WebSite.Controls
 {
 	public class SiteMapProvider: XmlSiteMapProvider
 	{
-		private Dictionary<string, bool> _checkedUrls;
+		private Dictionary<string, Dictionary<string, bool>> _checkedUrls;
 
-		public Dictionary<string, bool> CheckedUrls
+		public Dictionary<string, Dictionary<string, bool>> CheckedUrls
 		{
 			get
 			{
 				if (_checkedUrls == null)
-					_checkedUrls = new Dictionary<string, bool>();
+					_checkedUrls = new Dictionary<string, Dictionary<string, bool>>();
 				return _checkedUrls;
 			}
 		}
@@ -33,17 +33,24 @@ namespace Bagge.Seti.WebSite.Controls
 			if (user.IsSuperAdministrator)
 				return true;
 
+			if (!CheckedUrls.ContainsKey(user.Name))
+				CheckedUrls.Add(user.Name, new Dictionary<string, bool>());
+
 			string absoluteUrl = context.Server.MapPath(node.Url);
+
+			var userCheckedUrls = CheckedUrls[user.Name];
 
 			if (!string.IsNullOrEmpty(node.Url))
 			{
-				if (CheckedUrls.ContainsKey(node.Url))
-					return CheckedUrls[node.Url];
+				if (userCheckedUrls.ContainsKey(node.Url))
+					return userCheckedUrls[node.Url];
 
 				var page = PageParser.GetCompiledPageInstance(node.Url, absoluteUrl, context);
-				CheckedUrls.Add(node.Url, AuthorizationManager.UserHasAccess(page, false));
+				userCheckedUrls.Add(node.Url, AuthorizationManager.UserHasAccess(page, false));
 
-				return CheckedUrls[node.Url];
+				CheckedUrls[user.Name] = userCheckedUrls;
+
+				return userCheckedUrls[node.Url];
 			}
 			else
 				return CheckAccessToChildNodes(context, node);

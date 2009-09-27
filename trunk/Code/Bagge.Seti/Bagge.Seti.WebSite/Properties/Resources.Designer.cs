@@ -61,6 +61,15 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Usted no posee accesso para ver la entidad {0}.
+        /// </summary>
+        internal static string CannotSeeRow {
+            get {
+                return ResourceManager.GetString("CannotSeeRow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No se puede actualizar el avance de un ticket cuyo estado es cerrado.
         /// </summary>
         internal static string CannotUpdateStatusClosedTicketErrorMessage {
