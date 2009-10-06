@@ -141,7 +141,7 @@ namespace Bagge.Seti.AlertsSender
 				Console.WriteLine("\tProcesando tickets");
 				for (int index = 0; index < tickets.Length; index++)
 				{
-					if ((tickets[index].CreationDate).AddDays(alert.Days) > DateTime.Now)
+                    if ((tickets[index].CreationDate).AddDays(alert.MaxDaysPendingAproval) < DateTime.Now)
 					{
 						var id = tickets[index].Id;
 						var ticket = IoCContainer.TicketManager.Get(id);
@@ -152,7 +152,8 @@ namespace Bagge.Seti.AlertsSender
 
 						Console.WriteLine("\tTicket #{0} marcado como Cancelado - Enviando Email", id);
 						SendMail(alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Cancelacion de Ticket", "Se cancelo el Ticket: ");
-					}
+					    
+                    }
 				}
 			}
 		}
