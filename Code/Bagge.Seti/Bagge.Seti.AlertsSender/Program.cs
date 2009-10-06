@@ -48,8 +48,14 @@ namespace Bagge.Seti.AlertsSender
 				using (new SessionScope(FlushAction.Never))
 				{
 					IoCContainer.TicketManager.SendEmails = false;
-					SendAlertsByTicketExpired();
-					SendAlertsByBudgetExpired();
+                    
+                    AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
+                    if ((alert.LastSentDate).Value.AddDays(alert.Days) == DateTime.Now)
+                    {
+                        SendAlertsByTicketExpired();
+                        SendAlertsByBudgetExpired();
+                        alert.LastSentDate = DateTime.Now;
+                    }
 				}
 			}
 			catch (Exception ex)
@@ -102,7 +108,8 @@ namespace Bagge.Seti.AlertsSender
 		protected void SendAlertsByTicketExpired()
 		{
 			Console.Write("Buscando todos los tickets abiertos:");
-			Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.Open);
+
+            Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.Open);
 			Console.WriteLine(".......................Encontrados: " + tickets.Length);
 			if (tickets.Length > 0)
 			{
