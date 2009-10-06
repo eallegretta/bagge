@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using Bagge.Seti.DesignByContract;
+using Bagge.Seti.Extensions;
 
 namespace Bagge.Seti.Security.Constraints
 {
@@ -28,18 +29,44 @@ namespace Bagge.Seti.Security.Constraints
 		{
 			Check.Require(Property != null);
 
-			if (Property.PropertyType.Equals(typeof(IComparable)))
+			Type type;
+
+			if (Property.PropertyType.IsNullable())
+				type = Nullable.GetUnderlyingType(Property.PropertyType);
+			else
+				type = Property.PropertyType;
+
+			if (type.IsOfType(typeof(IComparable)))
 				return true;
+
 			return false;
 		}
 
-		public abstract bool IsTrue(IComparable valueA, IComparable valueB);
+		protected abstract bool IsTrue(IComparable valueA, IComparable valueB);
+
+
+		private IComparable GetIComparable(object value) 
+		{
+			if (value == null)
+				return null;
+
+			if (value.GetType().IsNullable())
+			{
+				if (!(bool)value.GetPropertyValue("HasValue"))
+					return null;
+
+				return value.GetPropertyValue("Value") as IComparable;
+			}
+			else
+				return value as IComparable;
+		}
 
 		public override bool IsTrue()
 		{
-			var valueA = GetPropertyValue() as IComparable;
-			var valueB = Value as IComparable;
-			if (valueB != null && valueB != null)
+			var valueA = GetIComparable(GetPropertyValue());
+			var valueB = GetIComparable(Value);
+
+			if (valueA != null && valueB != null)
 			{
 				bool value = IsTrue(valueA, valueB);
 				return Negated ? !value : value;

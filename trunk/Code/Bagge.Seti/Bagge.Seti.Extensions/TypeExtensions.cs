@@ -25,7 +25,7 @@ namespace Bagge.Seti.Extensions
 
 			foreach (var otherType in otherTypes)
 			{
-				if (type.IsAssignableFrom(otherType))
+				if(otherType.IsAssignableFrom(type))
 					return true;
 			}
 

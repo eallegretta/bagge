@@ -386,7 +386,7 @@ namespace System
 
 		public static float? ToFloatNullable(this string s)
 		{
-			return ToInt32Nullable(s, null);
+			return ToFloatNullable(s, null);
 		}
 
 		public static float? ToFloatNullable(this string s, float? defaultValue)
@@ -394,6 +394,31 @@ namespace System
 			float value;
 
 			return float.TryParse(s, out value) ? value : defaultValue;
+		}
+
+		public static double? ToDoubleNullable(this string s)
+		{
+			return ToDoubleNullable(s, null);
+		}
+
+		public static double? ToDoubleNullable(this string s, double? defaultValue)
+		{
+			double value;
+
+			return double.TryParse(s, out value) ? value : defaultValue;
+		}
+
+
+		public static decimal? ToDecimalNullable(this string s)
+		{
+			return ToDecimalNullable(s, null);
+		}
+
+		public static decimal? ToDecimalNullable(this string s, decimal? defaultValue)
+		{
+			decimal value;
+
+			return decimal.TryParse(s, out value) ? value : defaultValue;
 		}
 
 		/// <summary>
