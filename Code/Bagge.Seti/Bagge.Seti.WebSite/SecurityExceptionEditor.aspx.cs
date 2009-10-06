@@ -223,8 +223,12 @@ namespace Bagge.Seti.WebSite
 				{
 					case SecurityExceptionEditorValueType.NumericInteger:
 						return GetConstraintValue<string>("_valueNumber").ToInt32Nullable();
-					case SecurityExceptionEditorValueType.NumericDecimal:
+					case SecurityExceptionEditorValueType.NumericFloat:
 						return GetConstraintValue<string>("_valueNumber").ToFloatNullable();
+					case SecurityExceptionEditorValueType.NumericDouble:
+						return GetConstraintValue<string>("_valueNumber").ToDoubleNullable();
+					case SecurityExceptionEditorValueType.NumericDecimal:
+						return GetConstraintValue<string>("_valueNumber").ToDecimalNullable();
 					case SecurityExceptionEditorValueType.Char:
 						return GetConstraintValue<string>("_valueChar");
 					case SecurityExceptionEditorValueType.DateTime:
@@ -240,6 +244,8 @@ namespace Bagge.Seti.WebSite
 				switch (ValueType)
 				{
 					case SecurityExceptionEditorValueType.NumericInteger:
+					case SecurityExceptionEditorValueType.NumericFloat:
+					case SecurityExceptionEditorValueType.NumericDouble:
 					case SecurityExceptionEditorValueType.NumericDecimal:
 						GetControl<TextBox>("_valueNumber").Text = value as string;
 						break;
@@ -280,6 +286,8 @@ namespace Bagge.Seti.WebSite
 						valueView.SetActiveView(GetView("_valueViewNumber"));
 						((MaskedEditExtender)_details.FindControl("_valueNumberExt")).Mask = "9999999999";
 						break;
+					case SecurityExceptionEditorValueType.NumericFloat:
+					case SecurityExceptionEditorValueType.NumericDouble:
 					case SecurityExceptionEditorValueType.NumericDecimal:
 						valueView.SetActiveView(GetView("_valueViewNumber") as View);
 						((MaskedEditExtender)_details.FindControl("_valueNumberExt")).Mask = "9999999999.99";

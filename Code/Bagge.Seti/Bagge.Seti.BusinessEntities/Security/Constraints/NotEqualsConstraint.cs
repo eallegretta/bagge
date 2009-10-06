@@ -26,7 +26,7 @@ namespace Bagge.Seti.Security.Constraints
 		}
 
 
-		public override bool IsTrue(System.IComparable valueA, System.IComparable valueB)
+		protected override bool IsTrue(System.IComparable valueA, System.IComparable valueB)
 		{
 			return valueA.CompareTo(valueB) != 0;
 		}

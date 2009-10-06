@@ -150,8 +150,11 @@ namespace Bagge.Seti.WebSite.Presenters
 				typeof(byte), typeof(sbyte), typeof(short), typeof(ushort),
 				typeof(int), typeof(uint), typeof(long), typeof(ulong)))
 				return SecurityExceptionEditorValueType.NumericInteger;
-			else if (type.IsOfType(true,
-				typeof(float), typeof(double), typeof(decimal)))
+			else if(type.IsOfType(true, typeof(float)))
+				return SecurityExceptionEditorValueType.NumericFloat;
+			else if(type.IsOfType(true, typeof(double)))
+				return SecurityExceptionEditorValueType.NumericDouble;
+			else if(type.IsOfType(true, typeof(decimal)))
 				return SecurityExceptionEditorValueType.NumericDecimal;
 			else if (type.IsOfType(true, typeof(char)))
 				return SecurityExceptionEditorValueType.Char;

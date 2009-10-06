@@ -12,6 +12,8 @@ namespace Bagge.Seti.WebSite.Views
 	public enum SecurityExceptionEditorValueType
 	{
 		NumericInteger,
+		NumericFloat,
+		NumericDouble,
 		NumericDecimal,
 		String,
 		Char,
