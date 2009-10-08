@@ -16,6 +16,9 @@ using Bagge.Seti.DataAccess.ActiveRecord;
 using System.Configuration;
 using System.Globalization;
 using Bagge.Seti.DataAccess;
+using System.Security.Principal;
+using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.AlertsSender
 {
@@ -50,7 +53,9 @@ namespace Bagge.Seti.AlertsSender
 					IoCContainer.TicketManager.SendEmails = false;
                     
                     AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
-                    if ((alert.LastSentDate).Value.AddDays(alert.Days) == DateTime.Now)
+
+					if(	!alert.LastSentDate.HasValue ||
+						((alert.LastSentDate).Value.AddDays(alert.Days) >= DateTime.Now))
                     {
                         SendAlertsByTicketExpired();
                         SendAlertsByBudgetExpired();
@@ -102,8 +107,14 @@ namespace Bagge.Seti.AlertsSender
 			Assembly asm = Assembly.Load("Bagge.Seti.BusinessEntities");
 			ActiveRecordStarter.Initialize(asm, config);
 
-			IoCContainer.User = Thread.CurrentPrincipal;
+			//Setup SuperAdmin user for console application
+			Employee user = new Employee();
+			user.Username = "ConsoleUser";
+			user.Roles = new List<Role>();
+			user.Roles.Add(IoCContainer.RoleManager.Get(Role.SuperAdministratorId));
+			IoCContainer.User = new SetiPrincipal(user);
 		}
+
 
 		protected void SendAlertsByTicketExpired()
 		{

@@ -247,10 +247,10 @@ namespace Bagge.Seti.WebSite
 					case SecurityExceptionEditorValueType.NumericFloat:
 					case SecurityExceptionEditorValueType.NumericDouble:
 					case SecurityExceptionEditorValueType.NumericDecimal:
-						GetControl<TextBox>("_valueNumber").Text = value as string;
+						GetControl<TextBox>("_valueNumber").Text = value == null ? string.Empty : value.ToString();
 						break;
 					case SecurityExceptionEditorValueType.Char:
-						GetControl<TextBox>("_valueChar").Text = value as string;
+						GetControl<TextBox>("_valueChar").Text = value == null ? string.Empty : value.ToString();
 						break;
 					case SecurityExceptionEditorValueType.DateTime:
 						GetControl<Bagge.Seti.WebSite.Controls.Calendar>("_valueDate").Date = value as DateTime?;
@@ -262,7 +262,7 @@ namespace Bagge.Seti.WebSite
 							GetControl<CheckBox>("_valueBoolean").Checked = false;
 						break;
 					default:
-						GetControl<TextBox>("_valueString").Text = value as string;
+						GetControl<TextBox>("_valueString").Text = value == null ? string.Empty : value.ToString();
 						break;
 				}
 			}
