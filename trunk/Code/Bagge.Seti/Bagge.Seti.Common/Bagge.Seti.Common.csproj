@@ -50,6 +50,10 @@
       <HintPath>..\Dlls\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate, Version=1.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\NHibernate.dll</HintPath>
@@ -84,6 +88,7 @@
     <Compile Include="Interceptors\ValidationInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IoCContainer.cs" />
+    <Compile Include="ServiceLocatorAdapters\SpringServiceLocatorAdapter.cs" />
     <Compile Include="SetiPrincipal.cs" />
     <Compile Include="Validation\CastleValidationEngine.cs" />
     <Compile Include="Validation\EnterpriseLibraryValidationEngine.cs" />

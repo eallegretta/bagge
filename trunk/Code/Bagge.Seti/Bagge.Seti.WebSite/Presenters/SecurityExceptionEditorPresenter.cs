@@ -59,17 +59,16 @@ namespace Bagge.Seti.WebSite.Presenters
 					}
 					break;	
 				case EditorAction.Update:
+					Type type = GetPropertyType(SelectedEntity.ClassFullQualifiedName, SelectedEntity.PropertyName);
+					View.ValueType = GetValueType(type);
+					View.Constraints = Constraint.GetConstraintsForType(type);
 					if (!View.IsPostBack)
 					{
-						
 						View.SelectedRoleId = SelectedEntity.Role.Id;
 						View.SelectedFunctionId = SelectedEntity.Function.Id;
 						View.SelectedEntityTypeName = SelectedEntity.ClassFullQualifiedName;
 						View.SelectedPropertyName = SelectedEntity.PropertyName;
-						var type = GetPropertyType();
-						View.Constraints = Constraint.GetConstraintsForType(type);
 						View.SelectedConstraintSymbol = SelectedEntity.ConstraintType;
-						View.ValueType = GetValueType(type);
 						View.Value = SelectedEntity.Value;
 						View.ShowConstraintAndValue = true;
 					}
@@ -120,7 +119,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			{
 				View.ShowConstraintAndValue = true;
 
-				var type = GetPropertyType();
+				var type = GetPropertyType(View.SelectedEntityTypeName, View.SelectedPropertyName);
 
 				if (type == null)
 					View.Constraints = null;
@@ -134,10 +133,10 @@ namespace Bagge.Seti.WebSite.Presenters
 				HideElements(HideElement.FromConstraints);
 		}
 
-		private Type GetPropertyType()
+		private Type GetPropertyType(string entityTypeName, string propertyName)
 		{
-			var type = (from prop in SecurizableAttribute.GetSecurizableProperties(Type.GetType(View.SelectedEntityTypeName))
-						where prop.Property.Name == View.SelectedPropertyName
+			var type = (from prop in SecurizableAttribute.GetSecurizableProperties(Type.GetType(entityTypeName))
+						where prop.Property.Name == propertyName
 						select prop.Property.PropertyType).FirstOrDefault();
 			return type;
 		}

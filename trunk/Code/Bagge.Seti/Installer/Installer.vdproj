@@ -4,9 +4,9 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:TRUE"
 "ProjectName" = "8:Installer"
-"LanguageId" = "3:1033"
+"LanguageId" = "3:3082"
 "CodePage" = "3:1252"
-"UILanguageId" = "3:1033"
+"UILanguageId" = "3:3082"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
@@ -622,19 +622,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C9865965738B7BB288554F9B34410765"
+        "OwnerKey" = "8:_D8866E251A17461EAC6420270374C687"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E120FBF6159E41C48082D7E5EDEA530E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D8866E251A17461EAC6420270374C687"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -817,6 +811,12 @@
         "OwnerKey" = "8:_6E55AC03C4FAF7A6ED5D8D942F6B5A53"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C9865965738B7BB288554F9B34410765"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -835,6 +835,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
+                    {
+                    "Name" = "8:.NET Framework 3.5 SP1"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -851,6 +872,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -1937,29 +1966,29 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:1033"
+        "LangId" = "3:3082"
         "RequiresElevation" = "11:TRUE"
         }
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Installer"
+        "ProductName" = "8:SETI"
         "ProductCode" = "8:{14A69B23-DF26-4AE7-9AFD-AE2591464804}"
         "PackageCode" = "8:{C9E749DB-F8B5-4334-B904-3F7F4C81E187}"
         "UpgradeCode" = "8:{6D42298E-AB4D-4639-9918-30A13008453B}"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Microsoft"
+        "Manufacturer" = "8:Bagge Consulting"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Installer"
+        "Title" = "8:Paquete de Instalación de SETI"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Microsoft"
+        "ARPCONTACT" = "8:Bagge Consulting"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
+        "ARPCOMMENTS" = "8:Sistema Empresarial de Gestión de Tickets, Clientes, Proveedores e Insumos"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
@@ -2042,7 +2071,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_3E8362313B5744898DBA2D4459CCF8C5"
                     {
-                    "Sequence" = "3:300"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"

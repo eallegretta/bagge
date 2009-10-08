@@ -11,119 +11,123 @@ using System.Web;
 using Spring.Context;
 using Castle.Components.Validator;
 using Bagge.Seti.Common.Validation;
+using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator.SpringAdapter;
 
 namespace Bagge.Seti.Common
 {
 	public static class IoCContainer
 	{
-		public static T Resolve<T>()
+
+		static IoCContainer()
 		{
-			foreach (T obj in ContextRegistry.GetContext().GetObjectsOfType(typeof(T)).Values)
-				return obj;
-			return default(T);
+			ServiceLocator.SetLocatorProvider(() => new SpringServiceLocatorAdapter(ContextRegistry.GetContext()));
+		}
+
+		public static IServiceLocator Locator
+		{
+			get
+			{
+				return ServiceLocator.Current;
+			}
 		}
 
 		public static IPrincipal User
 		{
-			get { return GetObject<IAuthenticator>("AuthenticationManager").LoggedInUser; }
-			set { GetObject<IAuthenticator>("AuthenticationManager").LoggedInUser = value; }
+			get { return Locator.GetInstance<IAuthenticator>().LoggedInUser; }
+			set { Locator.GetInstance<IAuthenticator>().LoggedInUser = value; }
 		}
 
-
-		private static T GetObject<T>(string key) where T:class
-		{
-			return ContextRegistry.GetContext().GetObject(key) as T;
-		}
 
 		public static IAlertConfigurationManager AlertConfigurationManager
 		{
-			get { return GetObject<IAlertConfigurationManager>("AlertConfigurationManager"); }
+			get { return Locator.GetInstance<IAlertConfigurationManager>(); }
 		}
 
 		public static IAccessibilityTypeManager AccessibilityTypeManager
 		{
-			get { return GetObject<IAccessibilityTypeManager>("AccessibilityTypeManager"); }
+			get { return Locator.GetInstance<IAccessibilityTypeManager>(); }
 		}
 
 		public static ISimpleFindGetManager<CountryState, int> CountryStateManager
 		{
-			get { return GetObject<ISimpleFindGetManager<CountryState, int>>("CountryStateManager"); }
+			get { return Locator.GetInstance<ISimpleFindGetManager<CountryState, int>>(); }
 		}
 
 		public static ICustomerManager CustomerManager
 		{
-			get { return GetObject<ICustomerManager>("CustomerManager"); }
+			get { return Locator.GetInstance<ICustomerManager>(); }
 		}
 
 		public static ISimpleFindGetManager<District, int> DistrictManager
 		{
-			get { return GetObject<ISimpleFindGetManager<District, int>>("DistrictManager"); }
+			get { return Locator.GetInstance<ISimpleFindGetManager<District, int>>(); }
 		}
 
 		public static IEmployeeManager EmployeeManager
 		{
-			get { return GetObject<IEmployeeManager>("EmployeeManager"); }
+			get { return Locator.GetInstance<IEmployeeManager>(); }
 		}
 
 		public static ISimpleFindGetManager<EmployeeCategory, int> EmployeeCategoryManager
 		{
-			get { return GetObject<ISimpleFindGetManager<EmployeeCategory, int>>("EmployeeCategoryManager"); }
+			get { return Locator.GetInstance<ISimpleFindGetManager<EmployeeCategory, int>>(); }
 		}
 
 		public static IFunctionManager FunctionManager
 		{
-			get { return GetObject<IFunctionManager>("FunctionManager"); }
+			get { return Locator.GetInstance<IFunctionManager>(); }
 		}
 
 		public static IProductManager ProductManager
 		{
-			get { return GetObject<IProductManager>("ProductManager"); }
+			get { return Locator.GetInstance<IProductManager>(); }
 		}
 
 
 		public static IProviderManager ProviderManager
 		{
-			get { return GetObject<IProviderManager>("ProviderManager"); }
+			get { return Locator.GetInstance<IProviderManager>(); }
 		}
 
 		public static ISecurityManager SecurityManager
 		{
-			get { return GetObject<ISecurityManager>("SecurityManager"); }
+			get { return Locator.GetInstance<ISecurityManager>(); }
 		}
 
 		public static ISimpleFindGetManager<ProviderCalification, int> ProviderCalificationManager
 		{
-			get { return GetObject<ISimpleFindGetManager<ProviderCalification, int>>("ProviderCalificationManager"); }
+			get { return Locator.GetInstance<ISimpleFindGetManager<ProviderCalification, int>>(); }
 		}
 
 		public static IReportManager ReportManager
 		{
-			get { return GetObject<IReportManager>("ReportManager"); }
+			get { return Locator.GetInstance<IReportManager>(); }
 		}
 
 		public static IRoleManager RoleManager
 		{
-			get { return GetObject<IRoleManager>("RoleManager"); }
+			get { return Locator.GetInstance<IRoleManager>(); }
 		}
 
 		public static ITicketManager TicketManager
 		{
-			get { return GetObject<ITicketManager>("TicketManager"); }
+			get { return Locator.GetInstance<ITicketManager>(); }
 		}
 
 		public static ITicketStatusManager TicketStatusManager
 		{
-			get { return GetObject<ITicketStatusManager>("TicketStatusManager"); }
+			get { return Locator.GetInstance<ITicketStatusManager>(); }
 		}
 
 		public static IValidationEngine ValidationEngine
 		{
-			get { return GetObject<IValidationEngine>("ValidationEngine"); }
+			get { return Locator.GetInstance<IValidationEngine>(); }
 		}
 
 		public static IStorage Storage
 		{
-			get { return GetObject<IStorage>("Storage"); }
+			get { return Locator.GetInstance<IStorage>(); }
 		}
 		
 	}
