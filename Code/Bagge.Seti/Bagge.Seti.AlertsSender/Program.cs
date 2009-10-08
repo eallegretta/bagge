@@ -24,6 +24,9 @@ namespace Bagge.Seti.AlertsSender
 {
 	public class Program
 	{
+        
+        
+
 		private bool IsUserInteractive
 		{
 			get
@@ -42,9 +45,12 @@ namespace Bagge.Seti.AlertsSender
 
 		public void Run()
 		{
+            
+
 			Console.Clear();
 			try
 			{
+
 				InitializeCulture();
 				Initialize();
 
