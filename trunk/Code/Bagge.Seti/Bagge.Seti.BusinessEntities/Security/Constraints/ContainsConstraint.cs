@@ -38,9 +38,10 @@ namespace Bagge.Seti.Security.Constraints
 
 		protected override bool IsPropertyTypeValid()
 		{
-			if(Property.PropertyType.In(typeof(IEnumerable), typeof(string)))
-				return true;
-			return false;
+            //if(Property.PropertyType.In(typeof(IEnumerable), typeof(string)))
+            //    return true;
+            //return false;
+            return true;
 		}
 
 		public override bool IsTrue()
@@ -66,14 +67,15 @@ namespace Bagge.Seti.Security.Constraints
 			}
 			else
 			{
-				string valueA = GetPropertyValue() as string;
-				string valueB = Value as string;
-				if (!string.IsNullOrEmpty(valueA) && !string.IsNullOrEmpty(valueB))
-				{
-					bool retValue = valueA.ToLowerInvariant().Contains(valueB.ToLowerInvariant());
-					return Negated ? !retValue : retValue;
-				}
-				return false;
+                object propertyValueA = GetPropertyValue();
+                string valueA = propertyValueA != null ? propertyValueA.ToString() : null;
+                string valueB = Value as string;
+                if (!string.IsNullOrEmpty(valueA) && !string.IsNullOrEmpty(valueB))
+                {
+                    bool retValue = valueA.ToLowerInvariant().Contains(valueB.ToLowerInvariant());
+                    return Negated ? !retValue : retValue;
+                }
+                return false;
 			}
 		}
 	}

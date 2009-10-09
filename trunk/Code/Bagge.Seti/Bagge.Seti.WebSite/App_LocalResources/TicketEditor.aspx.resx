@@ -189,4 +189,7 @@
   <data name="BudgetValidator.ErrorMessage" xml:space="preserve">
     <value>El presupuesto es requerido ya que el cliente no posee abono</value>
   </data>
+  <data name="CreationDateField.HeaderText" xml:space="preserve">
+    <value>Fecha de Creación</value>
+  </data>
 </root>

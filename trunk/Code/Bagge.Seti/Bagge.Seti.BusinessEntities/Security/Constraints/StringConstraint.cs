@@ -39,7 +39,8 @@ namespace Bagge.Seti.Security.Constraints
 
 		public override bool IsTrue()
 		{
-			string valueA = GetPropertyValue() as string;
+            object propertyValueA = GetPropertyValue();
+			string valueA = propertyValueA != null ? propertyValueA.ToString() : null;
 			string valueB = Value as string;
 			if (!string.IsNullOrEmpty(valueA) && !string.IsNullOrEmpty(valueB))
 			{

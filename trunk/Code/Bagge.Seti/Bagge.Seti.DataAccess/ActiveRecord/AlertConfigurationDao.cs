@@ -21,7 +21,8 @@ namespace Bagge.Seti.DataAccess.ActiveRecord
 		public void Update(AlertConfiguration alertConfiguration)
 		{
 			ActiveRecordMediator<AlertConfiguration>.Update(alertConfiguration);
-		}
+            SessionScopeUtils.FlushSessionScope();
+        }
 
 		#endregion
 	}

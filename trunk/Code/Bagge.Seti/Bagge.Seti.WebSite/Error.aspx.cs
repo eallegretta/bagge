@@ -37,6 +37,7 @@ namespace Bagge.Seti.WebSite
 				else
 					ShowErrorMessage(ex);
 			}
+            Server.ClearError();
 		}
 
 		private void ShowBusinessRuleErrorMessage(Exception ex)

@@ -40,6 +40,14 @@
 					<%#Eval("Status")%>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
+			<seti:SecureTemplateField PropertyName="CreationDate" meta:resourcekey="CreationDateField">
+				<ItemTemplate>
+					<%#Eval("CreationDate", "{0:d}")%>
+				</ItemTemplate>
+				<InsertItemTemplate>
+				    <%#DateTime.Today%>
+				</InsertItemTemplate>
+			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="ExecutionDateTime" meta:resourcekey="ExecutionDateField">
 				<EditItemTemplate>
 					<seti:Calendar ID="_executionDateCalendar" runat="server" Date='<%#Bind("ExecutionDateTime")%>'
