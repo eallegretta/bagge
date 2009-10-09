@@ -42,7 +42,7 @@ namespace Bagge.Seti.WebSite
 
 		void _dataSource_Updating(object sender, ObjectContainerDataSourceUpdatingEventArgs e)
 		{
-			AlertConfiguration instance = new AlertConfiguration();
+            AlertConfiguration instance = IoCContainer.AlertConfigurationManager.Get();
 			TypeDescriptionHelper.BuildInstance(e.NewValues, instance);
 			IoCContainer.AlertConfigurationManager.Update(instance);
 		}

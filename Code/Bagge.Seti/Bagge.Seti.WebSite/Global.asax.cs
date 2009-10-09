@@ -98,6 +98,7 @@ namespace Bagge.Seti.WebSite
 				Context.Items.Add("LastError", Server.GetLastError());
 				Server.Transfer("~/Error.aspx");
 			}
+            Server.ClearError();
 		}
 
 		protected void Session_End(object sender, EventArgs e)

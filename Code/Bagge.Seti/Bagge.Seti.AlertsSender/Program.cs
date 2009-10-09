@@ -19,216 +19,227 @@ using Bagge.Seti.DataAccess;
 using System.Security.Principal;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
+using Castle.ActiveRecord.Framework.Scopes;
 
 namespace Bagge.Seti.AlertsSender
 {
-	public class Program
-	{
-        
-        
+    public class Program
+    {
 
-		private bool IsUserInteractive
-		{
-			get
-			{
-				var args = Environment.GetCommandLineArgs();
-				if (args.Length == 2)
-					return args[1] == "-u";
-				return false;
-			}
-		}
 
-		static void Main(string[] args)
-		{
-			new Program().Run();
-		}
 
-		public void Run()
-		{
-            
+        private bool IsUserInteractive
+        {
+            get
+            {
+                var args = Environment.GetCommandLineArgs();
+                if (args.Length == 2)
+                    return args[1] == "-u";
+                return false;
+            }
+        }
 
-			Console.Clear();
-			try
-			{
+        static void Main(string[] args)
+        {
+            new Program().Run();
+        }
 
-				InitializeCulture();
-				Initialize();
+        public void Run()
+        {
 
-				using (new SessionScope(FlushAction.Never))
-				{
-					IoCContainer.TicketManager.SendEmails = false;
-                    
+
+            Console.Clear();
+            try
+            {
+
+                InitializeCulture();
+                Initialize();
+
+                using (new SessionScope(FlushAction.Never))
+                {
+                    IoCContainer.TicketManager.SendEmails = false;
+
                     AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
 
-					if(	!alert.LastSentDate.HasValue ||
-						((alert.LastSentDate).Value.AddDays(alert.Days) >= DateTime.Now))
+                    if (!alert.LastSentDate.HasValue ||
+                        ((alert.LastSentDate).Value.AddDays(alert.Days).Date <= DateTime.Today))
                     {
                         SendAlertsByTicketExpired();
                         SendAlertsByBudgetExpired();
-                        alert.LastSentDate = DateTime.Now;
+
                     }
-				}
-			}
-			catch (Exception ex)
-			{
-				PrintException(ex);
-			}
+                    alert.LastSentDate = DateTime.Now;
 
-			if (IsUserInteractive)
-			{
-				Console.WriteLine(new string('-', 78));
-				Console.WriteLine(new string('-', 78));
-				Console.WriteLine("Presione un tecla para finalizar");
-				Console.ReadKey();
-			}
-		}
+                    try
+                    {
+                        using (SessionScopeUtils.NewSessionScope())
+                            IoCContainer.AlertConfigurationManager.Update(alert);
+                    }
+                    catch (ScopeMachineryException)
 
-		protected void PrintException(Exception ex)
-		{
-			while (ex != null)
-			{
-				Console.WriteLine();
-				Console.WriteLine(new string('-', 78));
-				Console.WriteLine(new string('-', 78));
-				Console.WriteLine("Error: ");
-				Console.WriteLine("\t" + ex.Message);
-				Console.WriteLine();
-				Console.WriteLine("Stack Trace: ");
-				Console.WriteLine("\t" + ex.StackTrace);
-				Console.WriteLine();
-				Console.WriteLine("Source: ");
-				Console.WriteLine("\t" + ex.Source);
-				ex = ex.InnerException;
-			}
-		}
+                    { }
+                }
+            }
+            catch (Exception ex)
+            {
+                PrintException(ex);
+            }
 
-		protected void InitializeCulture()
-		{
-			Thread.CurrentThread.CurrentCulture = new CultureInfo(ConfigurationManager.AppSettings["culture"]);
-		}
+            if (IsUserInteractive)
+            {
+                Console.WriteLine(new string('-', 78));
+                Console.WriteLine(new string('-', 78));
+                Console.WriteLine("Presione un tecla para finalizar");
+                Console.ReadKey();
+            }
+        }
 
-		protected void Initialize()
-		{
-			IConfigurationSource config = ActiveRecordSectionHandler.Instance;
-			Assembly asm = Assembly.Load("Bagge.Seti.BusinessEntities");
-			ActiveRecordStarter.Initialize(asm, config);
+        protected void PrintException(Exception ex)
+        {
+            while (ex != null)
+            {
+                Console.WriteLine();
+                Console.WriteLine(new string('-', 78));
+                Console.WriteLine(new string('-', 78));
+                Console.WriteLine("Error: ");
+                Console.WriteLine("\t" + ex.Message);
+                Console.WriteLine();
+                Console.WriteLine("Stack Trace: ");
+                Console.WriteLine("\t" + ex.StackTrace);
+                Console.WriteLine();
+                Console.WriteLine("Source: ");
+                Console.WriteLine("\t" + ex.Source);
+                ex = ex.InnerException;
+            }
+        }
 
-			//Setup SuperAdmin user for console application
-			Employee user = new Employee();
-			user.Username = "ConsoleUser";
-			user.Roles = new List<Role>();
-			user.Roles.Add(IoCContainer.RoleManager.Get(Role.SuperAdministratorId));
-			IoCContainer.User = new SetiPrincipal(user);
-		}
+        protected void InitializeCulture()
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(ConfigurationManager.AppSettings["culture"]);
+        }
+
+        protected void Initialize()
+        {
+            IConfigurationSource config = ActiveRecordSectionHandler.Instance;
+            Assembly asm = Assembly.Load("Bagge.Seti.BusinessEntities");
+            ActiveRecordStarter.Initialize(asm, config);
+
+            //Setup SuperAdmin user for console application
+            Employee user = new Employee();
+            user.Username = "ConsoleUser";
+            user.Roles = new List<Role>();
+            user.Roles.Add(IoCContainer.RoleManager.Get(Role.SuperAdministratorId));
+            IoCContainer.User = new SetiPrincipal(user);
+        }
 
 
-		protected void SendAlertsByTicketExpired()
-		{
-			Console.Write("Buscando todos los tickets abiertos:");
+        protected void SendAlertsByTicketExpired()
+        {
+            Console.Write("Buscando todos los tickets abiertos:");
 
             Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.Open);
-			Console.WriteLine(".......................Encontrados: " + tickets.Length);
-			if (tickets.Length > 0)
-			{
-				Console.WriteLine("\tObteniendo configuration de alertas");
-				AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
-				Console.WriteLine("\tProcesando tickets");
-				for (int index = 0; index < tickets.Length; index++)
-				{
-					if (tickets[index].ExecutionDateTime < DateTime.Now)
-					{
-						int id = tickets[index].Id;
+            Console.WriteLine(".......................Encontrados: " + tickets.Length);
+            if (tickets.Length > 0)
+            {
+                Console.WriteLine("\tObteniendo configuration de alertas");
+                AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
+                Console.WriteLine("\tProcesando tickets");
+                for (int index = 0; index < tickets.Length; index++)
+                {
+                    if (tickets[index].ExecutionDateTime < DateTime.Now)
+                    {
+                        int id = tickets[index].Id;
 
-						var ticket = IoCContainer.TicketManager.Get(id);
-						TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.Expired);
-						ticket.Status = ticketStatus;
+                        var ticket = IoCContainer.TicketManager.Get(id);
+                        TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.Expired);
+                        ticket.Status = ticketStatus;
 
-						IoCContainer.TicketManager.Update(ticket);
+                        IoCContainer.TicketManager.Update(ticket);
 
-						Console.WriteLine("\tTicket #{0} marcado como Expirado - Enviando Email", id);
+                        Console.WriteLine("\tTicket #{0} marcado como Expirado - Enviando Email", id);
 
-						SendMail(alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Vencimiento de Ticket", "Se vencio el Ticket: ");
-					}
-				}
-			}
-		}
-
-		protected void SendAlertsByBudgetExpired()
-		{
-			Console.Write("Buscando todos los tickets pendientes de aprobacion:");
-			Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.PendingAproval);
-			Console.WriteLine(".......Encontrados: " + tickets.Length);
-			if (tickets.Length > 0)
-			{
-				Console.WriteLine("\tObteniendo configuration de alertas");
-				AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
-				Console.WriteLine("\tProcesando tickets");
-				for (int index = 0; index < tickets.Length; index++)
-				{
-                    if ((tickets[index].CreationDate).AddDays(alert.MaxDaysPendingAproval) < DateTime.Now)
-					{
-						var id = tickets[index].Id;
-						var ticket = IoCContainer.TicketManager.Get(id);
-						TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.Canceled);
-						ticket.Status = ticketStatus;
-
-						IoCContainer.TicketManager.Update(ticket);
-
-						Console.WriteLine("\tTicket #{0} marcado como Cancelado - Enviando Email", id);
-						SendMail(alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Cancelacion de Ticket", "Se cancelo el Ticket: ");
-					    
+                        SendMail(alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Vencimiento de Ticket", "Se vencio el Ticket: ");
                     }
-				}
-			}
-		}
+                }
+            }
+        }
 
-		protected void SendMail(bool isSendEmailToCreator, bool isSendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
-		{
-			using (var msg = new MailMessage())
-			{
+        protected void SendAlertsByBudgetExpired()
+        {
+            Console.Write("Buscando todos los tickets pendientes de aprobacion:");
+            Ticket[] tickets = IoCContainer.TicketManager.FindAllByStatus(TicketStatusEnum.PendingAproval);
+            Console.WriteLine(".......Encontrados: " + tickets.Length);
+            if (tickets.Length > 0)
+            {
+                Console.WriteLine("\tObteniendo configuration de alertas");
+                AlertConfiguration alert = IoCContainer.AlertConfigurationManager.Get();
+                Console.WriteLine("\tProcesando tickets");
+                for (int index = 0; index < tickets.Length; index++)
+                {
+                    if ((tickets[index].CreationDate).AddDays(alert.MaxDaysPendingAproval) < DateTime.Now)
+                    {
+                        var id = tickets[index].Id;
+                        var ticket = IoCContainer.TicketManager.Get(id);
+                        TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.Canceled);
+                        ticket.Status = ticketStatus;
 
-				if (isSendEmailToCreator)
-				{
-					if (!string.IsNullOrEmpty(ticket.Creator.Email))
-						msg.To.Add(new MailAddress(ticket.Creator.Email));
-				}
+                        IoCContainer.TicketManager.Update(ticket);
 
-				if (isSendEmailToEmployees)
-				{
-					foreach (var employee in ticket.Employees)
-					{
-						if (!string.IsNullOrEmpty(employee.Email))
-							msg.To.Add(employee.Email);
-					}
-				}
+                        Console.WriteLine("\tTicket #{0} marcado como Cancelado - Enviando Email", id);
+                        SendMail(alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Cancelacion de Ticket", "Se cancelo el Ticket: ");
 
-				if (msg.To.Count == 0)
-					return;
+                    }
+                }
+            }
+        }
 
-				msg.Subject = subjectEmail;
+        protected void SendMail(bool isSendEmailToCreator, bool isSendEmailToEmployees, Ticket ticket, string subjectEmail, string bodyEmail)
+        {
+            using (var msg = new MailMessage())
+            {
 
-				string applicationPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-				string body = File.ReadAllText(applicationPath + @"\mailTemplate.htm");
+                if (isSendEmailToCreator)
+                {
+                    if (!string.IsNullOrEmpty(ticket.Creator.Email))
+                        msg.To.Add(new MailAddress(ticket.Creator.Email));
+                }
 
-				body = body.Replace("{BODY_MAIL_SUBJECT}", bodyEmail);
-				body = body.Replace("{ID}", ticket.Id.ToString());
-				body = body.Replace("{CUSTOMER_NAME}", ticket.Customer.Name);
-				body = body.Replace("{DESCRIPTION}", ticket.Description);
-				body = body.Replace("{CREATION_DATE}", string.Format("{0:d}", ticket.CreationDate));
-				body = body.Replace("{EXECUTION_DATE}", string.Format("{0:d}", ticket.ExecutionDateTime));
-				body = body.Replace("{ESTIMATED_DURATION}", string.Format("{0:#.##} hs", ticket.EstimatedDuration));
-				body = body.Replace("{STATUS}", ticket.Status.Name);
+                if (isSendEmailToEmployees)
+                {
+                    foreach (var employee in ticket.Employees)
+                    {
+                        if (!string.IsNullOrEmpty(employee.Email))
+                            msg.To.Add(employee.Email);
+                    }
+                }
 
-				msg.Body = body;
+                if (msg.To.Count == 0)
+                    return;
 
-				msg.IsBodyHtml = true;
+                msg.Subject = subjectEmail;
 
-				SmtpClient smtpClient = new SmtpClient();
-				smtpClient.EnableSsl = true;
+                string applicationPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                string body = File.ReadAllText(applicationPath + @"\mailTemplate.htm");
 
-				if (isSendEmailToCreator || isSendEmailToEmployees)
-					smtpClient.Send(msg);
-			}
-		}
-	}
+                body = body.Replace("{BODY_MAIL_SUBJECT}", bodyEmail);
+                body = body.Replace("{ID}", ticket.Id.ToString());
+                body = body.Replace("{CUSTOMER_NAME}", ticket.Customer.Name);
+                body = body.Replace("{DESCRIPTION}", ticket.Description);
+                body = body.Replace("{CREATION_DATE}", string.Format("{0:d}", ticket.CreationDate));
+                body = body.Replace("{EXECUTION_DATE}", string.Format("{0:d}", ticket.ExecutionDateTime));
+                body = body.Replace("{ESTIMATED_DURATION}", string.Format("{0:#.##} hs", ticket.EstimatedDuration));
+                body = body.Replace("{STATUS}", ticket.Status.Name);
+
+                msg.Body = body;
+
+                msg.IsBodyHtml = true;
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.EnableSsl = true;
+
+                if (isSendEmailToCreator || isSendEmailToEmployees)
+                    smtpClient.Send(msg);
+            }
+        }
+    }
 }
