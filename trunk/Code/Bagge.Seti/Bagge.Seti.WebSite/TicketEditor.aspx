@@ -17,6 +17,7 @@
 	</script>
 </asp:Content>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+	<div id="ticketEditor">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
 		<Fields>
@@ -146,4 +147,5 @@
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server" DataObjectTypeName="">
 	</asp:ObjectContainerDataSource>
+	</div>
 </asp:Content>

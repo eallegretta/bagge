@@ -26,7 +26,17 @@ namespace Bagge.Seti.WebSite
 			Page.Header.Controls.AddAt(0, new LiteralControl(script.ToString()));
 
 			base.OnInit(e);
-			SetLoggedInFullName();
+
+			SetLoginStatusVisiblity();
+
+			
+		}
+
+		private void SetLoginStatusVisiblity()
+		{
+			_loginFullnameView.Visible = _menuLoginView.Visible = Page.Request.IsAuthenticated;
+			if (Page.Request.IsAuthenticated)
+				SetLoggedInFullName();
 		}
 
 		protected void Page_Load(object sender, EventArgs e)
@@ -69,9 +79,7 @@ namespace Bagge.Seti.WebSite
 		{
 			if (Page.User is SetiPrincipal && Page.User.Identity is Employee)
 			{
-				var fullName = _loginFullnameView.FindControl("_loginFullname") as Literal;
-				if(fullName != null)
-					fullName.Text = ((Employee)Page.User.Identity).Fullname;
+				_loginFullname.Text = ((Employee)Page.User.Identity).Fullname;
 			}
 		}
 

@@ -138,7 +138,7 @@
   <data name="PriceHeaderLiteral.Text" xml:space="preserve">
     <value>Precio</value>
   </data>
-  <data name="ProductFieldLietral.Text" xml:space="preserve">
+  <data name="ProductFieldLiteral.Text" xml:space="preserve">
     <value>Insumo</value>
   </data>
   <data name="ProviderAddLegend" xml:space="preserve">

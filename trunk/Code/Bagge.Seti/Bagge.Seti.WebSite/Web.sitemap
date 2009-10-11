@@ -32,7 +32,7 @@
 				<siteMapNode url="~/RoleEditor.aspx" resourceKey="RoleEditor" />
 			</siteMapNode>
 			<siteMapNode url="~/SecurityExceptionList.aspx" resourceKey="SecurityExceptionList">
-				<siteMapNode url="~/SecurityExceptionEditor.aspx" resourcekey="SecurityExceptionEditor">
+				<siteMapNode url="~/SecurityExceptionEditor.aspx" resourceKey="SecurityExceptionEditor">
 				</siteMapNode>
 			</siteMapNode>
 		</siteMapNode>

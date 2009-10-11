@@ -43,7 +43,7 @@
 	/*background-image:url(Images/contentBackground.gif);
 	background-repeat:repeat-x;*/
 	padding:5px;
-	border-bottom:5px solid #567f85;
+	border-bottom:5px solid #9FC54E;
 }
 
 #menu
@@ -52,7 +52,7 @@
 	background-repeat:repeat-x;
 	border-top:1px solid white;
 	height:40px;
-	border-bottom:5px solid #567f85;
+	border-bottom:5px solid #9FC54E;
 }
 
 #footer
@@ -63,11 +63,116 @@
 	padding:10px;
 }
 
-#loginPage > table
+#loginPage, #recoverPassword
 {
 	margin:0px auto;
+	width:350px;
+	padding:30px;
+	height:220px;
+	background-color:#FBFBFB;
+	border:1px solid #EDEDED;
 }
 
+#loginPage img
+{
+	float:left;
+}
+
+#loginPage div.AspNet-Login
+{
+	margin-left:10px;
+	width:220px;
+	float:right;
+	clear:right;
+}
+
+.titleLabel
+{
+	font-family:Tahoma;
+	font-size:22px;
+	text-align:center;
+	display:block;
+	margin-bottom:10px;
+}
+
+#loginPage label
+{
+	text-align:left;
+	display:block;
+}
+
+#loginPage div.AspNet-Login-UserPanel label, #loginPage div.AspNet-Login-PasswordPanel label
+{
+	font-family:Tahoma;
+	font-size:14px;
+	font-style:normal;
+	font-weight:normal;
+}
+
+#loginPage div.AspNet-Login-UserPanel input, #loginPage div.AspNet-Login-PasswordPanel input
+{
+	font-size:16px;
+	width:90%;
+}
+
+#loginPage em
+{
+	font-style:normal;
+}
+
+#loginPage div.AspNet-Login-RememberMePanel
+{
+	margin-bottom:20px;
+	text-align:right;
+}
+
+#loginPage div.AspNet-Login-RememberMePanel label
+{
+	display:inline;
+}
+
+#loginPage div.AspNet-Login-SubmitPanel
+{
+	text-align:right;
+	
+}
+
+#loginPage div.AspNet-Login-SubmitPanel input
+{
+	text-align:right;
+	font-size:0px;
+	width:109px;
+	height:36px;
+	border:0px;
+	cursor:pointer;
+	cursor:hand;
+	background-image:url(Images/loginbtn.gif);
+	margin-bottom:20px;
+}
+
+#errorPage
+{
+	margin:0px auto;
+	width:80%;
+	padding:30px;
+}
+
+#errorPage #errorPanel
+{
+	margin-left:40px;
+	float:left;
+}
+
+#errorPage #errorMessage
+{
+	font-family:Tahoma;
+	font-size:16px;
+}
+
+#errorPage img
+{
+	float:left;
+}
 
 
 
@@ -244,11 +349,6 @@ div.filters table td
 	padding: 5px 5px 5px 0px;
 }
 
-#loginPage
-{
-	text-align:center;
-}
-
 .loginLabel
 {
 	font-weight:bold;
@@ -423,3 +523,49 @@ div#homePage div#legends div.legend
 
 
 
+div#providerEditor, div#customerEditor, div#employeeEditor, 
+div#ticketEditor, div#alertConfigurationEditor, div#productEditor,
+div#roleEditor, div#securityExceptionEditor
+{
+	
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+
+div#providerEditor
+{
+	background-image:url(Images/CrudBackgrounds/ProviderEditor.jpg);
+}
+div#customerEditor
+{
+	background-image:url(Images/CrudBackgrounds/CustomerEditor.jpg);
+}
+div#employeeEditor
+{
+	background-image:url(Images/CrudBackgrounds/EmployeeEditor.jpg);
+}
+div#ticketEditor
+{
+	background-image:url(Images/CrudBackgrounds/TicketEditor.jpg);
+}
+div#alertConfigurationEditor
+{
+	background-image:url(Images/CrudBackgrounds/AlertConfigurationEditor.jpg);
+}
+div#alertConfigurationEditor div.commands
+{
+	margin-top:100px;
+}
+
+div#productEditor
+{
+	background-image:url(Images/CrudBackgrounds/ProductEditor.jpg);
+}
+div#roleEditor
+{
+	background-image:url(Images/CrudBackgrounds/RoleEditor.jpg);
+}
+div#securityExceptionEditor
+{
+	background-image:url(Images/CrudBackgrounds/SecurityExceptionEditor.jpg);
+}

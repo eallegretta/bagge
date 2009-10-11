@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RecoverPassword.aspx.cs" 
 Inherits="Bagge.Seti.WebSite.RecoverPassword" meta:resourcekey="Page"%>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+	<asp:Label ID="_title" CssClass="titleLabel" runat="server" meta:resourcekey="TitleLabel"></asp:Label>
+	<div id="recoverPassword">
 	<asp:MultiView ID="_recoverPassword" runat="server" ActiveViewIndex="0">
 		<asp:View runat="server">
 			<asp:Label ID="_emailAddressText" Font-Bold="true" runat="server" meta:resourcekey="EmailAddressTextLabel"></asp:Label>
@@ -14,5 +16,5 @@ Inherits="Bagge.Seti.WebSite.RecoverPassword" meta:resourcekey="Page"%>
 			<asp:Label ID="_passwordRegenerated" Font-Bold="true" runat="server" meta:resourcekey="PasswordRegeneratedLabel"></asp:Label>
 		</asp:View>
 	</asp:MultiView>
-	
+	</div>
 </asp:Content>
