@@ -2,6 +2,7 @@
 <%@ Register TagName="ProductProviderGrid" TagPrefix="controls" Src="~/Controls/ProductProviderSelectionGrid.ascx"%>
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+	<div id="productEditor">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id, AuditTimeStamp" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="False" meta:resourcekey="Details">
 		<Fields>
@@ -30,5 +31,6 @@
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server" 
 		DataObjectTypeName=""></asp:ObjectContainerDataSource>
+	</div>
 </asp:Content>
 

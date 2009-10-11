@@ -120,15 +120,16 @@ namespace Bagge.Seti.WebSite.Controls
 			/*if (!IsPostBack)
 			{*/
 			_legendProvider.Visible = _legendProduct.Visible = false;
+			_productField.Visible = _providerField.Visible = false;
 			if (SourceType == ProductProviderSelectionGridSourceType.Product)
 			{
 				LoadProducts();
-				_legendProduct.Visible = true;
+				_productField.Visible = _legendProduct.Visible = true;
 			}
 			else
 			{
 				LoadProviders();
-				_legendProvider.Visible = true;
+				_providerField.Visible = _legendProvider.Visible = true;
 			}
 
 			if (ReadOnly)

@@ -4,6 +4,7 @@
 
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_contentNoUpdatePanel" runat="server">
+	<div id="customerEditor">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" DataSourceID="_dataSource"
 		runat="server" AutoGenerateRows="false" meta:resourcekey="Details">
 		<Fields>
@@ -73,4 +74,5 @@
 	</seti:EditorControls>
 	<asp:ObjectDataSource ID="_ds" runat="server" DataObjectTypeName="Bagge.Seti.BusinessEntities.Customer" TypeName="Bagge.Seti.BusinessLogic.CustomerManager, Bagge.Seti.BusinessLogic"></asp:ObjectDataSource>
 	<asp:ObjectContainerDataSource ID="_dataSource" runat="server"></asp:ObjectContainerDataSource>
+	</div>
 </asp:Content>

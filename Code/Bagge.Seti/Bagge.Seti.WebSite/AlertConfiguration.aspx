@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlertConfiguration.aspx.cs" Inherits="Bagge.Seti.WebSite.AlertConfigurationEditor" meta:resourcekey="Page" %>
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+	<div id="alertConfigurationEditor">
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" runat="server" DataSourceID="_dataSource" AutoGenerateRows="false">
 		<Fields>
 			<seti:SecureBoundField HeaderStyle-Width="500px"  DataField="Days" ControlStyle-CssClass="numeric" meta:resourcekey="DaysField">
@@ -25,5 +26,5 @@
 		CancelPostBackUrl="~/Default.aspx" DetailsViewID="_details" meta:resourcekey="EditorCommands">
 	</seti:EditorControls>
 	<asp:ObjectContainerDataSource id="_dataSource" runat="server" ></asp:ObjectContainerDataSource>
-	
+	</div>
 </asp:Content>

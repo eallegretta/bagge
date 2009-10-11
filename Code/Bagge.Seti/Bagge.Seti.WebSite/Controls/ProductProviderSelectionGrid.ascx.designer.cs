@@ -41,13 +41,22 @@ namespace Bagge.Seti.WebSite.Controls {
         protected global::System.Web.UI.WebControls.Label _legendProvider;
         
         /// <summary>
-        /// _nameTitle control.
+        /// _productField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal _nameTitle;
+        protected global::System.Web.UI.WebControls.Literal _productField;
+        
+        /// <summary>
+        /// _providerField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _providerField;
         
         /// <summary>
         /// _priceTitle control.

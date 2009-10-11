@@ -71,3 +71,15 @@ select
 	font-size:10px;
 }
 
+
+
+input.error 
+{
+	border:1px solid #990000;
+	background-color:#FF6D6D;
+	background-repeat: repeat-x;
+	background-position: left center;
+	background-image:none;
+	color:White;
+	margin:1px;
+}

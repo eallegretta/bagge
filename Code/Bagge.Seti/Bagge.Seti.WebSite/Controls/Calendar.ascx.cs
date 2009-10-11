@@ -30,6 +30,11 @@ namespace Bagge.Seti.WebSite.Controls
 			set { _calendarReqVal.ErrorMessage = value; }
 		}
 
+		public string TextBoxUniqueID
+		{
+			get { return _calendar.UniqueID; }
+		}
+
 		public string TextBoxClientID
 		{
 			get { return _calendar.ClientID; }

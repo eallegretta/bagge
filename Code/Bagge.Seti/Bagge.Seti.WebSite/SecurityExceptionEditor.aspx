@@ -2,6 +2,7 @@
 <%@ Register TagPrefix="seti" TagName="Calendar" Src="~/Controls/Calendar.ascx" %>
 <%@ Register TagPrefix="seti" TagName="EditorControls" Src="~/Controls/EditorCommands.ascx"  %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+<div id="securityExceptionEditor">
 <seti:SecureDetailsView  ID="_details" runat="server" DataKeyNames="Id" DataSourceID="_dataSource" AutoGenerateRows="false">
 	<Fields>
 		<asp:TemplateField meta:resourcekey="RoleField">
@@ -124,4 +125,5 @@
 </seti:EditorControls>
 <asp:ObjectContainerDataSource ID="_dataSource" runat="server" 
 		DataObjectTypeName=""></asp:ObjectContainerDataSource>
+</div>
 </asp:Content>

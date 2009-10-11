@@ -5,11 +5,12 @@
 	<asp:Label ID="_legendProvider" Font-Italic="true" runat="server" meta:resourcekey="LegendProviderLabel"></asp:Label>
 	<table>
 		<tr>
-			<th>
-				<asp:Literal ID="_nameTitle" runat="server" meta:resourcekey="NameTitleLiteral"></asp:Literal>
+			<th>	
+				<asp:Literal ID="_productField" runat="server" meta:resourcekey="ProductFieldLiteral"></asp:Literal>
+				<asp:Literal ID="_providerField" runat="server" meta:resourcekey="ProviderFieldLiteral"></asp:Literal>
 			</th>
 			<th>
-				<asp:Literal ID="_priceTitle" runat="server" meta:resourcekey="PriceTitleLiteral"></asp:Literal>
+				<asp:Literal ID="_priceTitle" runat="server" meta:resourcekey="PriceFieldLiteral"></asp:Literal>
 			</th>
 			<td rowspan="2" valign="bottom" style="padding-bottom: 4px">
 				<input id="_add" class="button" type="button" runat="server" meta:resourcekey="AddButton" />

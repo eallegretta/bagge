@@ -56,7 +56,34 @@ namespace Bagge.Seti.WebSite {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView _loginFullnameView;
+        protected global::System.Web.UI.WebControls.PlaceHolder _loginFullnameView;
+        
+        /// <summary>
+        /// _loginFullname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _loginFullname;
+        
+        /// <summary>
+        /// _editProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink _editProfile;
+        
+        /// <summary>
+        /// _logout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink _logout;
         
         /// <summary>
         /// _menuLoginView control.
@@ -65,7 +92,16 @@ namespace Bagge.Seti.WebSite {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView _menuLoginView;
+        protected global::System.Web.UI.WebControls.PlaceHolder _menuLoginView;
+        
+        /// <summary>
+        /// _menu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu _menu;
         
         /// <summary>
         /// _siteMapPath control.

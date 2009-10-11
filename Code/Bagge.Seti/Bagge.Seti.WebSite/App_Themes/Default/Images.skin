@@ -7,3 +7,5 @@
 
 <asp:Image SkinId="IconArrowLeft" runat="server" ImageUrl="Images/arrowLeft.png"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
 <asp:Image SkinId="IconArrowRight" runat="server" ImageUrl="Images/arrowRight.png"  ImageAlign="AbsMiddle" Style="margin-right:3px;" />
+<asp:Image SkinId="IconLogin" runat="server" ImageUrl="Images/login.gif" />
+<asp:Image SkinId="IconError" runat="server" ImageUrl="Images/error.png" />

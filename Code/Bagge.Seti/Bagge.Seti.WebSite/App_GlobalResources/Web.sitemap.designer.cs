@@ -358,7 +358,7 @@ namespace Resources.Web {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alta de Excepciones de Seguridad.
+        ///   Looks up a localized string similar to Alta de Excepción.
         /// </summary>
         internal static string SecurityExceptionEditor_title {
             get {
