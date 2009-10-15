@@ -11,5 +11,8 @@
     <Setting Name="DefaultMethodAccessibilityType" Type="Bagge.Seti.Security.BusinessEntities.AccessibilityTypes" Scope="Application">
       <Value Profile="(Default)">None</Value>
     </Setting>
+    <Setting Name="EnableMail" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

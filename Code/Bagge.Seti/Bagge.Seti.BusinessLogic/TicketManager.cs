@@ -31,7 +31,7 @@ namespace Bagge.Seti.BusinessLogic
 			//_ticketEmployeeDao = ticketEmployeeDao;
 			_employeeDao = employeeDao;
 			_customerDao = customerDao;
-			SendEmails = true;
+			SendEmails = Settings.Default.EnableMail;
 		}
 
 		#region ITicketManager Members
