@@ -19,7 +19,9 @@ namespace Bagge.Seti.WebSite.Views
 		string CurrentDateText { set; }
 		TicketStatus[] Legends { set; } 
 		event EventHandler DisplayFormatChanged;
+		event EventHandler RewindDateSelected;
 		event EventHandler PreviewDateSelected;
 		event EventHandler NextDateSelected;
+		event EventHandler FastForwardDateSelected;
 	}
 }

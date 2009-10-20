@@ -246,7 +246,8 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			var ticket = Get(ticketId);
 
-			if (ticket.Status == TicketStatusEnum.Closed)
+			//if (ticket.Status == TicketStatusEnum.Closed)
+			if(ticket.IsClosed)
 				throw new BusinessRuleException(Resources.CannotUpdateStatusClosedTicketErrorMessage);
 
 			if (realDuration > decimal.MinValue)

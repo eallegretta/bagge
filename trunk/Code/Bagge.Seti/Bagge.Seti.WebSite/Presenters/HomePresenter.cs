@@ -27,16 +27,20 @@ namespace Bagge.Seti.WebSite.Presenters
 		ITicketManager _ticketManager;
 		ITicketStatusManager _ticketStatusManager;
 		IFunctionManager _functionManager;
+		ISecurityManager _securityManager;
 		IUser _user;
 
 		public HomePresenter(IHomeView view, ITicketManager ticketManager, ITicketStatusManager ticketStatusManager, 
-			IFunctionManager functionManager, IUser user,
+			IFunctionManager functionManager, 
+			ISecurityManager securityManager,
+			IUser user,
 			string weeklyDateFormat, string monthlyDateFormat)
 		{
 			Check.Require(view != null);
 			Check.Require(ticketManager != null);
 			Check.Require(ticketStatusManager != null);
 			Check.Require(functionManager != null);
+			Check.Require(securityManager != null);
 			Check.Require(user != null);
 			Check.Require(!string.IsNullOrEmpty(weeklyDateFormat));
 			Check.Require(!string.IsNullOrEmpty(monthlyDateFormat));
@@ -46,7 +50,8 @@ namespace Bagge.Seti.WebSite.Presenters
 			_view.Load += new EventHandler(OnLoad);
 			_ticketManager = ticketManager;
 			_ticketStatusManager = ticketStatusManager;
-			_functionManager = functionManager; 
+			_functionManager = functionManager;
+			_securityManager = securityManager;
 			_user = user;
 			MonthDisplayFormat = monthlyDateFormat;
 			WeekDisplayFormat = weeklyDateFormat;
@@ -55,8 +60,30 @@ namespace Bagge.Seti.WebSite.Presenters
 		protected virtual void OnInit(object sender, EventArgs e)
 		{
 			_view.PreviewDateSelected += new EventHandler(_view_PreviewDateSelected);
+			_view.RewindDateSelected += new EventHandler(_view_RewindDateSelected);
 			_view.NextDateSelected += new EventHandler(_view_NextDateSelected);
+			_view.FastForwardDateSelected += new EventHandler(_view_FastForwardDateSelected);
 			_view.DisplayFormatChanged += new EventHandler(_view_DisplayFormatChanged);
+		}
+
+		void _view_FastForwardDateSelected(object sender, EventArgs e)
+		{
+			if (_view.SelectedDisplayFormat == HomeViewDisplayFormat.Monthly)
+				_view.CurrentDate = _view.CurrentDate.AddYears(1);
+			else
+				_view.CurrentDate = _view.CurrentDate.AddMonths(1);
+
+			BindData();
+		}
+
+		void _view_RewindDateSelected(object sender, EventArgs e)
+		{
+			if (_view.SelectedDisplayFormat == HomeViewDisplayFormat.Monthly)
+				_view.CurrentDate = _view.CurrentDate.AddYears(-1);
+			else
+				_view.CurrentDate = _view.CurrentDate.AddMonths(-1);
+
+			BindData();
 		}
 
 		void _view_DisplayFormatChanged(object sender, EventArgs e)
@@ -156,13 +183,28 @@ namespace Bagge.Seti.WebSite.Presenters
 			return models;
 		}
 
-		public bool CanViewTicket()
+		public bool CanViewTickets()
 		{
 			if (_user.IsSuperAdministrator)
 				return true;
 
-			return HasAccess(FunctionAction.List);
+			return HasAccess(FunctionAction.Get);
 
+		}
+
+		public bool CanViewTicket(Ticket ticket)
+		{
+			if (_user.IsSuperAdministrator)
+				return true;
+
+			return HasAccess(ticket, FunctionAction.Get);
+		}
+
+		private bool HasAccess(Ticket instance, FunctionAction action)
+		{
+			var function = _functionManager.Get(typeof(TicketEditor), action);
+			var exceptions = _securityManager.FindAllSecurityExceptions(_user, function.Id);
+			return _securityManager.UserHasAccessToInstance(instance, exceptions);
 		}
 
 		private bool HasAccess(FunctionAction action)
@@ -170,7 +212,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			return _functionManager.UserHasAccessToFunction(_user, typeof(TicketEditor), action);
 		}
 
-		public bool CanEditTicket()
+		public bool CanEditTickets()
 		{
 			if (_user.IsSuperAdministrator)
 				return true;
@@ -181,18 +223,34 @@ namespace Bagge.Seti.WebSite.Presenters
 			return HasAccess(FunctionAction.Update);
 		}
 
-		public bool CanUpdateProgressTicket()
+		public bool CanEditTicket(Ticket ticket)
+		{
+			if (_user.IsSuperAdministrator)
+				return true;
+
+			return HasAccess(ticket, FunctionAction.Update);
+		}
+
+		public bool CanUpdateProgressTickets()
 		{
 			if (_user.IsSuperAdministrator)
 				return true;
 
 
 			if (((Employee)_user).IsTechnician 
-				&& HasAccess(FunctionAction.List) 
+				&& HasAccess(FunctionAction.Get) 
 				&& HasAccess(FunctionAction.Update))
 				return true;
 
 			return false;
+		}
+
+		public bool CanUpdateProgressTicket(Ticket ticket)
+		{
+			if (_user.IsSuperAdministrator)
+				return true;
+
+			return CanEditTicket(ticket) && !ticket.IsClosed;
 		}
 
 	}
