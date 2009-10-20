@@ -79,5 +79,26 @@ namespace Bagge.Seti.WebSite.Security
 			}
 			return true;
 		}
+
+		public static bool UserHasAccessToInstance(object instance)
+		{
+			return IoCContainer.SecurityManager.UserHasAccessToInstance(instance, CurrentFunctionSecurityExceptions);
+		}
+
+		public static Function CurrentFunction
+		{
+			get
+			{
+				return IoCContainer.Storage.GetData(typeof(Function)) as Function;
+			}
+		}
+
+		public static SecurityException[] CurrentFunctionSecurityExceptions
+		{
+			get
+			{
+				return IoCContainer.Storage.GetData(typeof(SecurityException[])) as SecurityException[]; 
+			}
+		}
 	}
 }

@@ -28,14 +28,16 @@ namespace Bagge.Seti.WebSite
 
 
 			_presenter = new HomePresenter(this, IoCContainer.TicketManager, IoCContainer.TicketStatusManager,
-				IoCContainer.FunctionManager, IoCContainer.User.Identity as IUser,
+				IoCContainer.FunctionManager, 
+				IoCContainer.SecurityManager,
+				IoCContainer.User.Identity as IUser,
 				Resources.WebSite.HomePageWeekDisplayFormat,
 				Resources.WebSite.HomePageMonthDisplayFormat);
 
 
-			_canViewTicket = _presenter.CanViewTicket();
-			_canUpdateTicket = _presenter.CanEditTicket(); 
-			_canUpdateProgressTicket = _presenter.CanUpdateProgressTicket(); ;
+			_canViewTicket = _presenter.CanViewTickets();
+			_canUpdateTicket = _presenter.CanEditTickets(); 
+			_canUpdateProgressTicket = _presenter.CanUpdateProgressTickets(); ;
 		}
 
 		protected void _tickets_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -53,10 +55,12 @@ namespace Bagge.Seti.WebSite
 				editImage.Text = Resources.WebSite.IconEditImageTag;
 				updateProgressImage.Text = Resources.WebSite.IconUpdateProgressImageTag;
 
+				var ticket = e.Item.DataItem as HomeViewModel;
 
-				viewLink.Visible = _canViewTicket;
-				editLink.Visible = _canUpdateTicket;
-				updateProgressLink.Visible = _canUpdateProgressTicket;
+				viewLink.Visible = _canViewTicket && ticket != null && _presenter.CanViewTicket(ticket.Ticket);
+				editLink.Visible = _canUpdateTicket && ticket != null && _presenter.CanEditTicket(ticket.Ticket);
+				updateProgressLink.Visible = _canUpdateProgressTicket && 
+					ticket != null && _presenter.CanUpdateProgressTicket(ticket.Ticket);
 
 
 			}
@@ -101,10 +105,22 @@ namespace Bagge.Seti.WebSite
 			remove { _prevDate.Click -= value; }
 		}
 
+		public event EventHandler RewindDateSelected
+		{
+			add { _prevPrevDate.Click += value; }
+			remove { _prevPrevDate.Click -= value; }
+		}
+
 		public event EventHandler NextDateSelected
 		{
 			add { _nextDate.Click += value; }
 			remove { _nextDate.Click -= value; }
+		}
+
+		public event EventHandler FastForwardDateSelected
+		{
+			add { _nextNextDate.Click += value; }
+			remove { _nextNextDate.Click -= value; }
 		}
 
 		public event EventHandler DisplayFormatChanged

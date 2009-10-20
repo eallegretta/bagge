@@ -52,7 +52,7 @@ namespace Bagge.Seti.BusinessLogic
 			if (function == null)
 				return false;
 
-			if (user.Functions.Contains(function))
+			if(user.Functions.Where(f => f.Id == function.Id).FirstOrDefault() != null)
 				return true;
 
 			return false;

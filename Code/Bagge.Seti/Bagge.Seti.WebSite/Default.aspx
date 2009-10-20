@@ -29,9 +29,11 @@
 				</asp:DropDownList>
 			</div>
 
+			<asp:LinkButton ID="_prevPrevDate" runat="server"><asp:Image runat="server" SkinID="IconArrowDoubleLeft" /></asp:LinkButton>	
 			<asp:LinkButton ID="_prevDate" runat="server"><asp:Image runat="server" SkinID="IconArrowLeft" /></asp:LinkButton>	
 			<span id="currentDate"><asp:Literal ID="_currentDate" runat="server"></asp:Literal></span>
 			<asp:LinkButton ID="_nextDate" runat="server"><asp:Image runat="server" SkinID="IconArrowRight" /></asp:LinkButton>	
+			<asp:LinkButton ID="_nextNextDate" runat="server"><asp:Image runat="server" SkinID="IconArrowDoubleRight" /></asp:LinkButton>	
 		</div>
 		<div id="calendarTickets">
 			<asp:Repeater ID="_tickets" runat="server" OnItemDataBound="_tickets_ItemDataBound">
