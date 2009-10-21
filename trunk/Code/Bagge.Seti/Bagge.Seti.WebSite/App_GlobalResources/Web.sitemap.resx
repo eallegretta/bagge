@@ -237,4 +237,10 @@
   <data name="SecurityExceptionEditor.title" xml:space="preserve">
     <value>Alta de Excepción</value>
   </data>
+  <data name="SecurityExceptionEditor.editTitle" xml:space="preserve">
+    <value>Editar Excepción</value>
+  </data>
+  <data name="SecurityExceptionEditor.viewTitle" xml:space="preserve">
+    <value>Ver Excepción</value>
+  </data>
 </root>

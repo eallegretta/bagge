@@ -200,7 +200,14 @@ namespace Bagge.Seti.WebSite
 		private RETTYPE GetConstraintValue<RETTYPE>(string ctrlID) where RETTYPE : IConvertible
 		{
 			var ctrl = _details.FindControl(ctrlID);
-			string value = Request.Form[ctrl.UniqueID];
+
+			string value;
+			var calendar = ctrl as Controls.Calendar;
+			if(calendar != null)
+				value = Request.Form[calendar.TextBoxUniqueID];
+			else
+				value = Request.Form[ctrl.UniqueID];
+
 			if (string.IsNullOrEmpty(value))
 				return default(RETTYPE);
 
@@ -232,7 +239,7 @@ namespace Bagge.Seti.WebSite
 					case SecurityExceptionEditorValueType.Char:
 						return GetConstraintValue<string>("_valueChar");
 					case SecurityExceptionEditorValueType.DateTime:
-						return GetControl<Bagge.Seti.WebSite.Controls.Calendar>("_valueDate").Date;
+						return GetConstraintValue<DateTime>("_valueDate");
 					case SecurityExceptionEditorValueType.Boolean:
 						return GetConstraintValue<bool>("_valueBoolean");
 					default:

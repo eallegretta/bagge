@@ -358,11 +358,29 @@ namespace Resources.Web {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Editar Excepción.
+        /// </summary>
+        internal static string SecurityExceptionEditor_editTitle {
+            get {
+                return ResourceManager.GetString("SecurityExceptionEditor.editTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alta de Excepción.
         /// </summary>
         internal static string SecurityExceptionEditor_title {
             get {
                 return ResourceManager.GetString("SecurityExceptionEditor.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ver Excepción.
+        /// </summary>
+        internal static string SecurityExceptionEditor_viewTitle {
+            get {
+                return ResourceManager.GetString("SecurityExceptionEditor.viewTitle", resourceCulture);
             }
         }
         
