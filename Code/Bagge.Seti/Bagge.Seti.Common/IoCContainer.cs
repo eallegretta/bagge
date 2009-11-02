@@ -44,6 +44,11 @@ namespace Bagge.Seti.Common
 			get { return Locator.GetInstance<IAlertConfigurationManager>(); }
 		}
 
+		public static IAuthenticator AuthenticationProvider
+		{
+			get { return Locator.GetInstance<IAuthenticator>(); }
+		}
+
 		public static IAccessibilityTypeManager AccessibilityTypeManager
 		{
 			get { return Locator.GetInstance<IAccessibilityTypeManager>(); }

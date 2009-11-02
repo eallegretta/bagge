@@ -10,5 +10,7 @@ namespace Bagge.Seti.Common
 	public interface IAuthenticator
 	{
 		IPrincipal LoggedInUser { get; set; }
+		string AuthenticationType { get; set; }
+		string LoggedInUsername { get; }
 	}
 }

@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Common;
+using Bagge.Seti.WebSite.Properties;
+using Bagge.Seti.BusinessEntities.Exceptions;
+using System.Security.Principal;
+using Bagge.Seti.BusinessEntities;
+using Bagge.Seti.WebSite.Security;
 
 namespace Bagge.Seti.WebSite.HttpModules
 {
@@ -18,8 +23,38 @@ namespace Bagge.Seti.WebSite.HttpModules
 		public void Init(HttpApplication context)
 		{
 			context.AuthenticateRequest += new EventHandler(context_AuthenticateRequest);
+			context.PostAcquireRequestState += new EventHandler(context_PostAcquireRequestState);
 		}
 
+		void context_PostAcquireRequestState(object sender, EventArgs e)
+		{
+			HttpApplication app = (HttpApplication)sender;
+
+			try
+			{
+				if (app.Session["IsAuthenticated"] == null)
+				{
+					if (Settings.Default.UpdateUserInformationOnLogin)
+					{
+						Employee user = IoCContainer.EmployeeManager.GetByUsername(IoCContainer.AuthenticationProvider.LoggedInUsername);
+						var employeeWithUpdatedInfo = IoCContainer.EmployeeManager.GetFromActiveDirectory(Settings.Default.DCServerAddress,
+							Settings.Default.DCLoginUsername, Settings.Default.DCLoginPassword,
+							user.Username);
+						user.Firstname = employeeWithUpdatedInfo.Firstname;
+						user.Lastname = employeeWithUpdatedInfo.Lastname;
+						user.Phone = employeeWithUpdatedInfo.Phone;
+						user.EmergencyPhone = employeeWithUpdatedInfo.EmergencyPhone;
+						user.Email = employeeWithUpdatedInfo.Email;
+						IoCContainer.EmployeeManager.UpdateProfile(user);
+					}
+
+					app.Session["IsAuthenticated"] = true;
+				}
+			}
+			catch (HttpException)
+			{
+			}
+		}
 
 		void context_AuthenticateRequest(object sender, EventArgs e)
 		{
@@ -27,9 +62,17 @@ namespace Bagge.Seti.WebSite.HttpModules
 			
 			if (app.Context.User != null && app.Context.User.Identity.IsAuthenticated)
 			{
-				IUser user = IoCContainer.EmployeeManager.GetByUsername(app.Context.User.Identity.Name);
-				user.IsAuthenticated = true;
-				app.Context.User = new SetiPrincipal(user);
+				try
+				{
+					IoCContainer.AuthenticationProvider.AuthenticationType = app.Context.User.Identity.AuthenticationType;
+					Employee user = IoCContainer.EmployeeManager.GetByUsername(IoCContainer.AuthenticationProvider.LoggedInUsername);
+					user.IsAuthenticated = true;
+					app.Context.User = new SetiPrincipal(user);
+				}
+				catch
+				{
+					app.Context.User = new SetiPrincipal(IoCContainer.EmployeeManager.GetNotAuthorizedUser());
+				}
 			}
 		}
 

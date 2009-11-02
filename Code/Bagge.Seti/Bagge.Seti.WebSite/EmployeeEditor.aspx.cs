@@ -10,6 +10,8 @@ using Bagge.Seti.WebSite.Presenters;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.WebSite.Controls;
+using System.Text;
 
 namespace Bagge.Seti.WebSite
 {
@@ -20,8 +22,11 @@ namespace Bagge.Seti.WebSite
 
 		public EmployeeEditor()
 		{
-			_presenter = new EmployeeEditorPresenter(this, IoCContainer.EmployeeManager,
-				IoCContainer.EmployeeCategoryManager, IoCContainer.RoleManager);
+			_presenter = new EmployeeEditorPresenter(this, 
+				IoCContainer.EmployeeManager,
+				IoCContainer.EmployeeCategoryManager, 
+				IoCContainer.RoleManager, 
+				IoCContainer.AuthenticationProvider);
 		}
 
 		protected override Bagge.Seti.WebSite.Presenters.EditorPresenter<Employee, int> Presenter
@@ -97,8 +102,8 @@ namespace Bagge.Seti.WebSite
 				if (roles != null)
 				{
 					var ids = from role in roles.Items.Cast<ListItem>()
-						  where role.Selected == true
-						select role.Value.ToInt32();
+							  where role.Selected == true
+							  select role.Value.ToInt32();
 					return ids.ToArray();
 				}
 				return null;
@@ -116,7 +121,7 @@ namespace Bagge.Seti.WebSite
 
 		public string Password
 		{
-			get 
+			get
 			{
 				var password = Details.FindControl("_password") as TextBox;
 				if (password != null)
@@ -137,5 +142,210 @@ namespace Bagge.Seti.WebSite
 		}
 
 		#endregion
+
+		#region IEmployeeEditorView Members
+
+
+		public bool PasswordVisible
+		{
+			set
+			{
+				//CORRECT IMPLEMENTATION IF GRIDVIEW WORKED PROPERLY
+				/*var fields = from f in _details.Fields.Cast<DataControlField>()
+							 where f is SecureTemplateField &&
+									((SecureTemplateField)f).PropertyName == "Password"
+							 select f;
+
+				foreach (var field in fields)
+					field.Visible = false;*/
+
+				//SINCE GRIDVIEW DOES NOT BIND TEXT WHEN SOME FIELD ARE NOT SHOWN WE 
+				//MANUALLY HIDE THEM USING JQUERY
+				if (!value)
+				{
+					var password = _details.FindControl("_password");
+					var confirmPassword = _details.FindControl("_confirmPassword");
+
+					var passwordVal = _details.FindControl("_passwordVal") as RequiredFieldValidator;
+					var confirmPasswordReqVal = _details.FindControl("_confirmPasswordReqVal") as RequiredFieldValidator;
+					var confirmPasswordCmpVal = _details.FindControl("_confirmPasswordCmpVal") as CompareValidator;
+
+					if (passwordVal != null)
+						passwordVal.Visible = false;
+
+					if (confirmPasswordReqVal != null)
+						confirmPasswordReqVal.Visible = false;
+					
+					if (confirmPasswordCmpVal != null)
+						confirmPasswordCmpVal.Visible = false;
+
+
+					StringBuilder script = new StringBuilder();
+					if (password != null)
+						script.AppendFormat("$('#{0}').parents('tr.detailsRow').remove();", password.ClientID);
+					if (confirmPassword != null)
+						script.AppendFormat("$('#{0}').parents('tr.detailsRow').remove();", confirmPassword.ClientID);
+
+					script.AppendFormat("$('.password').parents('tr.detailsRow').remove();");
+
+					if (ScriptManager.GetCurrent(Page).IsInAsyncPostBack)
+						ScriptManager.RegisterStartupScript(Page, typeof(string), "HidePassword", script.ToString(), true);
+					else
+						Page.ClientScript.RegisterStartupScript(typeof(string), "HidePassword", script.ToString(), true);
+
+
+				}
+			}
+		}
+
+		private void SetText(string ctrlID, string text)
+		{
+			var ctrl = _details.FindControl(ctrlID) as TextBox;
+			if(ctrl != null)
+				ctrl.Text = text;
+		}
+		private void SetReadOnly(string ctrlID, bool isReadOnly)
+		{
+			var ctrl = _details.FindControl(ctrlID) as TextBox;
+			if(ctrl != null)
+				ctrl.ReadOnly = isReadOnly;
+		}
+
+		public string Username
+		{
+			get
+			{
+				var username = _details.FindControl("_username") as TextBox;
+				if (username != null)
+				{
+					if (string.IsNullOrEmpty(username.Text))
+						return Request.Form[username.UniqueID];
+					else
+						return username.Text;
+				}
+				return null;
+			}
+			set
+			{
+				SetText("_username", value);
+			}
+		}
+
+		public bool FirstnameReadOnly
+		{
+			set
+			{
+				SetReadOnly("Firstname_txt", value);
+			}
+		}
+
+		public bool LastnameReadOnly
+		{
+			set 
+			{
+				SetReadOnly("Lastname_txt", value);
+			}
+		}
+
+		public bool PhoneReadOnly
+		{
+			set 
+			{
+				SetReadOnly("Phone_txt", value);
+			}
+		}
+
+		public bool EmergencyPhoneReadOnly
+		{
+			set { SetReadOnly("EmergencyPhone_txt", value); }
+		}
+
+		public bool EmailReadOnly
+		{
+			set { SetReadOnly("Email_txt", value); }
+		}
+
+		public string Firstname
+		{
+			set { SetText("Firstname_txt", value); }
+		}
+
+		public string Lastname
+		{
+			set { SetText("Lastname_txt", value); }
+		}
+
+		public string Phone
+		{
+			set { SetText("Phone_txt", value); }
+		}
+
+		public string EmergencyPhone
+		{
+			set { SetText("EmergencyPhone_txt", value); }
+		}
+
+		public string Email
+		{
+			set { SetText("Email_txt", value); }
+		}
+
+		#endregion
+
+		#region IEmployeeEditorView Members
+
+
+		public event EventHandler OnActiveDirectoryValidate
+		{
+			add
+			{
+				var button = _details.FindControl("_validateUsername") as Button;
+				if(button != null)
+					button.Click += value;
+			}
+			remove
+			{
+				var button = _details.FindControl("_validateUsername") as Button;
+				if(button != null)
+					button.Click -= value;
+			}
+		}
+
+		public bool IsWindowsAuthentication
+		{
+			set
+			{
+				var ph = _details.FindControl("_windowsAuthUsernameConfig") as PlaceHolder;
+				if (ph != null)
+					ph.Visible = value;
+
+				var hint = _details.FindControl("_domainUsernameHint") as Literal;
+				if (hint != null)
+					hint.Visible = value;
+			}
+		}
+
+		#endregion
+
+		#region IEmployeeEditorView Members
+
+
+		public bool ShowInvalidActiveDirectoryUserMessage
+		{
+			set 
+			{
+				var validator = _details.FindControl("_usernameInvalidVal") as CustomValidator;
+				if (validator != null)
+					validator.IsValid = !value;
+			}
+		}
+
+		#endregion
+
+
+		protected void _usernameUniqueVal_ServerValidate(object sender, ServerValidateEventArgs e)
+		{
+			e.IsValid = _presenter.IsUsernameUnique(e.Value);
+		}
 	}
 }

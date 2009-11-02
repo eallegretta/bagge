@@ -10,10 +10,11 @@ using Bagge.Seti.BusinessEntities.Exceptions;
 
 namespace Bagge.Seti.WebSite.Security
 {
-	public static class AuthorizationManager
+	internal static class AuthorizationManager
 	{
 		public static bool UserHasAccess(IHttpHandler handler, bool persistCurrentFunction)
 		{
+
 			var page = handler;
 			var type = page.GetType().BaseType;
 			var user = HttpContext.Current.User.Identity as IUser;

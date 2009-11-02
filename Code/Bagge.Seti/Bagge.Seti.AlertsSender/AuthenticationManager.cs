@@ -25,5 +25,26 @@ namespace Bagge.Seti.AlertsSender
 		}
 
 		#endregion
+
+		#region IAuthenticator Members
+
+
+		public string AuthenticationType
+		{
+			get
+			{
+				return "WindowsAuthentication";
+			}
+			set
+			{
+			}
+		}
+
+		public string LoggedInUsername
+		{
+			get { return LoggedInUser.Identity.Name; }
+		}
+
+		#endregion
 	}
 }

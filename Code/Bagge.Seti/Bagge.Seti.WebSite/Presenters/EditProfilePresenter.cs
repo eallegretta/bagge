@@ -6,19 +6,34 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Views;
 using Bagge.Seti.BusinessLogic.Contracts;
 using Bagge.Seti.BusinessEntities.Security;
+using Bagge.Seti.Common;
+using Bagge.Seti.WebSite.Security;
+using Bagge.Seti.BusinessEntities.Exceptions;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
 	public class EditProfilePresenter : EditorPresenter<Employee, int>
 	{
 		IUser _loggedUser;
+		IAuthenticator _authenticationProvider;
 
 		public EditProfilePresenter(IEditProfileView view,
 			IEmployeeManager employeeManager,
-			IUser loggedUser)
+			IUser loggedUser,
+			IAuthenticator authenticationProvider)
 			: base(view, employeeManager)
 		{
 			_loggedUser = loggedUser;
+			_authenticationProvider = authenticationProvider;
+		}
+
+		protected override void OnInit(object sender, EventArgs e)
+		{
+			base.OnInit(sender, e);
+
+			if (AuthenticationManager.IsWindowsAuthentication(_authenticationProvider))
+				throw new AccessDeniedException();
+
 		}
 
 		public override object GetSelectedEntity()

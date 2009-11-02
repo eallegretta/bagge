@@ -1,4 +1,6 @@
-﻿function pageLoad() {
+﻿var onLoadFunctions = new Array();
+
+function pageLoad() {
     $(document).ready(function() {
         $("input[type=text],input[type=password],input[type=file],textarea").focus(function() {
             $(this).addClass("selected");
@@ -25,6 +27,9 @@
         }
 
         attachStyleToValidators();
+
+        for (var funcName in onLoadFunctions)
+            onLoadFunctions[funcName]();
 
         Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(beginRequestHandler);
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);

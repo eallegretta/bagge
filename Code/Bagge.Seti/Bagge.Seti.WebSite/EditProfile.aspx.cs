@@ -19,7 +19,9 @@ namespace Bagge.Seti.WebSite
 
 		public EditProfile()
 		{
-			_presenter = new EditProfilePresenter(this, IoCContainer.EmployeeManager, IoCContainer.User.Identity as IUser);
+			_presenter = new EditProfilePresenter(this, 
+				IoCContainer.EmployeeManager, IoCContainer.User.Identity as IUser,
+				IoCContainer.AuthenticationProvider);
 		}
 
 		protected override Bagge.Seti.WebSite.Presenters.EditorPresenter<Employee, int> Presenter

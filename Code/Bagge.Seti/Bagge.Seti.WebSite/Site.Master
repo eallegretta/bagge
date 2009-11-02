@@ -16,7 +16,7 @@
 		<div id="header">
 			<asp:PlaceHolder ID="_loginFullnameView" runat="server">
 				<div id="loginFullname">Bienvenido <b><asp:Literal ID="_loginFullname" runat="server"></asp:Literal></b> |
-				<asp:HyperLink ID="_editProfile" runat="server" NavigateUrl="~/EditProfile.aspx" meta:resourcekey="EditProfileLink"></asp:HyperLink> | 
+				<asp:HyperLink ID="_editProfile" runat="server" NavigateUrl="~/EditProfile.aspx" meta:resourcekey="EditProfileLink"></asp:HyperLink> <%=!IsWindowsAuthentication ? " | " : string.Empty%> 
 				<asp:HyperLink ID="_logout" runat="server" NavigateUrl="~/Logout.ashx" meta:resourcekey="LogoutLink"></asp:HyperLink></div>
 			</asp:PlaceHolder>
 		</div>

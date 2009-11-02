@@ -10,6 +10,9 @@ using Castle.ActiveRecord;
 using Castle.ActiveRecord.Framework.Config;
 using System.Globalization;
 using System.Threading;
+using System.Xml.Serialization;
+using System.IO;
+using System.Net;
 
 namespace Bagge.Seti.WebSite
 {
@@ -85,20 +88,30 @@ namespace Bagge.Seti.WebSite
 				Thread.CurrentThread.CurrentUICulture = BaggeCulture.Instance;
 		}
 
-		protected void Application_AuthenticateRequest(object sender, EventArgs e)
+		protected void Application_EndRequest(object sender, EventArgs e)
 		{
+			var context = HttpContext.Current;
+			if (context.Response.StatusCode == (int)HttpStatusCode.Unauthorized)
+			{
+				Response.Redirect("~/NotAuthorized.aspx");
+			}
+		}
 
+
+		private string GetSerializedException(Exception ex)
+		{
+			XmlSerializer ser = new XmlSerializer(typeof(Exception));
+			using (var writer = new StringWriter())
+			{
+				ser.Serialize(writer, ex);
+				return writer.ToString();
+			}
 		}
 
 		protected void Application_Error(object sender, EventArgs e)
 		{
-			Exception lastError = Server.GetLastError();
-			if (lastError != null)
-			{
-				Context.Items.Add("LastError", Server.GetLastError());
-				Server.Transfer("~/Error.aspx");
-			}
-            Server.ClearError();
+			Context.Items["LastError"] = Server.GetLastError();
+			Server.Transfer("~/Error.aspx");
 		}
 
 		protected void Session_End(object sender, EventArgs e)

@@ -132,6 +132,9 @@
   <data name="Details.EmptyDataText" xml:space="preserve">
     <value>No se encontró el empleado seleccionado</value>
   </data>
+  <data name="DomainUsernameHintLiteral.Text" xml:space="preserve">
+    <value>(dominio\usuario)</value>
+  </data>
   <data name="EmailField.HeaderText" xml:space="preserve">
     <value>E-Mail</value>
   </data>
@@ -164,5 +167,17 @@
   </data>
   <data name="UsernameField.HeaderText" xml:space="preserve">
     <value>Nombre de Usuario *</value>
+  </data>
+  <data name="UsernameInvalidValidator.ErrorMessage" xml:space="preserve">
+    <value>No se encontró el usuario seleccionado</value>
+  </data>
+  <data name="UsernameReqValidator.ErrorMessage" xml:space="preserve">
+    <value>El nombre de usuario es requerido</value>
+  </data>
+  <data name="UsernameUniqueValidator.ErrorMessage" xml:space="preserve">
+    <value>El nombre de usuario ya existe</value>
+  </data>
+  <data name="ValidateUsernameButton.Text" xml:space="preserve">
+    <value>Validar Usuario</value>
   </data>
 </root>

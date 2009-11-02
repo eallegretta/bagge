@@ -7,6 +7,10 @@
 	<![endif]-->
 
 	<script type="text/javascript">
+		<%if(Request.QueryString["Close"] != null){%>
+			self.close();
+		<%}%>
+		
 		$(document).ready(function(){
 			setupGoolgeMaps();
 		

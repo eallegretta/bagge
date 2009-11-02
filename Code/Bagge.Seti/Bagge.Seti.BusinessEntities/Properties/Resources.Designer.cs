@@ -61,6 +61,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Usted no posee acceso a la página que intenta acceder.
+        /// </summary>
+        internal static string AccessDeniedErrorMessage {
+            get {
+                return ResourceManager.GetString("AccessDeniedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contiene.
         /// </summary>
         internal static string Constraint_Contains {
