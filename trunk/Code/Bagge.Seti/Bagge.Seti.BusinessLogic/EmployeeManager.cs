@@ -15,6 +15,8 @@ using System.Configuration;
 using Bagge.Seti.DataAccess;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
+using System.DirectoryServices.AccountManagement;
+using System.DirectoryServices;
 
 namespace Bagge.Seti.BusinessLogic
 {
@@ -249,6 +251,56 @@ namespace Bagge.Seti.BusinessLogic
 
 		#endregion
 
-		
+
+
+		#region IEmployeeManager Members
+
+		private static readonly Employee _notAuthorizedUser = new Employee { 
+			Id = -1,
+			Username = "NOT_AUTHORIZED",
+			Roles = new List<Role>(), 
+			IsAuthenticated = false };
+
+		public Employee GetNotAuthorizedUser()
+		{
+			return _notAuthorizedUser;
+		}
+
+		#endregion
+
+		#region IEmployeeManager Members
+
+
+		public Employee GetFromActiveDirectory(string server, string user, string password, string usernameToLook)
+		{
+			Check.Require(!string.IsNullOrEmpty(usernameToLook));
+			Check.Require(usernameToLook.Contains('\\'), "UsernameToLook must be in the form domain\\username");
+
+			var context = new PrincipalContext(ContextType.Domain, server, user, password);
+			var userPrincipal = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, usernameToLook.Split('\\')[1]);
+
+			if (userPrincipal == null)
+				return null;
+
+			var directoryEntry = userPrincipal.GetUnderlyingObject() as DirectoryEntry;
+			
+			string otherTelephone = null;
+
+			if(directoryEntry.Properties.Contains("otherTelephone"))
+				otherTelephone = directoryEntry.Properties["otherTelephone"].Value.ToString();
+
+			return new Employee
+			{
+				Firstname = userPrincipal.GivenName,
+				Lastname = userPrincipal.Surname,
+				Email = userPrincipal.EmailAddress,
+				Phone = userPrincipal.VoiceTelephoneNumber,
+				EmergencyPhone = otherTelephone,
+				Roles = new List<Role>(),
+				Username = usernameToLook
+			};
+		}
+
+		#endregion
 	}
 }

@@ -408,4 +408,7 @@
   <data name="Constraint_LowerEqualsThan" xml:space="preserve">
     <value>Menor o igual que</value>
   </data>
+  <data name="AccessDeniedErrorMessage" xml:space="preserve">
+    <value>Usted no posee acceso a la página que intenta acceder</value>
+  </data>
 </root>

@@ -9,11 +9,19 @@ using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.Common;
 using Bagge.Seti.BusinessEntities.Security;
 using System.Text;
+using Bagge.Seti.WebSite.Security;
 
 namespace Bagge.Seti.WebSite
 {
 	public partial class Site : System.Web.UI.MasterPage
 	{
+		protected bool IsWindowsAuthentication
+		{
+			get;
+			set;
+		}
+
+
 		protected override void OnInit(EventArgs e)
 		{
 			StringBuilder script = new StringBuilder();
@@ -29,6 +37,10 @@ namespace Bagge.Seti.WebSite
 
 			SetLoginStatusVisiblity();
 
+			IsWindowsAuthentication = AuthenticationManager.IsWindowsAuthentication(IoCContainer.AuthenticationProvider);
+
+			if (IsWindowsAuthentication)
+				_editProfile.Visible = false;
 			
 		}
 

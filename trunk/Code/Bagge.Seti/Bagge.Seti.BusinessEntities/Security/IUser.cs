@@ -17,5 +17,6 @@ namespace Bagge.Seti.BusinessEntities.Security
 		IList<SecurityException> SecurityExceptions { get; }
 		new bool IsAuthenticated { get; set; }
 		bool IsSuperAdministrator { get; }
+
 	}
 }

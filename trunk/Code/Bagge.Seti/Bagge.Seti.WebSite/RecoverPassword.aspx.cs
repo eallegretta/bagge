@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Bagge.Seti.Common;
+using Bagge.Seti.WebSite.Security;
+using Bagge.Seti.BusinessEntities.Exceptions;
 
 namespace Bagge.Seti.WebSite
 {
@@ -12,6 +14,9 @@ namespace Bagge.Seti.WebSite
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if (AuthenticationManager.IsWindowsAuthentication(IoCContainer.AuthenticationProvider))
+				throw new AccessDeniedException();
+
 			if (!string.IsNullOrEmpty(Request.QueryString["k"]))
 				SendPassword();
 		}

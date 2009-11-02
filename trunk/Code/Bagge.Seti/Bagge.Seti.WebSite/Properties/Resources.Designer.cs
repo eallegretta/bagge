@@ -79,6 +79,15 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El empleado cuyo nombre de usuario es {0} no se ha podido encontrar en el servidor de dominio.
+        /// </summary>
+        internal static string EmployeeNotFoundException {
+            get {
+                return ResourceManager.GetString("EmployeeNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La función cuyo id es # {0} no existe.
         /// </summary>
         internal static string FunctionNotFoundErrorMessage {
@@ -336,6 +345,33 @@ namespace Bagge.Seti.WebSite.Properties {
         internal static string Securizable_TicketList {
             get {
                 return ResourceManager.GetString("Securizable_TicketList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usted no posee acceso al sistema.
+        /// </summary>
+        internal static string StatusCode401Error {
+            get {
+                return ResourceManager.GetString("StatusCode401Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usted no posee acceso a la página que esta intentando acceder.
+        /// </summary>
+        internal static string StatusCode403Error {
+            get {
+                return ResourceManager.GetString("StatusCode403Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La página que esta intentado acceder no existe.
+        /// </summary>
+        internal static string StatusCode404Error {
+            get {
+                return ResourceManager.GetString("StatusCode404Error", resourceCulture);
             }
         }
         

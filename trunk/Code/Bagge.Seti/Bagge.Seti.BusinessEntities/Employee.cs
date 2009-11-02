@@ -16,6 +16,8 @@ namespace Bagge.Seti.BusinessEntities
 	[Securizable("Securizable_Employee", typeof(Employee))]
 	public partial class Employee : AuditablePrimaryKeyDomainObject<Employee, int>, IUser
 	{
+		public static string DEFAULT_PASSWORD_FOR_AD_USERS = "seti";
+
 		[Property]
 		[Securizable("Securizable_Employee_Username", typeof(Employee))]
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Employee_Username", MessageTemplateResourceType = typeof(Employee))]

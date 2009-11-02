@@ -123,6 +123,9 @@
   <data name="CannotUpdateStatusClosedTicketErrorMessage" xml:space="preserve">
     <value>No se puede actualizar el avance de un ticket cuyo estado es cerrado</value>
   </data>
+  <data name="EmployeeNotFoundException" xml:space="preserve">
+    <value>El empleado cuyo nombre de usuario es {0} no se ha podido encontrar en el servidor de dominio</value>
+  </data>
   <data name="FunctionNotFoundErrorMessage" xml:space="preserve">
     <value>La función cuyo id es # {0} no existe</value>
   </data>
@@ -209,6 +212,15 @@
   </data>
   <data name="Securizable_TicketList" xml:space="preserve">
     <value>Listado de Tickets</value>
+  </data>
+  <data name="StatusCode401Error" xml:space="preserve">
+    <value>Usted no posee acceso al sistema</value>
+  </data>
+  <data name="StatusCode403Error" xml:space="preserve">
+    <value>Usted no posee acceso a la página que esta intentando acceder</value>
+  </data>
+  <data name="StatusCode404Error" xml:space="preserve">
+    <value>La página que esta intentado acceder no existe</value>
   </data>
   <data name="UserHasNoAccessErrorMessage" xml:space="preserve">
     <value>El Usuario no posee acceso a la función solicitada</value>

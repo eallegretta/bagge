@@ -6,13 +6,13 @@ using Bagge.Seti.BusinessEntities.Properties;
 
 namespace Bagge.Seti.BusinessEntities.Exceptions
 {
-	public class MethodAccessDeniedException: BusinessRuleException
+	public class AccessDeniedException: BusinessRuleException
 	{
-		public MethodAccessDeniedException()
-			: base(Resources.MethodAccessDeniedErrorMessage)
+		public AccessDeniedException()
+			: base(Resources.AccessDeniedErrorMessage)
 		{
 		}
-		public MethodAccessDeniedException(string message)
+		public AccessDeniedException(string message)
 			: base(message)
 		{
 		}
