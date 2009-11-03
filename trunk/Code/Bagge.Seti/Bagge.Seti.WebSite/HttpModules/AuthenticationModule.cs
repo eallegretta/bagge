@@ -64,7 +64,11 @@ namespace Bagge.Seti.WebSite.HttpModules
 			{
 				try
 				{
-					IoCContainer.AuthenticationProvider.AuthenticationType = app.Context.User.Identity.AuthenticationType;
+					if (app.Context.User is WindowsPrincipal)
+						IoCContainer.AuthenticationProvider.AuthenticationType = "Windows";
+					else
+						IoCContainer.AuthenticationProvider.AuthenticationType = "Forms";
+
 					Employee user = IoCContainer.EmployeeManager.GetByUsername(IoCContainer.AuthenticationProvider.LoggedInUsername);
 					user.IsAuthenticated = true;
 					app.Context.User = new SetiPrincipal(user);

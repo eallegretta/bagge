@@ -21,7 +21,7 @@ namespace Bagge.Seti.WebSite.Security
 
 		public static bool IsWindowsAuthentication(IAuthenticator auth)
 		{
-			return string.Equals(auth.AuthenticationType, "NTLM", StringComparison.InvariantCultureIgnoreCase);
+			return string.Equals(auth.AuthenticationType, "Windows", StringComparison.InvariantCultureIgnoreCase);
 		}
 
 		public System.Security.Principal.IPrincipal LoggedInUser
