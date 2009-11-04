@@ -14,7 +14,7 @@ namespace Bagge.Seti.BusinessEntities
 	[Serializable]
 	[ActiveRecord]
 	[Securizable("Securizable_Employee", typeof(Employee))]
-	public partial class Employee : AuditablePrimaryKeyDomainObject<Employee, int>, IUser
+	public partial class Employee : AuditablePrimaryKeyDomainObject<Employee, int>, IUser, IEquatable<IUser>
 	{
 		public static string DEFAULT_PASSWORD_FOR_AD_USERS = "seti";
 
@@ -225,6 +225,18 @@ namespace Bagge.Seti.BusinessEntities
 					_securityExceptions = GetDistinctSecurityExceptions();
 				return _securityExceptions;
 			}
+		}
+
+		#endregion
+
+		#region IEquatable<IUser> Members
+
+		public bool Equals(IUser other)
+		{
+			if (other == null)
+				return false;
+
+			return this.Id == other.Id;
 		}
 
 		#endregion

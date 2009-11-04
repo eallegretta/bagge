@@ -9,6 +9,7 @@ using Bagge.Seti.BusinessEntities.Exceptions;
 using System.Security.Principal;
 using Bagge.Seti.BusinessEntities;
 using Bagge.Seti.WebSite.Security;
+using System.Web.SessionState;
 
 namespace Bagge.Seti.WebSite.HttpModules
 {
@@ -30,7 +31,11 @@ namespace Bagge.Seti.WebSite.HttpModules
 		{
 			HttpApplication app = (HttpApplication)sender;
 
-			try
+			if (!(app.Context.Handler is IRequiresSessionState))
+				return;
+
+
+			if(AuthenticationManager.IsWindowsAuthentication(IoCContainer.AuthenticationProvider))
 			{
 				if (app.Session["IsAuthenticated"] == null)
 				{
@@ -45,14 +50,12 @@ namespace Bagge.Seti.WebSite.HttpModules
 						user.Phone = employeeWithUpdatedInfo.Phone;
 						user.EmergencyPhone = employeeWithUpdatedInfo.EmergencyPhone;
 						user.Email = employeeWithUpdatedInfo.Email;
+						user.Password = null;
 						IoCContainer.EmployeeManager.UpdateProfile(user);
 					}
 
 					app.Session["IsAuthenticated"] = true;
 				}
-			}
-			catch (HttpException)
-			{
 			}
 		}
 
