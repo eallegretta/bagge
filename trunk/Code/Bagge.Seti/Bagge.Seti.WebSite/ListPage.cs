@@ -38,9 +38,9 @@ namespace Bagge.Seti.WebSite
 			SetIndices();
 		}
 
-		int? _deleteFieldIndex = null;
-		int? _editFieldIndex = null;
-		int? _viewFieldIndex = null;
+		protected int? DeleteFieldIndex { get; set; }
+		protected int? EditFieldIndex { get; set; }
+		protected int? ViewFieldIndex { get; set; }
 
 		void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
 		{
@@ -49,10 +49,10 @@ namespace Bagge.Seti.WebSite
 				var auditable = e.Row.DataItem as IAuditable;
 				if (auditable != null)
 				{
-					if (_editFieldIndex.HasValue && auditable.Deleted)
-						e.Row.Cells[_editFieldIndex.Value].Visible = false;
-					if (_deleteFieldIndex.HasValue && auditable.Deleted)
-						e.Row.Cells[_deleteFieldIndex.Value].Visible = false;
+					if (EditFieldIndex.HasValue && auditable.Deleted)
+						e.Row.Cells[EditFieldIndex.Value].Controls.Clear();
+					if (DeleteFieldIndex.HasValue && auditable.Deleted)
+						e.Row.Cells[DeleteFieldIndex.Value].Controls.Clear();
 				}
 				SetRowAccessibility(e.Row);
 			}
@@ -102,11 +102,11 @@ namespace Bagge.Seti.WebSite
 				if (field != null)
 				{
 					if (field.MethodName == "Get")
-						_viewFieldIndex = index;
+						ViewFieldIndex = index;
 					if (field.MethodName == "Update")
-						_editFieldIndex = index;
+						EditFieldIndex = index;
 					if (field.MethodName == "Delete")
-						_deleteFieldIndex = index;
+						DeleteFieldIndex = index;
 				}
 			}
 		}

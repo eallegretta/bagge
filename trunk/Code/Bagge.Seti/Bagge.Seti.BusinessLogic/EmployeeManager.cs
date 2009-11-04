@@ -33,7 +33,17 @@ namespace Bagge.Seti.BusinessLogic
 			_ticketManager = ticketManager;
 		}
 
+		public override Employee Get(int id)
+		{
+			var employee = base.Get(id);
+			if (employee.Deleted)
+				throw new ObjectNotFoundException();
+			return employee;
+		}
+
 		#region IEmployeeManager Members
+
+		
 
 		[Securizable("Securizable_EmployeeManager_Authenticate", typeof(EmployeeManager))]
 		public bool Authenticate(string username, string password)
@@ -146,11 +156,20 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(!propertyValue.IsNullOrEmpty());
 
-			Employee[] employees = Dao.FindAllByProperty(propertyName, propertyValue, null, null);
+			var properties = new List<FilterPropertyValue>();
+			properties.Add(propertyName, propertyValue);
+			properties.Add(NotDeletedFilter);
+
+			Employee[] employees = Dao.FindAllByProperties(properties, null, null);
 			if (employees.Length > 1)
 				throw new BusinessRuleException(Resources.MultipleUsernamesErrorMessage);
 			else if (employees.Length == 1)
-				return employees[0];
+			{
+				var employee = employees[0];
+				if (employee.Deleted)
+					throw new ObjectNotFoundException(string.Format(errorMessage, propertyValue));
+				return employee;
+			}
 			else
 				throw new ObjectNotFoundException(string.Format(errorMessage, propertyValue));
 		}

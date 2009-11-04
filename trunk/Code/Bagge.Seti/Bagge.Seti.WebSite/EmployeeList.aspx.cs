@@ -22,7 +22,26 @@ namespace Bagge.Seti.WebSite
 		{
 			_presenter = new EmployeeListPresenter(this,
 				IoCContainer.EmployeeManager,
-				IoCContainer.EmployeeCategoryManager);
+				IoCContainer.EmployeeCategoryManager,
+				IoCContainer.User.Identity as IUser);
+		}
+
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+			Grid.RowDataBound += new GridViewRowEventHandler(Grid_RowDataBound);
+		}
+
+		void Grid_RowDataBound(object sender, GridViewRowEventArgs e)
+		{
+			if (e.Row.RowType == DataControlRowType.DataRow)
+			{
+				if (!_presenter.CanDeleteEmployee(e.Row.DataItem as Employee))
+				{
+					if (DeleteFieldIndex.HasValue)
+						e.Row.Cells[DeleteFieldIndex.Value].Controls.Clear();
+				}
+			}
 		}
 
 

@@ -37,7 +37,7 @@ namespace Bagge.Seti.BusinessLogic
 		#region IManager<T> Members
 
 		[SecurizableCrud("Securizable_GenericManager_Get", typeof(RandomPassword), FunctionAction.List)]
-		public T Get(PK id)
+		public virtual T Get(PK id)
 		{
 			Check.Require(!id.Equals(default(PK)), string.Format(Resources.IdCannotBeDefault, default(PK)));
 
