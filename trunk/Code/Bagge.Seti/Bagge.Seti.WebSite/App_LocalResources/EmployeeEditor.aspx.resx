@@ -165,6 +165,9 @@
   <data name="RolesField.HeaderText" xml:space="preserve">
     <value>Roles</value>
   </data>
+  <data name="RolesLiteral.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="UsernameField.HeaderText" xml:space="preserve">
     <value>Nombre de Usuario *</value>
   </data>

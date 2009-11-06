@@ -4,6 +4,8 @@
 </asp:Content>
 
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
+	<script type="text/javascript" src="Scripts/PagedCheckBoxList.js"></script>
+	<script type="text/javascript" src="Scripts/PagedBulletedList.js"></script>
 	<script type="text/javascript">
 		onLoadFunctions["employeeEditor"] = function() {
 			<%if(_details.FindControl("_usernameInvalidVal") != null){%>
@@ -78,10 +80,34 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="Roles" meta:resourcekey="RolesField">
 				<EditItemTemplate>
-					<asp:CheckBoxList ID="_roles" runat="server" DataTextField="Name" DataValueField="Id"></asp:CheckBoxList>
+					<asp:CheckBoxList ID="_roles" runat="server" CssClass="roleList" DataTextField="Name" DataValueField="Id"></asp:CheckBoxList>
+					<script type="text/javascript">
+						$(".roleList").pagedCheckBoxList(
+								{
+									title: '<asp:Literal id="_rolesTitle" meta:resourcekey="RolesLiteral" runat="server" />',
+									headerRowCssClass: 'gridHeader',
+									rowCssClass: 'gridRow',
+									alternateRowCssClass: 'gridRowAlternate',
+									pagerCssClass: 'gridPager',
+									pageClauseText: '<%=Resources.WebSite.Controls_Pager_PageClause%>',
+									itemsCountText: '<%=Resources.WebSite.Controls_Pager_ItemsCount%>'
+								});
+					</script>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<asp:BulletedList ID="_roles" runat="server" DataTextField="Name"></asp:BulletedList>
+					<asp:BulletedList ID="_roles" CssClass="roleList" runat="server" DataTextField="Name"></asp:BulletedList>
+					<script type="text/javascript">
+						$(".roleList").pagedBulletedList(
+							{
+								title: '<asp:Literal id="_rolesTitle" meta:resourcekey="RolesLiteral" runat="server" />',
+								headerRowCssClass: 'gridHeader',
+								rowCssClass: 'gridRow',
+								alternateRowCssClass: 'gridRowAlternate',
+								pagerCssClass: 'gridPager',
+								pageClauseText: '<%=Resources.WebSite.Controls_Pager_PageClause%>',
+								itemsCountText: '<%=Resources.WebSite.Controls_Pager_ItemsCount%>'
+							});
+					</script>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 		</Fields>

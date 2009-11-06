@@ -24,7 +24,12 @@
 		this._txt.value = date;
 	}
 	this.getSelectedDate = function() {
-		return Date.parseLocale(this._txt.value);
+		var date = Date.parseLocale(this._txt.value);
+		if (date != null) {
+			if (date.getFullYear() < 1950 || date.getFullYear() > 2030)
+				return null;
+		}
+		return date;
 	}
 
 	this.isValid = function() {

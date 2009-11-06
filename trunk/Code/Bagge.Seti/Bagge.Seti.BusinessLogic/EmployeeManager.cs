@@ -218,25 +218,31 @@ namespace Bagge.Seti.BusinessLogic
 		{
 			Check.Require(instance != null);
 
+			var employeeFromDb = Get(instance.Id);
+
 			if (!IsDeleteOrUndelete)
 			{
 				SessionScopeUtils.FlushSessionScope();
+				
+				employeeFromDb.Firstname = instance.Firstname;
+				employeeFromDb.Lastname = instance.Lastname;
+				employeeFromDb.Email = instance.Email;
+				employeeFromDb.Phone = instance.Phone;
+				employeeFromDb.EmergencyPhone = instance.EmergencyPhone;
+				employeeFromDb.Category = instance.Category;
+				employeeFromDb.Roles = instance.Roles;
 
 				if (!string.IsNullOrEmpty(instance.Password))
-					instance.Password = instance.Password.ToMD5();
-				else
-				{
-					Employee userFromDb = Get(instance.Id);
-					instance.Password = userFromDb.Password;
-				}
+					employeeFromDb.Password = instance.Password.ToMD5();
+				
 			}
 			else
 			{
-				CheckTicketRelationship(instance);
+				CheckTicketRelationship(employeeFromDb);
 			}
 
 
-			base.Update(instance);
+			base.Update(employeeFromDb);
 		}
 
 		

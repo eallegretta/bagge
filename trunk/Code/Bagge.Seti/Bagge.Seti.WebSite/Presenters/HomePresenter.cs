@@ -18,6 +18,7 @@ using Bagge.Seti.Security.BusinessEntities;
 using Bagge.Seti.DesignByContract;
 using Bagge.Seti.WebSite.Models;
 using Bagge.Seti.Common;
+using System.Collections.Generic;
 
 namespace Bagge.Seti.WebSite.Presenters
 {
@@ -160,9 +161,9 @@ namespace Bagge.Seti.WebSite.Presenters
 
 
 			if (!((Employee)_user).IsTechnician)
-				_view.DataSource = GetViewModelDataSource(_ticketManager.FindAllByExecutionWeek(start, end));
+				_view.DataSource = GetViewModelDataSource(GetAllowedTickets(_ticketManager.FindAllByExecutionWeek(start, end)));
 			else
-				_view.DataSource = GetViewModelDataSource(_ticketManager.FindAllByExecutionWeekAndTechnician(start, end, _user.Id));
+				_view.DataSource = GetViewModelDataSource(GetAllowedTickets(_ticketManager.FindAllByExecutionWeekAndTechnician(start, end, _user.Id)));
 			_view.DataBind();
 
 			_view.CurrentDate = start;
@@ -171,6 +172,20 @@ namespace Bagge.Seti.WebSite.Presenters
 				_view.CurrentDateText = string.Format( MonthDisplayFormat, _view.CurrentDate);
 			else
 				_view.CurrentDateText = string.Format(WeekDisplayFormat, start, end);
+		}
+
+		private Ticket[] GetAllowedTickets(Ticket[] tickets)
+		{
+			if (_user.IsSuperAdministrator)
+				return tickets;
+
+			var ticketsToShow = new List<Ticket>();
+			foreach (var ticket in tickets)
+			{
+				if (HasAccess(ticket, typeof(TicketList), FunctionAction.List))
+					ticketsToShow.Add(ticket);
+			}
+			return ticketsToShow.ToArray();
 		}
 
 		private HomeViewModel[] GetViewModelDataSource(Ticket[] tickets)
@@ -188,7 +203,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			if (_user.IsSuperAdministrator)
 				return true;
 
-			return HasAccess(FunctionAction.Get);
+			return HasAccess(typeof(TicketEditor), FunctionAction.Get);
 
 		}
 
@@ -197,19 +212,19 @@ namespace Bagge.Seti.WebSite.Presenters
 			if (_user.IsSuperAdministrator)
 				return true;
 
-			return HasAccess(ticket, FunctionAction.Get);
+			return HasAccess(ticket, typeof(TicketEditor), FunctionAction.Get);
 		}
 
-		private bool HasAccess(Ticket instance, FunctionAction action)
+		private bool HasAccess(Ticket instance, Type functionType, FunctionAction action)
 		{
-			var function = _functionManager.Get(typeof(TicketEditor), action);
+			var function = _functionManager.Get(functionType, action);
 			var exceptions = _securityManager.FindAllSecurityExceptions(_user, function.Id);
 			return _securityManager.UserHasAccessToInstance(instance, exceptions);
 		}
 
-		private bool HasAccess(FunctionAction action)
+		private bool HasAccess(Type functionType, FunctionAction action)
 		{
-			return _functionManager.UserHasAccessToFunction(_user, typeof(TicketEditor), action);
+			return _functionManager.UserHasAccessToFunction(_user, functionType, action);
 		}
 
 		public bool CanEditTickets()
@@ -220,7 +235,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			if (((Employee)_user).IsTechnician)
 				return false;
 
-			return HasAccess(FunctionAction.Update);
+			return HasAccess(typeof(TicketEditor), FunctionAction.Update);
 		}
 
 		public bool CanEditTicket(Ticket ticket)
@@ -228,7 +243,7 @@ namespace Bagge.Seti.WebSite.Presenters
 			if (_user.IsSuperAdministrator)
 				return true;
 
-			return HasAccess(ticket, FunctionAction.Update);
+			return HasAccess(ticket, typeof(TicketEditor), FunctionAction.Update);
 		}
 
 		public bool CanUpdateProgressTickets()
@@ -237,9 +252,9 @@ namespace Bagge.Seti.WebSite.Presenters
 				return true;
 
 
-			if (((Employee)_user).IsTechnician 
-				&& HasAccess(FunctionAction.Get) 
-				&& HasAccess(FunctionAction.Update))
+			if (((Employee)_user).IsTechnician
+				&& HasAccess(typeof(TicketEditor), FunctionAction.Get)
+				&& HasAccess(typeof(TicketEditor), FunctionAction.Update))
 				return true;
 
 			return false;

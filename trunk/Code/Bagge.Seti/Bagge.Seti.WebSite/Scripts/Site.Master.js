@@ -103,7 +103,7 @@ function getWindowDimensions() {
 
 function attachStyleToValidators() {
     try {
-        $(Page_Validators).each(function() {
+    	$(Page_Validators).each(function() {
             setValidationTargetCssClass(this);
             $(this)
         .bind("DOMAttrModified propertychange", function(e) {
@@ -119,7 +119,7 @@ function attachStyleToValidators() {
 }
 
 function setValidationTargetCssClass(validator) {
-    var controlToValidate = $("#" + validator.controltovalidate);
+	var controlToValidate = $("#" + validator.controltovalidate);
     var validators = controlToValidate.attr("Validators");
     if (validators == null) return;
 

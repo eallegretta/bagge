@@ -24,6 +24,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		[Property]
 		[Securizable("Securizable_Ticket_CreationDate", typeof(Ticket))]
+		//[DateTimeValidator(MessageTemplateResourceName = "Validators_Date", MessageTemplateResourceType = typeof(Ticket))]
 		public DateTime CreationDate
 		{
 			get;
@@ -32,6 +33,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		[Property]
 		[Securizable("Securizable_Ticket_ExecutionDate", typeof(Ticket))]
+		[DateTimeValidator(MessageTemplateResourceName = "Validators_Date", MessageTemplateResourceType = typeof(Ticket))]
 		public DateTime? ExecutionDateTime
 		{
 			get;

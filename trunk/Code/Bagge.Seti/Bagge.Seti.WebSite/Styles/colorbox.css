@@ -17,7 +17,7 @@
     The following rules are ordered and tabbed in a way that represents the order/nesting of the generated HTML, 
     in hope that this will make the relationship easier to understand. Thanks, jack@colorpowered.com
 */
-#cboxOverlay{background:url(images/overlay.png) 0 0 repeat;}
+#cboxOverlay{/*background:url(../images/overlay.png) 0 0 repeat;*/}
 
 #colorbox{}
 	#cboxTopLeft{width:21px; height:21px; background:url(../images/controls.png) -100px 0 no-repeat;}
