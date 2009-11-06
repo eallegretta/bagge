@@ -73,7 +73,7 @@ select
 
 
 
-input.error 
+input.error, textarea.error
 {
 	border:1px solid #990000;
 	background-color:#FF6D6D;

@@ -3,11 +3,15 @@ using Castle.ActiveRecord;
 using Bagge.Seti.Security.BusinessEntities;
 using System;
 using Bagge.Seti.BusinessEntities.Validators;
+using Bagge.Seti.BusinessEntities.Security;
+using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+using Microsoft.Practices.EnterpriseLibrary.Validation;
 
 namespace Bagge.Seti.BusinessEntities
 {
 	[ActiveRecord]
 	[Serializable]
+	[Securizable("Securizable_Provider", typeof(Provider))]
 	public partial class Provider : AuditablePrimaryKeyWithNameDomainObject<Provider, int>
 	{
 
@@ -23,6 +27,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[BelongsTo("CalificationId")]
+		[Securizable("Securizable_Provider_Calification", typeof(Provider))]
 		public ProviderCalification Calification
 		{
 			get;
@@ -30,6 +35,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[BelongsTo("DistrictId")]
+		[Securizable("Securizable_Provider_District", typeof(Provider))]
 		public District District
 		{
 			get;
@@ -38,6 +44,10 @@ namespace Bagge.Seti.BusinessEntities
 
 
 		[Property]
+		[Securizable("Securizable_Provider_CUIT", typeof(Provider))]
+		[ValidatorComposition(CompositionType.Or)]
+		[RequiredStringValidator(Negated = true)]
+		[RegexValidator("Validators_Customer_CUIT_Pattern", typeof(Provider), MessageTemplateResourceName = "Validators_Customer_CUIT", MessageTemplateResourceType = typeof(Provider))]
 		public string CUIT
 		{
 			get;
@@ -45,12 +55,14 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Provider_Company", typeof(Provider))]
 		public string Company
 		{
 			get;
 			set;
 		}
 
+		[Securizable("Securizable_Provider_FullAddress", typeof(Provider))]
 		public string FullAddress
 		{
 			get
@@ -68,6 +80,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		
 		public string Address
 		{
 			get;
@@ -75,6 +88,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Provider_Floor", typeof(Provider))]
 		public char? Floor
 		{
 			get;
@@ -82,6 +96,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property("Departament")]
+		[Securizable("Securizable_Provider_Apartment", typeof(Provider))]
 		public char? Apartment
 		{
 			get;
@@ -89,6 +104,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Provider_ZipCode", typeof(Provider))]
 		public string ZipCode
 		{
 			get;
@@ -98,6 +114,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Provider_PrimaryPhone_Required", MessageTemplateResourceType = typeof(Provider))]
 		[Property("Phone")]
+		[Securizable("Securizable_Provider_PrimaryPhone", typeof(Provider))]
 		public string PrimaryPhone
 		{
 			get;
@@ -106,6 +123,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Provider_SecondaryPhone_Required", MessageTemplateResourceType = typeof(Provider))]
 		[Property]
+		[Securizable("Securizable_Provider_SecondaryPhone", typeof(Provider))]
 		public string SecondaryPhone
 		{
 			get;
@@ -113,6 +131,7 @@ namespace Bagge.Seti.BusinessEntities
 		}
 
 		[Property]
+		[Securizable("Securizable_Provider_FaxPhone", typeof(Provider))]
 		public string FaxPhone
 		{
 			get;
@@ -121,6 +140,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		[EmailValidator(Required = false, MessageTemplateResourceName = "Validators_Provider_Email", MessageTemplateResourceType = typeof(Provider))]
 		[Property]
+		[Securizable("Securizable_Provider_Email", typeof(Provider))]
 		public string Email
 		{
 			get;
@@ -129,6 +149,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		[UrlValidator(MessageTemplateResourceName = "Validators_Provider_Website", MessageTemplateResourceType = typeof(Provider))]
 		[Property]
+		[Securizable("Securizable_Provider_WebSite", typeof(Provider))]
 		public string WebSite
 		{
 			get;
@@ -137,6 +158,7 @@ namespace Bagge.Seti.BusinessEntities
 
 		[RequiredStringValidator(MessageTemplateResourceName = "Validators_Provider_ContactName_Required", MessageTemplateResourceType = typeof(Provider))]
 		[Property]
+		[Securizable("Securizable_Provider_ContactName", typeof(Provider))]
 		public string ContactName
 		{
 			get;

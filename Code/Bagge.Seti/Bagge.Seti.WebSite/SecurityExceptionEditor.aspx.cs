@@ -118,8 +118,8 @@ namespace Bagge.Seti.WebSite
 			if (property is DropDownList)
 			{
 				string value = ((DropDownList)property).SelectedValue;
-				if (value == string.Empty)
-					value = Request.Form[property.UniqueID];
+				/*if (value == string.Empty)
+					value = Request.Form[property.UniqueID];*/
 				return value;
 			}
 			else

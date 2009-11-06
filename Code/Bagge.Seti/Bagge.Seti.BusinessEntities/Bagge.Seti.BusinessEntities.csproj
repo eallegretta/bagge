@@ -138,6 +138,8 @@
     <Compile Include="TicketEmployee.cs" />
     <Compile Include="TicketStatus.cs" />
     <Compile Include="Validators\AvoidValidationAttribute.cs" />
+    <Compile Include="Validators\DateTimeValidator.cs" />
+    <Compile Include="Validators\DateTimeValidatorAttribute.cs" />
     <Compile Include="Validators\EmailValidator.cs" />
     <Compile Include="Validators\EmailValidatorAttribute.cs" />
     <Compile Include="Validators\RequiredStringValidator.cs" />

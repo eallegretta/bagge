@@ -132,4 +132,7 @@
   <data name="FunctionsField.HeaderText" xml:space="preserve">
     <value>Funciones</value>
   </data>
+  <data name="FunctionsLiteral.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
 </root>

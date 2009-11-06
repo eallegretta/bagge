@@ -411,4 +411,55 @@
   <data name="AccessDeniedErrorMessage" xml:space="preserve">
     <value>Usted no posee acceso a la página que intenta acceder</value>
   </data>
+  <data name="Securizable_Provider" xml:space="preserve">
+    <value>Proveedor</value>
+  </data>
+  <data name="Validators_Date" xml:space="preserve">
+    <value>La fecha debe estar entre 01/01/1950 y 31/12/2030</value>
+  </data>
+  <data name="Securizable_Provider_Apartment" xml:space="preserve">
+    <value>Departamento</value>
+  </data>
+  <data name="Securizable_Provider_Calification" xml:space="preserve">
+    <value>Calificación</value>
+  </data>
+  <data name="Securizable_Provider_Company" xml:space="preserve">
+    <value>Empresa</value>
+  </data>
+  <data name="Securizable_Provider_ContactName" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="Securizable_Provider_CUIT" xml:space="preserve">
+    <value>CUIT</value>
+  </data>
+  <data name="Securizable_Provider_District" xml:space="preserve">
+    <value>Localidad</value>
+  </data>
+  <data name="Securizable_Provider_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Securizable_Provider_FaxPhone" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="Securizable_Provider_Floor" xml:space="preserve">
+    <value>Piso</value>
+  </data>
+  <data name="Securizable_Provider_FullAddress" xml:space="preserve">
+    <value>Dirección Completa</value>
+  </data>
+  <data name="Securizable_Provider_PrimaryPhone" xml:space="preserve">
+    <value>Teléfono Primario</value>
+  </data>
+  <data name="Securizable_Provider_SecondaryPhone" xml:space="preserve">
+    <value>Teléfono Secundario</value>
+  </data>
+  <data name="Securizable_Provider_WebSite" xml:space="preserve">
+    <value>WebSite</value>
+  </data>
+  <data name="Securizable_Provider_ZipCode" xml:space="preserve">
+    <value>Código Postal</value>
+  </data>
+  <data name="GenericErrorMessage" xml:space="preserve">
+    <value>Ha ocurrido un error en la aplicación, por favor contacte al administrador del sistema</value>
+  </data>
 </root>

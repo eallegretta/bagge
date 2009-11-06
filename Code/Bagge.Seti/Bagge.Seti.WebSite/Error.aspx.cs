@@ -33,8 +33,8 @@ namespace Bagge.Seti.WebSite
 				var newEx = GetBusinessRuleException(ex);
 				if (newEx != null)
 					ShowBusinessRuleErrorMessage(newEx);
-				else
-					ShowErrorMessage(ex);
+				/*else
+					ShowErrorMessage(ex);*/
 			}
 			else if (Request.QueryString["StatusCode"] != null)
 			{

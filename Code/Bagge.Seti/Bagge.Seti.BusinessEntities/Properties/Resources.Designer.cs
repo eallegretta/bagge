@@ -151,6 +151,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error en la aplicación, por favor contacte al administrador del sistema.
+        /// </summary>
+        internal static string GenericErrorMessage {
+            get {
+                return ResourceManager.GetString("GenericErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Usted no posee permisos para ejecutar la acción que desea realizar..
         /// </summary>
         internal static string MethodAccessDeniedErrorMessage {
@@ -592,6 +601,141 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proveedor.
+        /// </summary>
+        internal static string Securizable_Provider {
+            get {
+                return ResourceManager.GetString("Securizable_Provider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departamento.
+        /// </summary>
+        internal static string Securizable_Provider_Apartment {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_Apartment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calificación.
+        /// </summary>
+        internal static string Securizable_Provider_Calification {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_Calification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empresa.
+        /// </summary>
+        internal static string Securizable_Provider_Company {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacto.
+        /// </summary>
+        internal static string Securizable_Provider_ContactName {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_ContactName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CUIT.
+        /// </summary>
+        internal static string Securizable_Provider_CUIT {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_CUIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Localidad.
+        /// </summary>
+        internal static string Securizable_Provider_District {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_District", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string Securizable_Provider_Email {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fax.
+        /// </summary>
+        internal static string Securizable_Provider_FaxPhone {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_FaxPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Piso.
+        /// </summary>
+        internal static string Securizable_Provider_Floor {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_Floor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dirección Completa.
+        /// </summary>
+        internal static string Securizable_Provider_FullAddress {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_FullAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teléfono Primario.
+        /// </summary>
+        internal static string Securizable_Provider_PrimaryPhone {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_PrimaryPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Teléfono Secundario.
+        /// </summary>
+        internal static string Securizable_Provider_SecondaryPhone {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_SecondaryPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WebSite.
+        /// </summary>
+        internal static string Securizable_Provider_WebSite {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_WebSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Código Postal.
+        /// </summary>
+        internal static string Securizable_Provider_ZipCode {
+            get {
+                return ResourceManager.GetString("Securizable_Provider_ZipCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calificación de Proveedor.
         /// </summary>
         internal static string Securizable_ProviderCalification {
@@ -786,6 +930,15 @@ namespace Bagge.Seti.BusinessEntities.Properties {
         internal static string Validators_Customer_Email {
             get {
                 return ResourceManager.GetString("Validators_Customer_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La fecha debe estar entre 01/01/1950 y 31/12/2030.
+        /// </summary>
+        internal static string Validators_Date {
+            get {
+                return ResourceManager.GetString("Validators_Date", resourceCulture);
             }
         }
         

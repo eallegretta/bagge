@@ -6,7 +6,8 @@
 <%@ Register Src="~/Controls/Calendar.ascx" TagPrefix="seti" TagName="Calendar" %>
 <%@ Register TagPrefix="seti" TagName="ProductTicketSelectionGrid" Src="~/Controls/ProductTicketSelectionGrid.ascx" %>
 <asp:Content ID="_head" runat="server" ContentPlaceHolderID="_head">
-
+	<script type="text/javascript" src="Scripts/PagedCheckBoxList.js"></script>
+	<script type="text/javascript" src="Scripts/PagedBulletedList.js"></script>
 	<script type="text/javascript">
 		function ValidateCustomerArrival(sender, args) {
 			var nums = args.Value.split(":");
@@ -46,7 +47,7 @@
 					<%#Eval("CreationDate", "{0:d}")%>
 				</ItemTemplate>
 				<InsertItemTemplate>
-				    <%#DateTime.Today%>
+				    <%#DateTime.Today.ToString("d")%>
 				</InsertItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="ExecutionDateTime" meta:resourcekey="ExecutionDateField">
@@ -61,7 +62,8 @@
 			<seti:SecureTemplateField PropertyName="ExecutionDateTime" meta:resourcekey="CustomerArrivalField">
 				<EditItemTemplate>
 					<seti:MaskedTextBox ID="_customerArrival" runat="server" Mask="99:99" EnableTheming="false" Text='<%#Eval("ExecutionDateTime", "{0:HH:mm}")%>' CssClass="textBox smallData"></seti:MaskedTextBox>
-					<asp:CustomValidator ID="_customerArrivalVal" ControlToValidate="_customerArrival" runat="server" ValidateEmptyText="true"
+					<asp:RequiredFieldValidator ID="_customerArrivalReqVal" ControlToValidate="_customerArrival" runat="server" Display="Dynamic" meta:resourcekey="CustomerArrivalReqValidator"></asp:RequiredFieldValidator>
+					<asp:CustomValidator ID="_customerArrivalVal" ControlToValidate="_customerArrival" runat="server" ValidateEmptyText="False"
 						ClientValidationFunction="ValidateCustomerArrival" EnableClientScript="true"
 						OnServerValidate="_customerArrivalVal_ServerValidate" meta:resourcekey="CustomerArrivalValidator">
 					</asp:CustomValidator>
@@ -102,8 +104,20 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="Employees" meta:resourcekey="EmployeesField">
 				<EditItemTemplate>
-					<asp:CheckBoxList ID="_employees" runat="server" DataValueField="Id" DataTextField="Fullname">
+					<asp:CheckBoxList ID="_employees" CssClass="employeesList" runat="server" DataValueField="Id" DataTextField="Fullname">
 					</asp:CheckBoxList>
+					<script type="text/javascript">
+						$(".employeesList").pagedCheckBoxList(
+								{
+									title: '<asp:Literal id="_employeesTitle" meta:resourcekey="EmployeesLiteral" runat="server" />',
+									headerRowCssClass: 'gridHeader', 
+									rowCssClass: 'gridRow', 
+									alternateRowCssClass: 'gridRowAlternate',
+									pagerCssClass: 'gridPager',
+									pageClauseText: '<%=Resources.WebSite.Controls_Pager_PageClause%>',
+									itemsCountText: '<%=Resources.WebSite.Controls_Pager_ItemsCount%>'
+								});
+					</script>
 					<asp:TextBox ID="_validationTarget" runat="server" Visible="false" />
 					<asp:CustomValidator ID="_employeesValidator" ValidateEmptyText="true" OnServerValidate="_employeesValidator_ServerValidate"
 						ControlToValidate="_validationTarget" runat="server" EnableClientScript="false"
@@ -111,8 +125,20 @@
 					</asp:CustomValidator>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<asp:BulletedList ID="_employees" runat="server" DataValueField="Id" DataTextField="Fullname">
+					<asp:BulletedList ID="_employees" runat="server"  CssClass="employeesList" DataValueField="Id" DataTextField="Fullname">
 					</asp:BulletedList>
+					<script type="text/javascript">
+						$(".employeesList").pagedBulletedList(
+								{
+									title: '<asp:Literal id="_employeesTitle" meta:resourcekey="EmployeesLiteral" runat="server" />',
+									headerRowCssClass: 'gridHeader',
+									rowCssClass: 'gridRow',
+									alternateRowCssClass: 'gridRowAlternate',
+									pagerCssClass: 'gridPager',
+									pageClauseText: '<%=Resources.WebSite.Controls_Pager_PageClause%>',
+									itemsCountText: '<%=Resources.WebSite.Controls_Pager_ItemsCount%>'
+								});
+					</script>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="Products" meta:resourcekey="ProductsField">

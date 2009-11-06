@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Bagge.Seti.Common;
 using System.Threading;
+using System.Web.SessionState;
+using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Storage
 {
