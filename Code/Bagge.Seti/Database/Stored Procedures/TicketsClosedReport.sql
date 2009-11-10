@@ -39,11 +39,11 @@ begin
 	select	C.Lastname + ', ' + C.Firstname,
 			E.Lastname + ', ' + E.Firstname,
 			count(T.Id),
-			sum(EstimatedDuration),
-			sum(RealDuration),
+			sum(isnull(EstimatedDuration,0)),
+			sum(isnull(RealDuration,0)),
 			case 
-				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
-				when sum(EstimatedDuration) = 0 then 0
+				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
+				when sum(isnull(EstimatedDuration,0)) = 0 then 0
 			end
 	from	Ticket T 
 				inner join Employee C on T.EmployeeCreatorId = C.Id
@@ -70,11 +70,11 @@ begin
 	select	Admin + ' - Total',
 			'',
 			sum(Tickets),
-			sum(EstimatedDuration),
-			sum(RealDuration),
+			sum(isnull(EstimatedDuration,0)),
+			sum(isnull(RealDuration,0)),
 			case 
-				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
-				when sum(EstimatedDuration) = 0 then 0
+				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
+				when sum(isnull(EstimatedDuration,0)) = 0 then 0
 			end
 	from #tickets
 	group by	Admin
@@ -86,11 +86,11 @@ insert into #tickets
 	select	C.Lastname + ', ' + C.Firstname,
 			E.Lastname + ', ' + E.Firstname,
 			count(T.Id),
-			sum(EstimatedDuration),
-			sum(RealDuration),
+			sum(isnull(EstimatedDuration,0)),
+			sum(isnull(RealDuration,0)),
 			case 
-				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
-				when sum(EstimatedDuration) = 0 then 0
+				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
+				when sum(isnull(EstimatedDuration,0)) = 0 then 0
 			end
 	from	Ticket T 
 				inner join Employee C on T.EmployeeCreatorId = C.Id
@@ -117,11 +117,11 @@ insert into #tickets
 	select	Technician + ' - Total',
 			'',
 			sum(Tickets),
-			sum(EstimatedDuration),
-			sum(RealDuration),
+			sum(isnull(EstimatedDuration,0)),
+			sum(isnull(RealDuration,0)),
 			case 
-				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
-				when sum(EstimatedDuration) = 0 then 0
+				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
+				when sum(isnull(EstimatedDuration,0)) = 0 then 0
 			end
 	from #tickets
 	group by	Technician
