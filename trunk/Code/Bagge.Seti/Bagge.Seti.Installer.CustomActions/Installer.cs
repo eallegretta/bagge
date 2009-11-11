@@ -12,7 +12,7 @@ namespace Bagge.Seti.Installer.CustomActions
 	[RunInstaller(true)]
 	public partial class Installer : System.Configuration.Install.Installer
 	{
-		private CustomAction[] _actions = new CustomAction[] { new CreateDatabaseAction() };
+		private CustomAction[] _actions = new CustomAction[] { };
 
 		public Installer()
 		{
