@@ -153,12 +153,13 @@
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField meta:resourcekey="BudgetField" PropertyName="Budget">
 				<EditItemTemplate>
+					<%=System.Globalization.CultureInfo.CurrentUICulture.NumberFormat.CurrencySymbol%>
 					<asp:TextBox ID="_budget" runat="server" Text='<%#Bind("Budget")%>' EnableTheming="false" CssClass="numericMask textBox numeric mediumData"></asp:TextBox>
 					<ajax:MaskedEditExtender ID="_budgetMask" runat="server" TargetControlID="_budget" InputDirection="RightToLeft" Mask="999999999.99" MaskType="Number"></ajax:MaskedEditExtender>
 					<asp:CustomValidator ID="_budgetValidator" runat="server" ControlToValidate="_budget" ValidateEmptyText="true" OnServerValidate="_budgetValidator_ServerValidate" meta:resourcekey="BudgetValidator"></asp:CustomValidator>
 				</EditItemTemplate>
 				<ItemTemplate>
-					<%#Eval("Budget")%>				
+					<%=System.Globalization.CultureInfo.CurrentUICulture.NumberFormat.CurrencySymbol%><%#Eval("Budget")%>				
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureBoundField DataField="Notes" meta:resourcekey="NotesField" TextMode="Multiline"></seti:SecureBoundField>

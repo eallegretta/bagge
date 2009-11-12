@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Practices.Web.UI.WebControls;
 using Bagge.Seti.WebSite.Helpers;
+using System.Reflection;
+using System.IO;
 
 namespace Bagge.Seti.WebSite.Reports
 {
@@ -23,7 +25,24 @@ namespace Bagge.Seti.WebSite.Reports
 			HttpContext.Current.Response.AddHeader(
 				"content-disposition", string.Format("attachment; filename={0}.xls", ReportFileName ));
 			HttpContext.Current.Response.ContentType = "application/ms-excel";
-			HttpContext.Current.Response.Write(ControlHelper.GetControlAsHtml(_report));
+
+			using (var streamReader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Bagge.Seti.WebSite.Reports.ReportOutput.htm")))
+			{
+				string headerTitle = ((Bagge.Seti.WebSite.Site)Master).CurrentViewTitle;
+
+				string headerImageUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Page.ResolveUrl("~/App_Themes/" + Page.Theme + "/Images/siteHeader.jpg");
+				string html = streamReader
+								.ReadToEnd()
+								.Replace("{ReportTitle}", ReportFileName)
+								.Replace("{ReportHeaderTitle}", headerTitle)
+								.Replace("{ColSpan}", _report.HeaderRow.Cells.Count.ToString())								.Replace("{HeaderImageUrl}", headerImageUrl)
+								.Replace("{ReportGrid}", ControlHelper.GetControlAsHtml(_report))
+								.Replace("<th ", "<th bgcolor=\"#EBECEE\" ")
+								.Replace("{CurrentDateTime}", DateTime.Now.ToString())
+								.Replace("<td>True</td>", "<td>" + Resources.WebSite.YesText + "</td>")
+								.Replace("<td>False</td>", "<td>" + Resources.WebSite.NoText + "</td>");
+				HttpContext.Current.Response.Write(html);
+			}
 			HttpContext.Current.Response.End();
 		}
 

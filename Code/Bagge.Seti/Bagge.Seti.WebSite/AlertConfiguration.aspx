@@ -2,6 +2,7 @@
 <%@ Register Src="~/Controls/EditorCommands.ascx" TagPrefix="seti" TagName="EditorControls" %>
 <asp:Content ID="_content" ContentPlaceHolderID="_content" runat="server">
 	<div id="alertConfigurationEditor">
+	<asp:Label ID="_requiredInformationLabel" runat="server"><%=Resources.WebSite.RequiredInformationText%></asp:Label>
 	<seti:SecureDetailsView ID="_details" DataKeyNames="Id" runat="server" DataSourceID="_dataSource" AutoGenerateRows="false">
 		<Fields>
 			<seti:SecureBoundField HeaderStyle-Width="500px"  DataField="Days" ControlStyle-CssClass="numeric" meta:resourcekey="DaysField">

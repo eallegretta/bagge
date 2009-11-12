@@ -29,9 +29,9 @@ namespace Bagge.Seti.WebSite.Reports
 			{
 				case 3:
 				case 4:
-					return string.Format("{0:0.00}", decimal.Parse(value));
+					return string.Format("{0:0.00}hs", decimal.Parse(value));
 				case 5:
-					return string.Format("%{0:0.00}", decimal.Parse(value));
+					return string.Format("{0:0.00}%", decimal.Parse(value));
 				default:
 					return null;
 			}

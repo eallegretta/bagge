@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>{ReportTitle}</title>
+	<style type="text/css">
+		td 
+		{
+			border:1px solid #D0D0D0;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr><td colspan="{ColSpan}" align="center" style="border:0px;height:110px"><img src="http://localhost:2297/App_Themes/Default/Images/siteHeader.jpg" /></td></tr>
+		<tr><td style="border:0px" colspan="{ColSpan}">&nbsp;</td></tr>
+		<tr><td style="border:0px" align="center" colspan="{ColSpan}"><h2>{ReportHeaderTitle}</h2></td></tr>
+	</table>
+	{ReportGrid}
+	<table>
+		<tr><td style="border:0px" colspan="{ColSpan}">&nbsp;</td></tr>
+		<tr><td style="border:0px" colspan="{ColSpan}">Generado el: {CurrentDateTime}</td></tr>
+	</table>
+</body>
+</html>

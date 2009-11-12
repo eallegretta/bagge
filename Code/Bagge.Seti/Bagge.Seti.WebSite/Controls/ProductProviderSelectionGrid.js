@@ -16,7 +16,7 @@ function newGuid(){
 	return string4() + "-" + string4() + "-" + string4() + "-" + string4();
 }
 
-function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, deleteIconUrl, isReadOnly, decimalSeparator) {
+function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, deleteIconUrl, isReadOnly, decimalSeparator, currencySymbol) {
 
 	this.formatNumber = function(number){
 		if(number.toString().indexOf(decimalSeparator) == -1)
@@ -177,7 +177,7 @@ function ProductProviderSelectionGrid(tableId, btnId, hdnId, itemId, priceId, de
 		var row = $("<tr class='" + cssClass + "'></tr>").append(
 						$("<td></td>").text(item.Name)
 					).append(
-						$("<td style='text-align:right'></td>").append(priceBox).append(stateField)
+						$("<td style='text-align:right'>" + currencySymbol + "</td>").append(priceBox).append(stateField)
 				);
 		if (!this.isReadOnly)
 		{

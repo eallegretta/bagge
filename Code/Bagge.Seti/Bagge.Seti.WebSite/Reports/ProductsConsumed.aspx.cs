@@ -15,6 +15,14 @@ namespace Bagge.Seti.WebSite.Reports
 	[SecurizableCrud("Securizable_ProductsConsumed", typeof(ProductsConsumed), FunctionAction.List)]
     public partial class ProductsConsumed : FilteredReportPage<ProductsConsumedReport>
     {
+		public override string GetFormattedColumnValue(int columnIndex, string value)
+		{
+			if (!string.IsNullOrEmpty(value) && columnIndex == 2)
+			{
+				return string.Format("{0:0}", decimal.Parse(value));
+			}
+			return base.GetFormattedColumnValue(columnIndex, value);
+		}
 
         protected override Button FilterButton
         {

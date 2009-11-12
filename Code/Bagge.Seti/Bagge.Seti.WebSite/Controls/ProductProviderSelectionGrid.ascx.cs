@@ -162,17 +162,19 @@ namespace Bagge.Seti.WebSite.Controls
 				{
 					Page.ClientScript.RegisterClientScriptInclude("ProductProviderSelectionGrid", ResolveUrl("ProductProviderSelectionGrid.js"));
 					Page.ClientScript.RegisterStartupScript(typeof(string), "ProductProviderSelectionGridObject",
-						string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, '{8}');",
+						string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, '{8}', '{9}');",
 							ClientID, _items.ClientID, _add.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
-							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator),
+							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator,
+							CultureInfo.CurrentUICulture.NumberFormat.CurrencySymbol),
 							true);
 				}
 			}
 			else
 			{
-				string script = string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, '{8}');",
+				string script = string.Format("var {0}_instance = new ProductProviderSelectionGrid('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7}, '{8}', '{9}');",
 							ClientID, _items.ClientID, _add.ClientID, _selectedItems.ClientID, _name.ClientID, _price.ClientID,
-							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
+							GetDeleteImagePath(), ReadOnly.ToString().ToLower(), CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator,
+							CultureInfo.CurrentUICulture.NumberFormat.CurrencySymbol);
 				ScriptManager.RegisterStartupScript(this,
 					typeof(string),
 					"ProductProviderSelectionGridObject",
