@@ -20,6 +20,14 @@ namespace Bagge.Seti.WebSite.Reports
 	[SecurizableCrud("Securizable_CustomersWithPendingPayment", typeof(CustomersWithPendingPayment), FunctionAction.List)]
     public partial class CustomersWithPendingPayment : ReportPage<CustomersWithPendingPaymentReport>
     {
+		public override string GetFormattedColumnValue(int columnIndex, string value)
+		{
+			if (!string.IsNullOrEmpty(value) && columnIndex == 9)
+			{
+				return string.Format("{0:c}", decimal.Parse(value));
+			}
+			return base.GetFormattedColumnValue(columnIndex, value);
+		}
     }
 }
 	

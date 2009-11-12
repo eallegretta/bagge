@@ -867,6 +867,7 @@
     <Content Include="App_Themes\Default\jQueryUI\start\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="App_Themes\Default\jQueryUI\start\images\ui-icons_fcd113_256x240.png" />
     <Content Include="App_Themes\Default\jQueryUI\start\jquery-ui-1.7.2.custom.css" />
+    <EmbeddedResource Include="Reports\ReportOutput.htm" />
     <Content Include="Scripts\PagedBulletedList.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\PagedCheckBoxList.js" />

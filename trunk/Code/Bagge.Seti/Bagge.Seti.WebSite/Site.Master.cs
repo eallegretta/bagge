@@ -41,7 +41,9 @@ namespace Bagge.Seti.WebSite
 
 			if (IsWindowsAuthentication)
 				_editProfile.Visible = false;
-			
+
+
+			SetCurrentViewTitle();
 		}
 
 		private void SetLoginStatusVisiblity()
@@ -51,38 +53,49 @@ namespace Bagge.Seti.WebSite
 				SetLoggedInFullName();
 		}
 
-		protected void Page_Load(object sender, EventArgs e)
+		private void SetCurrentViewTitle()
 		{
-			if (Page is IEditorView)
+			if (this._siteMapDataSource.Provider.CurrentNode != null)
 			{
-				string title = string.Empty;
-				if (this._siteMapDataSource.Provider.CurrentNode != null)
+				if (Page is IEditorView)
 				{
 					switch (((IEditorView)Page).Mode)
 					{
 						case EditorAction.Update:
-							title = this._siteMapDataSource.Provider.CurrentNode["editTitle"];
+							CurrentViewTitle = this._siteMapDataSource.Provider.CurrentNode["editTitle"];
 							break;
 						case EditorAction.View:
-							title = this._siteMapDataSource.Provider.CurrentNode["viewTitle"];
+							CurrentViewTitle = this._siteMapDataSource.Provider.CurrentNode["viewTitle"];
 							break;
 					}
 				}
 				else
-					title = Page.Title;
+					CurrentViewTitle = this._siteMapDataSource.Provider.CurrentNode["title"];
+			}
+			else
+				CurrentViewTitle = Page.Title;
+		}
 
-				if (!string.IsNullOrEmpty(title))
+
+		public string CurrentViewTitle
+		{
+			get;
+			private set;
+		}
+
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			if (!string.IsNullOrEmpty(CurrentViewTitle))
+			{
+				if (_siteMapPath.Controls.Count == 0)
 				{
-					if (_siteMapPath.Controls.Count == 0)
-					{
-						var label = new Label();
-						label.Text = title;
-						_siteMapPath.CurrentNodeStyle.CopyTo(label.ControlStyle);
-						_siteMapPath.Controls.Add(label);
-					}
-					else
-						((Literal)this._siteMapPath.Controls[_siteMapPath.Controls.Count - 1].Controls[0]).Text = title;
+					var label = new Label();
+					label.Text = CurrentViewTitle;
+					_siteMapPath.CurrentNodeStyle.CopyTo(label.ControlStyle);
+					_siteMapPath.Controls.Add(label);
 				}
+				else
+					((Literal)this._siteMapPath.Controls[_siteMapPath.Controls.Count - 1].Controls[0]).Text = CurrentViewTitle;
 			}
 		}
 

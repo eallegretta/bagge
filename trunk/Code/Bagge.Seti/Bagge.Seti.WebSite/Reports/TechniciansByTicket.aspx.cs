@@ -22,6 +22,15 @@ namespace Bagge.Seti.WebSite.Reports
             get { return _filter; }
         }
 
+		public override string GetFormattedColumnValue(int columnIndex, string value)
+		{
+			if (!string.IsNullOrEmpty(value) && columnIndex == 3)
+			{
+				return value + "hs";
+			}
+			return base.GetFormattedColumnValue(columnIndex, value);
+		}
+
         public override IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
         {
             get

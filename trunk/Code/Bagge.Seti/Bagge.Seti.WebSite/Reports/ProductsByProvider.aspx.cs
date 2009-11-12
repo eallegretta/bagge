@@ -20,5 +20,13 @@ namespace Bagge.Seti.WebSite.Reports
 	[SecurizableCrud("Securizable_ProductsByProvider", typeof(ProductsByProvider), FunctionAction.List)]
     public partial class ProductsByProvider : ReportPage<ProductsByProviderReport>
     {
+		public override string GetFormattedColumnValue(int columnIndex, string value)
+		{
+			if (!string.IsNullOrEmpty(value) && columnIndex == 2)
+			{
+				return string.Format("{0:c}", decimal.Parse(value));
+			}
+			return base.GetFormattedColumnValue(columnIndex, value);
+		}
     }
 }
