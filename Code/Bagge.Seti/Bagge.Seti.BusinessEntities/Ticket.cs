@@ -116,6 +116,17 @@ namespace Bagge.Seti.BusinessEntities
 			set;
 		}
 
+		public bool IsCanceled
+		{
+			get
+			{
+				if (Status == null)
+					return false;
+
+				return Status.In(TicketStatusEnum.Canceled, TicketStatusEnum.CanceledByCustomer, TicketStatusEnum.CanceledBySystem);
+			}
+		}
+
 		public bool IsClosed
 		{
 			get
@@ -123,7 +134,7 @@ namespace Bagge.Seti.BusinessEntities
 				if (Status == null)
 					return false;
 
-				return Status.Equals(TicketStatusEnum.Closed) || Status.Equals(TicketStatusEnum.Canceled);
+				return Status.Equals(TicketStatusEnum.Closed) || IsCanceled; 
 			}
 		}
 

@@ -117,88 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomerArrivalField.HeaderText" xml:space="preserve">
-    <value>Hora de Arribo al Cliente *</value>
+  <data name="FilterButton.Text" xml:space="preserve">
+    <value>Filtrar</value>
   </data>
-  <data name="CustomerField.HeaderText" xml:space="preserve">
-    <value>Cliente</value>
+  <data name="FilterDateFromLiteral.Text" xml:space="preserve">
+    <value>Desde:</value>
   </data>
-  <data name="DescriptionField.HeaderText" xml:space="preserve">
-    <value>Descripción del Trabajo *</value>
-  </data>
-  <data name="Details.EmptyDataText" xml:space="preserve">
-    <value>No se encontró el ticket</value>
-  </data>
-  <data name="EmployeesField.HeaderText" xml:space="preserve">
-    <value>Técnicos Asignados</value>
-  </data>
-  <data name="EstimatedDurationField.HeaderText" xml:space="preserve">
-    <value>Duración Estimada *</value>
-  </data>
-  <data name="ExecutionDateField.HeaderText" xml:space="preserve">
-    <value>Fecha de Ejecución *</value>
+  <data name="FilterDateToLiteral.Text" xml:space="preserve">
+    <value>Hasta:</value>
   </data>
   <data name="Page.Title" xml:space="preserve">
-    <value>SETI &gt; Editor de Tickets</value>
+    <value>SETI &gt; Reportes &gt; Tickets Cerrados</value>
   </data>
-  <data name="RealDurationField.HeaderText" xml:space="preserve">
-    <value>Duración Real</value>
+  <data name="StatusLiteral.Text" xml:space="preserve">
+    <value>Estado:</value>
   </data>
-  <data name="StatusField.HeaderText" xml:space="preserve">
-    <value>Estado</value>
-  </data>
-  <data name="DescriptionValidator.ErrorMessage" xml:space="preserve">
-    <value>La descripción es requerida</value>
-  </data>
-  <data name="BudgetField.HeaderText" xml:space="preserve">
-    <value>Presupuesto</value>
-  </data>
-  <data name="ProductsField.HeaderText" xml:space="preserve">
-    <value>Insumos</value>
-  </data>
-  <data name="ApproveButton.OnClientClick" xml:space="preserve">
-    <value>return confirm("¿Esta seguro que desea aprobar el ticket?");</value>
-  </data>
-  <data name="ApproveButton.Text" xml:space="preserve">
-    <value>Aprobar</value>
-  </data>
-  <data name="EmployeesValidator.ErrorMessage" xml:space="preserve">
-    <value>Debe elegir al menos un técnico</value>
-  </data>
-  <data name="EstimatedDurationValidator.ErrorMessage" xml:space="preserve">
-    <value>La duración estimada es requerida</value>
-  </data>
-  <data name="ExecutionDateCalendar.RequiredErrorMessage" xml:space="preserve">
-    <value>La fecha de ejecución es requerida</value>
-  </data>
-  <data name="CustomerArrivalValidator.ErrorMessage" xml:space="preserve">
-    <value>La hora ingresada es inválida</value>
-  </data>
-  <data name="ExecutionDateCalendar.InvalidDateErrorMessage" xml:space="preserve">
-    <value>La fecha ingresada es inválida</value>
-  </data>
-  <data name="NotesField.HeaderText" xml:space="preserve">
-    <value>Observaciones</value>
-  </data>
-  <data name="CloseButton.Text" xml:space="preserve">
-    <value>Cerrar</value>
-  </data>
-  <data name="CloseButton.OnClientClick" xml:space="preserve">
-    <value>return confirm("¿Esta seguro que desea cerrar el ticket?");</value>
-  </data>
-  <data name="BudgetValidator.ErrorMessage" xml:space="preserve">
-    <value>El presupuesto es requerido ya que el cliente no posee abono</value>
-  </data>
-  <data name="CreationDateField.HeaderText" xml:space="preserve">
-    <value>Fecha de Creación</value>
-  </data>
-  <data name="EmployeesLiteral.Text" xml:space="preserve">
-    <value>Nombre</value>
-  </data>
-  <data name="CustomerArrivalReqValidator.ErrorMessage" xml:space="preserve">
-    <value>La hora de arribo al cliente es requerida</value>
-  </data>
-  <data name="HistoryLiteral.Text" xml:space="preserve">
-    <value>Ver Historial del Ticket</value>
+  <data name="TicketIdLiteral.Text" xml:space="preserve">
+    <value>Id de Ticket:</value>
   </data>
 </root>

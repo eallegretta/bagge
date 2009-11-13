@@ -10,5 +10,6 @@ namespace Bagge.Seti.BusinessLogic.Contracts
 	{
 		TicketStatus Get(TicketStatusEnum status);
 		TicketStatus[] FindAll();
+		TicketStatus[] FindAllWithoutCanceledBySystem();
 	}
 }

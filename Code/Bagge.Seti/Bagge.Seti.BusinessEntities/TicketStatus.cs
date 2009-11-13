@@ -56,6 +56,8 @@ namespace Bagge.Seti.BusinessEntities
 		PendingPayment = 4,
 		Expired = 5,
 		Closed = 6,
-		Canceled = 7
+		Canceled = 7,
+		CanceledByCustomer = 8,
+		CanceledBySystem = 9
 	}
 }

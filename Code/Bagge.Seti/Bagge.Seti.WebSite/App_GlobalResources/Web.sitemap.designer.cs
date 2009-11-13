@@ -313,6 +313,15 @@ namespace Resources.Web {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Historial de Ticket.
+        /// </summary>
+        internal static string ReportTicketHistory_title {
+            get {
+                return ResourceManager.GetString("ReportTicketHistory.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tickets Cerrados.
         /// </summary>
         internal static string ReportTicketsClosed_title {

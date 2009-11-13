@@ -243,4 +243,7 @@
   <data name="SecurityExceptionEditor.viewTitle" xml:space="preserve">
     <value>Ver Excepción</value>
   </data>
+  <data name="ReportTicketHistory.title" xml:space="preserve">
+    <value>Historial de Ticket</value>
+  </data>
 </root>

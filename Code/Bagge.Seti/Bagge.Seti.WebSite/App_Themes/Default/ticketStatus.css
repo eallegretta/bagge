@@ -68,3 +68,24 @@
 {
 	background-color:#dfdfdf;
 }
+
+
+.body_status_CanceledByCustomer
+{
+	background-color:#aaaaaa;
+}
+
+.head_status_CanceledByCustomer
+{
+	background-color:#cccccc;
+}
+
+.body_status_CanceledBySystem
+{
+	background-color:#888888;
+}
+
+.head_status_CanceledBySystem
+{
+	background-color:#999999;
+}

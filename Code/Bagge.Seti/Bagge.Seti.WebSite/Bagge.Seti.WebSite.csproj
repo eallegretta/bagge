@@ -413,6 +413,13 @@
     <Compile Include="Reports\TechniciansByTicket.aspx.designer.cs">
       <DependentUpon>TechniciansByTicket.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\TicketHistory.aspx.cs">
+      <DependentUpon>TicketHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TicketHistory.aspx.designer.cs">
+      <DependentUpon>TicketHistory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\TicketsClosed.aspx.cs">
       <DependentUpon>TicketsClosed.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -867,7 +874,10 @@
     <Content Include="App_Themes\Default\jQueryUI\start\images\ui-icons_f7a50d_256x240.png" />
     <Content Include="App_Themes\Default\jQueryUI\start\images\ui-icons_fcd113_256x240.png" />
     <Content Include="App_Themes\Default\jQueryUI\start\jquery-ui-1.7.2.custom.css" />
+    <Content Include="Reports\App_LocalResources\TicketHistory.aspx.resx">
+    </Content>
     <EmbeddedResource Include="Reports\ReportOutput.htm" />
+    <Content Include="Reports\TicketHistory.aspx" />
     <Content Include="Scripts\PagedBulletedList.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\PagedCheckBoxList.js" />

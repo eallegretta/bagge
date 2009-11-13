@@ -18,12 +18,12 @@ namespace Bagge.Seti.BusinessLogic
 	[Securizable("Securizable_CustomerManager", typeof(CustomerManager))]
 	public partial class CustomerManager : AuditableGenericManager<Customer, int>, ICustomerManager
 	{
-		ITicketManager _ticketManager;
+		ITicketDao _ticketDao;
 
-		public CustomerManager(ICustomerDao dao, ITicketManager ticketManager)
+		public CustomerManager(ICustomerDao dao, ITicketDao ticketDao)
 			: base(dao)
 		{
-			_ticketManager = ticketManager;
+			_ticketDao = ticketDao;
 		}
 
 		[SecurizableCrud("Securizable_CustomerManager_GetByCuit", typeof(CustomerManager), FunctionAction.List)]
@@ -87,7 +87,7 @@ namespace Bagge.Seti.BusinessLogic
 			IList<FilterPropertyValue> filters = new List<FilterPropertyValue>();
 			filters.Add("Customer", instance);
 
-			if (!Ticket.CheckTicketsAllClosed(_ticketManager.FindAllByProperties(filters)))
+			if (!Ticket.CheckTicketsAllClosed(_ticketDao.FindAllByProperties(filters, null, null)))
 			{
 				instance.Deleted = false;
 				throw new CantDeleteException(Resources.CustomerTicketRelatedErrorMessage);

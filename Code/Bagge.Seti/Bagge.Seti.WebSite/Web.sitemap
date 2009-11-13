@@ -24,6 +24,7 @@
 			<siteMapNode url="~/Reports/ProductsConsumed.aspx" resourceKey="ReportProductsConsumed" />
 			<siteMapNode url="~/Reports/TechniciansByTicket.aspx" resourceKey="ReportTechniciansByTicket" />
 			<siteMapNode url="~/Reports/RolesByUser.aspx" resourceKey="ReportRolesByUser" />
+			<siteMapNode url="~/Reports/TicketHistory.aspx" resourceKey="ReportTicketHistory" />
 			<siteMapNode url="~/Reports/TicketsClosed.aspx" resourceKey="ReportTicketsClosed" />
 		</siteMapNode>
 		<siteMapNode url="~/AlertConfiguration.aspx" resourceKey="AlertConfiguration" />
