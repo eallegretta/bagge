@@ -33,13 +33,21 @@
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="Status" meta:resourcekey="StatusField">
+				<InsertItemTemplate>
+					<asp:DropDownList ID="_status" runat="server" DataValueField="Id" DataTextField="Name">
+					</asp:DropDownList>
+				</InsertItemTemplate>
 				<EditItemTemplate>
 					<asp:DropDownList ID="_status" runat="server" DataValueField="Id" DataTextField="Name">
 					</asp:DropDownList>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="Reports/TicketHistory.aspx?TicketId=<%#Eval("Id")%>"><asp:Literal ID="_historyLiteral" runat="server" meta:resourcekey="HistoryLiteral" /></a>
 				</EditItemTemplate>
 				<ItemTemplate>
 					<asp:HiddenField ID="_status" runat="server" />
 					<%#Eval("Status")%>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="Reports/TicketHistory.aspx?TicketId=<%#Eval("Id")%>"><asp:Literal ID="_historyLiteral" runat="server" meta:resourcekey="HistoryLiteral" /></a>
 				</ItemTemplate>
 			</seti:SecureTemplateField>
 			<seti:SecureTemplateField PropertyName="CreationDate" meta:resourcekey="CreationDateField">

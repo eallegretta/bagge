@@ -20,17 +20,22 @@ namespace Bagge.Seti.BusinessLogic
 	{
 		ITicketStatusManager _ticketStatusManager;
 		//ITicketEmployeeDao _ticketEmployeeDao;
-		IEmployeeDao _employeeDao;
-		ICustomerDao _customerDao;
+		IEmployeeManager _employeeManager;
+		ICustomerManager _customerManager;
+		ITicketHistoryDao _ticketHistoryDao;
 
-		public TicketManager(ITicketDao dao, ITicketStatusManager ticketStatusManager,
-			/*ITicketEmployeeDao ticketEmployeeDao*/ IEmployeeDao employeeDao, ICustomerDao customerDao)
+		public TicketManager(
+			ITicketDao dao, 
+			ITicketStatusManager ticketStatusManager,
+			IEmployeeManager employeeManager, 
+			ICustomerManager customerManager,
+			ITicketHistoryDao ticketHistoryDao)
 			: base(dao)
 		{
 			_ticketStatusManager = ticketStatusManager;
-			//_ticketEmployeeDao = ticketEmployeeDao;
-			_employeeDao = employeeDao;
-			_customerDao = customerDao;
+			_employeeManager = employeeManager;
+			_customerManager = customerManager;
+			_ticketHistoryDao = ticketHistoryDao;
 			SendEmails = Settings.Default.EnableMail;
 		}
 
@@ -117,7 +122,7 @@ namespace Bagge.Seti.BusinessLogic
 			var customerFilter = filter.GetFilter("Customer");
 
 			if (customerFilter != null && customerFilter.Value is int)
-				customerFilter.Value = _customerDao.Get((int)customerFilter.Value);
+				customerFilter.Value = _customerManager.Get((int)customerFilter.Value);
 		}
 
 		private void ReplaceEmployeesFilter(IList<FilterPropertyValue> filter)
@@ -137,7 +142,7 @@ namespace Bagge.Seti.BusinessLogic
 					{
 						Property = employeesFilter.Property,
 						Type = employeesFilter.Type,
-						Value = _employeeDao.Get((int)employeesFilter.Value)
+						Value = _employeeManager.Get((int)employeesFilter.Value)
 					});
 			}
 		}
@@ -165,6 +170,18 @@ namespace Bagge.Seti.BusinessLogic
 				ticket.Status = _ticketStatusManager.Get(TicketStatusEnum.PendingPayment);
 
 			base.Update(ticket);
+
+			AddTicketHistory(ticket);
+		}
+
+		private void AddTicketHistory(Ticket ticket)
+		{
+			Employee updaterEmployee;
+			if (ticket.Id == 0)
+				updaterEmployee = ticket.Creator;
+			else
+				updaterEmployee = _employeeManager.GetByUsername(ticket.AuditUserName);
+			_ticketHistoryDao.Create(new TicketHistory(ticket, updaterEmployee));
 		}
 
 		public override int Create(Ticket instance)
@@ -177,7 +194,12 @@ namespace Bagge.Seti.BusinessLogic
 
 			AssignTicketToProducts(instance);
 
-			return base.Create(instance);
+			int ticketId = base.Create(instance);
+
+			AddTicketHistory(instance);
+
+			return ticketId;
+			
 		}
 
 		private void CheckRequirements(Ticket instance)
@@ -202,6 +224,9 @@ namespace Bagge.Seti.BusinessLogic
 			AssignTicketToProducts(instance);
 
 			base.Update(instance);
+
+			if (instance.Status != instanceFromDb.Status)
+				AddTicketHistory(instance);
 
 			SendUpdatedTicketEmail(instance, EmailUrl);
 		}
@@ -279,7 +304,7 @@ namespace Bagge.Seti.BusinessLogic
 			weekStartDate = new DateTime(weekStartDate.Year, weekStartDate.Month, weekStartDate.Day, 0, 0, 0);
 			weekEndDate = new DateTime(weekEndDate.Year, weekEndDate.Month, weekEndDate.Day, 23, 59, 59);
 			filters.AddBetween("ExecutionDateTime", weekStartDate, weekEndDate);
-			var employee = _employeeDao.Get(technicianId);
+			var employee = _employeeManager.Get(technicianId);
 			filters.Add("Employees", FilterPropertyValueType.In, employee);
 			return FindAllActiveByPropertiesOrdered(filters, "ExecutionDateTime");
 		}

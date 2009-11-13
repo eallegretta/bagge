@@ -46,5 +46,18 @@ namespace Bagge.Seti.BusinessLogic
 		}
 
 		#endregion
+
+		#region ITicketStatusManager Members
+
+
+		public TicketStatus[] FindAllWithoutCanceledBySystem()
+		{
+			var tickets = from t in FindAll()
+						  where !t.Equals(TicketStatusEnum.CanceledBySystem)
+						  select t;
+			return tickets.ToArray();
+		}
+
+		#endregion
 	}
 }

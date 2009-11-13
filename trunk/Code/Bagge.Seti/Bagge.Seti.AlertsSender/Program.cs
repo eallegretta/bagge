@@ -180,12 +180,12 @@ namespace Bagge.Seti.AlertsSender
                     {
                         var id = tickets[index].Id;
                         var ticket = IoCContainer.TicketManager.Get(id);
-                        TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.Canceled);
+                        TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.CanceledBySystem);
                         ticket.Status = ticketStatus;
 
                         IoCContainer.TicketManager.Update(ticket);
 
-                        Console.WriteLine("\tTicket #{0} marcado como Cancelado - Enviando Email", id);
+                        Console.WriteLine("\tTicket #{0} marcado como Cancelado por sistema - Enviando Email", id);
                         SendMail(alert.SendEmailToCreator, alert.SendEmailToEmployees, ticket, "Alerta: Cancelacion de Ticket", "Se cancelo el Ticket: ");
 
                     }
