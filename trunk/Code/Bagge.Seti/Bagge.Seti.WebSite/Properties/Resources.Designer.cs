@@ -340,6 +340,15 @@ namespace Bagge.Seti.WebSite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reporte Historial de Ticket.
+        /// </summary>
+        internal static string Securizable_TicketHistory {
+            get {
+                return ResourceManager.GetString("Securizable_TicketHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Listado de Tickets.
         /// </summary>
         internal static string Securizable_TicketList {
