@@ -48,7 +48,7 @@ namespace Bagge.Seti.WebSite.Reports
 			{
 				for (int cellIndex = 0; cellIndex < colCount; cellIndex++)
 				{
-					string value = GetFormattedColumnValue(cellIndex, row.Cells[cellIndex].Text);
+					string value = GetFormattedColumnValue(cellIndex, row.Cells[cellIndex].Text.Replace("&nbsp;", string.Empty).Trim());
 					if (value != null)
 						row.Cells[cellIndex].Text = value;
 				}

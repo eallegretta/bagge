@@ -21,14 +21,15 @@ namespace Bagge.Seti.WebSite.Reports
 
 		protected void _export_Click(object sender, EventArgs e)
 		{
+			string headerTitle = ((Bagge.Seti.WebSite.Site)Master).CurrentViewTitle;
 			HttpContext.Current.Response.Clear();
 			HttpContext.Current.Response.AddHeader(
-				"content-disposition", string.Format("attachment; filename={0}.xls", ReportFileName ));
+				"content-disposition", string.Format("attachment; filename={0}.xls", headerTitle));
 			HttpContext.Current.Response.ContentType = "application/ms-excel";
 
 			using (var streamReader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Bagge.Seti.WebSite.Reports.ReportOutput.htm")))
 			{
-				string headerTitle = ((Bagge.Seti.WebSite.Site)Master).CurrentViewTitle;
+				
 
 				string headerImageUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Page.ResolveUrl("~/App_Themes/" + Page.Theme + "/Images/siteHeader.jpg");
 				string html = streamReader

@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FilterButton.Text" xml:space="preserve">
+    <value>Filtrar</value>
+  </data>
   <data name="Page.Title" xml:space="preserve">
     <value>SETI &gt; Reportes &gt; Insumos por Proveedor</value>
+  </data>
+  <data name="ProductNameLiteral.Text" xml:space="preserve">
+    <value>Insumo:</value>
+  </data>
+  <data name="ProviderNameLiteral.Text" xml:space="preserve">
+    <value>Proveedor:</value>
   </data>
 </root>

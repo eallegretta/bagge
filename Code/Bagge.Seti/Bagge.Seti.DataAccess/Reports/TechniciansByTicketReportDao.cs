@@ -18,6 +18,9 @@ namespace Bagge.Seti.DataAccess.Reports
             var filterDateFrom = filters.GetFilter("DateFrom");
             var filterDateTo = filters.GetFilter("DateTo");
 
+			if (filterDateTo != null && filterDateTo.Value != null)
+				filterDateTo.Value = GetDateToWithMaxTime((DateTime)filterDateTo.Value); 
+
             SqlDateTime dateFrom = filterDateFrom == null ? SqlDateTime.MinValue : GetSqlDateTime(filterDateFrom.Value as DateTime?, SqlDateTime.MinValue);
             SqlDateTime dateTo = filterDateTo == null ? SqlDateTime.MaxValue : GetSqlDateTime(filterDateTo.Value as DateTime?, SqlDateTime.MaxValue);
 

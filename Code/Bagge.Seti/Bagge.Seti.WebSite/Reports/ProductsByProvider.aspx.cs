@@ -14,11 +14,13 @@ using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
+using Bagge.Seti.BusinessEntities;
+using Bagge.Seti.WebSite.Helpers;
 
 namespace Bagge.Seti.WebSite.Reports
 {
 	[SecurizableCrud("Securizable_ProductsByProvider", typeof(ProductsByProvider), FunctionAction.List)]
-    public partial class ProductsByProvider : ReportPage<ProductsByProviderReport>
+    public partial class ProductsByProvider : FilteredReportPage<ProductsByProviderReport>
     {
 		public override string GetFormattedColumnValue(int columnIndex, string value)
 		{
@@ -28,5 +30,21 @@ namespace Bagge.Seti.WebSite.Reports
 			}
 			return base.GetFormattedColumnValue(columnIndex, value);
 		}
-    }
+
+		protected override Button FilterButton
+		{
+			get { return _filter; }
+		}
+
+		public override IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
+		{
+			get
+			{
+				var filters = new List<FilterPropertyValue>();
+				FilterHelper.AddTextBoxFilterValue<string>(_productName, "ProductName", FilterPropertyValueType.Like, filters);
+				FilterHelper.AddTextBoxFilterValue<string>(_providerName, "ProviderName", FilterPropertyValueType.Like, filters);
+				return filters;
+			}
+		}
+	}
 }

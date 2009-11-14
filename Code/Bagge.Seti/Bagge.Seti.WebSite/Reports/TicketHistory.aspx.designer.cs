@@ -68,15 +68,6 @@ namespace Bagge.Seti.WebSite.Reports {
         protected global::System.Web.UI.WebControls.TextBox _ticketId;
         
         /// <summary>
-        /// _ticketIdMask control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.MaskedEditExtender _ticketIdMask;
-        
-        /// <summary>
         /// _statusLiteral control.
         /// </summary>
         /// <remarks>
@@ -102,5 +93,14 @@ namespace Bagge.Seti.WebSite.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button _filter;
+        
+        /// <summary>
+        /// _ticketIdMask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender _ticketIdMask;
     }
 }

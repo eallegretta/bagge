@@ -20,6 +20,9 @@ namespace Bagge.Seti.DataAccess.Reports
 			var filterTicket = filters.GetFilter("Ticket");
 			var filterStatus = filters.GetFilter("Status");
 
+			if (filterDateTo != null && filterDateTo.Value != null)
+				filterDateTo.Value = GetDateToWithMaxTime((DateTime)filterDateTo.Value); 
+
 			SqlDateTime dateFrom = filterDateFrom == null ? SqlDateTime.MinValue : GetSqlDateTime(filterDateFrom.Value as DateTime?, SqlDateTime.MinValue);
 			SqlDateTime dateTo = filterDateTo == null ? SqlDateTime.MaxValue : GetSqlDateTime(filterDateTo.Value as DateTime?, SqlDateTime.MaxValue);
 			int ticketIdFrom = filterTicket == null ? int.MinValue : (int)filterTicket.Value;

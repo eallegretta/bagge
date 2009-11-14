@@ -20,10 +20,21 @@ namespace Bagge.Seti.DataAccess.Reports
 			var filterDateFrom = filters.GetFilter("DateFrom");
 			var filterDateTo = filters.GetFilter("DateTo");
 
+			if (filterDateTo != null && filterDateTo.Value != null)
+				filterDateTo.Value = GetDateToWithMaxTime((DateTime)filterDateTo.Value); 
+
 			SqlDateTime dateFrom = filterDateFrom == null ? SqlDateTime.MinValue : GetSqlDateTime(filterDateFrom.Value as DateTime?, SqlDateTime.MinValue);
 			SqlDateTime dateTo = filterDateTo == null ? SqlDateTime.MaxValue : GetSqlDateTime(filterDateTo.Value as DateTime?, SqlDateTime.MaxValue);
 
-			return GetReport("CustomersByTicketReport", dateFrom, dateTo);
+			return GetReport("CustomersByTicketReport", 
+				dateFrom, dateTo,
+				filters.GetFilterValue<string>("CustomerName", string.Empty) + "%",
+				filters.GetFilterValue<int>("TicketCountFrom", int.MinValue), 
+				filters.GetFilterValue<int>("TicketCountTo", int.MaxValue),
+				filters.GetFilterValue<decimal>("RealDurationFrom", MinDecimalValue), 
+				filters.GetFilterValue<decimal>("RealDurationTo", MaxDecimalValue),
+				filters.GetFilterValue<decimal>("BudgetFrom", MinDecimalValue),
+				filters.GetFilterValue<decimal>("BudgetTo", MaxDecimalValue));
 		}
 
 		#endregion

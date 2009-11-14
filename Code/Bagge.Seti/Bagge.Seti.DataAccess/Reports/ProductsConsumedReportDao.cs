@@ -26,7 +26,11 @@ namespace Bagge.Seti.DataAccess.Reports
             SqlDateTime dateTo = filterDateTo == null ? SqlDateTime.MaxValue : GetSqlDateTime(filterDateTo.Value as DateTime?, SqlDateTime.MaxValue);
 
 			
-            return GetReport("ProductsConsumedReport", dateFrom, dateTo);
+            return GetReport("ProductsConsumedReport", 
+				dateFrom, dateTo,
+				filters.GetFilterValue<string>("ProductName") + "%",
+				filters.GetFilterValue<int>("EstimatedQuantityFrom", int.MinValue),
+				filters.GetFilterValue<int>("EstimatedQuantityTo", int.MaxValue));
         }
 
         #endregion

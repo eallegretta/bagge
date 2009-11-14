@@ -18,7 +18,9 @@ namespace Bagge.Seti.DataAccess.Reports
 
 		public BaseReport GetReport(IList<FilterPropertyValue> filters)
         {
-            return GetReport("ProductsByProviderReport");
+            return GetReport("ProductsByProviderReport",
+				filters.GetFilterValue<string>("ProductName") + "%",
+				filters.GetFilterValue<string>("ProviderName") + "%");
 		}
 
 		#endregion
