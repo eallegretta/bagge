@@ -210,6 +210,9 @@
   <data name="Securizable_TicketEditor" xml:space="preserve">
     <value>Editor de Tickets</value>
   </data>
+  <data name="Securizable_TicketHistory" xml:space="preserve">
+    <value>Reporte Historial de Ticket</value>
+  </data>
   <data name="Securizable_TicketList" xml:space="preserve">
     <value>Listado de Tickets</value>
   </data>
