@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CustomerNameLiteral.Text" xml:space="preserve">
+    <value>Cliente:</value>
+  </data>
   <data name="FilterButton.Text" xml:space="preserve">
     <value>Filtrar</value>
   </data>
@@ -128,5 +131,32 @@
   </data>
   <data name="Page.Title" xml:space="preserve">
     <value>SETI &gt; Reportes &gt; Clientes por Ticket</value>
+  </data>
+  <data name="TicketCountCmpValidator.ErrorMessage" xml:space="preserve">
+    <value>El hasta debe ser mayor o igual al desde</value>
+  </data>
+  <data name="TicketCountFromLiteral.Text" xml:space="preserve">
+    <value>Cantidad de Tickets desde:</value>
+  </data>
+  <data name="TicketCountToLiteral.Text" xml:space="preserve">
+    <value>Cantidad de Tickets hasta:</value>
+  </data>
+  <data name="TotalBudgetCmpValidator.ErrorMessage" xml:space="preserve">
+    <value>El hasta debe ser mayor o igual al desde</value>
+  </data>
+  <data name="TotalBudgetFromLiteral.Text" xml:space="preserve">
+    <value>Total Presupuesto desde:</value>
+  </data>
+  <data name="TotalBudgetToLiteral.Text" xml:space="preserve">
+    <value>Total Presupuesto hasta:</value>
+  </data>
+  <data name="TotalRealDurationCmpValidator.ErrorMessage" xml:space="preserve">
+    <value>El hasta debe ser mayor o igual al desde</value>
+  </data>
+  <data name="TotalRealDurationFromLiteral.Text" xml:space="preserve">
+    <value>Total Duración Real desde:</value>
+  </data>
+  <data name="TotalRealDurationToLiteral.Text" xml:space="preserve">
+    <value>Total Duración Real hasta:</value>
   </data>
 </root>

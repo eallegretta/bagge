@@ -11,6 +11,9 @@ namespace Bagge.Seti.DataAccess.Reports
 {
 	public abstract class BaseReportDao<T> where T: BaseReport
 	{
+		protected const decimal MaxDecimalValue = 999999999999;
+		protected const decimal MinDecimalValue = 0;
+
 		protected T GetReport(string spName, params object[] parameters)
 		{
 			T report = Activator.CreateInstance<T>();

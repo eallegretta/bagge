@@ -5,7 +5,7 @@
 	<asp:Panel ID="_filtersPanel" SkinID="filters" runat="server" 
 	meta:resourcekey="_filtersPanelResource1">
 	<h3><%=Resources.WebSite.FilterPanelTitle%></h3>
-	<div>
+	<div style="font-weight:bold">
 		<asp:ContentPlaceHolder ID="_filters" runat="server">
 		</asp:ContentPlaceHolder>
 	</div>

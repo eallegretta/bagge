@@ -340,7 +340,7 @@ div.filters h3.collapsed
 
 div.filters table th
 {
-	text-align:left;
+	text-align:right;
 	padding: 5px 5px 5px 0px;
 }
 div.filters table td

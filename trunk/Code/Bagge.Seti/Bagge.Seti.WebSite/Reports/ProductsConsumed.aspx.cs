@@ -39,6 +39,9 @@ namespace Bagge.Seti.WebSite.Reports
                 var filters = new List<FilterPropertyValue>();
                 FilterHelper.AddCalendarFilterValue(_dateFrom, "DateFrom", FilterPropertyValueType.Equals, filters);
                 FilterHelper.AddCalendarFilterValue(_dateTo, "DateTo", FilterPropertyValueType.Equals, filters);
+				FilterHelper.AddTextBoxFilterValue<string>(_productName, "ProductName", FilterPropertyValueType.Like, filters);
+				FilterHelper.AddTextBoxFilterValue<int>(_estimatedQuantityFrom, "EstimatedQuantityFrom", FilterPropertyValueType.GreaterEquals, filters);
+				FilterHelper.AddTextBoxFilterValue<int>(_estimatedQuantityTo, "EstimatedQuantityTo", FilterPropertyValueType.LowerEquals, filters);
                 return filters;
             }
         }

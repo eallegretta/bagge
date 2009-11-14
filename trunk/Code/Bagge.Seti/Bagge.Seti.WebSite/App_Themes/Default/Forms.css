@@ -17,6 +17,11 @@ td.smallData > input, input.smallData, textarea.smallData
 	width:40px;
 }
 
+td.smallMediumData > input, input.smallMediumData, textarea.smallMediumData
+{
+	width:80px;
+}
+
 td.mediumData > input, input.mediumData, textarea.mediumData
 {
 	width:160px;

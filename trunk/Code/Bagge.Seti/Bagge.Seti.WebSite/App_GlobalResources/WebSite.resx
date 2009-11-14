@@ -139,10 +139,10 @@
     <value>anterior</value>
   </data>
   <data name="DateFromMustBeLowerThanOrEqualToDateToErrorMessage" xml:space="preserve">
-    <value>La fecha desde debe ser menor o igual a la fecha hasta</value>
+    <value>El desde debe ser menor o igual al hasta</value>
   </data>
   <data name="DateToMustBeGreaterThanOrEqualToDateFromErrorMessage" xml:space="preserve">
-    <value>La fecha hasta debe ser mayor o igual a la fecha desde</value>
+    <value>El hasta debe ser mayor o igual al desde</value>
   </data>
   <data name="FilterPanelTitle" xml:space="preserve">
     <value>Filtros</value>

@@ -124,7 +124,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La fecha desde debe ser menor o igual a la fecha hasta.
+        ///   Looks up a localized string similar to El desde debe ser menor o igual al hasta.
         /// </summary>
         internal static string DateFromMustBeLowerThanOrEqualToDateToErrorMessage {
             get {
@@ -133,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La fecha hasta debe ser mayor o igual a la fecha desde.
+        ///   Looks up a localized string similar to El hasta debe ser mayor o igual al desde.
         /// </summary>
         internal static string DateToMustBeGreaterThanOrEqualToDateFromErrorMessage {
             get {
