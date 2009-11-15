@@ -856,6 +856,7 @@
     <Content Include="App_Themes\Default\Images\CrudBackgrounds\SecurityExceptionEditor.jpg" />
     <Content Include="App_Themes\Default\Images\CrudBackgrounds\TicketEditor.jpg" />
     <Content Include="App_Themes\Default\Images\error.png" />
+    <Content Include="App_Themes\Default\Images\loginBtn-es.gif" />
     <Content Include="App_Themes\Default\Images\loginbtn.gif" />
     <Content Include="App_Themes\Default\jQueryUI\start\images\ui-bg_flat_55_999999_40x100.png" />
     <Content Include="App_Themes\Default\jQueryUI\start\images\ui-bg_flat_75_aaaaaa_40x100.png" />

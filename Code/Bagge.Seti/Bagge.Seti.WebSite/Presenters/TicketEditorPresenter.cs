@@ -62,7 +62,12 @@ namespace Bagge.Seti.WebSite.Presenters
 					if (View.Mode == EditorAction.Insert)
 						View.TicketStatus = _ticketStatusManager.Get(TicketStatusEnum.PendingAproval).ToSingleItemArray();
 					else
-						View.TicketStatus = _ticketStatusManager.FindAllWithoutCanceledBySystem();
+					{
+						if (SelectedEntity.Status == TicketStatusEnum.CanceledBySystem)
+							View.TicketStatus = _ticketStatusManager.FindAll();
+						else
+							View.TicketStatus = _ticketStatusManager.FindAllWithoutCanceledBySystem();
+					}
 
 					if (View.Mode == EditorAction.Update)
 					{
