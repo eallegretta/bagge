@@ -17,27 +17,33 @@ div.ajax__calendar_days table tr td
 <asp:PlaceHolder ID="_timePlaceHolder" Visible="false" runat="server">
 </asp:PlaceHolder>
 <script type="text/javascript">
-	
+
 
 	onLoadFunctions['<%=ClientID%>'] = function() {
+
+		var datepickerOptions = {}
+
+
+
 		$("#<%=_calendar.ClientID%>").datepicker(
-			{
-				dateFormat: '<%=System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern.Replace("MM","mm").Replace("yy","y")%>',
-				dayNames: ['<%=string.Join("\',\'", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.DayNames)%>'],
-				dayNamesMin: ['<%=string.Join("\',\'", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.ShortestDayNames)%>'],
-				monthNames: ['<%=string.Join("\',\'", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.MonthNames)%>'],
-				monthNamesMin: ['<%=string.Join("\',\'", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat.AbbreviatedMonthNames)%>'],
-				minDate: new Date(1950, 1, 1),
-				maxDate: new Date(2030, 12, 31),
-				onSelect: function() {
-					for (var i = 0; i < Page_Validators.length; i++) {
-						if (Page_Validators[i].controltovalidate === '<%=_calendar.ClientID%>') {
-							ValidatorValidate(Page_Validators[i]);
-						} 
+			$.extend(
+				{
+					changeMonth: true,
+					changeYear: true,
+					showMonthAfterYear: false,
+					onSelect: function() {
+						for (var i = 0; i < Page_Validators.length; i++) {
+							alert(Page_Validators[i].controltovalidate);
+							if (Page_Validators[i].controltovalidate === '<%=_calendar.ClientID%>') {
+								ValidatorValidate(Page_Validators[i]);
+							}
+						}
 					}
-				}
-			}
+				},
+				('<%=System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName %>' != 'en') ? $.datepicker.regional['<%=System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName %>'] : {}
+			)
 		);
+
 		$("#<%=_calendarImage.ClientID%>").click(function() {
 			$("#<%=_calendar.ClientID%>").datepicker("show");
 		}).css({ cursor: "pointer", cursor: "hand" });
