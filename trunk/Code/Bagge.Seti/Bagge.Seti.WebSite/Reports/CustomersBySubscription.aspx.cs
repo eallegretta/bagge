@@ -20,6 +20,16 @@ namespace Bagge.Seti.WebSite.Reports
 			get { return _filter;}
 		}
 
+		protected override void OnLoad(EventArgs e)
+		{
+			if (!IsPostBack)
+			{
+				_hasSubscription.Items.Add(new ListItem(Resources.WebSite.YesText, "true"));
+				_hasSubscription.Items.Add(new ListItem(Resources.WebSite.NoText, "false"));
+			}
+			base.OnLoad(e);
+		}
+
 		
 		public override IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
 		{
@@ -27,6 +37,7 @@ namespace Bagge.Seti.WebSite.Reports
 			{
 				var filters = new List<FilterPropertyValue>();
 				FilterHelper.AddTextBoxFilterValue<string>(_customerName, "CustomerName", FilterPropertyValueType.Like, filters);
+				FilterHelper.AddDropDownFilterValue<bool>(_hasSubscription, "HasSubscription", FilterPropertyValueType.Equals, filters);
 				return filters;
 			}
 		}

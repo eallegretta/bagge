@@ -21,7 +21,9 @@ namespace Bagge.Seti.DataAccess.Reports
 		{
             return GetReport("CustomersBySubscriptionReport",
                 filters.GetFilterValue<string>("CustomerName", string.Empty) + "%",
-                0);
+				filters.GetFilterValue<bool>("HasSubscription", false),
+				filters.GetFilterValue<bool>("HasSubscription", true));
+
 		}
 		#endregion
 	}
