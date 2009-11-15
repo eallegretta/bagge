@@ -9,12 +9,19 @@
 			<td><seti:Calendar ID="_dateTo" runat="server" CompareToCalendarId="_dateFrom" CompareOperator="GreaterThanEqual" InvalidDateErrorMessage="<%$Resources:WebSite, InvalidDateErrorMessage%>" CompareErrorMessage="<%$ Resources:WebSite, DateToMustBeGreaterThanOrEqualToDateFromErrorMessage%>" /></td>
 		</tr>
 		<tr>
-			<th><asp:Literal ID="_groupByLiteral" runat="server" meta:resourcekey="GroupByLiteral"></asp:Literal></th>
+			<td><asp:Literal ID="_groupByLiteral" runat="server" meta:resourcekey="GroupByLiteral"></asp:Literal></td>
 			<td><asp:DropDownList ID="_groupBy" runat="server">
-		<asp:ListItem Value="true" meta:resourcekey="GroupByAdministrativeListItem"></asp:ListItem>
-		<asp:ListItem Value="false" meta:resourcekey="GroupByTechnicianListItem"></asp:ListItem>
-	</asp:DropDownList></td>
+		    <asp:ListItem Value="true" meta:resourcekey="GroupByAdministrativeListItem"></asp:ListItem>
+		    <asp:ListItem Value="false" meta:resourcekey="GroupByTechnicianListItem"></asp:ListItem>
+	        </asp:DropDownList></td>
 			<td><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" /></td>
+			
+			<td><asp:Literal ID="_technicianNameLiteral" runat="server" meta:resourcekey="TechnicianNameLiteral"></asp:Literal></td>
+			<td><asp:TextBox ID="_technicianName" runat="server"></asp:TextBox></td>
+			
+			<td><asp:Literal ID="_adminNameLiteral" runat="server" meta:resourcekey="AdminNameLiteral"></asp:Literal></td>
+			<td><asp:TextBox ID="_adminName" runat="server"></asp:TextBox></td>
+		
 		</tr>
 	</table>	
 </asp:Content>

@@ -46,6 +46,8 @@ namespace Bagge.Seti.WebSite.Reports
 				FilterHelper.AddCalendarFilterValue(_dateTo, "DateTo", FilterPropertyValueType.Equals, filters);
 				FilterHelper.AddDropDownFilterValue<bool>(_groupBy, "GroupBy", FilterPropertyValueType.Equals, filters);
 
+                FilterHelper.AddTextBoxFilterValue<string>(_technicianName, "TechnicianName", FilterPropertyValueType.Like, filters);
+                FilterHelper.AddTextBoxFilterValue<string>(_adminName, "AdminName", FilterPropertyValueType.Like, filters);
 				return filters;
 			}
 		}

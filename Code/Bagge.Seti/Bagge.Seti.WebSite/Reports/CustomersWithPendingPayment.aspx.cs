@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
 using System.Web;
-using System.Web.Security;
-using Bagge.Seti.BusinessEntities.Reports;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Xml.Linq;
+using Bagge.Seti.BusinessEntities.Reports;
+using Bagge.Seti.BusinessEntities;
+using Bagge.Seti.WebSite.Helpers;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
 
 namespace Bagge.Seti.WebSite.Reports
 {
 	[SecurizableCrud("Securizable_CustomersWithPendingPayment", typeof(CustomersWithPendingPayment), FunctionAction.List)]
-    public partial class CustomersWithPendingPayment : ReportPage<CustomersWithPendingPaymentReport>
+    public partial class CustomersWithPendingPayment : FilteredReportPage<CustomersWithPendingPaymentReport>
     {
 		public override string GetFormattedColumnValue(int columnIndex, string value)
 		{
@@ -28,6 +23,21 @@ namespace Bagge.Seti.WebSite.Reports
 			}
 			return base.GetFormattedColumnValue(columnIndex, value);
 		}
+        protected override Button FilterButton
+        {
+            get { return _filter; }
+        }
+
+
+        public override IList<Bagge.Seti.BusinessEntities.FilterPropertyValue> Filters
+        {
+            get
+            {
+                var filters = new List<FilterPropertyValue>();
+                FilterHelper.AddTextBoxFilterValue<string>(_customerName, "CustomerName", FilterPropertyValueType.Like, filters);
+                return filters;
+            }
+        }
     }
 }
 	

@@ -126,6 +126,9 @@
   <data name="FilterNameLiteral.Text" xml:space="preserve">
     <value>Nombre:</value>
   </data>
+  <data name="FilterUserNameNameLiteral.Text" xml:space="preserve">
+    <value>Nombre de Usuario:</value>
+  </data>
   <data name="Page.Title" xml:space="preserve">
     <value>SETI &gt; Roles por Usuario</value>
   </data>
