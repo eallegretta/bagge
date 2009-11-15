@@ -169,6 +169,11 @@ namespace Bagge.Seti.WebSite.Controls
 				}
 				Page.ClientScript.RegisterStartupScript(typeof(string), "Calendar_" + ClientID, script, true);
 			}
+			
+
+			if (!Page.ClientScript.IsClientScriptIncludeRegistered("Calendar_Localization"))
+				Page.ClientScript.RegisterClientScriptInclude("Calendar_Localization", Page.ResolveUrl("~/Scripts/jquery-ui-i18n.js"));
+
 		}
 		protected void OnDateChanged(object sender, EventArgs e)
 		{

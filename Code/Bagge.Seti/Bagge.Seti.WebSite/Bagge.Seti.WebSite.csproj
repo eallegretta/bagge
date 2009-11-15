@@ -878,6 +878,7 @@
     </Content>
     <EmbeddedResource Include="Reports\ReportOutput.htm" />
     <Content Include="Reports\TicketHistory.aspx" />
+    <Content Include="Scripts\jquery-ui-i18n.js" />
     <Content Include="Scripts\PagedBulletedList.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\PagedCheckBoxList.js" />
