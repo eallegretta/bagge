@@ -33,7 +33,6 @@ div.ajax__calendar_days table tr td
 					showMonthAfterYear: false,
 					onSelect: function() {
 						for (var i = 0; i < Page_Validators.length; i++) {
-							alert(Page_Validators[i].controltovalidate);
 							if (Page_Validators[i].controltovalidate === '<%=_calendar.ClientID%>') {
 								ValidatorValidate(Page_Validators[i]);
 							}
