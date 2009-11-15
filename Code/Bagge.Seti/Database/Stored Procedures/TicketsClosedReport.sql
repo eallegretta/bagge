@@ -21,7 +21,10 @@ EL DESVÍO SE CALCULA DE LA SIGUIENTE MANERA EN TODAS LAS LINEAS, INCLUSO TOTALE
 CREATE procedure [dbo].[TicketsClosedReport]
 @dateFrom datetime,
 @dateTo datetime,
-@groupByCreator bit
+@groupByCreator bit,
+@technicianName varchar(50),
+@adminName varchar(50)
+
 as
 
 create table #tickets (
@@ -39,11 +42,11 @@ begin
 	select	C.Lastname + ', ' + C.Firstname,
 			E.Lastname + ', ' + E.Firstname,
 			count(T.Id),
-			sum(isnull(EstimatedDuration,0)),
-			sum(isnull(RealDuration,0)),
+			sum(EstimatedDuration),
+			sum(RealDuration),
 			case 
-				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
-				when sum(isnull(EstimatedDuration,0)) = 0 then 0
+				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
+				when sum(EstimatedDuration) = 0 then 0
 			end
 	from	Ticket T 
 				inner join Employee C on T.EmployeeCreatorId = C.Id
@@ -55,6 +58,18 @@ begin
 			E.Deleted = 0 and
 			T.TicketStatusId = 6 and
 			T.ExecutionDateTime between @dateFrom and @dateTo
+
+			and
+
+			(
+				(
+					((C.Lastname + ', ' + C.Firstname) like   @adminName ) 
+				)			and 
+				(
+					((E.Lastname + ', ' + E.Firstname) like   @technicianName)
+				)	
+			)
+
 	group by	C.Lastname + ', ' + C.Firstname, E.Lastname + ', ' + E.Firstname
 	order by 	C.Lastname + ', ' + C.Firstname, E.Lastname + ', ' + E.Firstname
 	
@@ -70,11 +85,11 @@ begin
 	select	Admin + ' - Total',
 			'',
 			sum(Tickets),
-			sum(isnull(EstimatedDuration,0)),
-			sum(isnull(RealDuration,0)),
+			sum(EstimatedDuration),
+			sum(RealDuration),
 			case 
-				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
-				when sum(isnull(EstimatedDuration,0)) = 0 then 0
+				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
+				when sum(EstimatedDuration) = 0 then 0
 			end
 	from #tickets
 	group by	Admin
@@ -86,11 +101,11 @@ insert into #tickets
 	select	C.Lastname + ', ' + C.Firstname,
 			E.Lastname + ', ' + E.Firstname,
 			count(T.Id),
-			sum(isnull(EstimatedDuration,0)),
-			sum(isnull(RealDuration,0)),
+			sum(EstimatedDuration),
+			sum(RealDuration),
 			case 
-				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
-				when sum(isnull(EstimatedDuration,0)) = 0 then 0
+				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
+				when sum(EstimatedDuration) = 0 then 0
 			end
 	from	Ticket T 
 				inner join Employee C on T.EmployeeCreatorId = C.Id
@@ -102,6 +117,18 @@ insert into #tickets
 			E.Deleted = 0 and
 			T.TicketStatusId = 6 and
 			T.ExecutionDateTime between @dateFrom and @dateTo
+
+			and
+
+			(
+				(
+					((C.Lastname + ', ' + C.Firstname) like  @adminName ) 
+				)			and 
+				(
+					((E.Lastname + ', ' + E.Firstname) like  @technicianName )
+				)	
+			)
+
 	group by	E.Lastname + ', ' + E.Firstname, C.Lastname + ', ' + C.Firstname
 	order by 	E.Lastname + ', ' + E.Firstname, C.Lastname + ', ' + C.Firstname
 	
@@ -117,11 +144,11 @@ insert into #tickets
 	select	Technician + ' - Total',
 			'',
 			sum(Tickets),
-			sum(isnull(EstimatedDuration,0)),
-			sum(isnull(RealDuration,0)),
+			sum(EstimatedDuration),
+			sum(RealDuration),
 			case 
-				when sum(isnull(EstimatedDuration,0)) > 0 then (((sum(isnull(RealDuration,0)) - sum(isnull(EstimatedDuration,0))) *  100) / sum(isnull(EstimatedDuration,0)))
-				when sum(isnull(EstimatedDuration,0)) = 0 then 0
+				when sum(EstimatedDuration) > 0 then (((sum(RealDuration) - sum(EstimatedDuration)) *  100) / sum(EstimatedDuration))
+				when sum(EstimatedDuration) = 0 then 0
 			end
 	from #tickets
 	group by	Technician
