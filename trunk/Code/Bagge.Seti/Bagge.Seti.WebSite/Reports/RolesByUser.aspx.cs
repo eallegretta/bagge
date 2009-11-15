@@ -26,6 +26,7 @@ namespace Bagge.Seti.WebSite.Reports
                 var filters = new List<FilterPropertyValue>();
                 FilterHelper.AddTextBoxFilterValue<string>(_name, "Name", FilterPropertyValueType.Like, filters);
                 FilterHelper.AddTextBoxFilterValue<string>(_description, "Description", FilterPropertyValueType.Like, filters);
+                FilterHelper.AddTextBoxFilterValue<string>(_userName, "UserName", FilterPropertyValueType.Like, filters);
 
                 return filters;
             }

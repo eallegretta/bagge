@@ -18,9 +18,11 @@ namespace Bagge.Seti.DataAccess.Reports
         {
             var FilterName = filters.GetFilter("Name");
             var FilterDescription = filters.GetFilter("Description");
+            var FilterUserName = filters.GetFilter("UserName");
 
             string name = null;
             string description = null;
+            string userName = null;
 
             if (FilterName != null)
             {
@@ -32,7 +34,14 @@ namespace Bagge.Seti.DataAccess.Reports
                 description = FilterDescription.Value.ToString();
             }
 
-            return GetReport("RolesByUserReport", name, description);
+             if (FilterUserName != null)
+            {
+                userName = FilterUserName.Value.ToString();
+            }
+
+            return GetReport("RolesByUserReport",
+            name, description, userName);
+
         }
 
         #endregion

@@ -7,6 +7,8 @@
 			<td><asp:TextBox ID="_name" runat="server"></asp:TextBox></td>
 			<th><asp:Literal id="_descriptionLiteral" runat="server" meta:resourcekey="FilterDescriptionLiteral"></asp:Literal></th>
 			<td><asp:TextBox ID="_description" runat="server"></asp:TextBox></td>
+			<th><asp:Literal id="_userNameLiteral" runat="server" meta:resourcekey="FilterUserNameNameLiteral"></asp:Literal></th>
+			<td><asp:TextBox ID="_userName" runat="server"></asp:TextBox></td>
 			<td><asp:Button ID="_filter" runat="server" meta:resourcekey="FilterButton" /></td>
 		</tr>
 	</table>

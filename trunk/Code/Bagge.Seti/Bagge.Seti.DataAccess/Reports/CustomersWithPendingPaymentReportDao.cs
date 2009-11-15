@@ -18,7 +18,9 @@ namespace Bagge.Seti.DataAccess.Reports
 
 		public BaseReport GetReport(IList<FilterPropertyValue> filters)
         {
-            return GetReport("CustomersWithPendingPaymentReport");
+            return GetReport("CustomersWithPendingPaymentReport",
+            filters.GetFilterValue<string>("CustomerName", string.Empty) + "%",
+            0);
 		}
 
 		#endregion
