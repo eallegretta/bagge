@@ -24,7 +24,7 @@ namespace Bagge.Seti.WebSite.Reports
 
 		public override string GetFormattedColumnValue(int columnIndex, string value)
 		{
-			if (!string.IsNullOrEmpty(value) && columnIndex == 3)
+			if (!string.IsNullOrEmpty(value) && columnIndex == 2)
 			{
 				return value + "hs";
 			}
@@ -38,6 +38,11 @@ namespace Bagge.Seti.WebSite.Reports
                 var filters = new List<FilterPropertyValue>();
                 FilterHelper.AddCalendarFilterValue(_dateFrom, "DateFrom", FilterPropertyValueType.Equals, filters);
                 FilterHelper.AddCalendarFilterValue(_dateTo, "DateTo", FilterPropertyValueType.Equals, filters);
+				FilterHelper.AddTextBoxFilterValue<string>(_technicianFullname, "Fullname", FilterPropertyValueType.Like, filters);
+				FilterHelper.AddTextBoxFilterValue<int>(_ticketCountFrom, "TicketCountFrom", FilterPropertyValueType.GreaterEquals, filters);
+				FilterHelper.AddTextBoxFilterValue<int>(_ticketCountTo, "TicketCountTo", FilterPropertyValueType.LowerEquals, filters);
+				FilterHelper.AddTextBoxFilterValue<decimal>(_totalRealDurationFrom, "RealDurationFrom", FilterPropertyValueType.GreaterEquals, filters);
+				FilterHelper.AddTextBoxFilterValue<decimal>(_totalRealDurationTo, "RealDurationTo", FilterPropertyValueType.LowerEquals, filters);
 
                 return filters;
             }
