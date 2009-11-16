@@ -182,6 +182,7 @@ namespace Bagge.Seti.AlertsSender
                         var ticket = IoCContainer.TicketManager.Get(id);
                         TicketStatus ticketStatus = IoCContainer.TicketStatusManager.Get(TicketStatusEnum.CanceledBySystem);
                         ticket.Status = ticketStatus;
+						ticket.Notes = "Cancelado por Transcurrir " + alert.MaxDaysPendingAproval + " días en pendiente de aprobación";
 
                         IoCContainer.TicketManager.Update(ticket);
 

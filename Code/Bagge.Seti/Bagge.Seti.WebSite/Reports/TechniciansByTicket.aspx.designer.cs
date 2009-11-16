@@ -50,6 +50,114 @@ namespace Bagge.Seti.WebSite.Reports {
         protected global::Bagge.Seti.WebSite.Controls.Calendar _dateTo;
         
         /// <summary>
+        /// _technicianFullnameLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _technicianFullnameLiteral;
+        
+        /// <summary>
+        /// _technicianFullname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _technicianFullname;
+        
+        /// <summary>
+        /// _ticketCountFromLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _ticketCountFromLiteral;
+        
+        /// <summary>
+        /// _ticketCountFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _ticketCountFrom;
+        
+        /// <summary>
+        /// _ticketCountToLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _ticketCountToLiteral;
+        
+        /// <summary>
+        /// _ticketCountTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _ticketCountTo;
+        
+        /// <summary>
+        /// _ticketCountCmpVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator _ticketCountCmpVal;
+        
+        /// <summary>
+        /// _totalRealDurationFromLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _totalRealDurationFromLiteral;
+        
+        /// <summary>
+        /// _totalRealDurationFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _totalRealDurationFrom;
+        
+        /// <summary>
+        /// _totalRealDurationToLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal _totalRealDurationToLiteral;
+        
+        /// <summary>
+        /// _totalRealDurationTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _totalRealDurationTo;
+        
+        /// <summary>
+        /// _totalRealDurationCmpVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator _totalRealDurationCmpVal;
+        
+        /// <summary>
         /// _filter control.
         /// </summary>
         /// <remarks>
@@ -57,5 +165,41 @@ namespace Bagge.Seti.WebSite.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button _filter;
+        
+        /// <summary>
+        /// _ticketCountFromMask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender _ticketCountFromMask;
+        
+        /// <summary>
+        /// _ticketCountToMask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender _ticketCountToMask;
+        
+        /// <summary>
+        /// _totalRealDurationFromMask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender _totalRealDurationFromMask;
+        
+        /// <summary>
+        /// _totalRealDurationToMask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.MaskedEditExtender _totalRealDurationToMask;
     }
 }

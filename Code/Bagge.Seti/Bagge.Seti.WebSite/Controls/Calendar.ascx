@@ -28,6 +28,7 @@ div.ajax__calendar_days table tr td
 		$("#<%=_calendar.ClientID%>").datepicker(
 			$.extend(
 				{
+					showButtonPanel: true,
 					changeMonth: true,
 					changeYear: true,
 					showMonthAfterYear: false,
