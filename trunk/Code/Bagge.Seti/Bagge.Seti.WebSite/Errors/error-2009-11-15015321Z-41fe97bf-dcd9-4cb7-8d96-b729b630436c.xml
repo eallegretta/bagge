@@ -1,0 +1,165 @@
+﻿<error errorId="41fe97bf-dcd9-4cb7-8d96-b729b630436c" host="DESKTOP" type="System.Web.HttpException" message="System.Web.UI.WebControls.ListItemCollection must have items of type 'System.Web.UI.WebControls.ListItem'. 'th' is of type 'System.Web.UI.HtmlControls.HtmlTableCell'." source="System.Web" detail="System.Web.HttpParseException: System.Web.UI.WebControls.ListItemCollection must have items of type 'System.Web.UI.WebControls.ListItem'. 'th' is of type 'System.Web.UI.HtmlControls.HtmlTableCell'. ---&gt; System.Web.HttpParseException: System.Web.UI.WebControls.ListItemCollection must have items of type 'System.Web.UI.WebControls.ListItem'. 'th' is of type 'System.Web.UI.HtmlControls.HtmlTableCell'. ---&gt; System.Web.HttpException: System.Web.UI.WebControls.ListItemCollection must have items of type 'System.Web.UI.WebControls.ListItem'. 'th' is of type 'System.Web.UI.HtmlControls.HtmlTableCell'.&#xD;&#xA;   at System.Web.UI.CollectionBuilder.GetChildControlType(String tagName, IDictionary attribs)&#xD;&#xA;   at System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type&amp; childType, Boolean defaultProperty)&#xD;&#xA;   at System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type&amp; childType, Boolean defaultProperty)&#xD;&#xA;   at System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)&#xD;&#xA;   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Web.UI.TemplateParser.ProcessException(Exception ex)&#xD;&#xA;   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)&#xD;&#xA;   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)&#xD;&#xA;   at System.Web.UI.TemplateParser.ParseReader(StreamReader reader, VirtualPath virtualPath)&#xD;&#xA;   at System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)&#xD;&#xA;   at System.Web.UI.TemplateParser.ParseInternal()&#xD;&#xA;   at System.Web.UI.TemplateParser.Parse()&#xD;&#xA;   at System.Web.UI.TemplateParser.Parse(ICollection referencedAssemblies, VirtualPath virtualPath)&#xD;&#xA;   at System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()&#xD;&#xA;   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)&#xD;&#xA;   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()&#xD;&#xA;   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()&#xD;&#xA;   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean noAssert)&#xD;&#xA;   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp, Boolean noAssert)&#xD;&#xA;   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)&#xD;&#xA;   at System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)&#xD;&#xA;   at System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)&#xD;&#xA;   at System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="test" time="2009-11-15T01:53:21.4398750Z" statusCode="500" webHostHtmlMessage="&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Parser Error&lt;/title&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Lucida Console&quot;;font-size: .9em}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Server Error in '/' Application.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Parser Error&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Description: &lt;/b&gt;An error occurred during the parsing of a resource required to service this request.   Please review the following specific parse error details and modify your source file appropriately.&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Parser Error Message: &lt;/b&gt;System.Web.UI.WebControls.ListItemCollection must have items of type 'System.Web.UI.WebControls.ListItem'. 'th' is of type 'System.Web.UI.HtmlControls.HtmlTableCell'.&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Source Error:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;Line 13: 			&amp;lt;td&amp;gt;&amp;lt;asp:DropDownList ID=&amp;quot;_groupBy&amp;quot; runat=&amp;quot;server&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;&#xD;&#xA;Line 14: 			&#xD;&#xA;&lt;font color=red&gt;Line 15: 			&amp;lt;th&amp;gt;&amp;lt;asp:Literal ID=&amp;quot;_technicianNameLiteral&amp;quot; runat=&amp;quot;server&amp;quot; meta:resourcekey=&amp;quot;TechnicianNameLiteral&amp;quot;&amp;gt;&amp;lt;/asp:Literal&amp;gt;&amp;lt;/th&amp;gt;&#xD;&#xA;&lt;/font&gt;Line 16: 			&amp;lt;td&amp;gt;&amp;lt;asp:TextBox ID=&amp;quot;_technicianName&amp;quot; runat=&amp;quot;server&amp;quot;&amp;gt;&amp;lt;/asp:TextBox&amp;gt;&amp;lt;/td&amp;gt;&#xD;&#xA;Line 17: 		&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Source File: &lt;/b&gt; /Reports/TicketsClosed.aspx&lt;b&gt; &amp;nbsp;&amp;nbsp; Line: &lt;/b&gt; 15&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:es-ar&#xD;&#xA;HTTP_COOKIE:ASP.NET_SessionId=53c4suymjqpitabgopj1s0ix; SetiUser=D545E91CEA1E8DD22AAF4BABB4D284C1475FD897C70268DD88C04943700E02629FCE6E7EFAB2757E09B9EE43D1B24948ADED89F2379BCA16ABEF6CDA224A8D63&#xD;&#xA;HTTP_HOST:localhost:2297&#xD;&#xA;HTTP_REFERER:http://localhost:2297/Reports/TechniciansByTicket.aspx&#xD;&#xA;HTTP_USER_AGENT:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: es-ar&#xD;&#xA;Cookie: ASP.NET_SessionId=53c4suymjqpitabgopj1s0ix; SetiUser=D545E91CEA1E8DD22AAF4BABB4D284C1475FD897C70268DD88C04943700E02629FCE6E7EFAB2757E09B9EE43D1B24948ADED89F2379BCA16ABEF6CDA224A8D63&#xD;&#xA;Host: localhost:2297&#xD;&#xA;Referer: http://localhost:2297/Reports/TechniciansByTicket.aspx&#xD;&#xA;User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="SetiAuthentication" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="test" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="DESKTOP\mcgomez" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="test" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="" />
+    </item>
+    <item name="HTTPS">
+      <value string="" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Reports/TicketsClosed.aspx" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\Reports\TicketsClosed.aspx" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Reports/TicketsClosed.aspx" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="2297" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="" />
+    </item>
+    <item name="URL">
+      <value string="/Reports/TicketsClosed.aspx" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="es-ar" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ASP.NET_SessionId=53c4suymjqpitabgopj1s0ix; SetiUser=D545E91CEA1E8DD22AAF4BABB4D284C1475FD897C70268DD88C04943700E02629FCE6E7EFAB2757E09B9EE43D1B24948ADED89F2379BCA16ABEF6CDA224A8D63" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:2297" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:2297/Reports/TechniciansByTicket.aspx" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="53c4suymjqpitabgopj1s0ix" />
+    </item>
+    <item name="SetiUser">
+      <value string="D545E91CEA1E8DD22AAF4BABB4D284C1475FD897C70268DD88C04943700E02629FCE6E7EFAB2757E09B9EE43D1B24948ADED89F2379BCA16ABEF6CDA224A8D63" />
+    </item>
+  </cookies>
+</error>
