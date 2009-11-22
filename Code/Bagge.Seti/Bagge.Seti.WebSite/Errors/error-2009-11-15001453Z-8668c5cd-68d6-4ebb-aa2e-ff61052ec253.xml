@@ -1,0 +1,165 @@
+﻿<error errorId="8668c5cd-68d6-4ebb-aa2e-ff61052ec253" host="DESKTOP" type="System.Data.SqlClient.SqlException" message="Procedure or function 'RolesByUserReport' expects parameter '@userName', which was not supplied." source=".Net SqlClient Data Provider" detail="System.Web.HttpUnhandledException: Exception of type 'System.Web.HttpUnhandledException' was thrown. ---&gt; System.Data.SqlClient.SqlException: Procedure or function 'RolesByUserReport' expects parameter '@userName', which was not supplied.&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlDataReader.get_MetaData()&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)&#xD;&#xA;   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)&#xD;&#xA;   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoLoadDataSet(IDbCommand command, DataSet dataSet, String[] tableNames)&#xD;&#xA;   at Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DbCommand command, DataSet dataSet, String[] tableNames)&#xD;&#xA;   at Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DbCommand command, DataSet dataSet, String tableName)&#xD;&#xA;   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteDataSet(DbCommand command)&#xD;&#xA;   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteDataSet(String storedProcedureName, Object[] parameterValues)&#xD;&#xA;   at Bagge.Seti.DataAccess.Reports.BaseReportDao`1.GetReport(String spName, Object[] parameters) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\Reports\BaseReportDao.cs:line 22&#xD;&#xA;   at Bagge.Seti.DataAccess.Reports.RolesByUserReportDao.GetReport(IList`1 filters) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\Reports\RolesByUserReportDao.cs:line 35&#xD;&#xA;   at Bagge.Seti.BusinessLogic.ReportManager.GetReport[T](IList`1 filters) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessLogic\ReportManager.cs:line 33&#xD;&#xA;   at (Object , Object[] )&#xD;&#xA;   at Spring.Reflection.Dynamic.SafeMethod.Invoke(Object target, Object[] arguments)&#xD;&#xA;   at Spring.Aop.Framework.DynamicMethodInvocation.InvokeJoinpoint()&#xD;&#xA;   at Spring.Aop.Framework.AbstractMethodInvocation.Proceed()&#xD;&#xA;   at Bagge.Seti.Common.Interceptors.SecurityInterceptor.Invoke(IMethodInvocation invocation) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.Common\Interceptors\SecurityInterceptor.cs:line 47&#xD;&#xA;   at Spring.Aop.Framework.AbstractMethodInvocation.Proceed()&#xD;&#xA;   at Spring.Aop.Framework.DynamicProxy.AdvisedProxy.Invoke(Object proxy, Object target, Type targetType, MethodInfo targetMethod, MethodInfo proxyMethod, Object[] args, IList interceptors)&#xD;&#xA;   at CompositionAopProxy_152157f911154f7784ae782d0a61a7e7.GetReport[T](IList`1 filters)&#xD;&#xA;   at Bagge.Seti.WebSite.Presenters.ReportPresenter`1.Select() in C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\Presenters\ReportPresenter.cs:line 44&#xD;&#xA;   at Bagge.Seti.WebSite.Reports.FilteredReportPage`1.OnLoad(EventArgs e) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\Reports\FilteredReportPage.cs:line 28&#xD;&#xA;   at System.Web.UI.Control.LoadRecursive()&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Web.UI.Page.HandleError(Exception e)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest()&#xD;&#xA;   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)&#xD;&#xA;   at System.Web.UI.Page.ProcessRequest(HttpContext context)&#xD;&#xA;   at ASP.reports_rolesbyuser_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\b4733216\379afa6b\App_Web_qfa6vkum.1.cs:line 0&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="test" time="2009-11-15T00:14:53.7992500Z" statusCode="500" webHostHtmlMessage="&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Procedure or function 'RolesByUserReport' expects parameter '@userName', which was not supplied.&lt;/title&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Lucida Console&quot;;font-size: .9em}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Server Error in '/' Application.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Procedure or function 'RolesByUserReport' expects parameter '@userName', which was not supplied.&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Description: &lt;/b&gt;An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Exception Details: &lt;/b&gt;System.Data.SqlClient.SqlException: Procedure or function 'RolesByUserReport' expects parameter '@userName', which was not supplied.&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Source Error:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;Line 20: &#xD;&#xA;Line 21: 			var database = DatabaseFactory.CreateDatabase(Constants.DEFAULT_CONNECTION_STRING_NAME);&#xD;&#xA;&lt;font color=red&gt;Line 22: 			using (DataSet ds = database.ExecuteDataSet(spName, parameters))&#xD;&#xA;&lt;/font&gt;Line 23: 			{&#xD;&#xA;Line 24: 				if (ds.Tables.Count &amp;gt; 0)&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Source File: &lt;/b&gt; C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\Reports\BaseReportDao.cs&lt;b&gt; &amp;nbsp;&amp;nbsp; Line: &lt;/b&gt; 22&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Stack Trace:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;[SqlException (0x80131904): Procedure or function 'RolesByUserReport' expects parameter '@userName', which was not supplied.]&#xD;&#xA;   System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection) +1950890&#xD;&#xA;   System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection) +4846875&#xD;&#xA;   System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj) +194&#xD;&#xA;   System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj) +2392&#xD;&#xA;   System.Data.SqlClient.SqlDataReader.ConsumeMetaData() +33&#xD;&#xA;   System.Data.SqlClient.SqlDataReader.get_MetaData() +83&#xD;&#xA;   System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString) +297&#xD;&#xA;   System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async) +954&#xD;&#xA;   System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result) +162&#xD;&#xA;   System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method) +32&#xD;&#xA;   System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method) +141&#xD;&#xA;   System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior) +12&#xD;&#xA;   System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior) +10&#xD;&#xA;   System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior) +130&#xD;&#xA;   System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior) +287&#xD;&#xA;   System.Data.Common.DbDataAdapter.Fill(DataSet dataSet) +94&#xD;&#xA;   Microsoft.Practices.EnterpriseLibrary.Data.Database.DoLoadDataSet(IDbCommand command, DataSet dataSet, String[] tableNames) +787&#xD;&#xA;   Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DbCommand command, DataSet dataSet, String[] tableNames) +120&#xD;&#xA;   Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DbCommand command, DataSet dataSet, String tableName) +105&#xD;&#xA;   Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteDataSet(DbCommand command) +107&#xD;&#xA;   Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteDataSet(String storedProcedureName, Object[] parameterValues) +96&#xD;&#xA;   Bagge.Seti.DataAccess.Reports.BaseReportDao`1.GetReport(String spName, Object[] parameters) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\Reports\BaseReportDao.cs:22&#xD;&#xA;   Bagge.Seti.DataAccess.Reports.RolesByUserReportDao.GetReport(IList`1 filters) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.DataAccess\Reports\RolesByUserReportDao.cs:35&#xD;&#xA;   Bagge.Seti.BusinessLogic.ReportManager.GetReport(IList`1 filters) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.BusinessLogic\ReportManager.cs:33&#xD;&#xA;   (Object , Object[] ) +140&#xD;&#xA;   Spring.Reflection.Dynamic.SafeMethod.Invoke(Object target, Object[] arguments) +81&#xD;&#xA;   Spring.Aop.Framework.DynamicMethodInvocation.InvokeJoinpoint() +174&#xD;&#xA;   Spring.Aop.Framework.AbstractMethodInvocation.Proceed() +164&#xD;&#xA;   Bagge.Seti.Common.Interceptors.SecurityInterceptor.Invoke(IMethodInvocation invocation) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.Common\Interceptors\SecurityInterceptor.cs:47&#xD;&#xA;   Spring.Aop.Framework.AbstractMethodInvocation.Proceed() +426&#xD;&#xA;   Spring.Aop.Framework.DynamicProxy.AdvisedProxy.Invoke(Object proxy, Object target, Type targetType, MethodInfo targetMethod, MethodInfo proxyMethod, Object[] args, IList interceptors) +206&#xD;&#xA;   CompositionAopProxy_152157f911154f7784ae782d0a61a7e7.GetReport(IList`1 filters) +459&#xD;&#xA;   Bagge.Seti.WebSite.Presenters.ReportPresenter`1.Select() in C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\Presenters\ReportPresenter.cs:44&#xD;&#xA;   Bagge.Seti.WebSite.Reports.FilteredReportPage`1.OnLoad(EventArgs e) in C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\Reports\FilteredReportPage.cs:28&#xD;&#xA;   System.Web.UI.Control.LoadRecursive() +50&#xD;&#xA;   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +627&#xD;&#xA;&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:es-ar&#xD;&#xA;HTTP_COOKIE:ASP.NET_SessionId=4ga22i55qnojahzhahvkjq55; SetiUser=38BD54BB942BE9FDF269F5056164BBDB8B84DFFA618A08073F1614E853145DBB4F8D99B5A82E5E49706F0DDF631A4B3083A9B691BD420C4C443E4F25B971E9F5&#xD;&#xA;HTTP_HOST:localhost:2297&#xD;&#xA;HTTP_REFERER:http://localhost:2297/Reports/TechniciansByTicket.aspx&#xD;&#xA;HTTP_USER_AGENT:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: es-ar&#xD;&#xA;Cookie: ASP.NET_SessionId=4ga22i55qnojahzhahvkjq55; SetiUser=38BD54BB942BE9FDF269F5056164BBDB8B84DFFA618A08073F1614E853145DBB4F8D99B5A82E5E49706F0DDF631A4B3083A9B691BD420C4C443E4F25B971E9F5&#xD;&#xA;Host: localhost:2297&#xD;&#xA;Referer: http://localhost:2297/Reports/TechniciansByTicket.aspx&#xD;&#xA;User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="SetiAuthentication" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="test" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="DESKTOP\mcgomez" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="test" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="" />
+    </item>
+    <item name="HTTPS">
+      <value string="" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Reports/RolesByUser.aspx" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\bagge\Code\Bagge.Seti\Bagge.Seti.WebSite\Reports\RolesByUser.aspx" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="127.0.0.1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Reports/RolesByUser.aspx" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="2297" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="" />
+    </item>
+    <item name="URL">
+      <value string="/Reports/RolesByUser.aspx" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="es-ar" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ASP.NET_SessionId=4ga22i55qnojahzhahvkjq55; SetiUser=38BD54BB942BE9FDF269F5056164BBDB8B84DFFA618A08073F1614E853145DBB4F8D99B5A82E5E49706F0DDF631A4B3083A9B691BD420C4C443E4F25B971E9F5" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:2297" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:2297/Reports/TechniciansByTicket.aspx" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="ASP.NET_SessionId">
+      <value string="4ga22i55qnojahzhahvkjq55" />
+    </item>
+    <item name="SetiUser">
+      <value string="38BD54BB942BE9FDF269F5056164BBDB8B84DFFA618A08073F1614E853145DBB4F8D99B5A82E5E49706F0DDF631A4B3083A9B691BD420C4C443E4F25B971E9F5" />
+    </item>
+  </cookies>
+</error>
