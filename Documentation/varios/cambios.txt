@@ -1,0 +1,6 @@
+.ver error de fechas lanzado por sql
+.aplicar seguridad por valor a la home para ocultar los tickets que no puede ver o listar
+.agregar mejor UI para la parte de checkboxes
+
+.verificar las excepciones de sql
+.mostrar los checkboxes como grillas
