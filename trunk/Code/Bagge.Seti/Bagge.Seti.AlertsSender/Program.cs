@@ -20,6 +20,7 @@ using System.Security.Principal;
 using Bagge.Seti.BusinessEntities.Security;
 using Bagge.Seti.Security.BusinessEntities;
 using Castle.ActiveRecord.Framework.Scopes;
+using System.Linq;
 
 namespace Bagge.Seti.AlertsSender
 {
@@ -41,8 +42,60 @@ namespace Bagge.Seti.AlertsSender
 
         static void Main(string[] args)
         {
+			if (args.Contains("-install"))
+			{
+				new Program().Install();
+				return;
+			}
+			else if (args.Contains("-uninstall"))
+			{
+				new Program().Uninstall();
+				return;
+			}
             new Program().Run();
         }
+
+		private void Uninstall()
+		{
+			if (IsUserInteractive)
+				Console.WriteLine("Uninstalling task");
+
+			using (var scheduler = new TaskScheduler.ScheduledTasks())
+			{
+				try
+				{
+					scheduler.DeleteTask("AlertsSender.job");
+					Console.WriteLine("Task uninstalled");
+				}
+				catch
+				{
+					Console.WriteLine("Task not uninstalled - does not exist");
+				}
+			}
+		}
+
+		private void Install()
+		{
+			Console.WriteLine("Installing task");
+			using (var scheduler = new TaskScheduler.ScheduledTasks())
+			{
+				try
+				{
+					using (var task = scheduler.CreateTask("AlertsSender"))
+					{
+						task.ApplicationName = Path.Combine(Environment.CurrentDirectory, "Bagge.Seti.AlertsSender.exe");
+						task.Comment = "Tarea programada para el envio de alertas";
+						task.Triggers.Add(new TaskScheduler.DailyTrigger(23, 59));
+						task.Save();
+					}
+					Console.WriteLine("Task installed");
+				}
+				catch
+				{
+					Console.WriteLine("Task not installed - task already exists");
+				}
+			}
+		}
 
         public void Run()
         {
